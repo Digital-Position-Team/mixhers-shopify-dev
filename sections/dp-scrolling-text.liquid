@@ -1,0 +1,138 @@
+{% liquid
+  assign plus_icon_svg = '<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="19" stroke="#FF59E4" stroke-width="2"></circle><line x1="20.7144" y1="10" x2="20.7144" y2="30.5714" stroke="#FF59E4" stroke-width="2"></line><line x1="10" y1="20.7144" x2="30.5714" y2="20.7144" stroke="#FF59E4" stroke-width="2"></line></svg>' | replace "#FF59E4", section.settings.icon_color
+%}
+<style>
+  .dp-scrolling-text {
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 20px 0;
+    font-family: 'Buenos Aires', sans-serif;
+    font-size: {{ section.settings.text_size }}px;
+    color: {{ section.settings.text_color }};
+  }
+  .dp-scrolling-text__inner {
+    display: inline-block;
+    animation: scroll-left {{ section.settings.scroll_duration }}s linear infinite;
+  }
+  .dp-scrolling-text__item {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 50px; /* Adjust spacing between items */
+  }
+  .dp-scrolling-text__item svg {
+    margin-right: 10px;
+    width: {{ section.settings.icon_size }}px;
+    height: {{ section.settings.icon_size }}px;
+  }
+
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%); /* Adjust based on the number of duplicated items */
+    }
+  }
+</style>
+
+<div class="dp-scrolling-text">
+  <div class="dp-scrolling-text__inner">
+    {% for i in (1..2) %} {# Duplicate for seamless scrolling #}
+      {% for block in section.blocks %}
+        <span class="dp-scrolling-text__item">
+          {{ plus_icon_svg }}
+          {{ block.settings.text }}
+        </span>
+      {% endfor %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "DP Scrolling Text",
+  "settings": [
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Font Size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon Color",
+      "default": "#FF59E4"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Icon Size",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "scroll_duration",
+      "min": 5,
+      "max": 60,
+      "step": 1,
+      "unit": "s",
+      "label": "Scroll Duration (seconds)",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text_item",
+      "name": "Text Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Your Text Here"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "DP Scrolling Text",
+      "blocks": [
+        {
+          "type": "text_item",
+          "settings": {
+            "text": "Women Owned"
+          }
+        },
+        {
+          "type": "text_item",
+          "settings": {
+            "text": "All natural"
+          }
+        },
+        {
+          "type": "text_item",
+          "settings": {
+            "text": "Hormone friendly"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
