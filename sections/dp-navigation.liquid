@@ -13,7 +13,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="22" viewBox="0 0 21 26" fill="none"><g clip-path="url(#clip0_2943_179)"><path d="M19.8455 7.95593H1.15448V24.8422H19.8455V7.95593Z" stroke="black" stroke-width="2" stroke-miterlimit="10"></path><path d="M4.61792 7.95589L4.75646 7.05024C5.28752 3.62255 7.70038 1.14636 10.5058 1.14636C13.3112 1.14636 15.7125 3.62255 16.2551 7.05024L16.3936 7.95589" stroke="black" stroke-width="2" stroke-miterlimit="10"></path></g><defs><clipPath id="clip0_2943_179"><rect width="21" height="26" fill="white"></rect></clipPath></defs></svg>
   {% endcapture %}
   {% assign cart_svg = cart_svg_content | replace: "black", section.settings.icon_color %}
-%}
+{% endliquid %}
 
 <style>
   .dp-nav {
