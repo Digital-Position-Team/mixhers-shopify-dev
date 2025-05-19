@@ -18,23 +18,45 @@
     },
     "dp_hero_main": {
       "type": "dp-hero",
-      "settings": {},
       "blocks": {
         "image_1": {
-          "type": "image"
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/rebrand-homepage-hertime-hover_5e8dd678-7e53-4ed0-bee0-554f6a5bdc59.png"
+          }
         },
         "image_2": {
-          "type": "image"
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Creatine_Collections_image_2.png"
+          }
+        },
+        "image_aXyNjt": {
+          "type": "image",
+          "settings": {}
         }
       },
       "block_order": [
         "image_1",
-        "image_2"
-      ]
+        "image_2",
+        "image_aXyNjt"
+      ],
+      "settings": {
+        "title": "Her health starts with hormones.",
+        "title_size": 40,
+        "subtitle": "Science-backed supplements you sip for balanced hormones and a better you",
+        "subtitle_size": 18,
+        "primary_cta_text": "Shop Now",
+        "primary_cta_link": "",
+        "secondary_cta_text": "Take the Quiz",
+        "secondary_cta_link": "",
+        "reviews_text": "★ ★ ★ ★ ★ Over 17,000 5-star reviews from real women",
+        "reviews_size": 14,
+        "scroll_interval": 3
+      }
     },
     "dp_scrolling_text_main": {
       "type": "dp-scrolling-text",
-      "settings": {},
       "blocks": {
         "item_1": {
           "type": "text_item",
@@ -45,21 +67,42 @@
         "item_2": {
           "type": "text_item",
           "settings": {
-            "text": "All natural"
+            "text": "All Natural"
           }
         },
         "item_3": {
           "type": "text_item",
           "settings": {
-            "text": "Hormone friendly"
+            "text": "Hormone Friendly"
+          }
+        },
+        "text_item_adW8tw": {
+          "type": "text_item",
+          "settings": {
+            "text": "Highly Absorbable"
+          }
+        },
+        "text_item_R4J6iQ": {
+          "type": "text_item",
+          "settings": {
+            "text": "Third-Party Tested"
           }
         }
       },
       "block_order": [
         "item_1",
         "item_2",
-        "item_3"
-      ]
+        "item_3",
+        "text_item_adW8tw",
+        "text_item_R4J6iQ"
+      ],
+      "settings": {
+        "text_size": 16,
+        "text_color": "#000000",
+        "icon_color": "#ff59e4",
+        "icon_size": 20,
+        "scroll_duration": 20
+      }
     },
     "image_banner": {
       "type": "image-banner",
