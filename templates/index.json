@@ -16,6 +16,51 @@
         "text": "15% OFF subscriptions with no code needed"
       }
     },
+    "dp_hero_main": {
+      "type": "dp-hero",
+      "settings": {},
+      "blocks": {
+        "image_1": {
+          "type": "image"
+        },
+        "image_2": {
+          "type": "image"
+        }
+      },
+      "block_order": [
+        "image_1",
+        "image_2"
+      ]
+    },
+    "dp_scrolling_text_main": {
+      "type": "dp-scrolling-text",
+      "settings": {},
+      "blocks": {
+        "item_1": {
+          "type": "text_item",
+          "settings": {
+            "text": "Women Owned"
+          }
+        },
+        "item_2": {
+          "type": "text_item",
+          "settings": {
+            "text": "All natural"
+          }
+        },
+        "item_3": {
+          "type": "text_item",
+          "settings": {
+            "text": "Hormone friendly"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3"
+      ]
+    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -230,6 +275,8 @@
   },
   "order": [
     "dp_banner_FT47Rd",
+    "dp_hero_main",
+    "dp_scrolling_text_main",
     "image_banner",
     "rich_text",
     "featured_collection",
