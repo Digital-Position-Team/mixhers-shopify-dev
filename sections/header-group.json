@@ -53,24 +53,10 @@
         "padding_top": 20,
         "padding_bottom": 20
       }
-    },
-    "dp_navigation_dh7BVj": {
-      "type": "dp-navigation",
-      "name": "DP Navigation",
-      "settings": {
-        "logo_color": "#FF59E4",
-        "link_color": "#000000",
-        "icon_color": "#000000",
-        "shop_link": "",
-        "shop_text": "Shop",
-        "quiz_link": "",
-        "quiz_text": "Take the Quiz"
-      }
     }
   },
   "order": [
     "announcement-bar",
-    "header",
-    "dp_navigation_dh7BVj"
+    "header"
   ]
 }

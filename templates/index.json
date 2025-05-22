@@ -9,14 +9,6 @@
  */
 {
   "sections": {
-    "dp_banner_FT47Rd": {
-      "type": "dp-banner",
-      "disabled": true,
-      "name": "DP Banner",
-      "settings": {
-        "text": "15% OFF subscriptions with no code needed"
-      }
-    },
     "dp_hero_main": {
       "type": "dp-hero",
       "blocks": {
@@ -318,7 +310,6 @@
     }
   },
   "order": [
-    "dp_banner_FT47Rd",
     "dp_hero_main",
     "dp_scrolling_text_main",
     "image_banner",
