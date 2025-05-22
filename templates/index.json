@@ -9,40 +9,6 @@
  */
 {
   "sections": {
-    "dp_hero_main": {
-      "type": "dp-hero",
-      "blocks": {
-        "image_1": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/rebrand-homepage-hertime-hover_5e8dd678-7e53-4ed0-bee0-554f6a5bdc59.png"
-          }
-        },
-        "image_2": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Creatine_Collections_image_2.png"
-          }
-        }
-      },
-      "block_order": [
-        "image_1",
-        "image_2"
-      ],
-      "settings": {
-        "title": "Her health starts with hormones.",
-        "title_size": 40,
-        "subtitle": "Science-backed supplements you sip for balanced hormones and a better you",
-        "subtitle_size": 18,
-        "primary_cta_text": "Shop Now",
-        "primary_cta_link": "",
-        "secondary_cta_text": "Take the Quiz",
-        "secondary_cta_link": "",
-        "reviews_text": "★ ★ ★ ★ ★ Over 17,000 5-star reviews from real women",
-        "reviews_size": 14,
-        "scroll_interval": 3
-      }
-    },
     "dp_scrolling_text_main": {
       "type": "dp-scrolling-text",
       "blocks": {
