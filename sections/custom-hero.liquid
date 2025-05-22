@@ -1,27 +1,27 @@
 <style>
-  .dp-hero {
+  .hero {
     display: flex;
     align-items: center;
     padding: 40px;
     font-family: 'Buenos Aires', sans-serif;
   }
-  .dp-hero__left, .dp-hero__right {
+  .hero__left, .hero__right {
     width: 50%;
   }
-  .dp-hero__left {
+  .hero__left {
     padding-right: 20px;
   }
-  .dp-hero__title {
+  .hero__title {
     font-family: 'Faire Sprig', serif;
     font-size: {{ section.settings.title_size }}px;
     margin-bottom: 10px;
   }
-  .dp-hero__subtitle {
+  .hero__subtitle {
     font-size: {{ section.settings.subtitle_size }}px;
     margin-bottom: 20px;
   }
-  .dp-hero__cta-primary,
-  .dp-hero__cta-secondary {
+  .hero__cta-primary,
+  .hero__cta-secondary {
     display: inline-block;
     padding: 10px 20px;
     text-decoration: none;
@@ -29,25 +29,25 @@
     margin-bottom: 20px;
     border: 1px solid #000;
   }
-  .dp-hero__cta-primary {
+  .hero__cta-primary {
     background-color: #000;
     color: #fff;
   }
-  .dp-hero__cta-secondary {
+  .hero__cta-secondary {
     background-color: #fff;
     color: #000;
   }
-  .dp-hero__reviews {
+  .hero__reviews {
     font-size: {{ section.settings.reviews_size }}px;
   }
-  .dp-hero__image-container {
+  .hero__image-container {
     position: relative;
     width: 100%;
     height: 0;
-    padding-bottom: 100%; /* Aspect ratio 1:1, adjust as needed */
+    padding-bottom: 100%;
     overflow: hidden;
   }
-  .dp-hero__image {
+  .hero__image {
     position: absolute;
     top: 0;
     left: 0;
@@ -57,23 +57,23 @@
     opacity: 0;
     transition: opacity 1s ease-in-out;
   }
-  .dp-hero__image.active {
+  .hero__image.active {
     opacity: 1;
   }
 </style>
 
-<div class="dp-hero">
-  <div class="dp-hero__left">
-    <h1 class="dp-hero__title">{{ section.settings.title }}</h1>
-    <p class="dp-hero__subtitle">{{ section.settings.subtitle }}</p>
-    <a href="{{ section.settings.primary_cta_link }}" class="dp-hero__cta-primary">{{ section.settings.primary_cta_text }}</a>
-    <a href="{{ section.settings.secondary_cta_link }}" class="dp-hero__cta-secondary">{{ section.settings.secondary_cta_text }}</a>
-    <p class="dp-hero__reviews">{{ section.settings.reviews_text }}</p>
+<div class="hero">
+  <div class="hero__left">
+    <h1 class="hero__title">{{ section.settings.title }}</h1>
+    <p class="hero__subtitle">{{ section.settings.subtitle }}</p>
+    <a href="{{ section.settings.primary_cta_link }}" class="hero__cta-primary">{{ section.settings.primary_cta_text }}</a>
+    <a href="{{ section.settings.secondary_cta_link }}" class="hero__cta-secondary">{{ section.settings.secondary_cta_text }}</a>
+    <p class="hero__reviews">{{ section.settings.reviews_text }}</p>
   </div>
-  <div class="dp-hero__right">
-    <div class="dp-hero__image-container">
+  <div class="hero__right">
+    <div class="hero__image-container">
       {% for block in section.blocks %}
-        <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.image.alt | escape }}" class="dp-hero__image {% if forloop.first %}active{% endif %}" loading="lazy">
+        <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.image.alt | escape }}" class="hero__image {% if forloop.first %}active{% endif %}" loading="lazy">
       {% endfor %}
     </div>
   </div>
@@ -81,7 +81,7 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const images = document.querySelectorAll('.dp-hero__image');
+    const images = document.querySelectorAll('.hero__image');
     let currentIndex = 0;
     const scrollInterval = {{ section.settings.scroll_interval }} * 1000;
 
@@ -99,7 +99,7 @@
 
 {% schema %}
 {
-  "name": "DP Hero",
+  "name": "Custom Hero",
   "settings": [
     {
       "type": "text",
@@ -193,7 +193,7 @@
   ],
   "presets": [
     {
-      "name": "DP Hero",
+      "name": "Custom Hero",
       "blocks": [
         { "type": "image" },
         { "type": "image" }

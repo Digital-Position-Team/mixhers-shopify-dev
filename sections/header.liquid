@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-menu-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-cart-notification.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'custom-header.css' | asset_url }}" media="print" onload="this.media='all'">
 
 {%- if settings.predictive_search_enabled -%}
   <link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -18,58 +19,104 @@
     margin-left: -1.2rem;
   }
 
-  {%- if section.settings.sticky_header_type == 'reduce-logo-size' -%}
-    .scrolled-past-header .header__heading-logo-wrapper {
-      width: 75%;
+  .header {
+    padding: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px 3rem {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px 3rem;
+    font-family: 'Buenos Aires', sans-serif;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-header {
+      margin-bottom: {{ section.settings.margin_bottom }}px;
     }
-  {%- endif -%}
+  }
 
-  {%- if section.settings.menu_type_desktop != "drawer" -%}
-    @media screen and (min-width: 990px) {
-      header-drawer {
-        display: none;
-      }
+  @media screen and (min-width: 990px) {
+    .header {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
     }
-  {%- endif -%}
-
-  .menu-drawer-container {
-    display: flex;
-  }
-
-  .list-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .list-menu--inline {
-    display: inline-flex;
-    flex-wrap: wrap;
-  }
-
-  summary.list-menu__item {
-    padding-right: 2.7rem;
-  }
-
-  .list-menu__item {
-    display: flex;
-    align-items: center;
-    line-height: calc(1 + 0.3 / var(--font-body-scale));
   }
 
   .list-menu__item--link {
     text-decoration: none;
-    padding-bottom: 1rem;
-    padding-top: 1rem;
-    line-height: calc(1 + 0.8 / var(--font-body-scale));
+    padding: 0.5rem 1rem;
+    color: {{ section.settings.menu_color_scheme }};
+    font-family: 'Buenos Aires', sans-serif;
   }
 
-  @media screen and (min-width: 750px) {
-    .list-menu__item--link {
-      padding-bottom: 0.5rem;
-      padding-top: 0.5rem;
-    }
+  .header__icon {
+    color: {{ section.settings.icon_color }};
   }
+
+  .header__icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .header__icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .header__heading-logo {
+    max-width: 147px;
+    width: 100%;
+    height: auto;
+  }
+
+  .header__heading-link {
+    padding: 0;
+  }
+
+  .header__icons .cart-count-bubble {
+    right: -0.5rem;
+    top: -0.5rem;
+  }
+  /* Custom header styles */
+.header {
+  font-family: 'Buenos Aires', sans-serif;
+  padding: 20px 40px;
+}
+
+.list-menu--inline {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.list-menu__item--link {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  font-family: 'Buenos Aires', sans-serif;
+}
+
+.header__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.header__icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header__heading-logo {
+  max-width: 147px;
+  width: 100%;
+  height: auto;
+}
+
+.header__heading-link {
+  padding: 0;
+}
+
+.header__icons .cart-count-bubble {
+  right: -0.5rem;
+  top: -0.5rem;
+}
+
 </style>
 
 {%- style -%}
