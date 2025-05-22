@@ -135,7 +135,9 @@
   {%- endif -%}
   <div class="footer__logo-bar" style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 32px 0 0 0;">
     <div style="width: 100%; margin: 0 auto;">
-      <span class="svg-wrapper">{{ 'mixhers-logo.svg' | asset_url }}</span>
+      <span class="svg-wrapper">
+        <img src="{{ 'mixhers-logo.svg' | asset_url }}">
+      </span>
     </div>
   </div>
 </footer>
