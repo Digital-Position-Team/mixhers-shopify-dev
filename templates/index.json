@@ -23,16 +23,11 @@
           "settings": {
             "image": "shopify://shop_images/Creatine_Collections_image_2.png"
           }
-        },
-        "image_aXyNjt": {
-          "type": "image",
-          "settings": {}
         }
       },
       "block_order": [
         "image_1",
-        "image_2",
-        "image_aXyNjt"
+        "image_2"
       ],
       "settings": {
         "title": "Her health starts with hormones.",
