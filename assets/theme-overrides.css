@@ -1,3 +1,37 @@
+/* Global Button Styles */
+.btn {
+  display: inline-block;
+  padding: 20px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  border: 1px solid black;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  font-family: 'Buenos Aires', sans-serif;
+}
+
+.btn-primary {
+  background-color: #000;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #333;
+  border-color: #333;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #000;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+/* Footer */
 .footer-block--newsletter {
   margin-top: 0px !important;
 }

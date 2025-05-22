@@ -2,49 +2,36 @@
   .hero {
     display: flex;
     align-items: center;
-    padding: 40px;
     font-family: 'Buenos Aires', sans-serif;
+    background-color: #000;
   }
   .hero__left, .hero__right {
     width: 50%;
   }
   .hero__left {
-    padding-right: 20px;
+    padding: 60px;
+    color: white;
   }
   .hero__title {
     font-family: 'Faire Sprig', serif;
     font-size: {{ section.settings.title_size }}px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    color: white;
   }
   .hero__subtitle {
     font-size: {{ section.settings.subtitle_size }}px;
-    margin-bottom: 20px;
-  }
-  .hero__cta-primary,
-  .hero__cta-secondary {
-    display: inline-block;
-    padding: 10px 20px;
-    text-decoration: none;
-    margin-right: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #000;
-  }
-  .hero__cta-primary {
-    background-color: #000;
-    color: #fff;
-  }
-  .hero__cta-secondary {
-    background-color: #fff;
-    color: #000;
+    margin-bottom: 30px;
+    color: white;
   }
   .hero__reviews {
     font-size: {{ section.settings.reviews_size }}px;
+    color: white;
+    margin-top: 30px;
   }
   .hero__image-container {
     position: relative;
     width: 100%;
-    height: 0;
-    padding-bottom: 100%;
+    height: 600px;
     overflow: hidden;
   }
   .hero__image {
@@ -60,15 +47,37 @@
   .hero__image.active {
     opacity: 1;
   }
+  
+  @media screen and (max-width: 990px) {
+    .hero {
+      flex-direction: column;
+    }
+    .hero__left, .hero__right {
+      width: 100%;
+    }
+    .hero__left {
+      padding: 40px 20px;
+      order: 2;
+    }
+    .hero__right {
+      order: 1;
+    }
+    .hero__image-container {
+      height: 400px;
+    }
+  }
+</style>
 </style>
 
 <div class="hero">
   <div class="hero__left">
+    <p class="hero__reviews">{{ section.settings.reviews_text }}</p>
     <h1 class="hero__title">{{ section.settings.title }}</h1>
     <p class="hero__subtitle">{{ section.settings.subtitle }}</p>
-    <a href="{{ section.settings.primary_cta_link }}" class="hero__cta-primary">{{ section.settings.primary_cta_text }}</a>
-    <a href="{{ section.settings.secondary_cta_link }}" class="hero__cta-secondary">{{ section.settings.secondary_cta_text }}</a>
-    <p class="hero__reviews">{{ section.settings.reviews_text }}</p>
+    <div class="hero__cta-container">
+      <a href="{{ section.settings.primary_cta_link }}" class="btn btn-primary">{{ section.settings.primary_cta_text }}</a>
+      <a href="{{ section.settings.secondary_cta_link }}" class="btn btn-secondary">{{ section.settings.secondary_cta_text }}</a>
+    </div>
   </div>
   <div class="hero__right">
     <div class="hero__image-container">
@@ -101,6 +110,22 @@
 {
   "name": "Custom Hero",
   "settings": [
+    {
+      "type": "text",
+      "id": "reviews_text",
+      "label": "Reviews Text",
+      "default": "★ ★ ★ ★ ★ Over 17,000 5-star reviews from real women"
+    },
+    {
+      "type": "range",
+      "id": "reviews_size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Reviews Text Font Size",
+      "default": 14
+    },
     {
       "type": "text",
       "id": "title",
@@ -156,22 +181,6 @@
       "label": "Secondary CTA Link"
     },
     {
-      "type": "text",
-      "id": "reviews_text",
-      "label": "Reviews Text",
-      "default": "★ ★ ★ ★ ★ Over 17,000 5-star reviews from real women"
-    },
-    {
-      "type": "range",
-      "id": "reviews_size",
-      "min": 10,
-      "max": 24,
-      "step": 1,
-      "unit": "px",
-      "label": "Reviews Text Font Size",
-      "default": 14
-    },
-    {
       "type": "number",
       "id": "scroll_interval",
       "label": "Image Scroll Interval (seconds)",
@@ -195,6 +204,7 @@
     {
       "name": "Custom Hero",
       "blocks": [
+        { "type": "image" },
         { "type": "image" },
         { "type": "image" }
       ]
