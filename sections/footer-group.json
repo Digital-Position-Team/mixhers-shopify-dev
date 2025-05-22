@@ -52,7 +52,10 @@
       "settings": {
         "color_scheme": "scheme-1",
         "newsletter_enable": true,
-        "newsletter_heading": "Subscribe to our emails",
+        "newsletter_heading": "We send really nice e-mails.",
+        "newsletter_subheading": "Be the first to know about new products and flavors by signing up.",
+        "newsletter_success_message": "Thanks for subscribing!",
+        "newsletter_error_message": "There was an error. Please try again.",
         "enable_follow_on_shop": false,
         "show_social": true,
         "enable_country_selector": false,
