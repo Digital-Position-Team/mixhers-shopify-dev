@@ -39,16 +39,16 @@
       "name": "Custom Hero",
       "settings": {
         "reviews_text": "★ ★ ★ ★ ★ Over 17,000 5-star reviews from real women",
-        "reviews_size": 14,
+        "reviews_size": 16,
         "title": "Her health starts with hormones.",
-        "title_size": 40,
+        "title_size": 54,
         "subtitle": "Science-backed supplements you sip for balanced hormones and a better you",
-        "subtitle_size": 18,
+        "subtitle_size": 20,
         "primary_cta_text": "Shop Now",
-        "primary_cta_link": "",
+        "primary_cta_link": "https://mixhers.com/collections/all",
         "secondary_cta_text": "Take the Quiz",
-        "secondary_cta_link": "",
-        "scroll_interval": 3
+        "secondary_cta_link": "https://mixhers.com/pages/quiz",
+        "scroll_interval": 8
       }
     },
     "scrolling_usp_section_riJiAQ": {
