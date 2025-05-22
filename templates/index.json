@@ -11,6 +11,7 @@
   "sections": {
     "dp_banner_FT47Rd": {
       "type": "dp-banner",
+      "disabled": true,
       "name": "DP Banner",
       "settings": {
         "text": "15% OFF subscriptions with no code needed"
