@@ -41,6 +41,36 @@
           "settings": {
             "text": "Third-Party Tested"
           }
+        },
+        "text_item_mTbbCm": {
+          "type": "text_item",
+          "settings": {
+            "text": "Women Owned"
+          }
+        },
+        "text_item_YWxBCe": {
+          "type": "text_item",
+          "settings": {
+            "text": "All Natural"
+          }
+        },
+        "text_item_fwRLiE": {
+          "type": "text_item",
+          "settings": {
+            "text": "Hormone Friendly"
+          }
+        },
+        "text_item_pTzGFf": {
+          "type": "text_item",
+          "settings": {
+            "text": "Highly Absorbable"
+          }
+        },
+        "text_item_KRwqVp": {
+          "type": "text_item",
+          "settings": {
+            "text": "Third-Party Tested"
+          }
         }
       },
       "block_order": [
@@ -48,7 +78,12 @@
         "item_2",
         "item_3",
         "text_item_adW8tw",
-        "text_item_R4J6iQ"
+        "text_item_R4J6iQ",
+        "text_item_mTbbCm",
+        "text_item_YWxBCe",
+        "text_item_fwRLiE",
+        "text_item_pTzGFf",
+        "text_item_KRwqVp"
       ],
       "settings": {
         "text_size": 16,
