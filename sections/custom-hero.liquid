@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
     font-family: 'Buenos Aires', sans-serif;
-    background-color: #000;
+    background-color: #ffaeff;
   }
   .hero__left, .hero__right {
     width: 50%;
@@ -11,6 +11,10 @@
   .hero__left {
     padding: 60px;
     color: white;
+    background-image: url('{{ "hero-bg.svg" | asset_url }}');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
   .hero__title {
     font-family: 'Faire Sprig', serif;
@@ -51,6 +55,21 @@
   .hero__image.active {
     opacity: 1;
   }
+  .hero__image-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    display: block;
+    cursor: pointer;
+  }
+  .hero__image-link.active {
+    opacity: 1;
+    z-index: 1;
+  }
   
   @media screen and (max-width: 990px) {
     .hero {
@@ -71,7 +90,6 @@
     }
   }
 </style>
-</style>
 
 <div class="hero">
   <div class="hero__left">
@@ -86,7 +104,13 @@
   <div class="hero__right">
     <div class="hero__image-container">
       {% for block in section.blocks %}
-        <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.image.alt | escape }}" class="hero__image {% if forloop.first %}active{% endif %}" loading="lazy">
+        {% if block.settings.image_link != blank %}
+          <a href="{{ block.settings.image_link }}" class="hero__image-link {% if forloop.first %}active{% endif %}">
+            <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.image.alt | escape }}" class="hero__image {% if forloop.first %}active{% endif %}" loading="lazy">
+          </a>
+        {% else %}
+          <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.image.alt | escape }}" class="hero__image {% if forloop.first %}active{% endif %}" loading="lazy">
+        {% endif %}
       {% endfor %}
     </div>
   </div>
@@ -95,16 +119,36 @@
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const images = document.querySelectorAll('.hero__image');
+    const links = document.querySelectorAll('.hero__image-link');
     let currentIndex = 0;
     const scrollInterval = {{ section.settings.scroll_interval }} * 1000;
 
     function showNextImage() {
-      images[currentIndex].classList.remove('active');
-      currentIndex = (currentIndex + 1) % images.length;
-      images[currentIndex].classList.add('active');
+      // Remove active class from current image
+      if (images[currentIndex]) {
+        images[currentIndex].classList.remove('active');
+      }
+      
+      // Remove active class from current link if it exists
+      if (links[currentIndex]) {
+        links[currentIndex].classList.remove('active');
+      }
+      
+      // Update index
+      currentIndex = (currentIndex + 1) % Math.max(images.length, links.length);
+      
+      // Add active class to next image
+      if (images[currentIndex]) {
+        images[currentIndex].classList.add('active');
+      }
+      
+      // Add active class to next link if it exists
+      if (links[currentIndex]) {
+        links[currentIndex].classList.add('active');
+      }
     }
 
-    if (images.length > 1) {
+    if (Math.max(images.length, links.length) > 1) {
       setInterval(showNextImage, scrollInterval);
     }
   });
@@ -200,6 +244,12 @@
           "type": "image_picker",
           "id": "image",
           "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "image_link",
+          "label": "Image Link",
+          "info": "Optional. Makes the image clickable."
         }
       ]
     }
