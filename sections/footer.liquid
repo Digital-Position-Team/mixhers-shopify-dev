@@ -42,7 +42,7 @@
   -%}
   {%- if section.blocks.size > 0 or section.settings.newsletter_enable or section.settings.show_social and has_social_icons == true or section.settings.enable_follow_on_shop -%}
     {%- unless only_empty_brand -%}
-      <div class="footer__main-row" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 32px;">
+      <div class="footer__main-row page-width" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 32px;">
         {%- for block in section.blocks -%}
           <div class="footer-block footer-block--{{ block.type }}">
             {%- if block.settings.heading != blank -%}
@@ -134,8 +134,8 @@
     {%- endunless -%}
   {%- endif -%}
   <div class="footer__logo-bar" style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 32px 0 0 0;">
-    <div style="width: 100%; max-width: 320px; margin: 0 auto;">
-      <span class="svg-wrapper">{{ 'mixhers-logo.svg' | asset_url | inline_asset_content }}</span>
+    <div style="width: 100%; margin: 0 auto;">
+      <span class="svg-wrapper">{{ 'mixhers-logo.svg' | asset_url }}</span>
     </div>
   </div>
 </footer>
