@@ -9,88 +9,61 @@
  */
 {
   "sections": {
-    "dp_scrolling_text_main": {
-      "type": "dp-scrolling-text",
+    "scrolling_usp_section_riJiAQ": {
+      "type": "scrolling-usp-section",
       "blocks": {
-        "item_1": {
+        "text_item_GdFGar": {
           "type": "text_item",
           "settings": {
             "text": "Women Owned"
           }
         },
-        "item_2": {
+        "text_item_dmUmak": {
           "type": "text_item",
           "settings": {
             "text": "All Natural"
           }
         },
-        "item_3": {
+        "text_item_yNbKnA": {
           "type": "text_item",
           "settings": {
-            "text": "Hormone Friendly"
+            "text": "Hormone friendly"
           }
         },
-        "text_item_adW8tw": {
+        "text_item_6YqJp4": {
           "type": "text_item",
           "settings": {
             "text": "Highly Absorbable"
           }
         },
-        "text_item_R4J6iQ": {
+        "text_item_4dDXxg": {
           "type": "text_item",
           "settings": {
             "text": "Third-Party Tested"
           }
         },
-        "text_item_mTbbCm": {
+        "text_item_kQbzqf": {
           "type": "text_item",
           "settings": {
-            "text": "Women Owned"
-          }
-        },
-        "text_item_YWxBCe": {
-          "type": "text_item",
-          "settings": {
-            "text": "All Natural"
-          }
-        },
-        "text_item_fwRLiE": {
-          "type": "text_item",
-          "settings": {
-            "text": "Hormone Friendly"
-          }
-        },
-        "text_item_pTzGFf": {
-          "type": "text_item",
-          "settings": {
-            "text": "Highly Absorbable"
-          }
-        },
-        "text_item_KRwqVp": {
-          "type": "text_item",
-          "settings": {
-            "text": "Third-Party Tested"
+            "text": "Formulated for Women"
           }
         }
       },
       "block_order": [
-        "item_1",
-        "item_2",
-        "item_3",
-        "text_item_adW8tw",
-        "text_item_R4J6iQ",
-        "text_item_mTbbCm",
-        "text_item_YWxBCe",
-        "text_item_fwRLiE",
-        "text_item_pTzGFf",
-        "text_item_KRwqVp"
+        "text_item_GdFGar",
+        "text_item_dmUmak",
+        "text_item_yNbKnA",
+        "text_item_6YqJp4",
+        "text_item_4dDXxg",
+        "text_item_kQbzqf"
       ],
+      "name": "Scrolling USP Section",
       "settings": {
         "text_size": 16,
         "text_color": "#000000",
-        "icon_color": "#ff59e4",
-        "icon_size": 20,
-        "scroll_duration": 20
+        "icon_color": "#FF59E4",
+        "icon_size": 40,
+        "scroll_duration": 15
       }
     },
     "image_banner": {
@@ -306,7 +279,7 @@
     }
   },
   "order": [
-    "dp_scrolling_text_main",
+    "scrolling_usp_section_riJiAQ",
     "image_banner",
     "rich_text",
     "featured_collection",
