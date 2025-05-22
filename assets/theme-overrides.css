@@ -1,5 +1,5 @@
 .footer-block--newsletter {
-  margin-top: 0px;
+  margin-top: 0px !important;
 }
 .footer .footer-block__heading {
   margin-bottom: 6px;
@@ -45,8 +45,13 @@
   border: none;
   outline: none;
   padding: 1.2rem 1.5rem;
-  font-size: 1rem;
+  font-size: 14px;
   background: transparent;
+}
+.footer-newsletter-input:focus-visible {
+  outline: none;
+  outline-offset: 0;
+  box-shadow: none;
 }
 .footer-newsletter-submit {
   background: var(--color-primary, #ff59e4);
@@ -77,7 +82,7 @@
   display: flex;
   gap: 1.5rem;
   justify-content: center;
-  margin-top: 1rem;
+  margin-top: 16px;
 }
 
 .footer-newsletter-social-row svg {
