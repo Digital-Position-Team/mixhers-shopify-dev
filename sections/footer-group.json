@@ -17,28 +17,28 @@
         "footer-0": {
           "type": "link_list",
           "settings": {
-            "heading": "<strong>Shop</strong>",
+            "heading": "Shop",
             "menu": "footer-menu-1-new"
           }
         },
         "footer-1": {
           "type": "link_list",
           "settings": {
-            "heading": "<strong>Learn</strong>",
+            "heading": "Learn",
             "menu": "footer-menu-2-new"
           }
         },
         "link_list_BydjwE": {
           "type": "link_list",
           "settings": {
-            "heading": "<strong>Connect</strong>",
+            "heading": "Connect",
             "menu": "footer-menu-3-new"
           }
         },
         "link_list_g7Qaxp": {
           "type": "link_list",
           "settings": {
-            "heading": "<strong>Support</strong>",
+            "heading": "Support",
             "menu": "footer-menu-4-new"
           }
         }
