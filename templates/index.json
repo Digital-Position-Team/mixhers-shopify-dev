@@ -9,6 +9,48 @@
  */
 {
   "sections": {
+    "custom_hero_GiCc3A": {
+      "type": "custom-hero",
+      "blocks": {
+        "image_GHEkqK": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/rewards_image.png"
+          }
+        },
+        "image_aEdRFT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MIXHERS-ATP-289_1_1.png"
+          }
+        },
+        "image_Djgd3h": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MULTI_Sharing_Image_Desktop_731133b4-45a6-428a-b77d-6cc0921360ac.webp"
+          }
+        }
+      },
+      "block_order": [
+        "image_GHEkqK",
+        "image_aEdRFT",
+        "image_Djgd3h"
+      ],
+      "name": "Custom Hero",
+      "settings": {
+        "reviews_text": "★ ★ ★ ★ ★ Over 17,000 5-star reviews from real women",
+        "reviews_size": 14,
+        "title": "Her health starts with hormones.",
+        "title_size": 40,
+        "subtitle": "Science-backed supplements you sip for balanced hormones and a better you",
+        "subtitle_size": 18,
+        "primary_cta_text": "Shop Now",
+        "primary_cta_link": "",
+        "secondary_cta_text": "Take the Quiz",
+        "secondary_cta_link": "",
+        "scroll_interval": 3
+      }
+    },
     "scrolling_usp_section_riJiAQ": {
       "type": "scrolling-usp-section",
       "blocks": {
@@ -68,6 +110,7 @@
     }
   },
   "order": [
+    "custom_hero_GiCc3A",
     "scrolling_usp_section_riJiAQ"
   ]
 }
