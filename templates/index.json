@@ -271,7 +271,6 @@
     }
   },
   "order": [
-    "dp_hero_main",
     "dp_scrolling_text_main",
     "image_banner",
     "rich_text",
