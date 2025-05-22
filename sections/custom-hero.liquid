@@ -4,10 +4,6 @@
     align-items: center;
     font-family: 'Buenos Aires', sans-serif;
     background-color: #ffaeff;
-    background-image: url('{{ "hero-bg.svg" | file_img_url: 'large' }}');
-    background-position: 0% 100%;
-    background-size: 50%;
-    background-repeat: no-repeat;
   }
   .hero__left, .hero__right {
     width: 50%;
@@ -16,6 +12,10 @@
     padding: 60px;
     color: white;
     height: 650px;
+    background-image: url('{{ "hero-bg.svg" | file_img_url: 'large' }}');
+    background-position: 100% 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
     
   }
   .hero__left-inner {
@@ -24,6 +24,8 @@
     justify-content: center;
     align-items: flex-start;
     max-width: 624px;
+    height: 100%;
+    margin: 0 auto;
   }
   .hero__title {
     font-family: 'Faire Sprig', serif;
@@ -42,7 +44,7 @@
   .hero__reviews {
     font-size: {{ section.settings.reviews_size }}px;
     color: white;
-    margin-top: 30px;
+    margin-top: 0px;
     margin-bottom: 4px;
   }
   .hero__image-container {
@@ -79,6 +81,7 @@
     opacity: 1;
     z-index: 1;
   }
+  .hero__cta-container { display: flex; gap: 8px; }
   
   @media screen and (max-width: 990px) {
     .hero {
