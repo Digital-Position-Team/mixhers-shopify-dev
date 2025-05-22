@@ -18,15 +18,23 @@
           "type": "announcement",
           "settings": {
             "text": "15% OFF subscriptions with no code needed",
-            "link": ""
+            "link": "https://mixhers.com/collections/all?collection=all-products"
+          }
+        },
+        "announcement_eaiYYp": {
+          "type": "announcement",
+          "settings": {
+            "text": "Free mystery gift when you spend $50",
+            "link": "https://mixhers.com/collections/all?collection=all-products"
           }
         }
       },
       "block_order": [
-        "announcement-bar-0"
+        "announcement-bar-0",
+        "announcement_eaiYYp"
       ],
       "settings": {
-        "auto_rotate": false,
+        "auto_rotate": true,
         "change_slides_speed": 5,
         "color_scheme": "scheme-2",
         "show_line_separator": true,
