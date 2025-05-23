@@ -16,7 +16,7 @@
   .draggable-cards__title {
     font-family: 'Faire Sprig', serif;
     font-size: 36px;
-    margin-bottom: 20px;
+    margin-bottom: 70px;
     line-height: 1.2;
   }
 
@@ -69,8 +69,9 @@
     font-size: 16px;
     line-height: 24px;
     max-width: 80%;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     opacity: 0;
+    padding-top: 10px; /* Add padding to create some space between title and description */
   }
 
   .shop-now {
@@ -89,9 +90,12 @@
       transform: translateY(0);
     }
     
-    #product-categories-carousel .swiper-slide-active .title-text {
+    #product-categories-carousel .swiper-slide-active .description-text {
+      opacity: 1;
       transform: translateY(-44px);
     }
+    
+    /* We'll handle the title transform dynamically with JS */
   }
 
   /* Desktop hover styles */
@@ -181,6 +185,42 @@
         showHoverEffect(slide);
       });
     });
+    
+    // Function to handle mobile active slides
+    function handleMobileActiveSlide() {
+      if (window.innerWidth <= 768) {
+        const activeSlides = document.querySelectorAll('.swiper-slide-active');
+        
+        activeSlides.forEach(slide => {
+          const titleText = slide.querySelector('.title-text');
+          const descriptionText = slide.querySelector('.description-text');
+          
+          if (titleText && descriptionText) {
+            const descriptionHeight = descriptionText.offsetHeight;
+            const titleOffset = descriptionHeight + 44;
+            titleText.style.transform = `translateY(-${titleOffset}px)`;
+            descriptionText.style.opacity = '1';
+            descriptionText.style.transform = 'translateY(-44px)';
+          }
+        });
+      }
+    }
+    
+    // Call initially and on slide change
+    handleMobileActiveSlide();
+    swiper.on('slideChange', handleMobileActiveSlide);
+    
+    // Reset on window resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth <= 768) {
+        handleMobileActiveSlide();
+      } else {
+        // Reset all slides when switching to desktop
+        slides.forEach(slide => {
+          hideHoverEffect(slide);
+        });
+      }
+    });
 
     // Function to show hover effect
     function showHoverEffect(slide) {
@@ -189,7 +229,12 @@
       const shopNow = slide.querySelector('.shop-now');
       
       if (window.innerWidth > 768) {
-        titleText.style.transform = 'translateY(-44px)';
+        // Get the height of the description to calculate title offset
+        const descriptionHeight = descriptionText.offsetHeight;
+        // Add a buffer to ensure no overlap (44px base + description height)
+        const titleOffset = descriptionHeight + 44;
+        
+        titleText.style.transform = `translateY(-${titleOffset}px)`;
         descriptionText.style.opacity = '1';
         descriptionText.style.transform = 'translateY(-44px)';
         shopNow.style.opacity = '1';
