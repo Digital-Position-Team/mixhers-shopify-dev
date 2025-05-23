@@ -50,23 +50,26 @@
   .featured-products__grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;
   }
   
   .featured-products__item {
-    border: 1px solid #000;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
     background-color: #fff;
-    border-radius: 8px;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
     height: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
   }
   
   .featured-products__item:hover {
-    transform: translateY(-5px);
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px;
+    z-index: 1;
+    transform: translateY(-3px);
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
   }
   
   .featured-products__image-wrapper {
@@ -160,12 +163,12 @@
     </div>
     
     <div class="featured-products__grid">
-      {%- for product in section.settings.products -%}
-        <div class="featured-products__item">
-          <a href="{{ product.url }}" class="featured-products__image-wrapper">
+      {%- for block in section.blocks -%}
+        <div class="featured-products__item" {{ block.shopify_attributes }}>
+          <a href="{{ block.settings.product_url }}" class="featured-products__image-wrapper">
             <img
-              src="{{ product.featured_image | img_url: '500x' }}"
-              alt="{{ product.featured_image.alt | escape }}"
+              src="{{ block.settings.product_image | img_url: '500x' }}"
+              alt="{{ block.settings.product_title | escape }}"
               class="featured-products__image"
               width="500"
               height="500"
@@ -173,16 +176,12 @@
             >
           </a>
           <div class="featured-products__content">
-            <h3 class="featured-products__product-title">{{ product.title }}</h3>
+            <h3 class="featured-products__product-title">{{ block.settings.product_title }}</h3>
             <p class="featured-products__product-description">
-              {%- if product.description != blank -%}
-                {{ product.description | strip_html | truncatewords: 20 }}
-              {%- else -%}
-                {{ product.content | strip_html | truncatewords: 20 }}
-              {%- endif -%}
+              {{ block.settings.product_description }}
             </p>
-            <a href="{{ product.url }}" class="btn btn-pink featured-products__cta">
-              {{ section.settings.cta_text | default: 'Shop Now' }}
+            <a href="{{ block.settings.product_url }}" class="btn btn-pink featured-products__cta">
+              {{ block.settings.button_text | default: section.settings.cta_text | default: 'Shop Now' }}
             </a>
           </div>
         </div>
@@ -195,7 +194,7 @@
             <div class="featured-products__content">
               <h3 class="featured-products__product-title">Sample Product Title</h3>
               <p class="featured-products__product-description">
-                This is a sample product description. Select products to display real products from your store.
+                This is a sample product description. Add product blocks to customize this section.
               </p>
               <span class="btn btn-pink featured-products__cta">
                 {{ section.settings.cta_text | default: 'Shop Now' }}
