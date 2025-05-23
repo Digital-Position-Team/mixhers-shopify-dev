@@ -327,8 +327,10 @@
         "product_9BXUUa": {
           "type": "product",
           "settings": {
-            "product_title": "Product Title",
-            "product_description": "Short description about this product",
+            "product_image": "shopify://shop_images/home-rebrand-product-hertime.webp",
+            "hover_bg_image": "shopify://shop_images/rebrand-homepage-hertime-hover_1.png",
+            "product_title": "Hertime PMS",
+            "product_description": "Hormone Support Supplement",
             "product_url": "",
             "button_text": ""
           }
@@ -336,27 +338,33 @@
         "product_BrMFqi": {
           "type": "product",
           "settings": {
-            "product_title": "Product Title",
-            "product_description": "Short description about this product",
-            "product_url": "",
+            "product_image": "shopify://shop_images/home-rebrand-product-focus.webp",
+            "hover_bg_image": "shopify://shop_images/rebrand-homepage-focus-hover_0e8c762d-696e-4790-8ada-8986d68742b8.jpg",
+            "product_title": "Focus",
+            "product_description": "Brain Support Supplement",
+            "product_url": "https://mixhers.com/products/focus",
             "button_text": ""
           }
         },
         "product_GYiBrw": {
           "type": "product",
           "settings": {
-            "product_title": "Product Title",
-            "product_description": "Short description about this product",
-            "product_url": "",
+            "product_image": "shopify://shop_images/home-rebrand-product-digestion.webp",
+            "hover_bg_image": "shopify://shop_images/rebrand-homepage-digestion-hover.jpg",
+            "product_title": "Digestion",
+            "product_description": "Pre + Probiotic Support Supplement",
+            "product_url": "https://mixhers.com/products/digestion",
             "button_text": ""
           }
         },
         "product_wJXJeN": {
           "type": "product",
           "settings": {
-            "product_title": "Product Title",
-            "product_description": "Short description about this product",
-            "product_url": "",
+            "product_image": "shopify://shop_images/home-rebrand-product-greens.webp",
+            "hover_bg_image": "shopify://shop_images/rebrand-homepage-greens-hover.jpg",
+            "product_title": "Greens",
+            "product_description": "Superfood Support Supplement",
+            "product_url": "https://mixhers.com/products/greens",
             "button_text": ""
           }
         }
@@ -369,9 +377,9 @@
       ],
       "name": "Featured Products",
       "settings": {
-        "title": "Featured Products",
+        "title": "Shop Bestsellers",
         "view_all_text": "View All",
-        "view_all_url": ""
+        "view_all_url": "https://mixhers.com/collections/all"
       }
     }
   },
