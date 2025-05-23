@@ -30,8 +30,9 @@
 }
 
 .btn-pink:hover {
-  background-color: #e04fcf;
-  border-color: #e04fcf;
+  background-color: black;
+  border-color: black;
+  color: white;
 }
 
 .btn-clear {
