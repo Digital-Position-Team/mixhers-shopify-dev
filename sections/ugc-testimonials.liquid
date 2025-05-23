@@ -174,24 +174,11 @@
             name: "- {{ block.settings.customer_name }}",
             buttonText: '{{ block.settings.product_name }}',
             buttonLink: '{{ block.settings.product_url }}',
-            message: "{{ block.settings.testimonial_quote }}"
+            message: '{{ block.settings.testimonial_quote | escape }}'
           }{% unless forloop.last %},{% endunless %}
         {% endif %}
       {% endfor %}
     ];
-    
-    // Function to safely send Google Analytics events
-    function sendGtagEvent(eventName, eventCategory, eventLabel) {
-      if (typeof gtag === "function") {
-        gtag('event', eventName, {
-          'event_category': eventCategory,
-          'event_label': eventLabel,
-          'non_interaction': false
-        });
-      } else {
-        console.warn("gtag is not defined yet.");
-      }
-    }
     
     let currentIndex = 0;
     
