@@ -6,13 +6,11 @@
   
   .testimonials-section__header {
     text-align: center;
-    max-width: 700px;
-    margin: 0 auto 60px;
+    margin: 0 auto 40px;
   }
   
   .testimonials-section__title {
     font-family: 'Faire Sprig', serif;
-    color: var(--color-primary, #ff59e4);
     margin-bottom: 20px;
     font-size: 36px;
     line-height: 1.2;
@@ -21,19 +19,21 @@
   .testimonials-section__stars {
     display: flex;
     justify-content: center;
-    margin-bottom: 16px;
-    gap: 4px;
+    margin-bottom: 4px;
+    gap: 0px;
   }
   
   .testimonials-section__star {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     color: var(--color-primary, #ff59e4);
+    margin-left: -1px;
+    margin-right: -1px;
   }
   
   .testimonials-section__subtitle {
-    font-size: 18px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 600;
     margin: 0;
   }
   
@@ -41,32 +41,30 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    max-width: 1200px;
+    max-width: 1440px;
     margin: 0 auto 50px;
-    padding: 0 20px;
   }
   
   .testimonials-section__card {
-    border: 1px solid #e6e6e6;
-    border-radius: 12px;
-    padding: 30px;
+
+    border-radius: 32px;
+    padding: 42px;
     display: flex;
     flex-direction: column;
     height: 100%;
-    background-color: #fff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    background-color: #f5fafd;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   
   .testimonials-section__card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.08);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   }
   
   .testimonials-section__card-title {
-    font-family: 'Faire Sprig', serif;
     font-size: 20px;
-    margin: 0 0 16px;
+    margin: 0 0 4px;
   }
   
   .testimonials-section__card-text {
@@ -84,8 +82,8 @@
   }
   
   .testimonials-section__author-image {
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     object-fit: cover;
     margin-right: 15px;
@@ -100,7 +98,7 @@
   .testimonials-section__author-stars {
     display: flex;
     margin-bottom: 5px;
-    gap: 2px;
+    gap: 0px;
   }
   
   .testimonials-section__author-star {
