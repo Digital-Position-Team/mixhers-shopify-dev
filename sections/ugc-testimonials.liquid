@@ -9,10 +9,10 @@
   }
 
   .ugc-testimonials__heading {
-    font-family: 'Faire Sprig', serif;
     text-align: center;
     margin-bottom: 0.5rem;
   }
+  .ugc-testimonials__heading h2 { font-family: 'Faire Sprig', serif; color: white; margin-bottom: 12px; }
 
   .ugc-testimonials__divider {
     border-top: 4px solid #ffffff;
@@ -30,16 +30,8 @@
     gap: 0.5rem;
   }
 
-  .ugc-testimonials__button {
-    background-color: #ffffff;
-    color: #000000;
-    border: 1px solid #000000;
-    font-size: 0.875rem;
-    font-weight: 400;
-    padding: 0.5rem 1rem;
-    border-radius: 9999px;
-    transition: all 0.3s ease;
-  }
+  .ugc-testimonials__message { margin-bottom: 0px; }
+  .ugc-testimonials__name { margin-top: 0px; }
 
   .ugc-testimonials__button:hover {
     background-color: #000000;
@@ -90,7 +82,7 @@
     display: none;
   }
 
-  #testimonials-carousel-{{ section_id }} .footer {
+  #testimonials-carousel-{{ section_id }} .ugc-footer {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -100,11 +92,17 @@
     background-color: rgba(255, 89, 228, 0.4);
     display: flex;
     align-items: center;
-    padding: 0.5rem;
+    padding: 12px;
     width: 100%;
+    gap: 8px;
+    box-sizing: border-box;
   }
+
+  .ugc-footer .play-icon { width: 34px; height: 34px; }
+  .ugc-footer .ugc-testimonial-name { margin: 0px; }
+  .ugc-footer .ugc-testimonial-description { margin: 0px 0px 12px 0px; font-size: 11px; line-height: 18px; }
   
-  #testimonials-carousel-{{ section_id }} .swiper-slide-active .footer {
+  #testimonials-carousel-{{ section_id }} .swiper-slide-active .ugc-footer {
     opacity: 1;
   }
 
@@ -121,16 +119,16 @@
 </style>
 
 <section class="ugc-testimonials">
-  <div class="page-width">
+  <div class="ugc-testimonials-inner">
     <div class="ugc-testimonials__heading">
       <h2>{{ section.settings.heading }}</h2>
-      <div class="ugc-testimonials__divider"></div>
+      <div class="ugc-testimonials__divider"><span></span></div>
     </div>
     
     <div class="ugc-testimonials__content">
       <p id="testimonial-message-{{ section_id }}" class="ugc-testimonials__message"></p>
       <p id="testimonial-name-{{ section_id }}" class="ugc-testimonials__name"></p>
-      <a id="testimonial-button-{{ section_id }}" href="#" class="ugc-testimonials__button"></a>
+      <a id="testimonial-button-{{ section_id }}" href="#" class="ugc-testimonials__button btn btn-black"></a>
     </div>
     
     <div class="swiper" id="testimonials-carousel-{{ section_id }}">
@@ -144,15 +142,15 @@
                 <source src="{{ block.settings.video_url }}" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
-              <div class="footer">
+              <div class="ugc-footer">
                 <img src="{{ block.settings.play_icon | image_url: width: 30 }}"
                      alt="Play Icon"
-                     class="w-8 h-8 mr-2"
+                     class="w-8 h-8 mr-2 ugc-play-icon"
                      width="30"
                      height="30">
                 <div class="flex flex-col w-4/5">
-                  <p class="text-md">{{ block.settings.customer_name | upcase }}</p>
-                  <p class="text-xs">{{ block.settings.customer_description }}</p>
+                  <p class="ugc-testimonial-name">{{ block.settings.customer_name | upcase }}</p>
+                  <p class="ugc-testimonial-description">{{ block.settings.customer_description }}</p>
                 </div>
               </div>
             </div>
@@ -223,7 +221,7 @@
       
       testimonialSlides.forEach((slide, index) => {
         const video = slide.querySelector('video');
-        const footer = slide.querySelector('.footer');
+        const footer = slide.querySelector('.ugc-footer');
         const spinner = slide.querySelector('.spinner');
         
         slide.addEventListener('click', async function() {
