@@ -381,6 +381,99 @@
         "view_all_text": "View All",
         "view_all_url": "https://mixhers.com/collections/all"
       }
+    },
+    "competitor_table_xpU7cr": {
+      "type": "competitor-table",
+      "blocks": {
+        "feature_hUMifX": {
+          "type": "feature",
+          "settings": {
+            "feature_name": "Woman Owned",
+            "column2_value": "check",
+            "column2_custom_text": "",
+            "column3_value": "check",
+            "column3_custom_text": "",
+            "column4_value": "empty",
+            "column4_custom_text": ""
+          }
+        },
+        "feature_7EiMqa": {
+          "type": "feature",
+          "settings": {
+            "feature_name": "Hormone Friendly",
+            "column2_value": "check",
+            "column2_custom_text": "",
+            "column3_value": "check",
+            "column3_custom_text": "",
+            "column4_value": "empty",
+            "column4_custom_text": ""
+          }
+        },
+        "feature_nJ68Mh": {
+          "type": "feature",
+          "settings": {
+            "feature_name": "Third-Party Tested",
+            "column2_value": "check",
+            "column2_custom_text": "",
+            "column3_value": "empty",
+            "column3_custom_text": "",
+            "column4_value": "empty",
+            "column4_custom_text": ""
+          }
+        },
+        "feature_yRJKYP": {
+          "type": "feature",
+          "settings": {
+            "feature_name": "Highly Absorbable Powder",
+            "column2_value": "check",
+            "column2_custom_text": "",
+            "column3_value": "empty",
+            "column3_custom_text": "",
+            "column4_value": "empty",
+            "column4_custom_text": ""
+          }
+        },
+        "feature_NEYRV3": {
+          "type": "feature",
+          "settings": {
+            "feature_name": "All Natural",
+            "column2_value": "check",
+            "column2_custom_text": "",
+            "column3_value": "empty",
+            "column3_custom_text": "",
+            "column4_value": "check",
+            "column4_custom_text": ""
+          }
+        },
+        "feature_Gkd3cG": {
+          "type": "feature",
+          "settings": {
+            "feature_name": "See Results after 30 Days",
+            "column2_value": "check",
+            "column2_custom_text": "",
+            "column3_value": "empty",
+            "column3_custom_text": "",
+            "column4_value": "check",
+            "column4_custom_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "feature_hUMifX",
+        "feature_7EiMqa",
+        "feature_nJ68Mh",
+        "feature_yRJKYP",
+        "feature_NEYRV3",
+        "feature_Gkd3cG"
+      ],
+      "name": "Competitor Table",
+      "settings": {
+        "title": "Why Women Choose Mixhers",
+        "column2_header": "Mixhers",
+        "mixhers_logo": "shopify://shop_images/mixhers-logo-white.svg",
+        "column3_header": "Competitor #1",
+        "column4_header": "Competitor #2"
+      }
     }
   },
   "order": [
@@ -389,6 +482,7 @@
     "draggable_cards_ABNE4n",
     "why_mixhers_section_rJyd6a",
     "testimonials_section_NgzDiV",
-    "featured_products_dzNnMj"
+    "featured_products_dzNnMj",
+    "competitor_table_xpU7cr"
   ]
 }
