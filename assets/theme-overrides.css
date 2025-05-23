@@ -13,22 +13,22 @@
   font-family: 'Buenos Aires', sans-serif;
 }
 
-.btn-primary {
+.btn-black {
   background-color: #000;
   color: #fff;
 }
 
-.btn-primary:hover {
+.btn-black:hover {
   background-color: #333;
   border-color: #333;
 }
 
-.btn-secondary {
+.btn-clear {
   background-color: transparent;
   color: #000;
 }
 
-.btn-secondary:hover {
+.btn-clear:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
 /* Footer */
