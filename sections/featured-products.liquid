@@ -180,28 +180,11 @@
             <p class="featured-products__product-description">
               {{ block.settings.product_description }}
             </p>
-            <a href="{{ block.settings.product_url }}" class="btn btn-pink featured-products__cta">
-              {{ block.settings.button_text | default: section.settings.cta_text | default: 'Shop Now' }}
+            <a href="{{ block.settings.product_url }}" class="btn btn-black featured-products__cta">
+              {{ block.settings.button_text | default: 'Shop Now' }}
             </a>
           </div>
         </div>
-      {%- else -%}
-        {%- for i in (1..4) -%}
-          <div class="featured-products__item">
-            <div class="featured-products__image-wrapper">
-              {{ 'product-' | append: i | placeholder_svg_tag: 'featured-products__image placeholder' }}
-            </div>
-            <div class="featured-products__content">
-              <h3 class="featured-products__product-title">Sample Product Title</h3>
-              <p class="featured-products__product-description">
-                This is a sample product description. Add product blocks to customize this section.
-              </p>
-              <span class="btn btn-pink featured-products__cta">
-                {{ section.settings.cta_text | default: 'Shop Now' }}
-              </span>
-            </div>
-          </div>
-        {%- endfor -%}
       {%- endfor -%}
     </div>
   </div>
@@ -228,17 +211,41 @@
       "id": "view_all_url",
       "label": "View All URL"
     },
+  ],
+  "blocks": [
     {
-      "type": "product_list",
-      "id": "products",
-      "label": "Products",
-      "limit": 12
-    },
-    {
-      "type": "text",
-      "id": "cta_text",
-      "label": "CTA Text",
-      "default": "Shop Now"
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Product Image"
+        },
+        {
+          "type": "text",
+          "id": "product_title",
+          "label": "Product Title",
+          "default": "Product Title"
+        },
+        {
+          "type": "textarea",
+          "id": "product_description",
+          "label": "Product Description",
+          "default": "Short description about this product"
+        },
+        {
+          "type": "url",
+          "id": "product_url",
+          "label": "Product URL"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "info": "Leaves blank to use the default CTA text"
+        }
+      ]
     }
   ],
   "presets": [
@@ -248,7 +255,21 @@
         "title": "Featured Products",
         "view_all_text": "View All",
         "cta_text": "Shop Now"
-      }
+      },
+      "blocks": [
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        }
+      ]
     }
   ]
 }
