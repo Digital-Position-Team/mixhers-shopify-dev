@@ -1,0 +1,325 @@
+<style>
+  .testimonials-section {
+    font-family: 'Buenos Aires', sans-serif;
+    padding: 80px 0;
+  }
+  
+  .testimonials-section__header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 60px;
+  }
+  
+  .testimonials-section__title {
+    font-family: 'Faire Sprig', serif;
+    color: var(--color-primary, #ff59e4);
+    margin-bottom: 20px;
+    font-size: 36px;
+    line-height: 1.2;
+  }
+  
+  .testimonials-section__stars {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+    gap: 4px;
+  }
+  
+  .testimonials-section__star {
+    width: 24px;
+    height: 24px;
+    color: var(--color-primary, #ff59e4);
+  }
+  
+  .testimonials-section__subtitle {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+  }
+  
+  .testimonials-section__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto 50px;
+    padding: 0 20px;
+  }
+  
+  .testimonials-section__card {
+    border: 1px solid #e6e6e6;
+    border-radius: 12px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .testimonials-section__card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.08);
+  }
+  
+  .testimonials-section__card-title {
+    font-family: 'Faire Sprig', serif;
+    font-size: 20px;
+    margin: 0 0 16px;
+  }
+  
+  .testimonials-section__card-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #4a4a4a;
+    margin: 0 0 24px;
+    flex-grow: 1;
+  }
+  
+  .testimonials-section__card-author {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+  }
+  
+  .testimonials-section__author-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 1px solid #e6e6e6;
+  }
+  
+  .testimonials-section__author-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .testimonials-section__author-stars {
+    display: flex;
+    margin-bottom: 5px;
+    gap: 2px;
+  }
+  
+  .testimonials-section__author-star {
+    width: 14px;
+    height: 14px;
+    color: var(--color-primary, #ff59e4);
+  }
+  
+  .testimonials-section__author-name {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+  }
+  
+  .testimonials-section__actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 0 20px;
+  }
+  
+  /* Using global button styles */
+  
+  @media screen and (max-width: 990px) {
+    .testimonials-section__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media screen and (max-width: 767px) {
+    .testimonials-section {
+      padding: 60px 0;
+    }
+    
+    .testimonials-section__grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .testimonials-section__actions {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .testimonials-section__cta {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+</style>
+
+<section class="testimonials-section">
+  <div class="testimonials-section__container page-width">
+    <div class="testimonials-section__header">
+      <h2 class="testimonials-section__title">{{ section.settings.title }}</h2>
+      <div class="testimonials-section__stars">
+        {% for i in (1..5) %}
+          <div class="testimonials-section__star">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+            </svg>
+          </div>
+        {% endfor %}
+      </div>
+      <p class="testimonials-section__subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+    
+    <div class="testimonials-section__grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'testimonial' %}
+          <div class="testimonials-section__card" {{ block.shopify_attributes }}>
+            <h3 class="testimonials-section__card-title">{{ block.settings.testimonial_title }}</h3>
+            <p class="testimonials-section__card-text">{{ block.settings.testimonial_text }}</p>
+            <div class="testimonials-section__card-author">
+              {% if block.settings.author_image %}
+                <img 
+                  src="{{ block.settings.author_image | img_url: '100x' }}" 
+                  alt="{{ block.settings.author_name }}" 
+                  class="testimonials-section__author-image"
+                  width="50"
+                  height="50"
+                  loading="lazy"
+                >
+              {% else %}
+                <div class="testimonials-section__author-image" style="background-color: #f6f6f6; display: flex; align-items: center; justify-content: center;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#ccc">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                  </svg>
+                </div>
+              {% endif %}
+              <div class="testimonials-section__author-info">
+                <div class="testimonials-section__author-stars">
+                  {% for i in (1..5) %}
+                    <div class="testimonials-section__author-star">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                      </svg>
+                    </div>
+                  {% endfor %}
+                </div>
+                <p class="testimonials-section__author-name">{{ block.settings.author_name }}</p>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    
+    <div class="testimonials-section__actions">
+      {% if section.settings.primary_button_text != blank %}
+        <a href="{{ section.settings.primary_button_url }}" class="btn btn-pink">
+          {{ section.settings.primary_button_text }}
+        </a>
+      {% endif %}
+      
+      {% if section.settings.secondary_button_text != blank %}
+        <a href="{{ section.settings.secondary_button_url }}" class="btn btn-black">
+          {{ section.settings.secondary_button_text }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Hear what Real Women think about Mixhers"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Over 17,000 5 star reviews"
+    },
+    {
+      "type": "text",
+      "id": "primary_button_text",
+      "label": "Primary Button Text",
+      "default": "Find The Right Product For You"
+    },
+    {
+      "type": "url",
+      "id": "primary_button_url",
+      "label": "Primary Button URL",
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_text",
+      "label": "Secondary Button Text",
+      "default": "Read All Reviews"
+    },
+    {
+      "type": "url",
+      "id": "secondary_button_url",
+      "label": "Secondary Button URL",
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "text",
+          "id": "testimonial_title",
+          "label": "Testimonial Title",
+          "default": "Life-Changing for My Hormones!"
+        },
+        {
+          "type": "textarea",
+          "id": "testimonial_text",
+          "label": "Testimonial Text",
+          "default": "I've struggled with hormonal imbalance and painful periods for years, and nothing seemed to help—until I found Hertime from Mixhers! After just a month, my cramps were less intense, my mood swings improved, and I felt more energized. Plus, it tastes amazing! I'm hooked for life."
+        },
+        {
+          "type": "image_picker",
+          "id": "author_image",
+          "label": "Author Image"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name",
+          "default": "Sarah M."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial"
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_title": "Amazing Quality and Results!",
+            "testimonial_text": "As someone who has tried countless supplements, I can confidently say that Mixhers stands above the rest. The Her Greens has become an essential part of my daily routine, and I've noticed significant improvements in my energy levels and overall well-being.",
+            "author_name": "Jessica T."
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_title": "Finally Something That Works!",
+            "testimonial_text": "I was skeptical at first, but after consistent use of Hersleep, I've been getting the best sleep of my life! I fall asleep faster and wake up feeling refreshed. The natural ingredients make me feel good about what I'm putting in my body.",
+            "author_name": "Michelle K."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
