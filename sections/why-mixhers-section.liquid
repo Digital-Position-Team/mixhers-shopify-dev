@@ -127,15 +127,15 @@
           <path d="M121.406 61.75C121.406 94.5802 94.732 121.202 61.818 121.202C28.904 121.202 2.22964 94.5802 2.22964 61.75C2.22964 28.9198 28.904 2.298 61.818 2.298C94.732 2.298 121.406 28.9198 121.406 61.75Z" stroke="white" stroke-width="4.096"></path>
         </svg>' }}
       </div>
-      <script>console.log({{ section.settings.video |  json }})</script>
-      <script>console.log({{ section.settings.video.sources | json }})</script> 
       <video 
         class="why-mixhers__video" 
         id="why-mixhers-video" 
         playsinline 
         controls
       >
-        <source src="{{ section.settings.video.sources.first }}" type="video/mp4">
+        {% for source in section.settings.video.sources %}
+          <source src="{{ source.url }}" type="{{ source.mime_type }}">
+        {% endfor %}
         Your browser does not support the video tag.
       </video>
     </div>
