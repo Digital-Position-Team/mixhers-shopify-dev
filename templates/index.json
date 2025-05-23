@@ -474,6 +474,77 @@
         "column3_header": "Competitor #1",
         "column4_header": "Competitor #2"
       }
+    },
+    "ugc_testimonials_MjBbiJ": {
+      "type": "ugc-testimonials",
+      "blocks": {
+        "testimonial_kUECQp": {
+          "type": "testimonial",
+          "settings": {
+            "customer_name": "Emily",
+            "customer_description": "An endometriosis comeback story",
+            "testimonial_quote": "\"I've had a lot of pain, bloating, definitely had acne. Mixhers has helped with all of that.\"",
+            "video_url": "",
+            "product_name": "Hertime PMS",
+            "product_url": "/products/hertime"
+          }
+        },
+        "testimonial_7EWMwj": {
+          "type": "testimonial",
+          "settings": {
+            "customer_name": "Chelsea",
+            "customer_description": "Committing to your health",
+            "testimonial_quote": "\"It has helped curb my appetite, I have noticed that I'm satisfied more quickly.\"",
+            "video_url": "",
+            "product_name": "Metabolic Balance",
+            "product_url": "/products/metabolic"
+          }
+        },
+        "testimonial_X7NeF4": {
+          "type": "testimonial",
+          "settings": {
+            "customer_name": "Brittney",
+            "customer_description": "Showing up for yourself amid diet culture",
+            "testimonial_quote": "\"You can make yourself feel good without taking things away from your life. . .You can incorporate different things and make yourself feel deeply nourished. Hergreens makes me feel balanced.\"",
+            "video_url": "",
+            "product_name": "Greens",
+            "product_url": "/products/hergreens"
+          }
+        },
+        "testimonial_Em4epc": {
+          "type": "testimonial",
+          "settings": {
+            "customer_name": "Rebeca",
+            "customer_description": "Making period symptoms disappear",
+            "testimonial_quote": "\"After a month, I noticed a huge difference in my PMS. My zits were basically gone almost. I noticed my bloating was better. Cramps were almost non-existent.\"",
+            "video_url": "",
+            "product_name": "Hertime PMS",
+            "product_url": "/products/hertime"
+          }
+        },
+        "testimonial_JpqpGW": {
+          "type": "testimonial",
+          "settings": {
+            "customer_name": "Sariah",
+            "customer_description": "Taking back control with Hertime",
+            "testimonial_quote": "\"My period started about 2 days before our first game of the season. . . I had already been taking my Hertime and I was like, I don't even need to worry about this.\"",
+            "video_url": "",
+            "product_name": "Hertime PMS",
+            "product_url": "/products/hertime"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_kUECQp",
+        "testimonial_7EWMwj",
+        "testimonial_X7NeF4",
+        "testimonial_Em4epc",
+        "testimonial_JpqpGW"
+      ],
+      "name": "UGC Testimonials",
+      "settings": {
+        "heading": "Results and women that speak for themselves."
+      }
     }
   },
   "order": [
@@ -483,6 +554,7 @@
     "why_mixhers_section_rJyd6a",
     "testimonials_section_NgzDiV",
     "featured_products_dzNnMj",
-    "competitor_table_xpU7cr"
+    "competitor_table_xpU7cr",
+    "ugc_testimonials_MjBbiJ"
   ]
 }
