@@ -320,6 +320,59 @@
         "secondary_button_text": "Read All Reviews",
         "secondary_button_url": "https://mixhers.com/collections/all"
       }
+    },
+    "featured_products_dzNnMj": {
+      "type": "featured-products",
+      "blocks": {
+        "product_9BXUUa": {
+          "type": "product",
+          "settings": {
+            "product_title": "Product Title",
+            "product_description": "Short description about this product",
+            "product_url": "",
+            "button_text": ""
+          }
+        },
+        "product_BrMFqi": {
+          "type": "product",
+          "settings": {
+            "product_title": "Product Title",
+            "product_description": "Short description about this product",
+            "product_url": "",
+            "button_text": ""
+          }
+        },
+        "product_GYiBrw": {
+          "type": "product",
+          "settings": {
+            "product_title": "Product Title",
+            "product_description": "Short description about this product",
+            "product_url": "",
+            "button_text": ""
+          }
+        },
+        "product_wJXJeN": {
+          "type": "product",
+          "settings": {
+            "product_title": "Product Title",
+            "product_description": "Short description about this product",
+            "product_url": "",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_9BXUUa",
+        "product_BrMFqi",
+        "product_GYiBrw",
+        "product_wJXJeN"
+      ],
+      "name": "Featured Products",
+      "settings": {
+        "title": "Featured Products",
+        "view_all_text": "View All",
+        "view_all_url": ""
+      }
     }
   },
   "order": [
@@ -327,6 +380,7 @@
     "scrolling_usp_section_riJiAQ",
     "draggable_cards_ABNE4n",
     "why_mixhers_section_rJyd6a",
-    "testimonials_section_NgzDiV"
+    "testimonials_section_NgzDiV",
+    "featured_products_dzNnMj"
   ]
 }
