@@ -171,10 +171,10 @@
       {% for block in section.blocks %}
         {% if block.type == 'testimonial' %}
           {
-            name: "- {{ block.settings.customer_name }}",
-            buttonText: '{{ block.settings.product_name }}',
-            buttonLink: '{{ block.settings.product_url }}',
-            message: '{{ block.settings.testimonial_quote | escape }}'
+            name: "- {{ block.settings.customer_name | json }}",
+            buttonText: {{ block.settings.product_name | json }},
+            buttonLink: {{ block.settings.product_url | json }},
+            message: {{ block.settings.testimonial_quote | json }}
           }{% unless forloop.last %},{% endunless %}
         {% endif %}
       {% endfor %}
