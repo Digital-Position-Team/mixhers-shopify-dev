@@ -16,7 +16,6 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
-    background-color: #f5f5f5;
     border-radius: 8px;
     overflow: hidden;
   }
@@ -24,6 +23,9 @@
   .competitor-table__column {
     display: flex;
     flex-direction: column;
+    background-color: #f5f5f5;
+    border-radius: 32px;
+    padding: 16px;
   }
   
   .competitor-table__cell {
@@ -42,16 +44,12 @@
   .competitor-table__header {
     font-weight: 600;
     font-size: 18px;
-    background-color: #f5f5f5;
+    border-radius: 20px;
   }
   
   /* Column 2 (Mixhers) styling */
   .competitor-table__column:nth-child(2) {
     background-color: #ff59e4;
-  }
-  
-  .competitor-table__column:nth-child(2) .competitor-table__cell {
-    background-color: white;
   }
   
   .competitor-table__column:nth-child(2) .competitor-table__header {
@@ -77,7 +75,7 @@
   .competitor-table__circle-icon {
     width: 28px;
     height: 28px;
-    border: 2px solid #ccc;
+    border: 2px solid #999;
     border-radius: 50%;
   }
   
@@ -136,7 +134,7 @@
                   <path d="M20.6875 10.2124C21.0938 10.5874 21.0938 11.2437 20.6875 11.6187L12.6875 19.6187C12.3125 20.0249 11.6562 20.0249 11.2812 19.6187L7.28125 15.6187C6.875 15.2437 6.875 14.5874 7.28125 14.2124C7.65625 13.8062 8.3125 13.8062 8.6875 14.2124L12 17.4937L19.2812 10.2124C19.6562 9.80615 20.3125 9.80615 20.6875 10.2124Z" fill="#FF59E4"/>
                 </svg>
               {% elsif block.settings.column2_value == 'empty' %}
-                <div class="competitor-table__circle-icon"></div>
+                <div class="competitor-table__circle-icon"><span></span></div>
               {% else %}
                 {{ block.settings.column2_value }}
               {% endif %}
@@ -159,7 +157,7 @@
                   <path d="M20.6875 10.2124C21.0938 10.5874 21.0938 11.2437 20.6875 11.6187L12.6875 19.6187C12.3125 20.0249 11.6562 20.0249 11.2812 19.6187L7.28125 15.6187C6.875 15.2437 6.875 14.5874 7.28125 14.2124C7.65625 13.8062 8.3125 13.8062 8.6875 14.2124L12 17.4937L19.2812 10.2124C19.6562 9.80615 20.3125 9.80615 20.6875 10.2124Z" fill="white"/>
                 </svg>
               {% elsif block.settings.column3_value == 'empty' %}
-                <div class="competitor-table__circle-icon"></div>
+                <div class="competitor-table__circle-icon"><span></span></div>
               {% else %}
                 {{ block.settings.column3_value }}
               {% endif %}
