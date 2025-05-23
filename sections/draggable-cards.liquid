@@ -184,10 +184,13 @@
     // Function to show hover effect
     function showHoverEffect(slide) {
       const titleText = slide.querySelector('.title-text');
+      const descriptionText = slide.querySelector('.description-text');
       const shopNow = slide.querySelector('.shop-now');
       
       if (window.innerWidth > 768) {
         titleText.style.transform = 'translateY(-44px)';
+        descriptionText.style.opacity = '0';
+        descriptionText.style.transform = 'translateY(-44px)';
         shopNow.style.opacity = '1';
         shopNow.style.transform = 'translateY(0)';
       }
@@ -196,10 +199,13 @@
     // Function to hide hover effect
     function hideHoverEffect(slide) {
       const titleText = slide.querySelector('.title-text');
+      const descriptionText = slide.querySelector('.description-text');
       const shopNow = slide.querySelector('.shop-now');
       
       if (window.innerWidth > 768) {
         titleText.style.transform = 'translateY(0)';
+        descriptionText.style.opacity = '1';
+        descriptionText.style.transform = 'translateY(0)';
         shopNow.style.opacity = '0';
         shopNow.style.transform = 'translateY(12px)';
       }
