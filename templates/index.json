@@ -274,12 +274,59 @@
         "video": "shopify://files/videos/home_compressed.mp4",
         "title": "Why Mixhers?"
       }
+    },
+    "testimonials_section_NgzDiV": {
+      "type": "testimonials-section",
+      "blocks": {
+        "testimonial_BMiN4Q": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_title": "Life-Changing for My Hormones!",
+            "testimonial_text": "I've struggled with hormonal imbalance and painful periods for years, and nothing seemed to help—until I found Hertime from Mixhers! After just a month, my cramps were less intense, my mood swings improved, and I felt more energized. Plus, it tastes amazing! I'm hooked for life.",
+            "author_image": "shopify://shop_images/sarah.png",
+            "author_name": "Sarah M."
+          }
+        },
+        "testimonial_tPpP7H": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_title": "Delicious & So Easy to Use!",
+            "testimonial_text": "I love how convenient and tasty Mixhers products are! No more swallowing huge pills or dealing with weird aftertastes. I mix Hyrdation and Hernightly every day, and I’ve noticed a huge difference in my energy, hydration, and sleep quality. It’s like my body is finally getting what it needs! Highly recommend.",
+            "author_image": "shopify://shop_images/jessica.png",
+            "author_name": "Jessica T."
+          }
+        },
+        "testimonial_rVJgwN": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_title": "The Best Investment in My Health!",
+            "testimonial_text": "Mixhers is a game-changer! I started with Hergreens and was amazed at how much better I felt—less bloating, better digestion, and more energy. Now, I’m subscribed to multiple products because I can’t live without them. Plus, the ingredients are all-natural, which gives me peace of mind. Worth every penny!",
+            "author_image": "shopify://shop_images/amanda.png",
+            "author_name": "Michelle K."
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_BMiN4Q",
+        "testimonial_tPpP7H",
+        "testimonial_rVJgwN"
+      ],
+      "name": "Testimonials",
+      "settings": {
+        "title": "Hear what Real Women think about Mixhers",
+        "subtitle": "Over 17,000 5 star reviews",
+        "primary_button_text": "Find The Right Product For You",
+        "primary_button_url": "https://mixhers.com/pages/quiz",
+        "secondary_button_text": "Read All Reviews",
+        "secondary_button_url": "https://mixhers.com/collections/all"
+      }
     }
   },
   "order": [
     "custom_hero_GiCc3A",
     "scrolling_usp_section_riJiAQ",
     "draggable_cards_ABNE4n",
-    "why_mixhers_section_rJyd6a"
+    "why_mixhers_section_rJyd6a",
+    "testimonials_section_NgzDiV"
   ]
 }
