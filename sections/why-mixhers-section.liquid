@@ -1,0 +1,263 @@
+<style>
+  .why-mixhers {
+    padding: 80px 0;
+    font-family: 'Buenos Aires', sans-serif;
+  }
+  
+  .why-mixhers__container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .why-mixhers__video-column {
+    width: 50%;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  
+  .why-mixhers__video-placeholder {
+    width: 100%;
+    display: block;
+    border-radius: 16px;
+  }
+  
+  .why-mixhers__play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 124px;
+    height: 124px;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+  }
+  
+  .why-mixhers__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    z-index: 1;
+    border-radius: 16px;
+  }
+  
+  .why-mixhers__content-column {
+    width: 50%;
+    padding: 20px 0;
+  }
+  
+  .why-mixhers__title {
+    font-family: 'Faire Sprig', serif;
+    font-size: 42px;
+    margin-bottom: 40px;
+    color: var(--color-primary, #ff59e4);
+  }
+  
+  .why-mixhers__features {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .why-mixhers__feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  
+  .why-mixhers__feature-icon {
+    width: 66px;
+    flex-shrink: 0;
+  }
+  
+  .why-mixhers__feature-content {
+    flex-grow: 1;
+  }
+  
+  .why-mixhers__feature-title {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .why-mixhers__feature-description {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #4a4a4a;
+  }
+  
+  @media screen and (max-width: 990px) {
+    .why-mixhers__container {
+      flex-direction: column;
+    }
+    
+    .why-mixhers__video-column,
+    .why-mixhers__content-column {
+      width: 100%;
+    }
+    
+    .why-mixhers__title {
+      text-align: center;
+    }
+  }
+</style>
+
+<div class="why-mixhers">
+  <div class="why-mixhers__container">
+    <div class="why-mixhers__video-column">
+      <img 
+        src="{{ section.settings.video_placeholder | default: 'https://mixhers.com/cdn/shop/files/home-rebrand-mixhers-difference.webp?v=1158532607034944079' | img_url: '800x' }}" 
+        alt="Why Mixhers Video" 
+        class="why-mixhers__video-placeholder" 
+        loading="lazy"
+      >
+      <div class="why-mixhers__play-button" id="play-button">
+        {{ section.settings.play_button_svg | default: '<svg width="100%" height="100%" viewBox="0 0 124 124" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M46.6719 91.6681V29.9741L90.4088 60.8211L46.6719 91.6681Z" fill="white"></path>
+          <path d="M121.406 61.75C121.406 94.5802 94.732 121.202 61.818 121.202C28.904 121.202 2.22964 94.5802 2.22964 61.75C2.22964 28.9198 28.904 2.298 61.818 2.298C94.732 2.298 121.406 28.9198 121.406 61.75Z" stroke="white" stroke-width="4.096"></path>
+        </svg>' }}
+      </div>
+      <video 
+        class="why-mixhers__video" 
+        id="why-mixhers-video" 
+        src="{{ section.settings.video | default: 'https://cdn.shopify.com/videos/c/o/v/a2dbfdfb95d5410abdd6b092d1b49100.mp4' }}" 
+        playsinline 
+        controls
+      ></video>
+    </div>
+    
+    <div class="why-mixhers__content-column">
+      <h2 class="why-mixhers__title">{{ section.settings.title }}</h2>
+      
+      <div class="why-mixhers__features">
+        {% for block in section.blocks %}
+          <div class="why-mixhers__feature" {{ block.shopify_attributes }}>
+            <div class="why-mixhers__feature-icon">
+              {{ block.settings.icon_svg }}
+            </div>
+            <div class="why-mixhers__feature-content">
+              <h3 class="why-mixhers__feature-title">{{ block.settings.feature_title }}</h3>
+              <p class="why-mixhers__feature-description">{{ block.settings.feature_description }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const playButton = document.getElementById('play-button');
+    const video = document.getElementById('why-mixhers-video');
+    const videoPlaceholder = document.querySelector('.why-mixhers__video-placeholder');
+    
+    if (playButton && video) {
+      playButton.addEventListener('click', function() {
+        video.style.opacity = '1';
+        video.play();
+        playButton.style.opacity = '0';
+        playButton.style.pointerEvents = 'none';
+        videoPlaceholder.style.opacity = '0';
+      });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Why Mixhers",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "video_placeholder",
+      "label": "Video Placeholder Image",
+      "info": "This image will be shown before the video plays"
+    },
+    {
+      "type": "html",
+      "id": "play_button_svg",
+      "label": "Play Button SVG",
+      "default": "<svg width=\"100%\" height=\"100%\" viewBox=\"0 0 124 124\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M46.6719 91.6681V29.9741L90.4088 60.8211L46.6719 91.6681Z\" fill=\"white\"></path><path d=\"M121.406 61.75C121.406 94.5802 94.732 121.202 61.818 121.202C28.904 121.202 2.22964 94.5802 2.22964 61.75C2.22964 28.9198 28.904 2.298 61.818 2.298C94.732 2.298 121.406 28.9198 121.406 61.75Z\" stroke=\"white\" stroke-width=\"4.096\"></path></svg>"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video",
+      "info": "MP4 video format recommended"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Why Mixhers?"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon_svg",
+          "label": "Icon SVG"
+        },
+        {
+          "type": "text",
+          "id": "feature_title",
+          "label": "Feature Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "textarea",
+          "id": "feature_description",
+          "label": "Feature Description",
+          "default": "Feature description text goes here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Mixhers",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "icon_svg": "<svg width=\"100%\" height=\"100%\" viewBox=\"0 0 67 67\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n    <path d=\"M33.5 66C51.4493 66 66 51.4493 66 33.5C66 15.5507 51.4493 1 33.5 1C15.5507 1 1 15.5507 1 33.5C1 51.4493 15.5507 66 33.5 66Z\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M33.4999 42.4468C38.437 42.4468 42.4393 38.4445 42.4393 33.5075C42.4393 28.5704 38.437 24.5681 33.4999 24.5681C28.5628 24.5681 24.5605 28.5704 24.5605 33.5075C24.5605 38.4445 28.5628 42.4468 33.4999 42.4468Z\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M33.5 21.5857V11.6274\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M33.5 55.3874V45.4292\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M25.0742 25.0737L18.0312 18.0308\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M48.9765 48.9765L41.9336 41.9336\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M21.5784 33.5073H11.6201\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M55.3801 33.5073H45.4219\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M25.0742 41.9336L18.0312 48.9765\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M48.9765 18.0308L41.9336 25.0737\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M28.9409 22.493L26.5908 16.811\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M40.4165 50.1962L38.0664 44.5217\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M22.485 28.9409L16.8105 26.5908\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M50.1966 40.4165L44.5146 38.0664\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M22.485 38.0664L16.8105 40.4165\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M50.1966 26.5908L44.5146 28.9409\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M28.9409 44.5217L26.5908 50.1962\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M40.4165 16.811L38.0664 22.493\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n</svg>",
+            "feature_title": "Hormone Friendly",
+            "feature_description": "Formulated with clinically studied ingredients to support optimal hormone function."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon_svg": "<svg width=\"100%\" height=\"100%\" viewBox=\"0 0 66 65\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n    <path d=\"M32.7753 53.794C39.8809 53.794 47.0878 49.3974 47.0878 39.6218C47.0878 34.3789 43.5097 29.3727 40.0257 24.553C36.9257 20.2569 33.9705 16.1472 33.9705 12.4608C33.9705 11.8009 33.449 11.2773 32.7753 11.2773C32.1017 11.2773 31.5802 11.7937 31.5802 12.4608C31.5802 16.1472 28.625 20.2067 25.525 24.553C22.041 29.3727 18.4629 34.3789 18.4629 39.6218C18.4629 49.3974 25.6626 53.794 32.7753 53.794Z\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M32.7757 63.9999C50.3249 63.9999 64.5514 49.9129 64.5514 32.5356C64.5514 15.1583 50.3249 1.07129 32.7757 1.07129C15.2265 1.07129 1 15.1583 1 32.5356C1 49.9129 15.2265 63.9999 32.7757 63.9999Z\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M33.2608 48.3718C28.1109 48.3718 23.9316 44.2406 23.9316 39.134\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n</svg>",
+            "feature_title": "Highly Absorbable",
+            "feature_description": "Liquid delivery for accelerated nutrient uptake and maximum absorption."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon_svg": "<svg width=\"100%\" height=\"100%\" viewBox=\"0 0 66 65\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n    <path d=\"M32.7753 53.794C39.8809 53.794 47.0878 49.3974 47.0878 39.6218C47.0878 34.3789 43.5097 29.3727 40.0257 24.553C36.9257 20.2569 33.9705 16.1472 33.9705 12.4608C33.9705 11.8009 33.449 11.2773 32.7753 11.2773C32.1017 11.2773 31.5802 11.7937 31.5802 12.4608C31.5802 16.1472 28.625 20.2067 25.525 24.553C22.041 29.3727 18.4629 34.3789 18.4629 39.6218C18.4629 49.3974 25.6626 53.794 32.7753 53.794Z\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M32.7757 63.9999C50.3249 63.9999 64.5514 49.9129 64.5514 32.5356C64.5514 15.1583 50.3249 1.07129 32.7757 1.07129C15.2265 1.07129 1 15.1583 1 32.5356C1 49.9129 15.2265 63.9999 32.7757 63.9999Z\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M33.2608 48.3718C28.1109 48.3718 23.9316 44.2406 23.9316 39.134\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n</svg>",
+            "feature_title": "All Natural",
+            "feature_description": "Clean ingredients sourced from nature. Free from hormone-disrupting chemicals, additives, and fillers."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
