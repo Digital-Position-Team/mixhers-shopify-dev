@@ -85,7 +85,13 @@
     transition: transform 0.5s ease;
   }
   
-  .featured-products__image-wrapper::before {
+  .featured-products__item {
+    /* Add a ::before pseudo-element to the item itself instead of the image-wrapper */
+    position: relative;
+    z-index: 0;
+  }
+  
+  .featured-products__item::before {
     content: '';
     position: absolute;
     top: 0;
@@ -97,14 +103,14 @@
     background-position: center;
     opacity: 0;
     transition: opacity 0.4s ease;
-    z-index: 1;
+    z-index: -1;
   }
   
   .featured-products__item:hover .featured-products__image {
     transform: scale(1.05);
   }
   
-  .featured-products__item:hover .featured-products__image-wrapper::before {
+  .featured-products__item:hover::before {
     opacity: 1;
   }
   
@@ -115,6 +121,14 @@
     flex-grow: 1;
     justify-content: center;
     align-items: center;
+    background-color: rgba(255, 255, 255, 0.6);
+    transition: background-color 0.3s ease;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .featured-products__item:hover .featured-products__content {
+    background-color: rgba(255, 255, 255, 0.7);
   }
   
   .featured-products__product-title {
@@ -181,12 +195,12 @@
     
     <div class="featured-products__grid">
       {%- for block in section.blocks -%}
-        <div class="featured-products__item" {{ block.shopify_attributes }}>
-          <a href="{{ block.settings.product_url }}" class="featured-products__image-wrapper"
-            {% if block.settings.hover_bg_image != blank %}
-              style="--hover-bg-image: url({{ block.settings.hover_bg_image | img_url: '500x' }});"
-            {% endif %}
-          >
+        <div class="featured-products__item" {{ block.shopify_attributes }}
+          {% if block.settings.hover_bg_image != blank %}
+            style="--hover-bg-image: url({{ block.settings.hover_bg_image | img_url: '500x' }});"
+          {% endif %}
+        >
+          <a href="{{ block.settings.product_url }}" class="featured-products__image-wrapper">
             <img
               src="{{ block.settings.product_image | img_url: '500x' }}"
               alt="{{ block.settings.product_title | escape }}"
