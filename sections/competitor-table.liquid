@@ -1,0 +1,395 @@
+<style>
+  .competitor-table {
+    padding: 80px 0;
+    font-family: 'Buenos Aires', sans-serif;
+    background-color: #fff;
+  }
+  
+  .competitor-table__title {
+    font-family: 'Faire Sprig', serif;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .competitor-table__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .competitor-table__column {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .competitor-table__cell {
+    padding: 20px;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .competitor-table__cell:not(:last-child) {
+    margin-bottom: 1px;
+  }
+  
+  .competitor-table__header {
+    font-weight: 600;
+    font-size: 18px;
+    background-color: #f5f5f5;
+  }
+  
+  /* Column 2 (Mixhers) styling */
+  .competitor-table__column:nth-child(2) {
+    background-color: #ff59e4;
+  }
+  
+  .competitor-table__column:nth-child(2) .competitor-table__cell {
+    background-color: white;
+  }
+  
+  .competitor-table__column:nth-child(2) .competitor-table__header {
+    background-color: #ff6ae7;
+  }
+  
+  /* Feature name column */
+  .competitor-table__column:first-child .competitor-table__cell {
+    justify-content: flex-start;
+    text-align: left;
+    font-weight: 500;
+  }
+  
+  .competitor-table__logo {
+    max-height: 30px;
+    width: auto;
+  }
+  
+  .competitor-table__check-icon.pink {
+    color: #ff59e4;
+  }
+  
+  .competitor-table__circle-icon {
+    width: 28px;
+    height: 28px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .competitor-table__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .competitor-table__column:nth-child(3),
+    .competitor-table__column:nth-child(4) {
+      margin-top: 16px;
+    }
+  }
+</style>
+
+<section class="competitor-table">
+  <div class="page-width">
+    <h2 class="competitor-table__title">{{ section.settings.title }}</h2>
+    <div class="competitor-table__grid">
+      <!-- Column 1: Feature names -->
+      <div class="competitor-table__column">
+        <div class="competitor-table__cell competitor-table__header">
+          {{ section.settings.column1_header }}
+        </div>
+        {% for block in section.blocks %}
+          {% if block.type == 'feature' %}
+            <div class="competitor-table__cell" {{ block.shopify_attributes }}>
+              {{ block.settings.feature_name }}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      
+      <!-- Column 2: Mixhers -->
+      <div class="competitor-table__column">
+        <div class="competitor-table__cell competitor-table__header">
+          {% if section.settings.mixhers_logo != blank %}
+            <img 
+              src="{{ section.settings.mixhers_logo | img_url: '150x' }}" 
+              alt="Mixhers" 
+              class="competitor-table__logo"
+              width="150"
+              height="30"
+              loading="lazy"
+            >
+          {% else %}
+            {{ section.settings.column2_header }}
+          {% endif %}
+        </div>
+        {% for block in section.blocks %}
+          {% if block.type == 'feature' %}
+            <div class="competitor-table__cell" {{ block.shopify_attributes }}>
+              {% if block.settings.column2_value == 'check' %}
+                <svg width="28" height="29" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect y="0.399902" width="28" height="28" rx="14" fill="white"/>
+                  <path d="M20.6875 10.2124C21.0938 10.5874 21.0938 11.2437 20.6875 11.6187L12.6875 19.6187C12.3125 20.0249 11.6562 20.0249 11.2812 19.6187L7.28125 15.6187C6.875 15.2437 6.875 14.5874 7.28125 14.2124C7.65625 13.8062 8.3125 13.8062 8.6875 14.2124L12 17.4937L19.2812 10.2124C19.6562 9.80615 20.3125 9.80615 20.6875 10.2124Z" fill="#FF59E4"/>
+                </svg>
+              {% elsif block.settings.column2_value == 'empty' %}
+                <div class="competitor-table__circle-icon"></div>
+              {% else %}
+                {{ block.settings.column2_value }}
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      
+      <!-- Column 3: Competitor 1 -->
+      <div class="competitor-table__column">
+        <div class="competitor-table__cell competitor-table__header">
+          {{ section.settings.column3_header }}
+        </div>
+        {% for block in section.blocks %}
+          {% if block.type == 'feature' %}
+            <div class="competitor-table__cell" {{ block.shopify_attributes }}>
+              {% if block.settings.column3_value == 'check' %}
+                <svg width="28" height="29" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect y="0.399902" width="28" height="28" rx="14" fill="#FF59E4"/>
+                  <path d="M20.6875 10.2124C21.0938 10.5874 21.0938 11.2437 20.6875 11.6187L12.6875 19.6187C12.3125 20.0249 11.6562 20.0249 11.2812 19.6187L7.28125 15.6187C6.875 15.2437 6.875 14.5874 7.28125 14.2124C7.65625 13.8062 8.3125 13.8062 8.6875 14.2124L12 17.4937L19.2812 10.2124C19.6562 9.80615 20.3125 9.80615 20.6875 10.2124Z" fill="white"/>
+                </svg>
+              {% elsif block.settings.column3_value == 'empty' %}
+                <div class="competitor-table__circle-icon"></div>
+              {% else %}
+                {{ block.settings.column3_value }}
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      
+      <!-- Column 4: Competitor 2 -->
+      <div class="competitor-table__column">
+        <div class="competitor-table__cell competitor-table__header">
+          {{ section.settings.column4_header }}
+        </div>
+        {% for block in section.blocks %}
+          {% if block.type == 'feature' %}
+            <div class="competitor-table__cell" {{ block.shopify_attributes }}>
+              {% if block.settings.column4_value == 'check' %}
+                <svg width="28" height="29" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect y="0.399902" width="28" height="28" rx="14" fill="#FF59E4"/>
+                  <path d="M20.6875 10.2124C21.0938 10.5874 21.0938 11.2437 20.6875 11.6187L12.6875 19.6187C12.3125 20.0249 11.6562 20.0249 11.2812 19.6187L7.28125 15.6187C6.875 15.2437 6.875 14.5874 7.28125 14.2124C7.65625 13.8062 8.3125 13.8062 8.6875 14.2124L12 17.4937L19.2812 10.2124C19.6562 9.80615 20.3125 9.80615 20.6875 10.2124Z" fill="white"/>
+                </svg>
+              {% elsif block.settings.column4_value == 'empty' %}
+                <div class="competitor-table__circle-icon"></div>
+              {% else %}
+                {{ block.settings.column4_value }}
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Competitor Table",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Why Women Choose Mixhers"
+    },
+    {
+      "type": "text",
+      "id": "column1_header",
+      "label": "Column 1 Header",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "column2_header",
+      "label": "Column 2 Header (Mixhers)",
+      "default": "Mixhers",
+      "info": "This will be displayed if no logo is uploaded"
+    },
+    {
+      "type": "image_picker",
+      "id": "mixhers_logo",
+      "label": "Mixhers Logo"
+    },
+    {
+      "type": "text",
+      "id": "column3_header",
+      "label": "Column 3 Header",
+      "default": "Competitor #1"
+    },
+    {
+      "type": "text",
+      "id": "column4_header",
+      "label": "Column 4 Header",
+      "default": "Competitor #2"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature_name",
+          "label": "Feature Name",
+          "default": "Feature"
+        },
+        {
+          "type": "select",
+          "id": "column2_value",
+          "label": "Mixhers Column Value",
+          "options": [
+            {
+              "value": "check",
+              "label": "Check Mark"
+            },
+            {
+              "value": "empty",
+              "label": "Empty Circle"
+            },
+            {
+              "value": "custom",
+              "label": "Custom Text"
+            }
+          ],
+          "default": "check"
+        },
+        {
+          "type": "text",
+          "id": "column2_custom_text",
+          "label": "Mixhers Custom Text",
+          "info": "Only used if 'Custom Text' is selected above"
+        },
+        {
+          "type": "select",
+          "id": "column3_value",
+          "label": "Competitor 1 Column Value",
+          "options": [
+            {
+              "value": "check",
+              "label": "Check Mark"
+            },
+            {
+              "value": "empty",
+              "label": "Empty Circle"
+            },
+            {
+              "value": "custom",
+              "label": "Custom Text"
+            }
+          ],
+          "default": "empty"
+        },
+        {
+          "type": "text",
+          "id": "column3_custom_text",
+          "label": "Competitor 1 Custom Text",
+          "info": "Only used if 'Custom Text' is selected above"
+        },
+        {
+          "type": "select",
+          "id": "column4_value",
+          "label": "Competitor 2 Column Value",
+          "options": [
+            {
+              "value": "check",
+              "label": "Check Mark"
+            },
+            {
+              "value": "empty",
+              "label": "Empty Circle"
+            },
+            {
+              "value": "custom",
+              "label": "Custom Text"
+            }
+          ],
+          "default": "empty"
+        },
+        {
+          "type": "text",
+          "id": "column4_custom_text",
+          "label": "Competitor 2 Custom Text",
+          "info": "Only used if 'Custom Text' is selected above"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Competitor Table",
+      "settings": {
+        "title": "Why Women Choose Mixhers"
+      },
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "feature_name": "Woman Owned",
+            "column2_value": "check",
+            "column3_value": "check",
+            "column4_value": "empty"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_name": "Hormone Friendly",
+            "column2_value": "check",
+            "column3_value": "check",
+            "column4_value": "empty" 
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_name": "Third-Party Tested",
+            "column2_value": "check",
+            "column3_value": "empty",
+            "column4_value": "empty"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_name": "Highly Absorbable Powder",
+            "column2_value": "check",
+            "column3_value": "empty",
+            "column4_value": "empty"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_name": "All Natural",
+            "column2_value": "check",
+            "column3_value": "empty",
+            "column4_value": "check"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_name": "See Results after 30 Days",
+            "column2_value": "check",
+            "column3_value": "empty",
+            "column4_value": "check"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
