@@ -650,29 +650,69 @@
         "faq_item_W7MK8T": {
           "type": "faq_item",
           "settings": {
-            "question": "How do I use Mixhers products?",
-            "answer": "<p>Our products are designed to be easy to use. Simply follow the instructions on the product packaging or visit our website for detailed usage guides.</p>"
+            "question": "Is Hertime PMS right for me?",
+            "answer": "<p>Hertime PMS is best for women in their menstruating years seeking PMS-symptom relief and optimized hormone health. Hertime PMS soothes menstrual cramps, levels mood swings, eases bloating, supports normal cycles, and balances hormones naturally. </p><p>If you experience more extreme period symptoms, try Hertime PMS+, our extra strength formula for serious support. It combats intense cramping, heavy flow, irritability, bloating, and low energy in women with more pronounced hormone imbalances.</p>"
           }
         },
         "faq_item_EnfnqT": {
           "type": "faq_item",
           "settings": {
-            "question": "Are your products safe for pregnant women?",
-            "answer": "<p>We recommend consulting with your healthcare provider before using any dietary supplements during pregnancy or while breastfeeding.</p>"
+            "question": "How soon can I expect to see results with Hertime PMS?",
+            "answer": "<p>Mixhers customers report optimal results after taking Hertime PMS daily for 3 cycles.</p><p>After 30 Days: Decrease in bloating, cramping, and PMS-related cravings.</p><p>After 60 Days: Continued decrease in bloating, cramping, and cravings. Improved mood, more regulated flow, and decreased fatigue.</p><p>After 90 Days: Decrease in fatigue, flow, cravings, bloating, cramping, and hormonal acne. Improved in mood, concentration, and physical performance.</p>"
           }
         },
         "faq_item_iXNm4g": {
           "type": "faq_item",
           "settings": {
-            "question": "How long will it take to see results?",
-            "answer": "<p>Individual results may vary. Most customers report noticeable improvements after consistent use for 2-4 weeks.</p>"
+            "question": "How often should I use Hertime PMS?",
+            "answer": "<p>Hertime PMS should be taken daily at any time for best results. As with all supplements, your body will respond to Hertime PMS best when it has built up in your system over time.</p>"
+          }
+        },
+        "faq_item_Dnmdmi": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Why is Hertime PMS a powder instead of a tablet or gummy?",
+            "answer": "<p>Unlike tablets or gummies, our liquid delivery offers the advantage of rapid nutrient absorption. This is important because your body can’t use what it doesn’t absorb.</p>"
+          }
+        },
+        "faq_item_bYYiFN": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is Hertime PMS safe for teens and preteens to take?",
+            "answer": "<p>Yes, Hertime PMS is safe and meant for anyone in their menstruating years. We always recommend consulting with your doctor before starting any supplement.</p>"
+          }
+        },
+        "faq_item_i3nyRz": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is Hertime PMS safe to take while pregnant or breastfeeding?",
+            "answer": "<p>We do not recommend using Hertime PMS if you are pregnant or breastfeeding. We recommend Mixhers Prenatal+ for women before, during, and after pregnancy. </p>"
+          }
+        },
+        "faq_item_Vf3JT6": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How can I access my subscription?",
+            "answer": "<p>We make it easy to make changes to your subscription! You can log into your account through the <a href=\"https://mixhers.com/tools/recurring/get-subscription-access?\" target=\"_blank\">customer portal</a> and then selecting \"manage subscriptions\".</p>"
+          }
+        },
+        "faq_item_krAcQx": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you ship internationally?",
+            "answer": "<p>At this time, we only ship in the in the United States, excluding APO/FPO and U.S. territories. However you can still find your favorite Mixhers products on Amazon <a href=\"https://www.amazon.com/stores/page/872C6FF0-ED37-4FB0-A59A-ECE971D63AFB\">HERE.</a></p>"
           }
         }
       },
       "block_order": [
         "faq_item_W7MK8T",
         "faq_item_EnfnqT",
-        "faq_item_iXNm4g"
+        "faq_item_iXNm4g",
+        "faq_item_Dnmdmi",
+        "faq_item_bYYiFN",
+        "faq_item_i3nyRz",
+        "faq_item_Vf3JT6",
+        "faq_item_krAcQx"
       ],
       "name": "FAQ Section",
       "settings": {
@@ -682,7 +722,7 @@
         "bg_color": "#ffffff",
         "show_top_border": false,
         "show_bottom_border": true,
-        "border_color": "#1A1A1A"
+        "border_color": "#1a1a1a"
       }
     }
   },
