@@ -732,31 +732,36 @@
         "logo_EFQYKQ": {
           "type": "logo",
           "settings": {
-            "logo_text": ""
+            "logo": "shopify://shop_images/home-rebrand-logo-vogue.webp",
+            "logo_text": "Vogue"
           }
         },
         "logo_zTTfqH": {
           "type": "logo",
           "settings": {
-            "logo_text": ""
+            "logo": "shopify://shop_images/home-rebrand-logo-cosmopolitan.webp",
+            "logo_text": "Cosmopolitan"
           }
         },
         "logo_8eRRCd": {
           "type": "logo",
           "settings": {
-            "logo_text": ""
+            "logo": "shopify://shop_images/home-rebrand-logo-forbes.webp",
+            "logo_text": "Forbes"
           }
         },
         "logo_RPdAbL": {
           "type": "logo",
           "settings": {
-            "logo_text": ""
+            "logo": "shopify://shop_images/home-rebrand-logo-ny-post.webp",
+            "logo_text": "New York Post"
           }
         },
         "logo_ApnpBc": {
           "type": "logo",
           "settings": {
-            "logo_text": ""
+            "logo": "shopify://shop_images/home-rebrand-logo-entrepreneur.webp",
+            "logo_text": "Entrepreneur"
           }
         }
       },
@@ -771,8 +776,8 @@
       "settings": {
         "bg_color": "#ffffff",
         "show_top_border": false,
-        "show_bottom_border": false,
-        "border_color": "#1A1A1A",
+        "show_bottom_border": true,
+        "border_color": "#1a1a1a",
         "scroll_speed": 30
       }
     },
@@ -782,7 +787,8 @@
       "settings": {
         "title": "Make it personal.",
         "body": "<p>Get matched with an individualized product suite formulated just for you.</p>",
-        "text_alignment": "left",
+        "text_alignment": "center",
+        "inline_image": "shopify://shop_images/home-rebrand-product-ribbon.webp",
         "cta_text": "Take the quiz",
         "cta_link": "https://mixhers.com/pages/quiz",
         "image": "shopify://shop_images/rebrand-mocktail.gif",
