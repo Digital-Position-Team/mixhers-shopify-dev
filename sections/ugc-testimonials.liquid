@@ -30,7 +30,7 @@
     gap: 0.5rem;
   }
 
-  .ugc-testimonials__message { margin-bottom: 0px; }
+  .ugc-testimonials__message { margin-bottom: 0px; line-height: 26px; }
   .ugc-testimonials__name { margin-top: 0px; }
 
   #testimonials-carousel-{{ section_id }} {
@@ -169,7 +169,7 @@
             name: {{ block.settings.customer_name | json }},
             buttonText: {{ block.settings.product_name | json }},
             buttonLink: {{ block.settings.product_url | json }},
-            message: {{ block.settings.testimonial_quote | json }}
+            message: "- " + {{ block.settings.testimonial_quote | json }}
           }{% unless forloop.last %},{% endunless %}
         {% endif %}
       {% endfor %}
