@@ -3,7 +3,11 @@
 {% assign bg_color = section.settings.bg_color | default: '#ffffff' %}
 {% assign has_top_border = section.settings.show_top_border %}
 {% assign has_bottom_border = section.settings.show_bottom_border %}
-{% assign has_image = section.settings.image != blank %}
+{% assign has_image = false %}
+{% if section.settings.image != blank %}
+  {% assign has_image = true %}
+{% endif %}
+
 
 <style>
   .faq-section-{{ section_id }} {
@@ -212,7 +216,7 @@
       "type": "color",
       "id": "border_color",
       "label": "Border Color",
-      "default": "#ff59e4"
+      "default": "#1A1A1A"
     }
   ],
   "blocks": [
