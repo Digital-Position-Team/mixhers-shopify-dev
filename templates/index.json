@@ -625,6 +625,20 @@
       "settings": {
         "heading": "Results and women that speak for themselves."
       }
+    },
+    "text_and_image_section_gphUVg": {
+      "type": "text-and-image-section",
+      "custom_css": [],
+      "name": "Text and Image",
+      "settings": {
+        "title": "You're set up for success",
+        "body": "<p>Most new product subscriptions come with a FREE Starter Kit.</p><ul><li>Exclusive Mixhers Shaker </li><li>VIP Member Perks Guide</li><li>Bonus Wellness Samples</li><li>A Special Welcome Gift</li></ul>",
+        "cta_text": "Get Started",
+        "cta_link": "https://mixhers.com/collections/all",
+        "image": "shopify://shop_images/rebrand_metabolic_no_bg.png",
+        "direction": "ltr",
+        "bg_color": "#f4f9fd"
+      }
     }
   },
   "order": [
@@ -635,6 +649,7 @@
     "testimonials_section_NgzDiV",
     "featured_products_dzNnMj",
     "competitor_table_xpU7cr",
-    "ugc_testimonials_MjBbiJ"
+    "ugc_testimonials_MjBbiJ",
+    "text_and_image_section_gphUVg"
   ]
 }
