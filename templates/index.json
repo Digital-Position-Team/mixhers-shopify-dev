@@ -643,6 +643,47 @@
         "show_bottom_border": true,
         "border_color": "#1a1a1a"
       }
+    },
+    "faq_section_cAJwyH": {
+      "type": "faq-section",
+      "blocks": {
+        "faq_item_W7MK8T": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I use Mixhers products?",
+            "answer": "<p>Our products are designed to be easy to use. Simply follow the instructions on the product packaging or visit our website for detailed usage guides.</p>"
+          }
+        },
+        "faq_item_EnfnqT": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are your products safe for pregnant women?",
+            "answer": "<p>We recommend consulting with your healthcare provider before using any dietary supplements during pregnancy or while breastfeeding.</p>"
+          }
+        },
+        "faq_item_iXNm4g": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long will it take to see results?",
+            "answer": "<p>Individual results may vary. Most customers report noticeable improvements after consistent use for 2-4 weeks.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_W7MK8T",
+        "faq_item_EnfnqT",
+        "faq_item_iXNm4g"
+      ],
+      "name": "FAQ Section",
+      "settings": {
+        "title": "FAQs",
+        "image": "shopify://shop_images/home-rebrand-mobile-top.webp",
+        "direction": "rtl",
+        "bg_color": "#ffffff",
+        "show_top_border": false,
+        "show_bottom_border": true,
+        "border_color": "#1A1A1A"
+      }
     }
   },
   "order": [
@@ -654,6 +695,7 @@
     "featured_products_dzNnMj",
     "competitor_table_xpU7cr",
     "ugc_testimonials_MjBbiJ",
-    "text_and_image_section_gphUVg"
+    "text_and_image_section_gphUVg",
+    "faq_section_cAJwyH"
   ]
 }
