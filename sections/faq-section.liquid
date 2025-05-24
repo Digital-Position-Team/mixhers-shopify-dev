@@ -99,11 +99,12 @@
     padding: 0;
     font-family: 'Buenos Aires', sans-serif;
     line-height: 1.6;
+    opacity: 0;
   }
   .faq-answer p { margin-top: 0px; }
 
   .faq-answer.active {
-    max-height: 500px;
+    opacity: 1;
     padding-bottom: 1rem;
   }
 
@@ -157,6 +158,30 @@
 </section>
 
 <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Cache all FAQ answers to improve performance
+    const allFaqAnswers = document.querySelectorAll('.faq-answer');
+    
+    // Store the actual heights of each FAQ answer
+    allFaqAnswers.forEach(answer => {
+      // Clone the answer to measure its height without constraints
+      const clone = answer.cloneNode(true);
+      clone.style.maxHeight = 'none';
+      clone.style.opacity = '0';
+      clone.style.position = 'absolute';
+      clone.style.visibility = 'hidden';
+      clone.style.display = 'block';
+      document.body.appendChild(clone);
+      
+      // Store the actual height as a data attribute
+      const height = clone.offsetHeight;
+      answer.dataset.height = height + 'px';
+      
+      // Remove the clone
+      document.body.removeChild(clone);
+    });
+  });
+  
   function toggleFAQ(element, id) {
     const answer = document.getElementById('faq-' + id);
     const currentlyActive = element.classList.contains('active');
@@ -166,12 +191,19 @@
     const allAnswers = document.querySelectorAll('.faq-answer');
     
     allQuestions.forEach(q => q.classList.remove('active'));
-    allAnswers.forEach(a => a.classList.remove('active'));
+    allAnswers.forEach(a => {
+      a.classList.remove('active');
+      a.style.maxHeight = '0px';
+    });
     
     // If the clicked question wasn't active before, open it
     if (!currentlyActive) {
       element.classList.add('active');
       answer.classList.add('active');
+      
+      // Use the stored height or fallback to 500px
+      const height = answer.dataset.height || '500px';
+      answer.style.maxHeight = height;
     }
   }
 </script>
