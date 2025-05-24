@@ -7,7 +7,6 @@
   
   .competitor-table__title {
     font-family: 'Faire Sprig', serif;
-    font-size: 36px;
     text-align: center;
     margin-bottom: 40px;
   }
@@ -18,7 +17,6 @@
     gap: 16px;
     border-radius: 8px;
     overflow: hidden;
-    overflow-x: scroll;
   }
   
   .competitor-table__column {
@@ -89,6 +87,9 @@
     .competitor-table__logo { max-height: 20px; }
     .competitor-table__cell svg { width: 18px; height: 18px; }
     .competitor-table__circle-icon { width: 18px; height: 18px; }
+  }
+  @media screen and (max-width: 640px) {
+    .competitor-table__grid { overflow-x: scroll; }
   }
 </style>
 

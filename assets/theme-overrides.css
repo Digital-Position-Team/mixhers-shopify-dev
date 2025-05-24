@@ -197,7 +197,14 @@ h3 {
   .footer .footer-block__heading {
     line-height: 28px;
   }
+  .footer-block--newsletter {
+    max-width: 100%;
+  }
   .footer-block__newsletter-custom {
     align-items: center;
+    max-width: 100%;
+  }
+  .footer-newsletter-input {
+    width: 10%;
   }
 }
