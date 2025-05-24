@@ -38,6 +38,9 @@
   .text-column-inner {
     max-width: 600px;
     margin: 0 auto;
+    {% if section.settings.text_alignment == 'center' %}text-align: center;{% endif %}
+    {% if section.settings.text_alignment == 'right' %}text-align: right;{% endif %}
+    {% if section.settings.text_alignment == 'left' %}text-align: left;{% endif %} 
   }
 
   .text-column h2 {
@@ -51,9 +54,17 @@
     font-family: 'Buenos Aires', sans-serif;
     line-height: 1.6;
   }
-  
-  .text-column .btn-clear:hover {
-    background-color: rgba(0,0,0,0.05);
+  .text-column .inline-image-wrapper {
+    display: flex;
+    {% if section.settings.text_alignment == 'center' %}justify-content: center;{% endif %}
+    {% if section.settings.text_alignment == 'right' %}justify-content: flex-end;{% endif %}
+    {% if section.settings.text_alignment == 'left' %}justify-content: flex-start;{% endif %}
+    margin-bottom: 4px;
+  }
+  .text-column .inline-image-wrapper img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
   }
 
   .image-column {
@@ -92,6 +103,15 @@
       <div class="text-column-inner">
         <h2>{{ section.settings.title }}</h2>
         <div class="body-text">{{ section.settings.body }}</div>
+        {% if section.settings.inline_image != blank %}
+          <div class="inline-image-wrapper">
+            <img src="{{ section.settings.inline_image | img_url: 'master' }}" 
+                 alt="{{ section.settings.inline_image.alt | default: section.settings.title }}"
+                 loading="lazy"
+                 width="{{ section.settings.inline_image.width }}"
+                 height="{{ section.settings.inline_image.height }}">
+          </div>
+        {% endif %}
         {% if section.settings.cta_text != blank and section.settings.cta_link != blank %}
           <a href="{{ section.settings.cta_link }}" class="btn {{ section.settings.cta_type }}">{{ section.settings.cta_text }}</a>
         {% endif %}
@@ -126,6 +146,32 @@
       "id": "body",
       "label": "Text Content",
       "default": "<p>Share information about your brand, product or service with your customers.</p>"
+    },
+    {
+      "label": "Text Alignment",
+      "id": "text_alignment",
+      "type": "select",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "image_picker",
+      "id": "inline_image",
+      "label": "Inline Image (Optional)",
+      "info": "This image will be displayed inline with the text."
     },
     {
       "type": "text",

@@ -1,0 +1,180 @@
+{% assign section_id = section.id %}
+{% assign bg_color = section.settings.bg_color | default: '#ffffff' %}
+{% assign has_top_border = section.settings.show_top_border %}
+{% assign has_bottom_border = section.settings.show_bottom_border %}
+{% assign scroll_speed = section.settings.scroll_speed | default: 30 %}
+
+<style>
+  .scrolling-logos-section-{{ section_id }} {
+    background-color: {{ bg_color }};
+    position: relative;
+    overflow: hidden;
+    {% if has_top_border %}
+      border-top: 1px solid {{ section.settings.border_color }};
+    {% endif %}
+    {% if has_bottom_border %}
+      border-bottom: 1px solid {{ section.settings.border_color }};
+    {% endif %}
+  }
+
+  @keyframes scroll-left-{{ section_id }} {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .scrolling-logos-wrapper-{{ section_id }} {
+    display: flex;
+    gap: 32px; 
+    padding: 2rem 0;
+  }
+
+  .scrolling-logos-{{ section_id }} {
+    display: flex;
+    gap: 32px;
+    white-space: nowrap;
+    animation: scroll-left-{{ section_id }} {{ scroll_speed }}s linear infinite;
+  }
+
+  .logo-item-{{ section_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    min-width: 116px;
+  }
+
+  .logo-item-{{ section_id }} img {
+    max-height: 30px;
+    width: auto;
+    object-fit: contain;
+  }
+</style>
+
+<section class="scrolling-logos-section-{{ section_id }}">
+  <div class="scrolling-logos-wrapper-{{ section_id }}">
+    {% if section.blocks.size > 0 %}
+      {% for i in (1..3) %}
+        <div class="scrolling-logos-{{ section_id }}">
+          {% for block in section.blocks %}
+            {% if block.type == 'logo' %}
+              <div class="logo-item-{{ section_id }}" {{ block.shopify_attributes }}>
+                {% if block.settings.logo != blank %}
+                  <img
+                    src="{{ block.settings.logo | img_url: 'master' }}"
+                    alt="{{ block.settings.logo.alt | default: block.settings.logo_text }}"
+                    loading="lazy"
+                    width="{{ block.settings.logo.width }}"
+                    height="{{ block.settings.logo.height }}"
+                  >
+                {% elsif block.settings.logo_text != blank %}
+                  <span>{{ block.settings.logo_text }}</span>
+                {% else %}
+                  <span>Logo</span>
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endfor %}
+    {% else %}
+      <!-- Placeholder logos if no blocks added -->
+      {% for i in (1..3) %}
+        <div class="scrolling-logos-{{ section_id }}">
+          {% for j in (1..5) %}
+            <div class="logo-item-{{ section_id }}">
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Scrolling Logos",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_top_border",
+      "label": "Show Top Border",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottom_border",
+      "label": "Show Bottom Border",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#1A1A1A"
+    },
+    {
+      "type": "range",
+      "id": "scroll_speed",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "s",
+      "label": "Scroll Speed",
+      "default": 30
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo Image"
+        },
+        {
+          "type": "text",
+          "id": "logo_text",
+          "label": "Logo Text (fallback if no image)",
+          "default": ""
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrolling Logos",
+      "category": "Promotional",
+      "blocks": [
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
