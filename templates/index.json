@@ -633,6 +633,7 @@
       "settings": {
         "title": "You're set up for success",
         "body": "<p>Most new product subscriptions come with a FREE Starter Kit.</p><ul><li>Exclusive Mixhers Shaker </li><li>VIP Member Perks Guide</li><li>Bonus Wellness Samples</li><li>A Special Welcome Gift</li></ul>",
+        "text_alignment": "left",
         "cta_text": "Get Started",
         "cta_link": "https://mixhers.com/collections/all",
         "image": "shopify://shop_images/rebrand_metabolic_no_bg.png",
@@ -725,12 +726,63 @@
         "border_color": "#1a1a1a"
       }
     },
+    "scrolling_logos_section_RaMfcJ": {
+      "type": "scrolling-logos-section",
+      "blocks": {
+        "logo_EFQYKQ": {
+          "type": "logo",
+          "settings": {
+            "logo_text": ""
+          }
+        },
+        "logo_zTTfqH": {
+          "type": "logo",
+          "settings": {
+            "logo_text": ""
+          }
+        },
+        "logo_8eRRCd": {
+          "type": "logo",
+          "settings": {
+            "logo_text": ""
+          }
+        },
+        "logo_RPdAbL": {
+          "type": "logo",
+          "settings": {
+            "logo_text": ""
+          }
+        },
+        "logo_ApnpBc": {
+          "type": "logo",
+          "settings": {
+            "logo_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_EFQYKQ",
+        "logo_zTTfqH",
+        "logo_8eRRCd",
+        "logo_RPdAbL",
+        "logo_ApnpBc"
+      ],
+      "name": "Scrolling Logos",
+      "settings": {
+        "bg_color": "#ffffff",
+        "show_top_border": false,
+        "show_bottom_border": false,
+        "border_color": "#1A1A1A",
+        "scroll_speed": 30
+      }
+    },
     "text_and_image_section_WN9VJ6": {
       "type": "text-and-image-section",
       "name": "Text and Image",
       "settings": {
         "title": "Make it personal.",
         "body": "<p>Get matched with an individualized product suite formulated just for you.</p>",
+        "text_alignment": "left",
         "cta_text": "Take the quiz",
         "cta_link": "https://mixhers.com/pages/quiz",
         "image": "shopify://shop_images/rebrand-mocktail.gif",
@@ -739,7 +791,7 @@
         "cta_type": "btn-black",
         "show_top_border": false,
         "show_bottom_border": false,
-        "border_color": "rgb(26 26 26 / 1)"
+        "border_color": "#1a1a1a"
       }
     }
   },
@@ -754,6 +806,7 @@
     "ugc_testimonials_MjBbiJ",
     "text_and_image_section_gphUVg",
     "faq_section_cAJwyH",
+    "scrolling_logos_section_RaMfcJ",
     "text_and_image_section_WN9VJ6"
   ]
 }
