@@ -1,0 +1,159 @@
+{% assign section_id = section.id %}
+{% assign direction = section.settings.direction | default: 'ltr' %}
+{% assign bg_color = section.settings.bg_color | default: '#f4f9fd' %}
+
+<style>
+  .text-and-image-section-{{ section_id }} {
+    background-color: {{ bg_color }};
+    padding: 4rem 0;
+  }
+
+  .text-and-image-container {
+    display: flex;
+    flex-direction: {% if direction == 'rtl' %}row-reverse{% else %}row{% endif %};
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .text-column,
+  .image-column {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .text-column {
+    text-align: {% if direction == 'rtl' %}right{% else %}left{% endif %};
+  }
+
+  .text-column h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-family: 'Faire Sprig', serif;
+  }
+
+  .text-column .body-text {
+    margin-bottom: 2rem;
+    font-family: 'Buenos Aires', sans-serif;
+    line-height: 1.6;
+  }
+
+  .image-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .image-column img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    max-height: 500px;
+  }
+
+  @media screen and (max-width: 767px) {
+    .text-and-image-container {
+      flex-direction: column-reverse;
+    }
+
+    .text-column,
+    .image-column {
+      width: 100%;
+      padding: 1.5rem;
+    }
+
+    .text-column {
+      text-align: center;
+    }
+  }
+</style>
+
+<section class="text-and-image-section-{{ section_id }}">
+  <div class="text-and-image-container">
+    <div class="text-column">
+      <h2>{{ section.settings.title }}</h2>
+      <div class="body-text">{{ section.settings.body }}</div>
+      {% if section.settings.cta_text != blank and section.settings.cta_link != blank %}
+        <a href="{{ section.settings.cta_link }}" class="cta-button">{{ section.settings.cta_text }}</a>
+      {% endif %}
+    </div>
+    <div class="image-column">
+      {% if section.settings.image != blank %}
+        <img src="{{ section.settings.image | img_url: 'master' }}" 
+             alt="{{ section.settings.image.alt | default: section.settings.title }}"
+             loading="lazy"
+             width="{{ section.settings.image.width }}"
+             height="{{ section.settings.image.height }}">
+      {% else %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Text and Image",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Your Section Title"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Text Content",
+      "default": "<p>Share information about your brand, product or service with your customers.</p>"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button Text",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "Content Direction",
+      "options": [
+        {
+          "value": "ltr",
+          "label": "Text Left, Image Right"
+        },
+        {
+          "value": "rtl",
+          "label": "Image Left, Text Right"
+        }
+      ],
+      "default": "ltr"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#f4f9fd"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text and Image",
+      "category": "Content"
+    }
+  ]
+}
+{% endschema %}
