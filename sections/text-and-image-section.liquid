@@ -1,19 +1,26 @@
 {% assign section_id = section.id %}
 {% assign direction = section.settings.direction | default: 'ltr' %}
 {% assign bg_color = section.settings.bg_color | default: '#f4f9fd' %}
+{% assign cta_type = section.settings.cta_type | default: 'btn-pink' %}
+{% assign has_top_border = section.settings.show_top_border %}
+{% assign has_bottom_border = section.settings.show_bottom_border %}
 
 <style>
   .text-and-image-section-{{ section_id }} {
     background-color: {{ bg_color }};
     padding: 4rem 0;
+    position: relative;
+    {% if has_top_border %}
+      border-top: 1px solid {{ section.settings.border_color }};
+    {% endif %}
+    {% if has_bottom_border %}
+      border-bottom: 1px solid {{ section.settings.border_color }};
+    {% endif %}
   }
 
   .text-and-image-container {
     display: flex;
     flex-direction: {% if direction == 'rtl' %}row-reverse{% else %}row{% endif %};
-    max-width: 1200px;
-    margin: 0 auto;
-    align-items: center;
   }
 
   .text-column,
@@ -28,6 +35,10 @@
   .text-column {
     text-align: {% if direction == 'rtl' %}right{% else %}left{% endif %};
   }
+  .text-column-inner {
+    max-width: 600px;
+    margin: 0 auto;
+  }
 
   .text-column h2 {
     margin-bottom: 1.5rem;
@@ -39,6 +50,10 @@
     margin-bottom: 2rem;
     font-family: 'Buenos Aires', sans-serif;
     line-height: 1.6;
+  }
+  
+  .text-column .btn-clear:hover {
+    background-color: rgba(0,0,0,0.05);
   }
 
   .image-column {
@@ -72,13 +87,15 @@
 </style>
 
 <section class="text-and-image-section-{{ section_id }}">
-  <div class="text-and-image-container">
+  <div class="text-and-image-container page-width">
     <div class="text-column">
-      <h2>{{ section.settings.title }}</h2>
-      <div class="body-text">{{ section.settings.body }}</div>
-      {% if section.settings.cta_text != blank and section.settings.cta_link != blank %}
-        <a href="{{ section.settings.cta_link }}" class="cta-button">{{ section.settings.cta_text }}</a>
-      {% endif %}
+      <div class="text-column-inner">
+        <h2>{{ section.settings.title }}</h2>
+        <div class="body-text">{{ section.settings.body }}</div>
+        {% if section.settings.cta_text != blank and section.settings.cta_link != blank %}
+          <a href="{{ section.settings.cta_link }}" class="btn {{ section.settings.cta_type }}">{{ section.settings.cta_text }}</a>
+        {% endif %}
+      </div>
     </div>
     <div class="image-column">
       {% if section.settings.image != blank %}
@@ -147,6 +164,44 @@
       "id": "bg_color",
       "label": "Background Color",
       "default": "#f4f9fd"
+    },
+    {
+      "type": "select",
+      "id": "cta_type",
+      "label": "Button Style",
+      "options": [
+        {
+          "value": "btn-pink",
+          "label": "Pink"
+        },
+        {
+          "value": "btn-black",
+          "label": "Black"
+        },
+        {
+          "value": "btn-clear",
+          "label": "Transparent"
+        }
+      ],
+      "default": "btn-pink"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_top_border",
+      "label": "Show Top Border",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottom_border",
+      "label": "Show Bottom Border",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "rgb(26 26 26 / 1)"
     }
   ],
   "presets": [
