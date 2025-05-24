@@ -18,7 +18,7 @@
     {% endif %}
   }
 
-  .text-and-image-container {
+  .text-and-image-section-{{ section_id }} .text-and-image-container {
     display: flex;
     flex-direction: {% if direction == 'rtl' %}row-reverse{% else %}row{% endif %};
   }
@@ -32,10 +32,10 @@
     padding: 2rem;
   }
 
-  .text-column {
+  .text-and-image-section-{{ section_id }} .text-column {
     text-align: {% if direction == 'rtl' %}right{% else %}left{% endif %};
   }
-  .text-column-inner {
+  .text-and-image-section-{{ section_id }} .text-column-inner {
     max-width: 600px;
     margin: 0 auto;
     {% if section.settings.text_alignment == 'center' %}text-align: center;{% endif %}
@@ -54,7 +54,7 @@
     font-family: 'Buenos Aires', sans-serif;
     line-height: 1.6;
   }
-  .text-column .inline-image-wrapper {
+  .text-and-image-section-{{ section_id }} .text-column .inline-image-wrapper {
     display: flex;
     {% if section.settings.text_alignment == 'center' %}justify-content: center;{% endif %}
     {% if section.settings.text_alignment == 'right' %}justify-content: flex-end;{% endif %}
