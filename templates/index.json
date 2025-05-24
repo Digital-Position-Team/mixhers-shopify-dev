@@ -637,7 +637,11 @@
         "cta_link": "https://mixhers.com/collections/all",
         "image": "shopify://shop_images/rebrand_metabolic_no_bg.png",
         "direction": "ltr",
-        "bg_color": "#f4f9fd"
+        "bg_color": "#f4f9fd",
+        "cta_type": "btn-pink",
+        "show_top_border": true,
+        "show_bottom_border": true,
+        "border_color": "#1a1a1a"
       }
     }
   },
