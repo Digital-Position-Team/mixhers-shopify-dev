@@ -152,12 +152,6 @@
     margin-top: auto;
   }
   
-  @media screen and (max-width: 1200px) {
-    .featured-products__grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-  
   @media screen and (max-width: 990px) {
     .featured-products__grid {
       grid-template-columns: repeat(2, 1fr);
@@ -165,13 +159,10 @@
   }
   
   @media screen and (max-width: 767px) {
-    .featured-products {
-      padding: 60px 0;
-    }
-    
     .featured-products__grid {
       grid-template-columns: 1fr;
     }
+    .featured-products__view-all { display: block; position: relative; right: 0px; }
     
     .featured-products__header {
       flex-direction: column;

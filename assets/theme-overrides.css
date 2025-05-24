@@ -10,6 +10,20 @@ h3 {
   font-size: 24px;
   line-height: 36px;
 }
+@media (max-width: 990px) {
+  h1 {
+    font-size: 38px;
+    line-height: 42px;
+  }
+  h2 {
+    font-size: 30px;
+    line-height: 38px;
+  }
+  h3 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
 
 /* Global Button Styles */
 .btn {
@@ -24,6 +38,11 @@ h3 {
   transition: all 0.3s ease;
   text-align: center;
   font-family: 'Buenos Aires', sans-serif;
+}
+@media (max-width: 600px) {
+  .btn {
+    width: 100%;
+  }
 }
 
 .btn-black {
@@ -62,6 +81,8 @@ h3 {
 }
 .footer .footer-block__heading {
   margin-bottom: 6px;
+  color: black;
+  font-weight: 600;
 }
 .footer .list-menu__item--link {
   font-size: 16px !important;
@@ -162,4 +183,18 @@ h3 {
   text-align: center;
   color: #888;
   font-size: 1rem;
+}
+@media (max-width: 600px) {
+  .footer-block {
+    width: 100%;
+  }
+  .footer__main-row {
+    gap: 0px;
+  }
+  .footer-block__details-content {
+    margin-bottom: 12px;
+  }
+  .footer .footer-block__heading {
+    line-height: 28px;
+  }
 }

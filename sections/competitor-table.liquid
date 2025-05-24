@@ -18,6 +18,7 @@
     gap: 16px;
     border-radius: 8px;
     overflow: hidden;
+    overflow-x: scroll;
   }
   
   .competitor-table__column {
@@ -35,6 +36,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    white-space: nowrap;
   }
   
   .competitor-table__cell:not(:last-child) {
@@ -45,6 +47,7 @@
     font-weight: 600;
     font-size: 18px;
     border-radius: 20px;
+    white-space: nowrap;
   }
   
   /* Column 2 (Mixhers) styling */
@@ -80,14 +83,13 @@
   }
   
   @media screen and (max-width: 767px) {
-    .competitor-table__grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .competitor-table__column:nth-child(3),
-    .competitor-table__column:nth-child(4) {
-      margin-top: 16px;
-    }
+    .competitor-table__cell { font-size: 20px; }
+    .competitor-table__column { padding: 4px; }
+    .competitor-table__cell { padding: 8px; }
+    .competitor-table__header { border-radius: 30px; font-size: 12px; }
+    .competitor-table__logo { max-height: 20px; }
+    .competitor-table__cell svg { width: 18px; height: 18px; }
+    .competitor-table__circle-icon { width: 18px; height: 18px; }
   }
 </style>
 
