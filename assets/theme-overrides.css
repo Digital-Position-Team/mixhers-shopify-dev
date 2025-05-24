@@ -189,12 +189,15 @@ h3 {
     width: 100%;
   }
   .footer__main-row {
-    gap: 0px;
+    gap: 0px !important;
   }
   .footer-block__details-content {
     margin-bottom: 12px;
   }
   .footer .footer-block__heading {
     line-height: 28px;
+  }
+  .footer-block__newsletter-custom {
+    align-items: center;
   }
 }
