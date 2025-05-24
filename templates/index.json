@@ -628,9 +628,7 @@
     },
     "text_and_image_section_gphUVg": {
       "type": "text-and-image-section",
-      "custom_css": [
-        ".container {border-top: 1px solid black;}"
-      ],
+      "custom_css": [],
       "name": "Text and Image",
       "settings": {
         "title": "You're set up for success",
