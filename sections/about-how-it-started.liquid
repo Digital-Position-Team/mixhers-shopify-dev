@@ -1,4 +1,4 @@
-<section class="about-how-it-started">
+<section class="about-how-it-started" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
   <div class="section-container">
     <div class="how-it-started-wrapper">
     <div class="how-it-started__text">
@@ -94,6 +94,24 @@
       "id": "text",
       "label": "Paragraph Text",
       "default": "<p>Your paragraph here...</p>"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top (px)",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom (px)",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "default": 40
     }
   ],
   "presets": [
