@@ -1,116 +1,140 @@
-<section class="about-on-a-mission" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+<section class="mission-section" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
   <div class="section-container">
-    <div class="on-a-mission-wrapper">
-    <div class="on-a-mission__text">
-      <h2 class="on-a-mission__title">
-        {{ section.settings.title }}
-      </h2>
-      <div class="on-a-mission__paragraphs">
+    <h2 class="mission-heading">
+      {{ section.settings.heading }}
+    </h2>
+    <div class="mission-wrapper">
+      <div class="mission-text">
         {{ section.settings.text }}
       </div>
-    </div>
+      {% if section.settings.button_text != blank and section.settings.button_link != blank %}
+        <a href="{{ section.settings.button_link }}" class="mission-button">
+          {{ section.settings.button_text }}
+        </a>
+      {% endif %}
     </div>
   </div>
 </section>
 
+<style>
+  .mission-section {
+    background-color: #F4F5FD;
+    border-top: 1px solid #000;
+  }
+
+  .section-container {
+    max-width: 1357px;
+    margin: 0 auto;
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+
+  .mission-heading {
+    font-family: 'FAIRE_Sprig', serif;
+    font-size: 28px;
+    line-height: 32px;
+    font-weight: 500;
+    margin: 0 0 24px 0;
+  }
+
+  .mission-wrapper {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .mission-text {
+    font-family: 'Buenos_Aires', sans-serif;
+    font-size: 20px;
+    line-height: 24px;
+    color: #000;
+  }
+
+  .mission-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+    background: #1A1A1A;
+    border-radius: 64px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Buenos_Aires', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+  }
+
+  .mission-button:hover {
+    background-color: #000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  }
+
+  @media (max-width: 767px) {
+    .section-container {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .mission-wrapper {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .mission-button {
+      width: 100%;
+      max-width: 180px;
+    }
+  }
+</style>
+
 {% schema %}
 {
-  "name": "On a mission",
+  "name": "Mission Section",
   "settings": [
     {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Image",
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "We're on a mission"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Description",
+      "default": "<p>Mixhers provides hormone-friendly, science-backed supplements to fuel female evolution through every stage of womanhood. We boldly advocate for the voices, experiences, and health of women.</p>"
     },
     {
       "type": "text",
-      "id": "title",
-      "label": "Section Title",
-      "default": "How it started"
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop Now"
     },
     {
-      "type": "textarea",
-      "id": "text",
-      "label": "Paragraph Text",
-      "default": "<p>Your paragraph here...</p>"
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link",
+      "default": "/collections/all"
     },
     {
-      "type": "range",
+      "type": "number",
       "id": "padding_top",
       "label": "Padding Top (px)",
-      "min": 0,
-      "max": 200,
-      "step": 5,
       "default": 40
     },
     {
-      "type": "range",
+      "type": "number",
       "id": "padding_bottom",
       "label": "Padding Bottom (px)",
-      "min": 0,
-      "max": 200,
-      "step": 5,
       "default": 40
     }
   ],
   "presets": [
     {
-      "name": "How It's Going"
+      "name": "Mission Section"
     }
   ]
 }
 {% endschema %}
-
-<style>
-  .section-container {
-    padding-left:48px;
-    padding-right:48px;
-    max-width: 1357px;
-    margin: 0 auto;
-  }
-  .on-a-mission-wrapper{
-    display: flex;
-    gap: 40px;
-  }
-  .on-a-mission__title {
-    font-size: 36px;
-    font-family: FAIRE Sprig;
-    line-height: 42px;
-    margin: 0px;
-    position: relative;
-    display: inline-block;
-  }
-  .highlight-bar {
-    position: absolute;
-    bottom: -5px;
-    display: inline-block !important;
-    left: 0;
-    height: 18px;
-    width: 100%;
-    background-color: #ff59e48a;
-    z-index: -1;
-  }
-  .on-a-mission__paragraphs p {
-    font-family: Buenos Aires, sans-serif;
-    font-size: 20px;
-    color: #1a1a1a;
-    line-height: 24px;
-    margin-bottom: 1rem
-  }
-  .on-a-mission__image img {
-    max-width: 500px;
-    height: auto;
-  }
-  @media (max-width: 767px) {
-    .on-a-mission__wrapper {
-      flex-direction: column;
-    }
-  }
-  @media(max-width:1023px){
-    .section-container{
-    padding-left:20px;
-    padding-right:20px;
-    }
-  }
-</style>
-
