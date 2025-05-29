@@ -1,0 +1,131 @@
+<section class="about-how-its-going">
+  <div class="how-its-going__wrapper">
+    <div class="how-its-going__image desktop-only">
+      <img src="{{ section.settings.image | img_url: '800x' }}" alt="How it's going image">
+    </div>
+    <div class="how-its-going__text">
+      <h2 class="how-its-going__title">
+        {{ section.settings.title }}
+        <div class="highlight-bar"></div>
+      </h2>
+      <div class="how-its-going__paragraphs">
+        {% for block in section.blocks %}
+          <p>{{ block.settings.text }}</p>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="how-its-going__image mobile-only">
+      <img src="{{ section.settings.mobile_image | img_url: '600x' }}" alt="How it's going image mobile">
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-how-its-going {
+    padding: 40px 20px;
+  }
+
+  .how-its-going__wrapper {
+    max-width: 1357px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  @media (min-width: 768px) {
+    .how-its-going__wrapper {
+      flex-direction: row;
+    }
+
+    .mobile-only {
+      display: none;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .desktop-only {
+      display: none;
+    }
+  }
+
+  .how-its-going__title {
+    font-family: 'FAIRE_Sprig', serif;
+    font-size: 36px;
+    line-height: 42px;
+    position: relative;
+  }
+
+  .highlight-bar {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    height: 18px;
+    width: 100%;
+    background-color: #FFC0CB;
+    z-index: -1;
+  }
+
+  .how-its-going__paragraphs p {
+    font-family: 'Buenos_Aires', sans-serif;
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 1rem;
+  }
+
+  .how-its-going__image img {
+    max-width: 425px;
+    height: auto;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "How It's Going",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "How it's going"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text_block",
+      "name": "Paragraph",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Paragraph Text"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "How It's Going",
+      "blocks": [
+        {
+          "type": "text_block",
+          "settings": {
+            "text": "Your paragraph here..."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
