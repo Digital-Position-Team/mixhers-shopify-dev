@@ -6,13 +6,11 @@
         <div class="highlight-bar"></div>
       </h2>
       <div class="how-it-started__paragraphs">
-        {% for block in section.blocks %}
-         <div class="rich-paragraph">{{ block.settings.text }}</div>
-        {% endfor %}
+        {{ section.settings.text }}
       </div>
     </div>
     <div class="how-it-started__image">
-      <img src="{{ section.settings.image | image_url: width: 900 }}" width="" height="" alt="How it started image">
+      <img src="{{ section.settings.image | image_url: width: 900 }}" alt="How it started image">
     </div>
   </div>
 </section>
@@ -80,33 +78,17 @@
       "id": "title",
       "label": "Section Title",
       "default": "How it started"
-    }
-  ],
-  "blocks": [
+    },
     {
-      "type": "text_block",
-      "name": "Paragraph",
-      "settings": [
-        {
-          "type": "richtext",
-          "id": "text",
-          "label": "Paragraph Text"
-        }
-      ]
+      "type": "richtext",
+      "id": "text",
+      "label": "Paragraph Text",
+      "default": "<p>Your paragraph here...</p>"
     }
   ],
-  "max_blocks": 10,
   "presets": [
     {
-      "name": "How It Started",
-      "blocks": [
-        {
-          "type": "text_block",
-          "settings": {
-            "text": "<p>Your paragraph here...</p>"
-          }
-        }
-      ]
+      "name": "How It Started"
     }
   ]
 }
