@@ -1,6 +1,56 @@
-{% schema %}
-  {
-    "name": "Section name",
-    "settings": []
+{% stylesheet %}
+  @media (max-width: 768px) {
+    .hero-image img {
+      content: url('{{ section.settings.image_mobile | img_url: "master" }}');
+    }
   }
+{% endstylesheet %}
+
+<div class="hero-image relative">
+  <img src="{{ section.settings.image_desktop | img_url: 'master' }}" width="100%" height="" alt="{{ section.settings.alt_text }}" class="w-full" />
+  <div class="absolute top-0 left-0 w-full text-center md:block hidden">
+    <h1 class="text-3xl md:text-5xl font-bold mt-20">{{ section.settings.text_desktop }}</h1>
+  </div>
+  <div class="md:hidden absolute top-12 left-4 text-left">
+    {{ section.settings.text_mobile | newline_to_br }}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "About Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Hero Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Hero Image (Mobile)"
+    },
+    {
+      "type": "text",
+      "id": "alt_text",
+      "label": "Alt text",
+      "default": "Hero image"
+    },
+    {
+      "type": "text",
+      "id": "text_desktop",
+      "label": "Text for Desktop"
+    },
+    {
+      "type": "textarea",
+      "id": "text_mobile",
+      "label": "Text for Mobile"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Hero"
+    }
+  ]
+}
 {% endschema %}
+
