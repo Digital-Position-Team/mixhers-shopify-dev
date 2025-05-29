@@ -11,6 +11,7 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
@@ -20,6 +21,7 @@
       "type": "about-hero",
       "settings": {
         "desktop_image": "shopify://shop_images/about_us_hero_433ac91c-e8cf-42f4-a004-e0f5dea61fe7.png",
+        "mobile_image": "shopify://shop_images/about_us_mobile_hero.png",
         "heading_desktop": "Hormone-friendly · Highly absorbable · All Natural",
         "heading_mobile_1": "Hormone-friendly",
         "heading_mobile_2": "Highly absorbable",
