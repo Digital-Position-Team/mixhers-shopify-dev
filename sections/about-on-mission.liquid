@@ -1,13 +1,9 @@
 <section class="about-on-a-mission" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
   <div class="section-container">
     <div class="on-a-mission-wrapper">
-    <div class="on-a-mission__image">
-      <img src="{{ section.settings.image | image_url: width: 900 }}" width="" height="" alt="How it started image">
-    </div>
     <div class="on-a-mission__text">
       <h2 class="on-a-mission__title">
         {{ section.settings.title }}
-        <div class="highlight-bar"></div>
       </h2>
       <div class="on-a-mission__paragraphs">
         {{ section.settings.text }}
@@ -19,7 +15,7 @@
 
 {% schema %}
 {
-  "name": "How It's Going",
+  "name": "On a mission",
   "settings": [
     {
       "type": "image_picker",
@@ -33,7 +29,7 @@
       "default": "How it started"
     },
     {
-      "type": "richtext",
+      "type": "textarea",
       "id": "text",
       "label": "Paragraph Text",
       "default": "<p>Your paragraph here...</p>"
