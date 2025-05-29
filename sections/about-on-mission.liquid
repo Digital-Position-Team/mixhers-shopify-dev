@@ -4,9 +4,9 @@
       {{ section.settings.heading }}
     </h2>
     <div class="mission-wrapper">
-      <p class="mission-text">
+      <div class="mission-text">
         {{ section.settings.text }}
-      </p>
+      </div>
       {% if section.settings.button_text != blank and section.settings.button_link != blank %}
         <a href="{{ section.settings.button_link }}" class="mission-button">
           {{ section.settings.button_text }}
@@ -102,7 +102,7 @@
       "default": "We're on a mission"
     },
     {
-      "type": "text",
+      "type": "textarea",
       "id": "text",
       "label": "Description",
       "default": "Mixhers provides hormone-friendly, science-backed supplements to fuel female evolution through every stage of womanhood. We boldly advocate for the voices, experiences, and health of women."
