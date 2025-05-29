@@ -25,10 +25,48 @@
         "heading_mobile_2": "Highly absorbable",
         "heading_mobile_3": "All Natural"
       }
+    },
+    "about_how_it_started_xnKbaX": {
+      "type": "about-how-it-started",
+      "blocks": {
+        "text_block_FRQQA9": {
+          "type": "text_block",
+          "settings": {
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_block_FRQQA9"
+      ],
+      "name": "How It Started",
+      "settings": {
+        "title": "How it started"
+      }
+    },
+    "about_how_its_going_b7bGL8": {
+      "type": "about-how-its-going",
+      "blocks": {
+        "text_block_ycVgGy": {
+          "type": "text_block",
+          "settings": {
+            "text": "Your paragraph here..."
+          }
+        }
+      },
+      "block_order": [
+        "text_block_ycVgGy"
+      ],
+      "name": "How It's Going",
+      "settings": {
+        "title": "How it's going"
+      }
     }
   },
   "order": [
     "main",
-    "about_hero_9U8bQY"
+    "about_hero_9U8bQY",
+    "about_how_it_started_xnKbaX",
+    "about_how_its_going_b7bGL8"
   ]
 }
