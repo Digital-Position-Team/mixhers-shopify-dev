@@ -1,0 +1,120 @@
+<section class="about-on-a-mission" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+  <div class="section-container">
+    <div class="on-a-mission-wrapper">
+    <div class="on-a-mission__image">
+      <img src="{{ section.settings.image | image_url: width: 900 }}" width="" height="" alt="How it started image">
+    </div>
+    <div class="on-a-mission__text">
+      <h2 class="on-a-mission__title">
+        {{ section.settings.title }}
+        <div class="highlight-bar"></div>
+      </h2>
+      <div class="on-a-mission__paragraphs">
+        {{ section.settings.text }}
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "How It's Going",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "How it started"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Paragraph Text",
+      "default": "<p>Your paragraph here...</p>"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top (px)",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom (px)",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "How It's Going"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .section-container {
+    padding-left:48px;
+    padding-right:48px;
+    max-width: 1357px;
+    margin: 0 auto;
+  }
+  .on-a-mission-wrapper{
+    display: flex;
+    gap: 40px;
+  }
+  .on-a-mission__title {
+    font-size: 36px;
+    font-family: FAIRE Sprig;
+    line-height: 42px;
+    margin: 0px;
+    position: relative;
+    display: inline-block;
+  }
+  .highlight-bar {
+    position: absolute;
+    bottom: -5px;
+    display: inline-block !important;
+    left: 0;
+    height: 18px;
+    width: 100%;
+    background-color: #ff59e48a;
+    z-index: -1;
+  }
+  .on-a-mission__paragraphs p {
+    font-family: Buenos Aires, sans-serif;
+    font-size: 20px;
+    color: #1a1a1a;
+    line-height: 24px;
+    margin-bottom: 1rem
+  }
+  .on-a-mission__image img {
+    max-width: 500px;
+    height: auto;
+  }
+  @media (max-width: 767px) {
+    .on-a-mission__wrapper {
+      flex-direction: column;
+    }
+  }
+  @media(max-width:1023px){
+    .section-container{
+    padding-left:20px;
+    padding-right:20px;
+    }
+  }
+</style>
+
