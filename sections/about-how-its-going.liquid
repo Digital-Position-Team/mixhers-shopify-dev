@@ -1,8 +1,6 @@
-<section class="about-how-its-going">
-  <div class="how-its-going__wrapper">
-    <div class="how-its-going__image desktop-only">
-      <img src="{{ section.settings.image | image_url: width: 900 }}" width="" height="" alt="How it's going image">
-    </div>
+<section class="about-how-its-going" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+  <div class="section-container">
+    <div class="how-its-going-wrapper">
     <div class="how-its-going__text">
       <h2 class="how-its-going__title">
         {{ section.settings.title }}
@@ -12,70 +10,13 @@
         {{ section.settings.text }}
       </div>
     </div>
-    <div class="how-its-going__image mobile-only">
-      <img src="{{ section.settings.mobile_image | image_url: width: 700 }}" width="" height="" alt="How it's going image mobile">
+    <div class="how-its-going__image">
+      <img src="{{ section.settings.image | image_url: width: 900 }}" width="" height="" alt="How it started image">
+    </div>
     </div>
   </div>
 </section>
 
-<style>
-  .about-how-its-going {
-    padding: 40px 20px;
-  }
-
-  .how-its-going__wrapper {
-    max-width: 1357px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  @media (min-width: 768px) {
-    .how-its-going__wrapper {
-      flex-direction: row;
-    }
-
-    .mobile-only {
-      display: none;
-    }
-  }
-
-  @media (max-width: 767px) {
-    .desktop-only {
-      display: none;
-    }
-  }
-
-  .how-its-going__title {
-    font-family: 'FAIRE_Sprig', serif;
-    font-size: 36px;
-    line-height: 42px;
-    position: relative;
-  }
-
-  .highlight-bar {
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    height: 18px;
-    width: 100%;
-    background-color: #FFC0CB;
-    z-index: -1;
-  }
-
-  .how-its-going__paragraphs p {
-    font-family: 'Buenos_Aires', sans-serif;
-    font-size: 20px;
-    line-height: 24px;
-    margin-bottom: 1rem;
-  }
-
-  .how-its-going__image img {
-    max-width: 425px;
-    height: auto;
-  }
-</style>
 {% schema %}
 {
   "name": "How It's Going",
@@ -83,24 +24,37 @@
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Desktop Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "mobile_image",
-      "label": "Mobile Image"
+      "label": "Image",
     },
     {
       "type": "text",
       "id": "title",
       "label": "Section Title",
-      "default": "How it's going"
+      "default": "How it started"
     },
     {
       "type": "richtext",
       "id": "text",
       "label": "Paragraph Text",
-      "default": "<p>Your rich paragraph here...</p>"
+      "default": "<p>Your paragraph here...</p>"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top (px)",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom (px)",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "default": 40
     }
   ],
   "presets": [
@@ -110,4 +64,57 @@
   ]
 }
 {% endschema %}
+
+<style>
+  .section-container {
+    padding-left:48px;
+    padding-right:48px;
+    max-width: 1357px;
+    margin: 0 auto;
+  }
+  .how-its-going-wrapper{
+    display: flex;
+    gap: 40px;
+  }
+  .how-its-going__title {
+    font-size: 36px;
+    font-family: FAIRE Sprig;
+    line-height: 42px;
+    margin: 0px;
+    position: relative;
+    display: inline-block;
+  }
+  .highlight-bar {
+    position: absolute;
+    bottom: -5px;
+    display: inline-block !important;
+    left: 0;
+    height: 18px;
+    width: 100%;
+    background-color: #ff59e48a;
+    z-index: -1;
+  }
+  .how-its-going__paragraphs p {
+    font-family: Buenos Aires, sans-serif;
+    font-size: 20px;
+    color: #1a1a1a;
+    line-height: 24px;
+    margin-bottom: 1rem
+  }
+  .how-its-going__image img {
+    max-width: 400px;
+    height: auto;
+  }
+  @media (max-width: 767px) {
+    .how-its-going__wrapper {
+      flex-direction: column;
+    }
+  }
+  @media(max-width:1023px){
+    .section-container{
+    padding-left:20px;
+    padding-right:20px;
+    }
+  }
+</style>
 
