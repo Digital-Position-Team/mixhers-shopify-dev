@@ -1,6 +1,54 @@
+<div class="flex flex-col md:flex-row {% if section.settings.image_position == 'left' %}md:flex-row-reverse{% endif %} items-center gap-6 my-10 px-5 max-w-screen-xl mx-auto">
+  <div class="md:w-1/2">
+    <h2 class="text-2xl md:text-3xl font-semibold mb-4">{{ section.settings.title }}</h2>
+    <div class="text-base md:text-lg space-y-3">
+      {{ section.settings.content | newline_to_br }}
+    </div>
+  </div>
+  <div class="md:w-1/2">
+    <img src="{{ section.settings.image | img_url: 'master' }}" alt="{{ section.settings.image_alt }}" class="w-full h-auto max-w-md mx-auto" />
+  </div>
+</div>
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Text + Image",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text",
+      "default": "About image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image Position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "right"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text + Image"
+    }
+  ]
+}
 {% endschema %}
