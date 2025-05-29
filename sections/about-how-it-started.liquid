@@ -7,7 +7,7 @@
       </h2>
       <div class="how-it-started__paragraphs">
         {% for block in section.blocks %}
-          <p>{{ block.settings.text }}</p>
+         <div class="rich-paragraph">{{ block.settings.text }}</div>
         {% endfor %}
       </div>
     </div>
@@ -88,7 +88,7 @@
       "name": "Paragraph",
       "settings": [
         {
-          "type": "textarea",
+          "type": "richtext",
           "id": "text",
           "label": "Paragraph Text"
         }
@@ -103,7 +103,7 @@
         {
           "type": "text_block",
           "settings": {
-            "text": "Your paragraph here..."
+            "text": "<p>Your paragraph here...</p>"
           }
         }
       ]
