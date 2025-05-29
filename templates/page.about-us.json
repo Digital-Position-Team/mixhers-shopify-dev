@@ -28,20 +28,10 @@
     },
     "about_how_it_started_xnKbaX": {
       "type": "about-how-it-started",
-      "blocks": {
-        "text_block_FRQQA9": {
-          "type": "text_block",
-          "settings": {
-            "text": "<p>After the birth of her twins, Jess Toolson experienced debilitating PMS symptoms, including hormonal acne, painful cramps, and dramatic mood swings.</p><p>Her search for answers left her with nothing more than band-aid solutions that masked her symptoms, so she turned to her friend, Cody Sanders, for solutions.</p><p>Using her skills as a functional nutritionist and holistic health practitioner, Cody formulated a treatment that targeted the root causes of hormone imbalance in women. When Jess experienced relief from her PMS symptoms, she felt inspired to partner with Cody and make the product available to all women.</p><p>Today, this powerhouse product is known as Hertime PMS.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "text_block_FRQQA9"
-      ],
       "settings": {
         "image": "shopify://shop_images/about_us_image_2.png",
-        "title": "How it started"
+        "title": "How it started",
+        "text": "<p>After the birth of her twins, Jess Toolson experienced debilitating PMS symptoms, including hormonal acne, painful cramps, and dramatic mood swings.</p><p>Her search for answers left her with nothing more than band-aid solutions that masked her symptoms, so she turned to her friend, Cody Sanders, for solutions.</p><p>Using her skills as a functional nutritionist and holistic health practitioner, Cody formulated a treatment that targeted the root causes of hormone imbalance in women. When Jess experienced relief from her PMS symptoms, she felt inspired to partner with Cody and make the product available to all women.</p><p>Today, this powerhouse product is known as Hertime PMS.</p>"
       }
     },
     "about_how_its_going_b7bGL8": {
