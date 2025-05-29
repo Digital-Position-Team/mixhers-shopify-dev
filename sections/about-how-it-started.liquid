@@ -1,105 +1,80 @@
-<section class="about-how-it-started">
-  <div class="section-container">
-    <div class="how-it-started-wrapper">
-    <div class="how-it-started__text">
-      <h2 class="how-it-started__title">
-        {{ section.settings.title }}
-        <div class="highlight-bar"></div>
-      </h2>
-      <div class="how-it-started__paragraphs">
-        {{ section.settings.text }}
-      </div>
-    </div>
-    <div class="how-it-started__image">
-      <img src="{{ section.settings.image | image_url: width: 900 }}" alt="How it started image">
-    </div>
-    </div>
-  </div>
-</section>
+{% layout 'rebrand-hybrid' %}
 
 <style>
-  .about-how-it-started {
-    padding: 40px 20px;
-  }
-  .section-container {
-    padding-left:48px;
-    padding-right:48px;
-    max-width: 1357px;
-    margin: 0 auto;
-  }
-  .how-it-started-wrapper{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .how-it-started__title {
-    font-family: 'FAIRE_Sprig', serif;
-    font-size: 36px;
-    line-height: 42px;
-    position: relative;
-  }
-
-  .highlight-bar {
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    height: 18px;
-    width: 100%;
-    background-color: #FFC0CB; /* pink-highlight */
-    z-index: -1;
-  }
-
-  .how-it-started__paragraphs p {
-    font-family: 'Buenos_Aires', sans-serif;
-    font-size: 20px;
-    line-height: 24px;
-    margin-bottom: 1rem;
-  }
-
-  .how-it-started__image img {
-    max-width: 400px;
-    height: auto;
-  }
-  
-  @media (min-width: 768px) {
-    .how-it-started__wrapper {
-      flex-direction: row;
+    @media (max-width: 768px) {
+        .hero-image img {
+            content: url('https://cdn.shopify.com/s/files/1/0557/9879/2371/files/about_us_mobile_hero.avif?v=1721736049');
+        }
     }
-  }
-  @media(max-width:1023px){
-     .section-container{
-    padding-left:20px;
-    padding-right:20px;
-     }
-  }
 </style>
 
-{% schema %}
-{
-  "name": "How It Started",
-  "settings": [
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Image"
-    },
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Section Title",
-      "default": "How it started"
-    },
-    {
-      "type": "richtext",
-      "id": "text",
-      "label": "Paragraph Text",
-      "default": "<p>Your paragraph here...</p>"
-    }
-  ],
-  "presets": [
-    {
-      "name": "How It Started"
-    }
-  ]
-}
-{% endschema %}
+<div class="relative w-full bg-white m-0 p-0 max-w-none">
+    <!-- Text Overlay for Desktop -->
+    <div class="absolute w-full text-center left-1/2 transform -translate-x-1/2 top-20 md:top-[84px] hidden md:block">
+        <h1 class="font-['FAIRE_Sprig'] font-normal text-[24px] sm:text-[30px] md:text-[36px] lg:text-[42px] xl:text-[48px] 2xl:text-[54px] leading-[30px] sm:leading-[36px] md:leading-[42px] lg:leading-[48px] xl:leading-[54px] 2xl:leading-[60px]">
+            Hormone-friendly · Highly absorbable · All Natural
+        </h1>
+    </div>
+
+    <!-- Text Overlay for Mobile -->
+    <div class="absolute w-full text-left left-1/2 transform -translate-x-1/2 top-11 md:hidden">
+        <div class="font-['FAIRE_Sprig'] font-normal text-[36px] sm:text-[44px] sm:leading-[54px] leading-[44px] xxs:pl-5 xs:pl-20 sm:pl-40">Hormone-friendly</div>
+        <div class="font-['FAIRE_Sprig'] font-normal text-[36px] sm:text-[44px] sm:leading-[54px] leading-[44px] xxs:pl-5 xs:pl-20 sm:pl-40">Highly absorbable</div>
+        <div class="font-['FAIRE_Sprig'] font-normal text-[36px] sm:text-[44px] sm:leading-[54px] leading-[44px] xxs:pl-5 xs:pl-20 sm:pl-40">All Natural</div>
+    </div>
+
+    <!-- Hero Image for Desktop -->
+    <img src="https://cdn.shopify.com/s/files/1/0557/9879/2371/files/about_us_hero.avif?v=1721696259" alt="About Us Hero Image" class="w-full h-auto block m-0 p-0 hero-image md:block hidden" />
+    <!-- Hero Image for Mobile -->
+    <img src="https://cdn.shopify.com/s/files/1/0557/9879/2371/files/about_us_mobile_hero.avif?v=1721736049" alt="About Us Hero Image Mobile" class="w-full h-auto block m-0 p-0 md:hidden" />
+
+    <div class="section flex flex-col items-center my-10 px-5 gap-10 w-full max-w-[1357px] mx-auto md:flex-row md:items-start md:gap-10 md:px-8 lg:px-12">
+        <div class="section-content relative flex flex-col items-start p-0 gap-2 w-full md:w-3/5">
+            
+            <h2 class="font-['FAIRE_Sprig'] font-normal text-[36px] leading-[42px] md:text-[36px] md:leading-[42px] relative z-10">How it started
+                <div class="bottom-[-5px] left-0 h-[18px] mt-[-17px] bg-pink-highlight w-full"></div>
+            </h2>
+            <div class="pt-5 font-['Buenos_Aires'] font-normal text-[16px] leading-[20px] md:text-[20px] md:leading-[24px] space-y-4">
+                <p>After the birth of her twins, Jess Toolson experienced debilitating PMS symptoms, including hormonal acne, painful cramps, and dramatic mood swings.</p>
+                <p>Her search for answers left her with nothing more than band-aid solutions that masked her symptoms, so she turned to her friend, Cody Sanders, for solutions.</p>
+                <p>Using her skills as a functional nutritionist and holistic health practitioner, Cody formulated a treatment that targeted the root causes of hormone imbalance in women. When Jess experienced relief from her PMS symptoms, she felt inspired to partner with Cody and make the product available to all women.</p>
+                <p>Today, this powerhouse product is known as Hertime PMS.</p>
+            </div>
+        </div>
+        <div class="section-image-1">
+            <img class="w-full h-auto object-cover max-h-[400px] max-w-[400px]" src="https://cdn.shopify.com/s/files/1/0557/9879/2371/files/about_us_image_2.png?v=1719932207" alt="How It Started Image">
+        </div>
+    </div>
+
+    <div class="section flex flex-col items-center my-10 px-5 gap-10 w-full max-w-[1357px] mx-auto md:flex-row md:items-start md:gap-10 md:px-8 lg:px-12">
+        <div class="section-image-2 hidden md:block md:w-[40%]">
+            <img class="w-full h-auto object-cover bg-cover bg-center flex-none order-0 flex-grow-0" src="https://cdn.shopify.com/s/files/1/0557/9879/2371/files/mixhers_about_us_team.avif?v=1721682970" alt="How It's Going Image">
+        </div>
+        <div class="section-content relative flex flex-col items-start p-0 gap-2 w-full md:w-3/5">
+            <h2 class="font-['FAIRE_Sprig'] font-normal text-[36px] leading-[42px] md:text-[36px] md:leading-[42px] relative z-10">How it's going
+                <div class="bottom-[-5px] left-0 h-[18px] mt-[-17px] bg-pink-highlight w-full"></div>
+            </h2>
+            <div class="pt-5 font-['Buenos_Aires'] font-normal text-[16px] leading-[20px] md:text-[20px] md:leading-[24px] space-y-4">
+                <p>With more than 7 million sticks sold, Hertime PMS is an all-natural remedy for the hormonal chaos causing the negative symptoms women have accepted as normal.</p>
+                <p>Mixhers has rapidly expanded its product line to include 15 sippable supplements formulated to support every stage of womanhood.</p>
+                <p>Each product comes in multiple delicious and naturally derived flavors, making daily nutritional therapy both convenient and enjoyable.</p>
+                <p>Over the course of four years, we have positioned ourselves as the hormone health brand for women.</p>
+                <p>Mixhers marries the clinical credibility that women want in their supplements with an aspirational and joyful brand experience. We have nurtured a thriving community of women and become a bold voice tackling taboo health topics.</p>
+                <p>Mixhers is rewriting the narrative by helping women restore hormonal balance through highly absorbable, hormone-friendly supplements.</p>
+            </div>
+        </div>
+        <div class="section-image-2 flex justify-center w-full md:hidden">
+            <img class="w-auto h-auto max-w-[425px] max-h-[360px] object-contain" src="https://cdn.shopify.com/s/files/1/0557/9879/2371/files/about_us_image_3.png?v=1719932207" alt="How It's Going Image">
+        </div>
+    </div>
+    <div class="mission-section box-border flex flex-col items-start py-10 px-4 gap-4 w-full mt-10 bg-[#F4F5FD] border-t border-black md:px-[40px] md:py-10">
+        <h2 class="font-['FAIRE_Sprig'] font-medium text-[28px] leading-[32px] m-0 px-4 md:px-[30px] md:text-[28px] md:leading-[32px]">We're on a mission</h2>
+        <div class="mission-content flex flex-col w-full items-start gap-[16px] px-4 md:flex-row md:items-center md:justify-between md:px-[30px]">
+            <p class="font-['Buenos_Aires'] font-normal text-[20px] leading-[24px] m-0 max-w-full flex-[0_0_100%] md:flex-[0_0_75%]">Mixhers provides hormone-friendly, science-backed supplements to fuel female evolution through every stage of womanhood. We boldly advocate for the voices, experiences, and health of women.</p>
+            <a href="/collections/all" class="flex flex-row justify-center items-center px-[10px] py-[18px] gap-[8px] w-full max-w-[180px] h-[44px] bg-gradient-to-b from-[rgba(0,0,0,0.2)] to-[rgba(0,0,0,0.2)] bg-[#1A1A1A] rounded-[64px] text-white font-['Buenos_Aires'] font-semibold text-[18px] leading-[24px] text-center no-underline transition-colors duration-200 ease-in-out hover:bg-black hover:shadow-md md:flex-[0_0_33%]">Shop Now</a>
+        </div>
+    </div>
+</div>
+<!-- Conversion Pixel for [lead]- DO NOT MODIFY -->
+<img src="https://data.adxcel-ec2.com/pixel/?ad_log=referer&action=lead&pixid=1106a134-d88c-4d2e-a6cd-468261774399" width="1" height="1" border="0">
+<!-- End of Conversion Pixel -->
