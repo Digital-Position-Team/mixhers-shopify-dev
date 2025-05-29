@@ -50,7 +50,7 @@
         "text_block_ycVgGy": {
           "type": "text_block",
           "settings": {
-            "text": "Your paragraph here..."
+            "text": ""
           }
         }
       },
@@ -58,6 +58,7 @@
         "text_block_ycVgGy"
       ],
       "settings": {
+        "image": "shopify://shop_images/mixhers_about_us_team_1.png",
         "title": "How it's going"
       }
     }
