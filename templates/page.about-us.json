@@ -30,6 +30,7 @@
     },
     "about_how_it_started_xnKbaX": {
       "type": "about-how-it-started",
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/about_us_image_2.png",
         "title": "How it started",
@@ -38,6 +39,7 @@
     },
     "about_how_its_going_b7bGL8": {
       "type": "about-how-its-going",
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/mixhers_about_us_team_1.png",
         "title": "How it's going",
