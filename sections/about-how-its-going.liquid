@@ -1,7 +1,7 @@
 <section class="about-how-its-going">
   <div class="how-its-going__wrapper">
     <div class="how-its-going__image desktop-only">
-      <img src="{{ section.settings.image | img_url: '800x' }}" alt="How it's going image">
+      <img src="{{ section.settings.image | image_url: width: 800 }}" alt="How it's going image">
     </div>
     <div class="how-its-going__text">
       <h2 class="how-its-going__title">
@@ -9,13 +9,11 @@
         <div class="highlight-bar"></div>
       </h2>
       <div class="how-its-going__paragraphs">
-        {% for block in section.blocks %}
-          <p>{{ block.settings.text }}</p>
-        {% endfor %}
+        {{ section.settings.text }}
       </div>
     </div>
     <div class="how-its-going__image mobile-only">
-      <img src="{{ section.settings.mobile_image | img_url: '600x' }}" alt="How it's going image mobile">
+      <img src="{{ section.settings.mobile_image | image_url: width: 600 }}" alt="How it's going image mobile">
     </div>
   </div>
 </section>
@@ -78,7 +76,6 @@
     height: auto;
   }
 </style>
-
 {% schema %}
 {
   "name": "How It's Going",
@@ -98,34 +95,19 @@
       "id": "title",
       "label": "Section Title",
       "default": "How it's going"
-    }
-  ],
-  "blocks": [
+    },
     {
-      "type": "text_block",
-      "name": "Paragraph",
-      "settings": [
-        {
-          "type": "textarea",
-          "id": "text",
-          "label": "Paragraph Text"
-        }
-      ]
+      "type": "richtext",
+      "id": "text",
+      "label": "Paragraph Text",
+      "default": "<p>Your rich paragraph here...</p>"
     }
   ],
-  "max_blocks": 10,
   "presets": [
     {
-      "name": "How It's Going",
-      "blocks": [
-        {
-          "type": "text_block",
-          "settings": {
-            "text": "Your paragraph here..."
-          }
-        }
-      ]
+      "name": "How It's Going"
     }
   ]
 }
 {% endschema %}
+
