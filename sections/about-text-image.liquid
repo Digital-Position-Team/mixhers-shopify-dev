@@ -1,54 +1,44 @@
-<div class="flex flex-col md:flex-row {% if section.settings.image_position == 'left' %}md:flex-row-reverse{% endif %} items-center gap-6 my-10 px-5 max-w-screen-xl mx-auto">
-  <div class="md:w-1/2">
-    <h2 class="text-2xl md:text-3xl font-semibold mb-4">{{ section.settings.title }}</h2>
-    <div class="text-base md:text-lg space-y-3">
-      {{ section.settings.content | newline_to_br }}
-    </div>
-  </div>
-  <div class="md:w-1/2">
-    <img src="{{ section.settings.image | img_url: 'master' }}" alt="{{ section.settings.image_alt }}" class="w-full h-auto max-w-md mx-auto" />
-  </div>
-</div>
 {% schema %}
 {
-  "name": "Text + Image",
+  "name": "About Story",
   "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Section Title"
-    },
-    {
-      "type": "textarea",
-      "id": "content",
-      "label": "Content"
-    },
     {
       "type": "image_picker",
       "id": "image",
       "label": "Image"
     },
     {
-      "type": "text",
-      "id": "image_alt",
-      "label": "Image alt text",
-      "default": "About image"
+      "type": "richtext",
+      "id": "title",
+      "label": "Section Title",
+      "default": "<p>How it started</p>"
     },
     {
-      "type": "select",
-      "id": "image_position",
-      "label": "Image Position",
-      "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "right", "label": "Right" }
-      ],
-      "default": "right"
+      "type": "richtext",
+      "id": "body",
+      "label": "Text",
+      "default": "<p>Sample story...</p>"
     }
   ],
   "presets": [
     {
-      "name": "Text + Image"
+      "name": "About Story"
     }
   ]
 }
 {% endschema %}
+
+<div class="section flex flex-col items-center my-10 px-5 gap-10 w-full max-w-[1357px] mx-auto md:flex-row md:gap-10">
+  <div class="section-content flex flex-col items-start w-full md:w-3/5">
+    <h2 class="font-['FAIRE_Sprig'] text-[36px] relative z-10">
+      {{ section.settings.title }}
+      <div class="bottom-[-5px] left-0 h-[18px] mt-[-17px] bg-pink-highlight w-full"></div>
+    </h2>
+    <div class="pt-5 font-['Buenos_Aires'] text-[16px] md:text-[20px] space-y-4">
+      {{ section.settings.body }}
+    </div>
+  </div>
+  <div class="section-image-1">
+    <img src="{{ section.settings.image | image_url }}" class="w-full h-auto max-w-[400px]" />
+  </div>
+</div>
