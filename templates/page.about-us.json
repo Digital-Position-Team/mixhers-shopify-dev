@@ -19,9 +19,11 @@
     "about_hero_9U8bQY": {
       "type": "about-hero",
       "settings": {
-        "hero_image_desktop": "shopify://shop_images/about_us_hero_433ac91c-e8cf-42f4-a004-e0f5dea61fe7.png",
-        "hero_image_mobile": "shopify://shop_images/about_us_hero_433ac91c-e8cf-42f4-a004-e0f5dea61fe7.png",
-        "headline": "Hormone-friendly · Highly absorbable · All Natural"
+        "desktop_image": "shopify://shop_images/about_us_hero_433ac91c-e8cf-42f4-a004-e0f5dea61fe7.png",
+        "heading_desktop": "Hormone-friendly · Highly absorbable · All Natural",
+        "heading_mobile_1": "Hormone-friendly",
+        "heading_mobile_2": "Highly absorbable",
+        "heading_mobile_3": "All Natural"
       }
     }
   },
