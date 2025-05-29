@@ -1,6 +1,9 @@
 <section class="about-how-its-going" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
   <div class="section-container">
     <div class="how-its-going-wrapper">
+    <div class="how-its-going__image">
+      <img src="{{ section.settings.image | image_url: width: 900 }}" width="" height="" alt="How it started image">
+    </div>
     <div class="how-its-going__text">
       <h2 class="how-its-going__title">
         {{ section.settings.title }}
@@ -9,9 +12,6 @@
       <div class="how-its-going__paragraphs">
         {{ section.settings.text }}
       </div>
-    </div>
-    <div class="how-its-going__image">
-      <img src="{{ section.settings.image | image_url: width: 900 }}" width="" height="" alt="How it started image">
     </div>
     </div>
   </div>
