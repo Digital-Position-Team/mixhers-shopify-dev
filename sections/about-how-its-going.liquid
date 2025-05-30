@@ -20,7 +20,7 @@
       src="{{ section.settings.mobile_image | image_url: width: 800 }}" 
       alt="Mobile image"
       width="" height=""
-      class="mobile-only"
+      class="mobile-only-image"
     />
   {% endif %}
 </section>
@@ -124,6 +124,9 @@
     max-width:500px;
     display:block;
   }
+  .mobile-only-image{
+    display:none;
+  }
   @media(max-width:1023px){
    .about-how-its-going .section-container{
       padding-left:32px;
@@ -144,8 +147,16 @@
       line-height: 1.25;
     }
     .how-its-going__image{
-      text-align:center;
       order: 2;
+    }
+    .how-its-going__image img{
+      margin:0 auto
+    }
+    .hide-desktop--image{
+      display:none;
+    }
+    .mobile-only-image{
+      display:block;
     }
   }
 
