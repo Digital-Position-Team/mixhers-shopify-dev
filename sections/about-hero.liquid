@@ -99,44 +99,43 @@
 
 <div class="about-us-hero">
   <div class="about-us-hero-desktop">
-    
+    <h1 class="about-us-hero__heading-desktop">
+      {{ section.settings.heading_desktop }}
+    </h1>
+    <img 
+      src="{{ section.settings.desktop_image | image_url: width: 3000 }}" 
+      width=""
+      height=""
+      alt="About Us Hero Image" 
+      class="desktop-image" 
+      style="width: 100%; display: none;"
+    />
   </div>
   <div class="about-us-hero-mobile">
-    
+    <div class="about-us-hero__heading-mobile">
+      {{ section.settings.heading_mobile }}
+    </div>
+    <img 
+      src="{{ section.settings.mobile_image | image_url: width: 1024 }}" 
+      width=""
+      height=""
+      alt="About Us Hero Mobile Image" 
+      class="mobile-image" 
+      style="width: 100%; display: block;"
+    />
   </div>
-  <h1 class="about-us-hero__heading-desktop">
-    {{ section.settings.heading_desktop }}
-  </h1>
-  <div class="about-us-hero__heading-mobile">
-    {{ section.settings.heading_mobile }}
-  </div>
-  <img 
-    src="{{ section.settings.desktop_image | image_url: width: 3000 }}" 
-    width=""
-    height=""
-    alt="About Us Hero Image" 
-    class="desktop-image" 
-    style="width: 100%; display: none;"
-  >
-  <img 
-    src="{{ section.settings.mobile_image | image_url: width: 1024 }}" 
-    width=""
-    height=""
-    alt="About Us Hero Mobile Image" 
-    class="mobile-image" 
-    style="width: 100%; display: block;"
-  >
+ 
   <script>
-    function toggleImages() {
-      if(window.innerWidth >= 768){
-        document.querySelector('.desktop-image').style.display = 'block';
-        document.querySelector('.mobile-image').style.display = 'none';
-      } else {
-        document.querySelector('.desktop-image').style.display = 'none';
-        document.querySelector('.mobile-image').style.display = 'block';
-      }
-    }
-    toggleImages();
-    window.addEventListener('resize', toggleImages);
+    // function toggleImages() {
+    //   if(window.innerWidth >= 768){
+    //     document.querySelector('.desktop-image').style.display = 'block';
+    //     document.querySelector('.mobile-image').style.display = 'none';
+    //   } else {
+    //     document.querySelector('.desktop-image').style.display = 'none';
+    //     document.querySelector('.mobile-image').style.display = 'block';
+    //   }
+    // }
+    // toggleImages();
+    // window.addEventListener('resize', toggleImages);
   </script>
 </div>
