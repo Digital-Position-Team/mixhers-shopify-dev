@@ -109,8 +109,8 @@
     max-width:410px;
   }
   .how-it-started__image img {
-     max-width: 100%;
-     width:100%;
+    max-width: 400px;
+    width: 100%;
   }
   @media(max-width:1023px){
    .about-how-it-started .section-container{
@@ -124,7 +124,13 @@
       padding-right:20px;
     }
     .how-it-started-wrapper{ 
-      flex-direction: column;
+      grid-template-columns: 1fr;
+    }
+    .how-it-started__paragraphs p {
+      font-size: 16px;
+    }
+    .how-it-started__image {
+      text-align: center;
     }
   }
 </style>
