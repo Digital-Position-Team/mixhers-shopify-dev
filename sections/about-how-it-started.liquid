@@ -112,15 +112,19 @@
      max-width: 100%;
      width:100%;
   }
-  @media (max-width: 767px) {
-    .how-it-started-wrapper{ 
-      flex-direction: column;
+  @media(max-width:1023px){
+   .about-how-it-started .section-container{
+      padding-left:32px;
+      padding-right:32px;
     }
   }
-  @media(max-width:1023px){
-    .section-container{
+  @media (max-width: 767px) {
+    .about-how-it-started .section-container{
       padding-left:20px;
       padding-right:20px;
+    }
+    .how-it-started-wrapper{ 
+      flex-direction: column;
     }
   }
 </style>
