@@ -30,7 +30,7 @@
 {% endschema %}
 
 <style>
-  .about-us-hero {
+  .about-us-hero .about-us-section{
     position: relative;
     width: 100%;
     background-color: white;
@@ -100,7 +100,7 @@
 </style>
 
 <div class="about-us-hero">
-  <div class="about-us-hero-desktop">
+  <div class="about-us-hero-desktop about-us-section">
     <h1 class="about-us-hero__heading-desktop">
       {{ section.settings.heading_desktop }}
     </h1>
@@ -113,7 +113,7 @@
       style="width: 100%; display: none;"
     />
   </div>
-  <div class="about-us-hero-mobile">
+  <div class="about-us-hero-mobile about-us-section">
     <div class="about-us-hero__heading-mobile">
       {{ section.settings.heading_mobile }}
     </div>
