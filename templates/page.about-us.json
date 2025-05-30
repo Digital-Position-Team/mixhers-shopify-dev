@@ -38,7 +38,6 @@
     },
     "about_how_its_going_b7bGL8": {
       "type": "about-how-its-going",
-      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/mixhers_about_us_team_1.png",
         "title": "How it's going",
