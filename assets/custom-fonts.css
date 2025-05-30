@@ -37,7 +37,8 @@ body {
 
 @font-face {
   font-family: 'Faire Sprig';
-  src: url('FAIRE-Sprig-Medium.otf') format('opentype');
+  /* src: url('FAIRE-Sprig-Medium.otf') format('opentype'); */
+  src: url('https://cdn.shopify.com/s/files/1/0557/9879/2371/files/FAIRE-Sprig-Medium.otf?v=1748607050') format('opentype');
   font-weight: 500;
   font-style: normal;
 }
