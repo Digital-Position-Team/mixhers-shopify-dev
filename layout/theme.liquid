@@ -34,8 +34,15 @@
     <!-- Styling -->
    {% unless template == 'index' or (template == 'page' and page.handle == 'about-us') %}
       {{ 'tailwind.css' | asset_url | stylesheet_tag }}
-    
+      <style>
+        body, a, li, p, span, div, button, input, textarea {
+          font-family: 'Buenos Aires', sans-serif;
+          color: #1a1a1a;
+        }
+      </style>
     {% endunless %}
+    <p>Template: {{ template }}</p>
+<p>Page Handle: {{ page.handle }}</p>
     
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
