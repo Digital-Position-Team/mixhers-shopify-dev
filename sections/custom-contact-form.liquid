@@ -1,6 +1,261 @@
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
+{
+  "name": "Contact Us Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading Text",
+      "default": "How can we help?"
+    },
+    {
+      "type": "text",
+      "id": "email_address",
+      "label": "Contact Email",
+      "default": "help@mixhers.com"
+    },
+    {
+      "type": "textarea",
+      "id": "service_hours",
+      "label": "Customer Service Hours",
+      "default": "Monday - Friday: 8:00 AM - 5:00 PM"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Submit Button Text",
+      "default": "Send Message"
+    },
+   {
+    "type": "image_picker",
+    "id": "hero_image",
+    "label": "Hero Image"
   }
+  ],
+  "presets": [
+    {
+      "name": "Contact Us",
+      "category": "Contact"
+    }
+  ]
+}
 {% endschema %}
+
+<div class="h-full flex flex-col-reverse justify-center md:flex-row min-h-[846px]">
+  <div class="px-[25px] md:w-1/2 md:pr-[48px] md:pl-[30px] pt-[12px] md:pt-[30px] pb-[40px]">
+    <div class="flex flex-col gap-[16px]">
+      <div>
+        <span><a href="/" class="text-gray hover:text-black">Home</a>・Contact Us</span>
+        <h1 class="text-4xl font-bold mt-2">{{ section.settings.heading_text }}</h1>
+      </div>
+      {% assign formId = 'ContactForm' %}
+      {% form 'contact', id: formId, class: 'w-full font-light', data-shopify-captcha: "true" %}
+        <div class="flex flex-col gap-[16px]">
+          <div id="success-message" class="hidden text-[14px] md:text-[16px] text-greens italic" tabindex="-1" data-form-status>
+            {{ 'contact.form.post_success' | t }}
+          </div>
+          <div id="instruction-intro">
+            <p class="leading-[25px] md:leading-[25px] font-light">We want to hear from you.</p>
+            <p class="leading-[25px] md:leading-[25px] font-light">Send an e-mail or use the form below to send us a message.</p>
+          </div>
+          {% if form.posted_successfully? %}
+            <script>
+              let instructionIntro = document.getElementById('instruction-intro');
+              instructionIntro.classList.add('hidden');
+              let successMessage = document.getElementById('success-message');
+              successMessage.classList.remove('hidden');
+              setTimeout(() => {
+                successMessage.classList.add('hidden');
+                instructionIntro.classList.remove('hidden');
+              }, 6000);
+            </script>
+          {% endif %}
+          <p class="leading-[25px] md:leading-[25px] font-light">
+            Email: <a class="hover:underline" href="mailto:{{ section.settings.email_address }}">{{ section.settings.email_address }}</a>
+          </p>
+          <div class="pb-[12px]">
+            <p class="leading-[25px] md:leading-[25px] font-light">Customer service hours:</p>
+            <p class="leading-[25px] md:leading-[25px] font-light">{{ section.settings.service_hours }}</p>
+          </div>
+
+          <div class="flex flex-col gap-2 w-full">
+            <div>
+              <label class="sr-only" for="ContactForm-name">{{ 'contact.form.name' | t }}</label>
+              <input class="p-1 border border-black full-rounded pl-2 h-full w-full placeholder:text-black"
+                placeholder="Name" type="text" id="ContactForm-name" name="contact[name]">
+            </div>
+            <div>
+              <label class="sr-only" for="ContactForm-phone">{{ 'contact.form.phone' | t }}</label>
+              <input class="p-1 border border-black full-rounded pl-2 h-full w-full placeholder:text-black"
+                placeholder="Phone" type="tel" id="ContactForm-phone" name="contact[phone]">
+            </div>
+            <div>
+              <label class="sr-only" for="ContactForm-email">{{ 'contact.form.email' | t }} <span aria-hidden="true">*</span></label>
+              <div class="relative">
+                <input id="email-input"
+                  class="p-1 border border-black full-rounded pl-2 h-full w-full placeholder-transparent"
+                  placeholder="Email*" type="email" name="contact[email]" autocorrect="off"
+                  autocapitalize="off" aria-required="true" required="required"
+                  {% if form.errors contains 'email' %}
+                    aria-invalid="true"
+                    aria-describedby="ContactForm-email-error"
+                  {% endif %}>
+                <span id="email-placeholder" class="hidden absolute top-0 left-0 pl-2 pt-1 text-black">
+                  Email<span class="text-pink">*</span>
+                </span>
+              </div>
+            </div>
+            <div id="email-error" class="text-[14px] md:text-[16px] text-pink italic hidden mb-[16px]">please enter a valid email address.</div>
+
+            <label class="sr-only" for="ContactForm-order">Order Number</label>
+            <input class="p-1 border border-black full-rounded pl-2 h-full w-full placeholder:text-black"
+              placeholder="Order Number"
+              type="text"
+              id="ContactForm-order"
+              name="contact[order_number]"
+              {% if form.errors contains 'email' %}
+                aria-invalid="true"
+                aria-describedby="ContactForm-email-error"
+              {% endif %}
+            >
+
+            <label class="sr-only" for="ContactForm-message">{{ 'contact.form.message' | t }}</label>
+            <div class="relative">
+              <textarea id="message-input"
+                class="border border-black full-rounded p-1 pl-2 h-full w-full resize-none placeholder-transparent"
+                placeholder="Message*" rows="10" name="contact[message]" required="required" minlength="20"></textarea>
+              <span id="message-placeholder" class="hidden absolute top-0 left-0 pl-2 pt-1 text-black">
+                Message<span class="text-pink">*</span>
+              </span>
+            </div>
+            <div id="message-error" class="text-[14px] md:text-[16px] text-pink italic hidden mt-[-4px] pb-[16px]">please enter a message with at least 20 characters.</div>
+
+            <div>
+              <button type="submit" class="hover:bg-primary border-none bg-transparent py-2 px-4 rounded">
+                {{ section.settings.button_text }}
+              </button>
+            </div>
+          </div>
+        </div>
+      {% endform %}
+    </div>
+  </div>
+  <div class="h-auto md:w-1/2 w-full">
+    {% if section.settings.hero_image %}
+      <img src="{{ section.settings.hero_image | image_url }}" alt="Contact us Hero" loading="lazy"
+      class="w-full h-full object-cover" width="729" height="800">
+    {% endif %}
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('ContactForm');
+  const email = document.getElementById('email-input');
+  const message = document.getElementById('message-input');
+  const emailError = document.getElementById('email-error');
+  const messageError = document.getElementById('message-error');
+  const emailPlaceholder = document.getElementById('email-placeholder');
+  const messagePlaceholder = document.getElementById('message-placeholder');
+  const allInputs = document.querySelectorAll('input, textarea');
+
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      allInputs.forEach((input) => {
+        showCustomPlaceholder({ target: input });
+      });
+    }, 100);
+  });
+
+  form.addEventListener('submit', (event) => {
+    if (!messageValidation() || !emailValidation()) {
+      event.preventDefault();
+      return;
+    }
+  });
+
+  allInputs.forEach((input) => {
+    input.addEventListener('focus', (event) => hideCustomPlaceholder(event));
+    input.addEventListener('blur', (event) => showCustomPlaceholder(event));
+  });
+
+  let timeout = null;
+  email.addEventListener('input', function (event) {
+    clearTimeout(timeout);
+    timeout = setTimeout(emailValidation, 1000);
+  });
+  message.addEventListener('input', function (event) {
+    clearTimeout(timeout);
+    timeout = setTimeout(messageValidation, 1000);
+  });
+
+  function hideCustomPlaceholder(event) {
+    const input = event.target;
+    if (input === email) {
+      emailPlaceholder.classList.add('hidden');
+      email.classList.remove('placeholder-transparent');
+      email.classList.add('placeholder:text-gray');
+    } else if (input === message) {
+      messagePlaceholder.classList.add('hidden');
+      message.classList.remove('placeholder-transparent');
+      message.classList.add('placeholder:text-gray');
+    } else {
+      input.classList.remove('placeholder:text-black');
+      input.classList.add('placeholder:text-gray');
+    }
+  }
+
+  function showCustomPlaceholder(event) {
+    const input = event.target;
+    if (!input.value) {
+      if (input === email) {
+        emailPlaceholder.classList.remove('hidden');
+        email.classList.add('placeholder-transparent');
+        email.classList.remove('placeholder:text-gray');
+      } else if (input === message) {
+        messagePlaceholder.classList.remove('hidden');
+        message.classList.add('placeholder-transparent');
+        message.classList.remove('placeholder:text-gray');
+      } else {
+        input.classList.remove('placeholder:text-gray');
+        input.classList.add('placeholder:text-black');
+      }
+    }
+  }
+
+  function emailValidation() {
+    let valid;
+    const emailValue = email.value;
+    const validEmail = (email) => {
+      return String(email)
+        .toLowerCase()
+        .match(
+          /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+    };
+    if (validEmail(emailValue)) {
+      emailError.classList.add('hidden');
+      email.classList.remove('border-pink');
+      valid = true;
+    } else {
+      emailError.classList.remove('hidden');
+      email.classList.add('border-pink');
+      valid = false;
+    }
+    return valid;
+  }
+
+  function messageValidation() {
+    let valid;
+    const messageValue = message.value;
+    if (messageValue.length >= 20) {
+      messageError.classList.add('hidden');
+      message.classList.remove('border-pink');
+      valid = true;
+    } else {
+      messageError.classList.remove('hidden');
+      message.classList.add('border-pink');
+      valid = false;
+    }
+    return valid;
+  }
+</script>
