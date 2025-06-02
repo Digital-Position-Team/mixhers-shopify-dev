@@ -40,8 +40,12 @@
   ]
 }
 {% endschema %}
-
-<div class="h-full flex flex-col-reverse justify-center md:flex-row min-h-[846px]">
+<style>
+  #custom-contact-form input , custom-contact-form textarea{
+    outline:none;
+  }
+</style>
+<div class="h-full flex flex-col-reverse justify-center md:flex-row min-h-[846px]" id="custom-contact-form">
   <div class="px-[25px] md:w-1/2 md:pr-[48px] md:pl-[30px] pt-[12px] md:pt-[30px] pb-[40px]">
     <div class="flex flex-col gap-[16px]">
       <div>
@@ -260,3 +264,4 @@
     return valid;
   }
 </script>
+
