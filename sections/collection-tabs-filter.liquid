@@ -25,7 +25,7 @@
         class="filter-tag text-black hover:text-pink px-4 py-2 rounded-full active-tag"
         onclick="handleFilter('all-products')"
     >
-        {% render 'text', type: 'body-md', content: 'All' %}
+        All
     </button>
   {% comment %}
     <button
@@ -41,42 +41,42 @@
         class="filter-tag text-black hover:text-pink px-4 py-2 rounded-full"
         onclick="handleFilter('pms')"
     >
-        {% render 'text', type: 'body-md', content: 'PMS' %}
+        PMS
     </button>
     <button
         id="motherhood-tag"
         class="filter-tag text-black hover:text-pink px-4 py-2 rounded-full"
         onclick="handleFilter('motherhood')"
     >
-        {% render 'text', type: 'body-md', content: 'Motherhood' %}
+       Motherhood
     </button>
     <button
         id="menopause-tag"
         class="filter-tag text-black hover:text-pink px-4 py-2 rounded-full"
         onclick="handleFilter('menopause')"
     >
-        {% render 'text', type: 'body-md', content: 'Menopause' %}
+        Menopause
     </button>
     <button
         id="health-tag"
         class="filter-tag text-black hover:text-pink px-4 py-2 rounded-full"
         onclick="handleFilter('health')"
     >
-        {% render 'text', type: 'body-md', content: 'Health & Nutrition' %}
+       Health & Nutrition
     </button>
     <button
         id="sexual-wellness-tag"
         class="filter-tag text-black hover:text-pink px-4 py-2 rounded-full"
         onclick="handleFilter('sexual-wellness')"
     >
-        {% render 'text', type: 'body-md', content: 'Sexual Wellness' %}
+       Sexual Wellness
     </button>
     <a
         id="sale-tag"
         class="text-pink hover:border hover:border-pink focus:border focus:border-pink px-3 py-1 flex items-center"
         href="/collections/final-sale"
     >
-        {% render 'text', type: 'body-md', content: 'Sale'%}
+        Sale
     </a>
 </div>
 {% assign products = collections.all.products %}
