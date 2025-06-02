@@ -79,6 +79,140 @@
         {% render 'text', type: 'body-md', content: 'Sale'%}
     </a>
 </div>
+{% assign products = collections.all.products %}
+{% assign max_rank = 10 %}
+{% assign sexual_wellness_sorted = '' %}
+{% assign health_sorted = '' %}
+{% assign menopause_sorted = '' %}
+{% assign motherhood_sorted = '' %}
+{% assign pms_sorted = '' %}
+{% assign sampler_sorted = '' %}
+
+{% for rank in (1..max_rank) %}
+    {% for product in products %}
+        {% assign sexualWellnessRank = product.metafields.custom.sexual_wellness_order | default: 10 %}
+        {% if sexualWellnessRank == rank %}
+            {% assign sexual_wellness_sorted = sexual_wellness_sorted | append: product.handle | append: ',' %}
+        {% endif %}
+
+        {% assign healthRank = product.metafields.custom.health_order | default: 10 %}
+        {% if healthRank == rank %}
+            {% assign health_sorted = health_sorted | append: product.handle | append: ',' %}
+        {% endif %}
+
+        {% assign menopauseRank = product.metafields.custom.menopause_order | default: 10 %}
+        {% if menopauseRank == rank %}
+            {% assign menopause_sorted = menopause_sorted | append: product.handle | append: ',' %}
+        {% endif %}
+
+        {% assign motherhoodRank = product.metafields.custom.motherhood_order | default: 10 %}
+        {% if motherhoodRank == rank %}
+            {% assign motherhood_sorted = motherhood_sorted | append: product.handle | append: ',' %}
+        {% endif %}
+
+        {% assign pmsRank = product.metafields.custom.pms_order | default: 10 %}
+        {% if pmsRank == rank %}
+            {% assign pms_sorted = pms_sorted | append: product.handle | append: ',' %}
+        {% endif %}
+
+        {% assign samplerRank = product.metafields.custom.sampler_order | default: 10 %}
+        {% if samplerRank == rank %}
+            {% assign sampler_sorted = sampler_sorted | append: product.handle | append: ',' %}
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+
+{% assign sexual_wellness_sorted = sexual_wellness_sorted | split: ',' %}
+{% assign health_sorted = health_sorted | split: ',' %}
+{% assign menopause_sorted = menopause_sorted | split: ',' %}
+{% assign motherhood_sorted = motherhood_sorted | split: ',' %}
+{% assign pms_sorted = pms_sorted | split: ',' %}
+{% assign sampler_sorted = sampler_sorted | split: ',' %}
+{% assign all_filters = 'all-products,pms,motherhood,menopause,health,sexual-wellness,samplers' | split: ',' %}
+
+{% for filter in all_filters %}
+    {% capture filter_name %}
+    {% case filter %}
+        {% when 'all-products' %}
+            All Products
+        {% when 'pms' %}
+            PMS
+        {% when 'motherhood' %}
+            Motherhood
+        {% when 'menopause' %}
+            Menopause
+        {% when 'health' %}
+            Health & Nutrition
+        {% when 'sexual-wellness' %}
+            Sexual Wellness
+        {% when 'samplers' %}
+            sampler
+        {% endcase %}
+    {% endcapture %}
+    {% assign filter_name = filter_name | strip %}
+
+    <div
+        id="{{ filter }}-results"
+        class="filter-results grid-cols-2 md:grid-cols-4 {% if filter == 'all-products' %}grid{% else %}hidden{% endif %}"
+    >
+        {% assign all_products_length = products.size | minus: 1 %}
+        {% assign products_length = 0 %}
+
+        {% if filter == 'all-products' %}
+            {% assign products_length = all_products_length | plus: 1 %}
+        {% else %}
+            {% for i in (0..all_products_length) %}
+                {% assign product = products[i] %}
+                {% if product.tags contains filter_name %}
+                    {% assign products_length = products_length | plus: 1 %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        {% for i in (0..all_products_length) %}
+            {% capture handle %}
+            {% case filter %}
+                {% when 'all-products' %}
+                    {{ products[i].handle }}
+                {% when 'pms' %}
+                    {{ pms_sorted[i] }}
+                {% when 'motherhood' %}
+                    {{ motherhood_sorted[i] }}
+                {% when 'menopause' %}
+                    {{ menopause_sorted[i] }}
+                {% when 'health' %}
+                    {{ health_sorted[i] }}
+                {% when 'sexual-wellness' %}
+                    {{ sexual_wellness_sorted[i] }}
+                {% when 'samplers' %}
+                    {{ sampler_sorted[i] }}
+                {% endcase %}
+            {% endcapture %}
+            {% assign handle = handle | strip %}
+            {% assign product = '' %}
+            {% for p in products %}
+                {% if p.handle == handle %}
+                    {% assign product = p %}
+                {% endif %}
+            {% endfor %}
+
+            {% unless product.tags contains filter_name or filter == 'all-products' %}
+                {% continue %}
+            {% endunless %}
+            {% render 'shared-product-variable-logic', then_render: 'rebrand-product-grid-card', product_id: product.id, show_tags: true  %}
+        {% endfor %}
+        {% if products_length > 7 %}
+            <div
+                class="flex flex-col min-h-[400px] md:min-h-[512px] col-span-2 col-start-1 row-start-5 items-center justify-center text-center px-6 gap-4 text-white bg-cover md:row-start-3 md:col-start-3"
+                style="background-image: url('https:{{ "collections-ad-quiz.webp" | file_url }}');"
+            >
+                {% render 'text', type: 'heading-1', content: 'Not sure which<br />Mix is for you?' %}
+                {% render 'button', size: 'sm', text: 'Take the Quiz', url: '/pages/quiz', is_link: true %}
+            </div>
+        {% endif %}
+    </div>
+{% endfor %}
+
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
