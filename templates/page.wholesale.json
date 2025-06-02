@@ -22,11 +22,25 @@
       "name": "Wholesale Hero",
       "settings": {
         "heading": "Wholesale Program",
-        "paragraph_1": "Mixhers is on a mission to provide hormone-friendly, science-backed supplements to fuel female evolution through every stage of womanhood.",
-        "paragraph_2": "Our Wholesale Partners help us *drive our mission forward* by bringing Mixhers products to thousands of women across the country in their retail stores.",
+        "rich_text": "<p>Mixhers is on a mission to provide hormone-friendly, science-backed supplements to fuel female evolution through every stage of womanhood.</p><p>Our Wholesale Partners help us <i>drive our mission forward</i> by bringing Mixhers products to thousands of women across the country in their retail stores.</p>",
         "button_text": "Apply Now",
         "button_link": "#",
         "image": "shopify://shop_images/rebrand_wholesale_hero.png"
+      }
+    },
+    "wholesale_partner_ecH6yV": {
+      "type": "wholesale-partner",
+      "name": "Wholesale Partner Benefits",
+      "settings": {
+        "image": "shopify://shop_images/rebrand_wholesale_partner.png",
+        "heading": "Wholesale Partner Benefits",
+        "benefits": "Low $200 Minimum Order\nPreview new products + Receive samples\nRetail-specific display pieces + Marketing Materials\nExclusive event invitations\nContent marketing inclusions\nProduct Education + Other Support Resources",
+        "button_text": "Apply Now",
+        "button_link": "https://share.hsforms.com/1dO8p8C_uS1ircTdKfiOF5Ae3b70",
+        "mission_heading": "We're on a mission",
+        "mission_text": "Ready to become a Mixhers Wholesale Partner? Take a few minutes to complete our online application form and we will reach out to you within 72 hours.",
+        "mission_button_text": "Join Now",
+        "mission_button_link": ""
       }
     },
     "about_on_mission_CXt9WD": {
@@ -43,6 +57,7 @@
   "order": [
     "main",
     "wholesale_hero_hg4iNN",
+    "wholesale_partner_ecH6yV",
     "about_on_mission_CXt9WD"
   ]
 }
