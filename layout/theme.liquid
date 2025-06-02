@@ -31,6 +31,11 @@
     <!-- Fonts -->
     {{ 'custom-fonts.css' | asset_url | stylesheet_tag }}
    <link rel="stylesheet" href="{{ 'tailwind.css' | asset_url }}">
+    <style>
+      body{
+            font-family: Buenos Aires, sans-serif;
+      }
+    </style>
     
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
