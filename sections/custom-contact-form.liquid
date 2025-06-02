@@ -95,26 +95,26 @@
           <div class="flex flex-col gap-3 w-full">
             <div>
               <label class="sr-only" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}</label>
-              <input class="p-2 border border-black full-rounded pl-2 h-full w-full placeholder:text-black"
+              <input class="p-2 border border-black full-rounded pl-3 h-full w-full placeholder:text-black"
                 placeholder="Name" type="text" id="ContactForm-name" name="contact[name]">
             </div>
             <div>
               <label class="sr-only" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}</label>
-              <input class="p-2 border border-black full-rounded pl-2 h-full w-full placeholder:text-black"
+              <input class="p-2 border border-black full-rounded pl-3 h-full w-full placeholder:text-black"
                 placeholder="Phone" type="tel" id="ContactForm-phone" name="contact[phone]">
             </div>
             <div>
               <label class="sr-only" for="ContactForm-email">{{ 'templates.contact.form.email' | t }} <span aria-hidden="true">*</span></label>
               <div class="relative">
                 <input id="email-input"
-                  class="p-2 border border-black full-rounded pl-2 h-full w-full placeholder-transparent"
+                  class="p-2 border border-black full-rounded pl-3 h-full w-full placeholder-transparent"
                   placeholder="Email*" type="email" name="contact[email]" autocorrect="off"
                   autocapitalize="off" aria-required="true" required="required"
                   {% if form.errors contains 'email' %}
                     aria-invalid="true"
                     aria-describedby="ContactForm-email-error"
                   {% endif %}>
-                <span id="email-placeholder" class="hidden absolute top-0 left-0 pl-2 pt-1 text-black">
+                <span id="email-placeholder" class="hidden absolute top-0 left-0 pl-3 pt-1 text-black">
                   Email<span class="text-pink">*</span>
                 </span>
               </div>
@@ -122,7 +122,7 @@
             <div id="email-error" class="text-[14px] md:text-[16px] text-pink italic hidden mb-[16px]">please enter a valid email address.</div>
 
             <label class="sr-only" for="ContactForm-order">Order Number</label>
-            <input class="p-2 border border-black full-rounded pl-2 h-full w-full placeholder:text-black"
+            <input class="p-2 border border-black full-rounded pl-3 h-full w-full placeholder:text-black"
               placeholder="Order Number"
               type="text"
               id="ContactForm-order"
@@ -136,9 +136,9 @@
             <label class="sr-only" for="ContactForm-message">{{ 'templates.contact.form.message' | t }}</label>
             <div class="relative">
               <textarea id="message-input"
-                class="border border-black full-rounded p-2 pl-2 h-full w-full resize-none placeholder-transparent leading-[24px]"
+                class="border border-black full-rounded p-2 pl-3 h-full w-full resize-none placeholder-transparent leading-[24px]"
                 placeholder="Message*" rows="10" name="contact[message]" required="required" minlength="20"></textarea>
-              <span id="message-placeholder" class="hidden absolute top-0 left-0 pl-2 pt-1 text-black">
+              <span id="message-placeholder" class="hidden absolute top-0 left-0 pl-3 pt-1 text-black">
                 Message<span class="text-pink">*</span>
               </span>
             </div>
