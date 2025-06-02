@@ -1,6 +1,51 @@
+<div class="wholesale-hero w-full flex flex-col md:flex-row items-stretch bg-gray-50 min-h-screen">
+  <!-- Left Frame -->
+  <div class="w-full md:w-1/2 flex flex-col items-start gap-4 bg-gray-blue p-[30px] md:pt-[129px] md:pr-[113px]">
+    <div class="flex flex-col items-start gap-4">
+      <h1 class="text-4xl md:text-5xl leading-tight mb-[30px]" style="font-family: 'FAIRE Sprig', sans-serif;">
+        {{ section.settings.heading }}
+      </h1>
+
+      {% if section.settings.paragraph_1 != blank %}
+        <p class="text-lg md:text-xl leading-7" style="font-family: 'Buenos Aires', sans-serif;">
+          {{ section.settings.paragraph_1 }}
+        </p>
+      {% endif %}
+      {% if section.settings.paragraph_2 != blank %}
+        <p class="text-lg md:text-xl leading-7" style="font-family: 'Buenos Aires', sans-serif;">
+          {{ section.settings.paragraph_2 }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.button_text != blank and section.settings.button_link != blank %}
+        <a href="{{ section.settings.button_link }}" class="font-sans rounded-[64px] bg-clip-padding bg-black text-white w-[180px] hover:border-pink-light font-semibold text-[18px]
+            leading-[20px] py-[10px] px-[18px] border-[4px] border-transparent cursor-pointer hover:bg-primary border-none">
+          {{ section.settings.button_text }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Right Frame -->
+  <div class="w-full md:w-1/2 flex justify-center items-center min-h-[400px] md:min-h-[656px]">
+    {% if section.settings.image %}
+      <img
+        src="{{ section.settings.image | image_url }}"
+        alt="{{ section.settings.image.alt | escape }}"
+        class="w-full h-full object-cover"
+        width=""
+        height=""
+        loading="lazy"
+      >
+    {% endif %}
+  </div>
+</div>
+
 {% schema %}
 {
   "name": "Wholesale Hero",
+  "tag": "section",
+  "class": "wholesale-hero-section",
   "settings": [
     {
       "type": "text",
@@ -10,26 +55,36 @@
     },
     {
       "type": "textarea",
-      "id": "subheading",
-      "label": "Subheading",
-      "default": "Mixhers is on a mission..."
+      "id": "paragraph_1",
+      "label": "First Paragraph",
+      "default": "Mixhers is on a mission to provide hormone-friendly, science-backed supplements to fuel female evolution through every stage of womanhood."
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph_2",
+      "label": "Second Paragraph",
+      "default": "Our Wholesale Partners help us *drive our mission forward* by bringing Mixhers products to thousands of women across the country in their retail stores."
     },
     {
       "type": "text",
-      "id": "button_label",
-      "label": "Button Label",
+      "id": "button_text",
+      "label": "Button Text",
       "default": "Apply Now"
     },
-    {
+   {
       "type": "url",
-      "id": "button_url",
-      "label": "Button URL",
+      "id": "button_link",
+      "label": "Button Link",
     },
     {
-      "type": "color",
-      "id": "background_color",
-      "label": "Background Color",
-      "default": "#f5f5f5"
+      "type": "image_picker",
+      "id": "image",
+      "label": "Right Side Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Wholesale Hero"
     }
   ]
 }
