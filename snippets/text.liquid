@@ -1,0 +1,59 @@
+{% comment %}
+    ********************
+    Rebrand Text Snippet
+    ********************
+
+    Usage:
+        {% render 'text', type: 'heading-1', content: 'Her health starts with hormones' %}
+{% endcomment %}
+
+{% assign tag = tag | default: 'div' %}
+{% assign type = type | default: 'body-md' %}
+{% assign id = id %}
+
+{% capture text_style %}
+{% case type %}
+    {% when 'heading-1' %}
+        font-serif font-normal leading-[40px] md:leading-[60px] text-[36px] md:text-[54px]
+    {% when 'heading-2' %}
+        font-serif font-normal leading-[32px] md:leading-[40px] text-[28px] md:text-[36px]
+    {% when 'heading-3' %}
+        font-serif font-normal leading-[22px] md:leading-[32px] text-[20px] md:text-[28px]
+    {% when 'heading-4' %}
+        font-serif font-normal leading-[18px] md:leading-[22px] text-[16px] md:text-[20px]
+    {% when 'heading-5' %}
+        font-serif font-normal leading-[16px] md:leading-[18px] text-[14px] md:text-[16px]
+    {% when 'body-xl' %}
+        font-sans font-normal leading-[24px] md:leading-[24px] text-[20px] md:text-[24px]
+    {% when 'body-lg' %}
+        font-sans font-normal leading-[20px] md:leading-[24px] text-[16px] md:text-[20px]
+    {% when 'body-lg-light' %}
+        font-sans font-light leading-[20px] md:leading-[24px] text-[16px] md:text-[20px]
+    {% when 'body-lg-bold' %}
+        font-sans font-bold leading-[20px] md:leading-[24px] text-[16px] md:text-[18px]
+    {% when 'body-md' %}
+        font-sans font-normal leading-[16px] md:leading-[20px] text-[14px] md:text-[16px]
+    {% when 'body-md-light' %}
+        font-sans font-light leading-[16px] md:leading-[20px] text-[14px] md:text-[16px]
+    {% when 'body-md-bold' %}
+        font-sans font-bold leading-[16px] md:leading-[20px] text-[14px] md:text-[16px]
+    {% when 'body-sm' %}
+        font-sans font-normal leading-[13px] md:leading-[16px] text-[10px] md:text-[12px]
+    {% when 'body-xs' %}
+        font-sans font-light leading-[12px] md:leading-[13px] text-[8px] md:text-[10px]
+    {% else %}
+        font-sans font-normal leading-[16px] md:leading-[20px] text-[14px] md:text-[16px]
+{% endcase %}
+{% endcapture %}
+
+{% assign extra_classes = class | default: '' %}
+{% assign classes = text_style | append: ' ' | append: extra_classes | strip | default: '' %}
+
+<{{ tag }}
+    class="{{ classes }}"
+    {% if id %}
+        id="{{ id }}"
+    {% endif %}
+>
+    {{ content }}
+</{{ tag }}>
