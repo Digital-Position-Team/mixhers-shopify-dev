@@ -15,9 +15,20 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "about_on_mission_CXt9WD": {
+      "type": "about-on-mission",
+      "name": "Mission Section",
+      "settings": {
+        "heading": "We're on a mission",
+        "text": "Mixhers provides hormone-friendly, science-backed supplements to fuel female evolution through every stage of womanhood. We boldly advocate for the voices, experiences, and health of women.",
+        "button_text": "Shop Now",
+        "button_link": "shopify://collections/all"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "about_on_mission_CXt9WD"
   ]
 }
