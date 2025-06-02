@@ -50,7 +50,7 @@
       </div>
       {% assign formId = 'ContactForm' %}
       {% form 'contact', id: formId, class: 'w-full font-light', data-shopify-captcha: "true" %}
-        <div class="flex flex-col gap-[16px]">
+        <div class="flex flex-col gap-[16px] font-sans">
           <div id="success-message" class="hidden text-[14px] md:text-[16px] text-greens italic" tabindex="-1" data-form-status>
             {{ 'contact.form.post_success' | t }}
           </div>
