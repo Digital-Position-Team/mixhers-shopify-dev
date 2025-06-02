@@ -1,0 +1,100 @@
+{% schema %}
+{
+  "name": "Collection Tabs Filter",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Collection Tabs Filter"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="collection-tabs-section">
+  <div class="filter-buttons">
+    <button data-tag="all" class="filter-btn">All</button>
+    <button data-tag="pms" class="filter-btn">PMS</button>
+    <button data-tag="motherhood" class="filter-btn">Motherhood</button>
+    <button data-tag="menopause" class="filter-btn">Menopause</button>
+    <button data-tag="sexual-wellness" class="filter-btn">Sexual Wellness</button>
+  </div>
+
+  <div class="filtered-products">
+    {% assign sorted_products = collection.products %}
+    
+    {%- comment -%}
+    Optional metafield sorting — adjust namespace/key as needed
+    {%- endcomment -%}
+    {%- assign metafield_namespace = 'custom' -%}
+    {%- assign metafield_key = 'order' -%}
+    
+    {% assign sorted_products = sorted_products | sort: "metafields." | sort: "title" %}
+    
+    {% for product in sorted_products %}
+      <div class="product-card" data-tags="{{ product.tags | join: ',' }}">
+        <a href="{{ product.url }}">
+          {{ product.featured_image | image_url: width: 400 | image_tag: alt: product.title }}
+          <h3>{{ product.title }}</h3>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .product-card {
+    display: inline-block;
+    width: 30%;
+    margin: 10px;
+  }
+  .product-card.hidden {
+    display: none;
+  }
+  .filter-btn.active {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const buttons = document.querySelectorAll('.filter-btn');
+    const products = document.querySelectorAll('.product-card');
+
+    // Helper to apply filter
+    function applyFilter(tag) {
+      buttons.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.tag === tag);
+      });
+
+      products.forEach(product => {
+        const tags = product.dataset.tags.split(',');
+        if (tag === 'all' || tags.includes(tag)) {
+          product.classList.remove('hidden');
+        } else {
+          product.classList.add('hidden');
+        }
+      });
+    }
+
+    // Handle click
+    buttons.forEach(button => {
+      button.addEventListener('click', function () {
+        const tag = this.dataset.tag;
+        applyFilter(tag);
+        const url = new URL(window.location);
+        if (tag === 'all') {
+          url.searchParams.delete('collection');
+        } else {
+          url.searchParams.set('collection', tag);
+        }
+        window.history.pushState({}, '', url);
+      });
+    });
+
+    // On page load: check URL param
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialTag = urlParams.get('collection') || 'all';
+    applyFilter(initialTag);
+  });
+</script>
