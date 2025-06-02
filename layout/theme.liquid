@@ -32,7 +32,7 @@
     {{ 'custom-fonts.css' | asset_url | stylesheet_tag }}
    
     <!-- Styling -->
-   {% unless template == 'index' or page == 'about' %}
+   {% unless template == 'index' or (template == 'page' and page.handle == 'about-us') %}
       {{ 'tailwind.css' | asset_url | stylesheet_tag }}
       <style>
         body, a, li, p, span, div, button, input, textarea {
