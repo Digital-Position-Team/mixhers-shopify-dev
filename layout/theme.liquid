@@ -30,19 +30,16 @@
 
     <!-- Fonts -->
     {{ 'custom-fonts.css' | asset_url | stylesheet_tag }}
-   <!-- Styling -->
-    {{ 'tailwind.css' | asset_url | stylesheet_tag }}
-    <style>
-      body , a, li, p, span, div, button, input, textarea {   
-        font-family: Buenos Aires, sans-serif; 
-        color: #1a1a1a;
-      }
-      body , a, li, p, span, div, input, textarea {   
-        font-family: Buenos Aires, sans-serif; 
-        color: #1a1a1a;
-      }
-    </style>
-    
+    {% unless template == 'index' %}
+      <!-- Styling -->
+      {{ 'tailwind.css' | asset_url | stylesheet_tag }}
+      <style>
+        body, a, li, p, span, div, button, input, textarea {
+          font-family: 'Buenos Aires', sans-serif;
+          color: #1a1a1a;
+        }
+      </style>
+    {% endunless %}
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
