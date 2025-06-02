@@ -1,5 +1,5 @@
 <style>
-   .wholesale-hero p{
+   .wholesale-hero--content p{
       font-size:18px;
     }
    .wholesale-hero h1{
@@ -9,7 +9,7 @@
     .wholesale-hero h1{
       font-size:48px;
     }
-    .wholesale-hero p{
+    .wholesale-hero--content p{
       font-size:20px;
     }
   }
@@ -22,12 +22,10 @@
       <h1 class="text-4xl leading-tight mb-[30px]" style="font-family: 'FAIRE Sprig', sans-serif;">
         {{ section.settings.heading }}
       </h1>
-      {% if section.settings.paragraph_1 != blank %}
-        <p class=""> {{ section.settings.paragraph_1 }} </p>
-      {% endif %}
-      {% if section.settings.paragraph_2 != blank %}
-        <p class="">{{ section.settings.paragraph_2 }} </p>
-      {% endif %}
+      <div class="wholesale-hero--content">
+        {{ section.settings.rich_text }}
+      </div>
+
 
       {% if section.settings.button_text != blank and section.settings.button_link != blank %}
         <a href="{{ section.settings.button_link }}" class="font-sans rounded-[64px] bg-clip-padding bg-black text-white hover:border-pink-light font-semibold text-[18px]
