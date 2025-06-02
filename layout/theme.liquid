@@ -30,8 +30,9 @@
 
     <!-- Fonts -->
     {{ 'custom-fonts.css' | asset_url | stylesheet_tag }}
-    {% unless template == 'index' %}
-      <!-- Styling -->
+   
+    <!-- Styling -->
+   {% unless template == 'index' or template == 'page.about' %}
       {{ 'tailwind.css' | asset_url | stylesheet_tag }}
       <style>
         body, a, li, p, span, div, button, input, textarea {
@@ -40,6 +41,7 @@
         }
       </style>
     {% endunless %}
+    
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
