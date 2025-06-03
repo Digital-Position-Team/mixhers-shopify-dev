@@ -24,9 +24,8 @@
   <div class="wholesale-benefits__image-wrapper">
     {% if section.settings.image %}
       <img
-        src="{{ section.settings.image | image_url }}"
-        alt="{{ section.settings.image.alt | escape }}"
-        class="wholesale-benefits__image"  loading="lazy" width="" height=""
+        src="{{ section.settings.image | image_url }}"  alt="{{ section.settings.image.alt | escape }}"
+        class="wholesale-benefits__image img-100"  loading="lazy" width="" height=""
       >
     {% endif %}
   </div>
