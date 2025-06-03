@@ -48,6 +48,9 @@
   .contact-left{
     padding:30px 30px 40px 30px;
   }
+  .contact-left .h1.contact-heading{
+    margin:0px;
+  }
   .contact-breadcrumb {
     color: gray;
     text-decoration: none;
@@ -71,7 +74,7 @@
     <div class="breadcrumb-div font-sans">
       <span><a href="/" class="contact-breadcrumb">Home</a>・Contact Us</span>
     </div>
-    <h1 class="contact-heading">{{ section.settings.heading_text }}</h1>
+    <h1 class="contact-heading font-serif">{{ section.settings.heading_text }}</h1>
     {% assign formId = 'ContactForm' %}
     {% form 'contact', id: formId, class: 'contact-form', data-shopify-captcha: "true" %}
       <div class="form-container">
