@@ -3599,7 +3599,7 @@ details-disclosure > details {
 
 
 /* common custom global styling for sections */
-.font-sans , p , a{
+/* .font-sans , p , a{
   font-family: Buenos Aires, sans-serif;
 }
 .font-serif {
@@ -3622,4 +3622,4 @@ details-disclosure > details {
       padding-left:20px;
       padding-right:20px;
     }
- }
+ } */
