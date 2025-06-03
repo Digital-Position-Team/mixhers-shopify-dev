@@ -41,6 +41,13 @@
 }
 {% endschema %}
 <style>
+  .custom-contact--section{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+  .contact-left{
+    padding:30px 30px 40px 30px;
+  }
   #custom-contact-form input{
     /* outline:none; */
     line-height:22px;
@@ -55,8 +62,8 @@
     padding-left:8px
   }
 </style>
-<div class="h-full flex flex-col-reverse justify-center md:flex-row min-h-[846px]" id="custom-contact-form">
-  <div class="px-[25px] md:w-1/2 md:pr-[48px] md:pl-[30px] pt-[12px] md:pt-[30px] pb-[40px]">
+<div class="h-full custom-contact--section" id="custom-contact-form">
+  <div class="contact-left">
     <div class="flex flex-col gap-[16px]">
       <div>
         <span><a href="/" class="text-gray hover:text-black">Home</a>・Contact Us</span>
