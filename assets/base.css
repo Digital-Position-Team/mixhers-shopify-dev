@@ -3605,6 +3605,10 @@ details-disclosure > details {
 .font-serif {
   font-family: Faire Sprig, serif;
 }
+.img-100{
+  width:100%;
+  max-width:100%;
+}
 .section-container {
     padding-left:48px;
     padding-right:48px;
