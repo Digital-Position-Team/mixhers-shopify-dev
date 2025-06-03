@@ -81,31 +81,25 @@
   .marker\:text-pink *::marker {
     color: rgb(255 89 228 );
   }
-  
   .marker\:text-pink::marker {
     color: rgb(255 89 228 );
   }
-  
   .placeholder\:text-black::-moz-placeholder {
     --tw-text-opacity: 1;
     color: rgb(26 26 26 / var(--tw-text-opacity));
   }
-  
   .placeholder\:text-black::placeholder {
     --tw-text-opacity: 1;
     color: rgb(26 26 26 / var(--tw-text-opacity));
   }
-  
   .placeholder\:text-gray::-moz-placeholder {
     --tw-text-opacity: 1;
     color: rgb(124 137 147 / var(--tw-text-opacity));
   }
-  
   .placeholder\:text-gray::placeholder {
     --tw-text-opacity: 1;
     color: rgb(124 137 147 / var(--tw-text-opacity));
   }
-
   #custom-contact-form *:focus-visible{
     outline: 1px solid;
     outline-offset: 0;
@@ -134,12 +128,15 @@
     min-width:180px;
   }
   .placeholder-span {
-      position: absolute;
-      top: 5.5px;
-      line-height: 1;
-      padding: 3px;
-      left: 8px;
-      background: #fff;
+    position: absolute;
+    top: 5.5px;
+    line-height: 1;
+    padding: 3px;
+    left: 8px;
+    background: #fff;
+  }
+  .border-highlight{
+    border-color:#ff59e4;
   }
 
   
@@ -343,11 +340,11 @@
     };
     if (validEmail(emailValue)) {
       emailError.classList.add('hidden');
-      email.classList.remove('border-pink');
+      email.classList.remove('border-highlight');
       valid = true;
     } else {
       emailError.classList.remove('hidden');
-      email.classList.add('border-pink');
+      email.classList.add('border-highlight');
       valid = false;
     }
     return valid;
@@ -358,11 +355,11 @@
     const messageValue = message.value;
     if (messageValue.length >= 20) {
       messageError.classList.add('hidden');
-      message.classList.remove('border-pink');
+      message.classList.remove('border-highlight');
       valid = true;
     } else {
       messageError.classList.remove('hidden');
-      message.classList.add('border-pink');
+      message.classList.add('border-highlight');
       valid = false;
     }
     return valid;
