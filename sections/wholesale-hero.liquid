@@ -42,14 +42,8 @@
   <!-- Right Frame -->
   <div class="wholesale-hero__right">
     {% if section.settings.image %}
-      <img
-        src="{{ section.settings.image | image_url }}"
-        alt="{{ section.settings.image.alt | escape }}"
-        class="wholesale-hero__image"
-        width=""
-        height=""
-        loading="lazy"
-      >
+      <img src="{{ section.settings.image | image_url }}" alt="{{ section.settings.image.alt | escape }}"
+      class="wholesale-hero__image img-100" width="" height="" loading="lazy">
     {% endif %}
   </div>
 </div>
