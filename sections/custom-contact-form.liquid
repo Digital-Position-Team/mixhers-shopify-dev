@@ -142,12 +142,12 @@
   .border-highlight{
     border-color:#ff59e4;
   }
-  div#message-error {
+  .error-message {
     color: #ff59e4;
     padding-bottom:5px;
   }
  .form-success{
-    #00b347
+   color: #00b347;
   }
 </style>
 <div class="h-full custom-contact--section" id="custom-contact-form">
@@ -160,7 +160,7 @@
     {% assign formId = 'ContactForm' %}
     {% form 'contact', id: formId, class: 'contact-form', data-shopify-captcha: "true" %}
       <div class="form-container">
-        <div id="success-message" class="form-success hidden" tabindex="-1" data-form-status>
+        <div id="success-message" class="form-success font-sans hidden" tabindex="-1" data-form-status>
           {{ 'templates.contact.form.post_success' | t }}
         </div>
 
@@ -243,7 +243,7 @@
             </span>
           </div>
 
-          <div id="message-error" class="error-message hidden">please enter a message with at least 20 characters.</div>
+          <div id="message-error" class="error-message hidden font-sans">please enter a message with at least 20 characters.</div>
 
           <div>
             <button type="submit" class="submit-button custom-primary-btn">
