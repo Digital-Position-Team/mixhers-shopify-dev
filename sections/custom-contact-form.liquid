@@ -99,6 +99,9 @@
       flex-direction: column;
       gap: 8px;
   }
+  .submit-button{
+    min-width:180px;
+  }
 
   
 </style>
@@ -198,7 +201,7 @@
           <div id="message-error" class="error-message hidden">please enter a message with at least 20 characters.</div>
 
           <div>
-            <button type="submit" class="submit-button">
+            <button type="submit" class="submit-button custom-primary-btn">
               {{ section.settings.button_text }}
             </button>
           </div>
