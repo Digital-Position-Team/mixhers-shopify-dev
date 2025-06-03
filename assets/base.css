@@ -3631,16 +3631,17 @@ body{
 .margin-0{
   margin:0px;
 }
+.margin-b0{
+  margin-bottom:0px;
+}
+.margin-t0{
+  margin-top:0px;
+}
 .img-100{
   width:100%;
   max-width:100%;
   object-fit: cover;
   display: block;
-}
-.img-100-contain{
-  width:100%;
-  max-width:100%;
-  object-fit: contain;
 }
 .section-container {
     padding-left:48px;
