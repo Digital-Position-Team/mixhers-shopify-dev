@@ -48,8 +48,14 @@
   .contact-left{
     padding:30px 30px 40px 30px;
   }
+  .contact-breadcrumb {
+    color: gray;
+    text-decoration: none;
+  }
+  .contact-breadcrumb:hover {
+    color: black;
+  }
   #custom-contact-form input{
-    /* outline:none; */
     line-height:22px;
     height:auto;
   }
@@ -65,11 +71,10 @@
 <div class="h-full custom-contact--section" id="custom-contact-form">
 <div class="contact-left">
   <div class="contact-container">
-    <div>
+    <div class="breadcrumb-div">
       <span><a href="/" class="contact-breadcrumb">Home</a>・Contact Us</span>
-      <h1 class="contact-heading">{{ section.settings.heading_text }}</h1>
     </div>
-
+    <h1 class="contact-heading">{{ section.settings.heading_text }}</h1>
     {% assign formId = 'ContactForm' %}
     {% form 'contact', id: formId, class: 'contact-form', data-shopify-captcha: "true" %}
       <div class="form-container">
