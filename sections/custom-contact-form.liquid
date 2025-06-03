@@ -76,33 +76,33 @@
     display: block;
     border: 1px solid #1a1a1a;
    }
-.marker\:text-pink *::marker {
-  color: rgb(255 89 228 );
-}
-
-.marker\:text-pink::marker {
-  color: rgb(255 89 228 );
-}
-
-.placeholder\:text-black::-moz-placeholder {
-  --tw-text-opacity: 1;
-  color: rgb(26 26 26 / var(--tw-text-opacity));
-}
-
-.placeholder\:text-black::placeholder {
-  --tw-text-opacity: 1;
-  color: rgb(26 26 26 / var(--tw-text-opacity));
-}
-
-.placeholder\:text-gray::-moz-placeholder {
-  --tw-text-opacity: 1;
-  color: rgb(124 137 147 / var(--tw-text-opacity));
-}
-
-.placeholder\:text-gray::placeholder {
-  --tw-text-opacity: 1;
-  color: rgb(124 137 147 / var(--tw-text-opacity));
-}
+  .marker\:text-pink *::marker {
+    color: rgb(255 89 228 );
+  }
+  
+  .marker\:text-pink::marker {
+    color: rgb(255 89 228 );
+  }
+  
+  .placeholder\:text-black::-moz-placeholder {
+    --tw-text-opacity: 1;
+    color: rgb(26 26 26 / var(--tw-text-opacity));
+  }
+  
+  .placeholder\:text-black::placeholder {
+    --tw-text-opacity: 1;
+    color: rgb(26 26 26 / var(--tw-text-opacity));
+  }
+  
+  .placeholder\:text-gray::-moz-placeholder {
+    --tw-text-opacity: 1;
+    color: rgb(124 137 147 / var(--tw-text-opacity));
+  }
+  
+  .placeholder\:text-gray::placeholder {
+    --tw-text-opacity: 1;
+    color: rgb(124 137 147 / var(--tw-text-opacity));
+  }
 
   #custom-contact-form *:focus-visible{
     outline: 1px solid;
@@ -130,6 +130,13 @@
   }
   .submit-button{
     min-width:180px;
+  }
+  .placeholder-span{
+    position:absolute;
+    top:0;
+    padding:2px;
+    left:0;
+    background:#fff;
   }
 
   
@@ -197,7 +204,7 @@
                   aria-invalid="true"
                   aria-describedby="ContactForm-email-error"
                 {% endif %}>
-              <span id="email-placeholder" class="hidden" style="position: absolute; top: 0; left: 0; padding-left: 12px; padding-top: 4px; color: black;">
+              <span id="email-placeholder" class="hidden placeholder-span">
                 Email<span style="color: #ff4d6d;">*</span>
               </span>
             </div>
@@ -222,7 +229,7 @@
             <textarea id="message-input"
               class="form-textarea"
               placeholder="Message*" rows="10" name="contact[message]" required="required" minlength="20"></textarea>
-            <span id="message-placeholder" class="hidden" style="position: absolute; top: 0; left: 0; padding-left: 12px; padding-top: 4px; color: black;">
+            <span id="message-placeholder" class="hidden placeholder-span">
               Message<span style="color: #ff4d6d;">*</span>
             </span>
           </div>
