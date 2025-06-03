@@ -3599,17 +3599,20 @@ details-disclosure > details {
 
 
 /* common custom global styling for sections */
-.font-sans , p , a , button , span{
-  font-family: Buenos Aires, sans-serif;
-}
 body{
   color: #1a1a1a;
+}
+.font-sans , p , a , button , span{
+  font-family: Buenos Aires, sans-serif;
 }
 .font-serif {
   font-family: Faire Sprig, serif;
 }
 .light-font{
   font-weight: 300 !important;
+}
+.margin-0{
+  margin:0px;
 }
 .img-100{
   width:100%;
