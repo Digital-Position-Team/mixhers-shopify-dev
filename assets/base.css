@@ -3599,7 +3599,7 @@ details-disclosure > details {
 
 
 /* common custom global styling for sections */
-.font-sans , p , a , button{
+.font-sans , p , a , button , span{
   font-family: Buenos Aires, sans-serif;
 }
 .font-serif {
