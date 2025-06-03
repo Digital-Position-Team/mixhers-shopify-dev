@@ -3602,6 +3602,9 @@ details-disclosure > details {
 .font-sans , p , a , button , span{
   font-family: Buenos Aires, sans-serif;
 }
+body{
+  color: #1a1a1a;
+}
 .font-serif {
   font-family: Faire Sprig, serif;
 }
