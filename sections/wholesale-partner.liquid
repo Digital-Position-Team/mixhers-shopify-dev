@@ -6,6 +6,12 @@
   font-size: 18px;
   font-family: 'Buenos Aires', sans-serif;
 }
+.wholesale-benefits {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f9fafb; /* gray-50 */
+}
 @media(min-width: 768px){
   .wholesale-benefits .checklist-text {
     font-size: 20px;
@@ -13,29 +19,29 @@
 }
 {% endstylesheet %}
 
-<div class="wholesale-benefits w-full flex flex-col md:flex-row items-stretch bg-gray-50">
+<div class="wholesale-benefits">
   <!-- Left Frame (Image) -->
-  <div class="w-full md:w-1/2 flex justify-center items-center" style="max-height: 656px;">
+  <div class="wholesale-benefits__image-wrapper">
     {% if section.settings.image %}
       <img
         src="{{ section.settings.image | image_url }}"
         alt="{{ section.settings.image.alt | escape }}"
-        class="w-full h-full object-cover"
+        class="wholesale-benefits__image"
         loading="lazy"
       >
     {% endif %}
   </div>
 
   <!-- Right Frame (Content) -->
-  <div class="w-full md:w-1/2 flex flex-col items-start justify-center gap-4 bg-gray-blue p-8 min-h-[656px]">
-    <h1 class="text-4xl md:text-5xl leading-tight mb-[30px]">
+  <div class="wholesale-benefits__content">
+    <h1 class="wholesale-benefits__heading">
       {{ section.settings.heading }}
     </h1>
 
-    <div class="checklist flex flex-col items-start gap-8">
+    <div class="checklist">
       {% assign benefits = section.settings.benefits | newline_to_br | split: "<br />" %}
       {% for benefit in benefits %}
-        <div class="checklist-item flex items-center gap-6">
+        <div class="checklist-item">
           <div class="check-square">
             <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M9 11.5L12 14.5L22 4.5" stroke="#FF59E4" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"/>
@@ -48,13 +54,13 @@
     </div>
 
     {% if section.settings.button_text != blank and section.settings.button_link != blank %}
-      <a href="{{ section.settings.button_link }}" class="mt-[30px] font-sans rounded-[64px] bg-black text-white font-semibold text-[18px]
-        leading-[20px] py-[10px] px-[18px] border-[4px] border-transparent cursor-pointer hover:bg-primary">
+      <a href="{{ section.settings.button_link }}" class="wholesale-benefits__button">
         {{ section.settings.button_text }}
       </a>
     {% endif %}
   </div>
 </div>
+
 
 
 {% schema %}
