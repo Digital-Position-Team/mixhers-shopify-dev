@@ -20,17 +20,13 @@
 {% endstylesheet %}
 
 <div class="wholesale-benefits">
-  <!-- Left Frame (Image) -->
   <div class="wholesale-benefits__image-wrapper">
     {% if section.settings.image %}
-      <img
-        src="{{ section.settings.image | image_url }}"  alt="{{ section.settings.image.alt | escape }}"
+      <img src="{{ section.settings.image | image_url }}"  alt="{{ section.settings.image.alt | escape }}"
         class="wholesale-benefits__image img-100"  loading="lazy" width="" height=""
-      >
+      />
     {% endif %}
   </div>
-
-  <!-- Right Frame (Content) -->
   <div class="wholesale-benefits__content">
     <h1 class="wholesale-benefits__heading">
       {{ section.settings.heading }}
