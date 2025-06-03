@@ -31,7 +31,8 @@
     <!-- Fonts -->
     {{ 'custom-fonts.css' | asset_url | stylesheet_tag }}
    
-
+    <!-- Common styling for sections -->
+    {{ 'common-styles.css' | asset_url | stylesheet_tag }}
     
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
