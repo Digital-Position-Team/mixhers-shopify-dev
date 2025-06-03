@@ -3602,10 +3602,10 @@ details-disclosure > details {
 body{
   color: #1a1a1a;
 }
-.font-sans , p , a , button , span{
+.font-sans , p , a , button , span{ 
   font-family: Buenos Aires, sans-serif;
 }
-.font-serif {
+.font-serif { 
   font-family: Faire Sprig, serif;
 }
 .light-font, .light-font *{
@@ -3628,15 +3628,10 @@ body{
 .custom-primary-btn:hover{
     background-color: #ff59e4;
 }
-.margin-0{
-  margin:0px;
-}
-.margin-b0{
-  margin-bottom:0px;
-}
-.margin-t0{
-  margin-top:0px;
-}
+.margin-0{ margin:0px;}
+.margin-b0{margin-bottom:0px;}
+.margin-t0{ margin-top:0px;}
+
 .img-100{
   width:100%;
   max-width:100%;
@@ -3644,10 +3639,10 @@ body{
   display: block;
 }
 .section-container {
-    padding-left:48px;
-    padding-right:48px;
-    max-width: 1357px;
-    margin: 0 auto;
+  padding-left:48px;
+  padding-right:48px;
+  max-width: 1357px;
+  margin: 0 auto;
 }
 @media(max-width:1023px){
  .section-container{
