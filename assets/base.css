@@ -3608,7 +3608,7 @@ body{
 .font-serif {
   font-family: Faire Sprig, serif;
 }
-.light-font{
+.light-font *{
   font-weight: 300 !important;
 }
 .custom-primary-btn{
