@@ -19,25 +19,26 @@
     </div>
   </div>
 
-  <div class="credibility-retailers-slider">
-    <div class="retailers-slider-wrapper">
+<div class="credibility-retailers-slider">
+  <div class="retailers-slider-wrapper">
+    <div class="retailers-slider-track">
       {% for i in (1..2) %}
-      {% for block in section.blocks %}
-        <div class="retailers--item">
-          {% if block.settings.image %}
-            <img
-              src="{{ block.settings.image | image_url }}"
-              alt="{{ block.settings.image.alt | escape }}"
-              loading="lazy"
-              width=""
-              height=""
-            >
-          {% endif %}
-        </div>
-      {% endfor %}
+        {% for block in section.blocks %}
+          <div class="retailers--item">
+            {% if block.settings.image %}
+              <img
+                src="{{ block.settings.image | image_url }}"
+                alt="{{ block.settings.image.alt | escape }}"
+                loading="lazy" width="" height=""
+              />
+            {% endif %}
+          </div>
         {% endfor %}
+      {% endfor %}
     </div>
   </div>
+</div>
+
 </section>
 
 <style>
@@ -53,17 +54,6 @@
 .retailers--button--wrapper {
   padding-bottom: 20px;
 }
-.credibility-retailers-slider {
-  background: #f4f9fd;
-  overflow: hidden;
-}
-.retailers-slider-wrapper {
-  display: flex;
-  /* animation: credibilityScroll 60s linear infinite; */
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 20px;
-}
 .retailers--item img {
     height: 160px;
     width: auto;
@@ -71,11 +61,46 @@
     aspect-ratio: 1.3 / 0.8;
     display: block;
 }
-@keyframes credibilityScroll {
-  0% { transform: translateX(0);}
-  /* 100% { transform: translateX(-100%);} */
-   100%{  transform: translateX(-50%); }
+.credibility-retailers-slider {
+  background: #f4f9fd;
+  overflow: hidden;
+  position: relative;
 }
+
+.retailers-slider-wrapper {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.retailers-slider-track {
+  display: inline-flex;
+  animation: scrollRetailers 30s linear infinite;
+}
+
+.retailers--item {
+  flex: 0 0 auto;
+  margin-right: 20px;
+}
+
+.retailers--item img {
+  height: 160px;
+  width: auto;
+  object-fit: cover;
+  aspect-ratio: 1.3 / 0.8;
+  display: block;
+}
+
+/* Infinite scroll keyframes */
+@keyframes scrollRetailers {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 @media(min-width:768px){
   .retailers-title-section .grid-auto-row {
     grid-template-columns: minmax(auto, 1040px) minmax(220px, auto);
