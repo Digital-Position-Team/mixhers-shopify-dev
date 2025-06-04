@@ -17,12 +17,46 @@
   .filter-results {
     display: none;
   }
-  .filter-results.grid {
+  .filter-results.active-grid {
     display: grid;
+  }
+
+  .collection-tabs {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 16px;
+  }
+
+  .filter-tag {
+    padding: 10px 16px;
+    border-radius: 9999px;
+    border: none;
+    background-color: #eee;
+    color: #000;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .filter-tag:hover {
+    background-color: #ffccef;
+  }
+
+  .collection-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding: 16px;
+  }
+
+  @media (min-width: 768px) {
+    .collection-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 </style>
 
-<div class="collection-tabs px-4 py-4 flex gap-2 overflow-x-auto">
+<div class="collection-tabs">
   {% assign filters = "all-products,pms,motherhood,menopause,health,sexual-wellness" | split: "," %}
   {% assign filter_labels = "All Products,PMS,Motherhood,Menopause,Health & Nutrition,Sexual Wellness" | split: "," %}
 
@@ -30,7 +64,7 @@
     {% assign label = filter_labels[forloop.index0] %}
     <button
       id="{{ filter }}-tag"
-      class="filter-tag text-black hover:text-pink px-4 py-2 rounded-full"
+      class="filter-tag"
       type="button"
       onclick="handleFilter('{{ filter }}')"
     >
@@ -41,19 +75,12 @@
 
 {% assign all_products = collections.all.products %}
 {% assign max_rank = 10 %}
-
-{%- comment -%}
-Initialize empty strings for each filter except all-products
-{%- endcomment -%}
 {% assign sorted_pms = '' %}
 {% assign sorted_motherhood = '' %}
 {% assign sorted_menopause = '' %}
 {% assign sorted_health = '' %}
 {% assign sorted_sexual_wellness = '' %}
 
-{%- comment -%}
-Fill each sorted_handles string for each filter by ranking
-{%- endcomment -%}
 {% for rank in (1..max_rank) %}
   {% for product in all_products %}
     {% assign pms_rank = product.metafields.custom.pms_order | default: 10 %}
@@ -62,21 +89,11 @@ Fill each sorted_handles string for each filter by ranking
     {% assign health_rank = product.metafields.custom.health_order | default: 10 %}
     {% assign sexual_wellness_rank = product.metafields.custom.sexual_wellness_order | default: 10 %}
 
-    {% if pms_rank == rank %}
-      {% assign sorted_pms = sorted_pms | append: product.handle | append: ',' %}
-    {% endif %}
-    {% if motherhood_rank == rank %}
-      {% assign sorted_motherhood = sorted_motherhood | append: product.handle | append: ',' %}
-    {% endif %}
-    {% if menopause_rank == rank %}
-      {% assign sorted_menopause = sorted_menopause | append: product.handle | append: ',' %}
-    {% endif %}
-    {% if health_rank == rank %}
-      {% assign sorted_health = sorted_health | append: product.handle | append: ',' %}
-    {% endif %}
-    {% if sexual_wellness_rank == rank %}
-      {% assign sorted_sexual_wellness = sorted_sexual_wellness | append: product.handle | append: ',' %}
-    {% endif %}
+    {% if pms_rank == rank %}{% assign sorted_pms = sorted_pms | append: product.handle | append: ',' %}{% endif %}
+    {% if motherhood_rank == rank %}{% assign sorted_motherhood = sorted_motherhood | append: product.handle | append: ',' %}{% endif %}
+    {% if menopause_rank == rank %}{% assign sorted_menopause = sorted_menopause | append: product.handle | append: ',' %}{% endif %}
+    {% if health_rank == rank %}{% assign sorted_health = sorted_health | append: product.handle | append: ',' %}{% endif %}
+    {% if sexual_wellness_rank == rank %}{% assign sorted_sexual_wellness = sorted_sexual_wellness | append: product.handle | append: ',' %}{% endif %}
   {% endfor %}
 {% endfor %}
 
@@ -86,13 +103,13 @@ Fill each sorted_handles string for each filter by ranking
 {% assign sorted_health_array = sorted_health | split: ',' %}
 {% assign sorted_sexual_wellness_array = sorted_sexual_wellness | split: ',' %}
 
-<div id="all-products-results" class="filter-results grid grid-cols-2 md:grid-cols-4 gap-4 px-4" style="display:grid;">
+<div id="all-products-results" class="filter-results collection-grid" style="display:grid;">
   {% for product in all_products %}
     {% render 'product-card', product: product %}
   {% endfor %}
 </div>
 
-<div id="pms-results" class="filter-results grid grid-cols-2 md:grid-cols-4 gap-4 px-4">
+<div id="pms-results" class="filter-results collection-grid">
   {% for handle in sorted_pms_array %}
     {% assign product = all_products | where: "handle", handle | first %}
     {% if product and product.tags contains 'PMS' %}
@@ -101,7 +118,7 @@ Fill each sorted_handles string for each filter by ranking
   {% endfor %}
 </div>
 
-<div id="motherhood-results" class="filter-results grid grid-cols-2 md:grid-cols-4 gap-4 px-4">
+<div id="motherhood-results" class="filter-results collection-grid">
   {% for handle in sorted_motherhood_array %}
     {% assign product = all_products | where: "handle", handle | first %}
     {% if product and product.tags contains 'Motherhood' %}
@@ -110,7 +127,7 @@ Fill each sorted_handles string for each filter by ranking
   {% endfor %}
 </div>
 
-<div id="menopause-results" class="filter-results grid grid-cols-2 md:grid-cols-4 gap-4 px-4">
+<div id="menopause-results" class="filter-results collection-grid">
   {% for handle in sorted_menopause_array %}
     {% assign product = all_products | where: "handle", handle | first %}
     {% if product and product.tags contains 'Menopause' %}
@@ -119,7 +136,7 @@ Fill each sorted_handles string for each filter by ranking
   {% endfor %}
 </div>
 
-<div id="health-results" class="filter-results grid grid-cols-2 md:grid-cols-4 gap-4 px-4">
+<div id="health-results" class="filter-results collection-grid">
   {% for handle in sorted_health_array %}
     {% assign product = all_products | where: "handle", handle | first %}
     {% if product and product.tags contains 'Health & Nutrition' %}
@@ -128,7 +145,7 @@ Fill each sorted_handles string for each filter by ranking
   {% endfor %}
 </div>
 
-<div id="sexual-wellness-results" class="filter-results grid grid-cols-2 md:grid-cols-4 gap-4 px-4">
+<div id="sexual-wellness-results" class="filter-results collection-grid">
   {% for handle in sorted_sexual_wellness_array %}
     {% assign product = all_products | where: "handle", handle | first %}
     {% if product and product.tags contains 'Sexual Wellness' %}
@@ -139,18 +156,15 @@ Fill each sorted_handles string for each filter by ranking
 
 <script>
   function handleFilter(filter) {
-    // Update URL query param without page reload
     const urlParams = new URLSearchParams(window.location.search);
     urlParams.set('collection', filter);
     const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + "?" + urlParams.toString();
     window.history.pushState({ path: newUrl }, '', newUrl);
 
-    // Set active button style
     document.querySelectorAll('.filter-tag').forEach(btn => btn.classList.remove('active-tag'));
     const activeBtn = document.getElementById(filter + '-tag');
     if (activeBtn) activeBtn.classList.add('active-tag');
 
-    // Show/hide product grids
     document.querySelectorAll('.filter-results').forEach(grid => {
       grid.style.display = 'none';
     });
@@ -158,7 +172,6 @@ Fill each sorted_handles string for each filter by ranking
     if (activeGrid) activeGrid.style.display = 'grid';
   }
 
-  // On page load, read URL and select correct tab & grid
   document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     let filter = urlParams.get('collection') || 'all-products';
