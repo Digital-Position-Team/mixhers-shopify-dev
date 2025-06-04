@@ -1,120 +1,97 @@
+<style>
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 16rem;
+    background-color: #f9f9f9;
+    text-align: center;
+    padding: 24px;
+    position: relative;
+    border: 1px solid #000;
+  }
+
+  .product-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    gap: 24px;
+    flex-grow: 1;
+  }
+
+  .product-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+
+  .product-subtitle {
+    font-size: 14px;
+    color: #555;
+  }
+
+  .product-shop-link {
+    text-decoration: underline;
+    font-size: 14px;
+    font-weight: 600;
+    padding-bottom: 16px;
+  }
+
+  .product-tag {
+    padding: 4px 12px;
+    border-style: solid;
+    border-width: 0 0 1px 1px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: transparent;
+  }
+
+  .tag-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+  }
+</style>
+
+{% for product in collections.all.products %}
+  {% if product.id == product_id %}
+    {% assign selected_product = product %}
+  {% endif %}
+{% endfor %}
+
 {% assign show_tags = show_tags | default: false %}
 
-<div class="custom-product-card">
-  <a href="{{ product.url }}" class="product-link">
+<div class="product-card">
+  <a href="{{ selected_product.url }}" class="product-link">
     <img
-      src="{{ product.featured_image | image_url: width: 500, height: 500 }}"
-      alt="{{ product.title }}"
+      src="{{ selected_product.featured_image | image_url: width: 500, height: 500 }}"
+      alt="{{ selected_product.title }}"
       width="300"
       height="300"
       loading="lazy"
     >
-    <div class="product-info">
-      <p>{{ product.title }}</p>
-       <p>{{ product.metafields.rebrand.product_subtitle }}</p>
-      <a href="{{ product.url }}" class="custom-btn-primary">
-        Shop Now
-      </a>
+    <div>
+      <div class="product-title">{{ selected_product.title }}</div>
+      <div class="product-subtitle">{{ selected_product.metafields.rebrand.product_subtitle }}</div>
+      <a href="{{ selected_product.url }}" class="product-shop-link">Shop Now</a>
     </div>
   </a>
 
-  
-  {% if show_tags %}
-    {% if product.metafields.custom.product_tags_to_show %}
-      <div class="product-tags">
-        {% for metaobject in product.metafields.custom.product_tags_to_show.value %}
-          {% if metaobject.show_on_product_cards == true %}
-            <div
-              class="tag"
-              style="border-color: {{ metaobject.tag_color }}; color: {{ metaobject.tag_color }};">
-             <p>{{ metaobject.tag_name }}</p>
-            </div>
-          {% endif %}
-        {% endfor %}
-      </div>
-    {% endif %}
+  {% if show_tags and selected_product.metafields.custom.product_tags_to_show %}
+    <div class="tag-container">
+      {% for metaobject in selected_product.metafields.custom.product_tags_to_show.value %}
+        {% if metaobject.show_on_product_cards == true %}
+          <div
+            class="product-tag"
+            style="border-color: {{ metaobject.tag_color }}; color: {{ metaobject.tag_color }};">
+            {{ metaobject.tag_name }}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
   {% endif %}
 </div>
-
-<style>
-.custom-product-card {
-  display: flex;
-  flex-direction: column;
-  min-height: 256px;
-  justify-content: space-between;
-  background-color: #f5f5f5;
-  text-align: center;
-  border: 1px solid #000;
-  position: relative;
-  padding: 24px 24px 40px;
-}
-
-.product-link {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-  gap: 24px;
-  text-decoration: none;
-  color: inherit;
-}
-
-.product-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.shop-now-desktop {
-  display: none;
-}
-
-.shop-now-mobile {
-  display: inline;
-  text-decoration: underline;
-  font-size: 14px;
-  font-weight: 600;
-  padding-bottom: 8px;
-}
-
-@media (min-width: 640px) {
-  .custom-product-card {
-    min-height: 512px;
-    padding: 24px 61px 40px;
-  }
-  .shop-now-desktop {
-    display: inline;
-  }
-  .shop-now-mobile {
-    display: none;
-  }
-}
-
-.product-tags {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-}
-
-.tag {
-  padding: 4px 12px;
-  border-style: solid;
-  border-width: 0 1px 1px 0;
-  text-transform: uppercase;
-  background-color: transparent;
-}
-
-.tag-label {
-  font-weight: bold;
-  font-size: 12px;
-}
-
-.custom-btn {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-</style>
