@@ -10,13 +10,9 @@
       loading="lazy"
     >
     <div class="product-info">
-      {% render 'text', type: 'body-xl', content: product.title %}
-      {% render 'text', type: 'body-md', content: product.metafields.rebrand.product_subtitle %}
-      
-      <span class="shop-now-desktop">
-        {% render 'button', style: 'secondary', size: 'sm', text: 'Shop Now', class: 'custom-btn' %}
-      </span>
-      <a href="{{ product.url }}" class="shop-now-mobile">
+      <p>{{ product.title }}</p>
+       <p>{{ product.metafields.rebrand.product_subtitle }}</p>
+      <a href="{{ product.url }}" class="custom-btn-primary">
         Shop Now
       </a>
     </div>
