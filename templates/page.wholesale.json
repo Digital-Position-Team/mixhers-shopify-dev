@@ -36,11 +36,7 @@
         "heading": "Wholesale Partner Benefits",
         "benefits": "Low $200 Minimum Order\nPreview new products + Receive samples\nRetail-specific display pieces + Marketing Materials\nExclusive event invitations\nContent marketing inclusions\nProduct Education + Other Support Resources",
         "button_text": "Apply Now",
-        "button_link": "https://share.hsforms.com/1dO8p8C_uS1ircTdKfiOF5Ae3b70",
-        "mission_heading": "We're on a mission",
-        "mission_text": "Ready to become a Mixhers Wholesale Partner? Take a few minutes to complete our online application form and we will reach out to you within 72 hours.",
-        "mission_button_text": "Join Now",
-        "mission_button_link": ""
+        "button_link": "https://share.hsforms.com/1dO8p8C_uS1ircTdKfiOF5Ae3b70"
       }
     },
     "about_on_mission_CXt9WD": {
@@ -52,11 +48,17 @@
         "button_text": "Shop Now",
         "button_link": "shopify://collections/all"
       }
+    },
+    "retailers_section_6XN9jk": {
+      "type": "retailers-section",
+      "name": "Retailers Section",
+      "settings": {}
     }
   },
   "order": [
     "main",
     "wholesale_hero_hg4iNN",
+    "retailers_section_6XN9jk",
     "wholesale_partner_ecH6yV",
     "about_on_mission_CXt9WD"
   ]
