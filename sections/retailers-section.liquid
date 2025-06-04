@@ -1,79 +1,131 @@
-{% schema %}
-  {
-  "name": "Retailers Section",
-  "tag": "section",
-  "settings": [
-  ],
-  "presets": [
-    {
-      "name": "Retailers Section"
-    }
-  ]
-}
-{% endschema %}
+<section class="retailers-section">
+  <div class="retailers-title-section">
+    <div class="page-width">
+      <div class="grid-auto-row">
+        <div>
+          <h2 class="font-serif underline-title title-heading-2">
+            {{ section.settings.retailers_title }}
+          </h2>
+          <p class="margin-0">
+            {{ section.settings.retailers_text }}
+          </p>
+        </div>
+        <div class="retailers--button--wrapper">
+          <a href="{{ section.settings.button_link }}" class="custom-primary-btn f-18">
+            {{ section.settings.button_text }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="credibility-retailers-slider">
+    <div class="retailers-slider-wrapper">
+      {% for block in section.blocks %}
+        <div class="retailers--item">
+          {% if block.settings.image %}
+            <img
+              src="{{ block.settings.image | image_url }}"
+              alt="{{ block.settings.image.alt | escape }}"
+              loading="lazy"
+              width=""
+              height=""
+            >
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
 <style>
 .retailers-title-section .grid-auto-row {
-    display: grid;
-    align-items: flex-end;
-    gap: 25px;
-    grid-template-columns: 1fr;
+  display: grid;
+  align-items: flex-end;
+  gap: 25px;
+  grid-template-columns: 1fr;
 }
 .retailers-title-section {
-  padding:48px 0px;
+  padding: 48px 0px;
 }
-.retailers--button--wrapper{
-  padding-bottom:20px;
+.retailers--button--wrapper {
+  padding-bottom: 20px;
 }
 .credibility-retailers-slider {
-    background: #f4f9fd;
+  background: #f4f9fd;
+  overflow: hidden;
 }
 .retailers-slider-wrapper {
-    display: flex;
-    animation: credibilityScroll 90s linear infinite;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 20px;
+  display: flex;
+  animation: credibilityScroll 90s linear infinite;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
 }
 @keyframes credibilityScroll {
   0% { transform: translateX(0);}
   100% { transform: translateX(-100%);}
 }
-
 @media(min-width:768px){
-  .retailers-title-section .grid-auto-row{
+  .retailers-title-section .grid-auto-row {
     grid-template-columns: minmax(auto, 1040px) minmax(220px, auto);
     gap: 30px;
   }
 }
 </style>
-<section class="retailers-section">
-  <div class="retailers-title-section">
-    <div class="page-width">
-      <div class="grid-auto-row">
-        <div class="">
-          <h2 class="font-serif underline-title title-heading-2">We love our retailers</h2>
-          <p class="margin-0">Mixhers can be found in-store at over 6,000 locations across the United States. Our wholesale partners range from small, local businesses to larger companies like CVS pharmacy.</p>
-        </div>
-        <div class="retailers--button--wrapper">
-          <button type="button" class="custom-primary-btn f-18">Find a store near you</button>
-        </div>
-      </div>
-      </div>
-  </div>
-  <div class="credibility-retailers-slider">
-     <div class="retailers-slider-wrapper">
-      <div class="retailers--item">
-          <img src="https://cdn.shopify.com/s/files/1/0557/9879/2371/files/rebrand_home_goods.avif?v=1722981597" width="" height="" alt="Partner 1" loading="lazy">
-      </div>
-       <div class="retailers--item">
-          <img src="https://cdn.shopify.com/s/files/1/0557/9879/2371/files/rebrand_good_earth.avif?v=1722981597" width="" height="" alt="Partner 2" loading="lazy">
-      </div>
-      <div class="retailers--item">
-          <img src="https://cdn.shopify.com/s/files/1/0557/9879/2371/files/rebrand_baby_cubby.avif?v=1722981597" width="" height="" alt="Partner 3" loading="lazy">
-      </div>
-      <div class="retailers--item">
-          <img src="https://cdn.shopify.com/s/files/1/0557/9879/2371/files/rebrand_vitamin_bar.avif?v=1722981597" width="" height="" alt="Partner 4" loading="lazy">
-      </div>
-     </div>
-  </div>
-</section>
+
+{% schema %}
+{
+  "name": "Retailers Section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "retailers_title",
+      "label": "Section Title",
+      "default": "We love our retailers"
+    },
+    {
+      "type": "textarea",
+      "id": "retailers_text",
+      "label": "Section Description",
+      "default": "Mixhers can be found in-store at over 6,000 locations across the United States. Our wholesale partners range from small, local businesses to larger companies like CVS pharmacy."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Find a store near you"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link",
+    }
+  ],
+  "blocks": [
+    {
+      "type": "retailer_image",
+      "name": "Retailer Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Retailer Logo"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Retailers Section",
+      "blocks": [
+        { "type": "retailer_image" },
+        { "type": "retailer_image" },
+        { "type": "retailer_image" },
+        { "type": "retailer_image" }
+      ]
+    }
+  ]
+}
+{% endschema %}
