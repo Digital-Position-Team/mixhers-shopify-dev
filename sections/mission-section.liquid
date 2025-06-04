@@ -8,7 +8,8 @@
         <p>{{ section.settings.text }}</p>
       </div>
       {% if section.settings.button_text != blank and section.settings.button_link != blank %}
-        <a href="{{ section.settings.button_link }}" class="mission-button">
+        <a href="{{ section.settings.button_link }}" 
+          class="{% if template contains 'about' %}mission-button{% else %}custom-button-primary f-18{% endif %}">
           {{ section.settings.button_text }}
         </a>
       {% endif %}
