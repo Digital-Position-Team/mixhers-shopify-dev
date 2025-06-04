@@ -1,4 +1,8 @@
 {% stylesheet %}
+.wholesale-benefits {
+    display: grid;
+    grid-template-columns: 1fr ;
+}
 .wholesale-benefits h1 {
   font-family: 'FAIRE Sprig', sans-serif;
 }
@@ -15,6 +19,9 @@
 @media(min-width: 768px){
   .wholesale-benefits .checklist-text {
     font-size: 20px;
+  }
+  .wholesale-benefits {
+    grid-template-columns: 1fr 1fr ;
   }
 }
 {% endstylesheet %}
