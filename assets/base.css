@@ -3629,7 +3629,6 @@ body{
 .margin-0{ margin:0px;}
 .margin-b0{margin-bottom:0px;}
 .margin-t0{ margin-top:0px;}
-.title-heading-2{font-size:48px;}
 .img-100{
   width:100%;
   max-width:100%;
@@ -3670,6 +3669,9 @@ body{
   z-index: -1;
   right: 0;
   bottom: -5px;
+}
+.title-heading-2{
+  font-size:48px;
 }
 @media(max-width:1023px){
  .section-container{
