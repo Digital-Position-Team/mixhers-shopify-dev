@@ -3682,6 +3682,11 @@ body{
     padding-right:32px;
   }
 }
+@media (max-width: 991px) {
+ .title-heading-2{
+     font-size:42px;
+  }
+}
 @media (max-width: 767px) {
   .section-container{
      padding-left:20px;
