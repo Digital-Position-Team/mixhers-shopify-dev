@@ -14,15 +14,21 @@
 <style>
 .retailers-title-section .grid-auto-row {
     display: grid;
-    grid-template-columns: minmax(auto, 1040px) minmax(220px, auto);
     align-items: flex-end;
     gap: 30px;
+    grid-template-columns: 1fr;
 }
 .retailers-title-section {
   padding:48px 0px;
 }
 .retailers--button--wrapper{
   padding-bottom:20px;
+}
+@media(min-width:768px){
+  .retailers-title-section .grid-auto-row{
+    grid-template-columns: minmax(auto, 1040px) minmax(220px, auto);
+    gap: 30px;
+  }
 }
 </style
 <section class="retailers-section">
