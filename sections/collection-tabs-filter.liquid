@@ -1,98 +1,135 @@
-{% comment %} Custom Collection Grid Section {% endcomment %}
-{% assign all_products = collections.all.products %}
-{% assign max_rank = 10 %}
-{% assign filters = "all-products,pms,motherhood,menopause,health,sexual-wellness" | split: "," %}
-{% assign filter_labels = "All Products,PMS,Motherhood,Menopause,Health & Nutrition,Sexual Wellness" | split: "," %}
+{% schema %}
+{
+  "name": "Custom Collection Grid",
+  "settings": [],
+  "presets": [{"name": "Custom Collection Grid"}]
+}
+{% endschema %}
 
 <style>
   .active-tag {
     background-color: #ff59e4;
     color: #fff;
   }
+  .filter-tag {
+    cursor: pointer;
+    user-select: none;
+  }
+  .product-item {
+    display: none;
+  }
+  .product-item.active {
+    display: block;
+  }
 </style>
 
-<div class="collection-tabs px-4 py-4 flex gap-2 overflow-x-auto">
+<div class="collection-tabs px-4 py-4 flex gap-2 overflow-x-auto" id="filter-buttons">
+  {% assign filters = "all-products,pms,motherhood,menopause,health,sexual-wellness" | split: "," %}
+  {% assign filter_labels = "All Products,PMS,Motherhood,Menopause,Health & Nutrition,Sexual Wellness" | split: "," %}
+
   {% for filter in filters %}
     <button
-      id="{{ filters[forloop.index0] }}-tag"
       class="filter-tag text-black hover:text-pink px-4 py-2 rounded-full"
-      onclick="handleFilter('{{ filters[forloop.index0] }}')"
-    >
-      {{ filter_labels[forloop.index0] }}
-    </button>
+      data-filter="{{ filter }}"
+      id="{{ filter }}-tag"
+    >{{ filter_labels[forloop.index0] }}</button>
   {% endfor %}
 </div>
 
-{% for filter in filters %}
-  {% assign sorted_handles = "" %}
-  {% for rank in (1..max_rank) %}
-    {% for product in all_products %}
-      {% assign rank_val = 10 %}
-      {% case filter %}
-        {% when 'pms' %}{% assign rank_val = product.metafields.custom.pms_order | default: 10 %}
-        {% when 'motherhood' %}{% assign rank_val = product.metafields.custom.motherhood_order | default: 10 %}
-        {% when 'menopause' %}{% assign rank_val = product.metafields.custom.menopause_order | default: 10 %}
-        {% when 'health' %}{% assign rank_val = product.metafields.custom.health_order | default: 10 %}
-        {% when 'sexual-wellness' %}{% assign rank_val = product.metafields.custom.sexual_wellness_order | default: 10 %}
-      {% endcase %}
-      {% if rank_val == rank %}
-        {% assign sorted_handles = sorted_handles | append: product.handle | append: "," %}
-      {% endif %}
-    {% endfor %}
-  {% endfor %}
-  {% assign sorted_handles = sorted_handles | split: "," %}
+<div class="product-grid grid grid-cols-2 md:grid-cols-4 gap-4 px-4" id="product-list">
 
-  <div
-    id="{{ filter }}-results"
-    class="filter-results product-grid grid grid-cols-2 md:grid-cols-4 gap-4 px-4 {% if filter != 'all-products' %}hidden{% endif %}"
-  >
-    {% if filter == "all-products" %}
-      {% for product in all_products %}
-        {% render 'product-card', product: product %}
-      {% endfor %}
-    {% else %}
-      {% for handle in sorted_handles %}
-        {% assign product = all_products | where: "handle", handle | first %}
-        {% if product %}
-          {% render 'product-card', product: product %}
-        {% endif %}
-      {% endfor %}
-    {% endif %}
-  </div>
-{% endfor %}
+  {% assign all_products = collections.all.products %}
+  {% assign max_rank = 10 %}
+
+  {%- comment -%}
+  We output all products here, with data attributes for filtering & sorting.
+  Each product gets data-filter attributes for the categories it belongs to.
+  The metafield ranks are stored in data attributes for JS sorting.
+  {%- endcomment -%}
+
+  {% for product in all_products %}
+    {% assign pms_rank = product.metafields.custom.pms_order | default: 9999 %}
+    {% assign motherhood_rank = product.metafields.custom.motherhood_order | default: 9999 %}
+    {% assign menopause_rank = product.metafields.custom.menopause_order | default: 9999 %}
+    {% assign health_rank = product.metafields.custom.health_order | default: 9999 %}
+    {% assign sexual_wellness_rank = product.metafields.custom.sexual_wellness_order | default: 9999 %}
+
+    {% assign product_filters = "all-products" %}
+    {% if pms_rank != 9999 %} {% assign product_filters = product_filters | append: ",pms" %} {% endif %}
+    {% if motherhood_rank != 9999 %} {% assign product_filters = product_filters | append: ",motherhood" %} {% endif %}
+    {% if menopause_rank != 9999 %} {% assign product_filters = product_filters | append: ",menopause" %} {% endif %}
+    {% if health_rank != 9999 %} {% assign product_filters = product_filters | append: ",health" %} {% endif %}
+    {% if sexual_wellness_rank != 9999 %} {% assign product_filters = product_filters | append: ",sexual-wellness" %} {% endif %}
+
+    <div
+      class="product-item"
+      data-filters="{{ product_filters }}"
+      data-pms-rank="{{ pms_rank }}"
+      data-motherhood-rank="{{ motherhood_rank }}"
+      data-menopause-rank="{{ menopause_rank }}"
+      data-health-rank="{{ health_rank }}"
+      data-sexual-wellness-rank="{{ sexual_wellness_rank }}"
+    >
+      {% render 'product-card', product: product %}
+    </div>
+  {% endfor %}
+</div>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const params = new URLSearchParams(window.location.search);
-    const selected = params.get("collection") || "all-products";
-    handleFilter(selected);
-  });
+    const buttons = document.querySelectorAll('#filter-buttons .filter-tag');
+    const products = document.querySelectorAll('#product-list .product-item');
 
-  function handleFilter(filter) {
-    const allButtons = document.querySelectorAll(".filter-tag");
-    const allResults = document.querySelectorAll(".filter-results");
+    function filterProducts(selectedFilter) {
+      products.forEach(prod => {
+        const filters = prod.dataset.filters.split(',');
+        if (filters.includes(selectedFilter)) {
+          prod.classList.add('active');
+        } else {
+          prod.classList.remove('active');
+        }
+      });
 
-    allButtons.forEach(btn => btn.classList.remove("active-tag"));
-    allResults.forEach(div => div.classList.add("hidden"));
+      // Sort products within active set by metafield rank
+      const container = document.getElementById('product-list');
 
-    const activeBtn = document.getElementById(`${filter}-tag`);
-    const activeGrid = document.getElementById(`${filter}-results`);
-    if (activeBtn) activeBtn.classList.add("active-tag");
-    if (activeGrid) activeGrid.classList.remove("hidden");
+      // Convert NodeList to array
+      let activeProducts = Array.from(container.querySelectorAll('.product-item.active'));
 
-    const newUrl = `${window.location.pathname}?collection=${filter}`;
-    window.history.replaceState({}, '', newUrl);
-  }
-</script>
+      // Sorting key map based on selected filter
+      const rankAttr = selectedFilter + '-rank';
 
-{% schema %}
-{
-  "name": "Custom Collection Grid",
-  "settings": [],
-  "presets": [
-    {
-      "name": "Custom Collection Grid"
+      activeProducts.sort((a,b) => {
+        let aRank = parseInt(a.dataset[camelCase(rankAttr)] || 9999);
+        let bRank = parseInt(b.dataset[camelCase(rankAttr)] || 9999);
+        return aRank - bRank;
+      });
+
+      // Re-append sorted elements
+      activeProducts.forEach(el => container.appendChild(el));
     }
-  ]
-}
-{% endschema %}
+
+    // Helper camelCase for dataset access
+    function camelCase(str) {
+      return str.replace(/-([a-z])/g, function (g) { return g[1].toUpperCase(); });
+    }
+
+    // Activate default filter on page load
+    let selected = 'all-products';
+    filterProducts(selected);
+    buttons.forEach(btn => {
+      if (btn.dataset.filter === selected) {
+        btn.classList.add('active-tag');
+      }
+    });
+
+    // Button click handlers (no page reload)
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active-tag'));
+        btn.classList.add('active-tag');
+        filterProducts(btn.dataset.filter);
+      });
+    });
+  });
+</script>
