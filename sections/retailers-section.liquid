@@ -20,16 +20,13 @@
   </div>
 
 <div class="credibility-retailers-slider">
-  <div class="retailers-slider-wrapper">
-    <div class="retailers-slider-track">
+  <div class="swiper retailers-swiper">
+    <div class="swiper-wrapper">
       {% for block in section.blocks %}
-        <div class="retailers--item">
-          <img src="{{ block.settings.image | image_url }}" alt="" loading="lazy" width="" height="">
-        </div>
-      {% endfor %}
-      {% for block in section.blocks %}
-        <div class="retailers--item">
-          <img src="{{ block.settings.image | image_url }}" alt="" loading="lazy"  width="" height="">
+        <div class="swiper-slide retailers--item">
+          {% if block.settings.image %}
+            <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.image.alt | escape }}" loading="lazy">
+          {% endif %}
         </div>
       {% endfor %}
     </div>
@@ -63,21 +60,17 @@
   position: relative;
 }
 
-.retailers-slider-wrapper {
-  width: 100%;
+.credibility-retailers-slider {
+  background: #f4f9fd;
   overflow: hidden;
-}
-
-.retailers-slider-track {
-  display: flex;
-  width: max-content;
-  animation: scrollRetailers 30s linear infinite;
+  padding: 20px 0;
 }
 
 .retailers--item {
-  flex: 0 0 auto;
-  margin-right: 20px;
+  width: auto;
 }
+
+
 
 .retailers--item img {
   height: 160px;
@@ -103,6 +96,22 @@
   }
 }
 </style>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+  new Swiper('.retailers-swiper', {
+    loop: true,
+    slidesPerView: 'auto',
+    spaceBetween: 20,
+    allowTouchMove: false,
+    speed: 4000,
+    autoplay: {
+      delay: 0,
+      disableOnInteraction: false
+    }
+  });
+});
+
+</script>
 
 {% schema %}
 {
