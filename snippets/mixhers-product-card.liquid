@@ -27,7 +27,7 @@
     <div style="position: absolute; top: 0; left: 0; display: flex;">
       {% for metaobject in product.metafields.custom.product_tags_to_show.value %}
         {% if metaobject.show_on_product_cards == true %}
-          <div class="tag-badge" style="color: {{ metaobject.tag_color }}; border-color: {{ metaobject.tag_color }};">
+          <div class="tag-badge font-sans" style="color: {{ metaobject.tag_color }}; border-color: {{ metaobject.tag_color }};">
             {{ metaobject.tag_name }}
           </div>
         {% endif %}
@@ -65,13 +65,13 @@
     }
     .product-subtitle { font-size: 16px;}
     .tag-badge { 
-      /* padding: 4px 12px; 
-      border: 1px solid; 
-      text-transform: uppercase; 
-      font-size: 10px; 
-      font-weight: bold; 
-      margin: 4px;
-      background: transparent;  */
+      padding: 4px 12px;
+      border-bottom: 1px solid #000;
+      border-right: 1px solid #000;
+      text-transform: uppercase;
+      font-size: 12px;
+      line-height: 1.25;
+      background: #fff;
     }
   </style>
 </div>
