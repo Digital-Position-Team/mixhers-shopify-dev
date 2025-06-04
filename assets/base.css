@@ -3623,6 +3623,9 @@ body{
   text-decoration: none;
   letter-spacing: normal;
 }
+.custom-primary-btn.f-18{
+  font-size:18px;
+}
 .custom-primary-btn:hover{
   background-color: #ff59e4;
 }
