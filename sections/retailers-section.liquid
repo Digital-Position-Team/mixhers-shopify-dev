@@ -64,17 +64,21 @@
 }
 .retailers-slider-track {
   display: inline-flex;
+  gap:20px;
 }
 .retailers--item {
-  flex: 0 0 auto;
-  margin-right: 20px;
+    height: 115px;
+    flex: 0 0 auto;
+    display: flex;
+    margin-right: 20px;
+    align-items: center;
+    overflow: hidden;
 }
 .retailers--item img {
     height: 160px;
     width: 100%;
-    max-width: 190px;
+    max-width: 160px;
     object-fit: cover;
-    aspect-ratio: 1 / 0.6;
     display: block;
 }
 @media(min-width:768px){
