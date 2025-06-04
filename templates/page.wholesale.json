@@ -98,6 +98,15 @@
         "button_link": ""
       }
     },
+    "store_locator_P3zGpH": {
+      "type": "store-locator",
+      "name": "Store Locator Widget",
+      "settings": {
+        "max_width": 900,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
     "wholesale_partner_ecH6yV": {
       "type": "wholesale-partner",
       "name": "Wholesale Partner Benefits",
@@ -117,15 +126,6 @@
         "text": "Mixhers provides hormone-friendly, science-backed supplements to fuel female evolution through every stage of womanhood. We boldly advocate for the voices, experiences, and health of women.",
         "button_text": "Shop Now",
         "button_link": "shopify://collections/all"
-      }
-    },
-    "store_locator_P3zGpH": {
-      "type": "store-locator",
-      "name": "Store Locator Widget",
-      "settings": {
-        "max_width": 800,
-        "padding_top": 40,
-        "padding_bottom": 40
       }
     }
   },
