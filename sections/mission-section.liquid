@@ -1,5 +1,5 @@
 <section class="mission-section">
-  <div class="mission-section-container">
+  <div class="{% if template contains 'about' %}mission-section-container{% else %}page-width{% endif %}">
     <h2 class="mission-heading">
       {{ section.settings.heading }}
     </h2>
