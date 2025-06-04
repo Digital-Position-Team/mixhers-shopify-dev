@@ -118,14 +118,14 @@
         "button_link": "https://share.hsforms.com/1dO8p8C_uS1ircTdKfiOF5Ae3b70"
       }
     },
-    "about_on_mission_CXt9WD": {
-      "type": "about-on-mission",
+    "mission_section_FEBDpt": {
+      "type": "mission-section",
       "name": "Mission Section",
       "settings": {
         "heading": "We're on a mission",
-        "text": "Mixhers provides hormone-friendly, science-backed supplements to fuel female evolution through every stage of womanhood. We boldly advocate for the voices, experiences, and health of women.",
-        "button_text": "Shop Now",
-        "button_link": "shopify://collections/all"
+        "text": "Ready to become a Mixhers Wholesale Partner? Take a few minutes to complete our online application form and we will reach out to you within 72 hours.",
+        "button_text": "Join now",
+        "button_link": "https://share.hsforms.com/1dO8p8C_uS1ircTdKfiOF5Ae3b70"
       }
     }
   },
@@ -135,6 +135,6 @@
     "retailers_section_6XN9jk",
     "store_locator_P3zGpH",
     "wholesale_partner_ecH6yV",
-    "about_on_mission_CXt9WD"
+    "mission_section_FEBDpt"
   ]
 }
