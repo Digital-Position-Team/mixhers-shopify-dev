@@ -1,93 +1,42 @@
-<style>
-  .product-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 16rem;
-    background-color: #f9f9f9;
-    text-align: center;
-    padding: 24px;
-    position: relative;
-    border: 1px solid #000;
-  }
-
-  .product-link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-    gap: 24px;
-    flex-grow: 1;
-  }
-
-  .product-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 4px;
-  }
-
-  .product-subtitle {
-    font-size: 14px;
-    color: #555;
-  }
-
-  .product-shop-link {
-    text-decoration: underline;
-    font-size: 14px;
-    font-weight: 600;
-    padding-bottom: 16px;
-  }
-
-  .product-tag {
-    padding: 4px 12px;
-    border-style: solid;
-    border-width: 0 0 1px 1px;
-    text-transform: uppercase;
-    font-size: 12px;
-    font-weight: bold;
-    background-color: transparent;
-  }
-
-  .tag-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-  }
-</style>
-
 {% for product in collections.all.products %}
   {% if product.id == product_id %}
-    {% assign selected_product = product %}
+    {% assign product = product %}
   {% endif %}
 {% endfor %}
 
 {% assign show_tags = show_tags | default: false %}
 
+<style>
+  .product-card { border: 1px solid #000; padding: 24px; min-height: 400px; display: flex; flex-direction: column; justify-content: space-between; text-align: center; background-color: #f9f9f9; }
+  .product-link { display: flex; flex-direction: column; align-items: center; gap: 16px; text-decoration: none; color: inherit; }
+  .product-image { width: 300px; height: 300px; object-fit: cover; }
+  .product-title { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+  .product-subtitle { font-size: 14px; color: #555; }
+  .tag-badge { padding: 4px 12px; border: 1px solid; text-transform: uppercase; font-size: 10px; font-weight: bold; margin: 4px; background: transparent; }
+</style>
+
 <div class="product-card">
-  <a href="{{ selected_product.url }}" class="product-link">
+  <a href="{{ product.url }}" class="product-link">
     <img
-      src="{{ selected_product.featured_image | image_url: width: 500, height: 500 }}"
-      alt="{{ selected_product.title }}"
-      width="300"
-      height="300"
+      src="{{ product.featured_image | image_url: width: 500, height: 500 }}"
+      alt="{{ product.title }}"
+      class="product-image"
       loading="lazy"
     >
     <div>
-      <div class="product-title">{{ selected_product.title }}</div>
-      <div class="product-subtitle">{{ selected_product.metafields.rebrand.product_subtitle }}</div>
-      <a href="{{ selected_product.url }}" class="product-shop-link">Shop Now</a>
+      <div class="product-title">{{ product.title }}</div>
+      <div class="product-subtitle">{{ product.metafields.rebrand.product_subtitle }}</div>
+      <div>
+        <a href="{{ product.url }}" style="text-decoration: underline; font-size: 14px; font-weight: 600;">Shop Now</a>
+      </div>
     </div>
   </a>
 
-  {% if show_tags and selected_product.metafields.custom.product_tags_to_show %}
-    <div class="tag-container">
-      {% for metaobject in selected_product.metafields.custom.product_tags_to_show.value %}
+  {% if show_tags and product.metafields.custom.product_tags_to_show %}
+    <div style="position: absolute; top: 0; left: 0; display: flex;">
+      {% for metaobject in product.metafields.custom.product_tags_to_show.value %}
         {% if metaobject.show_on_product_cards == true %}
-          <div
-            class="product-tag"
-            style="border-color: {{ metaobject.tag_color }}; color: {{ metaobject.tag_color }};">
+          <div class="tag-badge" style="color: {{ metaobject.tag_color }}; border-color: {{ metaobject.tag_color }};">
             {{ metaobject.tag_name }}
           </div>
         {% endif %}
