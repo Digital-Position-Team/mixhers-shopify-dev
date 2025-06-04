@@ -29,6 +29,13 @@
           {% endif %}
         </div>
       {% endfor %}
+      {% for block in section.blocks %}
+        <div class="swiper-slide retailers--item">
+          {% if block.settings.image %}
+            <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.image.alt | escape }}" loading="lazy">
+          {% endif %}
+        </div>
+      {% endfor %}
     </div>
   </div>
 </div>
