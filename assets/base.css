@@ -3626,6 +3626,7 @@ details-disclosure > details {
 .margin-b0{margin-bottom:0px;}
 .margin-t0{ margin-top:0px;}
 .title-heading-2{font-size:48px;}
+.letter-normal{letter-spacing: normal;}
 .img-100{
   width:100%;
   max-width:100%;
