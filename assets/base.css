@@ -3675,6 +3675,7 @@ body{
 }
 .title-heading-2{
   font-size:48px;
+  margin-bottom: 32px;
 }
 @media(max-width:1023px){
  .section-container{
@@ -3694,5 +3695,6 @@ body{
    }
   .title-heading-2{
      font-size:36px;
+     margin-bottom: 26px;
   }
 }
