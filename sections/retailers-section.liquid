@@ -38,10 +38,7 @@
     </div>
   </div>
 </div>
-  
-
 </section>
-
 <style>
 .retailers-title-section .grid-auto-row {
   display: grid;
@@ -91,36 +88,26 @@
   document.addEventListener("DOMContentLoaded", function () {
     const wrapper = document.querySelector(".retailers-slider-wrapper");
     const track = document.querySelector(".retailers-slider-track");
-
     if (!wrapper || !track) return;
-
-    // Clone the items inside the track (only children)
     const items = [...track.children];
     items.forEach((item) => {
       const clone = item.cloneNode(true);
       track.appendChild(clone);
     });
-
-    // Set total scroll width and start animation loop
     let scrollAmount = 0;
-    const speed = 0.5; // pixels per frame
-
+    const speed = 0.5; 
     function loopScroll() {
       scrollAmount += speed;
-
       if (scrollAmount >= track.scrollWidth / 2) {
-        scrollAmount = 0; // seamless reset
+        scrollAmount = 0; 
       }
-
       wrapper.scrollLeft = scrollAmount;
       requestAnimationFrame(loopScroll);
     }
-
     wrapper.scrollLeft = 0;
     loopScroll();
   });
 </script>
-
 
 {% schema %}
 {
