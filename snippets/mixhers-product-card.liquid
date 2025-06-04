@@ -18,22 +18,7 @@
     </div>
   </a>
 
-   {% if show_tags %}
-        {% if product.metafields.custom.product_tags_to_show %}
-            <div class="absolute top-0 left-0 flex">
-                {% for metaobject in product.metafields.custom.product_tags_to_show.value %}
-                    {% if metaobject.show_on_product_cards == true %}
-                        <div
-                          class="px-3 py-1 border uppercase border-t-0 border-l-0"
-                          style="border-color: {{ metaobject.tag_color }}; color: {{ metaobject.tag_color }}; background-color: transparent;">
-                            {% render 'text', type: 'body-sm', content: metaobject.tag_name, class: 'font-bold text-xs' %}
-                        </div>
-                    {% endif %}
-                {% endfor %}
-            </div>
-        {% endif %}
-    {% endif %}
-    
+  
   {% if show_tags %}
     {% if product.metafields.custom.product_tags_to_show %}
       <div class="product-tags">
@@ -42,7 +27,7 @@
             <div
               class="tag"
               style="border-color: {{ metaobject.tag_color }}; color: {{ metaobject.tag_color }};">
-              {% render 'text', type: 'body-sm', content: metaobject.tag_name, class: 'tag-label' %}
+             <p>{{ metaobject.tag_name }}</p>
             </div>
           {% endif %}
         {% endfor %}
