@@ -3599,7 +3599,10 @@ details-disclosure > details {
 
 
 /* common custom global styling for sections---- */
- body{color: #1a1a1a;  letter-spacing: normal;}
+body{
+  color: #1a1a1a;  
+  letter-spacing: normal;
+}
 .font-sans,p,a,button,span{ font-family: Buenos Aires, sans-serif;}
 .font-serif { font-family: Faire Sprig, serif;}
 .light-font, .light-font *{ font-weight: 300 !important;}
