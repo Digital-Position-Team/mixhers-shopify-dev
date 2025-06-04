@@ -47,8 +47,8 @@
         "padding_bottom": 40
       }
     },
-    "about_on_mission_hmK7mY": {
-      "type": "about-on-mission",
+    "mission_section_YkgUAp": {
+      "type": "mission-section",
       "name": "Mission Section",
       "settings": {
         "heading": "We're on a mission",
@@ -63,6 +63,6 @@
     "about_hero_9U8bQY",
     "about_how_it_started_xnKbaX",
     "about_how_its_going_b7bGL8",
-    "about_on_mission_hmK7mY"
+    "mission_section_YkgUAp"
   ]
 }
