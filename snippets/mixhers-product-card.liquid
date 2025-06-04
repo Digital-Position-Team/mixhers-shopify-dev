@@ -31,7 +31,7 @@
       </div>
     </div>
   </a>
-
+{% assign show_tags = true %}
   {% if show_tags and product.metafields.custom.product_tags_to_show %}
     <div style="position: absolute; top: 0; left: 0; display: flex;">
       {% for metaobject in product.metafields.custom.product_tags_to_show.value %}
