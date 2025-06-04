@@ -1,0 +1,141 @@
+{% schema %}
+{
+  "name": "Custom Collection Grid",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Custom Collection Grid"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .filter-buttons { display: flex; gap: 1rem; overflow-x: auto; margin-bottom: 2rem; }
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    border: 1px solid #000;
+    background: white;
+    cursor: pointer;
+  }
+  .filter-btn.active {
+    background-color: #ff59e4;
+    color: white;
+    border-color: #ff59e4;
+  }
+</style>
+
+<div class="filter-buttons">
+  {% assign filters = 'all-products,pms,motherhood,menopause,health,sexual-wellness,samplers' | split: ',' %}
+  {% for filter in filters %}
+    <button class="filter-btn" data-filter="{{ filter }}">{{ filter | replace: '-', ' ' | capitalize }}</button>
+  {% endfor %}
+</div>
+
+<div id="filtered-products" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filters = document.querySelectorAll('.filter-btn');
+    const urlParams = new URLSearchParams(window.location.search);
+    let currentFilter = urlParams.get('collection') || 'all-products';
+
+    function updateFilter(filter) {
+      const newParams = new URLSearchParams(window.location.search);
+      newParams.set('collection', filter);
+      history.pushState({}, '', `${window.location.pathname}?${newParams.toString()}`);
+
+      filters.forEach(btn => btn.classList.remove('active'));
+      document.querySelector(`[data-filter="${filter}"]`)?.classList.add('active');
+
+      document.querySelectorAll('[data-product-group]').forEach(el => {
+        el.style.display = 'none';
+      });
+      document.querySelector(`[data-product-group="${filter}"]`)?.style.removeProperty('display');
+    }
+
+    filters.forEach(btn => {
+      btn.addEventListener('click', () => updateFilter(btn.dataset.filter));
+    });
+
+    updateFilter(currentFilter);
+  });
+</script>
+
+{% assign max_rank = 10 %}
+{% assign all_handles = collections.all.products | map: "handle" %}
+{% assign pms_sorted = '' %}
+{% assign motherhood_sorted = '' %}
+{% assign menopause_sorted = '' %}
+{% assign health_sorted = '' %}
+{% assign sexual_wellness_sorted = '' %}
+{% assign samplers_sorted = '' %}
+
+{% for rank in (1..max_rank) %}
+  {% for product in collections.all.products %}
+    {% assign pmsRank = product.metafields.custom.pms_order | default: 10 %}
+    {% if pmsRank == rank %}
+      {% assign pms_sorted = pms_sorted | append: product.handle | append: ',' %}
+    {% endif %}
+
+    {% assign motherhoodRank = product.metafields.custom.motherhood_order | default: 10 %}
+    {% if motherhoodRank == rank %}
+      {% assign motherhood_sorted = motherhood_sorted | append: product.handle | append: ',' %}
+    {% endif %}
+
+    {% assign menopauseRank = product.metafields.custom.menopause_order | default: 10 %}
+    {% if menopauseRank == rank %}
+      {% assign menopause_sorted = menopause_sorted | append: product.handle | append: ',' %}
+    {% endif %}
+
+    {% assign healthRank = product.metafields.custom.health_order | default: 10 %}
+    {% if healthRank == rank %}
+      {% assign health_sorted = health_sorted | append: product.handle | append: ',' %}
+    {% endif %}
+
+    {% assign sexualWellnessRank = product.metafields.custom.sexual_wellness_order | default: 10 %}
+    {% if sexualWellnessRank == rank %}
+      {% assign sexual_wellness_sorted = sexual_wellness_sorted | append: product.handle | append: ',' %}
+    {% endif %}
+
+    {% assign samplerRank = product.metafields.custom.sampler_order | default: 10 %}
+    {% if samplerRank == rank %}
+      {% assign samplers_sorted = samplers_sorted | append: product.handle | append: ',' %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+{% assign pms_sorted = pms_sorted | split: ',' %}
+{% assign motherhood_sorted = motherhood_sorted | split: ',' %}
+{% assign menopause_sorted = menopause_sorted | split: ',' %}
+{% assign health_sorted = health_sorted | split: ',' %}
+{% assign sexual_wellness_sorted = sexual_wellness_sorted | split: ',' %}
+{% assign samplers_sorted = samplers_sorted | split: ',' %}
+
+
+{% assign filters = 'all-products,pms,motherhood,menopause,health,sexual-wellness,samplers' | split: ',' %}
+{% for filter in filters %}
+  <div data-product-group="{{ filter }}" style="display:none">
+    {% for product in collections.all.products %}
+      {% if filter == 'all-products' %}
+        {% render 'card-product', product: product %}
+      {% else %}
+        {% assign handles = '' %}
+        {% case filter %}
+          {% when 'pms' %}{% assign handles = pms_sorted %}
+          {% when 'motherhood' %}{% assign handles = motherhood_sorted %}
+          {% when 'menopause' %}{% assign handles = menopause_sorted %}
+          {% when 'health' %}{% assign handles = health_sorted %}
+          {% when 'sexual-wellness' %}{% assign handles = sexual_wellness_sorted %}
+          {% when 'samplers' %}{% assign handles = samplers_sorted %}
+        {% endcase %}
+
+        {% if handles contains product.handle %}
+          {% render 'card-product', product: product %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endfor %}
+
