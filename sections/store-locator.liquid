@@ -42,8 +42,10 @@
   }
 
   .locator-wrapper {
-    max-width: {{ section.settings.max_width }}px;
+    max-width: calc( {{ section.settings.max_width }}px + 40px);
     margin: 0 auto;
+    padding-left:20px;
+    padding-right:20px;
   }
 </style>
 
