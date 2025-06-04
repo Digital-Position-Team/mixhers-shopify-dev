@@ -3628,6 +3628,10 @@ body{
 .custom-primary-btn.f-18{
   font-size:18px;
 }
+.custom-primary-btn.f-14{
+  font-size: 14px;
+  line-height: 1;
+}
 .custom-primary-btn:hover{
   background-color: #ff59e4;
 }
