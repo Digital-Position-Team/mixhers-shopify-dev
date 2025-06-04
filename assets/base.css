@@ -3647,6 +3647,10 @@ body{
   max-width: 1357px;
   margin: 0 auto;
 }
+.grid-auto-row{
+  display:grid;
+  grid-auto-columns:1fr auto;
+}
 @media(max-width:1023px){
  .section-container{
     padding-left:32px;
