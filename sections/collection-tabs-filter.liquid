@@ -1,3 +1,90 @@
+{% comment %} Custom Collection Grid Section {% endcomment %}
+{% assign all_products = collections.all.products %}
+{% assign max_rank = 10 %}
+{% assign filters = "all-products,pms,motherhood,menopause,health,sexual-wellness" | split: "," %}
+{% assign filter_labels = "All Products,PMS,Motherhood,Menopause,Health & Nutrition,Sexual Wellness" | split: "," %}
+
+<style>
+  .active-tag {
+    background-color: #ff59e4;
+    color: #fff;
+  }
+</style>
+
+<div class="collection-tabs px-4 py-4 flex gap-2 overflow-x-auto">
+  {% for filter in filters %}
+    <button
+      id="{{ filters[forloop.index0] }}-tag"
+      class="filter-tag text-black hover:text-pink px-4 py-2 rounded-full"
+      onclick="handleFilter('{{ filters[forloop.index0] }}')"
+    >
+      {{ filter_labels[forloop.index0] }}
+    </button>
+  {% endfor %}
+</div>
+
+{% for filter in filters %}
+  {% assign sorted_handles = "" %}
+  {% for rank in (1..max_rank) %}
+    {% for product in all_products %}
+      {% assign rank_val = 10 %}
+      {% case filter %}
+        {% when 'pms' %}{% assign rank_val = product.metafields.custom.pms_order | default: 10 %}
+        {% when 'motherhood' %}{% assign rank_val = product.metafields.custom.motherhood_order | default: 10 %}
+        {% when 'menopause' %}{% assign rank_val = product.metafields.custom.menopause_order | default: 10 %}
+        {% when 'health' %}{% assign rank_val = product.metafields.custom.health_order | default: 10 %}
+        {% when 'sexual-wellness' %}{% assign rank_val = product.metafields.custom.sexual_wellness_order | default: 10 %}
+      {% endcase %}
+      {% if rank_val == rank %}
+        {% assign sorted_handles = sorted_handles | append: product.handle | append: "," %}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+  {% assign sorted_handles = sorted_handles | split: "," %}
+
+  <div
+    id="{{ filter }}-results"
+    class="filter-results product-grid grid grid-cols-2 md:grid-cols-4 gap-4 px-4 {% if filter != 'all-products' %}hidden{% endif %}"
+  >
+    {% if filter == "all-products" %}
+      {% for product in all_products %}
+        {% render 'product-card', product: product %}
+      {% endfor %}
+    {% else %}
+      {% for handle in sorted_handles %}
+        {% assign product = all_products | where: "handle", handle | first %}
+        {% if product %}
+          {% render 'product-card', product: product %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </div>
+{% endfor %}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
+    const selected = params.get("collection") || "all-products";
+    handleFilter(selected);
+  });
+
+  function handleFilter(filter) {
+    const allButtons = document.querySelectorAll(".filter-tag");
+    const allResults = document.querySelectorAll(".filter-results");
+
+    allButtons.forEach(btn => btn.classList.remove("active-tag"));
+    allResults.forEach(div => div.classList.add("hidden"));
+
+    const activeBtn = document.getElementById(`${filter}-tag`);
+    const activeGrid = document.getElementById(`${filter}-results`);
+    if (activeBtn) activeBtn.classList.add("active-tag");
+    if (activeGrid) activeGrid.classList.remove("hidden");
+
+    const newUrl = `${window.location.pathname}?collection=${filter}`;
+    window.history.replaceState({}, '', newUrl);
+  }
+</script>
+
 {% schema %}
 {
   "name": "Custom Collection Grid",
@@ -9,88 +96,3 @@
   ]
 }
 {% endschema %}
-
-{% comment %}
-Filter Buttons & Product Grid Renderer
-{% endcomment %}
-
-<style>
-.active-tag {
-  background-color: #ff59e4;
-  color: #fff;
-}
-.active-tag:hover {
-  color: #fff;
-}
-</style>
-
-<div class="collection-tabs px-4 py-4 flex gap-2 overflow-x-auto">
-  {% assign filters = "all-products,pms,motherhood,menopause,health,sexual-wellness" | split: "," %}
-  {% assign filter_labels = "All Products,PMS,Motherhood,Menopause,Health & Nutrition,Sexual Wellness" | split: "," %}
-
-  {% for filter in filters %}
-    {% assign label = filter_labels[forloop.index0] %}
-    <button
-      id="{{ filter }}-tag"
-      class="filter-tag text-black hover:text-pink px-4 py-2 rounded-full"
-      onclick="window.location.href='?collection={{ filter }}'"
-    >
-      {{ label }}
-    </button>
-  {% endfor %}
-</div>
-
-<div class="product-grid grid grid-cols-2 md:grid-cols-4 gap-4 px-4" id="filtered-products">
-  {% assign selected = request.query.collection | default: "all-products" %}
-  {% assign all_products = collections.all.products %}
-  {% assign max_rank = 10 %}
-
-  {% if selected == "all-products" %}
-    {% for product in all_products %}
-      {% render 'product-card', product: product %}
-    {% endfor %}
-  {% else %}
-    {% assign sorted_handles = "" %}
-    {% for rank in (1..max_rank) %}
-  {% for product in all_products %}
-    {% case selected %}
-      {% when "pms" %}
-        {% assign rank_val = product.metafields.custom.pms_order | default: 10 %}
-      {% when "motherhood" %}
-        {% assign rank_val = product.metafields.custom.motherhood_order | default: 10 %}
-      {% when "menopause" %}
-        {% assign rank_val = product.metafields.custom.menopause_order | default: 10 %}
-      {% when "health" %}
-        {% assign rank_val = product.metafields.custom.health_order | default: 10 %}
-      {% when "sexual-wellness" %}
-        {% assign rank_val = product.metafields.custom.sexual_wellness_order | default: 10 %}
-      {% else %}
-        {% assign rank_val = 10 %}
-    {% endcase %}
-
-    {% if rank_val == rank %}
-      {% assign sorted_handles = sorted_handles | append: product.handle | append: "," %}
-    {% endif %}
-  {% endfor %}
-{% endfor %}
-
-
-    {% assign sorted_handles = sorted_handles | split: "," %}
-
-    {% for handle in sorted_handles %}
-      {% assign product = all_products | where: "handle", handle | first %}
-      {% if product %}
-        {% render 'product-card', product: product %}
-      {% endif %}
-    {% endfor %}
-  {% endif %}
-</div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const urlParams = new URLSearchParams(window.location.search);
-    const selected = urlParams.get("collection") || "all-products";
-    const activeButton = document.getElementById(`${selected}-tag`);
-    if (activeButton) activeButton.classList.add("active-tag");
-  });
-</script>
