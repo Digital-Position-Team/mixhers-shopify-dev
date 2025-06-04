@@ -3602,6 +3602,7 @@ details-disclosure > details {
 body{
   color: #1a1a1a;  
   letter-spacing: normal;
+  line-height: 1.5;
 }
 .font-sans,p,a,button,span{ font-family: Buenos Aires, sans-serif;}
 .font-serif { font-family: Faire Sprig, serif;}
