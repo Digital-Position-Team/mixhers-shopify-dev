@@ -3618,6 +3618,7 @@ details-disclosure > details {
   font-weight: 600;
   display: inline-block;
   text-decoration: none;
+  letter-spacing: normal;
 }
 .custom-primary-btn:hover{
   background-color: #ff59e4;
