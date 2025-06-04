@@ -3599,7 +3599,7 @@ details-disclosure > details {
 
 
 /* common custom global styling for sections---- */
-body{color: #1a1a1a;}
+ body{color: #1a1a1a;}
 .font-sans,p,a,button,span{ font-family: Buenos Aires, sans-serif;}
 .font-serif { font-family: Faire Sprig, serif;}
 .light-font, .light-font *{ font-weight: 300 !important;}
@@ -3625,6 +3625,7 @@ body{color: #1a1a1a;}
 .margin-0{ margin:0px;}
 .margin-b0{margin-bottom:0px;}
 .margin-t0{ margin-top:0px;}
+.title-heading-2{font-size:48px;}
 .img-100{
   width:100%;
   max-width:100%;
@@ -3665,9 +3666,6 @@ body{color: #1a1a1a;}
   z-index: -1;
   right: 0;
   bottom: -5px;
-}
-.title-heading-2{
-  font-size:48px;
 }
 @media(max-width:1023px){
  .section-container{
