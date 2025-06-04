@@ -27,6 +27,18 @@
 .credibility-retailers-slider {
     background: #f4f9fd;
 }
+.retailers-slider-wrapper {
+    display: flex;
+    animation: credibilityScroll 90s linear infinite;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+}
+@keyframes credibilityScroll {
+  0% { transform: translateX(0);}
+  100% { transform: translateX(-100%);}
+}
+
 @media(min-width:768px){
   .retailers-title-section .grid-auto-row{
     grid-template-columns: minmax(auto, 1040px) minmax(220px, auto);
