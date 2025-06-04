@@ -3599,7 +3599,7 @@ details-disclosure > details {
 
 
 /* common custom global styling for sections---- */
- body{color: #1a1a1a;}
+ body{color: #1a1a1a;  letter-spacing: normal;}
 .font-sans,p,a,button,span{ font-family: Buenos Aires, sans-serif;}
 .font-serif { font-family: Faire Sprig, serif;}
 .light-font, .light-font *{ font-weight: 300 !important;}
@@ -3627,7 +3627,6 @@ details-disclosure > details {
 .margin-b0{margin-bottom:0px;}
 .margin-t0{ margin-top:0px;}
 .title-heading-2{font-size:48px;}
-.letter-normal{letter-spacing: normal;}
 .img-100{
   width:100%;
   max-width:100%;
