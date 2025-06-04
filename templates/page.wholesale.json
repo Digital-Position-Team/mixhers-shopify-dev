@@ -49,10 +49,34 @@
             "image": "shopify://shop_images/rebrand_baby_cubby_da8ac3e7-5d0d-44a0-9708-85a32f2735cc.png"
           }
         },
+        "retailer_image_j3pXyx": {
+          "type": "retailer_image",
+          "settings": {
+            "image": "shopify://shop_images/rebrand_vitamin_bar.png"
+          }
+        },
         "retailer_image_NweFKN": {
           "type": "retailer_image",
           "settings": {
             "image": "shopify://shop_images/rebrand_cvs.png"
+          }
+        },
+        "retailer_image_kCYycK": {
+          "type": "retailer_image",
+          "settings": {
+            "image": "shopify://shop_images/rebrand_harmons.png"
+          }
+        },
+        "retailer_image_4j9xGm": {
+          "type": "retailer_image",
+          "settings": {
+            "image": "shopify://shop_images/rebrand_hot_worx.png"
+          }
+        },
+        "retailer_image_LAzdQW": {
+          "type": "retailer_image",
+          "settings": {
+            "image": "shopify://shop_images/rebrand_tj_max.png"
           }
         }
       },
@@ -60,7 +84,11 @@
         "retailer_image_NKW4jB",
         "retailer_image_PexiR6",
         "retailer_image_fWaEFf",
-        "retailer_image_NweFKN"
+        "retailer_image_j3pXyx",
+        "retailer_image_NweFKN",
+        "retailer_image_kCYycK",
+        "retailer_image_4j9xGm",
+        "retailer_image_LAzdQW"
       ],
       "name": "Retailers Section",
       "settings": {
