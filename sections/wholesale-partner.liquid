@@ -1,12 +1,13 @@
 {% stylesheet %}
 .wholesale-benefits {
-    display: grid;
-    grid-template-columns: 1fr ;
+   display: grid;
+   grid-template-columns: 1fr ;
    background-color: #f9fafb;
 }
 .wholesale-benefits__content{
     padding:32px;
     gap:5px;
+    min-height:656px;
 }
 .wholesale-benefits .checklist-text {
   font-size: 16px;
@@ -25,7 +26,6 @@
 @media(min-width: 768px){
   .wholesale-benefits {
     grid-template-columns: 1fr 1fr ;
-    min-height:656px;
   }
   .wholesale-benefits__heading{
     font-size:48px;
