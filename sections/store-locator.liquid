@@ -1,6 +1,6 @@
 {% schema %}
   {
-    "name": "Section name",
+    "name": "Store Locator Widget",
     "settings": []
   }
 {% endschema %}
@@ -9,15 +9,20 @@
   #store-locator-section{
     padding:40px 0px;
   }
+  .locator-wrapper{
+    max-width:800px;
+  }
 </style>
 <section id="store-locator-section" >
-  <div class="page-width">
+  <div class="page-width ">
+    <div class="locator-wrapper">
     <div data-stockist-widget-tag="u14951">Loading store locator from <a href="https://stockist.co">Stockist store locator</a>...</div>
     <script>
-    // <![CDATA[
-    (function(s,t,o,c,k){c=s.createElement(t);c.src=o;c.async=1;
-      k=s.getElementsByTagName(t)[0];k.parentNode.insertBefore(c,k);
-      })(document,'script','//stockist.co/embed/v1/widget.min.js');
-    // ]]></script>
+      // <![CDATA[
+      (function(s,t,o,c,k){c=s.createElement(t);c.src=o;c.async=1;
+        k=s.getElementsByTagName(t)[0];k.parentNode.insertBefore(c,k);
+        })(document,'script','//stockist.co/embed/v1/widget.min.js');
+      // ]]></script>
+    </div>
   </div>
 </section>
