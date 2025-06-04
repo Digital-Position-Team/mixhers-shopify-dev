@@ -28,6 +28,48 @@
         "image": "shopify://shop_images/rebrand_wholesale_hero.png"
       }
     },
+    "retailers_section_6XN9jk": {
+      "type": "retailers-section",
+      "blocks": {
+        "retailer_image_NKW4jB": {
+          "type": "retailer_image",
+          "settings": {
+            "image": "shopify://shop_images/rebrand_home_goods_f506ec17-a54e-457d-a4ab-291e7097fc24.png"
+          }
+        },
+        "retailer_image_PexiR6": {
+          "type": "retailer_image",
+          "settings": {
+            "image": "shopify://shop_images/rebrand_good_earth_ec35ac38-ef0c-497e-9c82-f1bc1ef2564a.png"
+          }
+        },
+        "retailer_image_fWaEFf": {
+          "type": "retailer_image",
+          "settings": {
+            "image": "shopify://shop_images/rebrand_baby_cubby_da8ac3e7-5d0d-44a0-9708-85a32f2735cc.png"
+          }
+        },
+        "retailer_image_NweFKN": {
+          "type": "retailer_image",
+          "settings": {
+            "image": "shopify://shop_images/rebrand_cvs.png"
+          }
+        }
+      },
+      "block_order": [
+        "retailer_image_NKW4jB",
+        "retailer_image_PexiR6",
+        "retailer_image_fWaEFf",
+        "retailer_image_NweFKN"
+      ],
+      "name": "Retailers Section",
+      "settings": {
+        "retailers_title": "We love our retailers",
+        "retailers_text": "Mixhers can be found in-store at over 6,000 locations across the United States. Our wholesale partners range from small, local businesses to larger companies like CVS pharmacy.",
+        "button_text": "Find a store near you",
+        "button_link": ""
+      }
+    },
     "wholesale_partner_ecH6yV": {
       "type": "wholesale-partner",
       "name": "Wholesale Partner Benefits",
@@ -48,11 +90,6 @@
         "button_text": "Shop Now",
         "button_link": "shopify://collections/all"
       }
-    },
-    "retailers_section_6XN9jk": {
-      "type": "retailers-section",
-      "name": "Retailers Section",
-      "settings": {}
     }
   },
   "order": [
