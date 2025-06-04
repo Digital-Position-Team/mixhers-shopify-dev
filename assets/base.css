@@ -3662,6 +3662,7 @@ body{
   z-index: 1;
   position: relative;
   margin-top: 0px;
+  display: inline-block;
 }
 .underline-title:after {
     position: absolute;
