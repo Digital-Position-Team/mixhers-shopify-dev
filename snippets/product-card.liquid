@@ -1,0 +1,7 @@
+<div class="border p-2">
+  <a href="{{ product.url }}">
+    <img src="{{ product.featured_image | image_url: width: 500 }}" alt="{{ product.title }}" width="" height="">
+    <h3>{{ product.title }}</h3>
+    <p>{{ product.price | money }}</p>
+  </a>
+</div>
