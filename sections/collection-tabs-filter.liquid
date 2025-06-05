@@ -64,7 +64,7 @@
   </div>
 <div class="collection-tabs">
   {% assign filters = "all-products,holiday,pms,motherhood,menopause,health,sexual-wellness" | split: "," %}
-  {% assign filter_labels = "All Products,⭐️ Holiday Shopping,PMS,Motherhood,Menopause,Health & Nutrition,Sexual Wellness" | split: "," %}
+  {% assign filter_labels = "All,⭐️ Holiday Shopping,PMS,Motherhood,Menopause,Health & Nutrition,Sexual Wellness" | split: "," %}
 
   {% for filter in filters %}
     {% assign label = filter_labels[forloop.index0] %}
