@@ -43,6 +43,15 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .collection-title {
+      padding: 20px;
+      text-align: center;
+  }
+  
+  .collection-title h3 {
+      font-size: 28px;
+  }
+
   @media (min-width: 768px) {
     .collection-grid {
       grid-template-columns: repeat(4, 1fr);
@@ -51,7 +60,7 @@
 </style>
 <section id ="collection-tabs-section">
   <div class="collection--title">
-    <h2 class="font-serif margin-0">Fueling your evolution through every stage of womanhood</h2>
+    <h3 class="font-serif margin-0 ">Fueling your evolution through every stage of womanhood</h3>
   </div>
 <div class="collection-tabs">
   {% assign filters = "all-products,holiday,pms,motherhood,menopause,health,sexual-wellness" | split: "," %}
