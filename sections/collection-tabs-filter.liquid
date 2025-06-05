@@ -20,20 +20,19 @@
   .filter-results.active-grid {
     display: grid;
   }
-  .collection-tabs {
-    /* display: flex;
-    gap: 12px;
-    overflow-x: auto;
-    padding: 16px; */
-  }
   .filter-tag {
-    padding: 10px 16px;
-    border-radius: 9999px;
-    border: none;
-    background-color: #eee;
-    color: #000;
-    cursor: pointer;
-    font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      font-family: Buenos Aires, sans-serif;
+  }
+  .filter-tag.active-tag {
+      background-color: #ff59e4;
+      color: #fff;
   }
   .filter-tag:hover {
     background-color: #ffccef;
@@ -42,12 +41,10 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
-
   .collection--title {
       padding: 20px;
       text-align: center;
   }
-  
   .collection--title h3 {
       font-size: 28px;
   }
