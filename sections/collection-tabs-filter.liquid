@@ -52,8 +52,8 @@
 </style>
 
 <div class="collection-tabs">
-  {% assign filters = "all-products,holiday, pms,motherhood,menopause,health,sexual-wellness" | split: "," %}
-  {% assign filter_labels = "All Products,⭐️ Holiday Shopping,PMS,Motherhood,Menopause,Health & Nutrition,Sexual Wellness" | split: "," %}
+  {% assign filters = "all-products,pms,motherhood,menopause,health,sexual-wellness" | split: "," %}
+  {% assign filter_labels = "All Products,PMS,Motherhood,Menopause,Health & Nutrition,Sexual Wellness" | split: "," %}
 
   {% for filter in filters %}
     {% assign label = filter_labels[forloop.index0] %}
@@ -100,13 +100,6 @@
 
 <div id="all-products-results" class="filter-results collection-grid" style="display:grid;">
   {% for product in all_products %}
-    {% render 'mixhers-product-card', product: product %}
-  {% endfor %}
-</div>
-
-<div id="holiday-results" class="filter-results collection-grid">
-  {% assign holiday_products = collections.holiday-shopping.products %}
-  {% for product in holiday_products %}
     {% render 'mixhers-product-card', product: product %}
   {% endfor %}
 </div>
