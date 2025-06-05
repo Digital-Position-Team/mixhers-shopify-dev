@@ -104,6 +104,13 @@
   {% endfor %}
 </div>
 
+<div id="holiday-results" class="filter-results collection-grid">
+  {% assign holiday_products = collections.holiday-shopping.products %}
+  {% for product in holiday_products %}
+    {% render 'mixhers-product-card', product: product %}
+  {% endfor %}
+</div>
+
 <div id="pms-results" class="filter-results collection-grid">
   {% for handle in sorted_pms_array %}
     {% assign product = all_products | where: "handle", handle | first %}
