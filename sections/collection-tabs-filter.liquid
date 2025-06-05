@@ -49,7 +49,10 @@
     }
   }
 </style>
-
+<section id ="collection-tabs-section">
+  <div class="collection-title page-width">
+    <h2 class="font-serif">Fueling your evolution through every stage of womanhood</h2>
+  </div>
 <div class="collection-tabs">
   {% assign filters = "all-products,holiday,pms,motherhood,menopause,health,sexual-wellness" | split: "," %}
   {% assign filter_labels = "All Products,⭐️ Holiday Shopping,PMS,Motherhood,Menopause,Health & Nutrition,Sexual Wellness" | split: "," %}
@@ -155,7 +158,7 @@
     {% endif %}
   {% endfor %}
 </div>
-
+</section>
 <script>
   function handleFilter(filter) {
     const urlParams = new URLSearchParams(window.location.search);
@@ -182,3 +185,4 @@
     handleFilter(filter);
   });
 </script>
+
