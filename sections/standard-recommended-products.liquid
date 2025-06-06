@@ -1,6 +1,124 @@
-{% schema %}
-  {
-    "name": "Section name",
-    "settings": []
+{% assign recommended_products = product.metafields.rebrand.recommended_products.value %}
+{% assign has_recommended_products = false %}
+
+{% for recommended_product in recommended_products %}
+  {% if recommended_product %}
+    {% assign has_recommended_products = true %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% if has_recommended_products %}
+  <div class="recommended-wrapper">
+    <div class="recommended-header">
+      <div></div>
+      <h2 class="recommended-title">{{ section.settings.heading }}</h2>
+      <div class="recommended-link-desktop">
+        <a href="{{ section.settings.link_url }}">{{ section.settings.link_text }}</a>
+      </div>
+    </div>
+
+    <div class="recommended-divider"></div>
+
+    <div class="recommended-grid">
+      {% for recommended_product in recommended_products %}
+        {% render 'shared-product-variable-logic',
+          then_render: 'rebrand-product-grid-card',
+          product_id: recommended_product.id,
+          show_tags: false %}
+      {% endfor %}
+    </div>
+
+    <div class="recommended-link-mobile">
+      <a href="{{ section.settings.link_url }}">{{ section.settings.link_text }}</a>
+    </div>
+  </div>
+{% endif %}
+
+<style>
+.recommended-wrapper {
+  background-color: #f5f5f5;
+  padding: 20px 0;
+}
+.recommended-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  text-align: center;
+}
+.recommended-title {
+  flex-grow: 1;
+  margin: 0;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+.recommended-link-desktop {
+  display: none;
+}
+.recommended-divider {
+  border-top: 1px solid #000;
+  margin: 20px 0;
+}
+.recommended-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 0 20px;
+}
+.recommended-link-mobile {
+  text-align: center;
+  margin-top: 20px;
+}
+.recommended-link-mobile a,
+.recommended-link-desktop a {
+  text-transform: uppercase;
+  font-size: 14px;
+  display: inline-block;
+  padding: 10px;
+}
+
+@media (min-width: 768px) {
+  .recommended-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
+  .recommended-link-desktop {
+    display: block;
+  }
+  .recommended-link-mobile {
+    display: none;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Recommended Products",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Mixes well with"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link text",
+      "default": "View All →"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL",
+      "default": "/collections/all"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Recommended Products"
+    }
+  ]
+}
 {% endschema %}
