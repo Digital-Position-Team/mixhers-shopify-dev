@@ -149,6 +149,16 @@
       "name": " Product Formulation",
       "settings": {}
     },
+    "standard_product_comparison_hKQpnG": {
+      "type": "standard-product-comparison",
+      "name": "Standard Product Comparison",
+      "settings": {}
+    },
+    "standard_product_faq_fptUKt": {
+      "type": "standard-product-faq",
+      "name": "Standard Product FAQ",
+      "settings": {}
+    },
     "image-with-text": {
       "type": "image-with-text",
       "blocks": {
@@ -171,6 +181,7 @@
         "image-with-text-0",
         "image-with-text-1"
       ],
+      "disabled": true,
       "settings": {
         "height": "small",
         "desktop_image_width": "medium",
@@ -185,16 +196,6 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "standard_product_comparison_hKQpnG": {
-      "type": "standard-product-comparison",
-      "name": "Standard Product Comparison",
-      "settings": {}
-    },
-    "standard_product_faq_fptUKt": {
-      "type": "standard-product-faq",
-      "name": "Standard Product FAQ",
-      "settings": {}
     },
     "related-products": {
       "type": "related-products",
@@ -220,9 +221,9 @@
     "main",
     "standard_product_overview_RQbBgt",
     "standard_product_formulation_4M3MT3",
-    "image-with-text",
     "standard_product_comparison_hKQpnG",
     "standard_product_faq_fptUKt",
+    "image-with-text",
     "related-products"
   ]
 }
