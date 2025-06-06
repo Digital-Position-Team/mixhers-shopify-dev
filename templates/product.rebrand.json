@@ -246,6 +246,16 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "standard_product_comparison_hKQpnG": {
+      "type": "standard-product-comparison",
+      "name": "Standard Product Comparison",
+      "settings": {}
+    },
+    "standard_product_faq_fptUKt": {
+      "type": "standard-product-faq",
+      "name": "Standard Product FAQ",
+      "settings": {}
     }
   },
   "order": [
@@ -254,6 +264,8 @@
     "standard_product_formulation_4M3MT3",
     "image-with-text",
     "multicolumn",
-    "related-products"
+    "related-products",
+    "standard_product_comparison_hKQpnG",
+    "standard_product_faq_fptUKt"
   ]
 }
