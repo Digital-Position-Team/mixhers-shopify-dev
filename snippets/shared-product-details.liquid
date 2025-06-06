@@ -27,7 +27,7 @@
 {% assign show_promo_badge_above_title = promo_content.show_promo_badge | default: false %}
 {% assign show_promo_below_purchase_options = promo_content.show_promo_copy_below_purchase_options_block_on_pdps | default: false %}
 {% assign show_slashed_out_promo_pricing_on_pdps = promo_content.show_slashed_out_promo_pricing_on_pdps | default: false %}
-
+{% assign show_tags = show_tags | default: true %}
 {% if product.variants.size == 1 %}
   {% assign is_single_variant_product = true %}
 {% else %}
