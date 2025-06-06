@@ -135,7 +135,7 @@
   {% for product in all_products %}
     {% assign count = count | plus: 1 %}
     {% render 'mixhers-product-card', product: product %}
-    {% if count == 6 %}
+    {% if count == 10 %}
       <div class="quiz-promo">
         <h2>Not sure which <br/> Mix is for you?</h2>
         <a href="/pages/quiz" class=" pink-primary-btn">Take the Quiz</a>
