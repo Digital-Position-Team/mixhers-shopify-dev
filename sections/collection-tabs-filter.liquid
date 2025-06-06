@@ -108,8 +108,16 @@
 {% assign sorted_sexual_wellness_array = sorted_sexual_wellness | split: ',' %}
 
 <div id="all-products-results" class="filter-results collection-grid" style="display:grid;">
+  {% assign count = 0 %}
   {% for product in all_products %}
+    {% assign count = count | plus: 1 %}
     {% render 'mixhers-product-card', product: product %}
+    {% if count == 5 %}
+      <div class="quiz-promo custom-order-div">
+        <h3>Not sure which Mix is for you?</h3>
+        <a href="/pages/quiz">Take quiz</a>
+      </div>
+    {% endif %}
   {% endfor %}
 </div>
 
