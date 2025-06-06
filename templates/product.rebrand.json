@@ -169,6 +169,15 @@
       "name": "Standard Product Reviews",
       "settings": {}
     },
+    "standard_recommended_products_MVLQVw": {
+      "type": "standard-recommended-products",
+      "name": "Standard Recommended Products",
+      "settings": {
+        "heading": "Mixes well with",
+        "link_text": "View All →",
+        "link_url": "shopify://collections/all"
+      }
+    },
     "standard_product_mix_quiz_BkjTqR": {
       "type": "standard-product-mix-quiz",
       "name": "Standard Product Made to Mix Quiz Quote",
@@ -241,6 +250,7 @@
     "standard_product_faq_fptUKt",
     "standard_product_review_qGdJaa",
     "standard_product_mix_quiz_BkjTqR",
+    "standard_recommended_products_MVLQVw",
     "image-with-text",
     "related-products"
   ]
