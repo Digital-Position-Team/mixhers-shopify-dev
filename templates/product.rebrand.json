@@ -169,6 +169,11 @@
       "name": "Standard Product Reviews",
       "settings": {}
     },
+    "standard_product_mix_quiz_BkjTqR": {
+      "type": "standard-product-mix-quiz",
+      "name": "Standard Product Made to Mix Quiz Quote",
+      "settings": {}
+    },
     "standard_recommended_products_MVLQVw": {
       "type": "standard-recommended-products",
       "name": "Standard Recommended Products",
@@ -177,11 +182,6 @@
         "link_text": "View All →",
         "link_url": "shopify://collections/all"
       }
-    },
-    "standard_product_mix_quiz_BkjTqR": {
-      "type": "standard-product-mix-quiz",
-      "name": "Standard Product Made to Mix Quiz Quote",
-      "settings": {}
     },
     "image-with-text": {
       "type": "image-with-text",
@@ -239,6 +239,12 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "test_MJMWNG": {
+      "type": "test",
+      "disabled": true,
+      "name": "testing",
+      "settings": {}
     }
   },
   "order": [
@@ -252,6 +258,7 @@
     "standard_product_mix_quiz_BkjTqR",
     "standard_recommended_products_MVLQVw",
     "image-with-text",
-    "related-products"
+    "related-products",
+    "test_MJMWNG"
   ]
 }
