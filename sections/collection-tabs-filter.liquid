@@ -42,7 +42,7 @@
     font-weight: 500;
     font-family: Buenos Aires, sans-serif;
   }
-  .quiz-promo.custom-order-div {
+  .quiz-promo {
     background-image: url(https://mixhers.com/cdn/shop/files/collections-ad-quiz.webp?v=9941618018663440510);
     background-size: cover;
     display: flex;
@@ -52,6 +52,9 @@
     padding: 24px;
     grid-column: span 2;
 }
+ .quiz-promo  h2{
+   color:#fff;
+ }
 .collection-tabs {
     padding: 12px 20px 22px 20px;
     border-top: 1px solid #000;
@@ -125,13 +128,12 @@
   {% for product in all_products %}
     {% assign count = count | plus: 1 %}
     {% render 'mixhers-product-card', product: product %}
-  {% if count == 6 %}
-    <div class="quiz-promo custom-order-div">
-      <h2>Not sure which Mix is for you?</h2>
-      <a href="/pages/quiz" class="custom-primary-btn pink-primary-btn">Take quiz</a>
-    </div>
-  {% endif %}
-
+    {% if count == 6 %}
+      <div class="quiz-promo">
+        <h2 class="font-serif">Not sure which Mix is for you?</h2>
+        <a href="/pages/quiz" class="custom-primary-btn pink-primary-btn">Take quiz</a>
+      </div>
+    {% endif %}
   {% endfor %}
 </div>
 
