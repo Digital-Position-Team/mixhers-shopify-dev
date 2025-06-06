@@ -1,36 +1,116 @@
 {% comment %}
-  Reusable logic to assign variables from product + metafields + promo, etc.
+  shared-product-variable-logic.liquid
   Usage:
-  {% render 'shared-product-variable-logic', product_id: some_product.id, then_render: 'product-card' %}
+    {% render 'shared-product-variable-logic', product_id: product_id, then_render: 'your-snippet', show_tags: true %}
 {% endcomment %}
 
-{% assign product = all_products[product_id] %}
+{%- unless product -%}
+  {%- for p in collections.all.products -%}
+    {%- if p.id == product_id -%}
+      {% assign product = p %}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endunless -%}
 
-{%- assign product_title = product.metafields.rebrand.product_title.value | default: product.title -%}
-{%- assign product_subtitle = product.metafields.rebrand.product_subtitle.value | default: '' -%}
-{%- assign product_caption = product.metafields.rebrand.product_caption.value | default: '' -%}
-{%- assign product_description = product.metafields.rebrand.product_description | metafield_tag | default: product.description -%}
+{% assign product_title = product.metafields.rebrand.product_title.value | default: 'Metafield: `rebrand.product_title` not found' %}
+{% assign product_subtitle = product.metafields.rebrand.product_subtitle.value | default: 'Metafield: `rebrand.product_subtitle` not found' %}
+{% assign product_caption = product.metafields.rebrand.product_caption.value | default: null %}
+{% assign product_description = product.metafields.rebrand.product_description | metafield_tag | default: 'Metafield: `rebrand.product_description` not found' %}
 
-{%- assign promo = product.metafields.rebrand.promo_content.value -%}
-{%- assign promo_discount_percentage = promo.discount_percentage | default: 0 -%}
-{%- assign promo_badge = promo.promo_badge | default: null -%}
+{% assign bundle_product = product.metafields.rebrand.bundle_product.value %}
+{% assign bundle_collection = product.metafields.rebrand.bundle_collection.value %}
 
-{%- assign variant = product.variants.first -%}
-{%- assign price = variant.price | money -%}
-{%- assign compare_at_price = variant.compare_at_price | money -%}
+{% assign promo_content = product.metafields.rebrand.promo_content.value %}
+{% assign promo_discount_percentage = promo_content.discount_percentage | default: 0 %}
+{% assign promo_discount_code = promo_content.discount_code | default: null %}
+{% assign promo_first_text = promo_content.first_text | default: null %}
+{% assign promo_last_text = promo_content.last_text | default: null %}
+{% assign promo_badge = promo_content.promo_badge | default: null %}
+{% assign show_promo_badge_above_title = promo_content.show_promo_badge | default: false %}
+{% assign show_promo_below_purchase_options = promo_content.show_promo_copy_below_purchase_options_block_on_pdps | default: false %}
+{% assign show_slashed_out_promo_pricing_on_pdps = promo_content.show_slashed_out_promo_pricing_on_pdps | default: false %}
 
-{%- assign discount_amount = variant.price | times: promo_discount_percentage | divided_by: 100 -%}
-{%- assign sale_price = variant.price | minus: discount_amount | money -%}
+{% assign is_single_variant_product = product.variants.size == 1 %}
 
-{% render then_render,
-  product: product,
-  product_title: product_title,
-  product_subtitle: product_subtitle,
-  product_caption: product_caption,
-  product_description: product_description,
-  promo_discount_percentage: promo_discount_percentage,
-  promo_badge: promo_badge,
-  price: price,
-  compare_at_price: compare_at_price,
-  sale_price: sale_price
-%}
+{% assign is_bundle_product = (bundle_product and bundle_collection) %}
+
+{%- assign selling_plan_id = null -%}
+{% if is_bundle_product %}
+  {% if bundle_product.selling_plan_groups.first.selling_plans.size > 0 %}
+    {% assign selling_plan_id = bundle_product.selling_plan_groups.first.selling_plans.first.id %}
+  {% endif %}
+{% elsif product.selling_plan_groups.first.selling_plans.size > 0 %}
+  {% assign selling_plan_id = product.selling_plan_groups.first.selling_plans.first.id %}
+{% endif %}
+
+{%- comment -%} Set prices depending on product type and subscription availability {%- endcomment -%}
+{% if is_bundle_product %}
+  {% assign one_time_raw_price = bundle_product.variants[0].price %}
+  {% if selling_plan_id %}
+    {% assign subscription_raw_price = bundle_product.variants[0].selling_plan_allocations[0].price %}
+    {% assign subscription_raw_compare_at_price = bundle_product.variants[0].selling_plan_allocations[0].compare_at_price %}
+  {% endif %}
+{% else %}
+  {% if is_single_variant_product %}
+    {% assign one_time_raw_price = product.variants[0].price %}
+    {% if selling_plan_id %}
+      {% assign subscription_raw_price = product.variants[0].selling_plan_allocations[0].price %}
+      {% assign subscription_raw_compare_at_price = product.variants[0].selling_plan_allocations[0].compare_at_price %}
+    {% endif %}
+  {% else %}
+    {% assign one_time_raw_price = product.selected_or_first_available_variant.price %}
+    {% if selling_plan_id %}
+      {% assign subscription_raw_price = product.selected_or_first_available_variant.selling_plan_allocations[0].price %}
+      {% assign subscription_raw_compare_at_price = product.selected_or_first_available_variant.selling_plan_allocations[0].compare_at_price %}
+    {% endif %}
+  {% endif %}
+{% endif %}
+
+{%- comment -%} Format prices and calculate discounts {%- endcomment -%}
+{% assign one_time_price = one_time_raw_price | money %}
+{% assign subscription_price = subscription_raw_price | default: 0 | money %}
+{% assign one_time_discount = one_time_raw_price | times: promo_discount_percentage | divided_by: 100 %}
+{% assign subscription_discount = subscription_raw_price | times: promo_discount_percentage | divided_by: 100 %}
+{% assign one_time_price_minus_discount = one_time_raw_price | minus: one_time_discount %}
+{% assign subscription_price_minus_discount = subscription_raw_price | minus: subscription_discount %}
+{% assign one_time_sale_price = one_time_price_minus_discount | money %}
+{% assign subscription_sale_price = subscription_price_minus_discount | money %}
+{% assign subscription_compare_at_price = subscription_raw_compare_at_price | money %}
+
+{%- comment -%} Render requested snippet with all variables {%- endcomment -%}
+{% if then_render %}
+  {% render then_render,
+    product: product,
+    product_id: product.id,
+    product_title: product_title,
+    product_subtitle: product_subtitle,
+    product_caption: product_caption,
+    product_description: product_description,
+    bundle_product: bundle_product,
+    bundle_collection: bundle_collection,
+    promo_content: promo_content,
+    promo_discount_percentage: promo_discount_percentage,
+    promo_discount_code: promo_discount_code,
+    promo_first_text: promo_first_text,
+    promo_last_text: promo_last_text,
+    show_slashed_out_promo_pricing_on_pdps: show_slashed_out_promo_pricing_on_pdps,
+    show_promo_below_purchase_options: show_promo_below_purchase_options,
+    promo_badge: promo_badge,
+    show_promo_badge_above_title: show_promo_badge_above_title,
+    is_single_variant_product: is_single_variant_product,
+    is_bundle_product: is_bundle_product,
+    selling_plan_id: selling_plan_id,
+    one_time_raw_price: one_time_raw_price,
+    subscription_raw_price: subscription_raw_price,
+    one_time_price: one_time_price,
+    subscription_price: subscription_price,
+    one_time_discount: one_time_discount,
+    subscription_discount: subscription_discount,
+    one_time_price_minus_discount: one_time_price_minus_discount,
+    subscription_price_minus_discount: subscription_price_minus_discount,
+    one_time_sale_price: one_time_sale_price,
+    subscription_sale_price: subscription_sale_price,
+    subscription_compare_at_price: subscription_compare_at_price,
+    show_tags: show_tags | default: false
+  %}
+{% endif %}
