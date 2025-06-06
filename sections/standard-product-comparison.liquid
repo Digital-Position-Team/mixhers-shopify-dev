@@ -1,6 +1,64 @@
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Product Comparison",
+  "tag": "section",
+  "class": "standard-product-comparison",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Standard Product Comparison"
+    }
+  ]
+}
 {% endschema %}
+
+{% assign comparison_image_desktop = product.metafields.rebrand.comparison_image_desktop.value %}
+{% assign comparison_image_mobile = product.metafields.rebrand.comparison_image_mobile.value %}
+
+{% if comparison_image_desktop and comparison_image_mobile %}
+  <style>
+    .product-comparison-section {
+      width: 100%;
+      padding: 0;
+    }
+
+    .product-comparison-mobile {
+      display: block;
+    }
+
+    .product-comparison-desktop {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .product-comparison-mobile {
+        display: none;
+      }
+
+      .product-comparison-desktop {
+        display: block;
+      }
+    }
+
+    .product-comparison-section img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .comparison-divider {
+      border-top: 1px solid #000;
+      margin-top: 40px;
+    }
+  </style>
+
+  <div class="product-comparison-section">
+    <div class="product-comparison-mobile">
+      <img src="{{ comparison_image_mobile | image_url }}" alt="Product Comparison Mobile">
+    </div>
+    <div class="product-comparison-desktop">
+      <img src="{{ comparison_image_desktop | image_url }}" alt="Product Comparison Desktop">
+    </div>
+    <div class="comparison-divider"></div>
+  </div>
+{% endif %}
