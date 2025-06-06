@@ -9,6 +9,13 @@
   {% endfor %}
 {% endunless %}
 
+<!-- Debug print -->
+{% if product %}
+  <p>Product found: {{ product.title }}</p>
+{% else %}
+  <p>Product not found for ID: {{ product_id }}</p>
+{% endif %}
+
 {% assign product_title = product.metafields.rebrand.product_title.value | default: product.title %}
 {% assign product_subtitle = product.metafields.rebrand.product_subtitle.value | default: '' %}
 {% assign product_caption = product.metafields.rebrand.product_caption.value | default: '' %}
