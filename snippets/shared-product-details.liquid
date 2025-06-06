@@ -1,0 +1,36 @@
+{% comment %}
+  Reusable logic to assign variables from product + metafields + promo, etc.
+  Usage:
+  {% render 'shared-product-variable-logic', product_id: some_product.id, then_render: 'product-card' %}
+{% endcomment %}
+
+{% assign product = all_products[product_id] %}
+
+{%- assign product_title = product.metafields.rebrand.product_title.value | default: product.title -%}
+{%- assign product_subtitle = product.metafields.rebrand.product_subtitle.value | default: '' -%}
+{%- assign product_caption = product.metafields.rebrand.product_caption.value | default: '' -%}
+{%- assign product_description = product.metafields.rebrand.product_description | metafield_tag | default: product.description -%}
+
+{%- assign promo = product.metafields.rebrand.promo_content.value -%}
+{%- assign promo_discount_percentage = promo.discount_percentage | default: 0 -%}
+{%- assign promo_badge = promo.promo_badge | default: null -%}
+
+{%- assign variant = product.variants.first -%}
+{%- assign price = variant.price | money -%}
+{%- assign compare_at_price = variant.compare_at_price | money -%}
+
+{%- assign discount_amount = variant.price | times: promo_discount_percentage | divided_by: 100 -%}
+{%- assign sale_price = variant.price | minus: discount_amount | money -%}
+
+{% render then_render,
+  product: product,
+  product_title: product_title,
+  product_subtitle: product_subtitle,
+  product_caption: product_caption,
+  product_description: product_description,
+  promo_discount_percentage: promo_discount_percentage,
+  promo_badge: promo_badge,
+  price: price,
+  compare_at_price: compare_at_price,
+  sale_price: sale_price
+%}
