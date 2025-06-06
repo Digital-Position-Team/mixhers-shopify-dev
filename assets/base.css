@@ -3607,7 +3607,7 @@ body{
 .font-sans,p,a,button,span{ font-family: Buenos Aires, sans-serif;}
 .font-serif { font-family: Faire Sprig, serif;}
 .light-font, .light-font *{ font-weight: 300 !important;}
-.custom-primary-btn{
+.custom-primary-btn, .pink-primary-btn{
   background-color: #1a1a1a;
   color: #fff;
   border: none;
@@ -3633,6 +3633,9 @@ body{
   line-height: 1;
 }
 .custom-primary-btn:hover{
+  background-color: #ff59e4;
+}
+.pink-primary-btn{
   background-color: #ff59e4;
 }
 .margin-0{ margin:0px;}
