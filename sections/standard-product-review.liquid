@@ -1,6 +1,44 @@
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Standard Product Reviews",
+  "tag": "section",
+  "class": "standard-product-reviews",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Standard Product Reviews"
+    }
+  ]
+}
 {% endschema %}
+
+<section class="standard-product-reviews" aria-label="Product Reviews Section">
+  <style>
+    .standard-product-reviews {
+      width: 100%;
+      padding: 2rem 1rem;
+      box-sizing: border-box;
+    }
+
+    .yotpo-container {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      min-height: 58px;
+    }
+  </style>
+
+  <div class="yotpo-container">
+    <div 
+      class="yotpo-widget-instance"
+      data-yotpo-instance-id="436651"
+      data-yotpo-product-id="{{ product.id }}"
+      data-yotpo-name="{{ product.title | escape }}"
+      data-yotpo-url="{{ shop.url }}{{ product.url }}"
+      data-yotpo-image-url="{{ product.featured_image | image_url: 'large' | prepend: 'https:' | replace: '?', '%3F' | replace: '&', '%26' }}"
+      data-yotpo-price="{{ product.price | divided_by: 100.00 }}"
+      data-yotpo-currency="{{ shop.currency }}"
+      data-yotpo-description="{{ product.description | escape }}">
+    </div>
+  </div>
+</section>
