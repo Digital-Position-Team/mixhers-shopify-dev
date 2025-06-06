@@ -164,6 +164,16 @@
       "name": "Standard Product FAQ",
       "settings": {}
     },
+    "standard_product_review_qGdJaa": {
+      "type": "standard-product-review",
+      "name": "Standard Product Reviews",
+      "settings": {}
+    },
+    "standard_product_mix_quiz_BkjTqR": {
+      "type": "standard-product-mix-quiz",
+      "name": "Standard Product Made to Mix Quiz Quote",
+      "settings": {}
+    },
     "image-with-text": {
       "type": "image-with-text",
       "blocks": {
@@ -229,6 +239,8 @@
     "standard_product_comparison_hKQpnG",
     "standard_product_quote_Mc3cUT",
     "standard_product_faq_fptUKt",
+    "standard_product_review_qGdJaa",
+    "standard_product_mix_quiz_BkjTqR",
     "image-with-text",
     "related-products"
   ]
