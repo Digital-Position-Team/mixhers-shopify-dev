@@ -164,6 +164,16 @@
       "name": "Standard Product FAQ",
       "settings": {}
     },
+    "custom_liquid_bnPdMU": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div class=\"yotpo-widget-instance\" data-yotpo-instance-id=\"436651\" data-yotpo-product-id=\"6713024184499\" data-yotpo-name=\"Hertime® PMS\" data-yotpo-url=\"https://mixhers.com/products/hertime-pms\" data-yotpo-image-url=\"https:files/home-rebrand-product-hertime-pms.png\" data-yotpo-price=\"0.0\" data-yotpo-currency=\"USD\" data-yotpo-description=\"&lt;p&gt;Say goodbye to painful cramps, bloating, mood swings, and hormonal acne.&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;Soothes menstrual cramps*&lt;/li&gt;\n&lt;li&gt;Levels mood swings*&lt;/li&gt;\n&lt;li&gt;Eases bloating*&lt;/li&gt;\n&lt;/ul&gt;\" data-yotpo-element-loaded=\"true\" data-v-app=\"\"></div>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "standard_product_review_qGdJaa": {
       "type": "standard-product-review",
       "name": "Standard Product Reviews",
@@ -254,6 +264,7 @@
     "standard_product_comparison_hKQpnG",
     "standard_product_quote_Mc3cUT",
     "standard_product_faq_fptUKt",
+    "custom_liquid_bnPdMU",
     "standard_product_review_qGdJaa",
     "standard_product_mix_quiz_BkjTqR",
     "standard_recommended_products_MVLQVw",
