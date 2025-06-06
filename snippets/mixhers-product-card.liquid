@@ -84,17 +84,23 @@
     }
     .product--info .custom-primary-btn{
       min-width: 165px;
+      display:none;
     }
     @media(max-width:991px){
-      .custom-primary-btn.f-14 {
-          min-width: 165px;
-      }
       .custom-product-card {
           padding: 25px 5px 45px;
       }
       .product-image {
           padding-left: 20px;
           padding-right: 20px;
+      }
+    }
+    @media(min-width:639px){
+      .btn-link-mobile{
+        display:none;
+      }
+      .product--info  .custom-primary-btn{
+        display:block;
       }
     }
   </style>
