@@ -25,7 +25,7 @@
          {% render 'mixhers-product-card', product: recommended_product %}
         {% render 'shared-product-details',
           then_render: 'mixhers-product-card',
-          product_id: recommended_product.id,
+          product: recommended_product,
           show_tags: false %}
       {% endfor %}
     </div>
