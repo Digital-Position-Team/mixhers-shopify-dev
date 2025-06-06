@@ -154,6 +154,11 @@
       "name": "Standard Product Comparison",
       "settings": {}
     },
+    "standard_product_quote_Mc3cUT": {
+      "type": "standard-product-quote",
+      "name": "Standard Product Quote",
+      "settings": {}
+    },
     "standard_product_faq_fptUKt": {
       "type": "standard-product-faq",
       "name": "Standard Product FAQ",
@@ -222,6 +227,7 @@
     "standard_product_overview_RQbBgt",
     "standard_product_formulation_4M3MT3",
     "standard_product_comparison_hKQpnG",
+    "standard_product_quote_Mc3cUT",
     "standard_product_faq_fptUKt",
     "image-with-text",
     "related-products"
