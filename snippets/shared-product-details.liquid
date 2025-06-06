@@ -40,6 +40,11 @@
 {% else %}
   {% assign is_bundle_product = false %}
 {% endif %}
+{% if show_tags %}
+  <p>show taghs is {{ show_tags }}</p>
+  {% else %}
+  <p>show tags is {{ show_tags }} else case</p>
+{% endif %}
 
 
 {% assign selling_plan_id = null %}
