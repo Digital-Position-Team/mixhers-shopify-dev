@@ -125,7 +125,7 @@
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "contain",
-        "gallery_layout": "stacked",
+        "gallery_layout": "columns",
         "mobile_thumbnails": "hide",
         "media_position": "left",
         "image_zoom": "lightbox",
@@ -133,6 +133,15 @@
         "enable_video_looping": false,
         "padding_top": 36,
         "padding_bottom": 12
+      }
+    },
+    "standard_product_overview_RQbBgt": {
+      "type": "standard-product-overview",
+      "name": "Product Overview",
+      "settings": {
+        "overview_title": "Product Overview",
+        "overview_content": "<p>This is a brief overview of the product.</p>",
+        "overview_button": "Shop now"
       }
     },
     "image-with-text": {
@@ -236,6 +245,7 @@
   },
   "order": [
     "main",
+    "standard_product_overview_RQbBgt",
     "image-with-text",
     "multicolumn",
     "related-products"
