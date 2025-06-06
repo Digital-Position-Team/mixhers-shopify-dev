@@ -1,6 +1,137 @@
+{% assign overview_image = product.metafields.rebrand.overview_image.value | default: section.settings.overview_image %}
+{% assign overview_title = product.metafields.rebrand.overview_title.value | default: section.settings.overview_title %}
+{% assign overview_content = product.metafields.rebrand.overview_content | metafield_tag | default: section.settings.overview_content %}
+{% assign overview_button = product.metafields.rebrand.overview_button.value | default: section.settings.overview_button %}
+
+{% if overview_image and overview_title and overview_content %}
+  <div class="product-overview-section">
+    <div class="overview-container">
+      <div class="overview-image">
+        <img
+          src="{{ overview_image | image_url }}"
+          width="800"
+          height="800"
+          alt="Product Overview"
+        >
+      </div>
+      <div class="overview-content">
+        <h3 class="overview-title">{{ overview_title }}</h3>
+        <div class="overview-description">{{ overview_content }}</div>
+        <button class="overview-button" onclick="scrollToTop()">{{ overview_button }}</button>
+      </div>
+    </div>
+  </div>
+  <div class="overview-divider"></div>
+
+  <style>
+    .product-overview-section {
+      background-color: #E7ECF3;
+    }
+
+    .overview-container {
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .overview-container {
+        flex-direction: row-reverse;
+        align-items: center;
+        height: 800px;
+      }
+    }
+
+    .overview-image img {
+      width: 100%;
+      object-fit: cover;
+      max-height: 800px;
+    }
+
+    .overview-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding: 16px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .overview-title {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    .overview-description {
+      margin-bottom: 16px;
+    }
+
+    .overview-button {
+      padding: 10px 18px;
+      font-size: 18px;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 64px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      .overview-button {
+        width: auto;
+      }
+    }
+
+    .overview-divider {
+      border-top: 1px solid black;
+    }
+  </style>
+
+  <script>
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
+  </script>
+{% endif %}
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Product Overview Section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "overview_image",
+      "label": "Fallback Overview Image"
+    },
+    {
+      "type": "text",
+      "id": "overview_title",
+      "label": "Fallback Overview Title",
+      "default": "Product Overview"
+    },
+    {
+      "type": "richtext",
+      "id": "overview_content",
+      "label": "Fallback Overview Content",
+      "default": "<p>This is a brief overview of the product.</p>"
+    },
+    {
+      "type": "text",
+      "id": "overview_button",
+      "label": "Fallback Button Text",
+      "default": "Shop now"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Overview"
+    }
+  ]
+}
 {% endschema %}
