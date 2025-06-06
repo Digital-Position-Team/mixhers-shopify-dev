@@ -174,6 +174,23 @@
         "padding_bottom": 52
       }
     },
+    "17492107941714b699": {
+      "type": "apps",
+      "blocks": {
+        "yotpo_product_reviews_promoted_products_qWxUjK": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/promoted_products/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{ product }}"
+          }
+        }
+      },
+      "block_order": [
+        "yotpo_product_reviews_promoted_products_qWxUjK"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "standard_product_review_qGdJaa": {
       "type": "standard-product-review",
       "name": "Standard Product Reviews",
@@ -265,6 +282,7 @@
     "standard_product_quote_Mc3cUT",
     "standard_product_faq_fptUKt",
     "custom_liquid_bnPdMU",
+    "17492107941714b699",
     "standard_product_review_qGdJaa",
     "standard_product_mix_quiz_BkjTqR",
     "standard_recommended_products_MVLQVw",
