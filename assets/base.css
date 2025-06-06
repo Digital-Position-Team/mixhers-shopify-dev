@@ -3691,6 +3691,9 @@ ul#product-grid .card.card--standard.card--media .card__inner {
     border: 1px solid #424242;
     background: transparent;
 }
+h1.collection-hero__title {
+    text-align: center;
+}
 @media(max-width:1023px){
  .section-container{
     padding-left:32px;
