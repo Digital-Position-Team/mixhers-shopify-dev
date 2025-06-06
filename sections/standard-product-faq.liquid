@@ -1,0 +1,125 @@
+{% schema %}
+{
+  "name": "Standard Product FAQ",
+  "tag": "section",
+  "class": "standard-product-faq",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Standard Product FAQ"
+    }
+  ]
+}
+{% endschema %}
+
+{% assign faq_image = product.metafields.rebrand.faq_image.value %}
+{% assign bottom_faqs = product.metafields.rebrand.bottom_faqs.value %}
+{% assign has_bottom_faqs = false %}
+{% for bottom_faq in bottom_faqs %}
+  {% if bottom_faq %}
+    {% assign has_bottom_faqs = true %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% if has_bottom_faqs and faq_image %}
+  <style>
+    .standard-product-faq {
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 32px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    @media (min-width: 768px) {
+      .standard-product-faq {
+        flex-direction: row;
+      }
+    }
+
+    .faq-image {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 1rem;
+      object-fit: cover;
+    }
+
+    .faq-content {
+      width: 100%;
+    }
+
+    .faq-heading {
+      text-align: center;
+      margin-bottom: 32px;
+      font-weight: 700;
+      font-size: 1.75rem;
+    }
+
+    details {
+      border-bottom: 1px solid #b0b0b0;
+      padding: 16px 0;
+    }
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 1.25rem;
+      gap: 16px;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .icon-chevron {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.3s ease;
+      fill: #db2777; /* pink color */
+      flex-shrink: 0;
+    }
+
+    details[open] .icon-chevron {
+      transform: rotate(180deg);
+    }
+
+    .faq-content-text {
+      margin-top: 8px;
+      font-size: 0.875rem;
+      line-height: 1.4;
+    }
+  </style>
+
+  <section class="standard-product-faq" aria-label="Frequently Asked Questions">
+    <div class="faq-image-container">
+      <img src="{{ faq_image | image_url }}" alt="FAQ image" width="500" height="500" class="faq-image">
+    </div>
+    <div class="faq-content">
+      <h2 class="faq-heading">FAQs</h2>
+
+      {% for bottom_faq in bottom_faqs %}
+        <details>
+          <summary>
+            <span>{{ bottom_faq.title }}</span>
+            <svg class="icon-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          {% assign content = bottom_faq.contents | metafield_tag %}
+          <div class="faq-content-text">
+            {{ content }}
+          </div>
+        </details>
+      {% endfor %}
+    </div>
+  </section>
+
+  <div style="border-top:1px solid #000; margin-top: 2rem;"></div>
+{% endif %}
