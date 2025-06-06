@@ -144,6 +144,11 @@
         "overview_button": "Shop now"
       }
     },
+    "standard_product_formulation_4M3MT3": {
+      "type": "standard-product-formulation",
+      "name": " Product Formulation",
+      "settings": {}
+    },
     "image-with-text": {
       "type": "image-with-text",
       "blocks": {
@@ -246,6 +251,7 @@
   "order": [
     "main",
     "standard_product_overview_RQbBgt",
+    "standard_product_formulation_4M3MT3",
     "image-with-text",
     "multicolumn",
     "related-products"
