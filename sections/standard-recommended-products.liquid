@@ -22,6 +22,7 @@
 
     <div class="recommended-grid">
       {% for recommended_product in recommended_products %}
+        {% render 'mixhers-product-card', product: product %}
         {% render 'shared-product-details',
           then_render: 'mixhers-product-card',
           product_id: recommended_product.id,
