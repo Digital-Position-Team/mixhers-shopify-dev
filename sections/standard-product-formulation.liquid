@@ -1,12 +1,12 @@
 {% schema %}
 {
-  "name": " Product Formulation",
+  "name": "Product Formulation",
   "tag": "section",
   "class": "standard-product-formulation",
   "settings": [],
   "presets": [
     {
-      "name": " Product Formulation"
+      "name": "Standard Product Formulation"
     }
   ]
 }
@@ -44,7 +44,7 @@
     .formulation-inner {
       background-color: {{ ingredient_inner_color }};
       border-radius: 50%;
-      padding: 40px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -55,7 +55,7 @@
       .formulation-inner {
         flex-direction: row;
         gap: 40px;
-        padding: 80px;
+        padding: 60px;
         align-items: flex-start;
       }
     }
@@ -65,55 +65,64 @@
       height: auto;
     }
 
-    .formulation-content {
-      max-width: 600px;
-      width: 100%;
-    }
-
-    .formulation-heading {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 16px;
-    }
-
-    .formulation-text {
-      font-size: 16px;
-      line-height: 1.5;
-    }
-
-    .formulation-section {
-      margin-top: 40px;
-    }
-
     .accordion-summary {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       cursor: pointer;
       font-weight: bold;
-      font-size: 18px;
-      text-transform: uppercase;
+      padding: 10px 0;
     }
 
-    .accordion-details {
-      background: #fff;
-      margin-top: 16px;
-    }
-
-    .accordion-item {
-      border-bottom: 1px solid #ccc;
-      padding: 16px;
-    }
-
-    .clinical-link {
-      margin-top: 8px;
+    .accordion-item summary svg.icon-plus {
       display: inline-block;
-      text-decoration: underline;
-      color: #000;
+    }
+
+    .accordion-item[open] summary svg.icon-plus {
+      display: none;
+    }
+
+    .accordion-item summary svg.icon-minus {
+      display: none;
+    }
+
+    .accordion-item[open] summary svg.icon-minus {
+      display: inline-block;
     }
 
     .divider {
       border-top: 1px solid #000;
       margin-top: 40px;
+    }
+
+    .mobile-only {
+      display: block;
+    }
+
+    .desktop-only {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .mobile-only {
+        display: none;
+      }
+
+      .desktop-only {
+        display: block;
+      }
+    }
+
+    .accordion-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .accordion-title svg {
+      width: 16px;
+      height: 16px;
+      margin-left: 8px;
     }
   </style>
 
@@ -133,21 +142,32 @@
       </div>
       <div class="formulation-content">
         <div>
-          <h2 class="formulation-heading">Formulation</h2>
-          <p class="formulation-text">
+          <h2>Formulation</h2>
+          <p>
             All Mixhers products are designed with women in mind. We start with thoughtfully dosed ingredients that gently nourish the body and naturally balance hormones.
           </p>
         </div>
 
         {% if ingredients %}
-          <div class="formulation-section">
+          <div class="ingredients-section">
             <details open>
-              <summary class="accordion-summary">Ingredients</summary>
-              <div class="accordion-details">
+              <summary class="accordion-summary">
+                <span>Ingredients</span>
+                <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </summary>
+              <div>
                 {% for ingredient in ingredients %}
                   <details class="accordion-item">
-                    <summary class="accordion-summary">{{ ingredient.name }}</summary>
-                    <p class="formulation-text">{{ ingredient.description }}</p>
+                    <summary class="accordion-summary accordion-title">
+                      <span>{{ ingredient.name }}</span>
+                      <span>
+                        <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 5v14m-7-7h14"/></svg>
+                        <svg class="icon-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14"/></svg>
+                      </span>
+                    </summary>
+                    <p>{{ ingredient.description }}</p>
                   </details>
                 {% endfor %}
               </div>
@@ -156,21 +176,32 @@
         {% endif %}
 
         {% if has_clinical_studies %}
-          <div class="formulation-section">
+          <div class="clinical-section" style="margin-top: 30px;">
             <details>
-              <summary class="accordion-summary">Clinical Studies</summary>
-              <div class="accordion-details">
+              <summary class="accordion-summary">
+                <span>Clinical Studies</span>
+                <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </summary>
+              <div>
                 {% for ingredient in ingredients %}
                   {% assign clinical_studies = ingredient.clinical_studies.value %}
                   {% if clinical_studies %}
                     <details class="accordion-item">
-                      <summary class="accordion-summary">{{ ingredient.name }}</summary>
-                      <div>
+                      <summary class="accordion-summary accordion-title">
+                        <span>{{ ingredient.name }}</span>
+                        <span>
+                          <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 5v14m-7-7h14"/></svg>
+                          <svg class="icon-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14"/></svg>
+                        </span>
+                      </summary>
+                      <div style="margin-top: 10px;">
                         {% for study in clinical_studies %}
-                          <div class="formulation-text">
+                          <div style="margin-bottom: 16px;">
                             <strong>{{ study.source }}</strong><br>
-                            “{{ study.title }}”
-                            <a href="{{ study.link }}" class="clinical-link">Read Journal Article →</a>
+                            “{{ study.title }}”<br>
+                            <a href="{{ study.link }}">Read Journal Article →</a>
                           </div>
                         {% endfor %}
                       </div>
