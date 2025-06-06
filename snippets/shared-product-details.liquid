@@ -1,9 +1,10 @@
 {% comment %} shared-product-variable-logic.liquid recreated for use in Dawn or any Shopify 2.0 theme {% endcomment %}
 
 {% unless product %}
-  {% for product in collections.all.products %}
-    {% if product.id == product_id %}
-      {% assign product = product %}
+  {% for prod in collections.all.products %}
+    {% if prod.id == product_id %}
+      {% assign product = prod %}
+      {% break %}
     {% endif %}
   {% endfor %}
 {% endunless %}
