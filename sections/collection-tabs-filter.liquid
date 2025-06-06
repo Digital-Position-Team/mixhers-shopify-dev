@@ -228,29 +228,29 @@
 </div>
 </section>
 <script>
-  function handleFilter(filter) {
-    const urlParams = new URLSearchParams(window.location.search);
-    urlParams.set('collection', filter);
-    const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + "?" + urlParams.toString();
-    window.history.pushState({ path: newUrl }, '', newUrl);
+  // function handleFilter(filter) {
+  //   const urlParams = new URLSearchParams(window.location.search);
+  //   urlParams.set('collection', filter);
+  //   const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + "?" + urlParams.toString();
+  //   window.history.pushState({ path: newUrl }, '', newUrl);
 
-    document.querySelectorAll('.filter-tag').forEach(btn => btn.classList.remove('active-tag'));
-    const activeBtn = document.getElementById(filter + '-tag');
-    if (activeBtn) activeBtn.classList.add('active-tag');
+  //   document.querySelectorAll('.filter-tag').forEach(btn => btn.classList.remove('active-tag'));
+  //   const activeBtn = document.getElementById(filter + '-tag');
+  //   if (activeBtn) activeBtn.classList.add('active-tag');
 
-    document.querySelectorAll('.filter-results').forEach(grid => {
-      grid.style.display = 'none';
-    });
-    const activeGrid = document.getElementById(filter + '-results');
-    if (activeGrid) activeGrid.style.display = 'grid';
-  }
+  //   document.querySelectorAll('.filter-results').forEach(grid => {
+  //     grid.style.display = 'none';
+  //   });
+  //   const activeGrid = document.getElementById(filter + '-results');
+  //   if (activeGrid) activeGrid.style.display = 'grid';
+  // }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    let filter = urlParams.get('collection') || 'all-products';
-    const validFilters = ['all-products','pms','motherhood','menopause','health','sexual-wellness'];
-    if (!validFilters.includes(filter)) filter = 'all-products';
-    handleFilter(filter);
-  });
+  // document.addEventListener('DOMContentLoaded', () => {
+  //   const urlParams = new URLSearchParams(window.location.search);
+  //   let filter = urlParams.get('collection') || 'all-products';
+  //   const validFilters = ['all-products','pms','motherhood','menopause','health','sexual-wellness'];
+  //   if (!validFilters.includes(filter)) filter = 'all-products';
+  //   handleFilter(filter);
+  // });
 </script>
 
