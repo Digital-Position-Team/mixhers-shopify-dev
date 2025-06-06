@@ -72,7 +72,7 @@
 {% assign subscription_sale_price = subscription_price_minus_discount | money %}
 {% assign subscription_compare_at_price = subscription_raw_compare_at_price | money %}
 
-{%- render then_render,
+{%- render 'mixhers-product-card',
   product: product,
   product_title: product_title,
   product_subtitle: product_subtitle,
