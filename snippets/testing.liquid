@@ -1,0 +1,615 @@
+{% assign subscribe_save_text = product.metafields.rebrand.subscribe_save_text.value | default: 'subscribe_save_text' %}
+{% assign small_text_for_subscribe_label = product.metafields.rebrand.small_text_for_subscribe_label | default: null %}
+{% assign show_with_code_text_next_to_slash_out_price_on_pdps = promo_content.show_with_code_text_next_to_slash_out_price_on_pdps | default: false %}
+{% assign top_faqs = product.metafields.rebrand.top_faqs.value %}
+{% assign supplement_facts_title = product.metafields.rebrand.supplement_facts_title.value | default: null %}
+{% assign supplement_facts_image = product.metafields.rebrand.supplement_facts_image.value | default: null %}
+{% assign default_variant = product.metafields.rebrand.default_variant.value %}
+{% assign hsa_on =  product.metafields.rebrand.hsa_on.value | default: false %}
+{% assign show_extra_subscribe_box_text = promo_content.show_extra_subscribe_box_text | default: false %}
+{% assign extra_subscribe_box_text = promo_content.extra_subscribe_box_text %}
+
+{% if product.tags contains "only_allow_one_in_cart" %}
+    {% assign only_allow_one_in_cart = true %}
+{% else %}
+    {% assign only_allow_one_in_cart = false %}
+{% endif %}
+{% assign filtered_variants_array = '' %}
+{% comment %} For bundle products, only add bundle variants to the array {% endcomment %}
+{% if is_bundle_product %}
+  {% for variant in product.variants %}
+    {% if variant.metafields.rebrand.is_bundle_variant == true %}
+        {% assign filtered_variants_array = filtered_variants_array | append: variant.id | append: ',' %}
+    {% endif %}
+  {% endfor %}
+{% else %}
+{% comment %} For non-bundle products, only add variants to the array if they aren't hidden {% endcomment %}
+    {% for variant in product.variants %}
+      {% if variant.metafields.custom.hide_variant != true %}
+        {% assign filtered_variants_array = filtered_variants_array | append: variant.id | append: ',' %}
+      {% endif %}
+    {% endfor %}
+{% endif %}
+<style>
+    @media (min-width: 1024px){
+        #supplementFacts {  max-height: calc(100vh - 210px);  max-width: calc(100vw - 210px);  overflow: auto;}
+    }
+</style>
+<form id="pdp-form">
+  <div>
+    <div>
+      <!-- Image carousel goes here -->
+    </div>
+
+    <div>
+      {% if show_promo_badge_above_title %}
+        <p>promo_badge</p>
+      {% endif %}
+      <h1>{{ product_title }}</h1>
+      <p>{{ product_subtitle }}</p>
+      <p>{{ product_caption }}</p>
+
+      <div data-yotpo-instance-id="585542" data-yotpo-product-id="{{ product.id }}" data-yotpo-cart-product-id="{{ item.product.id }}" data-yotpo-section-id="{{ template.name }}"></div>
+
+      {% if supplement_facts_title %}
+        <button type="button" onclick="openSupplementFactsModal()" {% unless supplement_facts_image %}disabled{% endunless %}>
+          {{ supplement_facts_title }}
+        </button>
+      {% endif %}
+
+      <div>{{ product_description }}</div>
+
+      <!-- PURCHASE OPTIONS -->
+      <div id="purchase-options" class="hidden">
+        <label>
+          <input type="radio" name="purchaseType" value="one_time_purchase">
+          <div>
+            One-time purchase
+            {% if show_slashed_out_promo_pricing_on_pdps %}
+              <div>
+                <div>
+                  <span id="one-time-sale-price">{{ one_time_sale_price }}</span>
+                  <span id="one-time-price">{{ one_time_price }}</span>
+                </div>
+                {% if promo_discount_code and show_with_code_text_next_to_slash_out_price_on_pdps %}
+                  <div>{{ 'with code ' | append: promo_discount_code }}</div>
+                {% endif %}
+              </div>
+            {% else %}
+              <span id="one-time-price">{{ one_time_price }}</span>
+            {% endif %}
+          </div>
+        </label>
+
+        <label>
+          <input type="radio" name="purchaseType" value="subscription" checked>
+          <div>
+            <div>{{ subscribe_save_text }}</div>
+            {% if small_text_for_subscribe_label %}
+              <div>{{ small_text_for_subscribe_label }}</div>
+            {% endif %}
+
+            {% if show_slashed_out_promo_pricing_on_pdps %}
+              <div>
+                <span id="subscription-sale-price">{{ subscription_sale_price }}</span>
+                <span id="subscribe-and-save-compare-price">{{ subscription_compare_at_price }}</span>
+                {% if promo_discount_code and show_with_code_text_next_to_slash_out_price_on_pdps %}
+                  <div>{{ 'with code ' | append: promo_discount_code }}</div>
+                {% endif %}
+              </div>
+            {% else %}
+              <span id="subscription-price">{{ subscription_price }}</span>
+            {% endif %}
+          </div>
+
+          {% if show_extra_subscribe_box_text %}
+            <div>{{ extra_subscribe_box_text }}</div>
+          {% endif %}
+        </label>
+      </div>
+
+      <!-- HSA Info -->
+      {% if hsa_on %}
+        <div>
+          <span>HSA Reimbursement Eligible</span>
+          <div>
+            <span>HSA/FSA eligible at checkout.</span>
+            <span>reach out to help@mixhers.com</span>
+          </div>
+        </div>
+      {% endif %}
+
+      <!-- Promo Text -->
+      {% if show_promo_below_purchase_options %}
+        <div>
+          <span>
+            {{ promo_first_text }}
+            {% if promo_discount_code %}
+              {{ promo_discount_code }}
+            {% endif %}
+            {{ promo_last_text }}
+          </span>
+        </div>
+      {% endif %}
+
+      <!-- BUNDLE PRICING -->
+      <div id="bundle-pricing" class="hidden">
+        <p>Pick your flavors</p>
+
+        <select name="first-flavor">
+          <option disabled selected>Pick your first flavor</option>
+          {% for variant in product.variants %}
+            {% if variant.metafields.rebrand.is_bundle_variant != true %}{% continue %}{% endif %}
+            {% liquid
+              assign variant_out_of_stock = false
+              if variant.metafields.variant.outofstock == 'true'
+                assign variant_out_of_stock = true
+              elsif variant.inventory_quantity < 1 and variant.inventory_management == 'shopify' and variant.inventory_policy == 'deny'
+                assign variant_out_of_stock = true
+              endif
+            %}
+            <option value="{{ variant.id }}" data-flavor="{{ variant.options[0] }}" data-title="15 x {{ variant.options[0] }}" {% if variant_out_of_stock %}disabled{% endif %} {% if default_variant.id == variant.id and variant_out_of_stock == false %}selected{% endif %}>
+              15 x {{ variant.options[0] }}{% if variant_out_of_stock %} (Out of Stock){% endif %}
+            </option>
+          {% endfor %}
+        </select>
+
+        <select name="second-flavor">
+          <option disabled selected>Pick your second flavor</option>
+          {% for variant in product.variants %}
+            {% if variant.metafields.rebrand.is_bundle_variant != true %}{% continue %}{% endif %}
+            {% liquid
+              assign variant_out_of_stock = false
+              if variant.metafields.variant.outofstock == 'true'
+                assign variant_out_of_stock = true
+              elsif variant.inventory_quantity < 1 and variant.inventory_management == 'shopify' and variant.inventory_policy == 'deny'
+                assign variant_out_of_stock = true
+              endif
+            %}
+            <option value="{{ variant.id }}" data-flavor="{{ variant.options[0] }}" data-title="15 x {{ variant.options[0] }}" {% if variant_out_of_stock %}disabled{% endif %}>
+              15 x {{ variant.options[0] }}{% if variant_out_of_stock %} (Out of Stock){% endif %}
+            </option>
+          {% endfor %}
+        </select>
+
+        <button type="submit">Add to cart</button>
+      </div>
+
+      <!-- SINGLE VARIANT -->
+      <div id="single-variant-pricing" class="hidden">
+        <button type="submit">Add to cart</button>
+        {% if show_slashed_out_promo_pricing_on_pdps %}
+          <div id="one-time-purchase-only-promo-text-single-variant" class="hidden">
+            <span id="sale-price-single-variant"></span>
+            {% if promo_discount_code %}
+              <span>with code {{ promo_discount_code }}</span>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- MULTIPLE VARIANT -->
+      <div id="multiple-variant-pricing" class="hidden">
+        <p>Pick an option</p>
+        <select name="flavor">
+          <option disabled selected>Choose an option</option>
+          {% for variant in product.variants %}
+            {% if variant.metafields.custom.hide_variant == true %}{% continue %}{% endif %}
+            {% liquid
+              assign variant_out_of_stock = false
+              if variant.metafields.variant.outofstock == 'true'
+                assign variant_out_of_stock = true
+              elsif variant.inventory_quantity < 1 and variant.inventory_management == 'shopify'
+                assign variant_out_of_stock = true
+              endif
+            %}
+            <option value="{{ variant.id }}" data-flavor="{{ variant.options[0] }}" data-out-of-stock="{{ variant_out_of_stock }}" {% if variant_out_of_stock %}disabled{% endif %} {% if default_variant.id == variant.id and variant_out_of_stock == false %}selected{% endif %}>
+              {{ variant.options[0] }}{% if variant_out_of_stock %} (Out of Stock){% endif %}
+            </option>
+          {% endfor %}
+        </select>
+
+        <button type="submit">Add to cart</button>
+        {% if show_slashed_out_promo_pricing_on_pdps %}
+          <div id="one-time-purchase-only-promo-text" class="hidden">
+            {% if promo_discount_percentage %}
+              <span id="sale-price-multiple-variant"></span>
+            {% endif %}
+            {% if promo_discount_code and show_with_code_text_next_to_slash_out_price_on_pdps %}
+              <span>with code {{ promo_discount_code }}</span>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- Supplement Facts Modal -->
+<div id="supplementFactsModal" class="hidden fixed inset-0 z-50 items-center justify-center bg-[#000000AA] p-7" onclick="closeSupplementFactsModal()">
+    <div id=supplementFacts class="bg-white rounded-lg shadow-xl relative inline-block">
+        <img src="{{ supplement_facts_image | image_url }}" alt="{{ supplement_facts_title }}" class="object-contain" width=auto height=auto/>
+        <button class="text-white absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 w-8 h-8" onclick="closeSupplementFactsModal()"> Close</button>
+    </div>
+</div>
+
+<script>
+    const starterKitOneVariantId = '43284002865331';
+    const starterKitTwoVariantId = '43827218645171';
+    const starterKitMessageOne = "Display Box and Frother";
+    const starterKitMessageTwo = "Frother";
+    const discount_percentage = {{ promo_discount_percentage | json }};
+
+    function getSalePrice(price) {
+        const discount = price * discount_percentage;
+        return price - discount;
+    }
+
+    function formatPrice(price) {
+        return new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD'
+        }).format(price / 100);
+    }
+
+    function openSupplementFactsModal() {
+        document.getElementById('supplementFactsModal').style.display = 'flex';
+    }
+
+    function closeSupplementFactsModal() {
+        document.getElementById('supplementFactsModal').style.display = 'none';
+    }
+
+    (function () {
+        // DATA
+        const isBundleProduct = {{ is_bundle_product }};
+        const sellingPlanId = {{ selling_plan_id | json }};
+        const allVariants = {{ product.variants | json }};
+        const filteredVariantsArray = {{ filtered_variants_array | json }}.split(',');
+        const filteredVariants = allVariants.filter(function(variant) {
+            return filteredVariantsArray.includes(variant.id.toString())
+        });
+        const isSingleVariantProduct = {{ is_single_variant_product }}
+        const isMultipleVariantProduct = filteredVariants.length > 1;
+        const onlyOneAllowedInCart = {{ only_allow_one_in_cart }};
+
+        // SELECTORS
+        const form = $('#pdp-form');
+        const bundlePricingEl = $('#bundle-pricing');
+        const singleVariantPricingEl = $('#single-variant-pricing');
+        const multipleVariantPricingEl = $('#multiple-variant-pricing');
+        const purchaseOptionsEl = $('#purchase-options');
+
+        // FUNCTIONS
+        async function handleAddToCart({variant, cartData}) {
+            if (onlyOneAllowedInCart || variant.price === 0) {
+                const response = await fetch('/cart.js', { cache: 'no-store' });
+                if (!response.ok) {
+                  console.log('Could not fetch cart data');
+                }
+                const cart = await response.json();
+                console.log('Cart:', cart);
+                let variantInCart = cart.items.find(item => item.variant_id === variant.id);
+                if (variantInCart) {
+                    Rebuy.SmartCart.show();
+                    return;
+                }
+            }
+            await fetch('/cart/add.js', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(cartData),
+            });
+        }
+
+        async function addBundleProductToCart() {
+            const isSubscription = sellingPlanId && purchaseOptionsEl.find('input[name="purchaseType"]:checked').val() === 'subscription';
+            const subscriptionData = isSubscription ? { selling_plan: sellingPlanId } : {};
+            const firstFlavorSelectEl = bundlePricingEl.find('select').eq(0);
+            const secondFlavorSelectEl = bundlePricingEl.find('select').eq(1);
+            const firstSelectedFlavorOption = firstFlavorSelectEl.find(':selected');
+            const secondSelectedFlavorOption = secondFlavorSelectEl.find(':selected');
+            const firstFlavorName = firstSelectedFlavorOption.data('flavor')
+            const secondFlavorName = secondSelectedFlavorOption.data('flavor');
+            const firstFlavorQuantity = firstSelectedFlavorOption.data('quantity');
+            const secondFlavorQuantity = secondSelectedFlavorOption.data('quantity');
+            const firstFlavorColor = firstSelectedFlavorOption.data('color');
+            const secondFlavorColor = secondSelectedFlavorOption.data('color');
+            const starterKitVariantId = "{{ bundle_product.metafields.rebrand.experience_box.value.id }}";
+            const getsStarterKitMessage = starterKitVariantId === starterKitOneVariantId;
+
+
+            const bundleProductData = {
+                variantId: "{{ bundle_product.variants[0].id }}",
+                productId: "{{ bundle_product.id }}",
+                sellingPlan: sellingPlanId,
+                sideCartSubtitle: "{{ bundle_product.metafields.rebrand.side_cart_subtitle.value }}",
+                starterKitVariantId: starterKitVariantId
+            };
+
+            const bundle = {
+                externalVariantId: bundleProductData.variantId,
+                externalProductId: bundleProductData.productId,
+                selections: [
+                    {
+                        collectionId: "{{ bundle_collection.id }}",
+                        externalProductId: "{{ product.id }}",
+                        externalVariantId: parseInt(firstFlavorSelectEl.val()),
+                        quantity: 1
+                    },
+                    {
+                        collectionId: "{{ bundle_collection.id }}",
+                        externalProductId: "{{ product.id }}",
+                        externalVariantId: parseInt(secondFlavorSelectEl.val()),
+                        quantity: 1
+                    }
+                ]
+            };
+
+            // https://storefront.rechargepayments.com/client/docs/methods/bundle/overview/
+            const rbId = await recharge.bundle.getBundleId(bundle);
+            let cartData;
+            if (getsStarterKitMessage && isSubscription){
+                cartData = {
+                    items: [{
+                        id: bundleProductData.variantId,
+                        quantity: 1,
+                        properties: {
+                            _rb_id: rbId,
+                            "Contains": `${firstFlavorName} x ${firstFlavorQuantity}, ${secondFlavorName} x ${secondFlavorQuantity}`,
+                            "Free Starter Kit": `${starterKitMessageOne}`,
+                            _contentsData: [{flavor: firstFlavorName, quantity: firstFlavorQuantity, color: firstFlavorColor}, {flavor: secondFlavorName, quantity: secondFlavorQuantity, color: secondFlavorColor}],
+                            _bundle_contents_quantity: 30,
+                            _side_cart_subtitle: bundleProductData.sideCartSubtitle,
+                            _starterKitVariantId: bundleProductData.starterKitVariantId
+                        },
+                        ...subscriptionData,
+                    }]
+                };
+            } else {
+                cartData = {
+                    items: [{
+                        id: bundleProductData.variantId,
+                        quantity: 1,
+                        properties: {
+                            _rb_id: rbId,
+                            "Contains": `${firstFlavorName} x ${firstFlavorQuantity}, ${secondFlavorName} x ${secondFlavorQuantity}`,
+                            _contentsData: [{flavor: firstFlavorName, quantity: firstFlavorQuantity, color: firstFlavorColor}, {flavor: secondFlavorName, quantity: secondFlavorQuantity, color: secondFlavorColor}],
+                            _bundle_contents_quantity: 30,
+                            _side_cart_subtitle: bundleProductData.sideCartSubtitle,
+                            _starterKitVariantId: bundleProductData.starterKitVariantId
+                        },
+                        ...subscriptionData,
+                    }]
+                };
+            }
+
+            await handleAddToCart({variant: {{ bundle_product.variants[0] | json }}, cartData});
+        }
+
+        async function addSingleVariantProductToCart() {
+            const isSubscription = sellingPlanId && purchaseOptionsEl.find('input[name="purchaseType"]:checked').val() === 'subscription';
+            const subscriptionData = isSubscription ? { selling_plan: sellingPlanId } : {};
+            const starterKitVariantId = "{{ product.metafields.rebrand.experience_box.value.id }}";
+            const singleVariant = filteredVariants[0];
+            const singleVariantName = singleVariant.title;
+            const singleVariantColor = singleVariant.metafields?.rebrand?.bubble?.value || 'transparent';
+            const getsStarterKitMessage = starterKitVariantId === starterKitTwoVariantId;
+            let cartData;
+            if (getsStarterKitMessage && isSubscription){
+                cartData = {
+                    ...subscriptionData,
+                    id: singleVariant.id,
+                    quantity: 1,
+                    properties: {
+                        "Free Starter Kit": starterKitMessageTwo,
+                        _contentsData: [{flavor: singleVariantName, color: singleVariantColor}],
+                        _starterKitVariantId: starterKitVariantId
+                    },
+                };
+            } else {
+                cartData = {
+                    ...subscriptionData,
+                    id: singleVariant.id,
+                    quantity: 1,
+                    properties: {
+                        _contentsData: [{flavor: singleVariantName, color: singleVariantColor}],
+                        _starterKitVariantId: starterKitVariantId
+                    },
+                };
+            }
+            await handleAddToCart({variant: singleVariant, cartData});
+        }
+
+        async function addMultipleVariantProductToCart() {
+            const selectEl = multipleVariantPricingEl.find('select');
+            const selectedOption = selectEl.find(':selected');
+            const selectedVariant = filteredVariants.find(variant => variant.id === parseInt(selectEl.val()));
+            const flavorName = selectedOption.data('flavor')
+            const flavorColor = selectedOption.data('color');
+            const isSubscription = sellingPlanId && purchaseOptionsEl.find('input[name="purchaseType"]:checked').val() === 'subscription';
+            const subscriptionData = isSubscription ? { selling_plan: sellingPlanId } : {};
+            const starterKitVariantId = "{{ product.metafields.rebrand.experience_box.value.id }}";
+            const getsStarterKitMessage = starterKitVariantId === starterKitTwoVariantId;
+            let cartData;
+            if (getsStarterKitMessage && isSubscription){
+                cartData = {
+                    ...subscriptionData,
+                    id: selectedVariant.id,
+                    quantity: 1,
+                    properties: {
+                        "Free Starter Kit": starterKitMessageTwo,
+                        _contentsData: [{flavor: flavorName, color: flavorColor}],
+                        _starterKitVariantId: starterKitVariantId
+                    },
+                };
+            } else {
+                cartData = {
+                    ...subscriptionData,
+                    id: selectedVariant.id,
+                    quantity: 1,
+                    properties: {
+                        _contentsData: [{flavor: flavorName, color: flavorColor}],
+                        _starterKitVariantId: starterKitVariantId
+                    },
+                };
+            }
+            await handleAddToCart({variant: selectedVariant, cartData});
+        }
+
+        function initBundleProduct() {
+            const firstFlavorSelectEl = bundlePricingEl.find('select').eq(0);
+            const secondFlavorSelectEl = bundlePricingEl.find('select').eq(1);
+
+            function updateFlavorColors() {
+                firstFlavorSelectEl.siblings('#flavor-color').css('background-color', firstFlavorSelectEl.find(':selected').data('color'));
+                secondFlavorSelectEl.siblings('#flavor-color').css('background-color', secondFlavorSelectEl.find(':selected').data('color'));
+            }
+
+            // Set flavor colors on select change
+            firstFlavorSelectEl.on('change', function () {
+                updateFlavorColors();
+            });
+            secondFlavorSelectEl.on('change', function () {
+                updateFlavorColors();
+            });
+            updateFlavorColors();
+
+            form.on('submit', async function (e) {
+                e.preventDefault();
+                const submitButton = bundlePricingEl.find('button');
+                const submitButtonText = submitButton.text();
+                submitButton.prop('disabled', true).text('Loading...').css('opacity', 0.5);
+                await addBundleProductToCart();
+                submitButton.prop('disabled', false).text(submitButtonText).css('opacity', 1);
+            });
+
+            firstFlavorSelectEl.prop("required", true);
+            secondFlavorSelectEl.prop("required", true);
+            if (sellingPlanId) purchaseOptionsEl.removeClass('hidden');
+            else bundlePricingEl.find('button').text(`Add to cart - ${bundle_price}`)
+
+            bundlePricingEl.removeClass('hidden');
+        }
+
+        function initSingleVariantProduct(product) {
+            const oneTimeSalePriceEl = purchaseOptionsEl.find('#one-time-sale-price');
+            const oneTimePriceEl = purchaseOptionsEl.find('#one-time-price');
+            const subscriptionSalePriceEl = purchaseOptionsEl.find('#subscription-sale-price');
+            const subscriptionPriceEl = purchaseOptionsEl.find('#subscription-price');
+            const price = filteredVariants[0].price;
+            const formattedPrice = formatPrice(price);
+            const subscriptionPrice = filteredVariants[0]?.selling_plan_allocations?.[0]?.price;
+            const formattedSubscriptionPrice = formatPrice(subscriptionPrice);
+            const salePrice = formatPrice(getSalePrice(price));
+            const subscriptionSalePrice = formatPrice(getSalePrice(subscriptionPrice));
+            const subscriptionCompareAtPrice = filteredVariants[0]?.selling_plan_allocations?.[0]?.compare_at_price;
+            const subscribeAndSaveComparePriceEl = purchaseOptionsEl.find('#subscribe-and-save-compare-price');
+
+            // Set variant price
+            function updatePrices() {
+                oneTimeSalePriceEl.text(salePrice);
+                oneTimePriceEl.text(formattedPrice);
+                subscriptionSalePriceEl.text(subscriptionSalePrice);
+                subscriptionPriceEl.text(formattedSubscriptionPrice);
+                subscribeAndSaveComparePriceEl.text(formatPrice(subscriptionCompareAtPrice));
+            }
+            updatePrices();
+
+            form.on('submit', async function (e) {
+                e.preventDefault();
+                const submitButton = singleVariantPricingEl.find('button');
+                const submitButtonText = submitButton.text();
+                submitButton.prop('disabled', true).text('Loading...').css('opacity', 0.5);
+                await addSingleVariantProductToCart();
+                submitButton.prop('disabled', false).text(submitButtonText).css('opacity', 1);
+            });
+            if (sellingPlanId && !product.tags.includes('disable-subscribe-on-pdp')){
+                purchaseOptionsEl.removeClass('hidden');
+                if (subscriptionCompareAtPrice) {
+                    subscribeAndSaveComparePriceEl.text(formatPrice(subscriptionCompareAtPrice));
+                }
+            } else {
+                singleVariantPricingEl.find('button').text(`Add to cart - ${formattedPrice}`)
+                const oneTimePurchaseOnlyPromoTextEl = document.getElementById('one-time-purchase-only-promo-text-single-variant');
+                const singleSalePriceEl = document.getElementById('sale-price-single-variant');
+                if (oneTimePurchaseOnlyPromoTextEl) {
+                    singleSalePriceEl.textContent = salePrice
+                    oneTimePurchaseOnlyPromoTextEl.classList.remove('hidden')
+                    oneTimePurchaseOnlyPromoTextEl.classList.add('flex')
+                }
+            }
+            singleVariantPricingEl.removeClass('hidden');
+        }
+
+        function initMultipleVariantProduct() {
+            const oneTimeSalePriceEl = purchaseOptionsEl.find('#one-time-sale-price');
+            const oneTimePriceEl = purchaseOptionsEl.find('#one-time-price');
+            const subscriptionSalePriceEl = purchaseOptionsEl.find('#subscription-sale-price');
+            const subscriptionPriceEl = purchaseOptionsEl.find('#subscription-price');
+            const flavorSelectEl = multipleVariantPricingEl.find('select');
+            const price = flavorSelectEl.find(':selected').data('price');
+            const salePrice = getSalePrice(price);
+            const subscriptionPrice = flavorSelectEl.find(':selected').data('subscription-price');
+            const subscriptionSalePrice = getSalePrice(subscriptionPrice);
+            const subscribeAndSaveComparePriceEl = purchaseOptionsEl.find('#subscribe-and-save-compare-price');
+            const subscribeAndSaveComparePrice = flavorSelectEl.find(':selected').data('subscribe-and-save-compare-price');
+
+            function updatePrices() {
+                oneTimeSalePriceEl.text(formatPrice(salePrice));
+                oneTimePriceEl.text(formatPrice(price));
+                subscriptionSalePriceEl.text(formatPrice(subscriptionSalePrice));
+                subscriptionPriceEl.text(formatPrice(subscriptionPrice));
+                subscribeAndSaveComparePriceEl.text(formatPrice(subscribeAndSaveComparePrice));
+                if (!sellingPlanId) multipleVariantPricingEl.find('button').text(`Add to cart - ${formatPrice(price)}`);
+            }
+
+            // Set variant prices on select change
+            flavorSelectEl.on('change', function () {
+                updatePrices();
+            });
+            updatePrices();
+
+            form.on('submit', async function (e) {
+                e.preventDefault();
+                const submitButton = multipleVariantPricingEl.find('button');
+                const submitButtonText = submitButton.text();
+                submitButton.prop('disabled', true).text('Loading...').css('opacity', 0.5);
+                await addMultipleVariantProductToCart();
+                submitButton.prop('disabled', false).text(submitButtonText).css('opacity', 1);
+            });
+
+            flavorSelectEl.prop("required", true);
+            if (sellingPlanId){
+                purchaseOptionsEl.removeClass('hidden');
+            } else {
+                const oneTimePurchaseOnlyPromoTextEl = document.getElementById('one-time-purchase-only-promo-text');
+                const salePriceEl = document.getElementById('sale-price-multiple-variant');
+                if (oneTimePurchaseOnlyPromoTextEl) {
+                    salePriceEl.textContent = formatPrice(salePrice);
+                    oneTimePurchaseOnlyPromoTextEl.classList.remove('hidden');
+                    oneTimePurchaseOnlyPromoTextEl.classList.add('flex');
+                }
+            }
+            multipleVariantPricingEl.removeClass('hidden');
+        }
+
+        function init() {
+            // START Variables for Debugging in the DevTools Console
+            const product = {{ product | json }};
+            const bundleProduct = {{ bundle_product | json }};
+            // END Variables for Debugging in the DevTools Console
+            if (isBundleProduct) {
+                initBundleProduct();
+            } else if (isSingleVariantProduct) {
+                initSingleVariantProduct(product);
+            } else if (isMultipleVariantProduct) {
+                initMultipleVariantProduct();
+            } else {
+                console.error('Product is not a bundle, single variant, or multiple variant product');
+            }
+        }
+
+        init();
+    })();
+</script>
