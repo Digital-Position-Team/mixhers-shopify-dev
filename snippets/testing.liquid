@@ -241,7 +241,11 @@
         <button class="text-white absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 w-8 h-8" onclick="closeSupplementFactsModal()"> Close</button>
     </div>
 </div>
-
+<div id="product-data"
+     data-is-bundle="{{ is_bundle_product }}"
+     data-product='{{ product | json }}'
+     data-bundle-product='{{ bundle_product | json }}'>
+</div>
 
 <script>
     const starterKitOneVariantId = '43284002865331';
