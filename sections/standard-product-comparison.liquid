@@ -21,25 +21,9 @@
       width: 100%;
       padding: 0;
     }
-
     .product-comparison-mobile {
       display: block;
     }
-
-    .product-comparison-desktop {
-      display: none;
-    }
-
-    @media (min-width: 768px) {
-      .product-comparison-mobile {
-        display: none;
-      }
-
-      .product-comparison-desktop {
-        display: block;
-      }
-    }
-
     .product-comparison-section img {
       width: 100%;
       height: auto;
@@ -53,11 +37,11 @@
   </style>
 
   <div class="product-comparison-section">
-    <div class="product-comparison-mobile">
-      <img src="{{ comparison_image_mobile | image_url }}" alt="Product Comparison Mobile">
+    <div class="product-comparison-mobile only-small-screen">
+      <img src="{{ comparison_image_mobile | image_url }}" alt="Product Comparison Mobile" width="" height="">
     </div>
-    <div class="product-comparison-desktop">
-      <img src="{{ comparison_image_desktop | image_url }}" alt="Product Comparison Desktop">
+    <div class="product-comparison-desktop only-desktop ">
+      <img src="{{ comparison_image_desktop | image_url }}" alt="Product Comparison Desktop" width="" height="">
     </div>
     <div class="comparison-divider"></div>
   </div>
