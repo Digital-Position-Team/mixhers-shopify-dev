@@ -139,9 +139,13 @@
               {% for variant in product.variants %}
                 {% if variant.metafields.rebrand.is_bundle_variant != true %}{% continue %}{% endif %}
                 {% assign variant_out_of_stock = false %}
-                {% if variant.metafields.variant.outofstock == 'true' or (variant.inventory_quantity < 1 and variant.inventory_management == 'shopify' and variant.inventory_policy == 'deny') %}
-                  {% assign variant_out_of_stock = true %}
-                {% endif %}
+                {% if variant.metafields.variant.outofstock == 'true' %}
+  {% assign variant_out_of_stock = true %}
+{% elsif variant.inventory_quantity < 1 %}
+  {% if variant.inventory_management == 'shopify' and variant.inventory_policy == 'deny' %}
+    {% assign variant_out_of_stock = true %}
+  {% endif %}
+{% endif %}
                 <option value="{{ variant.id }}" data-flavor="{{ variant.options[0] }}" data-quantity="{{ variant.options[1] }}" data-color="{{ variant.metafields.rebrand.bubble.value | default: "transparent" }}" data-title="15 x {{ variant.options[0] }}" data-out-of-stock="{{ variant_out_of_stock }}" {% if variant_out_of_stock %}disabled{% endif %} {% if default_variant.id == variant.id and variant_out_of_stock == false %}selected{% endif %}>
                   15 x {{ variant.options[0] }}{% if variant_out_of_stock %} (Out of Stock){% endif %}
                 </option>
@@ -156,9 +160,13 @@
               {% for variant in product.variants %}
                 {% if variant.metafields.rebrand.is_bundle_variant != true %}{% continue %}{% endif %}
                 {% assign variant_out_of_stock = false %}
-                {% if variant.metafields.variant.outofstock == 'true' or (variant.inventory_quantity < 1 and variant.inventory_management == 'shopify' and variant.inventory_policy == 'deny') %}
-                  {% assign variant_out_of_stock = true %}
-                {% endif %}
+                {% if variant.metafields.variant.outofstock == 'true' %}
+  {% assign variant_out_of_stock = true %}
+{% elsif variant.inventory_quantity < 1 %}
+  {% if variant.inventory_management == 'shopify' and variant.inventory_policy == 'deny' %}
+    {% assign variant_out_of_stock = true %}
+  {% endif %}
+{% endif %}
                 <option value="{{ variant.id }}" data-flavor="{{ variant.options[0] }}" data-quantity="{{ variant.options[1] }}" data-color="{{ variant.metafields.rebrand.bubble.value | default: "transparent" }}" data-title="15 x {{ variant.options[0] }}" data-out-of-stock="{{ variant_out_of_stock }}" {% if variant_out_of_stock %}disabled{% endif %}>
                   15 x {{ variant.options[0] }}{% if variant_out_of_stock %} (Out of Stock){% endif %}
                 </option>
