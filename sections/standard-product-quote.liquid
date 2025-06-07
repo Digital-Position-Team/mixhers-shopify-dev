@@ -21,31 +21,11 @@
       width: 100%;
       padding: 0;
     }
-
-    .quote-image-mobile {
-      display: block;
-    }
-
-    .quote-image-desktop {
-      display: none;
-    }
-
-    @media (min-width: 768px) {
-      .quote-image-mobile {
-        display: none;
-      }
-
-      .quote-image-desktop {
-        display: block;
-      }
-    }
-
     .standard-product-quote img {
       width: 100%;
       height: auto;
       display: block;
     }
-
     .quote-divider {
       border-top: 1px solid #000;
       margin-top: 40px;
@@ -53,11 +33,11 @@
   </style>
 
   <section class="standard-product-quote" aria-label="Product Quote Section">
-    <div class="quote-image-mobile">
-      <img src="{{ quote_image_mobile | image_url }}" alt="Quote Image Mobile">
+    <div class="quote-image-mobile only-small-screen">
+      <img src="{{ quote_image_mobile | image_url }}" alt="Quote Image Mobile" width="" height="">
     </div>
-    <div class="quote-image-desktop">
-      <img src="{{ quote_image_desktop | image_url }}" alt="Quote Image Desktop">
+    <div class="quote-image-desktop only-desktop">
+      <img src="{{ quote_image_desktop | image_url }}" alt="Quote Image Desktop" width="" height="">
     </div>
     <div class="quote-divider"></div>
   </section>
