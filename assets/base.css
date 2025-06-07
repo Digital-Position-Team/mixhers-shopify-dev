@@ -3686,6 +3686,12 @@ body{
   font-size:48px;
   margin-bottom: 32px;
 }
+.only-desktop{
+   dispaly:block;
+}
+.only-small-screen{
+  display:none;
+}
 /* default collection */
 ul#product-grid .card.card--standard.card--media .card__inner {
     border: 1px solid #424242;
@@ -3716,5 +3722,11 @@ cart-notification {
   .title-heading-2{
      font-size:36px;
      margin-bottom: 26px;
+  }
+  .only-desktop{
+     display:none;
+  }
+  .only-small-screen{
+    dispaly:block;
   }
 }
