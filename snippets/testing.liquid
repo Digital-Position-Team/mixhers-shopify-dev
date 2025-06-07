@@ -618,11 +618,13 @@ console.log(isBundleProduct,"isBundleProduct---");
             const bundleProduct = {{ bundle_product | json }};
             // END Variables for Debugging in the DevTools Console
             if (isBundleProduct) {
+              console.log("initBundleProduct will run ");
                 initBundleProduct();
             } else if (isSingleVariantProduct) {
               console.log("should run function isSingleVariantProduct");
                 initSingleVariantProduct(product);
             } else if (isMultipleVariantProduct) {
+              console.log("initMultipleVariantProduct will run ");
                 initMultipleVariantProduct();
             } else {
                 console.error('Product is not a bundle, single variant, or multiple variant product');
