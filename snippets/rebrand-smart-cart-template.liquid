@@ -1,3 +1,9 @@
+{{ 'rebrand-smart-cart-template.css' | asset_url | stylesheet_tag }}
+<!-- Fonts -->
+{{ 'rebrand.fonts.css' | asset_url | stylesheet_tag }}
+<!-- Tailwind -->
+<link rel="stylesheet" href="{{ 'tailwind.css' | asset_url }}">
+
 {% assign promo_metaobject = shop.metaobjects.side_cart_promo_text.side-cart-promo | default: null %}
 {% assign disabled_link_products_metaobject = shop.metaobjects.product_group.disabled-side-cart-link-products | default: null %}
 
@@ -643,3 +649,114 @@
   </div>
 </script>
 {% endraw %}
+
+<script>
+    /** not currently in use
+  function addDiscountCode() {
+    let discount = '{{ defaultDiscountCode }}' === 'false' ? false : '{{ defaultDiscountCode }}';
+    const SmartCart = window.Rebuy.SmartCart;
+    let hasDiscount = SmartCart.discount.code ? true : false;
+
+    if (discount && hasDiscount) {
+      let appliedDiscount = localStorage.getItem('discount_code');
+
+      if (appliedDiscount !== discount) {
+        let appliedDiscountInfo = localStorage.getItem('discount_code-' + appliedDiscount);
+        let today = new Date();
+        let discountExpires = JSON.parse(appliedDiscountInfo).ends_at;
+        let discountExpired = new Date(discountExpires) < today;
+
+        if (discountExpired) {
+          localStorage.removeItem('discount_code');
+          localStorage.removeItem('discount_code-' + appliedDiscount);
+          SmartCart.applyDiscount(discount);
+        }
+      }
+    }
+
+    if (discount && !hasDiscount) {
+      SmartCart.applyDiscount(discount);
+    }
+  }
+  */
+
+  /** not currently in use
+  document.addEventListener('rebuy.ready', event => {
+      var upsells_price_mb = document.querySelectorAll('.rebuy-cart__flyout-recommendations-mb .rebuy-product-price');
+      var upsells_prod_actions = document.querySelectorAll('.rebuy-cart__flyout-recommendations-mb .rebuy-product-actions');
+      var upsells_grid = document.querySelector('.rebuy-cart__flyout-recommendations-mb .rebuy-product-grid')
+      var upsells_widget_content = document.querySelector('.rebuy-cart__flyout-recommendations-mb .rebuy-widget-content')
+      for(var x = 0; x < upsells_prod_actions.length; x++){
+          upsells_prod_actions[x].appendChild(upsells_price_mb[x]);
+      }
+      var upsells_scroll_container = document.createElement('div');
+      upsells_scroll_container.classList.add('rebuy-widget__upsells-scroll-container');
+      upsells_widget_content.appendChild(upsells_scroll_container);
+      upsells_scroll_container.appendChild(upsells_grid);
+
+      cartItemCount = event.detail.widget.data.cart.item_count;
+
+      addDiscountCode()
+  });
+  */
+
+  /** Not currently in use, needs rebranding:
+  function initRecommendedProductCards(recommendedProducts) {
+    recommendedProducts.forEach((product) => {
+      // wait for product card to load
+      let interval = setInterval(() => {
+        let productCard = document.querySelector(`.product-id-${product.id}`);
+        if (productCard) {
+          clearInterval(interval);
+          initProductCard(productCard, product);
+        }
+      }, 100);
+    })
+  }
+
+  function initProductCard(productCard, product) {
+    let productInfo = productCard.querySelector('.rebuy-product-info');
+    let productLink = product.link;
+    let productPrice = (product.selected_variant.price.includes('.00')) ? product.selected_variant.price.replace('.00', '') : product.selected_variant.price;
+    let productSubtitle = product.metafields.descriptors.subtitle;
+    let productOptions = product.options;
+    let sticks = false;
+    let quantity = product.option2 + ' sticks';
+    let variantName = product.option1;
+
+    productOptions.forEach((option) => {
+      if (option.name === "Quantity") {
+        let sticks = true;
+      }
+    });
+
+    let productPriceEl = document.createElement('div');
+    productPriceEl.classList.add('rebuy-product-price');
+    productPriceEl.innerHTML = `<span class="rebuy-money text-[12px]">$${productPrice}</span>`;
+    let productTitleEl = document.createElement('div');
+    productTitleEl.classList.add('rebuy-product-title-wrapper');
+    productTitleEl.innerHTML = `<a href="${productLink}" class="headers-9 rebuy-product-title">${product.title}</a> <div class="rebuy-product-subtitle italic-subheaders-7">${productSubtitle}</div> <div class="rebuy-product-quantity body-8">${variantName} ${quantity}</div>`;
+    productInfo.innerHTML = productTitleEl.outerHTML + productPriceEl.outerHTML;
+    }
+  */
+</script>
+
+{% comment %} <script defer>
+  /** Not currently in use, needs rebranding:
+  let interval = setInterval(() => {
+    //wait until toggleRecommendedEl is available
+    let recommendedWrap = document.querySelector('.rebuy-cart__flyout-recommendations-mb');
+    let toggleRecommendedEl = recommendedWrap && recommendedWrap.querySelector('.primary-title')
+      ? recommendedWrap.querySelector('.primary-title')
+      : false;
+
+    if (toggleRecommendedEl) {
+      clearInterval(interval);
+      recommendedWrap.classList.toggle('open');
+      toggleRecommendedEl.addEventListener('click', () => {
+        recommendedWrap.classList.toggle('open');
+      });
+    }
+  }, 100);
+*/
+</script> {% endcomment %}
