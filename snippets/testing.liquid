@@ -286,7 +286,9 @@
         const isSingleVariantProduct = {{ is_single_variant_product }}
         const isMultipleVariantProduct = filteredVariants.length > 1;
         const onlyOneAllowedInCart = {{ only_allow_one_in_cart }};
-
+console.log(isBundleProduct,"isBundleProduct---");
+      console.log(sellingPlanId,"sellingPlanId---");
+      console.log(allVariants,"allVariants---");
         // SELECTORS
         const form = $('#pdp-form');
         const bundlePricingEl = $('#bundle-pricing');
