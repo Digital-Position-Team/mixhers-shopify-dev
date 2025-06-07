@@ -1,8 +1,5 @@
 {{ 'rebrand-smart-cart-template.css' | asset_url | stylesheet_tag }}
 <!-- Fonts -->
-{{ 'rebrand.fonts.css' | asset_url | stylesheet_tag }}
-<!-- Tailwind -->
-<link rel="stylesheet" href="{{ 'tailwind.css' | asset_url }}">
 
 {% assign promo_metaobject = shop.metaobjects.side_cart_promo_text.side-cart-promo | default: null %}
 {% assign disabled_link_products_metaobject = shop.metaobjects.product_group.disabled-side-cart-link-products | default: null %}
