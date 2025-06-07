@@ -4,7 +4,6 @@
 {% assign top_faqs = product.metafields.rebrand.top_faqs.value %}
 {% assign supplement_facts_title = product.metafields.rebrand.supplement_facts_title.value | default: null %}
 {% assign supplement_facts_image = product.metafields.rebrand.supplement_facts_image.value | default: null %}
-
 {% assign default_variant = product.metafields.rebrand.default_variant.value %}
 {% assign hsa_on =  product.metafields.rebrand.hsa_on.value | default: false %}
 {% assign show_extra_subscribe_box_text = promo_content.show_extra_subscribe_box_text | default: false %}
@@ -15,448 +14,222 @@
 {% else %}
     {% assign only_allow_one_in_cart = false %}
 {% endif %}
-
 {% assign filtered_variants_array = '' %}
 {% comment %} For bundle products, only add bundle variants to the array {% endcomment %}
 {% if is_bundle_product %}
-    {% for variant in product.variants %}
-        {% if variant.metafields.rebrand.is_bundle_variant == true %}
-            {% assign filtered_variants_array = filtered_variants_array | append: variant.id | append: ',' %}
-        {% endif %}
-    {% endfor %}
+  {% for variant in product.variants %}
+    {% if variant.metafields.rebrand.is_bundle_variant == true %}
+        {% assign filtered_variants_array = filtered_variants_array | append: variant.id | append: ',' %}
+    {% endif %}
+  {% endfor %}
 {% else %}
 {% comment %} For non-bundle products, only add variants to the array if they aren't hidden {% endcomment %}
     {% for variant in product.variants %}
-        {% if variant.metafields.custom.hide_variant != true %}
-            {% assign filtered_variants_array = filtered_variants_array | append: variant.id | append: ',' %}
-        {% endif %}
+      {% if variant.metafields.custom.hide_variant != true %}
+        {% assign filtered_variants_array = filtered_variants_array | append: variant.id | append: ',' %}
+      {% endif %}
     {% endfor %}
 {% endif %}
-
 <style>
     @media (min-width: 1024px){
-        #supplementFacts {
-            max-height: calc(100vh - 210px);
-            max-width: calc(100vw - 210px);
-            overflow: auto;
-        }
+        #supplementFacts {  max-height: calc(100vh - 210px);  max-width: calc(100vw - 210px);  overflow: auto;}
     }
 </style>
-
 <form id="pdp-form">
-    <div class="flex flex-col lg:flex-row-reverse lg:items-start lg:relative">
-        <div class="flex w-full lg:w-7/12 lg:max-h-[800px] lg:sticky lg:top-[142px] lg:pb-[70px] lg:left-0">
-            {% comment %} render image carousel and featured product image {% endcomment %}
-            {% render 'rebrand-product-template-product-images' %}
-        </div>
-        <div class="p-4 w-full lg:w-5/12 lg:p-8 lg:pr-12">
-            {% if show_promo_badge_above_title %}
-                {% render 'text', tag: 'span' type: 'body-md', content: promo_badge, class: 'flex items-center bg-pink text-white py-[6px] px-[12px] max-w-fit mb-6' %}
-            {% endif %}
-            {% render 'text', tag: 'h1', type: 'heading-2', content: product_title, class: 'mr-2' %}
-            {% render 'text', tag: 'h2', type: 'body-lg', content: product_subtitle %}
-            {% render 'text', type: 'body-lg', content: product_caption, class: 'text-gray mb-2' %}
-            <div
-                class="yotpo-widget-instance pink-stars mb-6 mt-3"
-                data-yotpo-instance-id="585542"
-                data-yotpo-product-id="{{product.id}}"
-                data-yotpo-cart-product-id="{{item.product.id}}"
-                data-yotpo-section-id="{{template.name}}"
-            ></div>
-            {% if supplement_facts_title %}
-                <button
-                    type="button"
-                    class="uppercase text-pink border-b-2 border-pink"
-                    onclick="openSupplementFactsModal()"
-                    {% unless supplement_facts_image %}
-                        disabled
-                    {% endunless %}
-                >
-                    {% render 'text', type: 'body-md', content: supplement_facts_title %}
-                </button>
-            {% endif %}
-            <div class="mt-2 mb-8">
-                {% render 'rich-text', content: product_description %}
-            </div>
-
-            {% comment %}
-                PURCHASE OPTIONS for Starter Kit Eligible Products
-            {% endcomment %}
-            <div id="purchase-options" class="hidden ">
-                <div class="flex flex-col border border-black rounded-xl">
-                    <label class="flex items-center cursor-pointer p-4 gap-2 rounded-xl has-[input:checked]:bg-gray-light">
-                        <input
-                            type="radio"
-                            name="purchaseType"
-                            value="one_time_purchase"
-                            class="w-4 h-4 accent-black"
-                        >
-                        <div class="flex items-center justify-between w-full">
-                            {% render 'text', type: 'body-md', content: 'One-time purchase' %}
-                            {% if show_slashed_out_promo_pricing_on_pdps %}
-                                <div class="flex flex-col">
-                                    <div class="flex gap-2 self-end">
-                                        {% render 'text', type: 'body-md', content: one_time_sale_price, id: 'one-time-sale-price', class: 'text-pink' %}
-                                        {% render 'text',
-                                            type: 'body-md',
-                                            content: one_time_price,
-                                            id: 'one-time-price',
-                                            class: 'line-through'
-                                        %}
-                                    </div>
-                                    {% if promo_discount_code and show_with_code_text_next_to_slash_out_price_on_pdps %}
-                                        {% assign with_code_text = 'with code ' | append: promo_discount_code %}
-                                        {% render 'text', type: 'body-md', content: with_code_text, class: 'text-pink text-center self-end' %}
-                                    {% endif %}
-                                </div>
-                            {% else %}
-                                {% render 'text',
-                                    type: 'body-md',
-                                    content: one_time_price,
-                                    id: 'one-time-price',
-                                    class: 'self-end'
-                                %}
-                            {% endif %}
-                        </div>
-                    </label>
-                    <div class="border-b border-black"></div>
-                    <label class="flex flex-col cursor-pointer p-4 rounded-xl has-[input:checked]:bg-gray-light">
-                        <div class="flex flex-col">
-                            <div class="flex items-center gap-2">
-                                <input
-                                    type="radio"
-                                    name="purchaseType"
-                                    value="subscription"
-                                    class="w-4 h-4 accent-black"
-                                    checked
-                                >
-                                {% if show_slashed_out_promo_pricing_on_pdps %}
-                                    <div class="flex justify-between items-center">
-                                        <div class="flex flex-col">
-                                            <div class="flex">
-                                                {% render 'text', type: 'body-md', content: subscribe_save_text %}
-                                            </div>
-                                            {% if small_text_for_subscribe_label %}
-                                                {% render 'text', type: 'body-sm', content: small_text_for_subscribe_label %}
-                                            {% endif %}
-                                        </div>
-                                        <div class="flex flex-col">
-                                            <div class="flex gap-2 self-end">
-                                                {% render 'text', type: 'body-md', content: subscription_sale_price, id: 'subscription-sale-price', class: 'text-pink' %}
-                                                {% render 'text',
-                                                    type: 'body-md',
-                                                    content: subscription_compare_at_price,
-                                                    id: 'subscribe-and-save-compare-price', class: 'line-through'
-                                                %}
-                                            </div>
-                                            {% if promo_discount_code and show_with_code_text_next_to_slash_out_price_on_pdps %}
-                                                {% assign with_code_text = 'with code ' | append: promo_discount_code %}
-                                                {% render 'text', type: 'body-md', content: with_code_text, class: 'text-pink text-center self-end text-[10px]' %}
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                {% else %}
-                                    <div class="flex justify-between w-full">
-                                        <div class="flex flex-col">
-                                            <div class="flex">
-                                                {% render 'text', type: 'body-md', content: subscribe_save_text %}
-                                            </div>
-                                            {% if small_text_for_subscribe_label %}
-                                                {% render 'text', type: 'body-sm', content: small_text_for_subscribe_label %}
-                                            {% endif %}
-                                        </div>
-                                        <div class="flex gap-2 ml-[10px]">
-                                            {% if subscription_price != subscription_compare_at_price  %}
-                                                {% render 'text', id: 'subscription-price', type: 'body-md', content: subscription_price, class: 'text-pink' %}
-                                                {% render 'text',
-                                                    id: 'subscribe-and-save-compare-price',
-                                                    type: 'body-md',
-                                                    content: subscription_compare_at_price,
-                                                    class: 'line-through'
-                                                %}
-                                            {% else %}
-                                                {% render 'text', id: 'subscription-price', type: 'body-md', content: subscription_price %}
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                {% endif %}
-                            </div>
-                            {% if show_extra_subscribe_box_text %}
-                                <div class="mt-[12px] md:mt-[16px] mb-[-2px]">
-                                    {% render 'text', type: 'body-lg-bold', content: extra_subscribe_box_text %}
-                                </div>
-                            {% endif %}
-                        </div>
-                        {% render 'rebrand-product-template-subscription-features' %}
-                    </label>
-                </div>
-            </div>
-
-            {% comment %}
-                HSA Reimbursement Info
-            {% endcomment %}
-            {% if hsa_on %}
-                {% render 'tooltip-rebrand' %}
-            {% endif %}
-
-            {% comment %}
-                Promo text below purchase options
-            {% endcomment %}
-            {% if show_promo_below_purchase_options %}
-                <div class="mt-8 w-full">
-                    <span class="body-md">
-                        <span>{{ promo_first_text }}yo</span>
-                        {% if promo_discount_code %}
-                            <span class ='text-pink mx-1'>{{ promo_discount_code }}</span>
-                        {% endif %}
-                        <span>{{ promo_last_text }}yo</span>
-                    </span>
-                </div>
-            {% endif %}
-
-            {% comment %}
-                BUNDLE PRICING
-            {% endcomment %}
-            <div id="bundle-pricing" class="hidden my-8">
-                {% render 'text', type: 'body-md', content: 'Pick your flavors', class: 'font-[600] mb-2' %}
-                <div class="flex flex-col gap-3">
-                    <div
-                        class="border border-black rounded-[40px] w-full h-9 relative"
-                        style="background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTciIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxNyAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgaWQ9IkRPV04gQVJST1ciPgo8cGF0aCBpZD0iVmVjdG9yIDE0IiBkPSJNMSAwLjgwMjczNEw4LjUgOC4zMDI3M0wxNiAwLjgwMjczNCIgc3Ryb2tlPSIjRkY1OUU0IiBzdHJva2Utd2lkdGg9IjIiLz4KPC9nPgo8L3N2Zz4K) no-repeat calc(100% - 14px) #fff;"
-                    >
-                        <div
-                            id="flavor-color"
-                            class="absolute inset-0 rounded-full w-[20px] h-[20px] m-[7px] bg-transparent"
-                        ></div>
-                        <select
-                            name="first-flavor"
-                            class="w-full h-full pl-9 bg-transparent appearance-none rounded-[40px] invalid:text-gray"
-                        >
-                            <option disabled value selected>Pick your first flavor</option>
-                            {% for variant in product.variants %}
-                                {% if variant.metafields.rebrand.is_bundle_variant != true %}
-                                    {% continue %}
-                                {% endif %}
-
-                                {% liquid
-                                    assign variant_out_of_stock = false
-                                    if variant.metafields.variant.outofstock == 'true'
-                                        assign variant_out_of_stock = true
-                                    elsif variant.inventory_quantity < 1 and variant.inventory_management == 'shopify' and variant.inventory_policy == 'deny'
-                                        assign variant_out_of_stock = true
-                                    endif
-                                %}
-                                <option
-                                    value="{{ variant.id }}"
-                                    data-flavor="{{ variant.options[0] }}"
-                                    data-quantity="{{ variant.options[1] }}"
-                                    data-color="{{ variant.metafields.rebrand.bubble.value | default: "transparent" }}"
-                                    data-title="15 x {{ variant.options[0] }}"
-                                    data-out-of-stock="{{ variant_out_of_stock }}"
-                                    {% if variant_out_of_stock %}
-                                        disabled
-                                    {% endif %}
-                                    {% if default_variant.id == variant.id and variant_out_of_stock == false %}
-                                        selected
-                                    {% endif %}
-                                >
-                                    15 x {{ variant.options[0] -}}
-                                    {%- if variant_out_of_stock %} (Out of Stock){% endif %}
-                                </option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div
-                        class="border border-black rounded-[40px] w-full h-9 relative"
-                        style="background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTciIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxNyAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgaWQ9IkRPV04gQVJST1ciPgo8cGF0aCBpZD0iVmVjdG9yIDE0IiBkPSJNMSAwLjgwMjczNEw4LjUgOC4zMDI3M0wxNiAwLjgwMjczNCIgc3Ryb2tlPSIjRkY1OUU0IiBzdHJva2Utd2lkdGg9IjIiLz4KPC9nPgo8L3N2Zz4K) no-repeat calc(100% - 14px) #fff;"
-                    >
-                        <div
-                            id="flavor-color"
-                            class="absolute inset-0 rounded-full w-[20px] h-[20px] m-[7px] bg-transparent"
-                        ></div>
-                        <select
-                            name="second-flavor"
-                            class="w-full h-full pl-9 bg-transparent appearance-none rounded-[40px] invalid:text-gray"
-                        >
-                            <option disabled value selected>Pick your second flavor</option>
-                            {% for variant in product.variants %}
-                                {% if variant.metafields.rebrand.is_bundle_variant != true %}
-                                    {% continue %}
-                                {% endif %}
-
-                                {% liquid
-                                    assign variant_out_of_stock = false
-                                    if variant.metafields.variant.outofstock == 'true'
-                                        assign variant_out_of_stock = true
-                                    elsif variant.inventory_quantity < 1 and variant.inventory_management == 'shopify' and variant.inventory_policy == 'deny'
-                                        assign variant_out_of_stock = true
-                                    endif
-                                %}
-                                <option
-                                    value="{{ variant.id }}"
-                                    data-flavor="{{ variant.options[0] }}"
-                                    data-quantity="{{ variant.options[1] }}"
-                                    data-color="{{ variant.metafields.rebrand.bubble.value | default: "transparent" }}"
-                                    data-title="15 x {{ variant.options[0] }}"
-                                    data-out-of-stock="{{ variant_out_of_stock }}"
-                                    {% if variant_out_of_stock %}
-                                        disabled
-                                    {% endif %}
-                                >
-                                    15 x {{ variant.options[0] -}}
-                                    {%- if variant_out_of_stock %} (Out of Stock){% endif %}
-                                </option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    {% render 'button', text: 'Add to cart', size: 'lg', type: 'submit' %}
-                </div>
-            </div>
-
-            {% comment %}
-                SINGLE VARIANT PRICING
-            {% endcomment %}
-            <div id="single-variant-pricing" class="hidden my-8">
-                <div class="flex flex-col justify-center gap-4">
-                    {% render 'button', text: 'Add to cart', size: 'lg', class: 'w-full', type: 'submit' %}
-                    {% if show_slashed_out_promo_pricing_on_pdps %}
-                        <div id="one-time-purchase-only-promo-text-single-variant" class="hidden gap-1 flex-wrap whitespace-nowrap justify-center">
-                            <span id="sale-price-single-variant" class="text-pink"></span>
-                            {% if promo_discount_code %}
-                                <span>with code </span>
-                                <span>{{ promo_discount_code }}</span>
-                            {% endif %}
-                        </div>
-                    {% endif %}
-                </div>
-            </div>
-
-            {% comment %}
-                MULTIPLE VARIANT PRICING
-            {% endcomment %}
-            <div id="multiple-variant-pricing" class="hidden my-8">
-                {% render 'text', type: 'body-md', content: 'Pick an option', class: 'font-[600] mb-2' %}
-                <div class="flex flex-col gap-3">
-                    <div
-                        class="border border-black rounded-[40px] w-full h-9"
-                        style="background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTciIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxNyAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgaWQ9IkRPV04gQVJST1ciPgo8cGF0aCBpZD0iVmVjdG9yIDE0IiBkPSJNMSAwLjgwMjczNEw4LjUgOC4zMDI3M0wxNiAwLjgwMjczNCIgc3Ryb2tlPSIjRkY1OUU0IiBzdHJva2Utd2lkdGg9IjIiLz4KPC9nPgo8L3N2Zz4K) no-repeat calc(100% - 14px) #fff;"
-                    >
-                        {% comment %} TODO: change name attr and data-flavor attr to be nuetral (i.e. "variant" and "data-variant" ) {% endcomment %}
-                        <select
-                            name="flavor"
-                            class="w-full h-full pl-4 bg-transparent appearance-none rounded-[40px] invalid:text-gray"
-                        >
-                            <option disabled value selected>Choose an option</option>
-                            {% for variant in product.variants %}
-                                {% if variant.metafields.custom.hide_variant == true %}
-                                    {% continue %}
-                                {% endif %}
-
-                                {% liquid
-                                    assign variant_out_of_stock = false
-                                    if variant.metafields.variant.outofstock == 'true'
-                                        assign variant_out_of_stock = true
-                                    elsif variant.inventory_quantity < 1 and variant.inventory_management == 'shopify'
-                                        assign variant_out_of_stock = true
-                                    endif
-                                %}
-                                <option
-                                    value="{{ variant.id }}"
-                                    data-flavor="{{ variant.options[0] }}"
-                                    data-quantity="{{ variant.options[1] }}"
-                                    data-color="{{ variant.metafields.rebrand.bubble.value | default: "transparent" }}"
-                                    data-out-of-stock="{{ variant_out_of_stock }}"
-                                    data-price="{{ variant.price }}"
-                                    data-subscription-price="{{ variant.selling_plan_allocations.first.price }}"
-                                    data-subscribe-and-save-compare-price="{{ variant.selling_plan_allocations.first.compare_at_price }}"
-                                    {% if variant_out_of_stock %}
-                                        disabled
-                                    {% endif %}
-                                    {% if default_variant.id == variant.id and variant_out_of_stock == false %}
-                                        selected
-                                    {% endif %}
-                                >
-                                    {{ variant.options[0] -}}
-                                    {%- if variant_out_of_stock %} (Out of Stock){% endif %}
-                                </option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="flex flex-col justify-center gap-4">
-                        {% render 'button', text: 'Add to cart', size: 'lg', class: 'w-full', type: 'submit' %}
-                        {% if show_slashed_out_promo_pricing_on_pdps %}
-                            <div id="one-time-purchase-only-promo-text" class="hidden gap-1 justify-center flex-wrap whitespace-nowrap">
-                                {% if promo_discount_percentage %}
-                                    <span id="sale-price-multiple-variant" class="text-pink"></span>
-                                {% endif %}
-                                {% if promo_discount_code and show_with_code_text_next_to_slash_out_price_on_pdps %}
-                                    <span>with code</span>
-                                    <span>{{ promo_discount_code }}</span>
-                                {% endif %}
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-
-            {% comment %}
-                Top FAQs
-            {% endcomment %}
-            <div>
-            {% if top_faqs %}
-                {% for top_faq in top_faqs %}
-                    <details class="border-y border-gray-medium p-4">
-                        <summary class="list-none cursor-pointer summary-none">
-                            <div class="flex justify-between items-center gap-4">
-                                {% render 'text', type: 'body-md', content: top_faq.title %}
-                                {% render 'text', type: 'body-md', content: '+' %}
-                            </div>
-                        </summary>
-                        {% assign content = top_faq.contents | metafield_tag %}
-                        {% render 'rich-text', content: content, size: 'sm' %}
-                    </details>
-                {% endfor %}
-            {% endif %}
-            </div>
-            {% comment %} Disclaimer {% endcomment %}
-            <div class="text-gray my-8">
-                {% render 'text',
-                    type: 'body-sm',
-                    content: '* These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.'
-                %}
-            </div>
-        </div>
+  <div>
+    <div>
+      <!-- Image carousel goes here -->
     </div>
+
+    <div>
+      {% if show_promo_badge_above_title %}
+        <p>promo_badge</p>
+      {% endif %}
+      <h1>{{ product_title }}</h1>
+      <p>{{ product_subtitle }}</p>
+      <p>{{ product_caption }}</p>
+
+      <div data-yotpo-instance-id="585542" data-yotpo-product-id="{{ product.id }}" data-yotpo-cart-product-id="{{ item.product.id }}" data-yotpo-section-id="{{ template.name }}"></div>
+
+      {% if supplement_facts_title %}
+        <button type="button" onclick="openSupplementFactsModal()" {% unless supplement_facts_image %}disabled{% endunless %}>
+          {{ supplement_facts_title }}
+        </button>
+      {% endif %}
+
+      <div>{{ product_description }}</div>
+
+      <!-- PURCHASE OPTIONS -->
+      <div id="purchase-options" class="hidden">
+        <label>
+          <input type="radio" name="purchaseType" value="one_time_purchase">
+          <div>
+            One-time purchase
+            {% if show_slashed_out_promo_pricing_on_pdps %}
+              <div>
+                <div>
+                  <span id="one-time-sale-price">{{ one_time_sale_price }}</span>
+                  <span id="one-time-price">{{ one_time_price }}</span>
+                </div>
+                {% if promo_discount_code and show_with_code_text_next_to_slash_out_price_on_pdps %}
+                  <div>{{ 'with code ' | append: promo_discount_code }}</div>
+                {% endif %}
+              </div>
+            {% else %}
+              <span id="one-time-price">{{ one_time_price }}</span>
+            {% endif %}
+          </div>
+        </label>
+
+        <label>
+          <input type="radio" name="purchaseType" value="subscription" checked>
+          <div>
+            <div>{{ subscribe_save_text }}</div>
+            {% if small_text_for_subscribe_label %}
+              <div>{{ small_text_for_subscribe_label }}</div>
+            {% endif %}
+
+            {% if show_slashed_out_promo_pricing_on_pdps %}
+              <div>
+                <span id="subscription-sale-price">{{ subscription_sale_price }}</span>
+                <span id="subscribe-and-save-compare-price">{{ subscription_compare_at_price }}</span>
+                {% if promo_discount_code and show_with_code_text_next_to_slash_out_price_on_pdps %}
+                  <div>{{ 'with code ' | append: promo_discount_code }}</div>
+                {% endif %}
+              </div>
+            {% else %}
+              <span id="subscription-price">{{ subscription_price }}</span>
+            {% endif %}
+          </div>
+
+          {% if show_extra_subscribe_box_text %}
+            <div>{{ extra_subscribe_box_text }}</div>
+          {% endif %}
+        </label>
+      </div>
+
+      <!-- HSA Info -->
+      {% if hsa_on %}
+        <div>
+          <span>HSA Reimbursement Eligible</span>
+          <div>
+            <span>HSA/FSA eligible at checkout.</span>
+            <span>reach out to help@mixhers.com</span>
+          </div>
+        </div>
+      {% endif %}
+
+      <!-- Promo Text -->
+      {% if show_promo_below_purchase_options %}
+        <div>
+          <span>
+            {{ promo_first_text }}
+            {% if promo_discount_code %}
+              {{ promo_discount_code }}
+            {% endif %}
+            {{ promo_last_text }}
+          </span>
+        </div>
+      {% endif %}
+
+      <!-- BUNDLE PRICING -->
+      <div id="bundle-pricing" class="hidden">
+        <p>Pick your flavors</p>
+
+        <select name="first-flavor">
+          <option disabled selected>Pick your first flavor</option>
+          {% for variant in product.variants %}
+            {% if variant.metafields.rebrand.is_bundle_variant != true %}{% continue %}{% endif %}
+            {% liquid
+              assign variant_out_of_stock = false
+              if variant.metafields.variant.outofstock == 'true'
+                assign variant_out_of_stock = true
+              elsif variant.inventory_quantity < 1 and variant.inventory_management == 'shopify' and variant.inventory_policy == 'deny'
+                assign variant_out_of_stock = true
+              endif
+            %}
+            <option value="{{ variant.id }}" data-flavor="{{ variant.options[0] }}" data-title="15 x {{ variant.options[0] }}" {% if variant_out_of_stock %}disabled{% endif %} {% if default_variant.id == variant.id and variant_out_of_stock == false %}selected{% endif %}>
+              15 x {{ variant.options[0] }}{% if variant_out_of_stock %} (Out of Stock){% endif %}
+            </option>
+          {% endfor %}
+        </select>
+
+        <select name="second-flavor">
+          <option disabled selected>Pick your second flavor</option>
+          {% for variant in product.variants %}
+            {% if variant.metafields.rebrand.is_bundle_variant != true %}{% continue %}{% endif %}
+            {% liquid
+              assign variant_out_of_stock = false
+              if variant.metafields.variant.outofstock == 'true'
+                assign variant_out_of_stock = true
+              elsif variant.inventory_quantity < 1 and variant.inventory_management == 'shopify' and variant.inventory_policy == 'deny'
+                assign variant_out_of_stock = true
+              endif
+            %}
+            <option value="{{ variant.id }}" data-flavor="{{ variant.options[0] }}" data-title="15 x {{ variant.options[0] }}" {% if variant_out_of_stock %}disabled{% endif %}>
+              15 x {{ variant.options[0] }}{% if variant_out_of_stock %} (Out of Stock){% endif %}
+            </option>
+          {% endfor %}
+        </select>
+
+        <button type="submit">Add to cart</button>
+      </div>
+
+      <!-- SINGLE VARIANT -->
+      <div id="single-variant-pricing" class="hidden">
+        <button type="submit">Add to cart</button>
+        {% if show_slashed_out_promo_pricing_on_pdps %}
+          <div id="one-time-purchase-only-promo-text-single-variant" class="hidden">
+            <span id="sale-price-single-variant"></span>
+            {% if promo_discount_code %}
+              <span>with code {{ promo_discount_code }}</span>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- MULTIPLE VARIANT -->
+      <div id="multiple-variant-pricing" class="hidden">
+        <p>Pick an option</p>
+        <select name="flavor">
+          <option disabled selected>Choose an option</option>
+          {% for variant in product.variants %}
+            {% if variant.metafields.custom.hide_variant == true %}{% continue %}{% endif %}
+            {% liquid
+              assign variant_out_of_stock = false
+              if variant.metafields.variant.outofstock == 'true'
+                assign variant_out_of_stock = true
+              elsif variant.inventory_quantity < 1 and variant.inventory_management == 'shopify'
+                assign variant_out_of_stock = true
+              endif
+            %}
+            <option value="{{ variant.id }}" data-flavor="{{ variant.options[0] }}" data-out-of-stock="{{ variant_out_of_stock }}" {% if variant_out_of_stock %}disabled{% endif %} {% if default_variant.id == variant.id and variant_out_of_stock == false %}selected{% endif %}>
+              {{ variant.options[0] }}{% if variant_out_of_stock %} (Out of Stock){% endif %}
+            </option>
+          {% endfor %}
+        </select>
+
+        <button type="submit">Add to cart</button>
+        {% if show_slashed_out_promo_pricing_on_pdps %}
+          <div id="one-time-purchase-only-promo-text" class="hidden">
+            {% if promo_discount_percentage %}
+              <span id="sale-price-multiple-variant"></span>
+            {% endif %}
+            {% if promo_discount_code and show_with_code_text_next_to_slash_out_price_on_pdps %}
+              <span>with code {{ promo_discount_code }}</span>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
 </form>
 
 <!-- Supplement Facts Modal -->
-<div
-    id="supplementFactsModal"
-    class="hidden fixed inset-0 z-50 items-center justify-center bg-[#000000AA] p-7"
-    onclick="closeSupplementFactsModal()"
->
+<div id="supplementFactsModal" class="hidden fixed inset-0 z-50 items-center justify-center bg-[#000000AA] p-7" onclick="closeSupplementFactsModal()">
     <div id=supplementFacts class="bg-white rounded-lg shadow-xl relative inline-block">
-        <img
-            src="{{ supplement_facts_image | image_url }}"
-            alt="{{ supplement_facts_title }}"
-            class="object-contain"
-            width=auto
-            height=auto
-        >
-        <button class="text-white absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 w-8 h-8" onclick="closeSupplementFactsModal()">
-            <svg
-                aria-hidden="true"
-                focusable="false"
-                role="presentation"
-                class="icon icon-close"
-                viewBox="0 0 40 40"
-                fill="currentColor"
-                width="18"
-                height="18"
-            >
-                <path d="M23.868 20.015L39.117 4.78c1.11-1.108 1.11-2.77 0-3.877-1.109-1.108-2.773-1.108-3.882 0L19.986 16.137 4.737.904C3.628-.204 1.965-.204.856.904c-1.11 1.108-1.11 2.77 0 3.877l15.249 15.234L.855 35.248c-1.108 1.108-1.108 2.77 0 3.877.555.554 1.248.831 1.942.831s1.386-.277 1.94-.83l15.25-15.234 15.248 15.233c.555.554 1.248.831 1.941.831s1.387-.277 1.941-.83c1.11-1.109 1.11-2.77 0-3.878L23.868 20.015z" class="layer"/>
-            </svg>
-        </button>
+        <img src="{{ supplement_facts_image | image_url }}" alt="{{ supplement_facts_title }}" class="object-contain" width=auto height=auto/>
+        <button class="text-white absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 w-8 h-8" onclick="closeSupplementFactsModal()"> Close</button>
     </div>
 </div>
 
@@ -840,15 +613,3 @@
         init();
     })();
 </script>
-
-{% schema %}
-  {
-    "name": "test",
-    "settings": [],
-    "presets":[
-      {
-        "name":"testing"
-      }
-    ]
-  }
-{% endschema %}
