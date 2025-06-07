@@ -620,6 +620,7 @@ console.log(isBundleProduct,"isBundleProduct---");
             if (isBundleProduct) {
                 initBundleProduct();
             } else if (isSingleVariantProduct) {
+              console.log("should run function isSingleVariantProduct");
                 initSingleVariantProduct(product);
             } else if (isMultipleVariantProduct) {
                 initMultipleVariantProduct();
