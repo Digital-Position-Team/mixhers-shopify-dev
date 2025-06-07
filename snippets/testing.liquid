@@ -101,6 +101,106 @@
                 <div>{{ extra_subscribe_box_text }}</div>
               {% endif %}
             </div>
+            <!-- subscription features==================== -->
+            {% if product.metafields.rebrand %}
+    {% if product.metafields.rebrand.price_after_first_month %}
+        {% assign price_after_first_month = product.metafields.rebrand.price_after_first_month.value
+            | money
+            | append: '/mo'
+        %}
+    {% endif %}
+    {% if product.metafields.rebrand.bundle_product %}
+        {% assign bundle_product = product.metafields.rebrand.bundle_product.value %}
+    {% endif %}
+    {% if product.metafields.rebrand.bundle_collection %}
+        {% assign bundle_collection = product.metafields.rebrand.bundle_collection.value %}
+    {% endif %}
+    {% comment %} check for flavor variants {% endcomment %}
+    {% assign has_no_flavor_variants = false %}
+    {% if product.tags contains "has-no-flavor-variants" %}
+      {% assign has_no_flavor_variants = true %}
+    {% endif %}
+    {% comment %} check for bundle product {% endcomment %}
+    {% if bundle_product and bundle_collection %}
+        {% assign is_bundle_product = true %}
+        {% comment %} If the parent product gets starter kit version 1 (for the sticks) {% endcomment %}
+        {% if bundle_product.metafields.rebrand %}
+            {% if bundle_product.metafields.rebrand.experience_box %}
+                {% if bundle_product.metafields.rebrand.experience_box.value.id == 43284002865331 %}
+                    {% assign gets_starter_kit_one = true %}
+                    {% assign gets_starter_kit_two = false %}
+                {% endif %}
+            {% else %}
+                {% assign gets_starter_kit_one = false %}
+                {% assign gets_starter_kit_two = false %}
+            {% endif %}
+        {% else %}
+            {% assign gets_starter_kit_one = false %}
+            {% assign gets_starter_kit_two = false %}
+        {% endif %}
+    {% else %}
+        {% comment %} If the product gets starter kit version 2 (for the powder bag) {% endcomment %}
+        {% if product.metafields.rebrand.experience_box %}
+            {% if product.metafields.rebrand.experience_box.value.id == 43827218645171 %}
+                {% assign is_bundle_product = false %}
+                {% assign gets_starter_kit_one = false %}
+                {% assign gets_starter_kit_two = true %}
+            {% endif %}
+        {% else %}
+            {% comment %} non-bundle, non-starter kit eligible product {% endcomment %}
+            {% assign is_bundle_product = false %}
+            {% assign gets_starter_kit_one = false %}
+            {% assign gets_starter_kit_two = false %}
+        {% endif %}
+    {% endif %}
+{% endif %}
+
+<div>
+    <div>
+        {% if gets_starter_kit_one or gets_starter_kit_two %}
+            {% if price_after_first_month %}
+                <div>
+                    <div>
+                        <div>
+                            {{ price_after_first_month }}
+                        </div>
+                    </div>
+                    <div>after the 1st month</div>
+                </div>
+            {% endif %}
+        {% elsif has_no_flavor_variants == false and gets_starter_kit_one == false %}
+            <div>Change flavors at any time</div>
+        {% endif %}
+    </div>
+
+    <div>
+        {% if gets_starter_kit_one or gets_starter_kit_two %}
+            <div>Free Frother - $20 value</div>
+        {% elsif is_bundle_product and gets_starter_kit_one == false %}
+            {# Free shipping on all orders (commented out) #}
+        {% endif %}
+    </div>
+
+    <div>
+        {% if is_bundle_product and gets_starter_kit_one %}
+            <div>Free Display Box - $12 value</div>
+        {% else %}
+            <div>Double loyalty points</div>
+        {% endif %}
+    </div>
+
+    <div>
+        {% if gets_starter_kit_one or gets_starter_kit_two %}
+            {# Free shipping on all orders (commented out) #}
+        {% elsif gets_starter_kit_one == false %}
+            <div>Exclusive gifts</div>
+        {% endif %}
+    </div>
+
+    <div>Change or cancel anytime</div>
+</div>
+
+            <!-- subscription features end================-->
           </label>
         </div>
       </div>
