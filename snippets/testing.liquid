@@ -542,6 +542,7 @@ console.log(isBundleProduct,"isBundleProduct---");
                 submitButton.prop('disabled', false).text(submitButtonText).css('opacity', 1);
             });
             if (sellingPlanId && !product.tags.includes('disable-subscribe-on-pdp')){
+              console.log(product.tags,"should remove")
                 purchaseOptionsEl.removeClass('hidden');
                 if (subscriptionCompareAtPrice) {
                     subscribeAndSaveComparePriceEl.text(formatPrice(subscriptionCompareAtPrice));
