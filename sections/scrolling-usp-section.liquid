@@ -42,16 +42,7 @@
     {% for i in (1..2) %}
       {% for block in section.blocks %}
         <span class="scrolling-usp-section__item">
-          {% if block.settings.custom_icon != blank %}
-            <span style="color: {{ icon_color }}; font-size: {{ section.settings.icon_size }}px; margin-right: 10px;">{{ block.settings.custom_icon }}</span>
-          {% else %}
-            <svg width="{{ section.settings.icon_size }}" height="{{ section.settings.icon_size }}" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="20" cy="20" r="19" stroke="{{ icon_color }}" stroke-width="2"></circle>
-              <line x1="20.7144" y1="10" x2="20.7144" y2="30.5714" stroke="{{ icon_color }}" stroke-width="2"></line>
-              <line x1="10" y1="20.7144" x2="30.5714" y2="20.7144" stroke="{{ icon_color }}" stroke-width="2"></line>
-            </svg>
-          {% endif %}
-
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="19" stroke="{{ icon_color }}" stroke-width="2"></circle><line x1="20.7144" y1="10" x2="20.7144" y2="30.5714" stroke="{{ icon_color }}" stroke-width="2"></line><line x1="10" y1="20.7144" x2="30.5714" y2="20.7144" stroke="{{ icon_color }}" stroke-width="2"></line></svg>
           {{ block.settings.text }}
         </span>
       {% endfor %}
@@ -104,12 +95,6 @@
       "unit": "s",
       "label": "Scroll Duration (seconds)",
       "default": 20
-    },
-    {
-      "type": "textarea",
-      "id": "custom_icon",
-      "label": "Custom Icon (Text or SVG)",
-      "info": "Leave blank to use the default icon."
     }
   ],
   "blocks": [
