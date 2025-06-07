@@ -254,6 +254,7 @@
     const starterKitMessageTwo = "Frother";
     const discount_percentage = {{ promo_discount_percentage | json }};
 
+  console.log("i started");
     function getSalePrice(price) {
         const discount = price * discount_percentage;
         return price - discount;
