@@ -36,190 +36,185 @@
     }
 </style>
 <form id="pdp-form">
-  <div>
-    <div>
-      <!-- Image carousel goes here -->
+  <div class="lg:relative">
+    <div class="w-full lg:w-7/12">
+      {% comment %} render image carousel and featured product image {% endcomment %}
     </div>
-
-    <div>
+    <div class="w-full lg:w-5/12">
       {% if show_promo_badge_above_title %}
         <p>promo_badge</p>
       {% endif %}
-      <h1>{{ product_title }}</h1>
-      <p>{{ product_subtitle }}</p>
-      <p>{{ product_caption }}</p>
 
-      <div data-yotpo-instance-id="585542" data-yotpo-product-id="{{ product.id }}" data-yotpo-cart-product-id="{{ item.product.id }}" data-yotpo-section-id="{{ template.name }}"></div>
+      <h1>{{product_title}}</h1>
+      <p>{{product_subtitle}}</p>
+      <p>{{product_caption}}</p>
+
+      <div class="yotpo-widget-instance" data-yotpo-instance-id="585542" data-yotpo-product-id="{{product.id}}" data-yotpo-cart-product-id="{{item.product.id}}" data-yotpo-section-id="{{template.name}}"></div>
 
       {% if supplement_facts_title %}
         <button type="button" onclick="openSupplementFactsModal()" {% unless supplement_facts_image %}disabled{% endunless %}>
-          {{ supplement_facts_title }}
+          <p>{{supplement_facts_title}}</p>
         </button>
       {% endif %}
 
-      <div>{{ product_description }}</div>
+      <div>{{product_description}}</div>
 
-      <!-- PURCHASE OPTIONS -->
       <div id="purchase-options" class="hidden">
-        <label>
-          <input type="radio" name="purchaseType" value="one_time_purchase">
-          <div>
-            One-time purchase
-            {% if show_slashed_out_promo_pricing_on_pdps %}
-              <div>
+        <div>
+          <label>
+            <input type="radio" name="purchaseType" value="one_time_purchase">
+            <div>
+              <span>One-time purchase</span>
+              {% if show_slashed_out_promo_pricing_on_pdps %}
                 <div>
                   <span id="one-time-sale-price">{{ one_time_sale_price }}</span>
                   <span id="one-time-price">{{ one_time_price }}</span>
+                  {% if promo_discount_code and show_with_code_text_next_to_slash_out_price_on_pdps %}
+                    <span>{{ 'with code ' | append: promo_discount_code }}</span>
+                  {% endif %}
                 </div>
-                {% if promo_discount_code and show_with_code_text_next_to_slash_out_price_on_pdps %}
-                  <div>{{ 'with code ' | append: promo_discount_code }}</div>
-                {% endif %}
-              </div>
-            {% else %}
-              <span id="one-time-price">{{ one_time_price }}</span>
-            {% endif %}
-          </div>
-        </label>
+              {% else %}
+                <span id="one-time-price">{{ one_time_price }}</span>
+              {% endif %}
+            </div>
+          </label>
+          <hr>
+          <label>
+            <input type="radio" name="purchaseType" value="subscription" checked>
+            <div>
+              <span>{{ subscribe_save_text }}</span>
+              {% if small_text_for_subscribe_label %}
+                <span>{{ small_text_for_subscribe_label }}</span>
+              {% endif %}
 
-        <label>
-          <input type="radio" name="purchaseType" value="subscription" checked>
-          <div>
-            <div>{{ subscribe_save_text }}</div>
-            {% if small_text_for_subscribe_label %}
-              <div>{{ small_text_for_subscribe_label }}</div>
-            {% endif %}
-
-            {% if show_slashed_out_promo_pricing_on_pdps %}
-              <div>
+              {% if show_slashed_out_promo_pricing_on_pdps %}
                 <span id="subscription-sale-price">{{ subscription_sale_price }}</span>
                 <span id="subscribe-and-save-compare-price">{{ subscription_compare_at_price }}</span>
                 {% if promo_discount_code and show_with_code_text_next_to_slash_out_price_on_pdps %}
-                  <div>{{ 'with code ' | append: promo_discount_code }}</div>
+                  <span>{{ 'with code ' | append: promo_discount_code }}</span>
                 {% endif %}
-              </div>
-            {% else %}
-              <span id="subscription-price">{{ subscription_price }}</span>
-            {% endif %}
-          </div>
+              {% else %}
+                <span id="subscription-price">{{ subscription_price }}</span>
+              {% endif %}
 
-          {% if show_extra_subscribe_box_text %}
-            <div>{{ extra_subscribe_box_text }}</div>
-          {% endif %}
-        </label>
+              {% if show_extra_subscribe_box_text %}
+                <div>{{ extra_subscribe_box_text }}</div>
+              {% endif %}
+            </div>
+          </label>
+        </div>
       </div>
 
-      <!-- HSA Info -->
       {% if hsa_on %}
         <div>
           <span>HSA Reimbursement Eligible</span>
-          <div>
-            <span>HSA/FSA eligible at checkout.</span>
-            <span>reach out to help@mixhers.com</span>
-          </div>
-        </div>
-      {% endif %}
-
-      <!-- Promo Text -->
-      {% if show_promo_below_purchase_options %}
-        <div>
           <span>
-            {{ promo_first_text }}
-            {% if promo_discount_code %}
-              {{ promo_discount_code }}
-            {% endif %}
-            {{ promo_last_text }}
+            <div class="tooltiptext">
+              <span>HSA/FSA eligible at checkout.</span>
+              <span>reach out to help@mixhers.com</span>
+            </div>
           </span>
         </div>
       {% endif %}
 
-      <!-- BUNDLE PRICING -->
+      {% if show_promo_below_purchase_options %}
+        <div>
+          <span>
+            <span>{{ promo_first_text }}</span>
+            {% if promo_discount_code %}
+              <span>{{ promo_discount_code }}</span>
+            {% endif %}
+            <span>{{ promo_last_text }}</span>
+          </span>
+        </div>
+      {% endif %}
+
       <div id="bundle-pricing" class="hidden">
         <p>Pick your flavors</p>
+        <div>
+          <div>
+            <div id="flavor-color"></div>
+            <select name="first-flavor">
+              <option disabled selected>Pick your first flavor</option>
+              {% for variant in product.variants %}
+                {% if variant.metafields.rebrand.is_bundle_variant != true %}{% continue %}{% endif %}
+                {% assign variant_out_of_stock = false %}
+                {% if variant.metafields.variant.outofstock == 'true' or (variant.inventory_quantity < 1 and variant.inventory_management == 'shopify' and variant.inventory_policy == 'deny') %}
+                  {% assign variant_out_of_stock = true %}
+                {% endif %}
+                <option value="{{ variant.id }}" data-flavor="{{ variant.options[0] }}" data-quantity="{{ variant.options[1] }}" data-color="{{ variant.metafields.rebrand.bubble.value | default: "transparent" }}" data-title="15 x {{ variant.options[0] }}" data-out-of-stock="{{ variant_out_of_stock }}" {% if variant_out_of_stock %}disabled{% endif %} {% if default_variant.id == variant.id and variant_out_of_stock == false %}selected{% endif %}>
+                  15 x {{ variant.options[0] }}{% if variant_out_of_stock %} (Out of Stock){% endif %}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
 
-        <select name="first-flavor">
-          <option disabled selected>Pick your first flavor</option>
-          {% for variant in product.variants %}
-            {% if variant.metafields.rebrand.is_bundle_variant != true %}{% continue %}{% endif %}
-            {% liquid
-              assign variant_out_of_stock = false
-              if variant.metafields.variant.outofstock == 'true'
-                assign variant_out_of_stock = true
-              elsif variant.inventory_quantity < 1 and variant.inventory_management == 'shopify' and variant.inventory_policy == 'deny'
-                assign variant_out_of_stock = true
-              endif
-            %}
-            <option value="{{ variant.id }}" data-flavor="{{ variant.options[0] }}" data-title="15 x {{ variant.options[0] }}" {% if variant_out_of_stock %}disabled{% endif %} {% if default_variant.id == variant.id and variant_out_of_stock == false %}selected{% endif %}>
-              15 x {{ variant.options[0] }}{% if variant_out_of_stock %} (Out of Stock){% endif %}
-            </option>
-          {% endfor %}
-        </select>
+          <div>
+            <div id="flavor-color"></div>
+            <select name="second-flavor">
+              <option disabled selected>Pick your second flavor</option>
+              {% for variant in product.variants %}
+                {% if variant.metafields.rebrand.is_bundle_variant != true %}{% continue %}{% endif %}
+                {% assign variant_out_of_stock = false %}
+                {% if variant.metafields.variant.outofstock == 'true' or (variant.inventory_quantity < 1 and variant.inventory_management == 'shopify' and variant.inventory_policy == 'deny') %}
+                  {% assign variant_out_of_stock = true %}
+                {% endif %}
+                <option value="{{ variant.id }}" data-flavor="{{ variant.options[0] }}" data-quantity="{{ variant.options[1] }}" data-color="{{ variant.metafields.rebrand.bubble.value | default: "transparent" }}" data-title="15 x {{ variant.options[0] }}" data-out-of-stock="{{ variant_out_of_stock }}" {% if variant_out_of_stock %}disabled{% endif %}>
+                  15 x {{ variant.options[0] }}{% if variant_out_of_stock %} (Out of Stock){% endif %}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
 
-        <select name="second-flavor">
-          <option disabled selected>Pick your second flavor</option>
-          {% for variant in product.variants %}
-            {% if variant.metafields.rebrand.is_bundle_variant != true %}{% continue %}{% endif %}
-            {% liquid
-              assign variant_out_of_stock = false
-              if variant.metafields.variant.outofstock == 'true'
-                assign variant_out_of_stock = true
-              elsif variant.inventory_quantity < 1 and variant.inventory_management == 'shopify' and variant.inventory_policy == 'deny'
-                assign variant_out_of_stock = true
-              endif
-            %}
-            <option value="{{ variant.id }}" data-flavor="{{ variant.options[0] }}" data-title="15 x {{ variant.options[0] }}" {% if variant_out_of_stock %}disabled{% endif %}>
-              15 x {{ variant.options[0] }}{% if variant_out_of_stock %} (Out of Stock){% endif %}
-            </option>
-          {% endfor %}
-        </select>
-
-        <button type="submit">Add to cart</button>
+          <button type="submit">Add to cart</button>
+        </div>
       </div>
 
-      <!-- SINGLE VARIANT -->
       <div id="single-variant-pricing" class="hidden">
         <button type="submit">Add to cart</button>
         {% if show_slashed_out_promo_pricing_on_pdps %}
           <div id="one-time-purchase-only-promo-text-single-variant" class="hidden">
             <span id="sale-price-single-variant"></span>
             {% if promo_discount_code %}
-              <span>with code {{ promo_discount_code }}</span>
+              <span>with code</span>
+              <span>{{ promo_discount_code }}</span>
             {% endif %}
           </div>
         {% endif %}
       </div>
 
-      <!-- MULTIPLE VARIANT -->
       <div id="multiple-variant-pricing" class="hidden">
         <p>Pick an option</p>
-        <select name="flavor">
-          <option disabled selected>Choose an option</option>
-          {% for variant in product.variants %}
-            {% if variant.metafields.custom.hide_variant == true %}{% continue %}{% endif %}
-            {% liquid
-              assign variant_out_of_stock = false
-              if variant.metafields.variant.outofstock == 'true'
-                assign variant_out_of_stock = true
-              elsif variant.inventory_quantity < 1 and variant.inventory_management == 'shopify'
-                assign variant_out_of_stock = true
-              endif
-            %}
-            <option value="{{ variant.id }}" data-flavor="{{ variant.options[0] }}" data-out-of-stock="{{ variant_out_of_stock }}" {% if variant_out_of_stock %}disabled{% endif %} {% if default_variant.id == variant.id and variant_out_of_stock == false %}selected{% endif %}>
-              {{ variant.options[0] }}{% if variant_out_of_stock %} (Out of Stock){% endif %}
-            </option>
-          {% endfor %}
-        </select>
+        <div>
+          <select name="flavor">
+            <option disabled selected>Choose an option</option>
+            {% for variant in product.variants %}
+              {% if variant.metafields.custom.hide_variant == true %}{% continue %}{% endif %}
+              {% assign variant_out_of_stock = false %}
+              {% if variant.metafields.variant.outofstock == 'true' or (variant.inventory_quantity < 1 and variant.inventory_management == 'shopify') %}
+                {% assign variant_out_of_stock = true %}
+              {% endif %}
+              <option value="{{ variant.id }}" data-flavor="{{ variant.options[0] }}" data-quantity="{{ variant.options[1] }}" data-color="{{ variant.metafields.rebrand.bubble.value | default: "transparent" }}" data-out-of-stock="{{ variant_out_of_stock }}" data-price="{{ variant.price }}" data-subscription-price="{{ variant.selling_plan_allocations.first.price }}" data-subscribe-and-save-compare-price="{{ variant.selling_plan_allocations.first.compare_at_price }}" {% if variant_out_of_stock %}disabled{% endif %} {% if default_variant.id == variant.id and variant_out_of_stock == false %}selected{% endif %}>
+                {{ variant.options[0] }}{% if variant_out_of_stock %} (Out of Stock){% endif %}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
 
-        <button type="submit">Add to cart</button>
-        {% if show_slashed_out_promo_pricing_on_pdps %}
-          <div id="one-time-purchase-only-promo-text" class="hidden">
-            {% if promo_discount_percentage %}
-              <span id="sale-price-multiple-variant"></span>
-            {% endif %}
-            {% if promo_discount_code and show_with_code_text_next_to_slash_out_price_on_pdps %}
-              <span>with code {{ promo_discount_code }}</span>
-            {% endif %}
-          </div>
-        {% endif %}
+        <div>
+          <button type="submit">Add to cart</button>
+          {% if show_slashed_out_promo_pricing_on_pdps %}
+            <div id="one-time-purchase-only-promo-text" class="hidden">
+              {% if promo_discount_percentage %}
+                <span id="sale-price-multiple-variant"></span>
+              {% endif %}
+              {% if promo_discount_code and show_with_code_text_next_to_slash_out_price_on_pdps %}
+                <span>with code</span>
+                <span>{{ promo_discount_code }}</span>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
       </div>
     </div>
   </div>
