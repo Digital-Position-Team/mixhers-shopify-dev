@@ -313,7 +313,8 @@
     </a>
 
     {%- if settings.cart_type == 'drawer' -%}
-      {%- render 'cart-drawer' -%}
+
+      {% render 'rebrand-smart-cart-template' %}
     {%- endif -%}
 
     {% sections 'header-group' %}
