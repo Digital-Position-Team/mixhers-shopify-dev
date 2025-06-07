@@ -165,6 +165,11 @@
         "padding_bottom": 12
       }
     },
+    "test_DtjmiV": {
+      "type": "test",
+      "name": "testing",
+      "settings": {}
+    },
     "standard_product_overview_RQbBgt": {
       "type": "standard-product-overview",
       "name": "Product Overview",
@@ -184,14 +189,14 @@
       "name": "Standard Product Comparison",
       "settings": {}
     },
-    "standard_product_quote_Mc3cUT": {
-      "type": "standard-product-quote",
-      "name": "Standard Product Quote",
-      "settings": {}
-    },
     "standard_product_faq_fptUKt": {
       "type": "standard-product-faq",
       "name": "Standard Product FAQ",
+      "settings": {}
+    },
+    "standard_product_quote_Mc3cUT": {
+      "type": "standard-product-quote",
+      "name": "Standard Product Quote",
       "settings": {}
     },
     "custom_liquid_bnPdMU": {
@@ -306,6 +311,7 @@
   },
   "order": [
     "main",
+    "test_DtjmiV",
     "standard_product_overview_RQbBgt",
     "standard_product_formulation_4M3MT3",
     "standard_product_comparison_hKQpnG",
