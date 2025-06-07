@@ -199,9 +199,15 @@
             {% for variant in product.variants %}
               {% if variant.metafields.custom.hide_variant == true %}{% continue %}{% endif %}
               {% assign variant_out_of_stock = false %}
-              {% if variant.metafields.variant.outofstock == 'true' or (variant.inventory_quantity < 1 and variant.inventory_management == 'shopify') %}
-                {% assign variant_out_of_stock = true %}
-              {% endif %}
+
+{% if variant.metafields.variant.outofstock == 'true' %}
+  {% assign variant_out_of_stock = true %}
+{% elsif variant.inventory_quantity < 1 %}
+  {% if variant.inventory_management == 'shopify' %}
+    {% assign variant_out_of_stock = true %}
+  {% endif %}
+{% endif %}
+
               <option value="{{ variant.id }}" data-flavor="{{ variant.options[0] }}" data-quantity="{{ variant.options[1] }}" data-color="{{ variant.metafields.rebrand.bubble.value | default: "transparent" }}" data-out-of-stock="{{ variant_out_of_stock }}" data-price="{{ variant.price }}" data-subscription-price="{{ variant.selling_plan_allocations.first.price }}" data-subscribe-and-save-compare-price="{{ variant.selling_plan_allocations.first.compare_at_price }}" {% if variant_out_of_stock %}disabled{% endif %} {% if default_variant.id == variant.id and variant_out_of_stock == false %}selected{% endif %}>
                 {{ variant.options[0] }}{% if variant_out_of_stock %} (Out of Stock){% endif %}
               </option>
