@@ -1,7 +1,5 @@
 {{ 'rebrand-smart-cart-template.css' | asset_url | stylesheet_tag }}
 
-<link rel="stylesheet" href="https://mixhers.com/cdn/shop/t/102/assets/tailwind.css?v=125308640321811100291734391318"/>
-
 {% assign promo_metaobject = shop.metaobjects.side_cart_promo_text.side-cart-promo | default: null %}
 {% assign disabled_link_products_metaobject = shop.metaobjects.product_group.disabled-side-cart-link-products | default: null %}
 
