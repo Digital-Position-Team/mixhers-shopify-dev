@@ -167,9 +167,7 @@
   {% assign count = 0 %}
   {% for product in all_products %}
     {% assign count = count | plus: 1 %}
-      {% render 'shared-product-details',
-          then_render: 'mixhers-product-card',
-          product: product, %}
+      {% render 'shared-product-details', then_render: 'mixhers-product-card',  product: product, %}
     {% if count == 10 %}
       <div class="quiz-promo">
         <h2>Not sure which <br/> Mix is for you?</h2>
@@ -182,7 +180,7 @@
 <div id="holiday-results" class="filter-results collection-grid">
   {% assign holiday_products = collections.holiday-shopping.products %}
   {% for product in holiday_products %}
-    {% render 'mixhers-product-card', product: product %}
+    {% render 'shared-product-details', then_render: 'mixhers-product-card',  product: product, %}
   {% endfor %}
 </div>
 
@@ -190,7 +188,7 @@
   {% for handle in sorted_pms_array %}
     {% assign product = all_products | where: "handle", handle | first %}
     {% if product and product.tags contains 'PMS' %}
-      {% render 'mixhers-product-card', product: product %}
+      {% render 'shared-product-details', then_render: 'mixhers-product-card',  product: product, %}
     {% endif %}
   {% endfor %}
 </div>
@@ -199,7 +197,7 @@
   {% for handle in sorted_motherhood_array %}
     {% assign product = all_products | where: "handle", handle | first %}
     {% if product and product.tags contains 'Motherhood' %}
-      {% render 'mixhers-product-card', product: product %}
+       {% render 'shared-product-details', then_render: 'mixhers-product-card',  product: product, %}
     {% endif %}
   {% endfor %}
 </div>
@@ -208,7 +206,7 @@
   {% for handle in sorted_menopause_array %}
     {% assign product = all_products | where: "handle", handle | first %}
     {% if product and product.tags contains 'Menopause' %}
-      {% render 'mixhers-product-card', product: product %}
+      {% render 'shared-product-details', then_render: 'mixhers-product-card',  product: product, %}
     {% endif %}
   {% endfor %}
 </div>
@@ -217,7 +215,7 @@
   {% for handle in sorted_health_array %}
     {% assign product = all_products | where: "handle", handle | first %}
     {% if product and product.tags contains 'Health & Nutrition' %}
-      {% render 'mixhers-product-card', product: product %}
+      {% render 'shared-product-details', then_render: 'mixhers-product-card',  product: product, %}
     {% endif %}
   {% endfor %}
 </div>
@@ -226,7 +224,7 @@
   {% for handle in sorted_sexual_wellness_array %}
     {% assign product = all_products | where: "handle", handle | first %}
     {% if product and product.tags contains 'Sexual Wellness' %}
-      {% render 'mixhers-product-card', product: product %}
+       {% render 'shared-product-details', then_render: 'mixhers-product-card',  product: product, %}
     {% endif %}
   {% endfor %}
 </div>
