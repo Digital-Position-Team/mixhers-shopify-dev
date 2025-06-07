@@ -177,7 +177,7 @@
         {% if gets_starter_kit_one or gets_starter_kit_two %}
             <div>Free Frother - $20 value</div>
         {% elsif is_bundle_product and gets_starter_kit_one == false %}
-            {# Free shipping on all orders (commented out) #}
+            {% comment %} Free shipping on all orders {% endcomment %}
         {% endif %}
     </div>
 
@@ -191,7 +191,7 @@
 
     <div>
         {% if gets_starter_kit_one or gets_starter_kit_two %}
-            {# Free shipping on all orders (commented out) #}
+             {% comment %} Free shipping on all orders {% endcomment %}
         {% elsif gets_starter_kit_one == false %}
             <div>Exclusive gifts</div>
         {% endif %}
