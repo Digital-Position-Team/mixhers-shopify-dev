@@ -20,7 +20,7 @@
           "type": "shopify://apps/recharge-subscriptions/blocks/bundles-widget/371eed76-0b44-4869-9813-730372ea378e",
           "settings": {
             "product": "{{product}}",
-            "rb_theme_color": "#00C09E",
+            "rb_theme_color": "#00c09e",
             "rb_theme_text": "#ffffff",
             "rb_theme_other_text": "#283965",
             "rb_theme_bg": "#ffffff",
@@ -309,8 +309,8 @@
     "standard_product_overview_RQbBgt",
     "standard_product_formulation_4M3MT3",
     "standard_product_comparison_hKQpnG",
-    "standard_product_quote_Mc3cUT",
     "standard_product_faq_fptUKt",
+    "standard_product_quote_Mc3cUT",
     "custom_liquid_bnPdMU",
     "17492107941714b699",
     "standard_product_review_qGdJaa",
