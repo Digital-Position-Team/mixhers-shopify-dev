@@ -3638,6 +3638,12 @@ body{
 .pink-primary-btn{
   background-color: #ff59e4;
 }
+.pink-primary-btn.hover-border{
+  border:2px solid transparent;
+}
+.pink-primary-btn.hover-border:hover{
+  border: 2px solid rgb(255 217 249);
+}
 .margin-0{ margin:0px;}
 .margin-b0{margin-bottom:0px;}
 .margin-t0{ margin-top:0px;}
