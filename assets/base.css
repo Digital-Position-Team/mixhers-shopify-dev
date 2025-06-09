@@ -3696,6 +3696,8 @@ p.base-text , .base-text p ,  .base-text li{font-size:18px;}
 .title-heading-3{
   font-size: 54px;
   line-height: 1.12;
+  margin-top:0px;
+  font-family: Faire Sprig, serif;
 }
 .only-desktop{
    dispaly:block;
