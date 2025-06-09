@@ -3700,7 +3700,7 @@ p.base-text , .base-text p ,  .base-text li{font-size:18px;}
   font-family: Faire Sprig, serif;
 }
 .only-desktop{
-   dispaly:block;
+   display:block;
 }
 .only-small-screen{
   display:none;
@@ -3741,7 +3741,7 @@ cart-notification {
      display:none;
   }
   .only-small-screen{
-    dispaly:block;
+    display:block;
   }
   .title-heading-3{
     font-size: 36px;
