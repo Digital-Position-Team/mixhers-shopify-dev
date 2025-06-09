@@ -3607,6 +3607,7 @@ body{
 .font-sans,p,a,button,span{ font-family: Buenos Aires, sans-serif;}
 .font-serif { font-family: Faire Sprig, serif;}
 .light-font, .light-font *{ font-weight: 300 !important;}
+p.base-text , .base-text p ,  .base-text li{font-size:18px;}
 .custom-primary-btn, .pink-primary-btn{
   background-color: #1a1a1a;
   color: #fff;
@@ -3719,6 +3720,7 @@ cart-notification {
  .title-heading-2{
      font-size:42px;
   }
+   p.base-text , .base-text p ,  .base-text li{font-size:16px;}
 }
 @media (max-width: 767px) {
   .section-container{
@@ -3735,4 +3737,5 @@ cart-notification {
   .only-small-screen{
     dispaly:block;
   }
+  p.base-text , .base-text p ,  .base-text li{font-size:14px;}
 }
