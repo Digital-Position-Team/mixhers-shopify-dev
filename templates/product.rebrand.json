@@ -146,9 +146,51 @@
       "name": "testing",
       "settings": {}
     },
+    "scrolling_usp_section_mDR7tz": {
+      "type": "scrolling-usp-section",
+      "blocks": {
+        "text_item_rtnfLD": {
+          "type": "text_item",
+          "settings": {
+            "text": "Women Owned"
+          }
+        },
+        "text_item_LExbjX": {
+          "type": "text_item",
+          "settings": {
+            "text": "All natural"
+          }
+        },
+        "text_item_Hbh87A": {
+          "type": "text_item",
+          "settings": {
+            "text": "Hormone friendly"
+          }
+        }
+      },
+      "block_order": [
+        "text_item_rtnfLD",
+        "text_item_LExbjX",
+        "text_item_Hbh87A"
+      ],
+      "name": "Scrolling USP Section",
+      "settings": {
+        "text_size": 16,
+        "text_color": "#000000",
+        "icon_color": "#FF59E4",
+        "icon_size": 20,
+        "scroll_duration": 20
+      }
+    },
     "scrolling_text_center_icon_kc3kh9": {
       "type": "scrolling-text-center-icon",
       "blocks": {
+        "text_item_id4nG3": {
+          "type": "text_item",
+          "settings": {
+            "text": "Zero calories"
+          }
+        },
         "text_item_GCA8X4": {
           "type": "text_item",
           "settings": {
@@ -169,6 +211,7 @@
         }
       },
       "block_order": [
+        "text_item_id4nG3",
         "text_item_GCA8X4",
         "text_item_it4Nca",
         "text_item_9yideh"
@@ -180,8 +223,7 @@
         "icon_color": "#ff59e4",
         "icon_size": 20,
         "scroll_duration": 20,
-        "custom_icon": "·",
-        "heading_type": "h3"
+        "custom_icon": "·"
       }
     },
     "standard_product_overview_RQbBgt": {
@@ -326,6 +368,7 @@
   "order": [
     "main",
     "test_DtjmiV",
+    "scrolling_usp_section_mDR7tz",
     "scrolling_text_center_icon_kc3kh9",
     "standard_product_overview_RQbBgt",
     "standard_product_formulation_4M3MT3",
