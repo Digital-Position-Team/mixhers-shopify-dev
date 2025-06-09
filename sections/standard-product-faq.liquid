@@ -3,7 +3,14 @@
   "name": "Standard Product FAQ",
   "tag": "section",
   "class": "standard-product-faq-section",
-  "settings": [],
+  "settings": [
+     {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "FAQs"
+    },
+  ],
   "presets": [
     {
       "name": "Standard Product FAQ"
@@ -99,7 +106,7 @@
       <img src="{{ faq_image | image_url }}" alt="FAQ image" width="500" height="500" class="faq-image">
     </div>
     <div class="faq-content">
-      <h2 class="faq-heading title-heading-2 margin-t0 font-serif">FAQs</h2>
+      <h2 class="faq-heading title-heading-2 margin-t0 font-serif">{{ section.settings.title }}</h2>
 
       {% for bottom_faq in bottom_faqs %}
         <details>
