@@ -42,7 +42,9 @@
     {% for i in (1..4) %}
       {% for block in section.blocks %}
         <span class="scrolling-text-item">
-          <span class="center-icon">{{ block.settings.custom_icon }}</span>
+           <span class="center-icon">{{ block.settings.custom_icon }}</span>
+        </span>
+        <span class="scrolling-text-item">
           {{ block.settings.text }}
         </span>
       {% endfor %}
