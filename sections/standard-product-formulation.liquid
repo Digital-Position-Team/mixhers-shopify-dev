@@ -83,7 +83,6 @@
       display: inline-block;
     }
     .divider {
-      border-top: 1px solid #000;
       margin-top: 40px;
     }
     .accordion-title {
@@ -96,7 +95,6 @@
       height: 16px;
       margin-left: 8px;
     }
-
     @media (min-width: 768px) {
       .formulation-inner {
         flex-direction: row;
@@ -163,7 +161,7 @@
         {% endif %}
 
         {% if has_clinical_studies %}
-          <div class="clinical-section" style="margin-top: 30px;">
+          <div class="clinical-section">
             <details>
               <summary class="accordion-summary">
                 <span class="main-accordian-head">Clinical Studies</span>
