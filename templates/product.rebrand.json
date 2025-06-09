@@ -187,7 +187,9 @@
         "icon_color": "#ff59e4",
         "icon_size": 20,
         "scroll_duration": 20,
-        "custom_icon": "·"
+        "custom_icon": "·",
+        "show_top_border": true,
+        "show_bottom_border": true
       }
     },
     "standard_product_overview_RQbBgt": {
@@ -219,6 +221,11 @@
       "name": "Standard Product Quote",
       "settings": {}
     },
+    "standard_product_mix_quiz_BkjTqR": {
+      "type": "standard-product-mix-quiz",
+      "name": "Standard Product Made to Mix Quiz Quote",
+      "settings": {}
+    },
     "custom_liquid_bnPdMU": {
       "type": "custom-liquid",
       "name": "t:sections.custom-liquid.presets.name",
@@ -228,6 +235,11 @@
         "padding_top": 40,
         "padding_bottom": 52
       }
+    },
+    "standard_product_review_qGdJaa": {
+      "type": "standard-product-review",
+      "name": "Standard Product Reviews",
+      "settings": {}
     },
     "17492107941714b699": {
       "type": "apps",
@@ -246,16 +258,6 @@
         "include_margins": true
       }
     },
-    "standard_product_review_qGdJaa": {
-      "type": "standard-product-review",
-      "name": "Standard Product Reviews",
-      "settings": {}
-    },
-    "standard_product_mix_quiz_BkjTqR": {
-      "type": "standard-product-mix-quiz",
-      "name": "Standard Product Made to Mix Quiz Quote",
-      "settings": {}
-    },
     "standard_recommended_products_MVLQVw": {
       "type": "standard-recommended-products",
       "name": "Standard Recommended Products",
@@ -263,44 +265,6 @@
         "heading": "Mixes well with",
         "link_text": "View All →",
         "link_url": "shopify://collections/all"
-      }
-    },
-    "image-with-text": {
-      "type": "image-with-text",
-      "blocks": {
-        "image-with-text-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "Image with text",
-            "heading_size": "h1"
-          }
-        },
-        "image-with-text-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "text_style": "body"
-          }
-        }
-      },
-      "block_order": [
-        "image-with-text-0",
-        "image-with-text-1"
-      ],
-      "disabled": true,
-      "settings": {
-        "height": "small",
-        "desktop_image_width": "medium",
-        "layout": "text_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "section_color_scheme": "",
-        "color_scheme": "scheme-2",
-        "padding_top": 36,
-        "padding_bottom": 36
       }
     },
     "related-products": {
@@ -338,12 +302,11 @@
     "standard_product_comparison_hKQpnG",
     "standard_product_faq_fptUKt",
     "standard_product_quote_Mc3cUT",
-    "custom_liquid_bnPdMU",
-    "17492107941714b699",
-    "standard_product_review_qGdJaa",
     "standard_product_mix_quiz_BkjTqR",
+    "custom_liquid_bnPdMU",
+    "standard_product_review_qGdJaa",
+    "17492107941714b699",
     "standard_recommended_products_MVLQVw",
-    "image-with-text",
     "related-products",
     "test_MJMWNG"
   ]
