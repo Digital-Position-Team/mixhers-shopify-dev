@@ -204,7 +204,10 @@
     "standard_product_formulation_4M3MT3": {
       "type": "standard-product-formulation",
       "name": " Product Formulation",
-      "settings": {}
+      "settings": {
+        "title": "Formulation",
+        "subtitle": "All Mixhers products are designed with women in mind. We start with thoughtfully dosed ingredients that gently nourish the body and naturally balance hormones."
+      }
     },
     "standard_product_comparison_hKQpnG": {
       "type": "standard-product-comparison",
@@ -214,7 +217,9 @@
     "standard_product_faq_fptUKt": {
       "type": "standard-product-faq",
       "name": "Standard Product FAQ",
-      "settings": {}
+      "settings": {
+        "title": "FAQs"
+      }
     },
     "standard_product_quote_Mc3cUT": {
       "type": "standard-product-quote",
@@ -224,16 +229,9 @@
     "standard_product_mix_quiz_BkjTqR": {
       "type": "standard-product-mix-quiz",
       "name": "Standard Product Made to Mix Quiz Quote",
-      "settings": {}
-    },
-    "custom_liquid_bnPdMU": {
-      "type": "custom-liquid",
-      "name": "t:sections.custom-liquid.presets.name",
       "settings": {
-        "custom_liquid": "<div class=\"yotpo-widget-instance\" data-yotpo-instance-id=\"436651\" data-yotpo-product-id=\"6713024184499\" data-yotpo-name=\"Hertime® PMS\" data-yotpo-url=\"https://mixhers.com/products/hertime-pms\" data-yotpo-image-url=\"https:files/home-rebrand-product-hertime-pms.png\" data-yotpo-price=\"0.0\" data-yotpo-currency=\"USD\" data-yotpo-description=\"&lt;p&gt;Say goodbye to painful cramps, bloating, mood swings, and hormonal acne.&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;Soothes menstrual cramps*&lt;/li&gt;\n&lt;li&gt;Levels mood swings*&lt;/li&gt;\n&lt;li&gt;Eases bloating*&lt;/li&gt;\n&lt;/ul&gt;\" data-yotpo-element-loaded=\"true\" data-v-app=\"\"></div>",
-        "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 52
+        "heading_text": "Made to mix.",
+        "mix_text": "Combine products and flavors in a tailored-to-you Mixhers mocktail.<br> One sip double the benefits."
       }
     },
     "standard_product_review_qGdJaa": {
@@ -303,7 +301,6 @@
     "standard_product_faq_fptUKt",
     "standard_product_quote_Mc3cUT",
     "standard_product_mix_quiz_BkjTqR",
-    "custom_liquid_bnPdMU",
     "standard_product_review_qGdJaa",
     "17492107941714b699",
     "standard_recommended_products_MVLQVw",
