@@ -11,12 +11,12 @@
 {% if has_recommended_products %}
   <div class="recommended-wrapper">
     <div class="recommended-header">
-      <h2 class="recommended-title">{{ section.settings.heading }}</h2>
+      <h3 class="recommended-title font-serif">{{ section.settings.heading }}</h3>
       <div class="recommended-link-desktop">
         <a href="{{ section.settings.link_url }}">{{ section.settings.link_text }}</a>
       </div>
     </div>
-    <div class="recommended-grid">
+    <div class="standard-recommended-grid">
       {% for recommended_product in recommended_products %}
         {% render 'shared-product-details',
           then_render: 'mixhers-product-card',
@@ -33,8 +33,8 @@
 
 <style>
 .recommended-wrapper {
-  background-color: #f5f5f5;
-  padding: 20px 0;
+  background-color: #f4f9fd;
+  padding: 20px 0 0 0;
 }
 .recommended-header {
   display: flex;
@@ -54,11 +54,9 @@
   border-top: 1px solid #000;
   margin: 20px 0;
 }
-.recommended-grid {
+.standard-recommended-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  padding: 0 20px;
 }
 .recommended-link-mobile {
   text-align: center;
@@ -73,7 +71,7 @@
 }
 
 @media (min-width: 768px) {
-  .recommended-grid {
+  .standard-recommended-grid {
     grid-template-columns: repeat(4, 1fr);
   }
   .recommended-link-desktop {
