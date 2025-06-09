@@ -1,9 +1,8 @@
 {% liquid
   assign icon_color = section.settings.icon_color
 %}
-
 <style>
-  .scrolling-text-wrapper {
+  .scrolling-text-center {
     overflow: hidden;
     white-space: nowrap;
     padding: 20px 0;
@@ -11,47 +10,47 @@
     font-size: {{ section.settings.text_size }}px;
     color: {{ section.settings.text_color }};
   }
-  .scrolling-text-track {
+  .scrolling-text---inner {
     display: inline-block;
-    white-space: nowrap;
     animation: scroll-left {{ section.settings.scroll_duration }}s linear infinite;
   }
   .scrolling-text-item {
     display: inline-flex;
     align-items: center;
     margin-right: 50px;
+    font-size: 20px;
+    line-height: 22px;
   }
-  .scrolling-text-icon {
+  .scrolling-text-item svg {
     margin-right: 10px;
     width: {{ section.settings.icon_size }}px;
     height: {{ section.settings.icon_size }}px;
-    color: {{ icon_color }};
-    display: inline-flex;
   }
 
   @keyframes scroll-left {
     0% {
-      transform: translateX(0%);
+      transform: translateX(0);
     }
     100% {
-      transform: translateX(-50%);
+      transform: translateX(-50%); 
     }
   }
 </style>
 
-<div class="scrolling-text-wrapper">
-  <div class="scrolling-text-track">
-    {% for i in (1..2) %} 
+<div class="scrolling-text-center">
+  <div class="scrolling-text---inner">
+    {% for i in (1..3) %}
       {% for block in section.blocks %}
         <span class="scrolling-text-item">
-          <span class="scrolling-text-icon">{{ section.settings.custom_icon }}</span>
-          <{{ section.settings.heading_type }}>{{ block.settings.text }}</{{ section.settings.heading_type }}>
+          <span class="center-icon">{{ block.settings.custom_icon }}</span>
+          {{ block.settings.text }}
         </span>
       {% endfor %}
     {% endfor %}
   </div>
 </div>
-          {% schema %}
+
+{% schema %}
 {
   "name": "Scrolling Text Section",
   "settings": [
@@ -100,21 +99,7 @@
     {
       "type": "textarea",
       "id": "custom_icon",
-      "label": "Custom Icon (Text or SVG)",
-      "default": "·"
-    },
-    {
-      "type": "select",
-      "id": "heading_type",
-      "label": "Heading Tag",
-      "default": "h4",
-      "options": [
-        { "value": "h2", "label": "H2" },
-        { "value": "h3", "label": "H3" },
-        { "value": "h4", "label": "H4" },
-        { "value": "h5", "label": "H5" },
-        { "value": "h6", "label": "H6" }
-      ]
+      "label": "Custom Center Icon (Text or SVG)",
     }
   ],
   "blocks": [
@@ -133,34 +118,28 @@
   ],
   "presets": [
     {
-      "name": "Scrolling Center Text Section",
+      "name": "Scrolling Center Text Section ",
       "blocks": [
         {
           "type": "text_item",
           "settings": {
-            "text": "Zero Calories"
-          }
-        },
-        {
-          "type": "text_item",
-          "settings": {
-            "text": "All Natural"
-          }
-        },
-        {
-          "type": "text_item",
-          "settings": {
-            "text": "Hormone Friendly"
-          }
-        },
-        {
-          "type": "text_item",
-          "settings": {
             "text": "Highly Absorbable"
+          }
+        },
+        {
+          "type": "text_item",
+          "settings": {
+            "text": "All natural"
+          }
+        },
+        {
+          "type": "text_item",
+          "settings": {
+            "text": "Hormone friendly"
           }
         }
       ]
     }
   ]
 }
-            {% endschema %}
+{% endschema %}
