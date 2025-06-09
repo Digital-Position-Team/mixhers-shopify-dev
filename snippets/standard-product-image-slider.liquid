@@ -35,7 +35,7 @@
 {% assign product_images = product.metafields.rebrand.carousel_images.value %}
 {% assign featured_image = product.metafields.rebrand.featured_image.value %}
 
-<div class="only-desktop">
+<div class="only-small-screen">
     {% if optimized_pdp %}
       <div class="optimized-pdp-product-image">
         <img
@@ -74,7 +74,7 @@
     
 </div>
 
-<div class="only-small-screen">
+<div class=" only-desktop">
     <div class="w-full h-full">
         <img
             src="{{ featured_image | image_url }}"
