@@ -39,16 +39,12 @@
       object-fit: cover;
       height:auto;
     }
-    .faq-content {
-      width: 100%;
-    }
     .faq-heading {
       text-align: center;
-
     }
    .standard-product-faq details {
       border-bottom: 1px solid #d8e1e8;
-      padding: 16px 0;
+      padding: 15px;
     }
     .standard-product-faq summary {
       cursor: pointer;
@@ -67,7 +63,6 @@
       width: 20px;
       height: 20px;
       transition: transform 0.3s ease;
-      fill: #db2777;
       flex-shrink: 0;
     }
    .standard-product-faq details[open] .icon-chevron {
@@ -75,8 +70,11 @@
     }
     .faq-content-text {
       margin-top: 8px;
-      font-size: 0.875rem;
+      font-size: 16px;
       line-height: 1.4;
+    }
+    .standard-product-faq summary>span {
+        font-size: 20px;
     }
     @media (min-width: 768px) {
       .standard-product-faq {
@@ -90,12 +88,12 @@
       <img src="{{ faq_image | image_url }}" alt="FAQ image" width="500" height="500" class="faq-image">
     </div>
     <div class="faq-content">
-      <h2 class="faq-heading title-heading-2 ">FAQs</h2>
+      <h2 class="faq-heading title-heading-2 margin-t0">FAQs</h2>
 
       {% for bottom_faq in bottom_faqs %}
         <details>
           <summary>
-            <span>{{ bottom_faq.title }}</span>
+            <span class="font-serif">{{ bottom_faq.title }}</span>
             <svg class="icon-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" aria-hidden="true">
               <path d="M6 8l4 4 4-4" stroke="#ff59e4" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
