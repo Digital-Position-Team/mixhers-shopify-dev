@@ -3639,10 +3639,10 @@ p.base-text , .base-text p ,  .base-text li{font-size:18px;}
 .pink-primary-btn{
   background-color: #ff59e4;
 }
-.pink-primary-btn.hover-border{
+.hover-border{
   border:3px solid transparent;
 }
-.pink-primary-btn.hover-border:hover{
+.hover-border:hover{
   border: 3px solid #ffd9f9;
 }
 .margin-0{ margin:0px;}
