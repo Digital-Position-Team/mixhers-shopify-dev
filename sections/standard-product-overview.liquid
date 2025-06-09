@@ -1,7 +1,7 @@
-{% assign overview_image =   section.settings.overview_image %}
-{% assign overview_title = section.settings.overview_title %}
-{% assign overview_content =  section.settings.overview_content %}
-{% assign overview_button =  section.settings.overview_button %}
+{% assign overview_image = product.metafields.rebrand.overview_image.value | default: section.settings.overview_image %}
+{% assign overview_title = product.metafields.rebrand.overview_title.value | default: section.settings.overview_title %}
+{% assign overview_content = product.metafields.rebrand.overview_content | metafield_tag | default: section.settings.overview_content %}
+{% assign overview_button = product.metafields.rebrand.overview_button.value | default: section.settings.overview_button %}
 
 {% if overview_image and overview_title and overview_content %}
   <div class="product-overview-section">
@@ -104,7 +104,7 @@
   ],
   "presets": [
     {
-      "name": "Standard Product Overview"
+      "name": "Product Overview"
     }
   ]
 }
