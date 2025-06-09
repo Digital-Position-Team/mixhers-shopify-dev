@@ -46,7 +46,7 @@
     {% break %}
   {% endif %}
 {% endfor %}
-
+{% assign outer = ingredient_outer_color | downcase | strip %}
 {% assign reduced_padding = false %}
 {% if ingredient_outer_color == blank and ingredient_inner_color == blank %}
   {% assign reduced_padding = true %}
