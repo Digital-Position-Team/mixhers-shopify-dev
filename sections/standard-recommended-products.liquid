@@ -16,7 +16,7 @@
       </div>
     </div>
     <p>{{ product.metafields.rebrand.recommended_products.value }}</p>
-    {% for recommended_product in recommended_products %}
+    {% for recommended_product in product.metafields.rebrand.recommended_products.value %}
       <p>{{ recommended_product.id }} — {{ recommended_product.title }}</p>
     {% endfor %}
     <div class="standard-recommended-grid">
