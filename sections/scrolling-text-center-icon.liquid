@@ -1,10 +1,16 @@
 {% liquid
   assign icon_color = section.settings.icon_color
+  assign show_top_border = section.settings.show_top_border
+  assign show_bottom_border = section.settings.show_bottom_border
 %}
 <style>
   .scrolling-text-center {
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
+  {% if show_top_border %}
+      border-top: 1px solid #000;
+    {% endif %}
+    {% if show_bottom_border %}
+      border-bottom: 1px solid #000;
+    {% endif %}
     overflow: hidden;
     white-space: nowrap;
     padding: 20px 0;
@@ -23,10 +29,13 @@
     font-size: 20px;
     line-height: 22px;
   }
-  .scrolling-text-item svg {
-    margin-right: 10px;
+  .scrolling-text-item .center-icon svg {
     width: {{ section.settings.icon_size }}px;
     height: {{ section.settings.icon_size }}px;
+  }
+  .center-icon{
+    color:{{icon_color}};
+    font-size:{{ section.settings.icon_size }}px;
   }
 
   @keyframes scroll-left {
@@ -105,6 +114,18 @@
       "id": "custom_icon",
       "label": "Custom Center Icon (Text or SVG)",
       "default":"·"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_top_border",
+      "label": "Show Top Border",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottom_border",
+      "label": "Show Bottom Border",
+      "default": true
     }
   ],
   "blocks": [
@@ -117,7 +138,7 @@
           "id": "text",
           "label": "Text",
           "default": "Your Text Here"
-        }
+        },
       ]
     }
   ],
