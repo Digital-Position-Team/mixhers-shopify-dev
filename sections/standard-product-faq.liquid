@@ -29,15 +29,15 @@
       margin-left: auto;
       margin-right: auto;
       padding: 32px 16px;
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 48px;
     }
     .faq-image {
       width: 100%;
-      max-width: 500px;
-      border-radius: 1rem;
+      border-radius: 15px;
       object-fit: cover;
+      height:auto;
     }
     .faq-content {
       width: 100%;
@@ -69,7 +69,7 @@
       width: 20px;
       height: 20px;
       transition: transform 0.3s ease;
-      fill: #db2777; /* pink color */
+      fill: #db2777;
       flex-shrink: 0;
     }
    .standard-product-faq details[open] .icon-chevron {
@@ -82,7 +82,7 @@
     }
     @media (min-width: 768px) {
       .standard-product-faq {
-        flex-direction: row;
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -92,7 +92,7 @@
       <img src="{{ faq_image | image_url }}" alt="FAQ image" width="500" height="500" class="faq-image">
     </div>
     <div class="faq-content">
-      <h2 class="faq-heading">FAQs</h2>
+      <h2 class="faq-heading ">FAQs</h2>
 
       {% for bottom_faq in bottom_faqs %}
         <details>
