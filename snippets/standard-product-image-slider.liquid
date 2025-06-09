@@ -1,112 +1,166 @@
 <style>
-    #product-image-carousel {
-        width: 100%;
-        height: 100%;
-        padding-bottom: 30px;
+  .product-carousel-container {
+    width: 100%;
+    height: 390px;
+    padding-bottom: 30px;
+  }
+
+  .product-carousel-wrapper {
+    display: none;
+  }
+
+  .product-carousel-desktop {
+    display: none;
+  }
+
+  .swiper-pagination {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 16px;
+    width: 100%;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: #1a1a1a;
+  }
+
+  .swiper-slide {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .optimized-pdp-product-image img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .desktop-carousel-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    gap: 16px;
+  }
+
+  .desktop-carousel-main,
+  .desktop-carousel-thumbnail {
+    flex: 1;
+    position: relative;
+  }
+
+  .desktop-carousel-main img,
+  .desktop-carousel-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .thumbnail-nav {
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    right: 0;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: end;
+  }
+
+  .carousel-thumbnail img {
+    width: 64px;
+    height: 64px;
+    border-radius: 100%;
+    border: 2px solid #fff;
+    cursor: pointer;
+    transition: border 0.3s ease;
+  }
+
+  .carousel-thumbnail img:hover {
+    border-color: #ccc;
+  }
+
+  @media (min-width: 1024px) {
+    .product-carousel-wrapper {
+      display: none;
     }
 
-    #product-image-carousel .swiper-pagination {
-        display: flex;
-        justify-content: flex-start;
-        padding-left: 16px;
-        width: 100%;
+    .product-carousel-desktop {
+      display: block;
     }
 
-    #product-image-carousel .swiper-pagination-bullet-active {
-        background: #1a1a1a;
+    .product-carousel-container {
+      display: none;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .product-carousel-wrapper {
+      display: block;
     }
 
-    #product-image-carousel .swiper-slide {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .product-carousel-desktop {
+      display: none;
     }
-
-    #product-image-carousel .swiper-slide img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+  }
 </style>
+
 
 {% assign product_images = product.metafields.rebrand.carousel_images.value %}
 {% assign featured_image = product.metafields.rebrand.featured_image.value %}
 
-<div class="only-small-screen">
-    {% if optimized_pdp %}
-      <div class="optimized-pdp-product-image">
-        <img
-          src="{{ featured_image | image_url }}"
-          alt="{{ product.title }}"
-          class="block"
-        >
-      </div>
-    {% else %}
-      <div class="swiper" id="product-image-carousel">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <img
-                    src="{{ featured_image | image_url }}"
-                    alt="{{ product.title }}"
-                    class="block"
-                    width="280"
-                    height="390"
-                >
-            </div>
-            {% for product_image in product_images %}
-                <div class="swiper-slide">
-                    <img
-                        src="{{ product_image | image_url }}"
-                        alt="{{ product.title }}"
-                        class="block"
-                        width="280"
-                        height="390"
-                    >
-                </div>
-            {% endfor %}
+<!-- Mobile Slider -->
+<div class="product-carousel-wrapper">
+  {% if optimized_pdp %}
+    <div class="optimized-pdp-product-image">
+      <img src="{{ featured_image | image_url }}" alt="{{ product.title }}" width="" height="">
+    </div>
+  {% else %}
+    <div class="swiper product-carousel-container" id="product-image-carousel">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="{{ featured_image | image_url }}" alt="{{ product.title }}" width="280" height="390">
         </div>
-        <div class="swiper-pagination"></div>
+        {% for product_image in product_images %}
+          <div class="swiper-slide">
+            <img src="{{ product_image | image_url }}" alt="{{ product.title }}" width="280" height="390">
+          </div>
+        {% endfor %}
       </div>
-    {% endif %}
-    
+      <div class="swiper-pagination"></div>
+    </div>
+  {% endif %}
 </div>
 
-<div class=" only-desktop">
-    <div class="w-full h-full">
-        <img
-            src="{{ featured_image | image_url }}"
-            alt="{{ product.title }}"
-            class="block w-full h-full object-cover"
-            width="472"
-            height="592"
-        >
+<!-- Desktop Layout -->
+<div class="product-carousel-desktop">
+  <div class="desktop-carousel-wrapper">
+    <div class="desktop-carousel-main">
+      <img src="{{ featured_image | image_url }}" alt="{{ product.title }}" width="472" height="592">
     </div>
-    <div class="w-full relative flex-grow-0">
-        <img
-            src="{{ product_images | first | image_url }}"
-            alt="{{ product.title }}"
-            class="carousel-image-active block w-full h-full object-cover"
-            width="472"
-            height="592"
-        >
-        <div class="absolute inset-0 flex gap-2 justify-center items-end -bottom-8">
-            {% for product_image in product_images %}
-                <button class="carousel-thumbnail" type="button">
-                    <img
-                        src="{{ product_image | image_url }}"
-                        alt="{{ product.title }}"
-                        class="block w-16 h-16 rounded-full border-2 border-white hover:border-gray-medium cursor-pointer"
-                        width="64"
-                        height="64"
-                    >
-                </button>
-            {% endfor %}
-        </div>
+    <div class="desktop-carousel-thumbnail">
+      <img src="{{ product_images | first | image_url }}" alt="{{ product.title }}" class="carousel-image-active" width="472" height="592">
+      <div class="thumbnail-nav">
+        {% for product_image in product_images %}
+          <button class="carousel-thumbnail" type="button">
+            <img src="{{ product_image | image_url }}" alt="{{ product.title }}"  width="" height="">
+          </button>
+        {% endfor %}
+      </div>
     </div>
+  </div>
 </div>
+
 
 <script>
     $(document).ready(function () {
