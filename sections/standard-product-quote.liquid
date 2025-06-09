@@ -27,10 +27,6 @@
       height: auto;
       display: block;
     }
-    .quote-divider {
-      border-top: 1px solid #000;
-      margin-top: 40px;
-    }
   </style>
   <div class="standard-product-quote" aria-label="Product Quote Section">
     <div class="quote-image-mobile only-small-screen">
@@ -39,6 +35,5 @@
     <div class="quote-image-desktop only-desktop">
       <img src="{{ quote_image_desktop | image_url }}" alt="Quote Image Desktop" width="2100" height="2100">
     </div>
-    <div class="quote-divider"></div>
   </div>
 {% endif %}
