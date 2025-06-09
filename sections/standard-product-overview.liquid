@@ -9,8 +9,8 @@
       <div class="overview-image">
         <img
           src="{{ overview_image | image_url }}"
-          width="900"
-          height="900"
+          width="1000"
+          height="1000"
           alt="Product Overview"
         >
       </div>
@@ -50,13 +50,18 @@
       margin: 0 auto;
     }
     .overview-title {
-
+      font-size: 36px;
+      line-height: 1.12;
+      margin-bottom: 12px;
     }
      @media (min-width: 768px) {
       .overview-container {
         flex-direction: row-reverse;
         align-items: center;
         min-height:750px;
+      }
+      .overview-title {
+        font-size: 54px;
       }
     }
 
