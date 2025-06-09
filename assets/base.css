@@ -3693,6 +3693,10 @@ p.base-text , .base-text p ,  .base-text li{font-size:18px;}
   font-size:48px;
   margin-bottom: 32px;
 }
+.title-heading-3{
+  font-size: 54px;
+  line-height: 1.12;
+}
 .only-desktop{
    dispaly:block;
 }
@@ -3736,6 +3740,9 @@ cart-notification {
   }
   .only-small-screen{
     dispaly:block;
+  }
+  .title-heading-3{
+    font-size: 36px;
   }
   p.base-text , .base-text p ,  .base-text li{font-size:14px;}
 }
