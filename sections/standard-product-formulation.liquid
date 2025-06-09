@@ -47,6 +47,11 @@
   {% endif %}
 {% endfor %}
 
+{% assign reduced_padding = false %}
+{% if ingredient_outer_color == blank and ingredient_inner_color == blank %}
+  {% assign reduced_padding = true %}
+{% endif %}
+
 {% if has_ingredients and stick_image_mobile and stick_image_desktop %}
   <style>
     .formulation-wrapper {
@@ -123,7 +128,7 @@
       .formulation-inner {
         flex-direction: row;
         gap: 40px;
-        padding: 100px 60px 140px 60px;
+        padding: {% if reduced_padding %}60px 40px{% else %}100px 60px 140px 60px{% endif %};
         align-items: flex-start;
       }
     }
