@@ -94,25 +94,6 @@
       border-top: 1px solid #000;
       margin-top: 40px;
     }
-
-    .mobile-only {
-      display: block;
-    }
-
-    .desktop-only {
-      display: none;
-    }
-
-    @media (min-width: 768px) {
-      .mobile-only {
-        display: none;
-      }
-
-      .desktop-only {
-        display: block;
-      }
-    }
-
     .accordion-title {
       display: flex;
       justify-content: space-between;
@@ -124,6 +105,9 @@
       height: 16px;
       margin-left: 8px;
     }
+      @media (min-width: 768px) {
+
+    }
   </style>
 
   <div class="formulation-wrapper">
@@ -132,7 +116,7 @@
         <img
           src="{{ stick_image_mobile | image_url }}"
           alt="{{ product.title }}"
-          class="mobile-only"
+          class="only-small-screen"
           width="" height=""
         >
         <img
