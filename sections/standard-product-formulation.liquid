@@ -70,18 +70,10 @@
       text-transform: uppercase;
       font-weight: 400;
     }
-    .accordion-item summary svg.icon-plus {
-      display: inline-block;
-    }
-    .accordion-item[open] summary svg.icon-plus {
-      display: none;
-    }
-    .accordion-item summary svg.icon-minus {
-      display: none;
-    }
-    .accordion-item[open] summary svg.icon-minus {
-      display: inline-block;
-    }
+    .accordion-item summary svg.icon-plus {display: inline-block;}
+    .accordion-item[open] summary svg.icon-plus { display: none; }
+    .accordion-item summary svg.icon-minus { display: none;}
+    .accordion-item[open] summary svg.icon-minus { display: inline-block;}
     .divider {
       margin-top: 40px;
     }
@@ -95,6 +87,24 @@
       height: 16px;
       margin-left: 8px;
     }
+    .white-open-box{
+      background:#fff;
+    }
+    details.accordion-item {
+        padding: 16px;
+    }
+    details.accordion-item:not(:last-child){
+        border-bottom:1px solid #b0b0b0;
+    }
+    .accordion-title span {
+        font-weight: 400;
+        font-family: 'Faire Sprig';
+        font-size: 20px;
+        line-height: 1.1;
+    }
+    details.accordion-item>p {
+        margin: 8px 0px 0px;
+    }
     @media (min-width: 768px) {
       .formulation-inner {
         flex-direction: row;
@@ -104,9 +114,6 @@
       }
     }
 
-    @media (min-width: 768px) {
-
-    }
   </style>
 
   <div class="formulation-wrapper">
