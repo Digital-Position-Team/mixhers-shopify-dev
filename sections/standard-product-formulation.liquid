@@ -85,6 +85,7 @@
     }
     .white-open-box{
       background:#fff;
+      mar
     }
     details.accordion-item {
         padding: 16px;
@@ -100,6 +101,9 @@
     }
     details.accordion-item>p {
         margin: 8px 0px 0px;
+    }
+    .formulation-div{
+      margin-top:20px;
     }
     @media (min-width: 768px) {
       .formulation-inner {
@@ -137,7 +141,7 @@
         </div>
 
         {% if ingredients %}
-          <div class="ingredients-section">
+          <div class="ingredients-section formulation-div">
             <details open>
               <summary class="accordion-summary">
                 <span class="main-accordian-head">Ingredients</span>
@@ -164,7 +168,7 @@
         {% endif %}
 
         {% if has_clinical_studies %}
-          <div class="clinical-section">
+          <div class="clinical-section formulation-div">
             <details>
               <summary class="accordion-summary">
                 <span class="main-accordian-head">Clinical Studies</span>
