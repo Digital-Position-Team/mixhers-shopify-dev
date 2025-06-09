@@ -142,7 +142,7 @@
                   <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5"/>
                 </svg>
               </summary>
-              <div>
+              <div class="white-open-box">
                 {% for ingredient in ingredients %}
                   <details class="accordion-item">
                     <summary class="accordion-summary accordion-title">
@@ -169,7 +169,7 @@
                   <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5"/>
                 </svg>
               </summary>
-              <div>
+              <div class="white-open-box">
                 {% for ingredient in ingredients %}
                   {% assign clinical_studies = ingredient.clinical_studies.value %}
                   {% if clinical_studies %}
