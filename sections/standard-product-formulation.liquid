@@ -40,7 +40,14 @@
       background-color: {{ ingredient_outer_color }};
       padding: 40px 20px;
     }
-
+    .formulation-image img {
+        max-height: 800px;
+        width: 100%;
+        height: auto;
+    }
+    .formulation-content {
+        max-width: 630px;
+    }
     .formulation-inner {
       /* background-color: {{ ingredient_inner_color }};
       border-radius: 50%;
@@ -49,6 +56,42 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .accordion-summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: bold;
+      padding: 10px 0;
+    }
+    .accordion-item summary svg.icon-plus {
+      display: inline-block;
+    }
+    .accordion-item[open] summary svg.icon-plus {
+      display: none;
+    }
+    .accordion-item summary svg.icon-minus {
+      display: none;
+    }
+    .accordion-item[open] summary svg.icon-minus {
+      display: inline-block;
+    }
+    .divider {
+      border-top: 1px solid #000;
+      margin-top: 40px;
+    }
+    .accordion-title {
+      display: flex;over
+      justify-content: space-between;
+      align-items: center;
+    }
+    .accordion-title svg {
+      width: 16px;
+      height: 16px;
+      margin-left: 8px;
     }
 
     @media (min-width: 768px) {
@@ -60,52 +103,7 @@
       }
     }
 
-    .formulation-image img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    .accordion-summary {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      font-weight: bold;
-      padding: 10px 0;
-    }
-
-    .accordion-item summary svg.icon-plus {
-      display: inline-block;
-    }
-
-    .accordion-item[open] summary svg.icon-plus {
-      display: none;
-    }
-
-    .accordion-item summary svg.icon-minus {
-      display: none;
-    }
-
-    .accordion-item[open] summary svg.icon-minus {
-      display: inline-block;
-    }
-
-    .divider {
-      border-top: 1px solid #000;
-      margin-top: 40px;
-    }
-    .accordion-title {
-      display: flex;over
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .accordion-title svg {
-      width: 16px;
-      height: 16px;
-      margin-left: 8px;
-    }
-      @media (min-width: 768px) {
+    @media (min-width: 768px) {
 
     }
   </style>
