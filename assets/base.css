@@ -3626,7 +3626,7 @@ p.base-text , .base-text p ,  .base-text li{font-size:18px;}
   letter-spacing: normal;
   text-align:center;
 }
-.custom-primary-btn.f-18{
+.custom-primary-btn.f-18 ,.pink-primary-btn.f-18 {
   font-size:18px;
 }
 .custom-primary-btn.f-14, .pink-primary-btn.f-14{
