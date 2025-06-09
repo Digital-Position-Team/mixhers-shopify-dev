@@ -3,7 +3,20 @@
   "name": "Product Quiz Quote",
   "tag": "section",
   "class": "standard-product-mix-section",
-  "settings": [],
+  "settings": [
+     {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading Text",
+      "default": "Made to mix."
+    },
+    {
+      "type": "textarea",
+      "id": "mix_text",
+      "label": "Mix Description",
+      "default": "Combine products and flavors in a tailored-to-you Mixhers mocktail.</br> One sip double the benefits."
+    }
+  ],
   "presets": [
     {
       "name": "Standard Product Made to Mix Quiz Quote"
@@ -76,11 +89,9 @@
   <section class="standard-product-mix" aria-label="Made to Mix Section">
     <div class="mix-content-wrapper">
       <div class="mix-text-content">
-        <h2 class="mix-heading underline-title font-serif ">Made to mix.</h2>
+        <h2 class="mix-heading underline-title font-serif ">{{ section.settings.heading_text }}</h2>
         <div class="mix-text">
-          <p>Combine products and flavors in a tailored-to-you Mixhers mocktail.
-            <br/>
-          One sip double the benefits.</p>
+              <p>{{ section.settings.mix_text }}</p>
         </div>
         <a href="/pages/quiz" class="mix-button custom-primary-btn hover-border f-18">Take the quiz</a>
       </div>
