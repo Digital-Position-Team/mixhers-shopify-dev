@@ -20,15 +20,15 @@
     .product-comparison-section {
       width: 100%;
       padding: 0;
+      border-top: 1px solid #000;
+      border-bottom: 1px solid #000;
     }
     .product-comparison-section img {
       width: 100%;
       height: auto;
+      display:block;
     }
-    .comparison-divider {
-      border-top: 1px solid #000;
-      margin-top: 40px;
-    }
+
   </style>
 
   <div class="product-comparison-section">
@@ -38,6 +38,5 @@
     <div class="product-comparison-desktop only-desktop ">
       <img src="{{ comparison_image_desktop | image_url }}" alt="Product Comparison Desktop" width="" height="">
     </div>
-    <div class="comparison-divider"></div>
   </div>
 {% endif %}
