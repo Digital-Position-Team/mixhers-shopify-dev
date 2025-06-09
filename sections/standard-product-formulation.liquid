@@ -46,10 +46,14 @@
     {% break %}
   {% endif %}
 {% endfor %}
-{% assign outer = ingredient_outer_color | downcase | strip %}
+
 {% assign reduced_padding = false %}
-{% if ingredient_outer_color == blank and ingredient_inner_color == blank %}
-  {% assign reduced_padding = true %}
+{% assign outer = ingredient_outer_color | downcase | strip %}
+{% assign inner = ingredient_inner_color | downcase | strip %}
+{% if outer == blank or outer == '#fff' or outer == '#ffffff' or outer == 'white' %}
+  {% if inner == blank or inner == '#fff' or inner == '#ffffff' or inner == 'white' %}
+    {% assign reduced_padding = true %}
+  {% endif %}
 {% endif %}
 
 {% if has_ingredients and stick_image_mobile and stick_image_desktop %}
