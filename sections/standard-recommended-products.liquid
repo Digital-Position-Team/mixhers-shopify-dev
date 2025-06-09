@@ -1,11 +1,10 @@
 {% assign recommended_products = product.metafields.rebrand.recommended_products.value %}
 {% assign has_recommended_products = false %}
-
 {% for recommended_product in recommended_products %}
-  {% if recommended_product %}
-    {% assign has_recommended_products = true %}
-    {% break %}
-  {% endif %}
+    {% if recommended_product %}
+        {% assign has_recommended_products = true %}
+        {% break %}
+    {% endif %}
 {% endfor %}
 
 {% if has_recommended_products %}
