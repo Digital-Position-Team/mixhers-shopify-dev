@@ -156,15 +156,17 @@
         //     },
         // });
          new Swiper('#product-image-carousel', {
-            loop: true,
-            spaceBetween: 0,
-            slidesPerView: 1.2,
-            pagination: {
-              el: '.swiper-pagination',
-              clickable: true,
-            },
-            navigation: false, // disable arrows
-          });
+  loop: true,
+  spaceBetween: 10, // small gap helps partial preview feel natural
+  slidesPerView: 1.2,
+  centeredSlides: true, // optional: centers the current slide
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+  navigation: false,
+});
+
 
         $('.carousel-thumbnail').on('click', function () {
             const activeImage = $('.carousel-image-active');
