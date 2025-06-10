@@ -33,11 +33,9 @@
           <p>{{ block.settings.caption | default: product.metafields.rebrand.product_caption.value }}</p>
 
         {% when "supplement_facts_button" %}
-          {% assign supplement_title = block.settings.title | default: product.metafields.rebrand.supplement_facts_title.value %}
-          {% assign supplement_image = block.settings.image | default: product.metafields.rebrand.supplement_facts_image.value %}
-          {% if supplement_title %}
-            <button type="button" onclick="openSupplementFactsModal()" {% unless supplement_image %}disabled{% endunless %}>
-              <p>{{ supplement_title }}</p>
+          {% if supplement_facts_title %}
+            <button type="button" onclick="openSupplementFactsModal()" {% unless supplement_facts_image %}disabled{% endunless %}>
+              {{ supplement_facts_title }}
             </button>
           {% endif %}
 
