@@ -75,10 +75,10 @@
 </div>
 
 <!-- Supplement Facts Modal -->
-<div id="supplementFactsModal" class="hidden fixed inset-0 z-50 items-center justify-center bg-[#000000AA] p-7" onclick="closeSupplementFactsModal()">
-  <div id="supplementFacts" class="bg-white rounded-lg shadow-xl relative inline-block">
+<div id="supplementFactsModal" class="hidden" onclick="closeSupplementFactsModal()">
+  <div id="supplementFacts" class="">
     <img src="{{ product.metafields.rebrand.supplement_facts_image.value | image_url }}" alt="Supplement Facts" class="object-contain" width="auto" height="auto" />
-    <button class="text-white absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 w-8 h-8" onclick="closeSupplementFactsModal()">Close</button>
+    <button class="" onclick="closeSupplementFactsModal()">Close</button>
   </div>
 </div>
 
@@ -200,6 +200,8 @@
   ]
 }
 {% endschema %}
+
+
 
 <style>
   .standard-product-info{
