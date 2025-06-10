@@ -10,7 +10,7 @@
       {% if section.settings.button_text != blank and section.settings.button_link != blank %}
         <a href="{{ section.settings.button_link }}" 
           style="min-width:170px"
-          class="{% if template contains 'about' %}mission-button{% else %} custom-primary-btn f-18 {% endif %}">
+          class="{% if template contains 'about' %}mission-button{% else %} btn btn-black hover-pink {% endif %}">
           {{ section.settings.button_text }}
         </a>
       {% endif %}
