@@ -33,7 +33,7 @@
 
         {% when "supplement_facts_button" %}
           {% if supplement_facts_title %}
-            <button type="button" class="open-supplement" onclick="openSupplementFactsModal()" {% unless supplement_facts_image %}disabled{% endunless %}>
+            <button type="button" class="open-btn" onclick="openSupplementFactsModal()" {% unless supplement_facts_image %}disabled{% endunless %}>
               {{ supplement_facts_title }}
             </button>
           {% endif %}
@@ -80,6 +80,92 @@
   </div>
 </div>
 
+
+<style>
+  .standard-product-info{
+    padding:32px 32px 24px 32px;
+  }
+  #supplementFactsModal {
+      background-color: #000a;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      left: 0;
+      align-items: center;
+      justify-content: center;
+      z-index: 9;
+  }
+  .supplements-inner-body {
+      background: #fff;
+      max-width: 1200px;
+      margin: 5px;
+  }
+  #supplementFactsModal img {
+      max-width: 100%;
+      width:100%;
+      height:auto;
+  }
+  #supplementFactsModal button{
+    display:none;
+  }
+.standard-product-info .promo_badge {
+    background: #ff59e4;
+    padding: 6px 12px;
+    color: #fff;
+    width: auto;
+    margin: 0 0 24px 0px;
+    line-height: 1.2;
+    display: inline-block;
+}
+.standard-product-info .standard-product-title {
+    font-size: 36px;
+    margin: 0px;
+    line-height: 1.2;
+}
+.standard-product-info .standard-product-subtitle {
+    margin: 0px;
+    font-size: 20px;
+    line-height: 1.2;
+}
+.standard-product-info .standard-product-caption {
+    line-height: 1.2;
+    font-size: 20px;
+    color: #7c8993;
+    margin: 0px;
+}
+  .open-btn{
+        background: none;
+    border: none;
+    padding: 2px;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #ff59e4;
+    text-decoration: underline;
+  }
+  @media(min-width:1024px){
+      .product-info-main{
+        display: grid;
+        align-items: flex-start;
+        grid-template-columns:1fr;
+        max-width: 100%;
+        padding-bottom: 35px;
+        grid-template-columns: 5fr 7fr;
+      }
+      .standard-product-image{
+        max-width: 100%;
+        padding-top: 20px;
+        padding-bottom:30px;
+        position: sticky;
+        top: 30px;
+        order: 2;
+      }
+  }
+</style>
 
 {% schema %}
 {
@@ -187,80 +273,6 @@
 }
 {% endschema %}
 
-<style>
-  .standard-product-info{
-    padding:32px 32px 24px 32px;
-  }
-  #supplementFactsModal {
-      background-color: #000a;
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      height: 100%;
-      width: 100%;
-      left: 0;
-      align-items: center;
-      justify-content: center;
-      z-index: 9;
-  }
-  .supplements-inner-body {
-      background: #fff;
-      max-width: 1200px;
-      margin: 5px;
-  }
-  #supplementFactsModal img {
-      max-width: 100%;
-      width:100%;
-      height:auto;
-  }
-  #supplementFactsModal button{
-    display:none;
-  }
-.standard-product-info .promo_badge {
-    background: #ff59e4;
-    padding: 6px 12px;
-    color: #fff;
-    width: auto;
-    margin: 0 0 24px 0px;
-    line-height: 1.2;
-    display: inline-block;
-}
-.standard-product-info .standard-product-title {
-    font-size: 36px;
-    margin: 0px;
-    line-height: 1.2;
-}
-.standard-product-info .standard-product-subtitle {
-    margin: 0px;
-    font-size: 20px;
-    line-height: 1.2;
-}
-.standard-product-info .standard-product-caption {
-    line-height: 1.2;
-    font-size: 20px;
-    color: #7c8993;
-    margin: 0px;
-}
-  @media(min-width:1024px){
-      .product-info-main{
-        display: grid;
-        align-items: flex-start;
-        grid-template-columns:1fr;
-        max-width: 100%;
-        padding-bottom: 35px;
-        grid-template-columns: 5fr 7fr;
-      }
-      .standard-product-image{
-        max-width: 100%;
-        padding-top: 20px;
-        padding-bottom:30px;
-        position: sticky;
-        top: 30px;
-        order: 2;
-      }
-  }
-</style>
 <script>
       function openSupplementFactsModal() {
         document.getElementById('supplementFactsModal').style.display = 'flex';
