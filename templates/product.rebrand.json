@@ -141,9 +141,71 @@
         "padding_bottom": 12
       }
     },
-    "test_DtjmiV": {
+    "test_yhracY": {
       "type": "test",
-      "name": "testing",
+      "blocks": {
+        "promo_badge_wCEyRz": {
+          "type": "promo_badge",
+          "settings": {
+            "show_promo_badge": true,
+            "promo_text": "Promo Badge"
+          }
+        },
+        "product_title_qKGVyV": {
+          "type": "product_title",
+          "settings": {
+            "title": ""
+          }
+        },
+        "product_subtitle_CgfxCy": {
+          "type": "product_subtitle",
+          "settings": {
+            "subtitle": ""
+          }
+        },
+        "product_caption_36DUCH": {
+          "type": "product_caption",
+          "settings": {
+            "caption": ""
+          }
+        },
+        "supplement_facts_button_NHiyRd": {
+          "type": "supplement_facts_button",
+          "settings": {
+            "title": "View Supplement Facts"
+          }
+        },
+        "product_description_d7JgUr": {
+          "type": "product_description",
+          "settings": {}
+        },
+        "shared_details_cFE7bm": {
+          "type": "shared_details",
+          "settings": {}
+        },
+        "faq_block_P3hkAc": {
+          "type": "faq_block",
+          "settings": {}
+        },
+        "disclaimer_6dEyFw": {
+          "type": "disclaimer",
+          "settings": {
+            "text": "* These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
+          }
+        }
+      },
+      "block_order": [
+        "promo_badge_wCEyRz",
+        "product_title_qKGVyV",
+        "product_subtitle_CgfxCy",
+        "product_caption_36DUCH",
+        "supplement_facts_button_NHiyRd",
+        "product_description_d7JgUr",
+        "shared_details_cFE7bm",
+        "faq_block_P3hkAc",
+        "disclaimer_6dEyFw"
+      ],
+      "name": "Product Info Default",
       "settings": {}
     },
     "scrolling_text_center_icon_kc3kh9": {
@@ -293,7 +355,7 @@
   },
   "order": [
     "main",
-    "test_DtjmiV",
+    "test_yhracY",
     "scrolling_text_center_icon_kc3kh9",
     "standard_product_overview_RQbBgt",
     "standard_product_formulation_4M3MT3",
