@@ -8,7 +8,6 @@
 {% assign supplement_facts_title = product.metafields.rebrand.supplement_facts_title.value | default: null %}
 {% assign supplement_facts_image = product.metafields.rebrand.supplement_facts_image.value | default: null %}
 {% assign top_faqs = product.metafields.rebrand.top_faqs.value %}
-
 <div class="product-info-main">
     <div class="standard-product-image">
       {% render 'standard-product-image-slider' %}
@@ -41,17 +40,14 @@
                             </div>
                         </summary>
                         {% assign content = top_faq.contents | metafield_tag %}
-                        <p>content</p>
+                        <p>{{ content }}</p>
                     </details>
                 {% endfor %}
             {% endif %}
             </div>
             {% comment %} Disclaimer {% endcomment %}
-            <div class="text-gray my-8">
-                {% render 'text',
-                    type: 'body-sm',
-                    content: '* These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.'
-                %}
+            <div class="disclaimer-text">
+                * These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
             </div>
    </div>
 </div>
