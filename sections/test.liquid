@@ -182,22 +182,64 @@
       ]
     }
   ],
-  "presets": [
-    {
-      "name": "Standard Product Info",
-      "blocks": [
-        { "type": "promo_badge" },
-        { "type": "product_title" },
-        { "type": "product_subtitle" },
-        { "type": "product_caption" },
-        { "type": "supplement_facts_button" },
-        { "type": "product_description" },
-        { "type": "shared_details" },
-        { "type": "faq_block" },
-        { "type": "disclaimer" }
-      ]
-    }
-  ]
+"presets": [
+  {
+    "name": "Product Info Default",
+    "blocks": [
+      {
+        "type": "promo_badge",
+        "settings": {
+          "show_promo_badge": true,
+          "promo_text": "Promo Badge"
+        }
+      },
+      {
+        "type": "product_title",
+        "settings": {
+          "title": ""
+        }
+      },
+      {
+        "type": "product_subtitle",
+        "settings": {
+          "subtitle": ""
+        }
+      },
+      {
+        "type": "product_caption",
+        "settings": {
+          "caption": ""
+        }
+      },
+      {
+        "type": "supplement_facts_button",
+        "settings": {
+          "title": "View Supplement Facts",
+          "image": null
+        }
+      },
+      {
+        "type": "product_description",
+        "settings": {}
+      },
+      {
+        "type": "shared_details",
+        "settings": {}
+      },
+      {
+        "type": "faq_block",
+        "settings": {}
+      },
+      {
+        "type": "disclaimer",
+        "settings": {
+          "text": "* These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
+        }
+      }
+    ]
+  }
+]
+
 }
 {% endschema %}
 
