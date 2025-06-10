@@ -447,8 +447,8 @@ console.log(isBundleProduct,"isBundleProduct---");
             const secondFlavorSelectEl = bundlePricingEl.find('select').eq(1);
 
             function updateFlavorColors() {
-                firstFlavorSelectEl.siblings('#flavor-color').css('background-color', firstFlavorSelectEl.find(':selected').data('color'));
-                secondFlavorSelectEl.siblings('#flavor-color').css('background-color', secondFlavorSelectEl.find(':selected').data('color'));
+                firstFlavorSelectEl.siblings('.flavor-color').css('background-color', firstFlavorSelectEl.find(':selected').data('color'));
+                secondFlavorSelectEl.siblings('.flavor-color').css('background-color', secondFlavorSelectEl.find(':selected').data('color'));
             }
 
             // Set flavor colors on select change
