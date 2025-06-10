@@ -33,7 +33,7 @@
 
         {% when "supplement_facts_button" %}
           {% if supplement_facts_title %}
-            <button type="button" onclick="openSupplementFactsModal()" {% unless supplement_facts_image %}disabled{% endunless %}>
+            <button type="button" class="open-supplement" onclick="openSupplementFactsModal()" {% unless supplement_facts_image %}disabled{% endunless %}>
               {{ supplement_facts_title }}
             </button>
           {% endif %}
