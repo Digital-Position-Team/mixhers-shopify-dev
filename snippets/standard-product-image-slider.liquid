@@ -155,6 +155,15 @@
         //         el: '.swiper-pagination',
         //     },
         // });
+         new Swiper('#product-image-carousel', {
+            loop: true,
+            spaceBetween: 0,
+            pagination: {
+              el: '.swiper-pagination',
+              clickable: true,
+            },
+            navigation: false, // disable arrows
+          });
 
         $('.carousel-thumbnail').on('click', function () {
             const activeImage = $('.carousel-image-active');
