@@ -4,6 +4,7 @@
 {% assign product_caption = product.metafields.rebrand.product_caption.value | default: '' %}
 {% assign product_description = product.metafields.rebrand.product_description | metafield_tag | default: product.description %}
 {% assign promo_content = product.metafields.rebrand.promo_content.value %}
+{% assign promo_badge = promo_content.promo_badge | default: '' %}
 {% assign show_promo_badge_above_title = promo_content.show_promo_badge | default: false %}
 {% assign supplement_facts_title = product.metafields.rebrand.supplement_facts_title.value | default: null %}
 {% assign supplement_facts_image = product.metafields.rebrand.supplement_facts_image.value | default: null %}
@@ -18,8 +19,8 @@
       {% case block.type %}
 
         {% when "promo_badge" %}
-          {% if block.settings.show_promo_badge %}
-            <p>{{ block.settings.promo_text }}</p>
+          {% if show_promo_badge_above_title %}
+            <p>{{ promo_badge}}</p>
           {% endif %}
 
         {% when "product_title" %}
