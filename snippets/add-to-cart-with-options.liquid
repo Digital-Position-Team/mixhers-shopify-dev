@@ -72,12 +72,14 @@
               {% else %}
                 <span id="subscription-price">{{ subscription_price }}</span>
               {% endif %}
-
+           </div>
+          </div>
+            <div class="more-info-subscription">
               {% if show_extra_subscribe_box_text %}
                 <div>{{ extra_subscribe_box_text }}</div>
               {% endif %}
-            </div>
-            </div>
+           
+           
             <!-- subscription features==================== -->
             {% if product.metafields.rebrand %}
     {% if product.metafields.rebrand.price_after_first_month %}
@@ -176,6 +178,7 @@
 
     <div>Change or cancel anytime</div>
 </div>
+            </div>
             <!-- subscription features end================-->
           </label>
         </div>
