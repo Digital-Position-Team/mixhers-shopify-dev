@@ -321,6 +321,38 @@
     line-height: 1.2;
     margin: 26px 0px;
 }
+  .tooltip {
+    position: relative;
+    display: flex;
+    align-items: start;
+    margin-top: -2px;
+}
+.tooltiptext {
+    visibility: hidden;
+    padding: 10px 10px;
+    width: max-content;
+    background-color: black;
+    color: #fff;
+    position: absolute;
+    border-radius: 10px;
+    z-index: 1;
+    left: 23px;
+    top: -6px;
+    opacity: 1;
+    transition: opacity 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+.extra-mobile-hsa-link {
+    color:#fff;
+    pointer-events: none;
+    text-decoration: none;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
 /*Add to cart with options end----*/
   @media(min-width:768px){
     .add-to-cart-btn{
