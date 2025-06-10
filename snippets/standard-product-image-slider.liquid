@@ -148,7 +148,7 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        new Swiper('#product-image-carousel', {
+       const swiper = new Swiper('#product-image-carousel', {
           loop: false,
           spaceBetween: 0, 
           slidesPerView: 1,
@@ -159,8 +159,8 @@
               clickable: true,
             },
             navigation: false,
-          });
- });
+       });
+     });
       
     $(document).ready(function () {
         // const swiper = new Swiper('#product-image-carousel', {
