@@ -147,15 +147,8 @@
 
 
 <script>
-    $(document).ready(function () {
-        // const swiper = new Swiper('#product-image-carousel', {
-        //     spaceBetween: 0,
-        //     slidesPerView: 1.2,
-        //     pagination: {
-        //         el: '.swiper-pagination',
-        //     },
-        // });
-         new Swiper('#product-image-carousel', {
+    document.addEventListener('DOMContentLoaded', function () {
+        new Swiper('#product-image-carousel', {
             loop: true,
             spaceBetween: 0, 
             slidesPerView: 1.2,
@@ -165,7 +158,17 @@
             },
             navigation: false,
           });
-
+ });
+      
+    $(document).ready(function () {
+        // const swiper = new Swiper('#product-image-carousel', {
+        //     spaceBetween: 0,
+        //     slidesPerView: 1.2,
+        //     pagination: {
+        //         el: '.swiper-pagination',
+        //     },
+        // });
+       
 
         $('.carousel-thumbnail').on('click', function () {
             const activeImage = $('.carousel-image-active');
