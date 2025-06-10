@@ -73,7 +73,7 @@
 </div>
 
 <!-- Supplement Facts Modal -->
-<div id="supplementFactsModal" class="hidden" onclick="closeSupplementFactsModal()">
+<div id="supplementFactsModal" class="" onclick="closeSupplementFactsModal()">
   <div id="supplementFacts" class="">
     <img src="{{ product.metafields.rebrand.supplement_facts_image.value | image_url }}" alt="Supplement Facts" class="object-contain" width="auto" height="auto" />
     <button class="" onclick="closeSupplementFactsModal()">Close</button>
@@ -86,6 +86,7 @@
     padding:32px 32px 24px 32px;
   }
   #supplementFactsModal {
+      display:none;
       background-color: #000a;
       position: fixed;
       top: 0;
