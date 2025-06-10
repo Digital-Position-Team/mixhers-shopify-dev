@@ -31,6 +31,15 @@
         {% when "product_caption" %}
           <p class="standard-product-caption">{{ product_caption}}</p>
 
+        {% when "product_rating" %}
+            <div
+                class="yotpo-widget-instance pink-stars mb-6 mt-3"
+                data-yotpo-instance-id="585542"
+                data-yotpo-product-id="{{product.id}}"
+                data-yotpo-cart-product-id="{{item.product.id}}"
+                data-yotpo-section-id="{{template.name}}"
+            ></div>
+    
         {% when "supplement_facts_button" %}
           {% if supplement_facts_title %}
             <button type="button" class="open-btn" onclick="openSupplementFactsModal()" {% unless supplement_facts_image %}disabled{% endunless %}>
@@ -207,6 +216,11 @@
     {
       "type": "product_caption",
       "name": "Product Caption",
+      "settings": []
+    },
+    {
+      "type": "product_rating",
+      "name": "product_rating",
       "settings": []
     },
     {
