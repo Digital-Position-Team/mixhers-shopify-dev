@@ -1,4 +1,26 @@
+
+{% assign product_title = product.metafields.rebrand.product_title.value | default: product.title %}
+{% assign product_subtitle = product.metafields.rebrand.product_subtitle.value | default: '' %}
+{% assign product_caption = product.metafields.rebrand.product_caption.value | default: '' %}
+{% assign product_description = product.metafields.rebrand.product_description | metafield_tag | default: product.description %}
+{% assign show_promo_badge_above_title = promo_content.show_promo_badge | default: false %}
+
+<div class="product-info-main">
+    <div class="standard-product-image">
+      {% render 'standard-product-image-slider' %}
+    </div>
+    <div class="standard-product-info">
+      {% if show_promo_badge_above_title %}
+        <p>promo_badge</p>
+      {% endif %}
+
+      <h1>{{product_title}}</h1>
+      <p>{{product_subtitle}}</p>
+      <p>{{product_caption}}</p>
+   </div>
+
 {% render 'shared-product-details', then_render: 'testing'',  product: product, %}
+
 <div id ="hi">
   
   {{  product.subscription  }}
@@ -14,12 +36,9 @@
     ]
   }
 {% endschema %}
-<style>
- 
-  .product-info-main{
-  
-  }
 
+
+<style>
   .standard-product-info{
     padding:32px 32px 24px 32px;
   }
