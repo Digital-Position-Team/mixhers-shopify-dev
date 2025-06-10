@@ -160,6 +160,10 @@
           "type": "product_caption",
           "settings": {}
         },
+        "product_rating_WWfxxp": {
+          "type": "product_rating",
+          "settings": {}
+        },
         "supplement_facts_button_WfXYU7": {
           "type": "supplement_facts_button",
           "settings": {}
@@ -188,6 +192,7 @@
         "product_title_qqJQUf",
         "product_subtitle_jEDyaP",
         "product_caption_JWBetr",
+        "product_rating_WWfxxp",
         "supplement_facts_button_WfXYU7",
         "product_description_eBWD8X",
         "shared_details_cKAKi8",
