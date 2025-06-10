@@ -2,8 +2,7 @@
 {% assign small_text_for_subscribe_label = product.metafields.rebrand.small_text_for_subscribe_label | default: null %}
 {% assign show_with_code_text_next_to_slash_out_price_on_pdps = promo_content.show_with_code_text_next_to_slash_out_price_on_pdps | default: false %}
 {% assign top_faqs = product.metafields.rebrand.top_faqs.value %}
-{% assign supplement_facts_title = product.metafields.rebrand.supplement_facts_title.value | default: null %}
-{% assign supplement_facts_image = product.metafields.rebrand.supplement_facts_image.value | default: null %}
+
 {% assign default_variant = product.metafields.rebrand.default_variant.value %}
 {% assign hsa_on =  product.metafields.rebrand.hsa_on.value | default: false %}
 {% assign show_extra_subscribe_box_text = promo_content.show_extra_subscribe_box_text | default: false %}
@@ -36,27 +35,12 @@
     }
 </style>
 <form id="pdp-form">
-  <div class="product-info-main">
-    <div class="standard-product-image">
-      {% render 'standard-product-image-slider' %}
-      {% comment %} render image carousel and featured product image {% endcomment %}
-    </div>
-    <div class="standard-product-info">
-      {% if show_promo_badge_above_title %}
-        <p>promo_badge</p>
-      {% endif %}
 
-      <h1>{{product_title}}</h1>
-      <p>{{product_subtitle}}</p>
-      <p>{{product_caption}}</p>
+    <div class="">
 
-      <div class="yotpo-widget-instance" data-yotpo-instance-id="585542" data-yotpo-product-id="{{product.id}}" data-yotpo-cart-product-id="{{item.product.id}}" data-yotpo-section-id="{{template.name}}"></div>
 
-      {% if supplement_facts_title %}
-        <button type="button" onclick="openSupplementFactsModal()" {% unless supplement_facts_image %}disabled{% endunless %}>
-          <p>{{supplement_facts_title}}</p>
-        </button>
-      {% endif %}
+
+  
 
       <div>{{product_description}}</div>
 
@@ -331,16 +315,11 @@
         </div>
       </div>
     </div>
-  </div>
+ 
 </form>
 
-<!-- Supplement Facts Modal -->
-<div id="supplementFactsModal" class="hidden fixed inset-0 z-50 items-center justify-center bg-[#000000AA] p-7" onclick="closeSupplementFactsModal()">
-    <div id=supplementFacts class="bg-white rounded-lg shadow-xl relative inline-block">
-        <img src="{{ supplement_facts_image | image_url }}" alt="{{ supplement_facts_title }}" class="object-contain" width=auto height=auto/>
-        <button class="text-white absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 w-8 h-8" onclick="closeSupplementFactsModal()"> Close</button>
-    </div>
-</div>
+
+
 <script src="https://static.rechargecdn.com/assets/storefront/recharge-client-1.17.3.min.js"></script>
 
 <script>
@@ -709,7 +688,6 @@ console.log(isBundleProduct,"isBundleProduct---");
         }
 
         function init() {
-           console.log("IIT RUN ");
             // START Variables for Debugging in the DevTools Console
             const product = {{ product | json }};
             const bundleProduct = {{ bundle_product | json }};
