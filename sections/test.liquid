@@ -15,7 +15,18 @@
   }
 {% endschema %}
 <style>
-  @media(min-width:1024px){
+ 
+  .product-info-main{
+    display: grid;
+    align-items: flex-start;
+    grid-template-columns:1fr;
+    max-width: 100%;
+    padding-bottom: 35px;
+  }
+
+  .standard-product-info{
+    padding:32px 32px 24px 32px;
+  } @media(min-width:1024px){
       .product-info-main{
         grid-template-columns: 5fr 7fr;
       }
@@ -28,16 +39,5 @@
         order: 2;
       }
 
-  }
-  .product-info-main{
-    display: grid;
-    align-items: flex-start;
-    grid-template-columns:1fr;
-    max-width: 100%;
-    padding-bottom: 35px;
-  }
-
-  .standard-product-info{
-    padding:32px 32px 24px 32px;
   }
 </style>
