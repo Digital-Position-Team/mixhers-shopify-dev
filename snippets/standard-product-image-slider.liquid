@@ -149,9 +149,9 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         new Swiper('#product-image-carousel', {
-            loop: false,
-            spaceBetween: 0, 
-            slidesPerView: 1.2,
+          loop: false,
+          spaceBetween: 0, 
+          slidesPerView: 1,
           initialSlide: 1,
           centeredSlides: false,
             pagination: {
@@ -171,7 +171,6 @@
         //     },
         // });
        
-
         $('.carousel-thumbnail').on('click', function () {
             const activeImage = $('.carousel-image-active');
             const src = $(this).find('img').attr('src');
