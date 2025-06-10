@@ -60,14 +60,14 @@
         {% when "faq_block" %}
           {% assign faqs = product.metafields.rebrand.top_faqs.value %}
           {% if faqs %}
-            <div>
+            <div class="product-faq-div">
               {% for faq in faqs %}
                 <details class="product-faq">
                   <summary>
                     <div class="faq-title"><p>{{ faq.title }}</p></div>
                   </summary>
                   {% assign content = faq.contents | metafield_tag %}
-                  <p>{{ content }}</p>
+                  <div class="faq-detail">{{ content }}</div>
                 </details>
               {% endfor %}
             </div>
@@ -300,6 +300,13 @@
 .faq-title p {
     margin: 0px;
 }
+  .product-faq-div{
+    margin-top:25px;
+  }
+  .faq-detail *{
+    font-size:14px;
+  }
+  
 /*Add to cart with options end----*/
   @media(min-width:768px){
     .add-to-cart-btn{
