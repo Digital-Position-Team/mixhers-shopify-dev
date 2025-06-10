@@ -24,13 +24,13 @@
           {% endif %}
 
         {% when "product_title" %}
-          <h1>{{ block.settings.title | default: product.metafields.rebrand.product_title.value | default: product.title }}</h1>
+          <h1> {{ product_title }}</h1>
 
         {% when "product_subtitle" %}
-          <p>{{ block.settings.subtitle | default: product.metafields.rebrand.product_subtitle.value }}</p>
+          <p>{{product_subtitle}}</p>
 
         {% when "product_caption" %}
-          <p>{{ block.settings.caption | default: product.metafields.rebrand.product_caption.value }}</p>
+          <p>{{ product_caption}}</p>
 
         {% when "supplement_facts_button" %}
           {% if supplement_facts_title %}
@@ -41,7 +41,7 @@
 
         {% when "product_description" %}
           <div>
-            {{ product.metafields.rebrand.product_description | metafield_tag | default: product.description }}
+            {{ product_description}}
           </div>
 
         {% when "shared_details" %}
@@ -90,52 +90,22 @@
     {
       "type": "promo_badge",
       "name": "Promo Badge",
-      "settings": [
-        {
-          "type": "checkbox",
-          "id": "show_promo_badge",
-          "label": "Show Promo Badge"
-        },
-        {
-          "type": "text",
-          "id": "promo_text",
-          "label": "Promo Text",
-          "default": "Promo Badge"
-        }
-      ]
+      "settings": []
     },
     {
       "type": "product_title",
       "name": "Product Title",
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Override Title"
-        }
-      ]
+      "settings": []
     },
     {
       "type": "product_subtitle",
       "name": "Product Subtitle",
-      "settings": [
-        {
-          "type": "text",
-          "id": "subtitle",
-          "label": "Override Subtitle"
-        }
-      ]
+      "settings": []
     },
     {
       "type": "product_caption",
       "name": "Product Caption",
-      "settings": [
-        {
-          "type": "text",
-          "id": "caption",
-          "label": "Override Caption"
-        }
-      ]
+      "settings": []
     },
     {
       "type": "supplement_facts_button",
@@ -176,32 +146,23 @@
     "blocks": [
       {
         "type": "promo_badge",
-        "settings": {
-          "show_promo_badge": true,
-          "promo_text": "Promo Badge"
-        }
+        "settings": {}
       },
       {
         "type": "product_title",
-        "settings": {
-          "title": ""
-        }
+        "settings": {}
       },
       {
         "type": "product_subtitle",
-        "settings": {
-          "subtitle": ""
-        }
+        "settings": {}
       },
       {
         "type": "product_caption",
-        "settings": {
-          "caption": ""
-        }
+        "settings": {}
       },
       {
         "type": "supplement_facts_button",
-        "settings": { }
+        "settings": {}
       },
       {
         "type": "product_description",
@@ -224,11 +185,8 @@
     ]
   }
 ]
-
 }
 {% endschema %}
-
-
 
 <style>
   .standard-product-info{
