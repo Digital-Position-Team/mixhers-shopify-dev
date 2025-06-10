@@ -9,69 +9,198 @@
 {% assign supplement_facts_image = product.metafields.rebrand.supplement_facts_image.value | default: null %}
 {% assign top_faqs = product.metafields.rebrand.top_faqs.value %}
 <div class="product-info-main">
-    <div class="standard-product-image">
-      {% render 'standard-product-image-slider' %}
-    </div>
-    <div class="standard-product-info">
-      {% if show_promo_badge_above_title %}
-        <p>promo_badge</p>
-      {% endif %}
+  <div class="standard-product-image">
+    {% render 'standard-product-image-slider' %}
+  </div>
 
-      <h1>{{product_title}}</h1>
-      <p>{{product_subtitle}}</p>
-      <p>{{product_caption}}</p>
-        {% if supplement_facts_title %}
-        <button type="button" onclick="openSupplementFactsModal()" {% unless supplement_facts_image %}disabled{% endunless %}>
-          <p>{{supplement_facts_title}}</p>
-        </button>
-      {% endif %}
-        <div>{{product_description}}</div>
-      {% render 'shared-product-details', then_render: 'add-to-cart-with-options',  product: product, %}
-       {% comment %}
-                Top FAQs
-            {% endcomment %}
+  <div class="standard-product-info">
+    {% for block in section.blocks %}
+      {% case block.type %}
+
+        {% when "promo_badge" %}
+          {% if block.settings.show_promo_badge %}
+            <p>{{ block.settings.promo_text }}</p>
+          {% endif %}
+
+        {% when "product_title" %}
+          <h1>{{ block.settings.title | default: product.metafields.rebrand.product_title.value | default: product.title }}</h1>
+
+        {% when "product_subtitle" %}
+          <p>{{ block.settings.subtitle | default: product.metafields.rebrand.product_subtitle.value }}</p>
+
+        {% when "product_caption" %}
+          <p>{{ block.settings.caption | default: product.metafields.rebrand.product_caption.value }}</p>
+
+        {% when "supplement_facts_button" %}
+          {% assign supplement_title = block.settings.title | default: product.metafields.rebrand.supplement_facts_title.value %}
+          {% assign supplement_image = block.settings.image | default: product.metafields.rebrand.supplement_facts_image.value %}
+          {% if supplement_title %}
+            <button type="button" onclick="openSupplementFactsModal()" {% unless supplement_image %}disabled{% endunless %}>
+              <p>{{ supplement_title }}</p>
+            </button>
+          {% endif %}
+
+        {% when "product_description" %}
+          <div>
+            {{ product.metafields.rebrand.product_description | metafield_tag | default: product.description }}
+          </div>
+
+        {% when "shared_details" %}
+          {% render 'shared-product-details', then_render: 'add-to-cart-with-options', product: product %}
+
+        {% when "faq_block" %}
+          {% assign faqs = product.metafields.rebrand.top_faqs.value %}
+          {% if faqs %}
             <div>
-            {% if top_faqs %}
-                {% for top_faq in top_faqs %}
-                    <details class="product-faq">
-                        <summary class="">
-                            <div class="faq-title">
-                               <p>{{top_faq.title}}</p>
-                            </div>
-                        </summary>
-                        {% assign content = top_faq.contents | metafield_tag %}
-                        <p>{{ content }}</p>
-                    </details>
-                {% endfor %}
-            {% endif %}
+              {% for faq in faqs %}
+                <details class="product-faq">
+                  <summary>
+                    <div class="faq-title"><p>{{ faq.title }}</p></div>
+                  </summary>
+                  {% assign content = faq.contents | metafield_tag %}
+                  <p>{{ content }}</p>
+                </details>
+              {% endfor %}
             </div>
-            {% comment %} Disclaimer {% endcomment %}
-            <div class="disclaimer-text">
-                * These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
-            </div>
-   </div>
+          {% endif %}
+
+        {% when "disclaimer" %}
+          <div class="disclaimer-text">
+            {{ block.settings.text }}
+          </div>
+
+      {% endcase %}
+    {% endfor %}
+  </div>
 </div>
 
 <!-- Supplement Facts Modal -->
 <div id="supplementFactsModal" class="hidden fixed inset-0 z-50 items-center justify-center bg-[#000000AA] p-7" onclick="closeSupplementFactsModal()">
-    <div id=supplementFacts class="bg-white rounded-lg shadow-xl relative inline-block">
-        <img src="{{ supplement_facts_image | image_url }}" alt="{{ supplement_facts_title }}" class="object-contain" width=auto height=auto/>
-        <button class="text-white absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 w-8 h-8" onclick="closeSupplementFactsModal()"> Close</button>
-    </div>
+  <div id="supplementFacts" class="bg-white rounded-lg shadow-xl relative inline-block">
+    <img src="{{ product.metafields.rebrand.supplement_facts_image.value | image_url }}" alt="Supplement Facts" class="object-contain" width="auto" height="auto" />
+    <button class="text-white absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 w-8 h-8" onclick="closeSupplementFactsModal()">Close</button>
+  </div>
 </div>
 
 
 {% schema %}
-  {
-    "name": "test",
-    "settings": [],
-    "presets":[
-      {
-        "name":"testing"
-      }
-    ]
-  }
+{
+  "name": "Standard Product Info ",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "promo_badge",
+      "name": "Promo Badge",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_promo_badge",
+          "label": "Show Promo Badge"
+        },
+        {
+          "type": "text",
+          "id": "promo_text",
+          "label": "Promo Text",
+          "default": "Promo Badge"
+        }
+      ]
+    },
+    {
+      "type": "product_title",
+      "name": "Product Title",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Override Title"
+        }
+      ]
+    },
+    {
+      "type": "product_subtitle",
+      "name": "Product Subtitle",
+      "settings": [
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Override Subtitle"
+        }
+      ]
+    },
+    {
+      "type": "product_caption",
+      "name": "Product Caption",
+      "settings": [
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Override Caption"
+        }
+      ]
+    },
+    {
+      "type": "supplement_facts_button",
+      "name": "Supplement Facts Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Button Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Supplement Facts Image"
+        }
+      ]
+    },
+    {
+      "type": "product_description",
+      "name": "Product Description",
+      "settings": []
+    },
+    {
+      "type": "shared_details",
+      "name": "Shared Product Details",
+      "settings": []
+    },
+    {
+      "type": "faq_block",
+      "name": "FAQs",
+      "settings": []
+    },
+    {
+      "type": "disclaimer",
+      "name": "Disclaimer",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Disclaimer Text",
+          "default": "* These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Standard Product Info",
+      "blocks": [
+        { "type": "promo_badge" },
+        { "type": "product_title" },
+        { "type": "product_subtitle" },
+        { "type": "product_caption" },
+        { "type": "supplement_facts_button" },
+        { "type": "product_description" },
+        { "type": "shared_details" },
+        { "type": "faq_block" },
+        { "type": "disclaimer" }
+      ]
+    }
+  ]
+}
 {% endschema %}
+
 
 
 <style>
