@@ -3,6 +3,7 @@
 {% assign product_subtitle = product.metafields.rebrand.product_subtitle.value | default: '' %}
 {% assign product_caption = product.metafields.rebrand.product_caption.value | default: '' %}
 {% assign product_description = product.metafields.rebrand.product_description | metafield_tag | default: product.description %}
+{% assign promo_content = product.metafields.rebrand.promo_content.value %}
 {% assign show_promo_badge_above_title = promo_content.show_promo_badge | default: false %}
 {% assign supplement_facts_title = product.metafields.rebrand.supplement_facts_title.value | default: null %}
 {% assign supplement_facts_image = product.metafields.rebrand.supplement_facts_image.value | default: null %}
@@ -24,6 +25,7 @@
           <p>{{supplement_facts_title}}</p>
         </button>
       {% endif %}
+        <div>{{product_description}}</div>
       {% render 'shared-product-details', then_render: 'testing'',  product: product, %}
    </div>
 </div>
@@ -54,6 +56,9 @@
   .standard-product-info{
     padding:32px 32px 24px 32px;
   }
+     @media (min-width: 1024px){
+        #supplementFacts {  max-height: calc(100vh - 210px);  max-width: calc(100vw - 210px);  overflow: auto;}
+    }
   @media(min-width:1024px){
       .product-info-main{
         display: grid;
