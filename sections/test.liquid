@@ -7,6 +7,7 @@
 {% assign show_promo_badge_above_title = promo_content.show_promo_badge | default: false %}
 {% assign supplement_facts_title = product.metafields.rebrand.supplement_facts_title.value | default: null %}
 {% assign supplement_facts_image = product.metafields.rebrand.supplement_facts_image.value | default: null %}
+{% assign top_faqs = product.metafields.rebrand.top_faqs.value %}
 
 <div class="product-info-main">
     <div class="standard-product-image">
@@ -27,6 +28,31 @@
       {% endif %}
         <div>{{product_description}}</div>
       {% render 'shared-product-details', then_render: 'testing'',  product: product, %}
+       {% comment %}
+                Top FAQs
+            {% endcomment %}
+            <div>
+            {% if top_faqs %}
+                {% for top_faq in top_faqs %}
+                    <details class="product-faq">
+                        <summary class="">
+                            <div class="faq-title">
+                               <p>{{top_faq.title}}</p>
+                            </div>
+                        </summary>
+                        {% assign content = top_faq.contents | metafield_tag %}
+                        <p>content</p>
+                    </details>
+                {% endfor %}
+            {% endif %}
+            </div>
+            {% comment %} Disclaimer {% endcomment %}
+            <div class="text-gray my-8">
+                {% render 'text',
+                    type: 'body-sm',
+                    content: '* These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.'
+                %}
+            </div>
    </div>
 </div>
 
