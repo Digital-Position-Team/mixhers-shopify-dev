@@ -116,7 +116,7 @@
         <p>Pick your flavors</p>
         <div class="options-wrapper-gap">
           <div class="select-wrapper">
-            <div id="flavor-color"></div>
+            <div id="flavor-color" class="flavor-color"></div>
             <select name="first-flavor">
               <option disabled selected>Pick your first flavor</option>
               {% for variant in product.variants %}
@@ -137,7 +137,7 @@
           </div>
 
           <div class="select-wrapper">
-            <div id="flavor-color"></div>
+            <div id="flavor-color" class="flavor-color"></div>
             <select name="second-flavor">
               <option disabled selected>Pick your second flavor</option>
               {% for variant in product.variants %}
