@@ -4,26 +4,21 @@
     height: 390px;
     padding-bottom: 30px;
   }
-
   .product-carousel-wrapper {
     display: none;
   }
-
   .product-carousel-desktop {
     display: none;
   }
-
   .swiper-pagination {
     display: flex;
     justify-content: flex-start;
     padding-left: 16px;
     width: 100%;
   }
-
   .swiper-pagination-bullet-active {
     background: #1a1a1a;
   }
-
   .swiper-slide {
     width: 100%;
     height: 100%;
@@ -31,20 +26,11 @@
     align-items: center;
     justify-content: center;
   }
-
-  .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .optimized-pdp-product-image img {
+  .product-feature-image img {
     display: block;
     max-width: 100%;
     height: auto;
   }
-
   .desktop-carousel-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -52,15 +38,14 @@
     width: 100%;
     gap: 0px;
   }
-
   .desktop-carousel-main,
   .desktop-carousel-thumbnail {
     flex: 1;
     position: relative;
   }
-
   .desktop-carousel-main img,
-  .desktop-carousel-thumbnail img {
+  .desktop-carousel-thumbnail img,
+   .swiper-slide img{
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -70,14 +55,21 @@
   .thumbnail-nav {
     position: absolute;
     bottom: -40px;
-    left: 0;
-    right: 0;
+    right: 8px;
     display: flex;
     gap: 8px;
     justify-content: center;
     align-items: end;
   }
-
+  .carousel-thumbnail {
+    background: none;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 0px;
+    margin: 0px;
+    display: inline-block;
+  }
   .carousel-thumbnail img {
     width: 64px;
     height: 64px;
@@ -86,7 +78,6 @@
     cursor: pointer;
     transition: border 0.3s ease;
   }
-
   .carousel-thumbnail img:hover {
     border-color: #ccc;
   }
@@ -95,11 +86,9 @@
     .product-carousel-wrapper {
       display: none;
     }
-
     .product-carousel-desktop {
       display: block;
     }
-
     .product-carousel-container {
       display: none;
     }
@@ -109,7 +98,6 @@
     .product-carousel-wrapper {
       display: block;
     }
-
     .product-carousel-desktop {
       display: none;
     }
@@ -123,7 +111,7 @@
 <!-- Mobile Slider -->
 <div class="product-carousel-wrapper">
   {% if optimized_pdp %}
-    <div class="optimized-pdp-product-image">
+    <div class="product-feature-image">
       <img src="{{ featured_image | image_url }}" alt="{{ product.title }}" width="" height="">
     </div>
   {% else %}
