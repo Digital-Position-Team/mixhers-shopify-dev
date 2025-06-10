@@ -15,8 +15,13 @@
   }
 {% endschema %}
 <style>
+  @media(min-width:1024px){
+      .product-info-main{
+      grid-template-columns: 5fr 7fr;
+      }
+  }
   .product-info-main{
-     display: grid;
+    display: grid;
     align-items: flex-start;
     grid-template-columns: 5fr 7fr;
     max-width: 100%;
