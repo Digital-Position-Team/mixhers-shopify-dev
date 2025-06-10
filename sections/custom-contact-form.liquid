@@ -67,11 +67,9 @@
     display: block;
     border: 1px solid #1a1a1a;
     font-family:inherit;
-     font-weight:300;
   }
    #custom-contact-form textarea{
     line-height: 22px;
-     font-weight:300;
     height: auto;
     font-size: 16px;
     width: 100%;
@@ -132,6 +130,7 @@
   .submit-button{
     min-width:180px;
     margin-top:5px;
+    font-weight:600;
   }
   .placeholder-span {
     position: absolute;
@@ -139,7 +138,6 @@
     line-height: 1;
     padding: 3px;
     left: 8px;
-    font-size:16px;
     background: #fff;
   }
   .border-highlight{
@@ -203,18 +201,18 @@
           <p class="instruction-text">{{ section.settings.service_hours }}</p>
         </div>
 
-        <div class="form-fields font-sans ">
-          <div class="light-font">
+        <div class="form-fields font-sans light-font">
+          <div>
             <label class="sr-only" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}</label>
             <input class="form-input" placeholder="Name" type="text" id="ContactForm-name" name="contact[name]">
           </div>
 
-          <div class="light-font">
+          <div>
             <label class="sr-only" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}</label>
             <input class="form-input" placeholder="Phone" type="tel" id="ContactForm-phone" name="contact[phone]">
           </div>
 
-          <div class="light-font">
+          <div>
             <label class="sr-only" for="ContactForm-email">{{ 'templates.contact.form.email' | t }} <span aria-hidden="true">*</span></label>
             <div style="position: relative;">
               <input id="email-input"
@@ -233,7 +231,7 @@
 
           <div id="email-error" class="error-message hidden">please enter a valid email address.</div>
 
-          <label class="sr-only light-font" for="ContactForm-order">Order Number</label>
+          <label class="sr-only" for="ContactForm-order">Order Number</label>
           <input class="form-input"
             placeholder="Order Number"
             type="text"
@@ -245,7 +243,7 @@
             {% endif %}
           >
 
-          <label class="sr-only light-font" for="ContactForm-message">{{ 'templates.contact.form.message' | t }}</label>
+          <label class="sr-only" for="ContactForm-message">{{ 'templates.contact.form.message' | t }}</label>
           <div style="position: relative;">
             <textarea id="message-input"
               class="form-textarea"
