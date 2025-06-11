@@ -247,6 +247,7 @@ div#purchase-options{
 #purchase-options .purchase-option-box {
   border: 1px solid #000;
     border-radius: 12px;
+  overflow:hidden;
 }
 #purchase-options hr {
     margin: 0px;
@@ -285,9 +286,6 @@ div#purchase-options{
 }
 .more-sub-info{
   padding-left:20px;
-}
-#purchase-options label.active-label{
-  background:#f4f9fd;
 }
 .icon-checkmark{
   display:inline-block!important;
@@ -394,6 +392,10 @@ div#purchase-options{
 .select-option-title{
     margin:0px 0px 8px 0px;
 }
+ #purchase-options label:has(input[type="radio"]:checked) {
+  background: #f4f9fd;
+}
+
 /*Add to cart with options end----*/
   @media(min-width:768px){
     .add-to-cart-btn{
