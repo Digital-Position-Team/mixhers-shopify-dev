@@ -120,6 +120,8 @@
     "show_vendor": false,
     "show_cart_note": false,
     "cart_drawer_collection": "",
+    "sitewide_sale_title": "Cyber Monday",
+    "sitewide_sale_color": "#ff59e4",
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
