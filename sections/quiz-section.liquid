@@ -1,6 +1,1007 @@
+
+
+
+{% comment %}Check for Sitewide Sale {% endcomment %}
+{% assign sitewideSaleEnabled = settings.sitewide_sale_enabled %}
+{% assign sitewideSalePercent = settings.sitewide_sale_discount_percent | times: 0.01 %}
+{% assign sitewide_sale_quiz_info = settings.sitewide_sale_quiz_info %}
+{% assign sitewide_sale_pdp_sub_bubble = settings.sitewide_sale_pdp_sub_bubble %}
+{% assign sitewide_sale_pdp_sub_toggle = settings.sitewide_sale_pdp_sub_toggle %}
+{% assign sitewide_sale_exclusive_offer = settings.sitewide_sale_exclusive_offer %}
+{% assign sitewide_sale_pdp_info = settings.sitewide_sale_pdp_info %}
+
+<style>
+.oct-quiz-subheading {
+    color: black !important;
+    font-family: "Buenos Aires", sans-serif !important;
+    font-size: 18px !important;
+}
+.oct-quiz-multiple-choice-options__option {
+    font-family: "Buenos Aires", sans-serif !important;
+    border-radius: 64px !important;
+    bg-clip: padding-box !important;
+    border: 1px solid black !important;
+    min-height: 62px !important;
+    max-height: 62px !important;
+    min-width: min-content !important;
+}
+</style>
+<script src="https://static.rechargecdn.com/assets/storefront/recharge-client-1.4.0.min.js" defer></script>
+
+<script>
+    klaviyo.push(['track', 'Starting Quiz']);
+</script>
+
+<div class="quiz-main-container" id="outOfScroll">
+    <div class="oct-quiz-results-progress">
+        {% for i in (1..3) %}
+            <div class="oct-quiz-results-progress-single"></div>
+        {% endfor %}
+    </div>
+
+    {% comment %} Cards and other components added with JS {% endcomment %}
+    
+    <div class="results-back-btn" onclick="resultsBack()">← Back</div>
+
+<div class="quiz-results-header" id="results-page-1" altHormone="false" data-stage="default">
+    <h2 class="headers-5">{{ section.settings.quiz_results_page_1_header }}</h2>
+    <div class="defaultHormoneImbalance body-3">
+        {{ section.settings.quiz_results_page_1_copy}}
+    </div>
+    <div class="pregnancyHormoneImbalance body-3">
+        {{ section.settings.quiz_results_page_1_pregnancy_copy }}
+    </div>
+    <div class="menopauseHormoneImbalance body-3">
+      {{ section.settings.quiz_results_page_1_menopause_copy }}
+  </div>
+</div>
+
+<div class="quiz-results-header" id="results-page-2">
+    <h2 class="headers-5">{{ section.settings.quiz_results_page_2_header }}</h2>
+    <div class="body-3">
+        {{ section.settings.quiz_results_page_2_copy }}
+    </div>
+</div>
+
+<div class="quiz-results-header" id="results-page-3">
+  <h2 class="headers-5">{{ section.settings.quiz_results_page_3_header }}</h2>
+  <div class="body-3">
+      {{ section.settings.quiz_results_page_3_copy }}
+  </div>
+  {% if sitewideSaleEnabled %}
+      <div class="sitewide-sale-quiz-wrapper">
+          <h4 class="headers-6 sale-text">{{ settings.sitewide_sale_quiz_header }}</h4>
+      </div>
+  {% endif %}
+  {% if show_promo_on_quiz %}
+    <div class="flex flex-row gap-2 items-center flex-wrap whitespace-nowrap justify-center mt-[47px] mb-[32px] w-full text-[18px]">
+        {% if promo_first_text %}
+          <span class="text-[14px] md:text-[16px]">{{ promo_first_text }}</span>
+        {% endif %}
+        {% if promo_discount_code %}
+          <span class="text-[16px] md:text-[18px] text-center text-pink">{{ promo_discount_code }}</span>
+        {% endif %}
+        {% if promo_last_text %}
+          <span class="text-[14px] md:text-[16px]">{{ promo_last_text }}</span>
+        {% endif %}
+    </div>
+  {% endif %}
+</div>
+
+<div class="results-nxt-btn" onclick="resultsNext()"><span>Next</span> <img src="{{'white-next-arrow.svg' | file_url }}" alt="continue arrow" width="24" height="10" loading="lazy"/></div>
+
+    {% comment %} {% endcomment %}
+    <div class="oct-quiz-progress">
+        <div class="oct-quiz-progress--bar-wrapper">
+            <div class="oct-quiz-progress--bar oct-quiz-progress--bar-bottom"></div>
+            <div class="oct-quiz-progress--bar oct-quiz-progress--bar-top"></div>
+        </div>
+        <div class="oct-quiz-progress--precent button-3"><span class="oct-quiz-progress--precent-number">0</span>%</div>
+    </div>
+    <div
+        class="octane-ai-quiz"
+        data-quiz-id="oFKoZNF520bicxPA"
+        data-embed-type="fullpage"
+        data-mobile-height="match_browser"
+        data-desktop-height="match_browser"
+    ></div>
+    <script src="https://app.octaneai.com/devky4lguoszyr7z/quiz.js" async defer></script>
+
+    <div class="loading-icon">
+        <p>loading...</p>
+    </div>
+</div>
+
+<script defer>
+    // Klaviyo tracking
+
+    let productNameArr = [];
+    let productCompareAtPrice = 0;
+    let productPrice = 0;
+    let quizProductBundle = [];
+    let quizProductImages = [];
+
+    let productData = [];
+    let jsonEndpoint = '/pages/product-details-json';
+
+    const QUIZ_DISCOUNT_DECIMAL = 0.05;
+    const SITEWIDE_SALE_ENABLED = '{{ sitewideSaleEnabled }}' === 'true' ? true : false;
+    const SITEWIDE_SALE_PERCENT = {{ settings.sitewide_sale_discount_percent }};
+    const SITEWIDE_SALE_DECIMAL = {{ settings.sitewide_sale_discount_percent }} / 100.00;
+
+    fetch(jsonEndpoint).then(function (response) {
+        return response.text();
+    }).then(function (rawText) {
+      
+      const clean = rawText
+        .replace(/<script[\s\S]*?<\/script>/gi, '')
+        .replace(/<style[\s\S]*?<\/style>/gi, '')
+        .replace(/<\/?[^>]+(>|$)/g, '')
+        .replace(/&quot;/g, '"')
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/\n/g, '')
+        .replace(/\r/g, '')
+        .replace(/\s{2,}/g, ' ')
+        .trim();
+  
+      const jsonStart = clean.indexOf('[');
+      const jsonEnd = clean.lastIndexOf(']') + 1;
+      let jsonStr = clean.substring(jsonStart, jsonEnd);
+
+      try {
+        const parsed = JSON.parse(jsonStr);
+        productData.push(...parsed);
+        console.log("✅ Parsed product data:", productData);
+      } catch (err) {
+        console.error("❌ Failed to parse JSON:", err.message);
+      }
+      
+      // productData.push(JSON.parse(html.replace(/(\r\n|\n|\r)/gm, "").replace(/<[^>]*>&?/gm, '')));
+      var parser = new DOMParser();
+      var doc = parser.parseFromString(html, 'text/html');
+      var productSections = doc.querySelectorAll('.product-data');
+       /* productSections.forEach(section => {
+            productData.push(JSON.parse(section.innerHTML.replace(/(<([^>]+)>)/gi, "")));
+
+            console.log('product data', productData);
+        })*/
+    }).catch(function (err) {
+        // There was an error
+        console.warn('Something went wrong.', err);
+    });
+  
+
+    let quizQuestionIndex = 0;
+
+    //Immediately available element
+    const quizProgressSingles = document.querySelectorAll('.oct-quiz-progress-single');
+
+    const waitForQuizToLoad = setInterval(() => {
+        //Element loads via Octane. Interval until found.
+        const quizStartButton = document.querySelector('.oct-quiz-btn');
+
+        if (quizStartButton) {
+            clearInterval(waitForQuizToLoad);
+        }
+    }, 500);
+
+    const waitForQuizToFinishLoading = setInterval(() => {
+
+        if (document.readyState === 'complete') {
+            clearInterval(waitForQuizToFinishLoading);
+            const quizStartButton = document.querySelector('.oct-quiz-btn');
+            document.querySelector('.loading-icon').style.display = 'none';
+            //quizStartButton.style.display = 'block';
+            quizStartButton.removeAttribute('disabled');
+            quizStartButton.addEventListener('click', () => progressQuiz('forward'));
+        }
+    }, 500);
+
+    let pathFound = false;
+    let path = '';
+    let selectedHerbabyAnswer = [];
+
+    function addEventListenerToButtons() {
+        const waitForButtonsToLoad = setInterval(() => {
+            //Element loads via Octane. Interval until found.
+            let quizAnswers = [];
+            if (document.querySelector('button[title="Next"]')) {
+                let continueButton = document.querySelectorAll('button[title="Next"]');
+                continueButton.forEach(item => {
+                    if( selectedHerbabyAnswer.length > 0) {
+                        let submitBtn = document.querySelector('button[title="Next"]');
+                        //console.log('selected herbaby answer', selectedHerbabyAnswer);
+                        submitBtn.addEventListener('click', () => {
+                            //console.log('pregnant?', selectedHerbabyAnswer.includes('Pregnant'))
+                            if(selectedHerbabyAnswer.includes('Pregnant') === false && selectedHerbabyAnswer.includes('Breastfeeding') === false) {
+                                //console.log('not pregnant or breastfeeding')
+                                pathFound = true;
+                                if(selectedHerbabyAnswer.length === 1 && selectedHerbabyAnswer[0] === 'Raising kid(s)') {
+                                    path = 'hertime/kids';
+                                } else {
+                                    path = 'herbaby/hertime';
+                                }
+                                progressQuiz('forward', path);
+                            } else if(selectedHerbabyAnswer.includes('Pregnant') || selectedHerbabyAnswer.includes('Breastfeeding')) {
+                                //console.log('pregnant or breastfeeding')
+                                pathFound = true;
+                                path = 'herbaby';
+                                progressQuiz('forward', path);
+                            }
+                        })
+                    } else {
+                        quizAnswers.push(item)
+                    }
+
+                });
+            } else if (document.querySelector('button[title="Skip"]')){
+                let submitButton = document.querySelectorAll('button[title="Submit"]');
+                submitButton.forEach(item => { quizAnswers.push(item) });
+                let skipButton = document.querySelectorAll('button[title="Skip"]');
+                skipButton.forEach(item => { quizAnswers.push(item) });
+            } else if (document.querySelector('button[title="Let’s get started!"]')) {
+                let startButton = document.querySelectorAll('button[title="Let’s get started!"]');
+                startButton.forEach(item => { quizAnswers.push(item) });
+            } else {
+                answersArray = document.querySelectorAll('.oct-quiz-multiple-choice-options__option');
+                answersArray.forEach(item => { quizAnswers.push(item) });
+            };
+
+            const backButton = document.querySelector('button[title="back"]');
+            if (quizAnswers.length || backButton) {
+                clearInterval(waitForButtonsToLoad);
+
+                quizAnswers.forEach(item => { item.addEventListener('click', () => {
+                    if (!pathFound) {
+                        let answer = item.querySelector('div').innerHTML;
+                        //console.log('selected answer', answer);
+
+                        if(answer === 'Reproductive Years | First period through menopause'){
+                            pathFound = true;
+                            path = 'hertime';
+                            progressQuiz('forward', path);
+                        } else if(answer === 'Menopause | No period in 12 months' || answer === 'Perimenopause | Pre-menopause transition') {
+                            pathFound = true;
+                            path = 'herthrive';
+                            progressQuiz('forward', path);
+                        } else if(answer === 'Motherhood | Trying to conceive, pregnant, or postpartum') {
+                            findHerbabyPath();
+                            path = 'herbaby';
+                            pathFound = true;
+                            progressQuiz('forward', path);
+                        } else {
+                            progressQuiz('forward', 'current');
+                        }
+                    } else {
+                        progressQuiz('forward', path);
+                    }
+                })});
+                backButton.addEventListener('click', () => progressQuiz('back', 'current'));
+            }
+        }, 500);
+    }
+
+    function findHerbabyPath() {
+        let answersArray = document.querySelectorAll('.oct-quiz-multiple-choice-options__option');
+
+        if (answersArray.length) {
+            answersArray.forEach(item => {
+                let answer = item.querySelector('div').innerHTML;
+                item.addEventListener('click', () => {
+                    selectedHerbabyAnswer.push(answer);
+                })
+            })
+        } else {
+            setTimeout(() => {
+                findHerbabyPath();
+            }, 500);
+        }
+    }
+
+
+    let progressPercent = 0;
+    let totalQuestions = 15;
+    let currentQuestion = 0;
+
+    function progressQuiz(direction, path) {
+        if(path === 'hertime') {
+            totalQuestions = 14;
+        } else if (path === 'herthrive') {
+            totalQuestions = 12;
+        } else if (path === 'herbaby/hertime') {
+            totalQuestions = 15;
+        } else if (path === 'herbaby') {
+            totalQuestions = 12;
+        } else if (path === 'hertime/kids') {
+            totalQuestions = 15;
+        } else {
+            totalQuestions = totalQuestions;
+        }
+
+        if (direction === 'forward') {
+            currentQuestion++;
+        } else {
+            currentQuestion--;
+        }
+
+        progressPercent = Math.round((currentQuestion / totalQuestions) * 100);
+        let progressPercentEl = document.querySelector('.oct-quiz-progress--precent-number');
+        let progressBar = document.querySelector('.oct-quiz-progress--bar-top');
+        let progressBarWrap = document.querySelector('.oct-quiz-progress');
+        progressPercentEl.innerText = progressPercent;
+        progressBar.style.width = progressPercent + '%';
+
+
+        //console.log('total questions', totalQuestions);
+        //console.log('current question', currentQuestion);
+        //console.log('path', path);
+        //console.log('progress percent', progressPercent);
+        addEventListenerToButtons();
+    }
+
+
+
+    let resultsProgressSingles = document.querySelectorAll('.oct-quiz-results-progress-single');
+
+    document.addEventListener('octane.quiz.completed', function (e) {
+        displayResults(e.detail);
+        document.querySelector('.quiz-results-header').classList.add('active-results');
+        document.querySelector('.results-nxt-btn').classList.add('active-results');
+        document.querySelector('.oct-quiz-results-progress').style.display = "flex";
+        document.querySelector('.oct-quiz-progress').style.display = "none";
+        document.querySelector('.oct-quiz-content').style.display = "none";
+        document.querySelector('.octane-ai-quiz-rendered').style.display = "none";
+        resultsProgressSingles[0].classList.add('active');
+    }, false);
+
+
+
+    function displayResults({ answers, product_blocks }) {
+        const quizResultWrapper = document.querySelector('.oct-quiz-wrapper--result-page');
+        const resultContainer = document.createElement('div');
+        resultContainer.classList.add('quiz-results-products');
+
+        let resultsToShow = 'default';
+        let hormoneResults = document.querySelector('#results-page-1');
+
+        for (const [key, value] of Object.entries(answers)) {
+            if ( key === "Which stage of pregnancy are you in?" ) {
+                value.split(',').forEach(answer => {
+                    if (answer === 'Pregnant' || answer === 'Breastfeeding' ) {
+                        resultsToShow = 'pregnancy';
+                        return
+                    } else {
+                        resultsToShow = 'default';
+                    }
+                })
+            } else if(key === "What phase of life are you in?") {
+                value.split(',').forEach(answer => {
+                    if (answer === 'Reproductive Years | First period through menopause') {
+                        resultsToShow = 'default';
+                    } else if (answer === 'Perimenopause | Pre-menopause transition' || answer === 'Menopause | No period in 12 months') {
+                        resultsToShow = 'menopause';
+                    }
+                })
+            }
+        }
+
+        hormoneResults.setAttribute('data-stage', resultsToShow);
+
+        /*if (showHormoneImbalance) {
+            let resultsRating = document.querySelector('#results-rating');
+            if (answerScore <= 15) {
+                resultsRating.innerHTML = "minimum to mild degree";
+            } else if (answerScore > 16 && answerScore <= 30) {
+                resultsRating.innerHTML = "moderate degree";
+            } else if (answerScore >= 31) {
+                resultsRating.innerHTML = "severe degree";
+            }
+        } else {
+            let hormoneResults = document.querySelector('#results-page-1');
+            hormoneResults.setAttribute('altHormone', 'true');
+        }*/
+
+
+        let products = product_blocks.flat().filter((block, index) => index < 3); //wierd array of arrays //take top 3;
+        let resultRowContainer = document.createElement('div');
+        resultRowContainer.classList.add('quiz-results-products-row');
+
+        // temporary while purchase quiz bundle as one is disabled
+        /*
+        let resultsSubheading = resultContainer.appendChild(document.createElement('h2'));
+        resultsSubheading.classList.add('quiz-results-subheading');
+        if(SITEWIDE_SALE_ENABLED) {
+            resultsSubheading.innerHTML = "{{ sitewide_sale_quiz_info }}";
+        } else {
+            resultsSubheading.innerHTML = "or purchase separately";
+        }
+        */
+
+        /*
+        products.forEach((product, index) => {
+            if (product.title.includes('Hertime') || product.title.includes('Herbaby') || product.title.includes('Herthrive') || product.title.includes('Hertime™ Extra Strength')) {
+                products.splice(index, 1);
+                products.unshift(product);
+            }
+        })
+        */
+
+       /* products.forEach((product, index) => {
+            if(index === 0) {
+                resultContainer.appendChild(createProductCard(product.title, index));
+                productNameArr.push(product.title);
+            } else {
+                if (index === 1) {
+                    resultContainer.appendChild(resultRowContainer);
+                    resultRowContainer.appendChild(createProductCard(product.title, index));
+                    productNameArr.push(product.title);
+                } else {
+                    resultRowContainer.appendChild(createProductCard(product.title, index));
+                    productNameArr.push(' & ' + product.title);
+                    }
+            }
+        })*/
+       products.forEach((product, index) => {
+            if (index === 0) {
+                resultContainer.appendChild(resultRowContainer);
+                resultRowContainer.appendChild(createProductCard(product.title, index, product.id));
+            } else {
+                resultRowContainer.appendChild(createProductCard(product.title, index, product.id));
+            }
+        })
+
+        //append product cards
+        quizResultWrapper.appendChild(resultContainer);
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+    }
+
+
+    function createProductCard(title, index, productID) {
+        const cardType = (index === 0) ? 'full': '';
+        let hertimeHerbabyPath = path === 'herbaby/hertime' ? true : false;
+        const newCard = document.createElement('div');
+        newCard.classList.add('quiz-product-card', 'quiz-product-card-' + index);
+        newCard.innerHTML = productCardHtml(title, cardType, index, productID, hertimeHerbabyPath);
+        return newCard;
+    }
+
+    function handleReadMore(e) {
+        const el = $(e);
+        el.text(el.text() === 'Read More' ? 'Read Less' : 'Read More');
+        el.prev().toggleClass('line-clamp-5');
+    }
+
+    function productCardHtml(title, full, index, productID, hertimeHerbabyPath) {
+        let flavor = title.split("Her")[0];
+        const productTitle = `Her${title.split("Her")[1]}`;
+      
+        const productDataForSelected = productData.find(productObj => productObj.id === productID);
+
+        return `
+            <div class="quiz-product-card-info top">
+                <img src="${productDataForSelected.image}" alt="${productDataForSelected.image}">
+                <div class="product-title-wrapper">
+                    <h2 class="product-title headers-5">${productDataForSelected.title}</h2>
+                </div>
+                <h3 class="italic-subheaders-5">${productDataForSelected.subtitle}</h3>
+                <div class="line-clamp-5 prose text-black prose-sm md:prose-sm prose-neutral max-w-none prose-li:list-['+'] prose-li:marker:text-pink prose-li:marker:text-[24px] prose-p:mb-2 prose-ul:mt-2 prose-li:m-0 prose-p:leading-normal prose-li:leading-normal">
+                    ${new DOMParser().parseFromString(productDataForSelected.description, "text/html").documentElement.textContent}
+                </div>
+                <button class="text-left text-pink underline font-light text-[14px]" onclick="handleReadMore(this);">Read More</button>
+            </div>
+            <div class="quiz-product-card-info bottom">
+                <button
+                    class="addToCart-quiz solid-button atc-button"
+                    data-url="${productDataForSelected.url}"
+                >
+                    <span class="button-1">Shop Now</span>
+                </button>
+            </div>
+        `;
+    }
+
+    function showHertimeDetails() {
+        if(SITEWIDE_SALE_ENABLED) {
+            let hertimeProductCard = document.querySelector(`.quiz-product-card-info.Hertime`) ? document.querySelector(`.quiz-product-card-info.Hertime`) : false;
+            {% comment %} if(hertimeProductCard) {
+                let hertimeCardDetail = hertimeProductCard.querySelector('.hertime-only');
+                hertimeCardDetail.classList.add('show');
+            } {% endcomment %}
+        }
+    }
+
+    function initKlaviyo() {
+        let item;
+
+        var _learnq = window._learnq || [];
+
+        function addedToCart() {
+          fetch(`${window.location.origin}/cart.js`)
+          .then(res => res.clone().json().then(data => {
+            var cart = {
+              total_price: data.total_price/100,
+              $value: data.total_price/100,
+              total_discount: data.total_discount,
+              original_total_price: data.original_total_price/100,
+              //items: data.items
+                items: data.items.map(item => {
+                  return {
+                    "ProductName": item.product_title,
+                    "ProductID": item.product_id,
+                    "ImageURL": item.image,
+                    "URL": item.url,
+                    "Price": item.price/100,
+                    "CompareAtPrice": item.original_price/100,
+                    "Quantity": item.quantity
+                  }
+                })
+            }
+
+            if (item !== 'undefined') {
+              cart = Object.assign(cart, item)
+            }
+            if (klAjax) {
+                _learnq.push(['track', 'Added to Cart', cart]);
+                klAjax = false;
+              }
+
+              initKlaviyo()
+          }))
+        };
+        (function (ns, fetch) {
+          ns.fetch = function() {
+            const response = fetch.apply(this, arguments);
+            response.then(res => {
+              if (`${window.location.origin}/cart/add.js`
+                .includes(res.url)) {
+                  addedToCart()
+              }
+            });
+            return response
+          }
+        }(window, window.fetch));
+        var klAjax = true;
+        var atcButtons = document.querySelectorAll(".atc-button");
+        for (var i = 0; i < atcButtons.length; i++) {
+            item =
+              {
+                "ProductName": atcButtons[i].getAttribute('data-title'),
+                "ProductID": atcButtons[i].getAttribute('data-id'),
+                "ImageURL": atcButtons[i].getAttribute('data-image'),
+                "URL": atcButtons[i].getAttribute('data-url'),
+                "Price": atcButtons[i].getAttribute('data-price'),
+                "CompareAtPrice": atcButtons[i].getAttribute('data-compare-price'),
+            };
+            klaviyo.push(['track', 'Viewing Quiz Results', item]);
+            atcButtons[i].addEventListener("click", function() {
+              if (klAjax) {
+                _learnq.push(['track', 'Added to Cart', item]);
+                klAjax = false;
+              }
+            })
+        }
+    }
+
+// Result pages back and next buttons
+    function resultsNext() {
+        let resultsPages = document.querySelectorAll('.quiz-results-header');
+        let scrollDiv = document.querySelector('.quiz-main-container');
+        let currentPage = "";
+        for (let i = 0; i < resultsPages.length; i++) {
+            if (resultsPages[i].classList.contains('active-results')) {
+                currentPage = resultsPages[i].getAttribute('id');
+            }
+            let backBtn = document.querySelector('.results-back-btn');
+            let nextBtn = document.querySelector('.results-nxt-btn');
+
+            if( currentPage === 'results-page-1' ) {
+                resultsPages[i].classList.remove('active-results');
+                resultsPages[1].classList.add('active-results');
+                window.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: 'smooth'
+                  });
+                backBtn.classList.add('active-results');
+                nextBtn.classList.add('active-results');
+                resultsProgressSingles[1].classList.add('active');
+
+                return
+            } else if ( currentPage === 'results-page-2' ) {
+                resultsPages[i].classList.remove('active-results');
+                resultsPages[2].classList.add('active-results');
+                window.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: 'smooth'
+                  });
+                nextBtn.classList.remove('active-results');
+                backBtn.classList.add('active-results');
+                document.querySelector('.quiz-results-products').style.display = 'block';
+                document.querySelector('.octane-ai-quiz-rendered').style.display = 'block';
+                resultsProgressSingles[2].classList.add('active');
+                initFlavorSelectors()
+                //initSubToggle()
+                showHertimeDetails()
+                initQuizAddToCart()
+                initBundleImage()
+                initQuizBundle()
+                initKlaviyo()
+                return
+            } else {
+                console.log('no page found: ' + currentPage);
+            };
+        }
+    }
+
+    function resultsBack() {
+        let resultsPages = document.querySelectorAll('.quiz-results-header');
+        let scrollDiv = document.querySelector('.quiz-main-container');
+        resultsPages.forEach(page => {
+            let currentPage = "";
+            if (page.classList.contains('active-results')) {
+                currentPage = page.getAttribute('id');
+            }
+
+            let backBtn = document.querySelector('.results-back-btn');
+            let nextBtn = document.querySelector('.results-nxt-btn');
+
+            if( currentPage === 'results-page-2' ) {
+                page.classList.remove('active-results');
+                resultsPages[0].classList.add('active-results');
+                backBtn.classList.remove('active-results');
+                nextBtn.classList.add('active-results');
+                resultsProgressSingles[1].classList.remove('active');
+                window.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: 'smooth'
+                  });
+            } else if ( currentPage === 'results-page-3' ) {
+                page.classList.remove('active-results');
+                resultsPages[1].classList.add('active-results');
+                nextBtn.classList.add('active-results');
+                backBtn.classList.add('active-results');
+                document.querySelector('.quiz-results-products').style.display = 'none';
+                resultsProgressSingles[2].classList.remove('active');
+                document.querySelector('.octane-ai-quiz-rendered').style.display = "none";
+                window.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: 'smooth'
+                  });
+            } else {
+                console.log('no page found:' + currentPage);
+            }
+        })
+    }
+
+
+    /* ANCHOR Bundle */
+    function initBundleImage() {
+        let bundleImage = document.querySelector('.quiz-bundle-wrapper--bundle-image');
+        let row1 = bundleImage.querySelector('.row1');
+        let row2 = bundleImage.querySelector('.row2');
+
+        for (let i = 0; i < quizProductImages.length; i++) {
+            let image = quizProductImages[i];
+            let alt = quizProductBundle[i].alt;
+            let img = document.createElement('img');
+            img.setAttribute('src', image);
+            img.classList.add('quiz-bundle-image');
+            img.setAttribute('alt', alt);
+            if (i === 0) {
+                row2.appendChild(img);
+            } else {
+                row1.appendChild(img);
+            }
+        }
+    }
+
+    function createBundleProductCard(title, flavorSelect, tagline, index, findHertime) {
+        let bundleWrapper = document.querySelector('.quiz-bundle-wrapper--product-cards');
+        let productCardWrapper = bundleWrapper.querySelector('.product-card-wrapper');
+        const newCard = document.createElement('div');
+        newCard.classList.add('quiz-bundle-product-card');
+
+
+       if (index === 0 || findHertime) {
+            newCard.innerHTML = `
+                <div class="product-title-wrapper">
+                    <h2 class="product-title">${title}</h2>
+                    <h3 class="stick-title">(30 pack)</h3>
+                </div>
+                <h3 class="product-tagline">${tagline}</h3>
+                ${flavorSelect}
+            `;
+        } else {
+            newCard.innerHTML = `
+            <div class="product-title-wrapper">
+                <h2 class="product-title">${title}</h2>
+                <h3 class="stick-title">(15 pack)</h3>
+            </div>
+            <h3 class="product-tagline">${tagline}</h3>
+            ${flavorSelect}
+        `;
+        }
+
+        productCardWrapper.appendChild(newCard);
+    }
+
+    let bundleVariantIds = [];
+
+    function initBundleFlavorSelectors() {
+        const bundleWrapper = document.querySelector('.quiz-bundle-wrapper--product-cards');
+        const flavorSelectors = bundleWrapper.querySelectorAll('.product--variant-select-wrapper');
+        let selectedFlavorName = bundleWrapper.querySelectorAll('.selected-variant-name');
+
+        for (let j = 0; j < flavorSelectors.length; j++) {
+            let flavorSelector = flavorSelectors[j];
+            let flavorSelectOptions = flavorSelector.querySelectorAll('.product--variant-select--item');
+            let selectedFlavorNameForProduct = selectedFlavorName[j];
+
+            flavorSelector.setAttribute('data-index', j);
+
+            flavorSelectOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    let flavorSelectActive = flavorSelector.querySelector('.product--variant-select--item.selectedVariant');
+
+                    if (option === flavorSelectActive) {
+                        return;
+                    } else {
+                        flavorSelectActive.classList.remove('selectedVariant');
+                        option.classList.add('selectedVariant');
+                        bundleVariantIds.push(option.getAttribute('data-variant-id'));
+                        selectedFlavorNameForProduct.innerHTML = option.getAttribute('data-name');
+                    }
+                })
+            })
+
+        }
+    }
+
+    function initQuizBundle() {
+        let bundleWrapper = document.querySelector('.quiz-bundle-wrapper--product-cards');
+        let price = bundleWrapper.querySelector('.price-bundle');
+        let comparePrice = bundleWrapper.querySelector('.crossout-price-bundle');
+        let cartPrice = bundleWrapper.querySelector('.cart-price');
+        let productCardWrapper = bundleWrapper.querySelector('.product-card-wrapper');
+        let totalPrice = 0;
+        let totalComparePrice = 0;
+
+        let USDollar = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+        });
+
+
+        for ( let i = 0; i < quizProductBundle.length; i++ ) {
+            let findHertime = path = 'herbaby/hertime' && quizProductBundle[i].productTitle.includes('Hertime') ? true : false;
+            createBundleProductCard(quizProductBundle[i].productTitle, quizProductBundle[i].flavorSelect, quizProductBundle[i].tagline, i, findHertime);
+
+            // make quizProductBundle[i].compare_at_price a number
+
+            totalComparePrice += Number(quizProductBundle[i].compare_at_price);
+
+            if (SITEWIDE_SALE_ENABLED) {
+                let thisPrice = Number(quizProductBundle[i].compare_at_price)
+                totalPrice += thisPrice - (SITEWIDE_SALE_DECIMAL * thisPrice);
+            } else {
+                let thisPrice =  Number(quizProductBundle[i].price);
+                totalPrice += thisPrice - (thisPrice * 0.05);
+            }
+        }
+
+        price.innerHTML = USDollar.format((totalPrice / 100).toFixed(2));
+        comparePrice.innerHTML = USDollar.format((totalComparePrice / 100).toFixed(2));
+        cartPrice.innerHTML = USDollar.format((totalPrice / 100).toFixed(2));
+
+        initBundleFlavorSelectors();
+    }
+
+
+    function quizBundleAddToCart(){
+        let bundleWrapper = document.querySelector('.quiz-bundle-wrapper--product-cards');
+        let loadingIndicator = bundleWrapper.querySelector('.loading-indicator');
+        let addToCartButton = bundleWrapper.querySelector('.quiz-form__cart-submit');
+        let selectedVariants = bundleWrapper.querySelectorAll('.product--variant-select--item.selectedVariant');
+        let selectedVariantIds = [];
+        let selectedVariantSellingPlans = [];
+        let selectedVariantSticks = [];
+
+
+
+        for ( let i = 0; i < selectedVariants.length; i++ ) {
+            selectedVariantIds.push(selectedVariants[i].getAttribute('data-variant-id'));
+            selectedVariantSellingPlans.push(selectedVariants[i].getAttribute('data-selling-plan-id'));
+            selectedVariantSticks.push(selectedVariants[i].getAttribute('data-sticks'));
+        }
+        let formData = {
+            "items": [
+                {
+                    "id": selectedVariantIds[0],
+                    "quantity": 1,
+                    'selling_plan': selectedVariantSellingPlans[0],
+                    'properties': {
+                    '_sticks': selectedVariantSticks[0],
+                    '_quiz_bundle': 'true',
+                    }
+                },
+                {
+                    "id": selectedVariantIds[1],
+                    "quantity": 1,
+                    'selling_plan': selectedVariantSellingPlans[1],
+                    'properties': {
+                    '_sticks': selectedVariantSticks[1],
+                    '_quiz_bundle': 'true',
+                    }
+                },
+                {
+                    "id": selectedVariantIds[2],
+                    "quantity": 1,
+                    'selling_plan': selectedVariantSellingPlans[2],
+                    'properties': {
+                    '_sticks': selectedVariantSticks[2],
+                    '_quiz_bundle': 'true',
+                    }
+                }
+            ]
+        }
+
+        fetch(window.Shopify.routes.root + 'cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+          }).then(response => {
+
+            return response.json();
+
+          }).catch((error) => {
+            console.error('Error:', error);
+          });
+
+    }
+
+
+    /* ANCHOR - Flavor Selector Functionality */
+    function initFlavorSelectors(){
+        const productRow = document.querySelector('.quiz-results-products-row');
+
+        const flavorSelectors = productRow.querySelectorAll('.product--variant-select-container');
+
+        for (let j = 0; j < flavorSelectors.length; j++) {
+            let flavorSelector = flavorSelectors[j];
+            let flavorSelectOptions = flavorSelector.querySelectorAll('.product--variant-select--item');
+            let productCard = flavorSelector.closest('.quiz-product-card-info');
+            let variantAddToCart = productCard.querySelector('.addToCart-quiz');
+            let selectedFlavorName = flavorSelectors[j].querySelector('.selected-variant-name');
+            const firstActiveFlavor = flavorSelector.querySelector('.product--variant-select--item.selectedVariant');
+
+            let activeId = firstActiveFlavor.getAttribute('data-variant-id');
+            let activePrice = firstActiveFlavor.getAttribute('data-price');
+            let activeComparePrice = firstActiveFlavor.getAttribute('data-compare-price');
+            let activeSellingPlanId = firstActiveFlavor.getAttribute('data-selling-plan-id');
+            let activeSticks = firstActiveFlavor.getAttribute('data-sticks');
+
+            variantAddToCart.setAttribute('data-id', activeId);
+            variantAddToCart.setAttribute('data-selling-plan', activeSellingPlanId);
+            variantAddToCart.setAttribute('data-product-sticks', activeSticks);
+
+            flavorSelectOptions.forEach( option => {
+                option.addEventListener('click', () => {
+                    let flavorSelectActive = flavorSelector.querySelector('.product--variant-select--item.selectedVariant');
+
+                    if (option === flavorSelectActive) {
+                        return;
+                    } else {
+                        flavorSelectActive.classList.remove('selectedVariant');
+                        option.classList.add('selectedVariant');
+                        selectedFlavorName.innerHTML = option.getAttribute('data-name');
+
+                        activeId = option.getAttribute('data-variant-id');
+                        activeSellingPlanId = option.getAttribute('data-selling-plan-id');
+                        activeSticks = option.getAttribute('data-sticks');
+
+                        variantAddToCart.setAttribute('data-id', activeId);
+                        variantAddToCart.setAttribute('data-selling-plan', activeSellingPlanId);
+                        variantAddToCart.setAttribute('data-product-sticks', activeSticks);
+                    }
+                })
+            })
+        }
+    }
+
+/* ANCHOR - Add to Cart Functionality */
+function initQuizAddToCart() {
+    let addToCartButtons = document.querySelectorAll('.addToCart-quiz');
+    for ( let i = 0; i < addToCartButtons.length; i++) {
+        addToCartButtons[i].addEventListener('click', function(e){
+            let url = addToCartButtons[i].getAttribute('data-url');
+            window.location.href = url;
+        });
+    }
+}
+</script>
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Quiz Results",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Quiz Results"
+    },
+    {
+      "type": "header",
+      "content": "Quiz Results Page 1"
+    },
+    {
+      "type": "text",
+      "id": "quiz_results_page_1_header",
+      "label": "Quiz Results Page 1 Header",
+      "default": "More feel-good days are ahead."
+    },
+    {
+      "type": "textarea",
+      "id": "quiz_results_page_1_copy",
+      "label": "Quiz Results Page 1 Copy"
+    },
+    {
+      "type": "textarea",
+      "id": "quiz_results_page_1_pregnancy_copy",
+      "label": "Quiz Results Page 1 Pregnancy Copy"
+    },
+    {
+      "type": "textarea",
+      "id": "quiz_results_page_1_menopause_copy",
+      "label": "Quiz Results Page 1 Menopause Copy"
+    },
+    {
+      "type": "header",
+      "content": "Quiz Results Page 2"
+    },
+    {
+      "type": "text",
+      "id": "quiz_results_page_2_header",
+      "label": "Quiz Results Page 2 Header",
+      "default": "The good news."
+    },
+    {
+      "type": "textarea",
+      "id": "quiz_results_page_2_copy",
+      "label": "Quiz Results Page 2 Copy"
+    },
+    {
+      "type": "header",
+      "content": "Quiz Results Page 3"
+    },
+    {
+      "type": "text",
+      "id": "quiz_results_page_3_header",
+      "label": "Quiz Results Page 3 Header",
+      "default": "Your custom line-up."
+    },
+    {
+      "type": "textarea",
+      "id": "quiz_results_page_3_copy",
+      "label": "Quiz Results Page 3 Copy"
+    },
+    {
+      "type": "text",
+      "id": "quiz_results_page_3_bundle_title",
+      "label": "Quiz Results Page 3 Bundle Title",
+      "default": "Your Custom Bundle"
+    }
+  ],
+  "presets":[
+    {"name":"quiz"}
+  ]
+}
 {% endschema %}
