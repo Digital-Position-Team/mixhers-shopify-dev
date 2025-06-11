@@ -10,7 +10,7 @@
 
 
 {% assign product_title = product.metafields.rebrand.product_title.value | default: product.title %}
-{% assign product_subtitle = product.metafields.rebrand.product_subtitle.value | default: '' %}
+{% assign product_subtitle = product.metafields.rebrand.product_subtitle.value | default: 'syv' %}
 {% assign product_caption = product.metafields.rebrand.product_caption.value | default: 'ff' %}
 {% assign product_description = product.metafields.rebrand.product_description | metafield_tag | default: product.description %}
 
