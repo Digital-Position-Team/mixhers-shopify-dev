@@ -35,23 +35,23 @@
       <div id="purchase-options" class="hidden">
         <div class="purchase-option-box">
           <label>
-            <div class="purchase-option-label">
-            <input type="radio" name="purchaseType" value="one_time_purchase">
-            <div class="inner-purchase-row">
-              <span>One-time purchase</span>
-              {% if show_slashed_out_promo_pricing_on_pdps %}
-                <div>
-                  <span id="one-time-sale-price">{{ one_time_sale_price }}</span>
-                  <span id="one-time-price">{{ one_time_price }}</span>
-                  {% if promo_discount_code and show_with_code_text_next_to_slash_out_price_on_pdps %}
-                    <span>{{ 'with code ' | append: promo_discount_code }}</span>
-                  {% endif %}
-                </div>
-              {% else %}
-                <span id="one-time-price">{{ one_time_price }}</span>
-              {% endif %}
-            </div>
-            </div>
+           <div class="purchase-option-label">
+              <input type="radio" name="purchaseType" value="one_time_purchase">
+              <div class="inner-purchase-row">
+                <span>One-time purchase</span>
+               {% if show_slashed_out_promo_pricing_on_pdps %}
+      			  <div>
+      			    <span id="one-time-sale-price" class="text-pink">{{ one_time_sale_price }}</span>
+      			    <span id="one-time-price" class="line-through">{{ one_time_price }}</span>
+      			    {% if promo_discount_code and show_with_code_text_next_to_slash_out_price_on_pdps %}
+      			      <span class="text-pink">{{ 'with code ' | append: promo_discount_code }}</span>
+      			    {% endif %}
+      			  </div>
+      			{% else %}
+      			  <span id="one-time-price">{{ one_time_price }}</span>
+      			{% endif %}
+              </div>
+          </div>
           </label>
           <hr>
           <label>
