@@ -1,9 +1,8 @@
 
 {% unless product %}
-  {% for prod in collections.all.products %}
-    {% if prod.id == product_id %}
-      {% assign product = prod %}
-      {% break %}
+  {% for product in collections.all.products %}
+    {% if product.id == product_id %}
+    {% assign product = product %}
     {% endif %}
   {% endfor %}
 {% endunless %}
