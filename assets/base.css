@@ -3722,6 +3722,12 @@ h1.collection-hero__title {
 cart-notification {
     display: none;
 }
+/*find store page */
+body.page-store-locator .page-width.page-width--narrow {
+    max-width: 910px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
 @media(max-width:1023px){
  .section-container{
     padding-left:32px;
