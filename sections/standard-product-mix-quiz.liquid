@@ -46,6 +46,7 @@
       gap:10px;
     }
     .mix-heading {
+       font-size: 48px;
       font-weight: 400;
       font-size:80px;
       margin-bottom:20px;
@@ -78,12 +79,20 @@
     /* .mix-button:hover{
       background-color: #1a1a1a;
     } */
+    @media(min-width:991px){
+      .mix-heading {
+        font-size:80px;
+      }
+    }
     @media (min-width: 768px) {
      .standard-product-mix {
        padding:42px 16px;
      }
       .mix-content-wrapper {
         grid-template-columns:1fr 1fr;
+      }
+      .mix-heading{
+         font-size: 65px;
       }
     }
 
