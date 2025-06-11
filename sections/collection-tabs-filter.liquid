@@ -1,8 +1,52 @@
 {% schema %}
 {
   "name": "Custom Collection Grid",
-  "settings": [],
-  "presets": [{ "name": "Custom Collection Grid" }]
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading",
+      "default": "Fueling your evolution through every stage of womanhood"
+    },
+     {
+      "type": "checkbox",
+      "id": "show_tabs",
+      "label": "Show Collection Tabs",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "custom_tab",
+      "name": "Custom Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Tab Label",
+          "default": "New Tab"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Tab Link"
+        }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Custom Collection Grid" ,
+    "category": "Collections",
+     "blocks": [
+        {
+          "type": "custom_tab",
+          "settings": {
+            "label": "Sales",
+            "link": "/collections/final-sale"
+          }
+        }
+      ]
+  }]
 }
 {% endschema %}
 
@@ -133,7 +177,11 @@
       {{ label }}
     </button>
   {% endfor %}
-  <a class="link-tab" href="/collections/final-sale">Sale</a>
+ {% for block in section.blocks %}
+  {% if block.type == 'custom_tab' %}
+    <a class="link-tab" href="{{ block.settings.link }}">{{ block.settings.label }}</a>
+  {% endif %}
+{% endfor %}
 </div>
 
 {% assign all_products = collections.all.products %}
