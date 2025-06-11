@@ -201,7 +201,7 @@
   <div class="collection--title">
     <h3 class="font-serif margin-0 ">Fueling your evolution through every stage of womanhood</h3>
   </div>
-<div class="collection-tabs">
+<div class="collection-tabs {% if section.settings.show_tabs %} no-collection-tabs {% endif %}">
   {% assign filters = "all-products,holiday,pms,motherhood,menopause,health,sexual-wellness" | split: "," %}
   {% assign filter_labels = "All,⭐️ Holiday Shopping,PMS,Motherhood,Menopause,Health & Nutrition,Sexual Wellness" | split: "," %}
 
