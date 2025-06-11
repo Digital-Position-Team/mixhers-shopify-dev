@@ -17,9 +17,9 @@
 }
 {% endstylesheet %}
 
-<section class="section blog-hero--wrapper" style="background: {{ section.settings.background }};">
+<div class="blog-hero--wrapper" style="background: {{ section.settings.background }};">
   <div class="blog-hero--title-wrapper">
-    <h1 class="headers-1">{{ section.settings.title | escape }}</h1>
+    <h1 class="blog-hero--title">{{ section.settings.title | escape }}</h1>
   </div>
   {% if section.settings.image != blank %}
     <div class="blog-hero--img-wrapper">
@@ -32,7 +32,7 @@
       >
     </div>
   {% endif %}
-</section>
+</div>
 
 {% schema %}
 {
