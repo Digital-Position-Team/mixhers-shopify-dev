@@ -8,15 +8,13 @@
   {% endfor %}
 {% endunless %}
 
-
-
 {% assign product_title = product.metafields.rebrand.product_title.value | default: product.title %}
 {% assign product_subtitle = product.metafields.rebrand.product_subtitle.value | default: '' %}
 {% assign product_caption = product.metafields.rebrand.product_caption.value | default: '' %}
 {% assign product_description = product.metafields.rebrand.product_description | metafield_tag | default: product.description %}
 
-{% assign bundle_product = all_products[product.metafields.rebrand.bundle_product.value] %}
-{% assign bundle_collection = collections[product.metafields.rebrand.bundle_collection.value] %}
+{% assign bundle_product = product.metafields.rebrand.bundle_product.value %}
+{% assign bundle_collection = product.metafields.rebrand.bundle_collection.value %}
 
 {% assign promo_content = product.metafields.rebrand.promo_content.value %}
 {% assign promo_discount_percentage = promo_content.discount_percentage | default: 0 %}
