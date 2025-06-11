@@ -1,6 +1,5 @@
+
 {% render 'flavor-bubble' with product: false %}
-
-
 {% comment %}Check for Sitewide Sale {% endcomment %}
 {% assign sitewideSaleEnabled = settings.sitewide_sale_enabled %}
 {% assign sitewideSalePercent = settings.sitewide_sale_discount_percent | times: 0.01 %}
