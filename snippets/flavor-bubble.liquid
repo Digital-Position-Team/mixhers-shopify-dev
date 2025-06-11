@@ -1,32 +1,40 @@
-{% for option in product.options %}
-  {% assign option_handle = option | downcase %}
-  {% assign selector_prefix = '' %}
+{% if product %}
+  {% assign products = '' | split: '' %}
+  {% assign products = products | push: product %}
+{% else %}
+  {% assign products = shop.metaobjects.product_list.all-products.products.value %}
+{% endif %}
 
-  {% if option == 'Size' or option == 'Product' %}
-    {% assign selector_prefix = '.product--size-select--item' %}
-  {% else %}
-    {% assign selector_prefix = '.select-selected' %}
-  {% endif %}
+{% for p in products %}
+  {% for option in p.options %}
+    {% assign bubble = '' %}
+    {% for variant in p.variants %}
+      {% assign bubble = variant.metafields.custom.bubble.value %}
+      {% if option == 'Size' or option == 'Product' %}
+        {% capture selector %}
+          .{{ p.handle }} .product--size-select--item[data-name="{{ variant.option1 }}"]:before,
+          .{{ p.handle }} .select-items div[data-name="{{ variant.option1 }}"]:before
+        {% endcapture %}
+      {% else %}
+        {% capture selector %}
+          .{{ p.handle }} .select-selected[data-name="{{ variant.option1 }}"]:before,
+          .{{ p.handle }} .select-items div[data-name="{{ variant.option1 }}"]:before
+        {% endcapture %}
+      {% endif %}
 
-  {% for variant in product.variants %}
-    {% assign bubble_value = variant.metafields.custom.bubble.value %}
-    {% assign size = bubble_value.size %}
-    
-    {% if size == 1 %}
-      .{{ product.handle }} {{ selector_prefix }}[data-name="{{ variant.option1 }}"]:before,
-      .{{ product.handle }} .select-items div[data-name="{{ variant.option1 }}"]:before {
-        background: {{ bubble_value }};
-      }
-    {% elsif size == 2 %}
-      .{{ product.handle }} {{ selector_prefix }}[data-name="{{ variant.option1 }}"]:before,
-      .{{ product.handle }} .select-items div[data-name="{{ variant.option1 }}"]:before {
-        background: linear-gradient(to right, {{ bubble_value[0] }} 50%, {{ bubble_value[1] }} 50%);
-      }
-    {% elsif size == 3 %}
-      .{{ product.handle }} {{ selector_prefix }}[data-name="{{ variant.option1 }}"]:before,
-      .{{ product.handle }} .select-items div[data-name="{{ variant.option1 }}"]:before {
-        background: conic-gradient(from 60deg at center, {{ bubble_value[0] }} 0 33.3%, {{ bubble_value[1] }} 0 66.6%, {{ bubble_value[2] }} 0 99.9%);
-      }
-    {% endif %}
+      {% if bubble.size == 1 %}
+        {{ selector }} {
+          background: {{ bubble }};
+        }
+      {% elsif bubble.size == 2 %}
+        {{ selector }} {
+          background: linear-gradient(to right, {{ bubble[0] }} 50%, {{ bubble[1] }} 50%);
+        }
+      {% elsif bubble.size == 3 %}
+        {{ selector }} {
+          background: conic-gradient(from 60deg at center, {{ bubble[0] }} 0 33.3%, {{ bubble[1] }} 0 66.6%, {{ bubble[2] }} 0 99.9%);
+        }
+      {% endif %}
+    {% endfor %}
   {% endfor %}
 {% endfor %}
