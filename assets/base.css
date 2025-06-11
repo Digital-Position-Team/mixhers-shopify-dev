@@ -3724,12 +3724,16 @@ cart-notification {
 }
 /*find store page */
 body.page-store-locator .page-width.page-width--narrow {
+    padding: 35px 10px;
     max-width: 910px;
-    padding-left: 10px;
-    padding-right: 10px;
+    font-family: 'Buenos Aires';
+}
+body.page-store-locator .page-width.page-width--narrow .standard__heading h1 {
+    font-family: FAIRE Sprig;
+    margin: 0px 0px 20px 0px;
 }
 body.page-store-locator div#stockist-widget {
-    padding-top: 20px;
+    padding-top: 10px;
     padding-bottom: 10px;
 }
 @media(max-width:1023px){
