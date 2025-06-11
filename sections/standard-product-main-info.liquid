@@ -55,7 +55,7 @@
           </div>
 
         {% when "shared_details" %}
-          {% render 'shared-product-details', then_render: 'add-to-cart-with-options', product_id: product.id %}
+          {% render 'shared-product-details', then_render: 'add-to-cart-with-options' %}
 
         {% when "faq_block" %}
           {% assign faqs = product.metafields.rebrand.top_faqs.value %}
