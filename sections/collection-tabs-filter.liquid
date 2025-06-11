@@ -220,39 +220,34 @@
   {% endcomment %}
 
   {% if section.settings.show_tabs %}
-     <button id="all-products-tag" class="filter-tag active-tag" type="button" onclick="handleFilter('all-products')">All</button>
-  {% if section.settings.show_holiday_tab %}
-    <button id="holiday-tag" class="filter-tag" type="button" onclick="handleFilter('holiday')">⭐️ Holiday Shopping</button>
-  {% endif %}
-  {% if section.settings.show_pms_tab %}
-    <button id="pms-tag" class="filter-tag" type="button" onclick="handleFilter('pms')">PMS</button>
-  {% endif %}
-  {% if section.settings.show_motherhood_tab %}
-    <button id="motherhood-tag" class="filter-tag" type="button" onclick="handleFilter('motherhood')">Motherhood</button>
-  {% endif %}
-  {% if section.settings.show_menopause_tab %}
-    <button id="menopause-tag" class="filter-tag" type="button" onclick="handleFilter('menopause')">Menopause</button>
-  {% endif %}
-  {% if section.settings.show_health_tab %}
-    <button id="health-tag" class="filter-tag" type="button" onclick="handleFilter('health')">Health & Nutrition</button>
-  {% endif %}
-  {% if section.settings.show_sexual_wellness_tab %}
-    <button id="sexual-wellness-tag" class="filter-tag" type="button" onclick="handleFilter('sexual-wellness')">Sexual Wellness</button>
-  {% endif %}
-
-  {% for block in section.blocks %}
-    {% if block.type == 'custom_tab' %}
-      <a class="link-tab" href="{{ block.settings.link }}">{{ block.settings.label }}</a>
+    <button id="all-products-tag" class="filter-tag active-tag" type="button" onclick="handleFilter('all-products')">All</button>
+    {% if section.settings.show_holiday_tab %}
+      <button id="holiday-tag" class="filter-tag" type="button" onclick="handleFilter('holiday')">⭐️ Holiday Shopping</button>
     {% endif %}
-  {% endfor %}
+    {% if section.settings.show_pms_tab %}
+      <button id="pms-tag" class="filter-tag" type="button" onclick="handleFilter('pms')">PMS</button>
+    {% endif %}
+    {% if section.settings.show_motherhood_tab %}
+      <button id="motherhood-tag" class="filter-tag" type="button" onclick="handleFilter('motherhood')">Motherhood</button>
+    {% endif %}
+    {% if section.settings.show_menopause_tab %}
+      <button id="menopause-tag" class="filter-tag" type="button" onclick="handleFilter('menopause')">Menopause</button>
+    {% endif %}
+    {% if section.settings.show_health_tab %}
+      <button id="health-tag" class="filter-tag" type="button" onclick="handleFilter('health')">Health & Nutrition</button>
+    {% endif %}
+    {% if section.settings.show_sexual_wellness_tab %}
+      <button id="sexual-wellness-tag" class="filter-tag" type="button" onclick="handleFilter('sexual-wellness')">Sexual Wellness</button>
+    {% endif %}
+
+    {% for block in section.blocks %}
+      {% if block.type == 'custom_tab' %}
+        <a class="link-tab" href="{{ block.settings.link }}">{{ block.settings.label }}</a>
+      {% endif %}
+    {% endfor %}
 {% endif %}
 
-  
- {% for block in section.blocks %}
-  {% if block.type == 'custom_tab' %}
-    <a class="link-tab" href="{{ block.settings.link }}">{{ block.settings.label }}</a>
-  {% endif %}
-{% endfor %}
+
 </div>
 
 {% assign all_products = collections.all.products %}
