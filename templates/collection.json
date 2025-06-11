@@ -55,7 +55,7 @@
       ],
       "name": "Custom Collection Grid",
       "settings": {
-        "show_tabs": true,
+        "show_tabs": false,
         "section_heading": "Fueling your evolution through every stage of womanhood",
         "show_pms_tab": true,
         "show_holiday_tab": true,
