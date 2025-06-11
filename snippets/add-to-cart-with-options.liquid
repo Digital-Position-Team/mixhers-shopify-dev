@@ -64,15 +64,19 @@
               {% endif %}
 
               {% if show_slashed_out_promo_pricing_on_pdps %}
-                <span id="subscription-sale-price" class="text-pink">{{ subscription_sale_price }}</span>
-                <span id="subscribe-and-save-compare-price" class="line-through">{{ subscription_compare_at_price }}</span>
+                 <span>
+                  <span id="subscription-sale-price" class="text-pink">{{ subscription_sale_price }}</span>
+                  <span id="subscribe-and-save-compare-price" class="line-through">{{ subscription_compare_at_price }}</span>
+                 </span>
                 {% if promo_discount_code and show_with_code_text_next_to_slash_out_price_on_pdps %}
-                  <span class="text-pink text-[10px]">{{ 'with code ' | append: promo_discount_code }}</span>
+                  <span class="text-pink" style="font-size:10px">{{ 'with code ' | append: promo_discount_code }}</span>
                 {% endif %}
               {% else %}
                 {% if subscription_price != subscription_compare_at_price %}
-                  <span id="subscription-price" class="text-pink">{{ subscription_price }}</span>
-                  <span id="subscribe-and-save-compare-price" class="line-through">{{ subscription_compare_at_price }}</span>
+                  <span>
+                    <span id="subscription-price" class="text-pink">{{ subscription_price }}</span>
+                    <span id="subscribe-and-save-compare-price" class="line-through">{{ subscription_compare_at_price }}</span>
+                  </span>
                 {% else %}
                   <span id="subscription-price">{{ subscription_price }}</span>
                 {% endif %}
