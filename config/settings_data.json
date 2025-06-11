@@ -121,7 +121,13 @@
     "show_cart_note": false,
     "cart_drawer_collection": "",
     "sitewide_sale_title": "Cyber Monday",
+    "sitewide_sale_discount_percent": 25,
     "sitewide_sale_color": "#ff59e4",
+    "sitewide_sale_pdp_info": "Subscribe during the sale and lock in 25% off for the life of your subscription.",
+    "sitewide_sale_pdp_sub_bubble": "Lock In 25% Off",
+    "sitewide_sale_pdp_buy_bubble": "25% Off",
+    "sitewide_sale_pdp_sub_toggle": "Subscribe & Save 25%",
+    "sitewide_sale_exclusive_offer": "Cyber Monday Exclusive Offer",
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
