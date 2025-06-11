@@ -116,7 +116,7 @@
       {% endif %}
 
       <div id="bundle-pricing" class="hidden">
-        <p class="pick-flavor-head">Pick your flavors</p>
+        <p class="select-option-title">Pick your flavors</p>
         <div class="options-wrapper-gap">
           <div class="select-wrapper">
             <div id="flavor-color" class="flavor-color"></div>
@@ -165,7 +165,7 @@
       </div>
 
       <div id="single-variant-pricing" class="hidden">
-        <button type="submit" >Add to cart</button>
+        <button type="submit" class="pink-primary-btn  hover-border add-to-cart-btn">Add to cart</button>
         {% if show_slashed_out_promo_pricing_on_pdps %}
           <div id="one-time-purchase-only-promo-text-single-variant" class="hidden">
             <span id="sale-price-single-variant"></span>
@@ -178,7 +178,8 @@
       </div>
 
       <div id="multiple-variant-pricing" class="hidden">
-        <p>Pick an option</p>
+        <p class="select-option-title">Pick an option</p>
+       <div class="options-wrapper-gap">
         <div class="select-wrapper">
           <select name="flavor">
             <option disabled selected>Choose an option</option>
@@ -200,7 +201,6 @@
             {% endfor %}
           </select>
         </div>
-
         <div>
           <button type="submit" class="pink-primary-btn  hover-border add-to-cart-btn">Add to cart</button>
           {% if show_slashed_out_promo_pricing_on_pdps %}
@@ -215,6 +215,7 @@
             </div>
           {% endif %}
         </div>
+      </div>
       </div>
     </div>
 </form>
