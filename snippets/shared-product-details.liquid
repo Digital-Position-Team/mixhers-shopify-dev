@@ -65,6 +65,10 @@
 {% assign subscription_sale_price = subscription_price_minus_discount | money %}
 {% assign subscription_compare_at_price = subscription_raw_compare_at_price | money %}
 
+{{ product.id }}
+{{ one_time_sale_price }}
+{{ subscription_sale_price }}
+
 {% if then_render == 'mixhers-product-card' %}
 {%- render 'mixhers-product-card',
     product_id: product_id,
