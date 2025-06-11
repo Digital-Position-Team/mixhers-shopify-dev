@@ -3655,6 +3655,9 @@ p.base-text , .base-text p ,  .base-text li{font-size:18px;}
   display: block;
   height: 100%;
 }
+.line-through{
+  text-decoration: line-through;
+}
 .section-container {
   padding-left:48px;
   padding-right:48px;
