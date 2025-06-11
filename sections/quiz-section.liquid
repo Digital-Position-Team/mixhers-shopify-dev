@@ -191,7 +191,7 @@
 
     const QUIZ_DISCOUNT_DECIMAL = 0.05;
     const SITEWIDE_SALE_ENABLED = '{{ sitewideSaleEnabled }}' === 'true' ? true : false;
-    const SITEWIDE_SALE_PERCENT = {{ settings.sitewide_sale_discount_percent }};
+    const SITEWIDE_SALE_PERCENT = {{ settings.sitewide_sale_discount_percent | default: 0}};
     const SITEWIDE_SALE_DECIMAL = {{ settings.sitewide_sale_discount_percent }} / 100.00;
 
     fetch(jsonEndpoint).then(function (response) {
