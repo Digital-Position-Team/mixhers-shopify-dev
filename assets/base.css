@@ -3699,6 +3699,9 @@ p.base-text , .base-text p ,  .base-text li{font-size:18px;}
   margin-top:0px;
   font-family: Faire Sprig, serif;
 }
+.text-pink {
+    color: #ff47eb;
+}
 .only-desktop{
    display:block;
 }
