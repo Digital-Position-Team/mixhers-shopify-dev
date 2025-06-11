@@ -1,8 +1,9 @@
 {% for product in collections.all.products %}
   {% if product.id == product_id %}
-    {% assign product = product %}
+  {% assign product = product %}
   {% endif %}
 {% endfor %}
+
 
 <div class="custom-product-card">
   <a href="{{ product.url }}" class="product-link">
