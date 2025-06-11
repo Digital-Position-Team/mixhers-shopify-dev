@@ -3,7 +3,7 @@
     {% assign product = product %}
   {% endif %}
 {% endfor %}
-{{ product_subtitle }}
+
 <div class="custom-product-card">
   <a href="{{ product.url }}" class="product-link">
     <img
@@ -14,7 +14,7 @@
     />
     <div class="product--info">
         <div class="product-title font-sans">{{ product.title }}</div>
-        <p class="product-subtitle margin-0">{{ product.metafields.rebrand.product_subtitle }}</p>
+        <p class="product-subtitle margin-0">{{ product_subtitle }}</p>
         <div>
           <button class="btn btn-black hover-pink">Shop Now</button>
           <p class="btn-link-mobile">Shop Now</p>
