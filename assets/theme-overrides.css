@@ -68,7 +68,7 @@ h3 {
   border-color: black;
   color: white;
 }
-.btn-pink.shadow:hover {
+.btn.shadow:hover {
     box-shadow: 0px 0px 0px 4px #ffd9f9;
 }
 .btn-clear {
