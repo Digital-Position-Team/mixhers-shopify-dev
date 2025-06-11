@@ -8,6 +8,11 @@
 {% assign sitewide_sale_pdp_sub_toggle = settings.sitewide_sale_pdp_sub_toggle %}
 {% assign sitewide_sale_exclusive_offer = settings.sitewide_sale_exclusive_offer %}
 {% assign sitewide_sale_pdp_info = settings.sitewide_sale_pdp_info %}
+{% assign show_promo_on_quiz = page.metafields.rebrand.promo_content.value | default: false %}
+{% assign promo = page.metafields.rebrand.promo_content.value | default: null %}
+{% assign promo_first_text = promo.promo_first_text | default: null %}
+{% assign promo_discount_code = promo.discount_code | default: null %}
+{% assign promo_last_text = promo.promo_last_text | default: null %}
 
 <script src="https://static.rechargecdn.com/assets/storefront/recharge-client-1.4.0.min.js" defer></script>
 <script>
@@ -20,6 +25,55 @@
         {% endfor %}
     </div>
         {% comment %} Cards and other components added with JS {% endcomment %}
+         <div class="results-back-btn" onclick="resultsBack()">← Back</div>
+          
+          <div class="quiz-results-header" id="results-page-1" altHormone="false" data-stage="default">
+              <h2 class="headers-5">{{ section.settings.quiz_results_page_1_header }}</h2>
+              <div class="defaultHormoneImbalance body-3">
+                  {{ section.settings.quiz_results_page_1_copy}}
+              </div>
+              <div class="pregnancyHormoneImbalance body-3">
+                  {{ section.settings.quiz_results_page_1_pregnancy_copy }}
+              </div>
+              <div class="menopauseHormoneImbalance body-3">
+                {{ section.settings.quiz_results_page_1_menopause_copy }}
+            </div>
+          </div>
+          
+          <div class="quiz-results-header" id="results-page-2">
+              <h2 class="headers-5">{{ section.settings.quiz_results_page_2_header }}</h2>
+              <div class="body-3">
+                  {{ section.settings.quiz_results_page_2_copy }}
+              </div>
+          </div>
+          
+          <div class="quiz-results-header" id="results-page-3">
+            <h2 class="headers-5">{{ section.settings.quiz_results_page_3_header }}</h2>
+            <div class="body-3">
+                {{ section.settings.quiz_results_page_3_copy }}
+            </div>
+            {% if sitewideSaleEnabled %}
+                <div class="sitewide-sale-quiz-wrapper">
+                    <h4 class="headers-6 sale-text">{{ settings.sitewide_sale_quiz_header }}</h4>
+                </div>
+            {% endif %}
+            {% if show_promo_on_quiz %}
+              <div class="flex flex-row gap-2 items-center flex-wrap whitespace-nowrap justify-center mt-[47px] mb-[32px] w-full text-[18px]">
+                  {% if promo_first_text %}
+                    <span class="text-[14px] md:text-[16px]">{{ promo_first_text }}</span>
+                  {% endif %}
+                  {% if promo_discount_code %}
+                    <span class="text-[16px] md:text-[18px] text-center text-pink">{{ promo_discount_code }}</span>
+                  {% endif %}
+                  {% if promo_last_text %}
+                    <span class="text-[14px] md:text-[16px]">{{ promo_last_text }}</span>
+                  {% endif %}
+              </div>
+            {% endif %}
+          </div>
+          
+          <div class="results-nxt-btn" onclick="resultsNext()"><span>Next</span> <img src="{{'white-next-arrow.svg' | file_url }}" alt="continue arrow" width="24" height="10" loading="lazy"/></div>
+
         {% comment %} {% section 'quiz-results' %} {% endcomment %}
     <div class="oct-quiz-progress">
         <div class="oct-quiz-progress--bar-wrapper">
