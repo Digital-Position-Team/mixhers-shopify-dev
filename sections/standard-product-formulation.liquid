@@ -69,8 +69,6 @@
       max-width: 300px;;
     }
     .formulation-inner {
-      background-color: {{ ingredient_inner_color }};
-      border-radius: 50%;
       padding: 20px;
       display: flex;
       flex-direction: column;
@@ -148,6 +146,8 @@
         gap: 40px;
         padding: {% if reduced_padding %}70px 40px 70px 40px {% else %}100px 60px 140px 60px{% endif %};
         align-items: flex-start;
+        background-color: {{ ingredient_inner_color }};
+        border-radius: 50%;
       }
     }
 
