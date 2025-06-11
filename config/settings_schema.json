@@ -1451,5 +1451,120 @@
         "default": "scheme-1"
       }
     ]
-  }
+  },
+    {
+    "name": "Sitewide Sale",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "sitewide_sale_enabled",
+        "label": "Enable sitewide sale",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "sitewide_sale_title",
+        "label": "Sale title",
+        "default": "Sitewide Sale"
+      },
+      {
+        "type": "number",
+        "id": "sitewide_sale_discount_percent",
+        "label": "Sale discount percent",
+        "default": 15,
+        "info": "Used in quiz for discount calculation"
+      },
+      {
+        "type": "text",
+        "id": "sitewide_sale_discount_code",
+        "label": "Sale discount code",
+        "default": "BLACKFRIDAY",
+        "info": "Used to auto add discount to cart, but match discount code in Shopify exactly"
+      },
+      {
+        "type": "color",
+        "id": "sitewide_sale_color",
+        "label": "Sale color",
+        "default": "#F44C7F"
+      },
+      {
+        "type": "header",
+        "content": "PDP"
+      },
+      {
+        "type": "textarea",
+        "id": "sitewide_sale_pdp_info",
+        "label": "PDP info",
+        "info": "Text under add to cart button"
+      },
+      {
+        "type": "text",
+        "id": "sitewide_sale_pdp_sub_bubble",
+        "label": "PDP subscription bubble text",
+        "default": "Subscribe & Save",
+        "info": "Shows on subscription toggle when customer is subscribed"
+      },
+      {
+        "type": "text",
+        "id": "sitewide_sale_pdp_buy_bubble",
+        "label": "PDP buy once bubble text",
+        "default": "Subscribe & Save",
+        "info": "Shows on subscription toggle when customer is not subscribed"
+      },
+      {
+        "type": "text",
+        "id": "sitewide_sale_pdp_sub_toggle",
+        "label": "PDP subscription toggle text",
+        "default": "Subscribe & Save 15%",
+        "info": "The text on the toggle for the subscribe option"
+      },
+      {
+        "type": "text",
+        "id": "sitewide_sale_exclusive_offer",
+        "label": "PDP exclusive offer text",
+        "default": "Black Friday Exclusive Offer"
+      },
+      {
+        "type": "header",
+        "content": "Quiz"
+      },
+      {
+        "type": "text",
+        "id": "sitewide_sale_quiz_header",
+        "label": "Quiz header",
+        "default": "Lock in 15% off for life!",
+        "info": "Shows above quiz bundle"
+      },
+      {
+        "type": "textarea",
+        "id": "sitewide_sale_quiz_info",
+        "label": "Quiz info",
+        "default": "Subscribe during our birthday sale for a recurring discount!",
+        "info": "Shows above quiz bundle"
+      },
+      {
+        "type": "textarea",
+        "id": "sitewide_sale_quiz_product_info",
+        "label": "Quiz product info",
+        "default": "Subscribe during our birthday sale and lock in 15% off for the life of your subscription.",
+        "info": "Shows under individual product cards on quiz results page"
+      },
+      {
+        "type": "header",
+        "content": "Collections"
+      },
+      {
+        "type": "text",
+        "id": "sitewide_sale_collection_subheader",
+        "label": "Collection subheader",
+        "default": "Black Friday Sale 25% Off"
+      },
+      {
+        "type": "checkbox",
+        "id": "collections_hide_from_text",
+        "label": "Hide \"from\" text from compare at pricing",
+        "default": true
+      }
+    ]
+  },
 ]
