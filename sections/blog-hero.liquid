@@ -1,6 +1,68 @@
+{% stylesheet %}
+.blog-hero--wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.blog-hero--title-wrapper h1 {
+  margin-bottom: 20px;
+}
+
+.blog-hero--img-wrapper img {
+  max-width: 100%;
+  height: auto;
+}
+{% endstylesheet %}
+
+<section class="section blog-hero--wrapper" style="background: {{ section.settings.background }};">
+  <div class="blog-hero--title-wrapper">
+    <h1 class="headers-1">{{ section.settings.title | escape }}</h1>
+  </div>
+  {% if section.settings.image != blank %}
+    <div class="blog-hero--img-wrapper">
+      <img
+        src="{{ section.settings.image | image_url: width: 1500 }}"
+        alt="{{ section.settings.title | escape }}"
+        loading="lazy"
+        width="auto"
+        height="auto"
+      >
+    </div>
+  {% endif %}
+</section>
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Blog Hero",
+  "tag": "section",
+  "class": "blog-hero-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Welcome to Our Blog"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "color_background",
+      "id": "background",
+      "label": "Background",
+      "default": "linear-gradient(#ffffff, #000000)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog Hero",
+      "category": "Blog"
+    }
+  ]
+}
 {% endschema %}
