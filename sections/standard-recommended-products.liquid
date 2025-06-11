@@ -15,10 +15,14 @@
         <a href="{{ section.settings.link_url }}">{{ section.settings.link_text }}</a>
       </div>
     </div>
-    <p>{{ product.metafields.rebrand.recommended_products.value }}</p>
-    {% for recommended_product in product.metafields.rebrand.recommended_products.value %}
-      <p>{{ recommended_product.id }} ++— {{ recommended_product.title }}</p>
-    {% endfor %}
+    
+   {% comment %}
+      <p>{{ product.metafields.rebrand.recommended_products.value }}</p>
+      {% for recommended_product in product.metafields.rebrand.recommended_products.value %}
+        <p>{{ recommended_product.id }} ++— {{ recommended_product.title }}</p>
+      {% endfor %}
+   {% endcomment %}
+  
     <div class="standard-recommended-grid">
       {% for recommended_product in recommended_products %}
         {% render 'shared-product-details',
@@ -68,8 +72,9 @@
   grid-template-columns: repeat(2, 1fr);
 }
 .recommended-link-mobile {
-  text-align: center;
-  margin-top: 20px;
+    padding: 12px;
+    text-align: center;
+    margin-top: 0px;
 }
 .recommended-link-mobile a,
 .recommended-link-desktop a {
