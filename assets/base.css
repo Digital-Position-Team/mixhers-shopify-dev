@@ -3726,6 +3726,7 @@ cart-notification {
 body.page-store-locator .page-width.page-width--narrow {
     padding: 35px 10px;
     max-width: 910px;
+    min-height: 300px;
     font-family: 'Buenos Aires';
 }
 body.page-store-locator .page-width.page-width--narrow .standard__heading h1 {
