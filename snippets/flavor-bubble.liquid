@@ -1,40 +1,9 @@
-{% if product %}
-  {% assign products = '' | split: '' %}
-  {% assign products = products | push: product %}
-{% else %}
-  {% assign products = shop.metaobjects.product_list.all-products.products.value %}
-{% endif %}
-
-{% for p in products %}
-  {% for option in p.options %}
-    {% assign bubble = '' %}
-    {% for variant in p.variants %}
-      {% assign bubble = variant.metafields.custom.bubble.value %}
-      {% if option == 'Size' or option == 'Product' %}
-        {% capture selector %}
-          .{{ p.handle }} .product--size-select--item[data-name="{{ variant.option1 }}"]:before,
-          .{{ p.handle }} .select-items div[data-name="{{ variant.option1 }}"]:before
-        {% endcapture %}
-      {% else %}
-        {% capture selector %}
-          .{{ p.handle }} .select-selected[data-name="{{ variant.option1 }}"]:before,
-          .{{ p.handle }} .select-items div[data-name="{{ variant.option1 }}"]:before
-        {% endcapture %}
-      {% endif %}
-
-      {% if bubble.size == 1 %}
-        {{ selector }} {
-          background: {{ bubble }};
-        }
-      {% elsif bubble.size == 2 %}
-        {{ selector }} {
-          background: linear-gradient(to right, {{ bubble[0] }} 50%, {{ bubble[1] }} 50%);
-        }
-      {% elsif bubble.size == 3 %}
-        {{ selector }} {
-          background: conic-gradient(from 60deg at center, {{ bubble[0] }} 0 33.3%, {{ bubble[1] }} 0 66.6%, {{ bubble[2] }} 0 99.9%);
-        }
-      {% endif %}
-    {% endfor %}
-  {% endfor %}
-{% endfor %}
+<style id=flavor-bubbles>
+    {% if product %}
+        {% render 'flavor-bubble-single' with product: product %}
+    {% else %}
+        {% for product in shop.metaobjects.product_list.all-products.products.value %}
+            {% render 'flavor-bubble-single' with product: product %}
+        {% endfor %}
+    {% endif %}
+</style>
