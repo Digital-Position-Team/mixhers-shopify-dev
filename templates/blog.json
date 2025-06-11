@@ -1,5 +1,23 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
+    "blog_hero_tV3KWw": {
+      "type": "blog-hero",
+      "name": "Blog Hero",
+      "settings": {
+        "title": "Being a girl just got easier.",
+        "image": "shopify://shop_images/blogherogirl.png",
+        "background": "linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1) 45%, rgba(241, 241, 241, 1) 100%)"
+      }
+    },
     "main": {
       "type": "main-blog",
       "settings": {
@@ -14,6 +32,7 @@
     }
   },
   "order": [
+    "blog_hero_tV3KWw",
     "main"
   ]
 }
