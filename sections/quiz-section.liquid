@@ -70,7 +70,7 @@
 
 <script src="https://static.rechargecdn.com/assets/storefront/recharge-client-1.4.0.min.js" defer></script>
 <script>
-    // klaviyo.push(['track', 'Starting Quiz']);
+    klaviyo.push(['track', 'Starting Quiz']);
 </script>
 <div class="quiz-main-container" id="outOfScroll">
     <div class="oct-quiz-results-progress">
@@ -227,13 +227,7 @@
       var parser = new DOMParser();
       var doc = parser.parseFromString(html, 'text/html');
       var productSections = doc.querySelectorAll('.product-data');
-       /* productSections.forEach(section => {
-            productData.push(JSON.parse(section.innerHTML.replace(/(<([^>]+)>)/gi, "")));
-
-            console.log('product data', productData);
-        })*/
     }).catch(function (err) {
-        // There was an error
         console.warn('Something went wrong.', err);
     });
   
