@@ -11,13 +11,30 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "quiz_section_XGD4Rt": {
+      "type": "quiz-section",
+      "name": "quiz",
+      "settings": {
+        "quiz_results_page_1_header": "More feel-good days are ahead.",
+        "quiz_results_page_1_copy": "",
+        "quiz_results_page_1_pregnancy_copy": "",
+        "quiz_results_page_1_menopause_copy": "",
+        "quiz_results_page_2_header": "The good news.",
+        "quiz_results_page_2_copy": "",
+        "quiz_results_page_3_header": "Your custom line-up.",
+        "quiz_results_page_3_copy": "",
+        "quiz_results_page_3_bundle_title": "Your Custom Bundle"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "quiz_section_XGD4Rt"
   ]
 }
