@@ -64,7 +64,13 @@
               {% for faq in faqs %}
                 <details class="product-faq">
                   <summary>
-                    <div class="faq-title"><p>{{ faq.title }}</p></div>
+                    <div class="faq-title">
+                      <p>{{ faq.title }}</p>
+                      <span>
+                        <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 5v14m-7-7h14"/></svg>
+                        <svg class="icon-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14"/></svg>
+                      </span>
+                    </div>
                   </summary>
                   {% assign content = faq.contents | metafield_tag %}
                   <div class="faq-detail">{{ content }}</div>
