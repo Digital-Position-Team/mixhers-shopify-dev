@@ -16,12 +16,12 @@
       </div>
     </div>
     
-   {% comment %}
+
       <p>{{ product.metafields.rebrand.recommended_products.value }}</p>
       {% for recommended_product in product.metafields.rebrand.recommended_products.value %}
-        <p>{{ recommended_product.id }} ++— {{ recommended_product.title }}</p>
+        <p>{{ recommended_product.id }} — {{ recommended_product.title }}</p>
       {% endfor %}
-   {% endcomment %}
+
   
     <div class="standard-recommended-grid">
       {% for recommended_product in recommended_products %}
