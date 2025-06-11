@@ -39,15 +39,36 @@
         "padding_bottom": 36
       }
     },
-    "collection_tabs_filter_H7JtmC": {
+    "collection_tabs_filter_AJNLP9": {
       "type": "collection-tabs-filter",
-      "name": "Collection Tabs Filter",
-      "settings": {}
+      "blocks": {
+        "custom_tab_QNDRyk": {
+          "type": "custom_tab",
+          "settings": {
+            "label": "Sales",
+            "link": "/collections/final-sale"
+          }
+        }
+      },
+      "block_order": [
+        "custom_tab_QNDRyk"
+      ],
+      "name": "Custom Collection Grid",
+      "settings": {
+        "show_tabs": true,
+        "section_heading": "Fueling your evolution through every stage of womanhood",
+        "show_pms_tab": true,
+        "show_holiday_tab": true,
+        "show_motherhood_tab": true,
+        "show_menopause_tab": true,
+        "show_health_tab": true,
+        "show_sexual_wellness_tab": true
+      }
     }
   },
   "order": [
     "banner",
     "product-grid",
-    "collection_tabs_filter_H7JtmC"
+    "collection_tabs_filter_AJNLP9"
   ]
 }
