@@ -12,12 +12,13 @@
 }
 {% endschema %}
 
-<section class="standard-product-reviews" aria-label="Product Reviews Section">
+<div class="standard-product-reviews" aria-label="Product Reviews Section">
   <style>
     .standard-product-reviews {
       width: 100%;
       padding: 10px 0px 0;
       display:block;
+      overflow-x:hidden;
     }
     .yotpo-container {
       width: 100%;
@@ -35,4 +36,4 @@
         data-yotpo-price="{{ product.price | divided_by: 100.00 }}" data-yotpo-currency="{{ shop.currency }}" 
         data-yotpo-description="{{ product.description | escape }}"></div>
   </div>
-</section>
+</div>
