@@ -129,7 +129,7 @@
           <div class="select-wrapper">
             <div id="flavor-color" class="flavor-color"></div>
             <select name="first-flavor">
-              <option disabled selected>Pick your first flavor</option>
+              <option disabled selected value>Pick your first flavor</option>
               {% for variant in product.variants %}
                 {% if variant.metafields.rebrand.is_bundle_variant != true %}{% continue %}{% endif %}
                 {% assign variant_out_of_stock = false %}
@@ -150,7 +150,7 @@
           <div class="select-wrapper">
             <div id="flavor-color" class="flavor-color"></div>
             <select name="second-flavor">
-              <option disabled selected>Pick your second flavor</option>
+              <option disabled selected value>Pick your second flavor</option>
               {% for variant in product.variants %}
                 {% if variant.metafields.rebrand.is_bundle_variant != true %}{% continue %}{% endif %}
                 {% assign variant_out_of_stock = false %}
