@@ -103,13 +103,14 @@
     <div class="mix-content-wrapper">
       <div class="mix-text-content">
         <h2 class="mix-heading underline-title font-serif ">{{ section.settings.heading_text }}</h2>
+        <img src="{{ mix_image | image_url }}" alt="Made to mix" class="mix-image only-small-screen" width="" height="">
         <div class="mix-text">
               <p>{{ section.settings.mix_text }}</p>
         </div>
         <a href="/pages/quiz" class="mix-button custom-primary-btn hover-border f-18">Take the quiz</a>
       </div>
       <div class="mix-image-container">
-        <img src="{{ mix_image | image_url }}" alt="Made to mix" class="mix-image" width="" height="">
+        <img src="{{ mix_image | image_url }}" alt="Made to mix" class="mix-image only-desktop" width="" height="">
       </div>
     </div>
   </section>
