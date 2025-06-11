@@ -97,6 +97,7 @@
     <script src="https://app.octaneai.com/devky4lguoszyr7z/quiz.js" async defer></script>
 
     <div class="loading-icon">
+{{ settings.sitewide_sale_discount_percent }}{{ settings.sitewide_sale_discount_percent }}{{ settings.sitewide_sale_discount_percent }}
         <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-spinner" viewBox="0 0 20 20"><path d="M7.229 1.173a9.25 9.25 0 1 0 11.655 11.412 1.25 1.25 0 1 0-2.4-.698 6.75 6.75 0 1 1-8.506-8.329 1.25 1.25 0 1 0-.75-2.385z" fill="#919EAB"/></svg>
     </div>
 </div>
@@ -191,8 +192,8 @@
 
     const QUIZ_DISCOUNT_DECIMAL = 0.05;
     const SITEWIDE_SALE_ENABLED = '{{ sitewideSaleEnabled }}' === 'true' ? true : false;
-    const SITEWIDE_SALE_PERCENT = {{ settings.sitewide_sale_discount_percent | default: 0}};
-    const SITEWIDE_SALE_DECIMAL = {{ settings.sitewide_sale_discount_percent }} / 100.00;
+    const SITEWIDE_SALE_PERCENT = {{ settings.sitewide_sale_discount_percent }};
+    const SITEWIDE_SALE_DECIMAL = {{ settings.sitewide_sale_discount_percent  }} / 100.00;
 
     fetch(jsonEndpoint).then(function (response) {
         return response.text();
