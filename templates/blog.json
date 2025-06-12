@@ -36,7 +36,7 @@
       "settings": {
         "title": "Featured Articles",
         "limit": 5,
-        "selected_blog": ""
+        "selected_blog": "articles"
       }
     }
   },
