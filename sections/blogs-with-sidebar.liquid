@@ -48,21 +48,8 @@
           <div class="sidebar-block sidebar-block--{{ block.type }}">
             {% case block.type %}
               {% when 'podcast' %}
-                {% comment %}{% render 'podcast-player-block', block: block %} {% endcomment %}
-                <div class="podcast-latest-wrapper">
-                  <div class="podcast-latest--header">
-                    <div class="podcast-latest--img-wrapper">
-                    {% if block.settings.image %}
-                      <img src="{{ block.settings.image | image_url}}" alt="Podcast" height="" width=""/>
-                    {% endif %}
-                    </div>
-                    <h2 class="headers-6">{{ block.settings.title }}</h2>
-                  </div>
-                  <div class="podcast-latest--feed-wrapper">
-                    <h4 class="italic-subheaders-6">{{ block.settings.subtitle }}</h4>
-                    <div class="podcast-feed" data-feed="{{ block.settings.feed_url }}"></div>
-                  </div>
-                </div>
+                {% comment %} {% endcomment %}
+               {% render 'podcast-player-block', block: block %}
   
               {% when 'quiz_cta' %}
                 {% comment %} {% render 'quiz-cta-card-block', block: block %} {% endcomment %}
