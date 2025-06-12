@@ -92,11 +92,26 @@
         "button_link": "",
         "show_pricing_crossout": true
       }
+    },
+    "article_hero_XhePU3": {
+      "type": "article-hero",
+      "name": "Article Hero ",
+      "settings": {}
+    },
+    "recommended_articles_4a8Ueh": {
+      "type": "recommended-articles",
+      "name": "Related Articles",
+      "settings": {
+        "heading": "You might also enjoy...",
+        "blog": ""
+      }
     }
   },
   "order": [
     "main",
     "article_with_sidebar_AWUAzt",
-    "blogs_every_stage_products_TeaG6w"
+    "blogs_every_stage_products_TeaG6w",
+    "article_hero_XhePU3",
+    "recommended_articles_4a8Ueh"
   ]
 }
