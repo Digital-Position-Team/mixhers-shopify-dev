@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -23,7 +32,8 @@
           }
         },
         "content": {
-          "type": "content"
+          "type": "content",
+          "settings": {}
         }
       },
       "block_order": [
@@ -31,10 +41,55 @@
         "title",
         "share",
         "content"
-      ]
+      ],
+      "settings": {}
+    },
+    "blogs_every_stage_products_TeaG6w": {
+      "type": "blogs-every-stage-products",
+      "blocks": {
+        "product_WX9tWW": {
+          "type": "product",
+          "settings": {
+            "product": "hertime-pms"
+          }
+        },
+        "product_AbGed6": {
+          "type": "product",
+          "settings": {
+            "product": "hertime-pms-plus"
+          }
+        },
+        "product_8nTTAQ": {
+          "type": "product",
+          "settings": {
+            "product": "prenatal"
+          }
+        },
+        "product_qfh7Vz": {
+          "type": "product",
+          "settings": {
+            "product": "menopause"
+          }
+        }
+      },
+      "block_order": [
+        "product_WX9tWW",
+        "product_AbGed6",
+        "product_8nTTAQ",
+        "product_qfh7Vz"
+      ],
+      "name": "Every Stage Products",
+      "settings": {
+        "title": "Hormone support for every stage of womanhood.",
+        "subtitle": "From your first period to your first hot flash, nourish your journey.",
+        "button_label": "View All Products",
+        "button_link": "",
+        "show_pricing_crossout": true
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "blogs_every_stage_products_TeaG6w"
   ]
 }
