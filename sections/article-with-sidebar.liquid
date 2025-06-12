@@ -1,5 +1,3 @@
-{% layout 'rebrand-hybrid' %}
-
 {% assign mainBlog = blogs.articles %}
 {% assign featuredImage = '' %}
 
@@ -202,10 +200,33 @@
 
 {% schema %}
   {
-    "name": "Section name",
+    "name": "Article with Sidebar",
     "settings": [],
     "presets": [
-      {"name":"article with sidebar"}
+      {"name":"Article Detail with sidebar"}
     ]
   }
 {% endschema %}
+<style>
+  .article-hero-img-wrapper img {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    max-height: 374px;
+    height: auto;
+}
+.article-hero {
+    padding: 0 80px 0 0;
+}
+.article-hero *{
+    margin:0px;
+}
+.article-hero-container {
+    display: grid;
+    grid-template-columns: 55% 45%;
+    gap: 25px;
+}
+.article-hero-info-wrapper-bottom p {
+    font-size: 14px;
+}
+</style>
