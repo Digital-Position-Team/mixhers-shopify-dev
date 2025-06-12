@@ -1,6 +1,115 @@
+<!-- sections/blog-tabs-with-sidebar.liquid -->
+
+<div class="blog-main-content">
+  <div class="blog-articles-container-w-sidebar">
+    <div class="blog-articles-main-content-wrapper">
+      {% render 'blog-tabs' %}
+    </div>
+    <div class="blog-articles-sticky-sidebar">
+      {% for block in section.blocks %}
+        <div class="sidebar-block sidebar-block--{{ block.type }}">
+          {% case block.type %}
+            {% when 'podcast' %}
+              {% comment %}{% render 'podcast-player-block', block: block %} {% endcomment %}
+              <div class="podcast-latest-wrapper">
+                <div class="podcast-latest--header">
+                  <div class="podcast-latest--img-wrapper">
+                    {{ block.settings.image | image_url: width: 430 | image_tag }}
+                  </div>
+                  <h2 class="headers-6">{{ block.settings.title }}</h2>
+                </div>
+                <div class="podcast-latest--feed-wrapper">
+                  <h4 class="italic-subheaders-6">{{ block.settings.subtitle }}</h4>
+                  <div class="podcast-feed" data-feed="{{ block.settings.feed_url }}"></div>
+                </div>
+              </div>
+
+            {% when 'quiz_cta' %}
+              {% comment %} {% render 'quiz-cta-card-block', block: block %} {% endcomment %}
+               <div class="quiz-cta-card">
+                <div class="quiz-cta-card__content">
+                  <h3 class="quiz-cta-card__title headers-6">{{ block.settings.title }}</h3>
+                  <p class="quiz-cta-card__description body-7">{{ block.settings.description }}</p>
+                </div>
+                <a href="{{ block.settings.button_url }}" class="quiz-cta-card__button button-2 outline-button">{{ block.settings.button_text }}</a>
+              </div>
+
+            {% else %}
+          {% endcase %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Blog Tabs with Sidebar",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "podcast",
+      "name": "Podcast Player",
+      "settings": [
+        {
+          "type": "url",
+          "id": "feed_url",
+          "label": "RSS Feed URL"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Listen to It’s Hertime."
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Most Recent Episodes"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Podcast Image"
+        }
+      ]
+    },
+    {
+      "type": "quiz_cta",
+      "name": "Quiz CTA Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Not sure which drink is right for you?"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Get matched with products designed for your unique wellness goals."
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Take the Quiz"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog Tabs with Sidebar Layout",
+      "category": "Blog"
+    }
+  ]
+}
 {% endschema %}
