@@ -34,49 +34,6 @@
     width: 70%;
     padding: 40px 24px 40px 0;
 }
-/* Quiz CTA -------*/
-.quiz-cta-card {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 24px;
-    padding: 24px;
-    border: 1px solid #402650;
-    background-color: #fff;
-    box-shadow: 0 0 4px #40265099;
-}
-.quiz-cta-card__content {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 12px;
-}
-.quiz-cta-card__content * {
-    margin: 0px;
-}
-.quiz-cta-card__content .quiz-cta-card__title {
-    font-family: 'Buenos Aires';
-    line-height: 1.2;
-    font-weight: 600;
-}
-.quiz-cta-card__button:hover {
-    background: #fff;
-  box-shadow: -3px 4px 0px #DCD6DF;
-}
-.quiz-cta-card__button{
-    color: #402650;
-    background: #fff;
-    padding: 12px 20px;
-    width:100%;
-    border: 2px solid #402650;
-    box-shadow: -3px 4px #0000;
-}
-
-
 </style>
 
 <div class="blog-main-content" id="blog-w-sidebar">
@@ -94,14 +51,8 @@
                {% render 'podcast-player-block', block: block %}
   
               {% when 'quiz_cta' %}
-                {% comment %} {% render 'quiz-cta-card-block', block: block %} {% endcomment %}
-                 <div class="quiz-cta-card">
-                  <div class="quiz-cta-card__content">
-                    <h3 class="quiz-cta-card__title headers-6">{{ block.settings.title }}</h3>
-                    <p class="quiz-cta-card__description body-7">{{ block.settings.description }}</p>
-                  </div>
-                  <a href="{{ block.settings.button_url }}" class="quiz-cta-card__button btn btn-clear">{{ block.settings.button_text }}</a>
-                </div>
+                {% comment %}  {% endcomment %}
+                 {% render 'quiz-cta-card-block', block: block %}
   
               {% else %}
             {% endcase %}
