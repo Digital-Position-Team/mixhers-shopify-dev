@@ -3772,6 +3772,41 @@ cart-notification {
     display: flex;
     flex-direction: column;
 }
+/*hover style product card  */
+.product-collection-grid-item .product-tag-wrap {
+  display: flex;
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  line-height: 16px;
+  flex-wrap: wrap;
+}
+.product-collection-grid-item .product-tag-wrap span.product-tag {
+    color: #fff;
+    padding: 6px 12px;
+    font-family: Suisse Works;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: .12em;
+    z-index: 10;
+    margin-right: 4px;
+    margin-bottom: 4px;
+}
+.product-collection-grid-item  img.product-image.collection-image {
+    box-shadow: 0 0 6px #40265026;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    aspect-ratio: 125 / 176;
+    flex: unset;
+    max-width: 100%;
+    width: 100%;
+    margin-bottom: 8px;
+}
 @media(max-width:1023px){
  .section-container{
     padding-left:32px;
