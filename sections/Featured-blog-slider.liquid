@@ -11,7 +11,7 @@
       {% for article in section.settings.selected_blog.articles %}
         {% if article.metafields.custom.featured_article and articleIndex < section.settings.limit %}
           <div class="swiper-slide">
-            {% render 'featured-article-card', article: article, featuredCard: true %}
+            {% render 'standard-article-card', article: article, featuredCard: true %}
           </div>
           {% assign articleIndex = articleIndex | plus: 1 %}
         {% endif %}
