@@ -72,12 +72,56 @@
         "title": "All Topics",
         "articles_per_page": 6
       }
+    },
+    "blogs_every_stage_products_4B6tPk": {
+      "type": "blogs-every-stage-products",
+      "blocks": {
+        "product_ecYbQ4": {
+          "type": "product",
+          "settings": {
+            "product": "hertime-pms"
+          }
+        },
+        "product_8WcY9e": {
+          "type": "product",
+          "settings": {
+            "product": "hertime-pms-plus"
+          }
+        },
+        "product_6firWG": {
+          "type": "product",
+          "settings": {
+            "product": "prenatal"
+          }
+        },
+        "product_6CXcCc": {
+          "type": "product",
+          "settings": {
+            "product": "menopause"
+          }
+        }
+      },
+      "block_order": [
+        "product_ecYbQ4",
+        "product_8WcY9e",
+        "product_6firWG",
+        "product_6CXcCc"
+      ],
+      "name": "Every Stage Products",
+      "settings": {
+        "title": "Hormone support for every stage of womanhood.",
+        "subtitle": "From your first period to your first hot flash, nourish your journey.",
+        "button_label": "View All Products",
+        "button_link": "",
+        "show_pricing_crossout": true
+      }
     }
   },
   "order": [
     "blog_hero_tV3KWw",
     "main",
     "featured_blog_slider_rNNTxH",
-    "blogs_with_sidebar_dYEYV7"
+    "blogs_with_sidebar_dYEYV7",
+    "blogs_every_stage_products_4B6tPk"
   ]
 }
