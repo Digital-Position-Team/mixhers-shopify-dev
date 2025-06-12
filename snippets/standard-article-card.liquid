@@ -6,6 +6,7 @@
     {% assign tags = tags | append: ',' | append: tag %}
   {% endif %}
 {% endfor %}
+{{ tags }}
 
 <a href="{{ article.url }}" class="standard-article-card article-card{% if featuredCard %} article-card--featured{% endif %}" data-tag="{{ tags }}">
   <div class="article-image">
