@@ -50,7 +50,7 @@
             assign pagnationIndex = 1
             assign articlesOnPage = 1
             for article in blog.articles
-                render 'article-card' with article: article, featuredCard: false, pagnationIndex: pagnationIndex
+                render 'standard-article-card' with article: article, featuredCard: false, pagnationIndex: pagnationIndex
                 
                 if articlesOnPage < articlesPerPage 
                     assign articlesOnPage = articlesOnPage | plus: 1
