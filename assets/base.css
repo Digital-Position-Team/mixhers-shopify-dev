@@ -3867,6 +3867,15 @@ a.product-btn.outline-button {
 .product-collection-grid-item .product-btn.outline-button:hover {
     box-shadow: -3px 4px #dcd6df;
 }
+
+.view-all-button {
+    text-align: center;
+}
+
+.view-all-button .btn {padding: 11px 40px;background: #402650;padding: 0 40px;border: 2px solid #402650;px;display: inline-flex;height: 60px;line-height: 1;align-items: center;}
+.view-all-button .btn:hover{
+    box-shadow: -4px 4px #dcd6df;
+}
 @media(max-width:1023px){
  .section-container{
     padding-left:32px;
