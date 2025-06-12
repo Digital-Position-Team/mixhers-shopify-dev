@@ -39,11 +39,33 @@
         "limit": 5,
         "selected_blog": "articles"
       }
+    },
+    "blogs_with_sidebar_dYEYV7": {
+      "type": "blogs-with-sidebar",
+      "blocks": {
+        "podcast_YEMKYW": {
+          "type": "podcast",
+          "settings": {
+            "feed_url": "",
+            "title": "Listen to It’s Hertime.",
+            "subtitle": "Most Recent Episodes"
+          }
+        }
+      },
+      "block_order": [
+        "podcast_YEMKYW"
+      ],
+      "name": "Blog Tabs with Sidebar Layout",
+      "settings": {
+        "title": "All Topics",
+        "articles_per_page": 6
+      }
     }
   },
   "order": [
     "blog_hero_tV3KWw",
     "main",
-    "featured_blog_slider_rNNTxH"
+    "featured_blog_slider_rNNTxH",
+    "blogs_with_sidebar_dYEYV7"
   ]
 }
