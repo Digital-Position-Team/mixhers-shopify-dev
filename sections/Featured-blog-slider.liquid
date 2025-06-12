@@ -1,4 +1,4 @@
-<style>
+""<style>
   .blog-nav-btn svg path{
      fill: #402650;
   }
@@ -17,13 +17,14 @@
         {% endif %}
       {% endfor %}
     </div>
-
     <!-- Swiper Arrows -->
-    <div class="blog-prev-icon blog-nav-btn">
-      {% render 'icon' with 'button-arrow-left' %}
-    </div>
-    <div class="blog-next-icon blog-nav-btn">
-      {% render 'icon' with 'button-arrow-right' %}
+    <div class="featured-blog-nav">
+      <div class="blog-prev-icon blog-nav-btn">
+        {% render 'icon' with 'button-arrow-left' %}
+      </div>
+      <div class="blog-next-icon blog-nav-btn">
+        {% render 'icon' with 'button-arrow-right' %}
+      </div>
     </div>
   </div>
 </div>
