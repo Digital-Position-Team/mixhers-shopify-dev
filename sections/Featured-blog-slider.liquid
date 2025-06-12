@@ -15,10 +15,10 @@
     </div>
 
     <!-- Swiper Arrows -->
-    <div class="swiper-button-prev">
+    <div class="blog-prev-icon">
       {% render 'icon' with 'button-arrow-left' %}
     </div>
-    <div class="swiper-button-next">
+    <div class="blog-next-icon">
       {% render 'icon' with 'button-arrow-right' %}
     </div>
   </div>
@@ -65,8 +65,8 @@
       slidesPerView: 1,
       spaceBetween: 16,
       navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev'
+        nextEl: '.blog-next-icon',
+        prevEl: '.blog-prev-icon'
       },
       breakpoints: {
         768: {
