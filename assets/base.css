@@ -3782,7 +3782,6 @@ cart-notification {
   flex-wrap: wrap;
 }
 .product-collection-grid-item .product-tag-wrap span.product-tag {
-    color: #fff;
     padding: 6px 12px;
     font-family: Suisse Works;
     font-style: italic;
@@ -3806,10 +3805,32 @@ cart-notification {
     max-width: 100%;
     width: 100%;
     margin-bottom: 8px;
-}.product-collection-grid-item .product-information * {
+    display: block;
+}
+.product-collection-grid-item .product-information * {
     margin: 0px;
 }
-
+.product-collection-grid-item  .product-details-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.product-collection-grid-item  .product-card-url {
+    text-decoration: none;
+}
+.product-collection-grid-item .product-small-desc {
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Faire Sprig';
+    font-style: italic;
+    margin-bottom: 5px;
+}
+.product-collection-grid-item .yotpo-stars + a.text-m {
+    display: none;
+}
+.product-collection-grid-item .yotpo-stars span.yotpo-icon {
+    font-size: 15px!important;
+}
 .product-collection-grid-item .product-information h3 {
     font-size: 16px;
 }
