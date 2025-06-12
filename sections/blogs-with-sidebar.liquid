@@ -45,7 +45,9 @@
                 <div class="podcast-latest-wrapper">
                   <div class="podcast-latest--header">
                     <div class="podcast-latest--img-wrapper">
+                    {% if block.settings.image %}
                       <img src="{{ block.settings.image | image_url}}" alt="Podcast" height="" width=""/>
+                    {% endif %}
                     </div>
                     <h2 class="headers-6">{{ block.settings.title }}</h2>
                   </div>
