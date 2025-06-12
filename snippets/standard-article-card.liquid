@@ -8,7 +8,7 @@
 {% endfor %}
 {{ tags }}
 
-<a href="{{ article.url }}" class="standard-article-card article-card{% if featuredCard %} article-card--featured{% endif %}" data-tag="{{ tags }}">
+<a href="{{ article.url }}" class="{% if pagnationIndex %} filterable-article-card{% endif %} standard-article-card article-card{% if featuredCard %} article-card--featured{% endif %}" data-tag="{{ tags }}">
   <div class="article-image">
     {% if article.image %}
       {{ article.image | image_url: width: 500 | image_tag: class: 'article-image-tag' }}
