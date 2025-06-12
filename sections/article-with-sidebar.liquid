@@ -1,6 +1,212 @@
+{% layout 'rebrand-hybrid' %}
+
+{{ 'blog-styles.css' | asset_url | stylesheet_tag }}
+{% assign mainBlog = blogs.articles %}
+{% assign featuredImage = '' %}
+
+{% if article.image %}
+  {% assign featuredImage = article.image %}
+{% else %}
+  {% assign featuredImage = mainBlog.metafields.custom.default_featured_image %}
+{% endif %}
+
+{% assign featuredProduct = '' %}
+
+{% if article.metafields.global.blog_product %}
+  {% assign featuredProduct = article.metafields.global.blog_product.value %}
+{% else %}
+  {% assign featuredProduct = mainBlog.metafields.global.blog_product.value %}
+{% endif %}
+{% assign foundFirstImage = false %}
+{% assign featuredProductImg = '' %}
+
+{% for image in featuredProduct.metafields.custom.collection_image_set.value %}
+  {% unless foundFirstImage %}
+    {% assign featuredProductImg = image %}
+    {% assign foundFirstImage = true %}
+  {% endunless %}
+{% endfor %}
+{% unless foundFirstImage %}
+  {% assign featuredProductImg = featuredProduct.metafields.rebrand.featured_image.value %}
+  {% assign foundFirstImage = true %}
+{% endunless %}
+
+<div class="back-btn-container hide-mobile">
+  <div class="back-btn-wrapper">
+    <a href="{{ mainBlog.url }}" class="button-2">
+      {% render 'icon' with 'left-arrow' %}
+      Back to All Articles
+    </a>
+  </div>
+</div>
+
+<section class="article-hero">
+  <div class="article-hero-container">
+    {% unless article.metafields.custom.remove_hero_image %}
+      <div class="article-hero-img-wrapper">
+        {{ featuredImage | image_url: width: 1500 | image_tag: class: 'article-hero-img' }}
+      </div>
+    {% endunless %}
+
+    <div class="article-hero-title-wrapper">
+      <a href="{{ mainBlog.url }}" class="button-2 mobile-only">
+        {% render 'icon' with 'left-arrow' %}
+        Back to All Articles
+      </a>
+      <div class="article-hero-info-wrapper">
+        {% for tag in article.tags %}
+          <div class="italic-subheaders-5 article-tag">
+            {{ tag }}
+          </div>
+        {% endfor %}
+        {% if article.metafields.custom.read_time != blank %}
+          <p class="body-6">
+            {{ article.metafields.custom.read_time }} min read
+          </p>
+        {% endif %}
+      </div>
+      <div class="article-hero-info-title-wrapper">
+        <h1 class="headers-3">{{ article.title }}</h1>
+        <div class="article-hero-info-wrapper-bottom">
+          {% if article.metafields.custom.reviewed_by_cody %}
+            <div class="reviewed-wrapper">
+              {% render 'icon' with 'checkmark' %}
+              <p class="body-6">Reviewed by Cody Sanders, Board Certified Holistic Health Practitioner, Authored by Mixhers Editorial Staff </p>
+            </div>
+          {% endif %}
+          <p class="body-7">
+            {{ article.published_at | date: '%B %d, %Y' }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% assign content = article.content | split: '<h2>' %}
+{% assign sectionTitles = '' %}
+{% assign formatedArticleContent = '' %}
+
+{% for item in content %}
+    {% if item contains '</h2>' %}
+        {% assign sectionContent = item | split: '</h2>' %}
+        {% assign sectionTitle = sectionContent[0] | strip_html %}
+        {% assign sectionTitle = sectionTitle | strip %}
+        {% assign sectionAnchor = sectionTitle | replace: ' ', '-' %}
+        {% assign sectionTitles = sectionTitles | append: sectionAnchor | append: '::' %}
+        {% assign sectionCopy = sectionContent[1] %}
+        {% if item contains '<h3' %}
+          {% assign sectionCopy = sectionCopy | replace: '<h3', '<h3 class="headers-5"' %}
+        {% endif %}
+        {% if item contains '<h4' %}
+          {% assign sectionCopy = sectionCopy | replace: '<h4', '<h4 class="headers-6"' %}
+        {% endif %}
+        {% assign formatedArticleContent = formatedArticleContent | append: '<section class="article-content-section" id="' | append: sectionAnchor | append: '"><h2 class="headers-4">' | append: sectionTitle | append: '</h2><div class="body-4">' | append: sectionCopy | append: '</div></section>' | append: ':: ' %}
+    {% else %}
+      {% assign formatedArticleContent = formatedArticleContent | append: '<section class="article-content-section"><div class="body-4">' | append: item | append: '</div></section>' | append: ':: ' %}
+    {% endif %}
+{% endfor %}
+
+{% assign formatedArticleContent = formatedArticleContent | split: ':: ' %}
+
+{% assign sectionTitles = sectionTitles | split: '::' %}
+
+<section class="article-container-section">
+  <div class="article-container-w-sidebar">
+    <div class="article-sticky-sidebar">
+      <div class="toc">
+          <h3 class="italic-subheaders-4">Contents</h3>
+          <ul>
+              {% for item in sectionTitles %}
+                  {% if item != '' %}
+                      <li><a href="#{{ item }}" class="button-5">{{ forloop.index }}. {{ item | replace: '-', ' ' }}</a></li>
+                  {% endif %}
+              {% endfor %}
+          </ul>
+      </div>
+      <div class="article-sidebar-sticky-wrapper hide-mobile">
+
+        {% render'podcast-player' %}
+
+      </div>
+      <div class="hide-mobile article-sticky-sidebar--bottom">
+     
+      </div>
+    </div>
+
+
+    <div class="article-main-content-wrapper">
+      {% for section in formatedArticleContent %}
+        {% if forloop.first %}
+          {{ section }}
+          <div class="podcast-latest--feed-wrapper podcast-latest--feed-wrapper--article mobile-only">
+              <div class="podcast-feed-mobile"></div>
+          </div>
+
+        {% elsif forloop.last %}
+          {{ section }}
+          <div class="mobile-only mobile-quiz-cta">
+            {% section 'quiz-cta-card' %}
+          </div>
+        {% else %}
+          {{ section }}
+        {% endif %}
+      {% endfor %}
+
+
+
+
+    </div>
+  </div>
+</section>
+
+
+<script type="application/ld+json">
+{
+"@context": "http://schema.org",
+"@type": "Article",
+"articleBody": {{ article.content | strip_html | json }},
+"mainEntityOfPage": {
+  "@type": "WebPage",
+  "@id": {{ shop.url | append: page.url | json }}
+},
+"headline": {{ article.title | json }},
+{% if article.excerpt != blank %}
+  "description": {{ article.excerpt | strip_html | json }},
+{% endif %}
+{% if article.image %}
+  {% assign image_size = article.image.width | append: 'x' %}
+  "image": [
+    {{ article | img_url: image_size | prepend: "https:" | json }}
+  ],
+{% endif %}
+"datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+"dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+"author": {
+  "@type": "Person",
+  "name": {{ article.author | json }}
+},
+"publisher": {
+  "@type": "Organization",
+  {% if page_image %}
+    {% assign image_size = page_image.width | append: 'x' %}
+    "logo": {
+      "@type": "ImageObject",
+      "height": {{ page_image.height | json }},
+      "url": {{ page_image | img_url: image_size | prepend: "https:" | json }},
+      "width": {{ page_image.width | json }}
+    },
+  {% endif %}
+  "name": {{ shop.name | json }}
+}
+}
+</script>
+
 {% schema %}
   {
     "name": "Section name",
-    "settings": []
+    "settings": [],
+    "presets": [
+      {"name":"article with sidebar"}
+    ]
   }
 {% endschema %}
