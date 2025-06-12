@@ -112,7 +112,7 @@
         "title": "Hormone support for every stage of womanhood.",
         "subtitle": "From your first period to your first hot flash, nourish your journey.",
         "button_label": "View All Products",
-        "button_link": "",
+        "button_link": "shopify://collections/all",
         "show_pricing_crossout": true
       }
     }
