@@ -289,12 +289,15 @@
 </script>
 
 <style>
+.blog-articles-container .standard-article-card{
+  display:none;
+}
     {% for tag in blog.all_tags %}
         .blog-articles-container[data-tag="{{ tag }}"] .filterable-article-card[data-tag="{{ tag }}"].active {
             display: flex;
         }
     {% endfor %}
-    .blog-articles--filter {
+.blog-articles--filter {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -361,4 +364,5 @@
     width: 16px;
     transition: transform .3s ease-in-out;
 }
+
 </style>
