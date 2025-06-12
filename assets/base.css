@@ -3775,6 +3775,9 @@ cart-notification {
     padding-left:32px;
     padding-right:32px;
   }
+  .standard-article-card .article-tag{
+    padding:13.5px 20px;
+  }
 }
 @media (max-width: 991px) {
  .title-heading-2{
