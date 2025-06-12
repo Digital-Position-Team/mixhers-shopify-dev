@@ -2,6 +2,7 @@
 {% assign articleTags = article.tags %}
 {% assign articlesFoundCount = 0 %}
 
+{{ article.blog }}
 <div class="related-articles-container {% if request.page_type == 'article' %}article-related-articles{% endif %}">
   <div class="page-width">
     <h2 class="headers-5">{{ section.settings.heading }}</h2>
