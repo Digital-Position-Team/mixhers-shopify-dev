@@ -1,6 +1,98 @@
+<div class="every-stage-product--container">
+  {% if section.settings.title != blank %}
+    <h2 class="every-stage-title">{{ section.settings.title }}</h2>
+  {% endif %}
+
+  {% if section.settings.subtitle != blank %}
+    <p class="every-stage-subtitle">{{ section.settings.subtitle }}</p>
+  {% endif %}
+
+  <div class="product-list-container">
+    {% for block in section.blocks %}
+      {% assign product = block.settings.product %}
+      {% if product %}
+        {% render 'mixhers-product-card', product: product, show_pricing_crossout: section.settings.show_pricing_crossout %}
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+    <a href="{{ section.settings.button_link }}" class="button-link-wrapper">
+      <div class="button button--primary">
+        <span>{{ section.settings.button_label }}</span>
+      </div>
+    </a>
+  {% endif %}
+</div>
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Every Stage Products",
+  "tag": "section",
+  "class": "every-stage-products-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Hormone support for every stage of womanhood."
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "From your first period to your first hot flash, nourish your journey."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "View All Products"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pricing_crossout",
+      "label": "Show pricing crossout",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select product"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Every Stage Products",
+      "blocks": [
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        }
+      ]
+    }
+  ]
+}
 {% endschema %}
