@@ -59,7 +59,7 @@
             "title": "Not sure which drink is right for you?",
             "description": "Get matched with products designed for your unique wellness goals.",
             "button_text": "Take the Quiz",
-            "button_url": ""
+            "button_url": "shopify://pages/quiz"
           }
         }
       },
