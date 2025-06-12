@@ -55,17 +55,26 @@
 }
 {% endschema %}
 
-{% javascript %}
-  const swiper = new Swiper('.featured-articles-swiper', {
-    slidesPerView: 1,
-    spaceBetween: 16,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
-    },
-    breakpoints: {
-      768: { slidesPerView: 2 },
-      1024: { slidesPerView: 3 }
-    }
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const swiper = new Swiper('.featured-articles-swiper', {
+      slidesPerView: 1,
+      spaceBetween: 16,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 24
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 32
+        }
+      }
+    });
   });
-{% endjavascript %}
+</script>
+
