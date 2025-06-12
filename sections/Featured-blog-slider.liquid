@@ -5,16 +5,16 @@
 </style>
 <div class="featured-articles-slider">
   <div class="page-width">
-  <h2 class="section-title">{{ section.settings.title }}</h2>
+  <h2 class="featured-articles-title">{{ section.settings.title }}</h2>
     <div class="swiper featured-articles-swiper">
       <div class="swiper-wrapper">
-        {% assign articleIndex = 0 %}
+        {% assign article_index = 0 %}
         {% for article in section.settings.selected_blog.articles %}
-          {% if article.metafields.custom.featured_article and articleIndex < section.settings.limit %}
+          {% if article.metafields.custom.featured_article and article_index < section.settings.limit %}
             <div class="swiper-slide">
               {% render 'standard-article-card', article: article, featuredCard: true %}
             </div>
-            {% assign articleIndex = articleIndex | plus: 1 %}
+            {% assign article_index = article_index | plus: 1 %}
           {% endif %}
         {% endfor %}
       </div>
