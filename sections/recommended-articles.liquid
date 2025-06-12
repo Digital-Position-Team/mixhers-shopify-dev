@@ -1,4 +1,4 @@
-{% assign mainBlog = section.settings.blog %}
+{% assign mainBlog = section.settings.blog | default: article.blog %}
 {% assign articleTags = article.tags %}
 {% assign articlesFoundCount = 0 %}
 
