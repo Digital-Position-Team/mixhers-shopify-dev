@@ -1,4 +1,11 @@
-{% assign tags = article.tags | join: ',' %}
+{% assign tags = '' %}
+{% for tag in article.tags %}
+  {% if forloop.first %}
+    {% assign tags = tag %}
+  {% else %}
+    {% assign tags = tags | append: ',' | append: tag %}
+  {% endif %}
+{% endfor %}
 
 <a href="{{ article.url }}" class="standard-article-card article-card{% if featuredCard %} article-card--featured{% endif %}" data-tag="{{ tags }}">
   <div class="article-image">
