@@ -296,12 +296,29 @@
 .blog-articles-container[data-tag="all"] .article-card.active {
     display: flex;
 }
-    {% for tag in blog.all_tags %}
-        .blog-articles-container[data-tag="{{ tag }}"] .filterable-article-card[data-tag="{{ tag }}"].active {
-            display: flex;
-            flex-direction:column;
-        }
-    {% endfor %}
+{% for tag in blog.all_tags %}
+      .blog-articles-container[data-tag="{{ tag }}"] .filterable-article-card[data-tag="{{ tag }}"].active {
+          display: flex;
+          flex-direction:column;
+      }
+{% endfor %}
+
+.blog-articles-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 40px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+.articles-tag-title {
+    margin: 0px 0px 20px 0px;
+    font-family: 'Buenos Aires';
+    font-weight: 700;
+}
+  
 .blog-articles--filter {
     width: 100%;
     display: flex;
