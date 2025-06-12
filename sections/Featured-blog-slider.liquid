@@ -1,48 +1,24 @@
 <div class="featured-articles">
   <h2 class="section-title">{{ section.settings.title }}</h2>
 
-  <div class="articles-scroll-container">
-    <div class="articles-scroll">
-      {% liquid
-        assign articleIndex = 0 
-        for article in section.settings.selected_blog.articles 
-          if article.metafields.custom.featured_article and articleIndex < section.settings.limit 
-            render 'featured-article-card', article: article, featuredCard: true 
-            assign articleIndex = articleIndex | plus: 1 
-          endif
-        endfor
-      %}
+  <div class="swiper featured-articles-swiper">
+    <div class="swiper-wrapper">
+      {% assign articleIndex = 0 %}
+      {% for article in section.settings.selected_blog.articles %}
+        {% if article.metafields.custom.featured_article and articleIndex < section.settings.limit %}
+          <div class="swiper-slide">
+            {% render 'featured-article-card', article: article, featuredCard: true %}
+          </div>
+          {% assign articleIndex = articleIndex | plus: 1 %}
+        {% endif %}
+      {% endfor %}
     </div>
-  </div>
 
-  <div class="articles-scroll-controls">
-    <button class="scroll-btn" data-direction="left">
-     left arrow
-    </button>
-    <button class="scroll-btn" data-direction="right">
-      right arrow
-    </button>
+    <!-- Swiper Arrows -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
   </div>
 </div>
-
-<script>
-  document.querySelectorAll('.scroll-btn').forEach(button => {
-    button.addEventListener('click', () => {
-      const carousel = document.querySelector('.articles-scroll');
-      const direction = button.dataset.direction;
-      const card = carousel.querySelector('.article-card--featured');
-      const scrollAmount = card.offsetWidth + 25;
-      const currentScroll = carousel.scrollLeft;
-      const maxScroll = carousel.scrollWidth - carousel.offsetWidth;
-
-      if (direction === 'left') {
-        carousel.scrollTo({ left: currentScroll === 0 ? maxScroll : currentScroll - scrollAmount, behavior: 'smooth' });
-      } else {
-        carousel.scrollTo({ left: currentScroll >= maxScroll ? 0 : currentScroll + scrollAmount, behavior: 'smooth' });
-      }
-    });
-  });
-</script>
 
 {% schema %}
 {
@@ -78,3 +54,18 @@
   ]
 }
 {% endschema %}
+
+{% javascript %}
+  const swiper = new Swiper('.featured-articles-swiper', {
+    slidesPerView: 1,
+    spaceBetween: 16,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    },
+    breakpoints: {
+      768: { slidesPerView: 2 },
+      1024: { slidesPerView: 3 }
+    }
+  });
+{% endjavascript %}
