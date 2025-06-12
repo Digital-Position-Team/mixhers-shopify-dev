@@ -2,11 +2,14 @@
 .blog-hero-row {
   display:grid;
   grid-template-columns: 1fr auto;
+  align-items: center;
 }
 
 .blog-hero--title-wrapper h1 {
-  margin-bottom: 20px;
-  margin-top:0px;
+    margin-bottom: 20px;
+    margin-top: 0;
+    font-size: 80px;
+    line-height: 1.15;
 }
 
 .blog-hero--img-wrapper img {
@@ -15,7 +18,15 @@
     object-fit: contain;
     object-position: center;
 }
-{% endstylesheet %}
+@media(min-width:768px){
+  .blog-hero--title-wrapper h1 {
+     font-size: 80px;
+  }
+}
+@media(min-width:992px){
+  
+}
+  {% endstylesheet %}
 
 <div class="blog-hero--wrapper" style="background: {{ section.settings.background }};">
   <div class="page-width">
