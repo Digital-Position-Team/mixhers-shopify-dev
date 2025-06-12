@@ -3,7 +3,7 @@
 <div class="blog-main-content">
   <div class="blog-articles-container-w-sidebar">
     <div class="blog-articles-main-content-wrapper">
-      {% render 'blog-tabs' %}
+      {% render 'blog-tabs', articles_per_page: section.settings.articles_per_page, default_title: section.settings.title %}
     </div>
     <div class="blog-articles-sticky-sidebar">
       {% for block in section.blocks %}
@@ -45,7 +45,24 @@
 {% schema %}
 {
   "name": "Blog Tabs with Sidebar",
-  "settings": [],
+  "settings": [
+  {
+    "type": "text",
+    "id": "title",
+    "label": "Default Title",
+    "default": "All Topics"
+  },
+  {
+    "type": "range",
+    "id": "articles_per_page",
+    "label": "Articles Per Page",
+    "min": 2,
+    "max": 20,
+    "step": 1,
+    "default": 6
+  }
+],
+
   "blocks": [
     {
       "type": "podcast",
