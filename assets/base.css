@@ -3781,6 +3781,9 @@ cart-notification {
      font-size:42px;
   }
    p.base-text , .base-text p ,  .base-text li{font-size:16px;}
+  .standard-article-card h3.article-title {
+    font-size: 20px;
+  }
 }
 @media (max-width: 767px) {
   .section-container{
