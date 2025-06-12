@@ -3726,7 +3726,7 @@ cart-notification {
 
 
 /* standard article card  */
-  .standard-article-card a {
+  .standard-article-card{
     color: inherit;
     text-decoration: none;
 }
