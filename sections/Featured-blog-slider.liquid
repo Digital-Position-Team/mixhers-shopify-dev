@@ -63,13 +63,17 @@
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const swiper = new Swiper('.featured-articles-swiper', {
-      slidesPerView: 1.2,
-      spaceBetween: 14,
+      slidesPerView: 1,
+      spaceBetween: 12,
       navigation: {
         nextEl: '.blog-next-icon',
         prevEl: '.blog-prev-icon'
       },
       breakpoints: {
+        400:{
+          slidesPerView: 1.2,
+          spaceBetween: 14
+        }
         640: {
           slidesPerView: 2,
           spaceBetween: 24
@@ -117,6 +121,11 @@
   }
   .featured-articles-slider h2.featured-articles-title {
       font-family: 'Faire Sprig';
+  }
+  @media(max-width:649px){
+    .featured-blog-nav {
+        display: none;
+    }
   }
 </style>
 
