@@ -1,37 +1,41 @@
 {% stylesheet %}
-.blog-hero--wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 40px 20px;
+.blog-hero-row {
+  display:grid;
+  grid-template-columns: 1fr auto;
 }
 
 .blog-hero--title-wrapper h1 {
   margin-bottom: 20px;
+  margin-top:0px;
 }
 
 .blog-hero--img-wrapper img {
-  max-width: 100%;
-  height: auto;
+    width: 100%;
+    max-height: 427px;
+    object-fit: contain;
+    object-position: center;
 }
 {% endstylesheet %}
 
 <div class="blog-hero--wrapper" style="background: {{ section.settings.background }};">
-  <div class="blog-hero--title-wrapper">
-    <h1 class="blog-hero--title">{{ section.settings.title | escape }}</h1>
-  </div>
-  {% if section.settings.image != blank %}
-    <div class="blog-hero--img-wrapper">
-      <img
-        src="{{ section.settings.image | image_url: width: 1500 }}"
-        alt="{{ section.settings.title | escape }}"
-        loading="lazy"
-        width="auto"
-        height="auto"
-      >
+  <div class="page-width">
+    <div class="blog-hero-row">
+      <div class="blog-hero--title-wrapper">
+        <h1 class="blog-hero--title">{{ section.settings.title | escape }}</h1>
+      </div>
+      {% if section.settings.image != blank %}
+        <div class="blog-hero--img-wrapper">
+          <img
+            src="{{ section.settings.image | image_url: width: 1500 }}"
+            alt="{{ section.settings.title | escape }}"
+            loading="lazy"
+            width="auto"
+            height="auto"
+          >
+        </div>
+      {% endif %}
     </div>
-  {% endif %}
+  </div>
 </div>
 
 {% schema %}
