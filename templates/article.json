@@ -42,6 +42,12 @@
         "share",
         "content"
       ],
+      "disabled": true,
+      "settings": {}
+    },
+    "article_with_sidebar_AWUAzt": {
+      "type": "article-with-sidebar",
+      "name": "article with sidebar",
       "settings": {}
     },
     "blogs_every_stage_products_TeaG6w": {
@@ -90,6 +96,7 @@
   },
   "order": [
     "main",
+    "article_with_sidebar_AWUAzt",
     "blogs_every_stage_products_TeaG6w"
   ]
 }
