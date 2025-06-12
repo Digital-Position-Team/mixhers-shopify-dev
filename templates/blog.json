@@ -46,9 +46,10 @@
         "podcast_YEMKYW": {
           "type": "podcast",
           "settings": {
-            "feed_url": "",
+            "feed_url": "https://feeds.buzzsprout.com/868171.rss",
             "title": "Listen to It’s Hertime.",
-            "subtitle": "Most Recent Episodes"
+            "subtitle": "Most Recent Episodes",
+            "image": "shopify://shop_images/podcast_1.png"
           }
         }
       },
