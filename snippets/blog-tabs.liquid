@@ -291,10 +291,12 @@
 <style>
 .blog-articles-container .standard-article-card{
   display:none;
+   flex-direction:column;
 }
     {% for tag in blog.all_tags %}
         .blog-articles-container[data-tag="{{ tag }}"] .filterable-article-card[data-tag="{{ tag }}"].active {
             display: flex;
+            flex-direction:column;
         }
     {% endfor %}
 .blog-articles--filter {
