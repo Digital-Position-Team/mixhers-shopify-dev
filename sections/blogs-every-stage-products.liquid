@@ -14,7 +14,7 @@
       {% for block in section.blocks %}
         {% assign product = block.settings.product %}
         {% if product %}
-          {% render 'mixhers-product-card', product: product, show_pricing_crossout: section.settings.show_pricing_crossout %}
+          {% render 'hoverstyle-product-card', product: product, show_pricing_crossout: section.settings.show_pricing_crossout %}
         {% endif %}
       {% endfor %}
     </div>
