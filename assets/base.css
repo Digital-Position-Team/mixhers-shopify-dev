@@ -3837,6 +3837,17 @@ cart-notification {
     font-weight: 600;
     line-height: 1.3;
 }
+a.product-btn.outline-button {
+    display: none;
+    transition: display .5s;
+}
+
+.every-stage-product--container .product-list-container .product-collection-grid-item:hover a.product-btn.outline-button{
+    display:block;
+}
+.every-stage-product--container .product-list-container .product-collection-grid-item:hover .hide-on-hover{
+    display:none;
+}
 @media(max-width:1023px){
  .section-container{
     padding-left:32px;
