@@ -1,2 +1,297 @@
 {% assign articlesPerPage = articles_per_page %}
 {% assign defaultArticlesTagTitle = default_title %}
+{% assign totalArticles = blog.articles | size %}
+{% assign pagination = '' %}
+
+{% if totalArticles > articlesPerPage %}
+    {% assign totalPages = totalArticles | divided_by: articlesPerPage | ceil %}
+
+    {% for i in (1..100) %}
+        {% unless i > totalPages %} 
+            {% if i == totalPages %}
+                {% assign pagination = pagination | append: i %}
+            {% else %}
+                {% assign pagination = pagination | append: i | append: ',' %}
+            {% endif %}
+        {% endunless %}
+    {% endfor %}
+{% endif %}
+
+<div class="blog-articles-container" data-tag="all">
+    <div class="blog-articles--filter">
+        <div class="blog-articles--filter__tag button-5 outline-button selected" data-tag="all">{{ section.settings.title }}</div>
+
+        {% for tag in blog.all_tags %}
+            <div class="blog-articles--filter__tag button-5 outline-button" data-tag="{{ tag }}">{{ tag }}</div>
+        {% endfor %}
+    </div>
+    <div class="blog-articles--filter-select">
+        <div data-tag="all" class="blog-articles--filter__tag button-6 selected">{{ section.settings.title }}</div>
+
+        {% for tag in blog.all_tags %}
+            <div data-tag="{{ tag }}" class="blog-articles--filter__tag button-6">{{ tag }}</div>
+        {% endfor %}
+
+        <div class="drop-down-icon">
+            {% render 'icon' with 'down-arrow' %}
+        </div>
+    </div>
+
+    <h2 class="headers-4 hide-mobile articles-tag-title">
+        {% if request.path contains 'tagged' %}
+            {{ current_tags | join: ', ' }}
+        {% else %}
+            {{ defaultArticlesTagTitle }}
+        {% endif %}
+    </h2>
+
+    <div class="blog-articles-grid">
+        {% liquid 
+            assign pagnationIndex = 1
+            assign articlesOnPage = 1
+            for article in blog.articles
+                render 'article-card' with article: article, featuredCard: false, pagnationIndex: pagnationIndex
+                
+                if articlesOnPage < articlesPerPage 
+                    assign articlesOnPage = articlesOnPage | plus: 1
+                else
+                    assign pagnationIndex = pagnationIndex | plus: 1
+                    assign articlesOnPage = 1
+                endif
+            endfor
+        %}
+    </div>
+    <div class="blog-articles-controls-wrapper articles-controls-wrapper">
+        <span class="blog-articles-control articles-control-btn hide-btn" data-direction="previous">
+          {% render 'icon' with 'button-arrow-left' %}
+        </span>
+        <div class="article-pagination">
+            {% assign paginationPages = pagination | split: ',' %}
+          {% for item in paginationPages %}
+            <span class="article-pagination-item buttons-4{% if item == '1' %} active{% endif %}">{{ item }}</span>
+          {% endfor %}
+        </div>
+        <span class="blog-articles-control articles-control-btn" data-direction="next">
+          {% render 'icon' with 'button-arrow-right' %}
+        </span>
+      </div>
+</div>
+
+<script>
+    let filterWrapper = document.querySelector('.blog-articles--filter');
+    let filterTags = filterWrapper.querySelectorAll('.blog-articles--filter__tag');
+    let blogArticlesContainer = document.querySelector('.blog-articles-container');
+    let filterSelect = document.querySelector('.blog-articles--filter-select'); 
+    let filterSelectOptions = filterSelect.querySelectorAll('.blog-articles--filter__tag');
+    let articlesTagTitle = document.querySelector('.articles-tag-title');
+    let articlesGrid = document.querySelector('.blog-articles-grid');
+    let articlesControlBtns = document.querySelectorAll('.articles-control-btn');
+
+    filterTags.forEach(function(tag) {
+        tag.addEventListener('click', (event) => {
+            let tag = event.target.dataset.tag;
+
+            if (tag != blogArticlesContainer.dataset.tag) {
+                setFilter(tag);
+                updateTitle(tag); 
+            }
+        });
+    });
+
+    function updateTitle(tag) {
+        if( tag === 'all' ) {
+            articlesTagTitle.innerText = '{{ defaultArticlesTagTitle }}';
+        } else {
+            articlesTagTitle.innerText = tag;
+        }
+    }
+
+    function setFilter(tag) {
+        blogArticlesContainer.dataset.tag = tag;
+        let activeFilters = document.querySelectorAll('.blog-articles--filter__tag.selected');
+        let newFilters = document.querySelectorAll(`.blog-articles--filter__tag[data-tag="${tag}"]`);
+
+        activeFilters.forEach(function(filter) {
+            filter.classList.remove('selected');
+        });
+
+        newFilters.forEach(function(filter) {
+            filter.classList.add('selected');
+        });
+
+        updatePagination(tag);
+    }
+    
+    filterSelect.addEventListener('click', function() {
+        if (filterSelect.classList.contains('active')) {
+            filterSelect.classList.remove('active');
+        } else {
+            filterSelect.classList.add('active');
+            initFilterSelect();
+        }
+    });
+
+    function initFilterSelect() {
+        filterSelectOptions.forEach(function(option) {
+            option.addEventListener('click', function() {
+                filterSelectOptions.forEach(function(option) {
+                    option.classList.remove('selected');
+                });
+                let tag = option.dataset.tag;
+                setFilter(tag);
+            });
+        });
+    }
+
+    function updatePagination(tag) {
+        let currentPage = document.querySelector('.blog-articles-grid').dataset.page;
+        let articlesPerPage = {{ articlesPerPage }};
+        let articles = document.querySelectorAll('.filterable-article-card');
+        let tagArticles = tag === 'all' ? document.querySelectorAll('.filterable-article-card') : document.querySelectorAll(`.filterable-article-card[data-tag="${tag}"]`);
+        let totalArticles = tagArticles.length;
+        let totalPages = Math.ceil(totalArticles / articlesPerPage);
+        let pagination = document.querySelector('.article-pagination');
+
+        for (let i = 1; i <= totalPages; i++) {
+            let paginationItem = document.createElement('span');
+            paginationItem.classList.add('article-pagination-item', 'buttons-4');
+            paginationItem.innerText = i;
+            if(i == 1) {
+                paginationItem.classList.add('active');
+                pagination.innerHTML = '';
+                pagination.appendChild(paginationItem);
+            } else {
+                pagination.appendChild(paginationItem);
+            }
+        }
+
+        articles.forEach(function(article) {
+            article.classList.remove('active');
+        });
+
+        let articlesOnPage = 1;
+        let pageIndex = 1;
+
+        console.log('total articles in tag', tagArticles.length);
+
+        tagArticles.forEach(function(article) {
+            console.log('articlesOnPage', articlesOnPage);
+            console.log('pageIndex', pageIndex);
+            console.log('article', article);
+            if (articlesOnPage <= articlesPerPage) {
+                article.dataset.page = pageIndex;
+                
+                if( articlesOnPage === articlesPerPage) {
+                    articlesOnPage = 1;
+                    pageIndex++;
+                } else {
+                    articlesOnPage++;
+                }
+            } 
+            changePage(tag, 1, 1);
+        });
+        initPagination(tag);
+        //initArticlesControlBtns(tag); 
+    }
+
+    window.addEventListener('load', function() {
+        let tag = blogArticlesContainer.dataset.tag;
+        initPagination(tag);
+        initArticlesControlBtns(tag); 
+    });
+
+    function initPagination(tag) {
+        let paginationItems = document.querySelectorAll('.article-pagination-item');
+
+        paginationItems.forEach(function(item) {
+            item.addEventListener('click', () => {
+                let currentPageItem = document.querySelector('.article-pagination-item.active');
+                let currentPage = parseInt(currentPageItem.innerText);
+                let newPage = parseInt(item.innerText);
+
+                changePage(tag, currentPage, newPage);
+            });
+        });
+    }
+
+    function initArticlesControlBtns(tag) {
+        articlesControlBtns.forEach(function(btn) {
+            btn.addEventListener('click', () => {
+                let direction = btn.dataset.direction;
+                let currentPageItem = document.querySelector('.article-pagination-item.active');
+                let currentPage = parseInt(currentPageItem.innerText);
+                console.log('currentPage', currentPage);
+                console.log('direction', direction);
+                console.log('currentPageItem', currentPageItem )
+                if(direction === 'next' ) {
+                    let lastPage = parseInt(document.querySelector(`.article-pagination-item:last-child`).innerText);
+                    if (currentPage === lastPage) {
+                        console.log('last page')
+                        return;
+                    }
+                    let newPage = parseInt(currentPage) + 1;
+                    console.log('newPage next', newPage);
+                    changePage(tag, currentPage, newPage);
+                } else if (direction === 'previous') {
+                    if (currentPage === 1) {
+                        console.log('first page')
+                        return;
+                    }
+                    let newPage = parseInt(currentPage) - 1;
+                    console.log('newPage previous', newPage);
+                    changePage(tag, currentPage, newPage);
+                }
+            });
+        });
+    }
+
+    function changePage(tag, currentPage, newPage) {
+        let currentArticles = tag === 'all' ? document.querySelectorAll(`.filterable-article-card[data-page="${currentPage}"]`) : document.querySelectorAll(`.filterable-article-card[data-page="${currentPage}"][data-tag="${tag}"]`);
+        let newArticles = tag === 'all' ? document.querySelectorAll(`.filterable-article-card[data-page="${newPage}"]`) : document.querySelectorAll(`.filterable-article-card[data-page="${newPage}"][data-tag="${tag}"]`);
+        let previousBtn = document.querySelector('.articles-control-btn[data-direction="previous"]');
+        let nextBtn = document.querySelector('.articles-control-btn[data-direction="next"]');
+        let lastPage = parseInt(document.querySelector(`.article-pagination-item:last-child`).innerText);
+        let currentPageItem = document.querySelector('.article-pagination-item.active');
+        //console.log('lastPage', lastPage);
+        //console.log('newPage', newPage);
+        let newPageItem = document.querySelector(`.article-pagination-item:nth-child(${newPage})`);
+       // console.log('newPageItem', newPageItem);
+        currentPageItem.classList.remove('active');
+        newPageItem.classList.add('active');
+        console.log('changed to newPage', newPage);
+
+        if (newPage === lastPage) {
+            nextBtn.classList.add('hide-btn');
+        } else {
+            nextBtn.classList.remove('hide-btn');
+        }
+
+        blogArticlesContainer.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+
+        if ( newPage === 1) {
+            previousBtn.classList.add('hide-btn');
+            let articles = document.querySelectorAll('.filterable-article-card');
+            articles.forEach(function(article) {
+                article.classList.remove('active');
+            });
+        } else {
+            previousBtn.classList.remove('hide-btn');
+
+            currentArticles.forEach(function(article) {
+                article.classList.remove('active');
+            });
+        }
+
+        newArticles.forEach(function(article) {
+            article.classList.add('active');
+        });
+    }
+</script>
+
+<style>
+    {% for tag in blog.all_tags %}
+        .blog-articles-container[data-tag="{{ tag }}"] .filterable-article-card[data-tag="{{ tag }}"].active {
+            display: flex;
+        }
+    {% endfor %}
+</style>
