@@ -1,17 +1,31 @@
- <div class="podcast-latest-wrapper">
+{% assign rssFeed = block.settings.feed_url %}
+{% assign episodeCount = block.settings.episode_count %}
+{% assign isArticle = false %}
+{% assign podcastEpisode = false %}
+
+{% if request.page_type == 'article' %}
+    {% assign isArticle = true %}
+    {% if article.metafields.custom.podcast_episode_title.value != blank %}
+        {% assign podcastEpisode = article.metafields.custom.podcast_episode_title.value %}
+    {% endif %}
+
+    <div class="podcast-latest--feed-wrapper podcast-latest--feed-wrapper--article hide-mobile">
+        <div class="podcast-feed"></div>
+    </div>
+{% else %}
+    <div class="podcast-latest-wrapper">
         <div class="podcast-latest--header">
-          <div class="podcast-latest--img-wrapper">
-          {% if block.settings.image %}
-            <img src="{{ block.settings.image | image_url}}" alt="Podcast" height="" width=""/>
-          {% endif %}
-          </div>
-          <h2 class="headers-6">{{ block.settings.title }}</h2>
+            <div class="podcast-latest--img-wrapper">
+                {{ block.settings.image | image_url: width: 430 | image_tag }}
+            </div>
+            <h2 class="headers-6">{{ block.settings.title }}</h2>
         </div>
         <div class="podcast-latest--feed-wrapper">
-          <h4 class="italic-subheaders-6">{{ block.settings.subtitle }}</h4>
-          <div class="podcast-feed" data-feed="{{ block.settings.feed_url }}"></div>
+            <h4 class="italic-subheaders-6">{{ block.settings.subtitle }}</h4>
+            <div class="podcast-feed"></div>
         </div>
-  </div>
+    </div>
+{% endif %}
 
 
 <script defer>
