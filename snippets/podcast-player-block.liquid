@@ -1,0 +1,162 @@
+ <div class="podcast-latest-wrapper">
+        <div class="podcast-latest--header">
+          <div class="podcast-latest--img-wrapper">
+          {% if block.settings.image %}
+            <img src="{{ block.settings.image | image_url}}" alt="Podcast" height="" width=""/>
+          {% endif %}
+          </div>
+          <h2 class="headers-6">{{ block.settings.title }}</h2>
+        </div>
+        <div class="podcast-latest--feed-wrapper">
+          <h4 class="italic-subheaders-6">{{ block.settings.subtitle }}</h4>
+          <div class="podcast-feed" data-feed="{{ block.settings.feed_url }}"></div>
+        </div>
+  </div>
+
+
+<script defer>
+    const RSS_URL = `{{ rssFeed }}`;
+    let podcastFeed = document.querySelector('.podcast-feed');
+    const isArticle = `{{ isArticle }}` === 'true' ? true : false;
+    let podcastEpisode = `{{ podcastEpisode }}` != 'false' ? `{{ podcastEpisode }}` : false;
+    console.log('podcastEpisode', podcastEpisode);
+    console.log('isArticle', isArticle)
+    let episodeCount = isArticle && !podcastEpisode ? 1 : `{{ episodeCount }}`;
+    console.log('episodeCount', episodeCount);
+    const playIcon = `<svg width="13" height="18" viewBox="0 0 13 18" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left: 4px;"><path d="M0.5 1.88395C0.5 1.08216 1.39629 0.606406 2.06037 1.0557L12.3034 7.9859C12.8821 8.37741 12.8911 9.22655 12.3209 9.63028L2.07786 16.8828C1.41558 17.3517 0.5 16.8782 0.5 16.0667V1.88395Z" fill="#402650"/></svg>`;
+    const pauseIcon = `<svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="3" height="14" rx="1" fill="#402650"/><rect x="7" width="3" height="14" rx="1" fill="#402650"/></svg>`;
+
+    // type of variable podcastEpisode
+    fetch(RSS_URL).then(response => response.text())
+    .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+    .then(data => {
+
+        const items = data.querySelectorAll("item");
+        let html = ``;
+        if (podcastEpisode) {
+            items.forEach((el, index) => {
+                if (el.querySelector("title").innerHTML == podcastEpisode){
+                    let duration = el.querySelector("duration").innerHTML;
+                    let durationMin = Math.floor(duration / 60);
+                    let durationHour = Math.floor(durationMin / 60);
+                    let durationText;
+    
+                    if(durationHour > 0){
+                        durationMin = durationMin - (durationHour * 60);
+                        durationText = `${durationHour} hr ${durationMin} min`;
+                    } else {
+                        durationText = `${durationMin} min`;
+                    }
+                    let audioUrl = el.querySelector("enclosure").getAttribute('url');
+    
+                    html += `
+                        <div class="episode-wrapper" data-index="${index}">
+                            <div class="episode--details-wrapper">
+                                <h4 class="headers-9">${el.querySelector("title").innerHTML}</h4>
+                                <p class="body-7">${durationText}</p>
+                            </div>
+                            <div class="episode--player-wrapper">
+                                <audio src="${audioUrl}" data-index="${index}"></audio>
+                                <button data-index="${index}" onclick="playPodcast(${index})" class="episode--control-btn">${playIcon}</button>
+                            </div>
+                        </div>
+                    `;
+                    podcastFeed.innerHTML = html;
+                    let podcastFeedMobile = document.querySelector('.podcast-feed-mobile');
+                    podcastFeedMobile.innerHTML = html;
+                    return
+                }
+            });
+
+        } else {
+            let allItemsFound = false;
+            items.forEach((el, index) => {
+
+                if (!allItemsFound && index < episodeCount){
+                    let duration = el.querySelector("duration").innerHTML;
+                    let durationMin = Math.floor(duration / 60);
+                    let durationHour = Math.floor(durationMin / 60);
+                    let durationText;
+    
+                    if(durationHour > 0){
+                        durationMin = durationMin - (durationHour * 60);
+                        durationText = `${durationHour} hr ${durationMin} min`;
+                    } else {
+                        durationText = `${durationMin} min`;
+                    }
+                    let audioUrl = el.querySelector("enclosure").getAttribute('url');
+    
+                    html += `
+                        <div class="episode-wrapper" data-index="${index}">
+                            <div class="episode--details-wrapper">
+                                <h4 class="headers-9">${el.querySelector("title").innerHTML}</h4>
+                                <p class="body-7">${durationText}</p>
+                            </div>
+                            <div class="episode--player-wrapper">
+                                <audio src="${audioUrl}" data-index="${index}"></audio>
+                                <button data-index="${index}" onclick="playPodcast(${index})" class="episode--control-btn">${playIcon}</button>
+                            </div>
+                        </div>
+                    `;
+
+                    if (index + 1 === episodeCount) {
+                        allItemsFound = true;
+                    }
+                }
+            });
+            podcastFeed.innerHTML = html;
+            if(isArticle){
+                let podcastFeedMobile = document.querySelector('.podcast-feed-mobile');
+                podcastFeedMobile.innerHTML = html;
+            }
+        }
+    })
+
+    function playPodcast(index) {
+        let audio = document.querySelector(`audio[data-index="${index}"]`);
+        let controlBtn = document.querySelectorAll(`.episode--control-btn[data-index="${index}"]`);
+        let allAudio = document.querySelectorAll('audio');
+        let allControlBtns = document.querySelectorAll('.episode--control-btn');
+
+        allAudio.forEach(el => {
+            if(el != audio){
+                el.pause();
+                let currentAudioIndex = el.getAttribute('data-index');
+                allControlBtns[currentAudioIndex].innerHTML = playIcon;
+            }
+        });
+
+        if(audio.paused){
+            audio.play();
+            controlBtn.forEach(el => {
+                el.innerHTML = pauseIcon;
+            });
+            audio.addEventListener('ended', () => {
+                controlBtn.forEach(el => {
+                    el.innerHTML = playIcon;
+                });
+            });
+
+            setInterval(() => {
+                showProgress(audio, controlBtn);
+            }, 1000);
+        } else {
+            audio.pause();
+            controlBtn.forEach(el => {
+                el.innerHTML = playIcon;
+            })
+        }
+    }
+
+    function showProgress(audio, controlBtn) {
+        let duration = audio.duration;
+        let currentTime = audio.currentTime;
+        let progress = (currentTime / duration) * 100;
+        controlBtn.forEach(el => {
+            el.style.border = `none`;        
+        });
+        controlBtn.forEach(el => {
+            el.style.background = `radial-gradient(closest-side, white 90%, transparent 80% 100%), conic-gradient(#402650 ${progress}%, #DCD6DF 0)`;
+        })
+    }
+</script>
