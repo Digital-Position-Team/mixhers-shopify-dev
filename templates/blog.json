@@ -20,6 +20,7 @@
     },
     "main": {
       "type": "main-blog",
+      "disabled": true,
       "settings": {
         "layout": "collage",
         "show_image": true,
@@ -30,7 +31,7 @@
         "padding_bottom": 36
       }
     },
-    "featured_blog_slider_NRmc3A": {
+    "featured_blog_slider_rNNTxH": {
       "type": "Featured-blog-slider",
       "name": "Featured Articles",
       "settings": {
@@ -43,6 +44,6 @@
   "order": [
     "blog_hero_tV3KWw",
     "main",
-    "featured_blog_slider_NRmc3A"
+    "featured_blog_slider_rNNTxH"
   ]
 }
