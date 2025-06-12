@@ -7,7 +7,7 @@
         assign articleIndex = 0 
         for article in section.settings.selected_blog.articles 
           if article.metafields.custom.featured_article and articleIndex < section.settings.limit 
-            render 'article-card', article: article, featuredCard: true
+            render 'featured-article-card', article: article, featuredCard: true
             assign articleIndex = articleIndex | plus: 1 
           endif
         endfor
