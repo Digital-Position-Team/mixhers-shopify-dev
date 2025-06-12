@@ -1,52 +1,57 @@
 {% assign mainBlog = section.settings.blog %}
 {% assign articleTags = article.tags %}
 {% assign articlesFoundCount = 0 %}
+
 <div class="related-articles-container {% if request.page_type == 'article' %}article-related-articles{% endif %}">
+  <div class="page-width">
     <h2 class="headers-5">{{ section.settings.heading }}</h2>
-    <div class="related-articles-wrapper">
-        {% liquid 
-            for article in mainBlog.articles
-                if articlesFoundCount < 3
-                    for tag in article.tags
-                        if articleTags contains tag
-                            render 'standard-article-card' with article: article, featuredCard: true
-                            assign articlesFoundCount = articlesFoundCount | plus: 1
-                        endif
-                    endfor
-                endif
-            endfor
-            if articlesFoundCount < 3
-                for article in mainBlog.articles 
-                    if article.metafields.custom.featured_article
-                        render 'article-card' with article: article, featuredCard: true
-                        assign articlesFoundCount = articlesFoundCount | plus: 1 
-                    endif
-                endfor
-            endif 
-        %}
+    <div class="related-articles-wrapper grid grid--2-col-tablet grid--3-col-desktop">
+      {% for related_article in mainBlog.articles %}
+        {% if articlesFoundCount < 3 %}
+          {% for tag in related_article.tags %}
+            {% if articleTags contains tag %}
+              {% render 'article-card', article: related_article, featuredCard: true %}
+              {% assign articlesFoundCount = articlesFoundCount | plus: 1 %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+
+      {% if articlesFoundCount < 3 %}
+        {% for fallback_article in mainBlog.articles %}
+          {% if articlesFoundCount < 3 and fallback_article.metafields.custom.featured_article %}
+            {% render 'article-card', article: fallback_article, featuredCard: true %}
+            {% assign articlesFoundCount = articlesFoundCount | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
     </div>
+  </div>
 </div>
 
 {% schema %}
+{
+  "name": "Related Articles",
+  "tag": "section",
+  "class": "section-related-articles",
+  "settings": [
     {
-        "name": "Related Articles",
-        "settings": [
-            {
-                "type": "text",
-                "id": "heading",
-                "label": "Heading",
-                "default": "You might also enjoy..."
-            },
-            {
-                "type": "blog",
-                "id": "blog",
-                "label": "Blog to display articles from"
-            }
-        ],
-      "presets": [
-        {
-          "name":"Related Articles"
-        }
-      ]
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "You might also enjoy..."
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog to display articles from"
     }
+  ],
+  "presets": [
+    {
+      "name": "Related Articles"
+    }
+  ]
+}
 {% endschema %}
