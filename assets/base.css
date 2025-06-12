@@ -3806,6 +3806,12 @@ cart-notification {
     max-width: 100%;
     width: 100%;
     margin-bottom: 8px;
+}.product-collection-grid-item .product-information * {
+    margin: 0px;
+}
+
+.product-collection-grid-item .product-information h3 {
+    font-size: 16px;
 }
 @media(max-width:1023px){
  .section-container{

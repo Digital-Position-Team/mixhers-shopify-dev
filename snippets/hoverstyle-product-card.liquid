@@ -147,31 +147,31 @@
         <div class="product-information">
             <div class="product-details-wrapper">
                 {% if product.metafields.product_grid_card.title or product.metafields.product_grid_card.subtitle %}
-                    <h2>{{ product.metafields.product_grid_card.title }} <span class="hertimeES">{{ product.metafields.product_grid_card.subtitle }}</span></h2>
+                    <h3>{{ product.metafields.product_grid_card.title }} <span class="hertimeES">{{ product.metafields.product_grid_card.subtitle }}</span></h3>
                 {% elsif product.title != "blank" %}
                     {% if product.title contains '™' %}
                         {% unless product.title contains 'Extra' %}
-                            <h2>{{ product.title | downcase | remove_last: '™' }}<span class="product-title-tm">™</span></h2>
+                            <h3>{{ product.title | downcase | remove_last: '™' }}<span class="product-title-tm">™</span></h3>
                         {% else %}
-                            <h2>hertime <span class="hertimeES">extra strength <span class="product-title-tm">™</span></span></h2>
+                            <h3>hertime <span class="hertimeES">extra strength <span class="product-title-tm">™</span></span></h3>
                         {% endunless %}
                     {% else %}
                         {% if product.title contains 'Canada' %}
                             {% unless product.title contains 'Extra' %}
-                                <h2>{{ product.title | downcase | remove_last: '- canada' }}<span class="hertimeES">- canada</span></h2>
+                                <h3>{{ product.title | downcase | remove_last: '- canada' }}<span class="hertimeES">- canada</span></h3>
                             {% else %}
-                                <h2>hertime <span class="hertimeES">extra strength - canada</span></h2>
+                                <h3>hertime <span class="hertimeES">extra strength - canada</span></h3>
                             {% endunless %}
                         {% elsif product.title contains 'Flavor Sampler' %}
-                            <h2>{{ product.title | downcase | remove_last: 'flavor sampler' }} <span class="hertimeES">flavor sampler</span></h2>
+                            <h3>{{ product.title | downcase | remove_last: 'flavor sampler' }} <span class="hertimeES">flavor sampler</span></h3>
                         {% elsif product.title contains ' - Final Sale' %}
-                            <h2>{{ product.title | downcase | remove_last: '- final sale' }} <span class="hertimeES">final sale</span></h2>
+                            <h3>{{ product.title | downcase | remove_last: '- final sale' }} <span class="hertimeES">final sale</span></h3>
                         {% else %}
-                            <h2>{{ product.title | downcase }}</h2>
+                            <h3>{{ product.title | downcase }}</h3>
                         {% endif %}
                     {% endif %}
                 {% else %}
-                <h2>{{ product.metafields.custom.product_title }}</h2>
+                <h3>{{ product.metafields.custom.product_title }}</h3>
                 {% endif %}
                 <p class="subscription-price">
                     {% assign sitewideProductDiscount = product.price | times: sitewideDiscount %}
