@@ -35,7 +35,7 @@
       "type": "Featured-blog-slider",
       "name": "Featured Articles",
       "settings": {
-        "title": "Featured Articles",
+        "title": "Featured",
         "limit": 5,
         "selected_blog": "articles"
       }
