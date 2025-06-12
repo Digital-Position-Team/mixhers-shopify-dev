@@ -3,32 +3,33 @@
      fill: #402650;
   }
 </style>
-<div class="featured-articles">
+<div class="featured-articles-slider">
+  <div class="page-width">
   <h2 class="section-title">{{ section.settings.title }}</h2>
-  <div class="swiper featured-articles-swiper">
-    <div class="swiper-wrapper">
-      {% assign articleIndex = 0 %}
-      {% for article in section.settings.selected_blog.articles %}
-        {% if article.metafields.custom.featured_article and articleIndex < section.settings.limit %}
-          <div class="swiper-slide">
-            {% render 'standard-article-card', article: article, featuredCard: true %}
-          </div>
-          {% assign articleIndex = articleIndex | plus: 1 %}
-        {% endif %}
-      {% endfor %}
-    </div>
-    <!-- Swiper Arrows -->
-    <div class="featured-blog-nav">
-      <div class="blog-prev-icon blog-nav-btn">
-        {% render 'icon' with 'button-arrow-left' %}
+    <div class="swiper featured-articles-swiper">
+      <div class="swiper-wrapper">
+        {% assign articleIndex = 0 %}
+        {% for article in section.settings.selected_blog.articles %}
+          {% if article.metafields.custom.featured_article and articleIndex < section.settings.limit %}
+            <div class="swiper-slide">
+              {% render 'standard-article-card', article: article, featuredCard: true %}
+            </div>
+            {% assign articleIndex = articleIndex | plus: 1 %}
+          {% endif %}
+        {% endfor %}
       </div>
-      <div class="blog-next-icon blog-nav-btn">
-        {% render 'icon' with 'button-arrow-right' %}
+      <!-- Swiper Arrows -->
+      <div class="featured-blog-nav">
+        <div class="blog-prev-icon blog-nav-btn">
+          {% render 'icon' with 'button-arrow-left' %}
+        </div>
+        <div class="blog-next-icon blog-nav-btn">
+          {% render 'icon' with 'button-arrow-right' %}
+        </div>
       </div>
     </div>
   </div>
 </div>
-
 {% schema %}
 {
   "name": "Featured Articles",
