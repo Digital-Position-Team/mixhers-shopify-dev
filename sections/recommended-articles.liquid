@@ -33,3 +33,30 @@
     </div>
   </div>
 </div>
+
+
+{% schema %}
+{
+  "name": "Related Articles",
+  "tag": "section",
+  "class": "section-related-articles",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "You might also enjoy..."
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog to display articles from"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Related Articles"
+    }
+  ]
+}
+{% endschema %}
