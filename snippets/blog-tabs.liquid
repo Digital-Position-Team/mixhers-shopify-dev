@@ -293,6 +293,9 @@
   display:none;
    flex-direction:column;
 }
+.blog-articles-container[data-tag="all"] .article-card.active {
+    display: flex;
+}
     {% for tag in blog.all_tags %}
         .blog-articles-container[data-tag="{{ tag }}"] .filterable-article-card[data-tag="{{ tag }}"].active {
             display: flex;
