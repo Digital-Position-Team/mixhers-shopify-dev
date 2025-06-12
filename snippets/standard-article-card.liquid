@@ -1,6 +1,6 @@
 {% assign tags = article.tags | join: ',' %}
-<div class="standard-article-card">
-<a href="{{ article.url }}" class="article-card{% if featuredCard %} article-card--featured{% endif %}" data-tag="{{ tags }}">
+
+<a href="{{ article.url }}" class="standard-article-card article-card{% if featuredCard %} article-card--featured{% endif %}" data-tag="{{ tags }}">
   <div class="article-image">
     {% if article.image %}
       {{ article.image | image_url: width: 500 | image_tag: class: 'article-image-tag' }}
@@ -23,9 +23,3 @@
     {% endif %}
   </div>
 </a>
-</div>
-
-
-<style>
-
-</style>
