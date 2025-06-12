@@ -1,6 +1,3 @@
-{{ 'component-card.css' | asset_url | stylesheet_tag }}
-{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
-{{ 'section-featured-blog.css' | asset_url | stylesheet_tag }}
 <div class="featured-articles">
   <h2 class="section-title">{{ section.settings.title }}</h2>
 
@@ -10,7 +7,7 @@
         assign articleIndex = 0 
         for article in section.settings.selected_blog.articles 
           if article.metafields.custom.featured_article and articleIndex < section.settings.limit 
-            render 'article-card', article: article, featuredCard: true
+            render 'featured-article-card', article: article, featuredCard: true 
             assign articleIndex = articleIndex | plus: 1 
           endif
         endfor
