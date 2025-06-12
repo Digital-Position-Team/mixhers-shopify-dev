@@ -1,0 +1,24 @@
+{% assign tags = article.tags | join: ',' %}
+<a href="{{ article.url }}" class="article-card{% if featuredCard %} article-card--featured{% endif %}" data-tag="{{ tags }}">
+  <div class="article-image">
+    {% if article.image %}
+      {{ article.image | image_url: width: 500 | image_tag: class: 'article-image-tag' }}
+    {% else %}
+      {{ blog.metafields.custom.default_featured_image | image_url: width: 500 | image_tag: class: 'article-image-tag' }}
+    {% endif %}
+    {% if featuredCard %}
+      {% assign firstTag = article.tags[0] %}
+      {% if firstTag %}
+        <div class="article-tag">{{ firstTag }}</div>
+      {% endif %}
+    {% endif %}
+  </div>
+
+  <div class="article-content">
+    <h3 class="article-title">{{ article.title }}</h3>
+    <p class="article-excerpt">{{ article.excerpt_or_content | strip_html | truncatewords: 15 }}</p>
+    {% if article.metafields.custom.read_time %}
+      <p class="article-readtime">{{ article.metafields.custom.read_time }} min read</p>
+    {% endif %}
+  </div>
+</a>
