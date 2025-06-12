@@ -1,8 +1,11 @@
-{% assign mainBlog = section.settings.blog | default: article.blog %}
+{% assign mainBlog = section.settings.blog %}
+{% if mainBlog.articles == empty and article.blog %}
+  {% assign mainBlog = article.blog %}
+{% endif %}
+
 {% assign articleTags = article.tags %}
 {% assign articlesFoundCount = 0 %}
 
-{{ article.blog }}
 <div class="related-articles-container {% if request.page_type == 'article' %}article-related-articles{% endif %}">
   <div class="page-width">
     <h2 class="headers-5">{{ section.settings.heading }}</h2>
@@ -30,29 +33,3 @@
     </div>
   </div>
 </div>
-
-{% schema %}
-{
-  "name": "Related Articles",
-  "tag": "section",
-  "class": "section-related-articles",
-  "settings": [
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "You might also enjoy..."
-    },
-    {
-      "type": "blog",
-      "id": "blog",
-      "label": "Blog to display articles from"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Related Articles"
-    }
-  ]
-}
-{% endschema %}
