@@ -3741,6 +3741,7 @@ cart-notification {
     font-family: 'Buenos Aires';
     font-weight: 600;
     line-height: 1.28;
+    letter-spacing: normal;
     margin: 5px 0 7px;
 }
 .standard-article-card p.article-excerpt {
