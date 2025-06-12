@@ -3870,9 +3870,10 @@ a.product-btn.outline-button {
 
 .view-all-button {
     text-align: center;
+    margin-top: 30px;
 }
 
-.view-all-button .btn {padding: 11px 40px;background: #402650;padding: 0 40px;border: 2px solid #402650;px;display: inline-flex;height: 60px;line-height: 1;align-items: center;}
+.view-all-button .btn {padding: 11px 40px;min-width:270px; background: #402650;padding: 0 30px;border: 2px solid #402650;px;display: inline-flex;height: 60px;line-height: 1;align-items: center;}
 .view-all-button .btn:hover{
     box-shadow: -4px 4px #dcd6df;
 }
