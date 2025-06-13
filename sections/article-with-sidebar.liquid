@@ -78,15 +78,13 @@
         {% endfor %}
     </div>
     <div class="article-main-content-wrapper">
+      <div class="podcast-latest--feed-wrapper podcast-latest--feed-wrapper--article mobile-only">
+          <div class="podcast-feed-mobile"></div>
+      </div>
       {% for section in fromatted_article_content %}
-        {% if forloop.first %}
           {{ section }}
-          <div class="podcast-latest--feed-wrapper podcast-latest--feed-wrapper--article mobile-only">
-              <div class="podcast-feed-mobile"></div>
-          </div>
-        {% elsif forloop.last %}
-          {{ section }}
-          <div class="mobile-only mobile-quiz-cta">
+      {% endfor %}
+       <div class="mobile-only mobile-quiz-cta">
              {% if section.settings.show_feature_product %}
               {% render 'article-featured-product' with featured_product: featured_product, featured_product_img: featured_product_img, mobile: true %}
             {% endif %}
@@ -95,10 +93,6 @@
               {% render 'quiz-cta-block', block: quiz_cta_block %}
             {% endif %}
           </div>
-        {% else %}
-          {{ section }}
-        {% endif %}
-      {% endfor %}
      </div>
     </div>
   </div>
