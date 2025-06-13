@@ -25,12 +25,12 @@ body {
   font-style: normal;
 }
 
-@font-face {
+/* @font-face {
   font-family: 'Faire Sprig';
   src: url('FAIRE-Sprig-LightItalic.otf') format('opentype');
   font-weight: 200;
   font-style: italic;
-}
+} */
 
 @font-face {
   font-family: 'Faire Sprig';
@@ -68,13 +68,13 @@ body {
   font-style: normal;
 }
 
-@font-face {
+/* @font-face {
   font-family: 'Faire Sprig';
   src: url('FAIRE-Sprig-ThinItalic.otf') format('opentype');
   font-weight: 100;
   font-style: italic;
 }
-
+ */
 /* Buenos Aires (sans, body) */
 @font-face {
   font-family: 'Buenos Aires';
@@ -237,7 +237,7 @@ body {
     font-display: auto;
     font-style: italic;
 }
-@font-face {
+/* @font-face {
     font-family: "Suisse Works";
     src: url("SuisseWorks-MediumItalic.woff2") format("woff2");
     font-weight: 700;
@@ -251,3 +251,4 @@ body {
     font-display: auto;
     font-style: italic;
 }
+ */
