@@ -120,6 +120,7 @@
 
     allQuestions.forEach(q => q.classList.remove('active'));
     allAnswers.forEach(a => {
+      a.style.paddingTop = '10px';
       a.style.maxHeight = null;
       a.classList.remove('active');
       a.style.paddingTop = '0px';
