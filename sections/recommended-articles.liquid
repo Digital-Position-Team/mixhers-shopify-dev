@@ -1,3 +1,7 @@
+<p>Blog handle from article: {{ article.blog.handle }}</p>
+<p>Blog title from article: {{ article.blog.title }}</p>
+<p>Article title: {{ article.title }}</p>
+
 {% assign mainBlog = section.settings.blog %}
 {% if section.settings.blog == blank %}
   {% assign mainBlog = article.blog %}
