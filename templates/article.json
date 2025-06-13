@@ -57,8 +57,7 @@
           "settings": {
             "feed_url": "https://feeds.buzzsprout.com/868171.rss",
             "episode_count": 4,
-            "title": "Listen to It’s Hertime.",
-            "subtitle": "Most Recent Episodes"
+            "title": "Listen to It’s Hertime."
           }
         },
         "quiz_cta_Xt3hz8": {
@@ -69,11 +68,16 @@
             "button_text": "Take the Quiz",
             "button_url": ""
           }
+        },
+        "featured_product_PzGkAw": {
+          "type": "featured_product",
+          "settings": {}
         }
       },
       "block_order": [
         "podcast_yYwdPf",
-        "quiz_cta_Xt3hz8"
+        "quiz_cta_Xt3hz8",
+        "featured_product_PzGkAw"
       ],
       "settings": {}
     },
