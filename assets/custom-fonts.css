@@ -206,7 +206,7 @@ body {
 
 @font-face {
     font-family: "Circular";
-    src: url("Circular-Medium.ttf") format("truetype");
+    src: url('https://cdn.shopify.com/s/files/1/0557/9879/2371/files/Circular-Medium.ttf?v=1749815457');
     font-weight: 500;
     font-display: auto;
     font-style: normal;
