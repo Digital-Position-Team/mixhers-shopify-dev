@@ -78,12 +78,6 @@
         {% endfor %}
     </div>
     <div class="article-main-content-wrapper">
-      
-       {% assign podcast_block = section.blocks | where: 'type', 'podcast' | first %}
-        {% if podcast_block %}
-              {% render 'podcast-player-block', block: podcast_block %}
-        {% endif %}
-        <div class="podcast-feed"></div>
       {% for section in fromatted_article_content %}
           {{ section }}
       {% endfor %}
