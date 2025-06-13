@@ -11,7 +11,6 @@
   "sections": {
     "article_hero_XhePU3": {
       "type": "article-hero",
-      "name": "Article Hero ",
       "settings": {}
     },
     "main": {
@@ -52,7 +51,30 @@
     },
     "article_with_sidebar_AWUAzt": {
       "type": "article-with-sidebar",
-      "name": "article with sidebar",
+      "blocks": {
+        "podcast_yYwdPf": {
+          "type": "podcast",
+          "settings": {
+            "feed_url": "",
+            "episode_count": 4,
+            "title": "Listen to It’s Hertime.",
+            "subtitle": "Most Recent Episodes"
+          }
+        },
+        "quiz_cta_Xt3hz8": {
+          "type": "quiz_cta",
+          "settings": {
+            "title": "Not sure which drink is right for you?",
+            "description": "Get matched with products designed for your unique wellness goals.",
+            "button_text": "Take the Quiz",
+            "button_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "podcast_yYwdPf",
+        "quiz_cta_Xt3hz8"
+      ],
       "settings": {}
     },
     "blogs_every_stage_products_TeaG6w": {
@@ -89,7 +111,6 @@
         "product_8nTTAQ",
         "product_qfh7Vz"
       ],
-      "name": "Every Stage Products",
       "settings": {
         "title": "Hormone support for every stage of womanhood.",
         "subtitle": "From your first period to your first hot flash, nourish your journey.",
@@ -100,7 +121,6 @@
     },
     "recommended_articles_e9H9Jd": {
       "type": "recommended-articles",
-      "name": "Related Articles",
       "settings": {
         "heading": "You might also enjoy...",
         "blog": ""
