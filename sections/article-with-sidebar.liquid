@@ -90,13 +90,10 @@
              {% if section.settings.show_feature_product %}
               {% render 'article-featured-product' with featured_product: featured_product, featured_product_img: featured_product_img, mobile: true %}
             {% endif %}
-            {% for block in section.blocks %}
-              {% case block.type %}
-                {% when 'quiz_cta' %}
-                  {% render 'quiz-cta-block', block: block %}
-              {% endcase %}
-            {% endfor %}
-           
+             {% assign quiz_cta_block = section.blocks | where: 'type', 'quiz_cta' | first %}
+            {% if quiz_cta_block %}
+              {% render 'quiz-cta-block', block: quiz_cta_block %}
+            {% endif %}
           </div>
         {% else %}
           {{ section }}
