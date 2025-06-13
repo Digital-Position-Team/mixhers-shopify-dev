@@ -89,11 +89,11 @@
       {% for block in section.blocks %}
         {% if block.type == 'faq_item' %}
           <div class="faq-alt-item" {{ block.shopify_attributes }}>
-            <div class="faq-alt-question" onclick="toggleFAQ(this, '{{ section_id }}-{{ forloop.index }}')">
+            <div class="faq-alt-question{% if forloop.first %} active{% endif %}" onclick="toggleFAQ(this, '{{ section_id }}-{{ forloop.index }}')">
               {{ block.settings.question }}
                {% render 'icon' with 'plus' %}
             </div>
-            <div id="faq-alt-{{ section_id }}-{{ forloop.index }}" class="faq-alt-answer">
+            <div id="faq-alt-{{ section_id }}-{{ forloop.index }}" class="faq-alt-answer{% if forloop.first %} active{% endif %}">
               {{ block.settings.answer }}
             </div>
           </div>
