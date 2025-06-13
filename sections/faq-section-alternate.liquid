@@ -6,7 +6,7 @@
 <style>
   .faq-alt-section-{{ section_id }} {
     background-color: {{ bg_color }};
-    padding:60px 0px 60px 0px;
+    padding:70px 0px 70px 0px;
     position: relative;
     {% if has_top_border %}
       border-top: 1px solid {{ section.settings.border_color }};
@@ -73,6 +73,9 @@
   @media screen and (max-width: 767px) {
     .faq-alt-question{
         font-size:17px;
+    }
+    .faq-alt-section-{{ section_id }} {
+      padding:60px 0px 60px 0px;
     }
   }
 </style>
