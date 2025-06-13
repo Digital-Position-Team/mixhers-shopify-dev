@@ -61,16 +61,10 @@
         "padding_top": 12,
         "padding_bottom": 12
       }
-    },
-    "rewards_section_CeRDfd": {
-      "type": "rewards-section",
-      "name": "test Rewards section",
-      "settings": {}
     }
   },
   "order": [
     "announcement-bar",
-    "header",
-    "rewards_section_CeRDfd"
+    "header"
   ]
 }
