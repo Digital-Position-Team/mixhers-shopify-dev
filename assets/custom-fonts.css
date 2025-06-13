@@ -222,3 +222,32 @@ body {
     font-display: auto;
     font-style: normal;
 } */
+
+@font-face {
+    font-family: "Suisse Works";
+    src: url("SuisseWorks-RegularItalic.otf") format("opentype");
+    font-weight: 500;
+    font-display: auto;
+    font-style: italic;
+}
+@font-face {
+    font-family: "Suisse Works";
+    src: url("SuisseWorks-BookItalic.otf") format("opentype");
+    font-weight: 600;
+    font-display: auto;
+    font-style: italic;
+}
+@font-face {
+    font-family: "Suisse Works";
+    src: url("SuisseWorks-MediumItalic.otf") format("opentype");
+    font-weight: 700;
+    font-display: auto;
+    font-style: italic;
+}
+@font-face {
+    font-family: "Suisse Works";
+    src: url("SuisseWorks-BoldItalic.otf") format("opentype");
+    font-weight: 900;
+    font-display: auto;
+    font-style: italic;
+}
