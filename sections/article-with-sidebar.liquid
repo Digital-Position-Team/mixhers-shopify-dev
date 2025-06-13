@@ -75,6 +75,7 @@
               {% when 'podcast' %}
                 {% comment %} {% endcomment %}
               <div class="article-sidebar-sticky-wrapper hide-mobile">
+                 {% render 'article-featured-product' with featuredProduct: featuredProduct, featuredProductImg: featuredProductImg, mobile: false %}
                  {% render 'podcast-player-block', block: block %}
               </div>
               {% when 'quiz_cta' %}
@@ -97,6 +98,7 @@
           {{ section }}
           <div class="mobile-only mobile-quiz-cta">
             {% render 'quiz-cta-block' %}
+            {% render 'article-featured-product' with featuredProduct: featuredProduct, featuredProductImg: featuredProductImg, mobile: true %}
           </div>
         {% else %}
           {{ section }}
