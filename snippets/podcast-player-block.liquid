@@ -29,7 +29,7 @@
 
 
 <script defer>
-    const RSS_URL = `{{ rssFeed }}`;
+    var RSS_URL = `{{ rssFeed }}`;
     let podcastFeed = document.querySelector('.podcast-feed');
     const isArticle = `{{ isArticle }}` === 'true' ? true : false;
     let podcastEpisode = `{{ podcastEpisode }}` != 'false' ? `{{ podcastEpisode }}` : false;
