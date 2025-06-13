@@ -252,3 +252,8 @@ body {
     font-style: italic;
 }
  */
+
+h1.blog-hero--title.font-serif{
+  font-family: Circular, Arial, Lucida Grande, sans-serif;
+    font-weight: 500;
+}
