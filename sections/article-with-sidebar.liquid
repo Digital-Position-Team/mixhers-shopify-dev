@@ -1,15 +1,8 @@
-{% assign mainBlog = blogs.articles %}
-{% assign featuredImage = '' %}
-{% if article.image %}
-  {% assign featuredImage = article.image %}
-{% else %} {% assign featuredImage = mainBlog.metafields.custom.default_featured_image %}
-{% endif %}
-
 {% assign featuredProduct = '' %}
 {% if article.metafields.global.blog_product %}
   {% assign featuredProduct = article.metafields.global.blog_product.value %}
 {% else %}
-  {% assign featuredProduct = mainBlog.metafields.global.blog_product.value %}
+  {% assign featuredProduct = main_blog.metafields.global.blog_product.value %}
 {% endif %}
 {% assign foundFirstImage = false %}
 {% assign featuredProductImg = '' %}
@@ -93,12 +86,7 @@
           </div>
         {% elsif forloop.last %}
           {{ section }}
-        {% else %}
-          {{ section }}
-        {% endif %}
-      {% endfor %}
-     </div>
-    <div class="mobile-only mobile-quiz-cta">
+          <div class="mobile-only mobile-quiz-cta">
             {% for block in section.blocks %}
                 {% case block.type %}
                   {% when 'quiz_cta' %}
@@ -109,6 +97,11 @@
               {% render 'article-featured-product' with featuredProduct: featuredProduct, featuredProductImg: featuredProductImg, mobile: true %}
             {% endif %}
           </div>
+        {% else %}
+          {{ section }}
+        {% endif %}
+      {% endfor %}
+     </div>
     </div>
   </div>
 </section>
