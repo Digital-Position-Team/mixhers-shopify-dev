@@ -107,9 +107,7 @@
           <div class="faq-item" {{ block.shopify_attributes }}>
             <div class="faq-question" onclick="toggleFAQ(this, '{{ section_id }}-{{ forloop.index }}')">
               {{ block.settings.question }}
-              <svg width="17" height="11" viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1 1.53027L8.5 9.03027L16 1.53027" stroke="#FF59E4" stroke-width="2"/>
-              </svg>
+               {% render 'icon' with 'plus' %}
             </div>
             <div id="faq-{{ section_id }}-{{ forloop.index }}" class="faq-answer">
               {{ block.settings.answer }}
