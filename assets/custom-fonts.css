@@ -198,7 +198,7 @@ body {
 }
 @font-face {
     font-family: "Circular";
-    src: url("Circular-Book.ttf") format("truetype");
+    src: url("Circular-Book.woff2") format("woff2");
     font-weight: 400;
     font-display: auto;
     font-style: normal;
