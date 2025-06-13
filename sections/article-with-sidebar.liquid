@@ -97,7 +97,16 @@
         {% elsif forloop.last %}
           {{ section }}
           <div class="mobile-only mobile-quiz-cta">
-             
+
+        {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'quiz_cta' %}
+                 {% render 'quiz-cta-block', block: block %}
+              
+            {% endcase %}
+        {% endfor %}
+
+            
             {% render 'article-featured-product' with featuredProduct: featuredProduct, featuredProductImg: featuredProductImg, mobile: true %}
           </div>
         {% else %}
