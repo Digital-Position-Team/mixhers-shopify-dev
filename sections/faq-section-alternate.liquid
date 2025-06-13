@@ -104,6 +104,13 @@
 </div>
 
 <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const firstAnswer = document.querySelector('.faq-alt-answer.active');
+    if (firstAnswer) {
+      firstAnswer.style.maxHeight = firstAnswer.scrollHeight + 30 + "px";
+      firstAnswer.style.paddingTop = "20px";
+    }
+  });
   function toggleFAQ(element, id) {
     const answer = document.getElementById('faq-alt-' + id);
     const isActive = element.classList.contains('active');
