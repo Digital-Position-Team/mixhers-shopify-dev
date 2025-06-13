@@ -180,14 +180,6 @@ body {
 
 
 /* Legacy fonts for blog pages--------- */
-/* 
-@font-face {
-    font-family: "Circular";
-    src: url("Circular-Thin.ttf") format("truetype");
-    font-weight: 100;
-    font-display: auto;
-    font-style: normal;
-} */
 
 @font-face {
     font-family: "Circular";
@@ -198,41 +190,33 @@ body {
 }
 @font-face {
     font-family: "Circular";
-    src: url("Circular-Book.ttf") format("truetype");
+    src: url("https://cdn.shopify.com/s/files/1/0557/9879/2371/files/Circular-Book.ttf?v=1749816003");
     font-weight: 400;
     font-display: auto;
     font-style: normal;
 }
-
 @font-face {
     font-family: "Circular";
-    src: url("Circular-Medium.ttf") format("truetype");
+    src: url("https://cdn.shopify.com/s/files/1/0557/9879/2371/files/Circular-Medium.ttf?v=1749815457");
     font-weight: 500;
     font-display: auto;
     font-style: normal;
 }
-
 @font-face {
     font-family: "Circular";
-    src: url("Circular-Bold.ttf") format("truetype");
+    src: url("https://cdn.shopify.com/s/files/1/0557/9879/2371/files/Circular-Bold.ttf?v=1749816003") ;
     font-weight: 700;
     font-display: auto;
     font-style: normal;
 }
+
 @font-face {
-    font-family: "Circular";
-    src: url("Circular-Black.ttf") format("truetype");
-    font-weight: 800;
-    font-display: auto;
-    font-style: normal;
-}
-/* @font-face {
     font-family: "Suisse Works";
     src: url("SuisseWorks-RegularItalic.woff2") format("woff2");
     font-weight: 500;
     font-display: auto;
     font-style: italic;
-} */
+}
 @font-face {
     font-family: "Suisse Works";
     src: url("SuisseWorks-BookItalic.woff2") format("woff2");
