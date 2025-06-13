@@ -19,17 +19,16 @@
     },
     "quiz_section_XGD4Rt": {
       "type": "quiz-section",
-      "name": "quiz",
       "settings": {
         "quiz_results_page_1_header": "More feel-good days are ahead.",
-        "quiz_results_page_1_copy": "",
-        "quiz_results_page_1_pregnancy_copy": "",
-        "quiz_results_page_1_menopause_copy": "",
+        "quiz_results_page_1_copy": "Your answers indicate that you may benefit from hormone balance support.\n<br>\n<br>\nOver 50% of women are struggling with hormone-linked symptoms, and they may not ever know it!\n<br>\n<br>\nLeft untreated, hormonal chaos can lead to new and aggravated health conditions. Daily nutritional therapy will support your hormone health, resulting in alleviated PMS symptoms and more feel-good freedom!",
+        "quiz_results_page_1_pregnancy_copy": "Your answers indicate that you may benefit from hormone balance support throughout your pregnancy.\n<br>\n<br>\nOver 50% of women are struggling with hormone-linked symptoms, and they may not ever know it!\n<br>\n<br>\nRestored hormone balance will support baby’s optimal development and your comfort throughout pregnancy and beyond.",
+        "quiz_results_page_1_menopause_copy": "Your answers indicate that you may benefit from hormone balance support as your transition into menopause.\n<br>\n<br>\nOver 50% of women are struggling with hormone-linked symptoms, and they may not ever know it!\n<br>\n<br>\nDaily nutritional therapy will support your body through this hormonal change, resulting in alleviated symptoms and more feel-good freedom.",
         "quiz_results_page_2_header": "The good news.",
-        "quiz_results_page_2_copy": "",
+        "quiz_results_page_2_copy": "We’ve made restoring hormonal balance simple. \n<br>\n<br>\nOur all-natural products deliver therapeutic nutrition to optimize the motherboard of your health systems—the endocrine system. \n<br>\n<br>\nUnlike other supplements, Mixhers products are a liquid delivery system, which is 90% absorbable in the body, as opposed to capsules and gummies at only 30%. \n<br>\n<br>\nMade by women, for women, our products fit seamlessly into your daily routine as convenient, craveable drink packets.",
         "quiz_results_page_3_header": "Your custom line-up.",
-        "quiz_results_page_3_copy": "",
-        "quiz_results_page_3_bundle_title": "Your Custom Bundle"
+        "quiz_results_page_3_copy": "We’ve curated 3 essential supplements to meet your unique hormonal and wellness needs so you can discover what it feels like to be operating on all cylinders!",
+        "quiz_results_page_3_bundle_title": ""
       }
     }
   },
