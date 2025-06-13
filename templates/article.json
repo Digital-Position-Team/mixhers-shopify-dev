@@ -91,17 +91,24 @@
         "show_pricing_crossout": true
       }
     },
-    "article_with_sidebar_iQ7hgt": {
+    "recommended_articles_e9H9Jd": {
+      "type": "recommended-articles",
+      "settings": {
+        "heading": "You might also enjoy...",
+        "blog": ""
+      }
+    },
+    "article_with_sidebar_M4JNQN": {
       "type": "article-with-sidebar",
       "blocks": {
-        "podcast_wPDaK8": {
+        "podcast_EyJgh4": {
           "type": "podcast",
           "settings": {
             "feed_url": "",
             "episode_count": 4
           }
         },
-        "quiz_cta_6W69nb": {
+        "quiz_cta_9HYzFh": {
           "type": "quiz_cta",
           "settings": {
             "title": "Not sure which drink is right for you?",
@@ -112,27 +119,20 @@
         }
       },
       "block_order": [
-        "podcast_wPDaK8",
-        "quiz_cta_6W69nb"
+        "podcast_EyJgh4",
+        "quiz_cta_9HYzFh"
       ],
       "name": "Article Detail with sidebar",
       "settings": {
         "show_feature_product": true
-      }
-    },
-    "recommended_articles_e9H9Jd": {
-      "type": "recommended-articles",
-      "settings": {
-        "heading": "You might also enjoy...",
-        "blog": ""
       }
     }
   },
   "order": [
     "article_hero_XhePU3",
     "main",
+    "article_with_sidebar_M4JNQN",
     "blogs_every_stage_products_TeaG6w",
-    "article_with_sidebar_iQ7hgt",
     "recommended_articles_e9H9Jd"
   ]
 }
