@@ -1,6 +1,6 @@
 {% assign currentArticle = article | default: null %}
 <p>Blog handle from article: {{ currentArticle.handle }}</p>
-<p>Blog title from article: {{ article.blog.title }}</p>
+<p>Blog title from article: {{ article.blog }}</p>
 <p>Article title: {{ article.title }}</p>
 
 {% assign mainBlog = section.settings.blog %}
