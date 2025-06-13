@@ -398,8 +398,9 @@
 
 
     let resultsProgressSingles = document.querySelectorAll('.oct-quiz-results-progress-single');
-
+ 
     document.addEventListener('octane.quiz.completed', function (e) {
+      console.log("octance quz completed")
         displayResults(e.detail);
         document.querySelector('.quiz-results-header').classList.add('active-results');
         document.querySelector('.results-nxt-btn').classList.add('active-results');
