@@ -1,5 +1,5 @@
 {% assign mainBlog = section.settings.blog %}
-{% if mainBlog.articles == empty and article.blog %}
+{% if section.settings.blog == blank %}
   {% assign mainBlog = article.blog %}
 {% endif %}
 
