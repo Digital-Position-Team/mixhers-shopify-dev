@@ -3740,6 +3740,15 @@ cart-notification {
 .standard-article-card .article-content * {
     font-family: 'Circular';
 }
+.article-container-w-sidebar .body-4 {
+    font-family: Circular, Arial, Lucida Grande, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.7;
+    letter-spacing: 2px;
+    color: #402650;
+}
 .headers-4 {
     font-family: 'Circular';
 }
