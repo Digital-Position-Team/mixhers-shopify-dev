@@ -214,42 +214,42 @@ body {
 
 @font-face {
     font-family: "Circular";
-    src: url("Circular-Bold.ttf") format("truetype");
+    src: url("Circular-Bold.woff2") format("woff2");
     font-weight: 700;
     font-display: auto;
     font-style: normal;
 }
 @font-face {
     font-family: "Circular";
-    src: url("Circular-Black.ttf") format("truetype");
+    src: url("Circular-Black.woff2") format("woff2");
     font-weight: 800;
     font-display: auto;
     font-style: normal;
 }
 @font-face {
     font-family: "Suisse Works";
-    src: url("SuisseWorks-RegularItalic.otf") format("opentype");
+    src: url("SuisseWorks-RegularItalic.woff2") format("woff2");
     font-weight: 500;
     font-display: auto;
     font-style: italic;
 }
 @font-face {
     font-family: "Suisse Works";
-    src: url("SuisseWorks-BookItalic.otf") format("opentype");
+    src: url("SuisseWorks-BookItalic.woff2") format("woff2");
     font-weight: 600;
     font-display: auto;
     font-style: italic;
 }
 @font-face {
     font-family: "Suisse Works";
-    src: url("SuisseWorks-MediumItalic.otf") format("opentype");
+    src: url("SuisseWorks-MediumItalic.woff2") format("woff2");
     font-weight: 700;
     font-display: auto;
     font-style: italic;
 }
 @font-face {
     font-family: "Suisse Works";
-    src: url("SuisseWorks-BoldItalic.otf") format("opentype");
+    src: url("SuisseWorks-BoldItalic.woff2") format("woff2");
     font-weight: 900;
     font-display: auto;
     font-style: italic;
