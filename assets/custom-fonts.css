@@ -40,13 +40,13 @@ body {
   font-style: normal;
 }
 
-@font-face {
+/* @font-face {
   font-family: 'Faire Sprig';
   src: url('FAIRE-Sprig-MediumItalic.otf') format('opentype');
   font-weight: 500;
   font-style: italic;
 }
-
+ */
 @font-face {
   font-family: 'Faire Sprig';
   src: url('FAIRE-Sprig-Regular.otf') format('opentype');
@@ -54,12 +54,12 @@ body {
   font-style: normal;
 }
 
-@font-face {
+/* @font-face {
   font-family: 'Faire Sprig';
   src: url('FAIRE-Sprig-RegularItalic.otf') format('opentype');
   font-weight: 400;
   font-style: italic;
-}
+} */
 
 @font-face {
   font-family: 'Faire Sprig';
@@ -223,13 +223,13 @@ body {
     font-display: auto;
     font-style: normal;
 }
-@font-face {
+/* @font-face {
     font-family: "Suisse Works";
     src: url("SuisseWorks-RegularItalic.woff2") format("woff2");
     font-weight: 500;
     font-display: auto;
     font-style: italic;
-}
+} */
 @font-face {
     font-family: "Suisse Works";
     src: url("SuisseWorks-BookItalic.woff2") format("woff2");
