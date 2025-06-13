@@ -1,5 +1,5 @@
 {% assign rssFeed = block.settings.feed_url %}
-{% assign episodeCount = block.settings.episode_count %}
+{% assign episodeCount = block.settings.episode_count | default: 4 %}
 {% assign isArticle = false %}
 {% assign podcastEpisode = false %}
 
