@@ -83,6 +83,7 @@
         "faq_item_MUPxVh",
         "faq_item_DJzWjp"
       ],
+      "disabled": true,
       "settings": {
         "title": "FAQs",
         "direction": "ltr",
