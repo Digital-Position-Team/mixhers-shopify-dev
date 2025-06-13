@@ -1,14 +1,11 @@
 {% assign mainBlog = blogs.articles %}
 {% assign featuredImage = '' %}
-
 {% if article.image %}
   {% assign featuredImage = article.image %}
-{% else %}
-  {% assign featuredImage = mainBlog.metafields.custom.default_featured_image %}
+{% else %} {% assign featuredImage = mainBlog.metafields.custom.default_featured_image %}
 {% endif %}
 
 {% assign featuredProduct = '' %}
-
 {% if article.metafields.global.blog_product %}
   {% assign featuredProduct = article.metafields.global.blog_product.value %}
 {% else %}
@@ -69,13 +66,14 @@
               {% endfor %}
           </ul>
       </div>
-
       {% for block in section.blocks %}
             {% case block.type %}
               {% when 'podcast' %}
                 {% comment %} {% endcomment %}
               <div class="article-sidebar-sticky-wrapper hide-mobile">
-                 {% render 'article-featured-product' with featuredProduct: featuredProduct, featuredProductImg: featuredProductImg, mobile: false %}
+                {% if section.settings.show_feature_product %}
+                  {% render 'article-featured-product' with featuredProduct: featuredProduct, featuredProductImg: featuredProductImg, mobile: false %}
+                {% endif %}
                  {% render 'podcast-player-block', block: block %}
               </div>
               {% when 'quiz_cta' %}
@@ -86,7 +84,6 @@
             {% endcase %}
         {% endfor %}
     </div>
-
     <div class="article-main-content-wrapper">
       {% for section in formatedArticleContent %}
         {% if forloop.first %}
@@ -96,24 +93,22 @@
           </div>
         {% elsif forloop.last %}
           {{ section }}
-          <div class="mobile-only mobile-quiz-cta">
-
-        {% for block in section.blocks %}
-            {% case block.type %}
-              {% when 'quiz_cta' %}
-                 {% render 'quiz-cta-block', block: block %}
-              
-            {% endcase %}
-        {% endfor %}
-
-            
-            {% render 'article-featured-product' with featuredProduct: featuredProduct, featuredProductImg: featuredProductImg, mobile: true %}
-          </div>
         {% else %}
           {{ section }}
         {% endif %}
       {% endfor %}
      </div>
+    <div class="mobile-only mobile-quiz-cta">
+            {% for block in section.blocks %}
+                {% case block.type %}
+                  {% when 'quiz_cta' %}
+                     {% render 'quiz-cta-block', block: block %}
+                {% endcase %}
+            {% endfor %}
+            {% if section.settings.show_feature_product %}
+              {% render 'article-featured-product' with featuredProduct: featuredProduct, featuredProductImg: featuredProductImg, mobile: true %}
+            {% endif %}
+          </div>
     </div>
   </div>
 </section>
