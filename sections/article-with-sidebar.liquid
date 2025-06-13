@@ -4,18 +4,18 @@
 {% else %}
   {% assign featured_product = main_blog.metafields.global.blog_product.value %}
 {% endif %}
-{% assign foundFirstImage = false %}
-{% assign featuredProductImg = '' %}
+{% assign found_first_image = false %}
+{% assign featured_product_img = '' %}
 
 {% for image in featured_product.metafields.custom.collection_image_set.value %}
-  {% unless foundFirstImage %}
-    {% assign featuredProductImg = image %}
-    {% assign foundFirstImage = true %}
+  {% unless found_first_image %}
+    {% assign featured_product_img = image %}
+    {% assign found_first_image = true %}
   {% endunless %}
 {% endfor %}
-{% unless foundFirstImage %}
-  {% assign featuredProductImg = featured_product.metafields.rebrand.featured_image.value %}
-  {% assign foundFirstImage = true %}
+{% unless found_first_image %}
+  {% assign featured_product_img = featured_product.metafields.rebrand.featured_image.value %}
+  {% assign found_first_image = true %}
 {% endunless %}
 
 {% assign content = article.content | split: '<h2>' %}
@@ -65,7 +65,7 @@
                 {% comment %} {% endcomment %}
               <div class="article-sidebar-sticky-wrapper hide-mobile">
                 {% if section.settings.show_feature_product %}
-                  {% render 'article-featured-product' with featured_product: featured_product, featuredProductImg: featuredProductImg, mobile: false %}
+                  {% render 'article-featured-product' with featured_product: featured_product, featured_product_img: featured_product_img, mobile: false %}
                 {% endif %}
                  {% render 'podcast-player-block', block: block %}
               </div>
@@ -94,7 +94,7 @@
                 {% endcase %}
             {% endfor %}
             {% if section.settings.show_feature_product %}
-              {% render 'article-featured-product' with featured_product: featured_product, featuredProductImg: featuredProductImg, mobile: true %}
+              {% render 'article-featured-product' with featured_product: featured_product, featured_product_img: featured_product_img, mobile: true %}
             {% endif %}
           </div>
         {% else %}
