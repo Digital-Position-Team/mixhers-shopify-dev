@@ -20,7 +20,7 @@
 
 {% assign content = article.content | split: '<h2>' %}
 {% assign sectionTitles = '' %}
-{% assign formatedArticleContent = '' %}
+{% assign fromatted_article_content = '' %}
 
 {% for item in content %}
     {% if item contains '</h2>' %}
@@ -36,13 +36,13 @@
         {% if item contains '<h4' %}
           {% assign sectionCopy = sectionCopy | replace: '<h4', '<h4 class="headers-6"' %}
         {% endif %}
-        {% assign formatedArticleContent = formatedArticleContent | append: '<section class="article-content-section" id="' | append: sectionAnchor | append: '"><h2 class="headers-4">' | append: sectionTitle | append: '</h2><div class="body-4">' | append: sectionCopy | append: '</div></section>' | append: ':: ' %}
+        {% assign fromatted_article_content = fromatted_article_content | append: '<section class="article-content-section" id="' | append: sectionAnchor | append: '"><h2 class="headers-4">' | append: sectionTitle | append: '</h2><div class="body-4">' | append: sectionCopy | append: '</div></section>' | append: ':: ' %}
     {% else %}
-      {% assign formatedArticleContent = formatedArticleContent | append: '<section class="article-content-section"><div class="body-4">' | append: item | append: '</div></section>' | append: ':: ' %}
+      {% assign fromatted_article_content = fromatted_article_content | append: '<section class="article-content-section"><div class="body-4">' | append: item | append: '</div></section>' | append: ':: ' %}
     {% endif %}
 {% endfor %}
 
-{% assign formatedArticleContent = formatedArticleContent | split: ':: ' %}
+{% assign fromatted_article_content = fromatted_article_content | split: ':: ' %}
 {% assign sectionTitles = sectionTitles | split: '::' %}
 
 <section class="article-container-section">
@@ -78,7 +78,7 @@
         {% endfor %}
     </div>
     <div class="article-main-content-wrapper">
-      {% for section in formatedArticleContent %}
+      {% for section in fromatted_article_content %}
         {% if forloop.first %}
           {{ section }}
           <div class="podcast-latest--feed-wrapper podcast-latest--feed-wrapper--article mobile-only">
