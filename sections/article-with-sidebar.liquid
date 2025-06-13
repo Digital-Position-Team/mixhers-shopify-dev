@@ -63,7 +63,7 @@
             {% case block.type %}
               {% when 'podcast' %}
                 {% comment %} {% endcomment %}
-              <div class="article-sidebar-sticky-wrapper hide-mobile">
+              <div class="article-sidebar-sticky-wrapper ">
                 {% if section.settings.show_feature_product %}
                   {% render 'article-featured-product' with featured_product: featured_product, featured_product_img: featured_product_img, mobile: false %}
                 {% endif %}
