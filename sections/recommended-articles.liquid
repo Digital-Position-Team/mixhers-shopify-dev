@@ -1,8 +1,19 @@
+{% assign all_blogs = "news,articles,technology" | split: "," %}
+{% assign most_articles_blog = null %}
+{% assign max_articles = 0 %}
+
+{% for blog_handle in all_blogs %}
+  {% assign current_blog = blogs[blog_handle] %}
+  {% if current_blog and current_blog.articles_count > max_articles %}
+    {% assign most_articles_blog = current_blog %}
+    {% assign max_articles = current_blog.articles_count %}
+  {% endif %}
+{% endfor %}
+
 {% assign mainBlog = section.settings.blog %}
 {% if mainBlog == blank %}
-  {% assign mainBlog = blogs['blog'] %}
+  {% assign mainBlog = most_articles_blog %}
 {% endif %}
-
 
 {% assign articleTags = article.tags %}
 {% assign articlesFoundCount = 0 %}
