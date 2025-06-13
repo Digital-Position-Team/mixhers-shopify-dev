@@ -1,12 +1,8 @@
-{% assign currentArticle = article | default: null %}
-<p>Blog handle from article: {{ currentArticle.handle }}</p>
-<p>Blog title from article: {{ article.blog }}</p>
-<p>Article title: {{ article.title }}</p>
-
 {% assign mainBlog = section.settings.blog %}
-{% if section.settings.blog == blank %}
-  {% assign mainBlog = article.blog %}
+{% if mainBlog == blank %}
+  {% assign mainBlog = blogs['blog'] %}
 {% endif %}
+
 
 {% assign articleTags = article.tags %}
 {% assign articlesFoundCount = 0 %}
