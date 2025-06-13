@@ -152,6 +152,75 @@
   {
     "name": "Article with Sidebar",
     "settings": [],
+      "blocks": [
+    {
+      "type": "podcast",
+      "name": "Podcast Player",
+      "settings": [
+        {
+          "type": "url",
+          "id": "feed_url",
+          "label": "RSS Feed URL"
+        },
+         {
+            "type": "range",
+            "id": "episode_count",
+            "label": "Episode Limit",
+            "info": "How many episodes to show",
+            "min": 1,
+            "max": 10,
+            "step": 1,
+            "default": 4
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Listen to It’s Hertime."
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Most Recent Episodes"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Podcast Image"
+        }
+      ]
+    },
+    {
+      "type": "quiz_cta",
+      "name": "Quiz CTA Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Not sure which drink is right for you?"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Get matched with products designed for your unique wellness goals."
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Take the Quiz"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button URL"
+        }
+      ]
+    }
+  ],
     "presets": [
       {"name":"Article Detail with sidebar"}
     ]
