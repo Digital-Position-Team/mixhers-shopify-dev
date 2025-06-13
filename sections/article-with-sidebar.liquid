@@ -162,14 +162,16 @@
 {% schema %}
   {
     "name": "Article with Sidebar",
-    "settings": [],
-      "blocks": [
-        {
-          "type":"featured_product",
-          "name":"Show Featured Product",
-          "settings": []
-        },
-    {
+    "settings": [
+      {
+        "type": "checkbox",
+        "id":"show_feature_product",
+        "default": true,
+        "label": "Show Featured Product"
+      }
+    ],
+    "blocks": [
+     {
       "type": "podcast",
       "name": "Podcast Player",
       "settings": [
