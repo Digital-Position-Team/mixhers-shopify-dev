@@ -1,0 +1,79 @@
+{% layout none %}
+{% comment %}
+{% include 'product-router' %}
+{% endcomment %}
+
+[
+{% for product in collections.quiz-all.products %}
+    {% if product.available %}
+        {% comment %}
+        <section class="product-data">
+        {% endcomment %}
+        {
+            {% render 'product-router' %}
+            "title": "{{ product.title }}",
+            "id": "{{ product.id }}",
+            "handle": "{{ product.handle }}",
+            "url": "{{ product.url }}",
+            "subtitle": "{{ product.metafields.descriptors.subtitle | default: product.metafields.rebrand.product_subtitle.value }}",
+            "caption": "{{ product.metafields.rebrand.product_caption.value | default: "" }}",
+            "image": "{{ product.metafields.custom.quiz_product_image.value | default: product.featured_image | image_url: width: 500 }}",
+            "description": {{ product.description | escape | json }},
+            "variants": [
+                {% for variant in product.variants %}
+                    {
+                        "price": "{{ variant.price }}",
+                        "compare_at_price": "{{ variant.compare_at_price }}",
+                        "id": "{{ variant.id }}",
+                        "name": "{{ variant.name }}",
+                        "option1": "{{ variant.option1 }}",
+                        "option2": "{{ variant.option2 }}",
+                        "available": {% if variant.metafields.variant.outofstock == 'true' %}"false"{% else %}"{{ variant.available }}"{% endif%},
+                        "hidden": {% if variant.metafields.custom.hide_variant == true %}"true"{% else %}"false"{% endif %},
+                        "selling_plan_allocations": [
+                            {% if variant.selling_plan_allocations.size == 0 %}
+                                {}
+                            {% endif %}
+                            {% for selling_plan_allocation in variant.selling_plan_allocations %}
+                                {
+                                    "compare_at_price": "{{ selling_plan_allocation.compare_at_price }}",
+                                    "price": "{{ selling_plan_allocation.price }}",
+                                    "name": "{{ selling_plan_allocation.selling_plan.name }}",
+                                    "id": "{{ selling_plan_allocation.selling_plan.id }}"
+                                {% if forloop.last %}
+                                    }
+                                {% else %}
+                                    },
+                                {% endif %}
+                            {% endfor %}
+                        ],
+                    {% if variant.metafields.custom.image_bubble %}
+                        "image_bubble": [
+                            {% for item in variant.metafields.custom.image_bubble.value %}
+                                {
+                                    "image": "{{ item | image_url: width: 200 }}",
+                                    "index": "{{ forloop.index }}"
+                                {% if forloop.last %}
+                                  }
+                                {% else %}
+                                  },
+                                {% endif %}
+                            {% endfor %}
+                        ]
+                    {% else %}
+                        "image_bubble": []
+                    {% endif %}
+                    {% if forloop.last %}
+                        } ]
+                    {% else %}
+                        },
+                    {% endif %}
+                {% endfor %}
+        {% if forloop.last %}
+            }
+        {% else %}
+            },
+        {% endif %}
+    {% endif %}
+{% endfor %}
+]
