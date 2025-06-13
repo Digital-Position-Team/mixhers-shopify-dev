@@ -4,7 +4,7 @@
 {% assign has_bottom_border = section.settings.show_bottom_border %}
 
 <style>
-  .faq-section-{{ section_id }} {
+  .faq-alt-section-{{ section_id }} {
     background-color: {{ bg_color }};
     padding: 4rem 0;
     position: relative;
@@ -16,41 +16,32 @@
     {% endif %}
   }
 
-  .faq-container {
+  .faq-alt-container {
     display: flex;
     gap: 32px;
   }
 
-  .faq-content {
+  .faq-alt-content {
     padding: 2rem;
   }
 
-  .faq-image-column {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 2rem;
-    margin-top: 32px;
-  }
-
-  .faq-heading {
+  .faq-alt-heading {
     text-align: left;
     margin-bottom: 2rem;
   }
   
-  .faq-heading h2 {
+  .faq-alt-heading h2 {
     font-family: 'Faire Sprig', serif;
     color: #333;
     margin-bottom: 1rem;
   }
 
-  .faq-item {
+  .faq-alt-item {
     margin-bottom: 1rem;
     border-bottom: 1px solid #eee;
   }
 
-  .faq-question {
+  .faq-alt-question {
     padding: 1rem 0;
     font-weight: 600;
     font-family: 'Buenos Aires', sans-serif;
@@ -61,19 +52,19 @@
     color: black;
   }
 
-  .faq-question svg {
+  .faq-alt-question svg {
     min-width: 17px;
     transition: transform 0.5s ease;
   }
-  .faq-question svg path{
+  .faq-alt-question svg path{
     fill:pink;
   }
 
-  .faq-question.active svg {
+  .faq-alt-question.active svg {
     transform: rotate(180deg);
   }
 
-  .faq-answer {
+  .faq-alt-answer {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
@@ -81,38 +72,38 @@
     font-family: 'Buenos Aires', sans-serif;
     line-height: 1.6;
   }
-  .faq-answer p { margin-top: 0px; }
+  .faq-alt-answer p { margin-top: 0px; }
 
-  .faq-answer.active {
+  .faq-alt-answer.active {
     max-height: 1000px;
     padding-bottom: 1rem;
   }
 
   @media screen and (max-width: 767px) {
-    .faq-container {
+    .faq-alt-container {
       flex-direction: column-reverse;
     }
-    .faq-content{
+    .faq-alt-content{
       width: 100%;
       padding: 1.5rem;
     }
   }
 </style>
 
-<section class="faq-section-{{ section_id }}">
-  <div class="faq-container page-width">
-    <div class="faq-content">
-      <div class="faq-heading">
+<div class="faq-alt-section-{{ section_id }} faq-alt-section">
+  <div class="faq-alt-container page-width">
+    <div class="faq-alt-content">
+      <div class="faq-alt-heading">
         <h2>{{ section.settings.title }}</h2>
       </div>
       {% for block in section.blocks %}
         {% if block.type == 'faq_item' %}
-          <div class="faq-item" {{ block.shopify_attributes }}>
-            <div class="faq-question" onclick="toggleFAQ(this, '{{ section_id }}-{{ forloop.index }}')">
+          <div class="faq-alt-item" {{ block.shopify_attributes }}>
+            <div class="faq-alt-question" onclick="toggleFAQ(this, '{{ section_id }}-{{ forloop.index }}')">
               {{ block.settings.question }}
                {% render 'icon' with 'plus' %}
             </div>
-            <div id="faq-{{ section_id }}-{{ forloop.index }}" class="faq-answer">
+            <div id="faq-alt-{{ section_id }}-{{ forloop.index }}" class="faq-alt-answer">
               {{ block.settings.answer }}
             </div>
           </div>
@@ -120,16 +111,16 @@
       {% endfor %}
     </div>
   </div>
-</section>
+</div>
 
 <script>
   function toggleFAQ(element, id) {
-    const answer = document.getElementById('faq-' + id);
+    const answer = document.getElementById('faq-alt-' + id);
     const currentlyActive = element.classList.contains('active');
     
     // Close all FAQs
-    const allQuestions = document.querySelectorAll('.faq-question');
-    const allAnswers = document.querySelectorAll('.faq-answer');
+    const allQuestions = document.querySelectorAll('.faq-alt-question');
+    const allAnswers = document.querySelectorAll('.faq-alt-answer');
     
     allQuestions.forEach(q => q.classList.remove('active'));
     allAnswers.forEach(a => a.classList.remove('active'));
@@ -145,6 +136,7 @@
 {% schema %}
 {
   "name": "FAQ Section Style2",
+  "tag": "section",
   "settings": [
     {
       "type": "text",
