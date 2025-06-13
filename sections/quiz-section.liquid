@@ -1,4 +1,5 @@
-{% comment %}<link href="{{ 'quiz.css' | asset_url }}" rel="stylesheet" type="text/css">{% endcomment %}
+{% comment %}{% endcomment %}
+<link href="{{ 'quiz.css' | asset_url }}" rel="stylesheet" type="text/css">
 {% render 'flavor-bubble' with product: false %}
 {% comment %}Check for Sitewide Sale {% endcomment %}
 {% assign sitewideSaleEnabled = settings.sitewide_sale_enabled %}
@@ -484,7 +485,8 @@
         const productTitle = `Her${title.split("Her")[1]}`;
       
         const productDataForSelected = productData.find(productObj => productObj.id === productID);
-
+      console.log(productDataForSelected,"productDataForSelected----");
+      console.log(productData,"productData---")
         return `
             <div class="quiz-product-card-info top">
                 <img src="${productDataForSelected.image}" alt="${productDataForSelected.image}">
