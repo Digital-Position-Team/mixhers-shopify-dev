@@ -3878,6 +3878,15 @@ a.product-btn.outline-button {
 .view-all-button .btn:hover{
     box-shadow: -4px 4px #dcd6df;
 }
+.related-articles-container.article-related-articles {
+    padding: 40px 0px;
+}
+.article-related-articles .related-articles-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
 @media(max-width:1023px){
  .section-container{
     padding-left:32px;
