@@ -177,7 +177,7 @@ body {
 }
 
 /*Blog pages fonts  */
-@font-face {
+/* @font-face {
     font-family: "Circular";
     src: url("Circular-Thin.ttf") format("truetype");
     font-weight: 100;
@@ -191,7 +191,7 @@ body {
     font-weight: 300;
     font-display: auto;
     font-style: normal;
-}
+} */
 @font-face {
     font-family: "Circular";
     src: url("https://cdn.shopify.com/s/files/1/0557/9879/2371/files/Circular-Book.ttf?v=1749816003") format("truetype");
@@ -215,10 +215,10 @@ body {
     font-display: auto;
     font-style: normal;
 }
-@font-face {
+/* @font-face {
     font-family: "Circular";
     src: url("Circular-Black.ttf") format("truetype");
     font-weight: 800;
     font-display: auto;
     font-style: normal;
-}
+} */
