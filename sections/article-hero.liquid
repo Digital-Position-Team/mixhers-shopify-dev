@@ -8,7 +8,7 @@
 
 <div class="back-btn-container hide-mobile page-width">
   <div class="back-btn-wrapper">
-    <a href="{{ mainBlog.url }}" class="button-2 link-btn">
+    <a href="{{ main_blog.url }}" class="button-2 link-btn">
       {% render 'icon' with 'left-arrow' %}
       Back to All Articles
     </a>
@@ -18,12 +18,12 @@
   <div class="article-hero-container">
     {% unless article.metafields.custom.remove_hero_image %}
       <div class="article-hero-img-wrapper">
-        {{ featuredImage | image_url: width: 1500 | image_tag: class: 'article-hero-img' }}
+        {{ featured_image | image_url: width: 1500 | image_tag: class: 'article-hero-img' }}
       </div>
     {% endunless %}
 
     <div class="article-hero-title-wrapper">
-      <a href="{{ mainBlog.url }}" class="button-2 mobile-only link-btn">
+      <a href="{{ main_blog.url }}" class="button-2 mobile-only link-btn">
         {% render 'icon' with 'left-arrow' %}
         Back to All Articles
       </a>
