@@ -1,6 +1,286 @@
-{% schema %}
-  {
-    "name": "Section name",
-    "settings": []
+{% assign section_id = section.id %}
+{% assign direction = section.settings.direction | default: 'ltr' %}
+{% assign bg_color = section.settings.bg_color | default: '#ffffff' %}
+{% assign has_top_border = section.settings.show_top_border %}
+{% assign has_bottom_border = section.settings.show_bottom_border %}
+{% assign has_image = false %}
+{% if section.settings.image != blank %}
+  {% assign has_image = true %}
+{% endif %}
+
+
+<style>
+  .faq-section-{{ section_id }} {
+    background-color: {{ bg_color }};
+    padding: 4rem 0;
+    position: relative;
+    {% if has_top_border %}
+      border-top: 1px solid {{ section.settings.border_color }};
+    {% endif %}
+    {% if has_bottom_border %}
+      border-bottom: 1px solid {{ section.settings.border_color }};
+    {% endif %}
   }
+
+  .faq-container {
+    display: flex;
+    flex-direction: {% if direction == 'rtl' and has_image %}row-reverse{% else %}row{% endif %};
+    gap: 32px;
+  }
+
+  .faq-content {
+    width: {% if has_image %}50%{% else %}100%{% endif %};
+    padding: 2rem;
+  }
+
+  .faq-image-column {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+    margin-top: 32px;
+  }
+
+  .faq-image-column .image-wrapper {
+    max-height: 680px;
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .faq-image-column img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .faq-heading {
+    text-align: left;
+    margin-bottom: 2rem;
+  }
+  
+  .faq-heading h2 {
+    font-family: 'Faire Sprig', serif;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+
+  .faq-item {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  .faq-question {
+    padding: 1rem 0;
+    font-weight: 600;
+    font-family: 'Buenos Aires', sans-serif;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+  }
+
+  .faq-question svg {
+    min-width: 17px;
+    transition: transform 0.5s ease;
+  }
+
+  .faq-question.active svg {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0;
+    font-family: 'Buenos Aires', sans-serif;
+    line-height: 1.6;
+  }
+  .faq-answer p { margin-top: 0px; }
+
+  .faq-answer.active {
+    max-height: 1000px;
+    padding-bottom: 1rem;
+  }
+
+  @media screen and (max-width: 767px) {
+    .faq-container {
+      flex-direction: column-reverse;
+    }
+
+    .faq-content,
+    .faq-image-column {
+      width: 100%;
+      padding: 1.5rem;
+    }
+  }
+</style>
+
+<section class="faq-section-{{ section_id }}">
+  <div class="faq-container page-width">
+    <div class="faq-content">
+      <div class="faq-heading">
+        <h2>{{ section.settings.title }}</h2>
+      </div>
+      {% for block in section.blocks %}
+        {% if block.type == 'faq_item' %}
+          <div class="faq-item" {{ block.shopify_attributes }}>
+            <div class="faq-question" onclick="toggleFAQ(this, '{{ section_id }}-{{ forloop.index }}')">
+              {{ block.settings.question }}
+              <svg width="17" height="11" viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1.53027L8.5 9.03027L16 1.53027" stroke="#FF59E4" stroke-width="2"/>
+              </svg>
+            </div>
+            <div id="faq-{{ section_id }}-{{ forloop.index }}" class="faq-answer">
+              {{ block.settings.answer }}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% if has_image %}
+      <div class="faq-image-column">
+        <div class="image-wrapper">
+          <img src="{{ section.settings.image | img_url: 'master' }}" 
+            alt="{{ section.settings.image.alt | default: section.settings.title }}"
+            loading="lazy"
+            width="{{ section.settings.image.width }}"
+            height="{{ section.settings.image.height }}">
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<script>
+  function toggleFAQ(element, id) {
+    const answer = document.getElementById('faq-' + id);
+    const currentlyActive = element.classList.contains('active');
+    
+    // Close all FAQs
+    const allQuestions = document.querySelectorAll('.faq-question');
+    const allAnswers = document.querySelectorAll('.faq-answer');
+    
+    allQuestions.forEach(q => q.classList.remove('active'));
+    allAnswers.forEach(a => a.classList.remove('active'));
+    
+    // If the clicked question wasn't active before, open it
+    if (!currentlyActive) {
+      element.classList.add('active');
+      answer.classList.add('active');
+    }
+  }
+</script>
+
+{% schema %}
+{
+  "name": "FAQ Section Style2",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "FAQs"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image (Optional)"
+    },
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "Content Direction",
+      "options": [
+        {
+          "value": "ltr",
+          "label": "FAQs Left, Image Right"
+        },
+        {
+          "value": "rtl",
+          "label": "Image Left, FAQs Right"
+        }
+      ],
+      "default": "ltr"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_top_border",
+      "label": "Show Top Border",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottom_border",
+      "label": "Show Bottom Border",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#1A1A1A"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Frequently asked question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Provide the answer to the question here. This text can include formatting and links.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Section Style 2",
+      "category": "Content",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I use Mixhers products?",
+            "answer": "<p>Our products are designed to be easy to use. Simply follow the instructions on the product packaging or visit our website for detailed usage guides.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are your products safe for pregnant women?",
+            "answer": "<p>We recommend consulting with your healthcare provider before using any dietary supplements during pregnancy or while breastfeeding.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long will it take to see results?",
+            "answer": "<p>Individual results may vary. Most customers report noticeable improvements after consistent use for 2-4 weeks.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
 {% endschema %}
