@@ -225,28 +225,28 @@ body {
 
 @font-face {
     font-family: "Suisse Works";
-    src: url("SuisseWorks-RegularItalic.otf") format("opentype");
+    src: url("https://cdn.shopify.com/s/files/1/0557/9879/2371/files/SuisseWorks-RegularItalic.otf?v=1749817242") format("opentype");
     font-weight: 500;
     font-display: auto;
     font-style: italic;
 }
 @font-face {
     font-family: "Suisse Works";
-    src: url("SuisseWorks-BookItalic.otf") format("opentype");
+    src: url("https://cdn.shopify.com/s/files/1/0557/9879/2371/files/SuisseWorks-BookItalic.otf?v=1749817310") format("opentype");
     font-weight: 600;
     font-display: auto;
     font-style: italic;
 }
 @font-face {
     font-family: "Suisse Works";
-    src: url("SuisseWorks-MediumItalic.otf") format("opentype");
+    src: url("https://cdn.shopify.com/s/files/1/0557/9879/2371/files/SuisseWorks-MediumItalic.otf?v=1749817310") format("opentype");
     font-weight: 700;
     font-display: auto;
     font-style: italic;
 }
 @font-face {
     font-family: "Suisse Works";
-    src: url("SuisseWorks-BoldItalic.otf") format("opentype");
+    src: url("https://cdn.shopify.com/s/files/1/0557/9879/2371/files/SuisseWorks-BoldItalic.otf?v=1749817310") format("opentype");
     font-weight: 900;
     font-display: auto;
     font-style: italic;
