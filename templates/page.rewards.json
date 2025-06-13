@@ -28,7 +28,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Can I use my rewards points on subscription orders?",
-            "answer": "<p>Yes! Once you redeem your rewards points, you'll receive a code that can be applied to any order, including your subscription.<br/><br/>To apply a reward code to your subscription, log into your account and click on<strong>\"Manage Subscriptions\"</strong>. From there, select<strong>\"View Next Order\"</strong>, then look for the<strong>\"Apply Discount\"</strong>option. Enter your rewards code, and it will be applied to your next subscription order!<br/><br/><em>Please note:</em>Free rewards products cannot be added to subscription orders at this time.</p>"
+            "answer": "<p>Yes! Once you redeem your rewards points, you'll receive a code that can be applied to any order, including your subscription. <br/> <br/><br/> To apply a reward code to your subscription, log into your account and click on <strong>\"Manage Subscriptions\"</strong>.   From there, select <strong>\"View Next Order\"</strong>, then look for the <strong>\"Apply Discount\"</strong> option. Enter your rewards code, and it will be applied to your next subscription order! <br/> <br/><br/>        <em>Please note:</em> Free rewards products cannot be added to subscription orders at this time.<br/>      </p>"
           }
         },
         "faq_item_RwBmXz": {
@@ -70,7 +70,7 @@
           "type": "faq_item",
           "settings": {
             "question": "How do I redeem my points for free products?",
-            "answer": "<p>To redeem your points for free products, log into your rewards account and select \"Redeem\" on the product you want.<br/><br/><em>Please note: </em>You must have at least one other item in your cart before redeeming a free product reward.</p>"
+            "answer": "<p>To redeem your points for free products, log into your rewards account and select \"Redeem\" on the product you want. <br/> <br/><em>Please note:</em> You must have at least one other item in your cart before redeeming a free product reward.</p>"
           }
         }
       },
