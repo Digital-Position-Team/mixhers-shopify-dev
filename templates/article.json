@@ -119,8 +119,9 @@
         "show_pricing_crossout": true
       }
     },
-    "recommended_articles_e9H9Jd": {
+    "recommended_articles_iqHpEn": {
       "type": "recommended-articles",
+      "name": "Related Articles",
       "settings": {
         "heading": "You might also enjoy...",
         "blog": ""
@@ -131,7 +132,7 @@
     "article_hero_XhePU3",
     "main",
     "article_with_sidebar_M4JNQN",
-    "blogs_every_stage_products_TeaG6w",
-    "recommended_articles_e9H9Jd"
+    "recommended_articles_iqHpEn",
+    "blogs_every_stage_products_TeaG6w"
   ]
 }
