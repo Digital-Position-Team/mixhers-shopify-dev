@@ -55,8 +55,22 @@
         "faq_item_tEmWXE": {
           "type": "faq_item",
           "settings": {
-            "question": "Frequently asked question",
-            "answer": "<p>Provide the answer to the question here. This text can include formatting and links.</p>"
+            "question": "How do I redeem my points?",
+            "answer": "<p>Once you've earned points, you can redeem them for various rewards, including discount codes and free product!<br/><br/>Simply log into your rewards account to see your available points and redemption options. Once you redeem a reward, you'll receive a code that can be applied to any order, including subscriptions.</p>"
+          }
+        },
+        "faq_item_bWUzkU": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I redeem a free product reward and add it to my subscription order?",
+            "answer": "<p>Unfortunately, free rewards products cannot be added to subscription orders at this time.</p>"
+          }
+        },
+        "faq_item_DHbAPU": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I redeem my points for free products?",
+            "answer": "<p>To redeem your points for free products, log into your rewards account and select \"Redeem\" on the product you want.<br/><br/><em>Please note: </em>You must have at least one other item in your cart before redeeming a free product reward.</p>"
           }
         }
       },
@@ -65,7 +79,9 @@
         "faq_item_RwBmXz",
         "faq_item_yw93Na",
         "faq_item_ncDYb6",
-        "faq_item_tEmWXE"
+        "faq_item_tEmWXE",
+        "faq_item_bWUzkU",
+        "faq_item_DHbAPU"
       ],
       "settings": {
         "title": "FAQs",
