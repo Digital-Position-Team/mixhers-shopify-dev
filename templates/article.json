@@ -49,38 +49,6 @@
       "disabled": true,
       "settings": {}
     },
-    "article_with_sidebar_AWUAzt": {
-      "type": "article-with-sidebar",
-      "blocks": {
-        "podcast_yYwdPf": {
-          "type": "podcast",
-          "settings": {
-            "feed_url": "https://feeds.buzzsprout.com/868171.rss",
-            "episode_count": 4,
-            "title": "Listen to It’s Hertime."
-          }
-        },
-        "quiz_cta_Xt3hz8": {
-          "type": "quiz_cta",
-          "settings": {
-            "title": "Not sure which drink is right for you?",
-            "description": "Get matched with products designed for your unique wellness goals.",
-            "button_text": "Take the Quiz",
-            "button_url": ""
-          }
-        },
-        "featured_product_PzGkAw": {
-          "type": "featured_product",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "podcast_yYwdPf",
-        "quiz_cta_Xt3hz8",
-        "featured_product_PzGkAw"
-      ],
-      "settings": {}
-    },
     "blogs_every_stage_products_TeaG6w": {
       "type": "blogs-every-stage-products",
       "blocks": {
@@ -123,6 +91,35 @@
         "show_pricing_crossout": true
       }
     },
+    "article_with_sidebar_iQ7hgt": {
+      "type": "article-with-sidebar",
+      "blocks": {
+        "podcast_wPDaK8": {
+          "type": "podcast",
+          "settings": {
+            "feed_url": "",
+            "episode_count": 4
+          }
+        },
+        "quiz_cta_6W69nb": {
+          "type": "quiz_cta",
+          "settings": {
+            "title": "Not sure which drink is right for you?",
+            "description": "Get matched with products designed for your unique wellness goals.",
+            "button_text": "Take the Quiz",
+            "button_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "podcast_wPDaK8",
+        "quiz_cta_6W69nb"
+      ],
+      "name": "Article Detail with sidebar",
+      "settings": {
+        "show_feature_product": true
+      }
+    },
     "recommended_articles_e9H9Jd": {
       "type": "recommended-articles",
       "settings": {
@@ -134,8 +131,8 @@
   "order": [
     "article_hero_XhePU3",
     "main",
-    "article_with_sidebar_AWUAzt",
     "blogs_every_stage_products_TeaG6w",
+    "article_with_sidebar_iQ7hgt",
     "recommended_articles_e9H9Jd"
   ]
 }
