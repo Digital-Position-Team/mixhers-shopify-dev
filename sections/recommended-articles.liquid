@@ -26,7 +26,6 @@
         {% if articlesFoundCount < 3 %}
           {% for tag in related_article.tags %}
             {% if articleTags contains tag %}
-              {{ related_article.title }}
               {% render 'standard-article-card', article: related_article, featuredCard: true %}
               {% assign articlesFoundCount = articlesFoundCount | plus: 1 %}
               {% break %}
@@ -38,7 +37,6 @@
       {% if articlesFoundCount < 3 %}
         {% for fallback_article in mainBlog.articles %}
           {% if articlesFoundCount < 3 and fallback_article.metafields.custom.featured_article %}
-            {{ fallback_article.title }}
             {% render 'standard-article-card', article: fallback_article, featuredCard: true %}
             {% assign articlesFoundCount = articlesFoundCount | plus: 1 %}
           {% endif %}
