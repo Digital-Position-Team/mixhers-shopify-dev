@@ -151,7 +151,7 @@ body {
 
 @font-face {
   font-family: 'Buenos Aires';
-  src: url('BuenosAiresWeb-SemiBoldItalic.woff2') format('woff2');
+  src: url('https://cdn.shopify.com/s/files/1/0557/9879/2371/files/BuenosAiresWeb-SemiBoldItalic.woff2?v=1749816204');
   font-weight: 600;
   font-style: italic;
 }
