@@ -206,7 +206,7 @@ body {
 
 @font-face {
     font-family: "Circular";
-    src: url("Circular-Medium.ttf") format("truetype");
+    src: url("Circular-Medium.woff2") format("woff2");
     font-weight: 500;
     font-display: auto;
     font-style: normal;
