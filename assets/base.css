@@ -3606,6 +3606,7 @@ body{
 }
 .font-sans,p,a,button,span{ font-family: Buenos Aires, sans-serif;}
 .font-serif { font-family: Faire Sprig, serif;}
+.font-circular{ font-family: 'Circular';}
 .light-font, .light-font *{ font-weight: 300 !important;}
 p.base-text , .base-text p ,  .base-text li{font-size:18px;}
 .custom-primary-btn, .pink-primary-btn{
