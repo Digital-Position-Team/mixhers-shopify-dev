@@ -1,6 +1,13 @@
 {% assign mainBlog = blogs.articles %}
 {% assign featuredImage = article.image | default: mainBlog.metafields.custom.default_featured_image %}
-
+<div class="back-btn-container hide-mobile page-width">
+  <div class="back-btn-wrapper">
+    <a href="{{ mainBlog.url }}" class="button-2 link-btn">
+      {% render 'icon' with 'left-arrow' %}
+      Back to All Articles
+    </a>
+  </div>
+</div>
 <section class="article-hero">
   <div class="article-hero-container">
     {% unless article.metafields.custom.remove_hero_image %}
