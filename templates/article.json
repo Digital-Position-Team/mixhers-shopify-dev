@@ -49,6 +49,34 @@
       "disabled": true,
       "settings": {}
     },
+    "article_with_sidebar_M4JNQN": {
+      "type": "article-with-sidebar",
+      "blocks": {
+        "podcast_EyJgh4": {
+          "type": "podcast",
+          "settings": {
+            "feed_url": "https://feeds.buzzsprout.com/868171.rss",
+            "episode_count": 4
+          }
+        },
+        "quiz_cta_9HYzFh": {
+          "type": "quiz_cta",
+          "settings": {
+            "title": "Not sure which drink is right for you?",
+            "description": "Get matched with products designed for your unique wellness goals.",
+            "button_text": "Take the Quiz",
+            "button_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "podcast_EyJgh4",
+        "quiz_cta_9HYzFh"
+      ],
+      "settings": {
+        "show_feature_product": true
+      }
+    },
     "blogs_every_stage_products_TeaG6w": {
       "type": "blogs-every-stage-products",
       "blocks": {
@@ -96,35 +124,6 @@
       "settings": {
         "heading": "You might also enjoy...",
         "blog": ""
-      }
-    },
-    "article_with_sidebar_M4JNQN": {
-      "type": "article-with-sidebar",
-      "blocks": {
-        "podcast_EyJgh4": {
-          "type": "podcast",
-          "settings": {
-            "feed_url": "",
-            "episode_count": 4
-          }
-        },
-        "quiz_cta_9HYzFh": {
-          "type": "quiz_cta",
-          "settings": {
-            "title": "Not sure which drink is right for you?",
-            "description": "Get matched with products designed for your unique wellness goals.",
-            "button_text": "Take the Quiz",
-            "button_url": ""
-          }
-        }
-      },
-      "block_order": [
-        "podcast_EyJgh4",
-        "quiz_cta_9HYzFh"
-      ],
-      "name": "Article Detail with sidebar",
-      "settings": {
-        "show_feature_product": true
       }
     }
   },
