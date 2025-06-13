@@ -19,31 +19,31 @@
 {% endunless %}
 
 {% assign content = article.content | split: '<h2>' %}
-{% assign sectionTitles = '' %}
+{% assign section_titles = '' %}
 {% assign fromatted_article_content = '' %}
 
 {% for item in content %}
     {% if item contains '</h2>' %}
-        {% assign sectionContent = item | split: '</h2>' %}
-        {% assign sectionTitle = sectionContent[0] | strip_html %}
-        {% assign sectionTitle = sectionTitle | strip %}
-        {% assign sectionAnchor = sectionTitle | replace: ' ', '-' %}
-        {% assign sectionTitles = sectionTitles | append: sectionAnchor | append: '::' %}
-        {% assign sectionCopy = sectionContent[1] %}
+        {% assign section_content = item | split: '</h2>' %}
+        {% assign section_title = section_content[0] | strip_html %}
+        {% assign section_title = section_title | strip %}
+        {% assign section_anchor = section_title | replace: ' ', '-' %}
+        {% assign section_titles = section_titles | append: section_anchor | append: '::' %}
+        {% assign section_copy = section_content[1] %}
         {% if item contains '<h3' %}
-          {% assign sectionCopy = sectionCopy | replace: '<h3', '<h3 class="headers-5"' %}
+          {% assign section_copy = section_copy | replace: '<h3', '<h3 class="headers-5"' %}
         {% endif %}
         {% if item contains '<h4' %}
-          {% assign sectionCopy = sectionCopy | replace: '<h4', '<h4 class="headers-6"' %}
+          {% assign section_copy = section_copy | replace: '<h4', '<h4 class="headers-6"' %}
         {% endif %}
-        {% assign fromatted_article_content = fromatted_article_content | append: '<section class="article-content-section" id="' | append: sectionAnchor | append: '"><h2 class="headers-4">' | append: sectionTitle | append: '</h2><div class="body-4">' | append: sectionCopy | append: '</div></section>' | append: ':: ' %}
+        {% assign fromatted_article_content = fromatted_article_content | append: '<section class="article-content-section" id="' | append: section_anchor | append: '"><h2 class="headers-4">' | append: section_title | append: '</h2><div class="body-4">' | append: section_copy | append: '</div></section>' | append: ':: ' %}
     {% else %}
       {% assign fromatted_article_content = fromatted_article_content | append: '<section class="article-content-section"><div class="body-4">' | append: item | append: '</div></section>' | append: ':: ' %}
     {% endif %}
 {% endfor %}
 
 {% assign fromatted_article_content = fromatted_article_content | split: ':: ' %}
-{% assign sectionTitles = sectionTitles | split: '::' %}
+{% assign section_titles = section_titles | split: '::' %}
 
 <section class="article-container-section">
   <div class="page-width">
@@ -52,7 +52,7 @@
       <div class="toc">
           <h3 class="italic-subheaders-4">Contents</h3>
           <ul>
-              {% for item in sectionTitles %}
+              {% for item in section_titles %}
                   {% if item != '' %}
                       <li><a href="#{{ item }}" class="button-5">{{ forloop.index }}. {{ item | replace: '-', ' ' }}</a></li>
                   {% endif %}
