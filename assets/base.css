@@ -3737,7 +3737,7 @@ cart-notification {
     height: 180px;
     object-fit: cover;
 }
-article-content * {
+.standard-article-card .article-content * {
     font-family: 'Circular';
 }
 .standard-article-card h3.article-title {
