@@ -19,7 +19,6 @@
     },
     "rewards_section_6wzEzA": {
       "type": "rewards-section",
-      "name": "Rewards yotpo Widget",
       "settings": {}
     },
     "faq_section_fEpafP": {
@@ -84,10 +83,32 @@
         "faq_item_MUPxVh",
         "faq_item_DJzWjp"
       ],
-      "name": "FAQ Section",
       "settings": {
         "title": "FAQs",
         "direction": "ltr",
+        "bg_color": "#ffffff",
+        "show_top_border": false,
+        "show_bottom_border": false,
+        "border_color": "#1a1a1a"
+      }
+    },
+    "faq_section_alternate_eBL4Q7": {
+      "type": "faq-section-alternate",
+      "blocks": {
+        "faq_item_pYVGWi": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I use Mixhers products?",
+            "answer": "<p>Our products are designed to be easy to use. Simply follow the instructions on the product packaging or visit our website for detailed usage guides.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_pYVGWi"
+      ],
+      "name": "FAQ Section Style 2",
+      "settings": {
+        "title": "FAQs",
         "bg_color": "#ffffff",
         "show_top_border": false,
         "show_bottom_border": false,
@@ -98,6 +119,7 @@
   "order": [
     "main",
     "rewards_section_6wzEzA",
-    "faq_section_fEpafP"
+    "faq_section_fEpafP",
+    "faq_section_alternate_eBL4Q7"
   ]
 }
