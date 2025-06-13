@@ -3739,10 +3739,10 @@ cart-notification {
 }
 .standard-article-card h3.article-title {
     font-size: 22px;
-    font-family: 'Buenos Aires';
+    font-family: 'Circular';
     font-weight: 600;
     line-height: 1.28;
-    letter-spacing: normal;
+    letter-spacing: 0.96px;
     margin: 5px 0 7px;
 }
 .standard-article-card p.article-excerpt {
