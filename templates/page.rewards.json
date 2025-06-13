@@ -21,78 +21,6 @@
       "type": "rewards-section",
       "settings": {}
     },
-    "faq_section_fEpafP": {
-      "type": "faq-section",
-      "blocks": {
-        "faq_item_TJeALW": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Can I use my rewards points on subscription orders?",
-            "answer": "<p>Yes! Once you redeem your rewards points, you'll receive a code that can be applied to any order, including your subscription.<br/><br/>To apply a reward code to your subscription, log into your account and click on<strong>\"Manage Subscriptions\"</strong>. From there, select<strong>\"View Next Order\"</strong>, then look for the<strong>\"Apply Discount\"</strong>option. Enter your rewards code, and it will be applied to your next subscription order!<br/><br/><em>Please note:</em>Free rewards products cannot be added to subscription orders at this time.<br/><br/></p>"
-          }
-        },
-        "faq_item_dUnrcn": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Can I use a rewards code on my subscription if I have a locked in code on my account?",
-            "answer": "<p>If you already have a locked-in discount code on your account from a past promotion, you will not be able to add an additional code in your account. However, we definitely want you to be able to use your hard earned rewards points! Once your order processes, feel free to reach out to our CS team with the code you want to use, and we can add that discount in the form of a refund on your order. That way you wont miss out on your rewards!<br/><br/></p>"
-          }
-        },
-        "faq_item_rGtEUy": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Do points expire?",
-            "answer": "<p>Yes, rewards points will expire after one year of inactivity.<br/><br/></p>"
-          }
-        },
-        "faq_item_reR893": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Can I use a rewards code and a discount code on the same order?",
-            "answer": "<p>Rewards codes cannot be combined with other discount codes.</p>"
-          }
-        },
-        "faq_item_AWhMTV": {
-          "type": "faq_item",
-          "settings": {
-            "question": "How do I redeem my points?",
-            "answer": "<p>Once you've earned points, you can redeem them for various rewards, including discount codes and free product!<br/><br/>Simply log into your rewards account to see your available points and redemption options. Once you redeem a reward, you'll receive a code that can be applied to any order, including subscriptions.</p>"
-          }
-        },
-        "faq_item_MUPxVh": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Can I redeem a free product reward and add it to my subscription order?",
-            "answer": "<p>Unfortunately, free rewards products cannot be added to subscription orders at this time.</p>"
-          }
-        },
-        "faq_item_DJzWjp": {
-          "type": "faq_item",
-          "settings": {
-            "question": "How do I redeem my points for free products?",
-            "answer": "<p>To redeem your points for free products, log into your rewards account and select \"Redeem\" on the product you want.<br/><br/><em>Please note:</em>You must have at least one other item in your cart before redeeming a free product reward.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "faq_item_TJeALW",
-        "faq_item_dUnrcn",
-        "faq_item_rGtEUy",
-        "faq_item_reR893",
-        "faq_item_AWhMTV",
-        "faq_item_MUPxVh",
-        "faq_item_DJzWjp"
-      ],
-      "disabled": true,
-      "settings": {
-        "title": "FAQs",
-        "direction": "ltr",
-        "bg_color": "#ffffff",
-        "show_top_border": false,
-        "show_bottom_border": false,
-        "border_color": "#1a1a1a"
-      }
-    },
     "faq_section_alternate_eBL4Q7": {
       "type": "faq-section-alternate",
       "blocks": {
@@ -100,14 +28,14 @@
           "type": "faq_item",
           "settings": {
             "question": "Can I use my rewards points on subscription orders?",
-            "answer": "<p>Yes! Once you redeem your rewards points, you'll receive a code that can be applied to any order, including your subscription.<br/><br/>To apply a reward code to your subscription, log into your account and click on<strong>\"Manage Subscriptions\"</strong>. From there, select<strong>\"View Next Order\"</strong>, then look for the<strong>\"Apply Discount\"</strong>option. Enter your rewards code, and it will be applied to your next subscription order!<br/><br/><em>Please note:</em>Free rewards products cannot be added to subscription orders at this time.<br/><br/></p>"
+            "answer": "<p>Yes! Once you redeem your rewards points, you'll receive a code that can be applied to any order, including your subscription.<br/><br/>To apply a reward code to your subscription, log into your account and click on<strong>\"Manage Subscriptions\"</strong>. From there, select<strong>\"View Next Order\"</strong>, then look for the<strong>\"Apply Discount\"</strong>option. Enter your rewards code, and it will be applied to your next subscription order!<br/><br/><em>Please note:</em>Free rewards products cannot be added to subscription orders at this time.</p>"
           }
         },
         "faq_item_RwBmXz": {
           "type": "faq_item",
           "settings": {
             "question": "Can I use a rewards code on my subscription if I have a locked in code on my account?",
-            "answer": "<p>If you already have a locked-in discount code on your account from a past promotion, you will not be able to add an additional code in your account. However, we definitely want you to be able to use your hard earned rewards points! Once your order processes, feel free to reach out to our CS team with the code you want to use, and we can add that discount in the form of a refund on your order. That way you wont miss out on your rewards!<br/><br/></p>"
+            "answer": "<p>If you already have a locked-in discount code on your account from a past promotion, you will not be able to add an additional code in your account. However, we definitely want you to be able to use your hard earned rewards points! Once your order processes, feel free to reach out to our CS team with the code you want to use, and we can add that discount in the form of a refund on your order. That way you wont miss out on your rewards!</p>"
           }
         },
         "faq_item_yw93Na": {
@@ -139,20 +67,18 @@
         "faq_item_ncDYb6",
         "faq_item_tEmWXE"
       ],
-      "name": "FAQ Section Style 2",
       "settings": {
         "title": "FAQs",
         "bg_color": "#ffffff",
         "show_top_border": false,
         "show_bottom_border": false,
-        "border_color": "#1A1A1A"
+        "border_color": "#1a1a1a"
       }
     }
   },
   "order": [
     "main",
     "rewards_section_6wzEzA",
-    "faq_section_fEpafP",
     "faq_section_alternate_eBL4Q7"
   ]
 }
