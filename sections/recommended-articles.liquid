@@ -1,4 +1,5 @@
-<p>Blog handle from article: {{ article.blog.handle }}</p>
+{% assign currentArticle = article | default: null %}
+<p>Blog handle from article: {{ currentArticle.handle }}</p>
 <p>Blog title from article: {{ article.blog.title }}</p>
 <p>Article title: {{ article.title }}</p>
 
