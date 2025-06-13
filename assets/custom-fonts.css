@@ -255,3 +255,10 @@ body {
     font-style: italic;
 }
  */
+
+
+h1.blog-hero--title.font-serif {
+   font-family: "Circular";
+    font-family: 'Int Circular Book';
+    font-weight: 500;
+}
