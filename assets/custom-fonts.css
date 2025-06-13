@@ -3,13 +3,13 @@ body {
 }
 
 /* FAIRE Sprig (serif, headings) */
-@font-face {
+/* @font-face {
   font-family: 'Faire Sprig';
   src: url('FAIRE-Sprig-BlackItalic.otf') format('opentype');
   font-weight: 800;
   font-style: italic;
 }
-
+ */
 @font-face {
   font-family: 'Faire Sprig';
   /* src: url('FAIRE-Sprig-Bold.otf') format('opentype'); */
