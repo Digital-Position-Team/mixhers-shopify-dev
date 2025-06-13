@@ -55,7 +55,7 @@
         "podcast_yYwdPf": {
           "type": "podcast",
           "settings": {
-            "feed_url": "",
+            "feed_url": "https://feeds.buzzsprout.com/868171.rss",
             "episode_count": 4,
             "title": "Listen to It’s Hertime.",
             "subtitle": "Most Recent Episodes"
