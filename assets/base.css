@@ -3737,16 +3737,19 @@ cart-notification {
     height: 180px;
     object-fit: cover;
 }
+article-content * {
+    font-family: 'Circular';
+}
 .standard-article-card h3.article-title {
     font-size: 22px;
-    font-family: 'Circular';
+    /* font-family: 'Circular'; */
     font-weight: 600;
     line-height: 1.28;
     letter-spacing: 0.96px;
     margin: 5px 0 7px;
 }
 .standard-article-card p.article-excerpt {
-   font-family: 'Circular';
+   /* font-family: 'Circular'; */
     margin: 0 0 10px 0;
     line-height: 1.6;
     color: #402650;
