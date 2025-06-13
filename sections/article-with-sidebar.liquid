@@ -69,12 +69,21 @@
               {% endfor %}
           </ul>
       </div>
-      <div class="article-sidebar-sticky-wrapper hide-mobile">
-        {% render'podcast-player' %}
-      </div>
-      <div class="hide-mobile article-sticky-sidebar--bottom">
-         
-      </div>
+
+      {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'podcast' %}
+                {% comment %} {% endcomment %}
+              <div class="article-sidebar-sticky-wrapper hide-mobile">
+                 {% render 'podcast-player-block', block: block %}
+              </div>
+              {% when 'quiz_cta' %}
+              <div class="hide-mobile article-sticky-sidebar--bottom">
+                 {% render 'quiz-cta-block', block: block %}
+              </div>
+              {% else %}
+            {% endcase %}
+        {% endfor %}
     </div>
 
     <div class="article-main-content-wrapper">
