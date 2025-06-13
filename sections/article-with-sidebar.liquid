@@ -88,10 +88,10 @@
           {{ section }}
           <div class="mobile-only mobile-quiz-cta">
             {% for block in section.blocks %}
-                {% case block.type %}
-                  {% when 'quiz_cta' %}
-                     {% render 'quiz-cta-block', block: block %}
-                {% endcase %}
+              {% case block.type %}
+                {% when 'quiz_cta' %}
+                  {% render 'quiz-cta-block', block: block %}
+              {% endcase %}
             {% endfor %}
             {% if section.settings.show_feature_product %}
               {% render 'article-featured-product' with featured_product: featured_product, featured_product_img: featured_product_img, mobile: true %}
