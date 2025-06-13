@@ -3886,6 +3886,14 @@ a.product-btn.outline-button {
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
 }
+.article-related-articles h2 {
+    margin: 0px;
+}
+.related-articles-container.article-related-articles .page-width {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
 
 @media(max-width:1023px){
  .section-container{
