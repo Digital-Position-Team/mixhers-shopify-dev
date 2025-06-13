@@ -3746,6 +3746,7 @@ cart-notification {
     margin: 5px 0 7px;
 }
 .standard-article-card p.article-excerpt {
+   font-family: 'Circular';
     margin: 0 0 10px 0;
     line-height: 1.6;
     color: #402650;
