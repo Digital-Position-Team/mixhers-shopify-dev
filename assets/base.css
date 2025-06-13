@@ -3740,6 +3740,9 @@ cart-notification {
 .standard-article-card .article-content * {
     font-family: 'Circular';
 }
+.headers-4 {
+    font-family: 'Circular';
+}
 .standard-article-card h3.article-title {
     font-size: 22px;
     /* font-family: 'Circular'; */
