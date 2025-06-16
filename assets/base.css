@@ -3931,7 +3931,7 @@ body.page-store-locator div#stockist-widget {
 }
 .view-all-button .btn {padding: 11px 40px; justify-content: center; min-width:270px; background: #402650;padding: 0 30px;
                        border: 2px solid #402650;px;display: inline-flex;height: 55px;line-height: 1;align-items: center;
-                          font-family: 'Circular';
+                          font-family: 'Circular'; width:auto;
     font-weight: 400;
     letter-spacing: 2.4px;}
 .view-all-button .btn:hover{
