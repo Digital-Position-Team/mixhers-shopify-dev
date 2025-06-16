@@ -3713,17 +3713,19 @@ p.base-text , .base-text p ,  .base-text li{font-size:18px;}
   display:none;
 }
 .outline-button {
-    cursor: pointer;
-    text-decoration: none;
-    text-align: center;
-    color: #402650;
-    background: #fff;
-    padding: 12px 20px;
-    display: inline-block;
-    margin-top: 8px;
-    border: 2px solid #402650;
-    box-shadow: -3px 4px #0000;
-    border-radius: 38px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  color: #402650;
+  background: #fff;
+  padding: 15px 20px;
+  display: inline-block;
+  margin-top: 8px;
+  letter-spacing: 1.4px;
+  font-size: 12px;
+  border: 2px solid #402650;
+  box-shadow: -3px 4px #0000;
+  border-radius: 38px;
 }
 .outline-button:hover {
     box-shadow: -3px 4px #dcd6df;
