@@ -3965,6 +3965,10 @@ a.product-btn.outline-button {
   .every-stage-product--container .product-list-container .product-collection-grid-item .hide-on-hover{
     padding-bottom: 5px;
   }
+  .product-btn.outline-button {
+      display: block;
+      margin: 0px;
+  }
 }
 @media (max-width: 767px) {
   .section-container{
