@@ -3796,6 +3796,8 @@ body.page-store-locator div#stockist-widget {
     color: #402650;
     margin: -25px auto 0 auto;
     font-family: Suisse Works;
+    letter-spacing: 1.98px;
+    line-height: 1.28;
 }
 .standard-article-card .article-image {
     display: flex;
