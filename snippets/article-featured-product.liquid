@@ -9,6 +9,7 @@
   {% endif %}
   <a href="{{ featured_product.url }}" class="featured-product">
     {{ featured_product_img | image_url: width: 80 | image_tag }}
+    {{ featured_product_img }}
     <div class="featured-product-title-wrapper">
       <h3 class="headers-6">{{ featured_product.title }}</h3>
       <p class="italic-subheaders-6">{{ featured_product.metafields.descriptors.subtitle }}</p>
