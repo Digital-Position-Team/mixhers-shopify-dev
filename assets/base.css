@@ -3972,6 +3972,9 @@ body.page-store-locator div#stockist-widget {
   .outline-button{
      padding: 11.5px 20px;
   }
+  .every-stage-product--container .product-list-container .product-collection-grid-item:hover .hide-on-hover{
+    display: block;
+  }
 }
 @media (max-width: 767px) {
   .section-container{
