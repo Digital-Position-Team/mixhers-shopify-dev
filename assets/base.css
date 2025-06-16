@@ -3983,6 +3983,9 @@ body.page-store-locator div#stockist-widget {
   .every-stage-product--container .product-list-container .product-collection-grid-item:hover .hide-on-hover{
     display: block;
   }
+    .hide-mobile {
+      display: none;
+  }
 }
 @media (max-width: 767px) {
   .section-container{
@@ -3993,9 +3996,7 @@ body.page-store-locator div#stockist-widget {
      font-size:36px;
      margin-bottom: 26px;
   }
-  .hide-mobile {
-      display: none;
-  }
+
   .only-desktop{
      display:none;
   }
