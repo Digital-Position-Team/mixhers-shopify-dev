@@ -3712,6 +3712,22 @@ p.base-text , .base-text p ,  .base-text li{font-size:18px;}
 .only-small-screen{
   display:none;
 }
+.outline-button {
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    color: #402650;
+    background: #fff;
+    padding: 12px 20px;
+    display: inline-block;
+    margin-top: 8px;
+    border: 2px solid #402650;
+    box-shadow: -3px 4px #0000;
+    border-radius: 38px;
+}
+.outline-button:hover {
+    box-shadow: -3px 4px #dcd6df;
+}
 /* default collection */
 ul#product-grid .card.card--standard.card--media .card__inner {
     border: 1px solid #424242;
