@@ -3962,6 +3962,9 @@ a.product-btn.outline-button {
   .standard-article-card h3.article-title {
     font-size: 20px;
   }
+  .every-stage-product--container .product-list-container .product-collection-grid-item .hide-on-hover{
+    padding-bottom: 5px;
+  }
 }
 @media (max-width: 767px) {
   .section-container{
