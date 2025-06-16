@@ -18,10 +18,6 @@
   {% assign featured_product_img = featured_product.metafields.rebrand.featured_image.value %}
   {% assign found_first_image = true %}
 {% endunless %}
-<p>test test test</p>
-{{  featured_product.metafields.rebrand.featured_image.value }}
-{{  main_blog.metafields.global.blog_product.value }}
-{{ featured_product_img }}
 
 {% assign content = article.content | split: '<h2>' %}
 {% assign section_titles = '' %}
