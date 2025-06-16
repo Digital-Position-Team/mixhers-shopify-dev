@@ -3860,6 +3860,7 @@ body.page-store-locator div#stockist-widget {
     color: #402650;
     margin-bottom: 8px !important;
     text-align: left;
+      line-height: 1.3;
 }
 .product-collection-grid-item .subscription-price span {
     font-family: 'Buenos Aires';
