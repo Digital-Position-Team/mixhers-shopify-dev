@@ -3967,7 +3967,10 @@ body.page-store-locator div#stockist-widget {
   }
   .product-btn.outline-button{
       display: block;
-      margin: 0px;
+      margin-top: 5px;
+  }
+  .outline-button{
+     padding: 11.5px 20px;
   }
 }
 @media (max-width: 767px) {
