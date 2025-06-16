@@ -3851,11 +3851,22 @@ body.page-store-locator div#stockist-widget {
   color:inherit;
 }
 .product-collection-grid-item .product-small-desc {
-    font-size: 14px;
-    font-weight: 500;
-    font-family: 'Faire Sprig';
+    font-family: Suisse Works;
     font-style: italic;
-    margin-bottom: 5px;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: lowercase;
+    color: #402650;
+    margin-bottom: 8px !important;
+    text-align: left;
+}
+.product-collection-grid-item .subscription-price span {
+    font-family: 'Buenos Aires';
+    letter-spacing : 1.9px;
+}
+.product-collection-grid-item  .product-information * {
+    color: #402650;
 }
 .product-collection-grid-item .yotpo-stars + a.text-m {
     display: none;
