@@ -3894,7 +3894,7 @@ a.product-btn.outline-button {
 .every-stage-product--container .product-list-container .product-collection-grid-item:hover .hide-on-hover{
     display:none;
 }
-.product-collection-grid-item .product-btn.outline-button {
+.outline-button {
     cursor: pointer;
     text-decoration: none;
     text-align: center;
@@ -3907,7 +3907,7 @@ a.product-btn.outline-button {
     box-shadow: -3px 4px #0000;
     border-radius: 38px;
 }
-.product-collection-grid-item .product-btn.outline-button:hover {
+.outline-button:hover {
     box-shadow: -3px 4px #dcd6df;
 }
 
