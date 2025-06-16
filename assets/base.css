@@ -3908,7 +3908,7 @@ a.product-btn.outline-button {
     display:block;
 }
 .every-stage-product--container .product-list-container .product-collection-grid-item .hide-on-hover{
-  padding-bottom: 20px;
+  padding-bottom: 24px;
 }
 .every-stage-product--container .product-list-container .product-collection-grid-item:hover .hide-on-hover{
     display:none;
