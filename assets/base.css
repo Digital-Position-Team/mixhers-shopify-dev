@@ -3766,6 +3766,9 @@ body.page-store-locator div#stockist-widget {
     height: 180px;
     object-fit: cover;
 }
+.standard-article-card .article-content{
+  margin-top:7px;
+}
 .standard-article-card .article-content * {
     font-family: 'Circular';
 }
