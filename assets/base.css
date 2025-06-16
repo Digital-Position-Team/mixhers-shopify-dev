@@ -3725,6 +3725,7 @@ p.base-text , .base-text p ,  .base-text li{font-size:18px;}
   border: 2px solid #402650;
   box-shadow: -3px 4px #0000;
   border-radius: 38px;
+  font-weight: 600;
 }
 .outline-button:hover {
     box-shadow: -3px 4px #dcd6df;
