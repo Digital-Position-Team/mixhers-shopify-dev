@@ -461,4 +461,13 @@ div#shopify-section-quiz-results {
       aspect-ratio: unset;
       max-height: 400px;
   }
+  /*  */
+  .quiz-main-container, .oct-quiz-results-progress {
+      padding: 24px;
+  }
+  .oct-quiz-multiple-choice-wrapper ul:has(>:nth-child(4)) {
+      display: flex !important;
+      flex-direction: column;
+      gap: 16px;
+  }
 }
