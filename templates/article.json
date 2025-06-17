@@ -77,6 +77,14 @@
         "show_feature_product": true
       }
     },
+    "recommended_articles_iqHpEn": {
+      "type": "recommended-articles",
+      "name": "Related Articles",
+      "settings": {
+        "heading": "You might also enjoy...",
+        "blog": ""
+      }
+    },
     "blogs_every_stage_products_TeaG6w": {
       "type": "blogs-every-stage-products",
       "blocks": {
@@ -115,16 +123,8 @@
         "title": "Hormone support for every stage of womanhood.",
         "subtitle": "From your first period to your first hot flash, nourish your journey.",
         "button_label": "View All Products",
-        "button_link": "",
+        "button_link": "shopify://collections/all",
         "show_pricing_crossout": true
-      }
-    },
-    "recommended_articles_iqHpEn": {
-      "type": "recommended-articles",
-      "name": "Related Articles",
-      "settings": {
-        "heading": "You might also enjoy...",
-        "blog": ""
       }
     }
   },
