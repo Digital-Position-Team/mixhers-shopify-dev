@@ -30,32 +30,32 @@
           
           <div class="quiz-results-header" id="results-page-1" altHormone="false" data-stage="default">
               <h2 class="quiz-result-title">{{ section.settings.quiz_results_page_1_header }}</h2>
-              <div class="defaultHormoneImbalance body-3">
+              <div class="defaultHormoneImbalance quiz-body">
                   {{ section.settings.quiz_results_page_1_copy}}
               </div>
-              <div class="pregnancyHormoneImbalance body-3">
+              <div class="pregnancyHormoneImbalance quiz-body">
                   {{ section.settings.quiz_results_page_1_pregnancy_copy }}
               </div>
-              <div class="menopauseHormoneImbalance body-3">
+              <div class="menopauseHormoneImbalance quiz-body">
                 {{ section.settings.quiz_results_page_1_menopause_copy }}
             </div>
           </div>
           
           <div class="quiz-results-header" id="results-page-2">
               <h2 class="quiz-result-title">{{ section.settings.quiz_results_page_2_header }}</h2>
-              <div class="body-3">
+              <div class="quiz-body">
                   {{ section.settings.quiz_results_page_2_copy }}
               </div>
           </div>
           
           <div class="quiz-results-header" id="results-page-3">
             <h2 class="quiz-result-title">{{ section.settings.quiz_results_page_3_header }}</h2>
-            <div class="body-3">
+            <div class="quiz-body">
                 {{ section.settings.quiz_results_page_3_copy }}
             </div>
             {% if sitewideSaleEnabled %}
                 <div class="sitewide-sale-quiz-wrapper">
-                    <h4 class="headers-6 sale-text">{{ settings.sitewide_sale_quiz_header }}</h4>
+                    <h4 class="sale-text">{{ settings.sitewide_sale_quiz_header }}</h4>
                 </div>
             {% endif %}
             {% if show_promo_on_quiz %}
