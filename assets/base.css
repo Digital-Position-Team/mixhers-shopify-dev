@@ -3961,6 +3961,9 @@ body.page-store-locator div#stockist-widget {
 }
 .article-related-articles h2 {
     margin: 0px;
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: .04em;
 }
 .related-articles-container.article-related-articles .page-width {
     display: flex;
