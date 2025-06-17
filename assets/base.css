@@ -3788,6 +3788,10 @@ body.page-store-locator div#stockist-widget {
 .article-container-w-sidebar .body-4 p {
     margin: 0px;
 }
+.article-container-section .article-main-content-wrapper p a {
+    color: #f44c7f;
+    text-decoration: underline;
+}
 .article-main-content-wrapper h2.headers-4 {
     margin-bottom: 15px;
     padding-top: 70px;
