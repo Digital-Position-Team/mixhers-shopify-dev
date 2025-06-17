@@ -94,8 +94,12 @@ a.featured-product img {
     cursor: pointer;
     z-index: 2;
 }
+.featured-product-container.mobile-only {
+    display: none;
+}
 @media(max-width:991px){
   .featured-product-container.mobile-only {
+     display:flex;
       position: sticky;
       bottom: 0;
       height: 154px;
