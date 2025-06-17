@@ -315,3 +315,33 @@ button.oct-quiz-btn--primary,
   min-width: 220px;
 }
 .oct-quiz-btn-wrapper {display: flex;justify-content: flex-end;}
+.oct-quiz-btn[title=Next] {
+    margin-left: auto;
+}
+.results-nxt-btn.active-results {
+    position: absolute;
+    right: 0;
+    bottom: -16%;
+    background-color: #1a1a1a;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 36px;
+    height: 64px;
+    width: 158px;
+    border-radius: 40px;
+    gap: 12px;
+}
+.results-nxt-btn.active-results {
+    position: static;
+    display: flex;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+}
+
+div#shopify-section-quiz-results {
+    position: relative;
+    max-width: 1040px;
+    margin: 0 auto;
+}
