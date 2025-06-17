@@ -312,6 +312,6 @@ button.oct-quiz-btn--primary,
   border-radius: 36px;
   transition: all 0.3s ease;
   cursor: pointer;
-  min-width: 231px;
+  min-width: 220px;
 }
 .oct-quiz-btn-wrapper {display: flex;justify-content: flex-end;}
