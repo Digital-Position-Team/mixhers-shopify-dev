@@ -181,7 +181,9 @@ li.oct-quiz-multiple-choice-options__option:hover {
     margin: 0 auto!important;
     max-width: 50%;
 }
-
+.oct-quiz-btn[title=back]:hover, .oct-quiz-btn[title=Skip]:hover {
+    box-shadow: none !important;
+}
 /* buttons ------------------------*/
 
 button.oct-quiz-btn--primary:hover,
