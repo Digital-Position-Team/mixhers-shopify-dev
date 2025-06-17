@@ -32,7 +32,7 @@
           <div class="article-tag">{{ tag }}</div>
         {% endfor %}
         {% if article.metafields.custom.read_time %}
-          <p class="body-6">{{ article.metafields.custom.read_time }} min read</p>
+          <p class="article-read-time">{{ article.metafields.custom.read_time }} min read</p>
         {% endif %}
       </div>
       <div class="article-hero-info-title-wrapper">
@@ -41,7 +41,7 @@
           {% if article.metafields.custom.reviewed_by_cody %}
             <div class="reviewed-wrapper">
               {% render 'icon' with 'checkmark' %}
-              <p class="article-read-time">Reviewed by Cody Sanders, Board Certified Holistic Health Practitioner, Authored by Mixhers Editorial Staff</p>
+              <p class="">Reviewed by Cody Sanders, Board Certified Holistic Health Practitioner, Authored by Mixhers Editorial Staff</p>
             </div>
           {% endif %}
           <p class="article-date">{{ article.published_at | date: '%B %d, %Y' }}</p>
@@ -143,7 +143,7 @@
     font-weight:500;
 }
 
-.article-hero-info-wrapper-bottom p {
+.article-hero-info-wrapper-bottom p.article-date {
      font-size: 12px;
      letter-spacing: .12em;
 }
