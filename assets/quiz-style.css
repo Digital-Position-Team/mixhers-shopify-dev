@@ -451,9 +451,11 @@ div#shopify-section-quiz-results {
   .quiz-results-products-row {
       margin-left: auto;
       margin-right: auto;
+      gap:20px;
+      flex-wrap: wrap;
   }
   .quiz-results-products-row>div {
-      width: 48%;
+      width: calc(48% - 20px);
   }
   .quiz-product-card img {
       aspect-ratio: unset;
