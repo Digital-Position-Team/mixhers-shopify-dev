@@ -186,6 +186,12 @@ li.oct-quiz-multiple-choice-options__option {
 .oct-quiz-btn[title=back]:hover, .oct-quiz-btn[title=Skip]:hover {
     box-shadow: none !important;
 }
+.oct-quiz-email-wrapper input, .oct-quiz-phone-wrapper input {
+    border: 1px solid #1a1a1a;
+    height: 60px;
+    padding: 20px 30px;
+    letter-spacing:0.2rem;
+}
 /* buttons ------------------------*/
 
 button.oct-quiz-btn--primary:hover,
