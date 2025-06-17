@@ -127,6 +127,7 @@
 }
 .loading-icon .icon-spinner {
     animation: spin .5s infinite linear;
+   width:24px;
 }
 .loading-icon .icon-spinner path{
     fill: #000;
