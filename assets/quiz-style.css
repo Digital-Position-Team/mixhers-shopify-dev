@@ -386,6 +386,7 @@ div#shopify-section-quiz-results {
     display: flex;
     flex-direction: column;
     gap: 8px;
+  align-items: flex-start;
 }
 .quiz-product-card-info .italic-subheaders-5 {
     font-family: Suisse Works;
