@@ -455,7 +455,7 @@ div#shopify-section-quiz-results {
       flex-wrap: wrap;
   }
   .quiz-results-products-row>div {
-      width: calc(48% - 20px);
+      width: calc(50% - 20px);
   }
   .quiz-product-card img {
       aspect-ratio: unset;
