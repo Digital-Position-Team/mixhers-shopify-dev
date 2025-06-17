@@ -125,8 +125,11 @@
     transition: width .5s linear;
     display: block;
 }
-.icon-spinner {
+.loading-icon .icon-spinner {
     animation: spin .5s infinite linear;
+}
+.loading-icon .icon-spinner svg{
+    fill: #000;
 }
 @keyframes spin {
     to {
