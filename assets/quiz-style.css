@@ -127,6 +127,9 @@
     transition: width .5s linear;
     display: block;
 }
+.icon-spinner {
+    animation: spin .5s infinite linear;
+}
 /* buttons ------------------------*/
 
 button.oct-quiz-btn--primary:hover,
