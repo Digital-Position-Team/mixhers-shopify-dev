@@ -87,11 +87,10 @@
           {% if quiz_cta_block %}
               {% render 'quiz-cta-block', block: quiz_cta_block %}
           {% endif %}
-          {% if section.settings.show_feature_product %}
+        </div>
+         {% if section.settings.show_feature_product %}
             {% render 'article-featured-product' with featured_product: featured_product, featured_product_img: featured_product_img, mobile: true %}
           {% endif %}
-         
-        </div>
      </div>
     </div>
   </div>
