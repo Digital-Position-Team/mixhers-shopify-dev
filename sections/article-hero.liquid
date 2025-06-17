@@ -41,7 +41,7 @@
           {% if article.metafields.custom.reviewed_by_cody %}
             <div class="reviewed-wrapper">
               {% render 'icon' with 'checkmark' %}
-              <p class="body-6">Reviewed by Cody Sanders, Board Certified Holistic Health Practitioner, Authored by Mixhers Editorial Staff</p>
+              <p class="article-read-time">Reviewed by Cody Sanders, Board Certified Holistic Health Practitioner, Authored by Mixhers Editorial Staff</p>
             </div>
           {% endif %}
           <p class="article-date">{{ article.published_at | date: '%B %d, %Y' }}</p>
@@ -93,6 +93,9 @@
 }
 .back-btn-wrapper {
     padding: 40px 0 24px;
+}
+.article-read-time{
+  font-size:15px;
 }
 .link-btn {
     text-decoration: none;
