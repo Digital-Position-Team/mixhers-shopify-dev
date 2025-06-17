@@ -444,3 +444,19 @@ div#shopify-section-quiz-results {
     font-weight: 700;
     width: 100%;
 }
+
+@media(max-width:991px){
+  .quiz-results-products-row>div {width: calc(33.33% - 20px);}
+  
+  .quiz-results-products-row {
+      margin-left: auto;
+      margin-right: auto;
+  }
+  .quiz-results-products-row>div {
+      width: 48%;
+  }
+  .quiz-product-card img {
+      aspect-ratio: unset;
+      max-height: 400px;
+  }
+}
