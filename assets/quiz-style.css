@@ -312,4 +312,4 @@ button.oct-quiz-btn--primary,
   cursor: pointer;
   min-width: 231px;
 }
-.oct-quiz-btn-wrapper {display: flex;justify-content: center;}
+.oct-quiz-btn-wrapper {display: flex;justify-content: flex-end;}
