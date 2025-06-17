@@ -3778,13 +3778,23 @@ body.page-store-locator div#stockist-widget {
     font-family: 'Circular';
 }
 .article-container-w-sidebar .body-4 {
-    font-family: Circular, Arial, Lucida Grande, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
     line-height: 1.7;
     letter-spacing: 2px;
     color: #402650;
+}
+.article-container-w-sidebar .body-4 p {
+    margin: 0px;
+}
+.article-main-content-wrapper h2.headers-4 {
+    margin-bottom: 24px;
+    padding-top: 80px;
+    margin-top: 0px;
+    line-height: normal;
+    font-weight: 500;
+    letter-spacing: .04em;
 }
 .headers-4 {
     font-family: 'Circular';
