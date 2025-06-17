@@ -3987,8 +3987,11 @@ body.is-article * {
   .every-stage-product--container .product-list-container .product-collection-grid-item:hover .hide-on-hover{
     display: block;
   }
-    .hide-mobile {
+  .hide-mobile {
       display: none;
+  }
+  .mobile-only{
+    display: block;
   }
 }
 @media (max-width: 767px) {
