@@ -3855,7 +3855,7 @@ body.page-store-locator div#stockist-widget {
     line-height: 16px;
     text-align: center;
     letter-spacing: .12em;
-    z-index: 10;
+    z-index: 1;
     margin-right: 4px;
     margin-bottom: 4px;
 }
