@@ -31,3 +31,67 @@
     letter-spacing: .12em;
     line-height: 2.23;
 }
+
+/* buttons ------------------------*/
+
+button.oct-quiz-btn--primary:hover,
+.oct-quiz-btn-wrapper[data-element*="oct-quiz-submit-btn"]
+  button[title*="Let’s get started!"]:hover,
+.results-back-btn:hover,
+.results-nxt-btn.active-results:hover {
+  box-shadow: -4px 4px 0px #dcd6df;
+  transform: none !important;
+}
+
+button.oct-quiz-btn--primary,
+.oct-quiz-btn-wrapper[data-element*="oct-quiz-submit-btn"]
+  button[title*="Let’s get started!"],
+.oct-quiz-btn[title="Next"]:disabled,
+.oct-quiz-btn[title="Next"]:disabled:hover,
+.oct-quiz-btn-wrapper[data-element*="oct-quiz-submit-btn"]:disabled {
+  background-color: #ff59e4 !important;
+  border: 2px solid #ff59e4;
+  color: #fff;
+  box-shadow: -4px 4px 0px rgba(0, 0, 0, 0);
+}
+
+.oct-quiz-btn[title="Next"]:disabled,
+.oct-quiz-btn[title="Next"]:disabled:hover,
+.oct-quiz-btn-wrapper[data-element*="oct-quiz-submit-btn"]:disabled button,
+.oct-quiz-btn-wrapper[data-element*="oct-quiz-submit-btn"]:disabled
+  button:hover,
+button.oct-quiz-btn--primary:disabled:hover,
+.oct-quiz-btn-wrapper[data-element*="oct-quiz-submit-btn"] button:disabled,
+.oct-quiz-btn-wrapper[data-element*="oct-quiz-submit-btn"]
+  button[title*="Let’s get started!"]:disabled {
+  opacity: 0.5 !important;
+  transform: translate3d(0, 0, 0) !important;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  box-shadow: -4px 4px 0px rgba(0, 0, 0, 0);
+}
+
+button.oct-quiz-btn--primary span {
+  color: #fff;
+}
+
+button.oct-quiz-btn--primary .loading-indicator {
+  border: 4px rgba(255, 255, 255, 0.25) solid;
+  border-top: 4px white solid;
+}
+
+button.oct-quiz-btn--primary,
+.oct-quiz-btn-wrapper[data-element*="oct-quiz-submit-btn"]
+  button[title*="Let’s get started!"],
+.outline-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0 40px;
+  height: 60px;
+  border-radius: 36px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  min-width: 231px;
+}
+.oct-quiz-btn-wrapper {display: flex;justify-content: center;}
