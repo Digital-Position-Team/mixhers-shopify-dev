@@ -342,6 +342,9 @@ button.oct-quiz-btn--primary,
     align-items: center;
     margin-left: auto;
 }
+.results-back-btn.active-results {
+    display: block;
+}
 
 div#shopify-section-quiz-results {
     position: relative;
