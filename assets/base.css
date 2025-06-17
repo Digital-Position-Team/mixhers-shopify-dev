@@ -3712,6 +3712,9 @@ p.base-text , .base-text p ,  .base-text li{font-size:18px;}
 .only-small-screen{
   display:none;
 }
+.mobile-only{
+  display: none;
+}
 .outline-button {
   cursor: pointer;
   text-decoration: none;
