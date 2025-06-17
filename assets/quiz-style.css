@@ -348,6 +348,6 @@ button.oct-quiz-btn--primary,
 
 div#shopify-section-quiz-results {
     position: relative;
-    max-width: 1040px;
+    /* max-width: 1040px; */
     margin: 0 auto;
 }
