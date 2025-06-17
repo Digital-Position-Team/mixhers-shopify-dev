@@ -501,4 +501,11 @@ div#shopify-section-quiz-results {
   .quiz-results-header {
       margin: 60px auto 30px auto;
   }
+  .quiz-product-card-info .product-title {
+    font-size: 20px;
+  }
+  
+  .quiz-product-card-info .italic-subheaders-5 {
+      font-size: 14px;
+  }
 }
