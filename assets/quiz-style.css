@@ -363,6 +363,7 @@ div#shopify-section-quiz-results {
     justify-content: space-between;
     gap: 30px;
     height: 100%;
+    margin-top: -20px;
 }
 .quiz-product-card img {
     width: 100%;
