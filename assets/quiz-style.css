@@ -128,6 +128,17 @@
 .icon-spinner {
     animation: spin .5s infinite linear;
 }
+@keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg)
+    }
+}
+
+@keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg)
+    }
+}
 .oct-quiz-title {
     margin: 55px auto 0;
     line-height:1.28;
