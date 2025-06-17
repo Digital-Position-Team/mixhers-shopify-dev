@@ -83,13 +83,14 @@
           {{ section }}
       {% endfor %}
        <div class="mobile-only mobile-quiz-cta">
-          {% if section.settings.show_feature_product %}
-            {% render 'article-featured-product' with featured_product: featured_product, featured_product_img: featured_product_img, mobile: true %}
-          {% endif %}
           {% assign quiz_cta_block = section.blocks | where: 'type', 'quiz_cta' | first %}
           {% if quiz_cta_block %}
               {% render 'quiz-cta-block', block: quiz_cta_block %}
           {% endif %}
+          {% if section.settings.show_feature_product %}
+            {% render 'article-featured-product' with featured_product: featured_product, featured_product_img: featured_product_img, mobile: true %}
+          {% endif %}
+         
         </div>
      </div>
     </div>
