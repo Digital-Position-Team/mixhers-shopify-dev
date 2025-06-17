@@ -132,6 +132,17 @@
 .loading-icon .icon-spinner path{
     fill: #000;
 }
+.oct-quiz-multiple-choice-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.oct-quiz-wrapper {
+    justify-content: center;
+    padding-top: 70px;
+    align-items: flex-start;
+    background: none;
+}
 @keyframes spin {
     to {
         -webkit-transform: rotate(360deg)
