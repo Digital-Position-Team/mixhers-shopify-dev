@@ -3954,7 +3954,9 @@ body.page-store-locator div#stockist-widget {
     flex-direction: column;
     gap: 40px;
 }
-
+body.is-article * {
+    font-family: 'Circular';
+}
 @media(max-width:1023px){
  .section-container{
     padding-left:32px;
