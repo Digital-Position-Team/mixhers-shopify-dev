@@ -167,7 +167,9 @@ li.oct-quiz-multiple-choice-options__option {
     margin: 0px!important;
 }
 
-li.oct-quiz-multiple-choice-options__option:hover {
+.oct-quiz-multiple-choice-options__option:active, 
+.oct-quiz-multiple-choice-options__option:hover, 
+.oct-quiz-multiple-choice-options__option[data-is-option-selected=selected]{
     background-color: #1a1a1a !important;
 }
 
