@@ -3907,8 +3907,10 @@ body.page-store-locator div#stockist-widget {
     display: none;
     transition: display .5s;
     width:100%;
-  margin-top: 8px;
-  font-size: 12px;
+    margin-top: 8px;
+    font-size: 12px;
+    padding-left:5px;
+    padding-right: 5px;
 }
 .every-stage-product--container .product-list-container .product-collection-grid-item:hover a.product-btn.outline-button{
     display:block;
