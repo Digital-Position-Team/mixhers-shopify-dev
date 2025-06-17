@@ -510,3 +510,9 @@ div#shopify-section-quiz-results {
       font-size: 14px;
   }
 }
+@media(max-width:575px){
+    .quiz-results-products-row>div {
+        width: 100%;
+        max-width: 360px;
+    }
+}
