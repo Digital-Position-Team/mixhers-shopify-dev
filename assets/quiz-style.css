@@ -435,6 +435,7 @@ div#shopify-section-quiz-results {
 }
 .quiz-product-card-info.bottom button {
     margin-top: 8px;
+    font-size:18px;
     background: #ff59e4;
     border-color: #ff59e4;
     color: #fff;
