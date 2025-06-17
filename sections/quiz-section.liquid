@@ -73,7 +73,9 @@
             {% endif %}
           </div>
           
-          <div class="results-nxt-btn" onclick="resultsNext()"><span>Next</span> <img src="{{'white-next-arrow.svg' | file_url }}" alt="continue arrow" width="24" height="10" loading="lazy"/></div>
+          <div class="results-nxt-btn" onclick="resultsNext()"><span>Next</span> 
+            <img src="{{'white-next-arrow.svg' | file_url }}" alt="continue arrow" width="24" height="10" loading="lazy"/>
+          </div>
 
         {% comment %} {% section 'quiz-results' %} {% endcomment %}
     <div class="oct-quiz-progress">
@@ -92,7 +94,7 @@
     ></div>
     <script src="https://app.octaneai.com/devky4lguoszyr7z/quiz.js" async defer></script>
 
-    <div class="loading-icon">
+    <div class="loading-icon-spin">
       {% render 'icon' with 'icon-spinner' %}
     </div>
 </div>
