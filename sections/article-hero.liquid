@@ -29,7 +29,7 @@
       </a>
       <div class="article-hero-info-wrapper">
         {% for tag in article.tags %}
-          <div class="italic-subheaders-5 article-tag">{{ tag }}</div>
+          <div class="article-tag">{{ tag }}</div>
         {% endfor %}
         {% if article.metafields.custom.read_time %}
           <p class="body-6">{{ article.metafields.custom.read_time }} min read</p>
@@ -101,6 +101,14 @@
 }
 .link-btn span.icon svg {
     height: 18px;
+}
+ .article-hero-info-wrapper {
+    display: flex
+;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 24px;
 }
 .article-hero-info-title-wrapper h1 {
      font-family: 'Circular';
