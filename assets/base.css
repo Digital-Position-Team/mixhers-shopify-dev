@@ -3906,6 +3906,9 @@ body.page-store-locator div#stockist-widget {
 .product-btn.outline-button {
     display: none;
     transition: display .5s;
+    width:100%;
+  margin-top: 8px;
+  font-size: 12px;
 }
 .every-stage-product--container .product-list-container .product-collection-grid-item:hover a.product-btn.outline-button{
     display:block;
@@ -3915,11 +3918,6 @@ body.page-store-locator div#stockist-widget {
 }
 .every-stage-product--container .product-list-container .product-collection-grid-item:hover .hide-on-hover{
     display:none;
-}
-.product-collection-grid-item .product-btn.outline-button {
-  width:100%;
-  margin-top: 8px;
-  font-size: 12px;
 }
 .view-all-button {
     text-align: center;
