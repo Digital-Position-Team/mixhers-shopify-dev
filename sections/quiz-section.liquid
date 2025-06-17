@@ -61,13 +61,13 @@
             {% if show_promo_on_quiz %}
               <div class="flex flex-row gap-2 items-center flex-wrap whitespace-nowrap justify-center mt-[47px] mb-[32px] w-full text-[18px]">
                   {% if promo_first_text %}
-                    <span class="text-[14px] md:text-[16px]">{{ promo_first_text }}</span>
+                    <span class="base-text">{{ promo_first_text }}</span>
                   {% endif %}
                   {% if promo_discount_code %}
-                    <span class="text-[16px] md:text-[18px] text-center text-pink">{{ promo_discount_code }}</span>
+                    <span class="base-text text-center text-pink">{{ promo_discount_code }}</span>
                   {% endif %}
                   {% if promo_last_text %}
-                    <span class="text-[14px] md:text-[16px]">{{ promo_last_text }}</span>
+                    <span class="base-text">{{ promo_last_text }}</span>
                   {% endif %}
               </div>
             {% endif %}
