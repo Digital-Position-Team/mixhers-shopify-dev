@@ -522,4 +522,7 @@ div#shopify-section-quiz-results {
   .quiz-product-card img {
       max-height: 250px;
   }
+  .quiz-product-card-info .italic-subheaders-5 {
+      font-size: 12px;
+  }
 }
