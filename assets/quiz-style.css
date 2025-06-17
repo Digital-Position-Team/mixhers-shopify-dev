@@ -406,6 +406,7 @@ div#shopify-section-quiz-results {
 .product-quiz-description ul {
     margin-top: 0px;
     padding-left: 22px;
+    margin-bottom: 0px;
 }
 .product-quiz-description ul li {
     list-style-type: "+";
