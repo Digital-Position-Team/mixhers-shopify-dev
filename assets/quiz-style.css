@@ -470,4 +470,11 @@ div#shopify-section-quiz-results {
       flex-direction: column;
       gap: 16px;
   }
+  .oct-quiz-title {
+      margin: 24px auto 0px;
+      text-align: left;
+  }
+  .oct-quiz-multiple-choice-wrapper ul:has(>:nth-child(4)) li:nth-last-child(1):nth-child(odd) {
+      max-width: 100%;
+  }
 }
