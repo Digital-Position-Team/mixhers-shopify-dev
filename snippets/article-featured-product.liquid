@@ -94,5 +94,33 @@ a.featured-product img {
     cursor: pointer;
     z-index: 2;
 }
-
+@media(max-width:991px){
+  .featured-product-container.mobile-only {
+      position: sticky;
+      bottom: 0;
+      height: 154px;
+      background-color: #fff;
+      width: 100vw;
+      margin-left: -5rem;
+      margin-right: -5rem;
+      padding: 15px;
+      gap: 0;
+      box-shadow: 0 0 4px #40265099;
+      transition: height .3s ease-in-out;
+  }
+  .featured-product-container.mobile-only.collapsed {
+      height: auto;
+      overflow: hidden;
+      min-height: auto;
+  }
+  .featured-product-container.mobile-only .featured-product {
+      opacity: 1;
+      transition: opacity .5s ease-in-out .3s, height .3s ease-in-out 0s;
+  }
+  .featured-product-container.mobile-only.collapsed .featured-product {
+      height: 0;
+      overflow: hidden;
+      opacity: 0;
+  }
+}
 </style>
