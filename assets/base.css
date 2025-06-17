@@ -4009,6 +4009,9 @@ body.is-article * {
   .mobile-only{
     display: block;
   }
+  .article-related-articles .related-articles-wrapper {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
 }
 @media (max-width: 767px) {
   .section-container{
