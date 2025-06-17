@@ -255,7 +255,7 @@ div.oct-quiz-results-progress-single {
 button.oct-quiz-btn--primary:hover,
 .oct-quiz-btn-wrapper[data-element*="oct-quiz-submit-btn"]
   button[title*="Let’s get started!"]:hover,
-.results-back-btn:hover,
+/* .results-back-btn:hover, */
 .results-nxt-btn.active-results:hover {
   box-shadow: -4px 4px 0px #dcd6df;
   transform: none !important;
