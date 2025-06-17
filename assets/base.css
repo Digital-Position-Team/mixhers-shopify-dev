@@ -3968,7 +3968,7 @@ body.page-store-locator div#stockist-widget {
 .related-articles-container.article-related-articles .page-width {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 35px;
 }
 body.is-article * {
     font-family: 'Circular';
