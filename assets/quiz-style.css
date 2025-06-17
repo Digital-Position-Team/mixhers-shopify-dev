@@ -453,6 +453,7 @@ div#shopify-section-quiz-results {
       margin-right: auto;
       gap:20px;
       flex-wrap: wrap;
+    justify-content: center;
   }
   .quiz-results-products-row>div {
       width: calc(50% - 20px);
