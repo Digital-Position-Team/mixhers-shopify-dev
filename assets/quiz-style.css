@@ -416,6 +416,11 @@ div#shopify-section-quiz-results {
     padding-left: 5px;
     line-height: 2;
 }
+.product-quiz-description ul li::marker {
+    font-size: 24px;
+    color: #ff59e4;
+    line-height: 1;
+}
 .quiz-product-read-more {
     color: #ff47eb;
     background: none;
