@@ -1375,11 +1375,13 @@ button.button-quantity svg {
   flex-direction: column;
 }
 .list-item-cart{
-  font-weight: normal;
-  font-size: 11px;
-  color:#000;
-  line-height: 1.4;
-  list-style: disc;
+    font-weight: normal;
+    font-size: 11px;
+    color: #000;
+    font-family: 'Buenos Aires';
+    line-height: 1.4;
+    list-style: disc;
+    margin-top: 3px;
 }
 @media (min-width: 768px) {
   .cart-quantity-wrapper {
