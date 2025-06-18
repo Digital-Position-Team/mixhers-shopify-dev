@@ -180,8 +180,6 @@
 
 </script>
 
-{% raw %}
-<script id="rebuy-cart-template" type="text/template">
  <style>
   .cart-head-block{
     display: flex;
@@ -526,6 +524,9 @@
 
 </style>
 
+
+{% raw %}
+<script id="rebuy-cart-template" type="text/template">
 <div id="rebuy-cart" class="rebuy-cart" v-cloak
     v-bind:class="[visible ? 'is-visible' : '', 'currency-' + currency()]">
     <div class="rebuy-cart__flyout w-[450px]">
