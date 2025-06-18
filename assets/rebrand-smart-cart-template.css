@@ -1324,6 +1324,22 @@ button#rebuy-close-btn  svg {
   align-items: center;
   gap:15px;
 }
+.starter--kit-block{
+  display: flex;
+  width: 100%;
+  padding-top: 24px;
+}
+.starter-kit-item{
+      display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center
+}
+.starter-key-title{
+  display: flex;
+  justify-content: space-between;
+  width:100%;
+}
 @media (min-width: 768px) {
   .cart-quantity-wrapper {
     width: 70px;
