@@ -345,7 +345,7 @@
                           <!-- flavor 1 - bubble, quantity, name -->
                           <div class="flex gap-[5px] items-center w-full"
                             v-if="item.properties._contentsData[0].flavor?.length === item.properties._contentsData[0].color?.length">
-                            <div class="min-w-[11px] h-[11px] rounded-full"
+                            <div class="flavor-color-circle"
                               v-bind:style="{ 'background-color': item.properties._contentsData?.[0]?.color?.[0] }">
                             </div>
                             <div class="flex gap-[5px] items-center w-full"
@@ -358,7 +358,7 @@
                           <!-- flavor 2, bubble, quantity, name -->
                           <div class="flex gap-[5px] items-center w-full"
                             v-if="item.properties._contentsData[0].flavor?.length === item.properties._contentsData[0].color?.length">
-                            <div class="min-w-[11px] h-[11px] rounded-full"
+                            <div class="flavor-color-circle"
                               v-bind:style="{ 'background-color': item.properties._contentsData?.[0]?.color?.[1] }">
                             </div>
                             <div class="flex gap-[5px] items-center w-full">
@@ -370,7 +370,7 @@
                           <!-- flavor 3, bubble, quantity, name -->
                           <div class="flex gap-[5px] items-center w-full"
                             v-if="(item.properties._contentsData[0].flavor?.length === item.properties._contentsData[0].color?.length) && item.properties._contentsData?.[0]?.color?.[2]">
-                            <div class="min-w-[11px] h-[11px] rounded-full"
+                            <div class="flavor-color-circle"
                               v-bind:style="{ 'background-color': item.properties._contentsData?.[0]?.color?.[2] }">
                             </div>
                             <div class="flex gap-[5px] items-center w-full">
@@ -385,7 +385,7 @@
                           <!-- OTHER -->
                           <!-- flavor 1 - bubble, quantity, name -->
                           <div class="flex gap-[5px] items-center">
-                            <div class="min-w-[11px] h-[11px] rounded-full"
+                            <div class="flavor-color-circle"
                               v-bind:style="{ 'background-color': item.properties._contentsData?.[0]?.color }">
                             </div>
                             <div class="flex gap-[5px] items-center">
@@ -396,7 +396,7 @@
                           </div>
                           <!-- flavor 2, bubble, quantity, name -->
                           <div class="flex gap-[5px] items-center" v-if="item.properties._contentsData?.[1]">
-                            <div class="min-w-[11px] h-[11px] rounded-full"
+                            <div class="flavor-color-circle"
                               v-bind:style="{ 'background-color': item.properties._contentsData?.[1]?.color }">
                             </div>
                             <div class="flex gap-[5px]">
