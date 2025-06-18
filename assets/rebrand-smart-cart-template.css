@@ -1230,6 +1230,12 @@ button#rebuy-close-btn  svg {
   margin-bottom: 1.1px;
 
 }
+.small-info-span{
+  font-weight: normal;
+  color:gray;
+  font-size:11px;
+  line-height: 18px;
+}
 @media screen and (max-width: 676px) {
   .rebuy-cart__order-summary {
     overflow: scroll !important;
