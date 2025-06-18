@@ -449,7 +449,7 @@
                       </div>
                       <!-- Subscription and Save Button -->
                       <div v-if="hasSwitchToSubscription(item) && item.final_price === item.price && !item.product?.tags?.includes('disable-subscribe-in-smart-cart')">
-                        <div v-if="!item.selling_plan_allocation?.selling_plan" class="mt-[15px] md:mt-[14px] flex justify-start">
+                        <div v-if="!item.selling_plan_allocation?.selling_plan" class="subscription-button-block">
                           <button @click="handleSubscribeAndSave({ itemFromBtn: item })"
                             class="flex h-[24px] w-40 md:w-3/5 justify-center items-center gap-8 rounded-[64px] bg-black"
                             v-if="!item.product.subscription || item.status == 'upgrading'"
