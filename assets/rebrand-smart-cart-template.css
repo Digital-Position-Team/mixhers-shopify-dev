@@ -1423,4 +1423,7 @@ button.button-quantity svg {
   .rebuy-cart__fixed-bottom-wrapper {
     width: 100%;
   }
+  .rebuy-cart-item--row {
+    padding: 24px 15px;
+}
 }
