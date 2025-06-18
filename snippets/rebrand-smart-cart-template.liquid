@@ -276,107 +276,107 @@
                               v-bind:alt="'View ' + item.product_title"></a>
                           </div>
                           <!-- product price -->
-                          <div class="product--price">
-                            <div class="product-price-col" v-if="itemHasDiscount(item)">
+                          <div class="flex items-center">
+                            <div class="flex gap-1 text-right" v-if="itemHasDiscount(item)">
                               <span class="rebuy-money compare-at text-[12px] leading-5 !text-gray"
                                 v-html="formatMoney(compareAtPrice(item))"></span>
                               <span class="text-sale text-[12px] leading-5"
                                 v-html="formatMoney(itemPrice(item))"></span>
                             </div>
-                            <div class="product-price-col" v-if="!itemHasDiscount(item)">
+                            <div class="flex gap-1 text-right" v-if="!itemHasDiscount(item)">
                               <span class="rebuy-money text-[12px] leading-5"
                                 v-html="formatMoney(itemPrice(item))"></span>
                             </div>
                           </div>
                         </div>
                         <!-- Rebrand subtitle -->
-                        <span class="rebrand--subtitle"
+                        <span class="text-[11px] black w-full mb-[1.1px]"
                           v-if="item.properties?._side_cart_subtitle"
                           v-html="item.properties?._side_cart_subtitle"></span>
                         <!-- Content Quantity & Delivery Frequency Line (line 3) -->
                         <div class="flex w-full items-center">
                           <div class="flex items-center">
                             <!-- Bundle Stick Contents Quantity -->
-                            <span class="small-info-span"
+                            <span class="font-normal leading-[18px] text-gray text-[11px]"
                               v-if="item.properties?._bundle_contents_quantity && !item.product?.tags?.includes('has-no-flavor-variants')"
                               v-html="item.properties?._bundle_contents_quantity + ' Sticks'"></span>
                             <!-- Non-Bundle Contents Quantity -->
-                            <span class="small-info-span"
+                            <span class="font-normal leading-[18px] text-gray text-[11px]"
                               v-if="item.variant_options[1] && item.product?.tags?.includes('quantity-in-scoops') && !item.properties?._bundle_contents_quantity && !item.product?.tags?.includes('has-no-flavor-variants')"
                               v-html="item.variant_options[1] + ' Scoops'"></span>
-                            <span class="small-info-span"
+                            <span class="font-normal leading-[18px] text-gray text-[11px]"
                               v-if="item.variant_options[1] && !item.product?.tags?.includes('quantity-in-scoops') && !item.properties?._bundle_contents_quantity && !item.product?.tags?.includes('has-no-flavor-variants')"
                               v-html="item.variant_options[1] + ' Sticks'"></span>
                             <!-- Non-Bundle Non-Flavor product types size etc -->
-                            <span class="small-info-span"
+                            <span class="font-normal leading-[18px] text-gray text-[11px]"
                               v-if="item.product?.tags?.includes('has-no-flavor-variants')"
                               v-html="item.product.selected_variant.option1"></span>
                           </div>
                           <!-- Delivered [ ] -->
                           <div class="flex items-center">
-                            <span class="small-info-span"
+                            <span class="font-normal leading-[18px] text-gray text-[11px]"
                               v-if="item.product?.id !== 7661853769907 && item.product?.id !== 7661842464947"><span
-                                class="small-info-span ml-[3px]"
+                                class="font-normal leading-[18px] text-gray text-[11px] ml-[3px]"
                                 v-if="item.handle !== 'gift-card'">-
                               </span>Delivered
-                              <span class="small-info-span"
+                              <span class="font-normal leading-[18px] text-gray text-[11px]"
                                 v-if="item.product.subscription && item.selling_plan_allocation?.selling_plan?.name.slice(name.length - 1) === 's'"
                                 v-html="' ' + item.selling_plan_allocation.selling_plan.name.slice(9)">
                               </span>
                               <span
                                 v-if="item.product.subscription && item.selling_plan_allocation?.selling_plan?.name.slice(name.length - 1) === 'h'"
-                                class="small-info-span" v-html="' ' + 'Monthly'">
+                                class="font-normal leading-[18px] text-gray text-[11px]" v-html="' ' + 'Monthly'">
                               </span>
-                              <span class="small-info-span"
+                              <span class="font-normal leading-[18px] text-gray text-[11px]"
                                 v-if="!item.product.subscription && !item.selling_plan_allocation">Once</span>
                             </span>
                           </div>
                         </div>
                         <!-- Flavor Product Variant -->
                         <!-- FLAVOR VARIANTS -->
-                        <div class="flavor--variants"
+                        <div class="flex flex-col gap-[6px] mt-[8px] w-full p-0"
                           v-if="!item.product?.tags?.includes('has-no-flavor-variants') && (Array.isArray(item.properties._contentsData?.[0]?.color) || Array.isArray(item.properties._contentsData?.[0]?.flavor))">
                           <!-- VARIETY PACKS (2 or 3 flavors) -->
                           <!-- flavor if not all the color bubbles exist -->
-                          <div class="flex-items-center widh-100"
+                          <div class="flex items-center w-full"
                             v-if="item.properties._contentsData[0].flavor?.length !== item.properties._contentsData[0].color?.length">
-                            <span class="small-text" v-html="item.product.selected_variant.option1"></span>
+                            <span class="text-[11px]" v-html="item.product.selected_variant.option1"></span>
                           </div>
                           <!-- flavor 1 - bubble, quantity, name -->
-                          <div class="flavor--item"
+                          <div class="flex gap-[5px] items-center w-full"
                             v-if="item.properties._contentsData[0].flavor?.length === item.properties._contentsData[0].color?.length">
                             <div class="min-w-[11px] h-[11px] rounded-full"
                               v-bind:style="{ 'background-color': item.properties._contentsData?.[0]?.color?.[0] }">
                             </div>
-                            <div class="flavor--item"
+                            <div class="flex gap-[5px] items-center w-full"
                               v-if="item.properties._contentsData[0].flavor?.length === item.properties._contentsData[0].color?.length">
-                              <span class="small-text whitespace-nowrap"
+                              <span class="text-[11px] whitespace-nowrap"
                                 v-html="item.properties._contentsData?.[0]?.quantity?.[0]"></span>
-                              <span class="small-text whitespace-nowrap" v-html="item.properties._contentsData?.[0]?.flavor?.[0]"></span>
+                              <span class="text-[11px] whitespace-nowrap" v-html="item.properties._contentsData?.[0]?.flavor?.[0]"></span>
                             </div>
                           </div>
                           <!-- flavor 2, bubble, quantity, name -->
-                          <div class="flavor--item"
+                          <div class="flex gap-[5px] items-center w-full"
                             v-if="item.properties._contentsData[0].flavor?.length === item.properties._contentsData[0].color?.length">
                             <div class="min-w-[11px] h-[11px] rounded-full"
                               v-bind:style="{ 'background-color': item.properties._contentsData?.[0]?.color?.[1] }">
                             </div>
-                            <div class="flavor--item">
-                              <span class="small-text whitespace-nowrap"
+                            <div class="flex gap-[5px] items-center w-full">
+                              <span class="text-[11px] whitespace-nowrap"
                                 v-html="item.properties._contentsData?.[0]?.quantity?.[1]"></span>
-                              <span class="small-text whitespace-nowrap" v-html="item.properties._contentsData?.[0]?.flavor?.[1]"></span>
+                              <span class="text-[11px] whitespace-nowrap" v-html="item.properties._contentsData?.[0]?.flavor?.[1]"></span>
                             </div>
                           </div>
                           <!-- flavor 3, bubble, quantity, name -->
-                          <div class="flavor--item"
+                          <div class="flex gap-[5px] items-center w-full"
                             v-if="(item.properties._contentsData[0].flavor?.length === item.properties._contentsData[0].color?.length) && item.properties._contentsData?.[0]?.color?.[2]">
                             <div class="min-w-[11px] h-[11px] rounded-full"
                               v-bind:style="{ 'background-color': item.properties._contentsData?.[0]?.color?.[2] }">
                             </div>
-                            <div class="flavor--item">
-                              <span class="small-text whitespace-nowrap"
+                            <div class="flex gap-[5px] items-center w-full">
+                              <span class="text-[11px] whitespace-nowrap"
                                 v-html="item.properties._contentsData?.[0]?.quantity?.[2]"></span>
-                              <span class="small-text whitespace-nowrap" v-html="item.properties._contentsData?.[0]?.flavor?.[2]"></span>
+                              <span class="text-[11px] whitespace-nowrap" v-html="item.properties._contentsData?.[0]?.flavor?.[2]"></span>
                             </div>
                           </div>
                         </div>
@@ -384,14 +384,14 @@
                           v-show="!item.product?.tags?.includes('has-no-flavor-variants') && !Array.isArray(item.properties._contentsData?.[0]?.color) && !Array.isArray(item.properties._contentsData?.[0]?.flavor)">
                           <!-- OTHER -->
                           <!-- flavor 1 - bubble, quantity, name -->
-                          <div class=" gap-5 flex-items-center">
+                          <div class="flex gap-[5px] items-center">
                             <div class="min-w-[11px] h-[11px] rounded-full"
                               v-bind:style="{ 'background-color': item.properties._contentsData?.[0]?.color }">
                             </div>
-                            <div class= gap-5 flex-items-center">
-                              <span class="small-text whitespace-nowrap" v-if="item.properties._contentsData?.[0]?.quantity"
+                            <div class="flex gap-[5px] items-center">
+                              <span class="text-[11px] whitespace-nowrap" v-if="item.properties._contentsData?.[0]?.quantity"
                                 v-html="item.properties._contentsData?.[0]?.quantity"></span>
-                              <span class="small-text whitespace-nowrap" v-html="item.properties._contentsData?.[0]?.flavor"></span>
+                              <span class="text-[11px] whitespace-nowrap" v-html="item.properties._contentsData?.[0]?.flavor"></span>
                             </div>
                           </div>
                           <!-- flavor 2, bubble, quantity, name -->
@@ -400,8 +400,8 @@
                               v-bind:style="{ 'background-color': item.properties._contentsData?.[1]?.color }">
                             </div>
                             <div class="flex gap-[5px]">
-                              <span class="small-text whitespace-nowrap" v-html="item.properties._contentsData?.[1]?.quantity"></span>
-                              <span class="small-text whitespace-nowrap" v-html="item.properties._contentsData?.[1]?.flavor"></span>
+                              <span class="text-[11px] whitespace-nowrap" v-html="item.properties._contentsData?.[1]?.quantity"></span>
+                              <span class="text-[11px] whitespace-nowrap" v-html="item.properties._contentsData?.[1]?.flavor"></span>
                             </div>
                           </div>
                         </div>
@@ -410,18 +410,18 @@
                         <div class="rebuy-cart__flyout-item-quantity flex items-center w-full mt-[12px]">
                           <div class="flex gap-2 justify-center items-center">
                             <div
-                              class="rebuy-cart__flyout-item-quantity-label headers-10 uppercase small-text leading-3">
+                              class="rebuy-cart__flyout-item-quantity-label headers-10 uppercase text-[11px] leading-3">
                               Quantity</div>
                             <!-- Quantity selection buttons and info -->
                             <div
-                              class="rebuy-cart__flyout-item-quantity-wrapper cart-quantity-wrapper">
+                              class="rebuy-cart__flyout-item-quantity-wrapper flex w-[80px] md:w-[70px] px-[8px] py-[4px] justify-around items-center border border-solid border-black rounded-2xl">
                               <button class="w-[10px]" v-on:click="decreaseItem(item)">
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 9 2" fill="none">
                                   <path d="M0.0917969 1.30273H8.0918" stroke="#1A1A1A" />
                                 </svg>
                                 </button>
-                              <div class=" justify-center flex-items-center w-[12px] h-[12px]">
+                              <div class="flex justify-center items-center w-[12px] h-[12px]">
                                 <span class="text-[12px]" v-html="item.quantity"></span>
                               </div>
                               <button class="w-[10px]" v-on:click="increaseItem(item)"
@@ -443,7 +443,7 @@
                           </div>
                           <!-- Remove button
                           <button v-on:click="removeItem(item)" v-show="item.final_price < item.price"
-                            class="remove-btn ml-auto text-gray underline small-text">Remove</button>
+                            class="remove-btn ml-auto text-gray underline text-[11px]">Remove</button>
                           -->
                         </div>
                       </div>
@@ -485,15 +485,15 @@
                       <div class="`flex justify-between flex-col w-full text-serif`">
                         <div class="flex flex-col">
                           <span v-if="item.properties?._starterKitVariantId == starterKitOneId"
-                            class="small-info-span">Holds up to 3 subscriptions</span>
+                            class="font-normal leading-[18px] text-gray text-[11px]">Holds up to 3 subscriptions</span>
                           <span v-if="item.properties?._starterKitVariantId == starterKitTwoId"
-                            class="small-info-span">Holds up to 1 x 25.9 oz bag</span>
+                            class="font-normal leading-[18px] text-gray text-[11px]">Holds up to 1 x 25.9 oz bag</span>
                         </div>
                         <li v-if="item.properties?._starterKitVariantId == starterKitOneId"
-                          class="font-normal leading-[18px] text-black small-text list-disc">Frother and
+                          class="font-normal leading-[18px] text-black text-[11px] list-disc">Frother and
                           Display Box</li>
                         <li v-if="item.properties?._starterKitVariantId == starterKitTwoId"
-                          class="font-normal leading-[18px] text-black small-text list-disc">Frother</li>
+                          class="font-normal leading-[18px] text-black text-[11px] list-disc">Frother</li>
                       </div>
                     </div>
                   </div>
