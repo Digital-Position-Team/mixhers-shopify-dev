@@ -1316,7 +1316,12 @@ button#rebuy-close-btn  svg {
 button.button-quantity svg {
     height: 9px;
 }
-
+.info-starter-pack{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+}
 .rebuy-cart__flyout-footer {
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
@@ -1364,6 +1369,10 @@ button.button-quantity svg {
 }
 .d-flex{
   display: flex;
+}
+.d-flex-col{
+   display: flex;
+  flex-direction: column;
 }
 @media (min-width: 768px) {
   .cart-quantity-wrapper {
