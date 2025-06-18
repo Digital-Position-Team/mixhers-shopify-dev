@@ -1257,6 +1257,9 @@ button#rebuy-close-btn  svg {
 .gap-5{
   gap:5px;
 }
+.small-text{
+  font-size: 11px;
+}
 @media screen and (max-width: 676px) {
   .rebuy-cart__order-summary {
     overflow: scroll !important;
