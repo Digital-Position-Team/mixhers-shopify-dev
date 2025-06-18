@@ -415,16 +415,16 @@
                             <!-- Quantity selection buttons and info -->
                             <div
                               class="rebuy-cart__flyout-item-quantity-wrapper cart-quantity-wrapper">
-                              <button class="w-[10px]" v-on:click="decreaseItem(item)">
+                              <button class="button-quantity" v-on:click="decreaseItem(item)">
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 9 2" fill="none">
                                   <path d="M0.0917969 1.30273H8.0918" stroke="#1A1A1A" />
                                 </svg>
                                 </button>
-                              <div class="flex justify-center items-center w-[12px] h-[12px]">
-                                <span class="text-[12px]" v-html="item.quantity"></span>
+                              <div class="quantity--span">
+                                <span class="" v-html="item.quantity"></span>
                               </div>
-                              <button class="w-[10px]" v-on:click="increaseItem(item)"
+                              <button class="button-quantity" v-on:click="increaseItem(item)"
                                 :disabled="item.price === 0">
                                 <svg
                                   v-if="item.price !== 0"
