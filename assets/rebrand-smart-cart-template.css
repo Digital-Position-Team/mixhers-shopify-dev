@@ -1250,6 +1250,10 @@ button#rebuy-close-btn  svg {
   align-items: center;
   width:100%;
 }
+.flex-items-center{
+  display: flex;
+  align-items: center;
+}
 @media screen and (max-width: 676px) {
   .rebuy-cart__order-summary {
     overflow: scroll !important;
