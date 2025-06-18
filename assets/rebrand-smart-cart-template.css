@@ -1228,8 +1228,10 @@ button#rebuy-close-btn  svg {
   width:100%;
   justify-content: space-between;
 }
-.product-info--row{
-  
+.product--title, .product--title a{
+    text-decoration: none;
+    font-size: 16px;
+    color: inherit;
 }
 .rebrand--subtitle{
   font-size:11px;
