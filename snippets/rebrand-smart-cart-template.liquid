@@ -384,11 +384,11 @@
                           v-show="!item.product?.tags?.includes('has-no-flavor-variants') && !Array.isArray(item.properties._contentsData?.[0]?.color) && !Array.isArray(item.properties._contentsData?.[0]?.flavor)">
                           <!-- OTHER -->
                           <!-- flavor 1 - bubble, quantity, name -->
-                          <div class="flex gap-[5px] items-center">
+                          <div class=" gap-5 flex-items-center">
                             <div class="min-w-[11px] h-[11px] rounded-full"
                               v-bind:style="{ 'background-color': item.properties._contentsData?.[0]?.color }">
                             </div>
-                            <div class="flex gap-[5px] items-center">
+                            <div class= gap-5 flex-items-center">
                               <span class="text-[11px] whitespace-nowrap" v-if="item.properties._contentsData?.[0]?.quantity"
                                 v-html="item.properties._contentsData?.[0]?.quantity"></span>
                               <span class="text-[11px] whitespace-nowrap" v-html="item.properties._contentsData?.[0]?.flavor"></span>
