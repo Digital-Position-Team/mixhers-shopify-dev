@@ -1395,9 +1395,10 @@ button.button-quantity svg {
   justify-content: flex-start;
 }
 .save--btn{
-      font-size: 12px;
+    font-size: 12px;
     cursor: pointer;
-    min-width: 180px;
+    max-width: 180px;
+    width:100%;
     text-transform: uppercase;
     font-weight: 600;
     border-radius: 50px;
