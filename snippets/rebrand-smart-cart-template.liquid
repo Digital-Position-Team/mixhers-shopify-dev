@@ -258,10 +258,10 @@
             <div class="rebuy-cart__flyout-items" v-if="hasItems()">
               <div v-for="(item, index) in items()" :key="index"
                 v-bind:class="['product-' + item.handle, itemProductTagsClasses(item), itemPropertyClasses(item), 'rebuy-cart__flyout-item']">
-                <div class="flex flex-col w-full py-[24px] border-b border-black px-[24px]"
+                <div class="rebuy-cart-item--row"
                   v-show="item.handle !== 'free-unlimited-return-for-1-00-via-re-do'">
                   <!-- item  -->
-                  <div class="flex">
+                  <div class="rebuy-cart--item">
                     <div class="rebuy-cart__flyout-item-media">
                       <a v-bind:href="disabledLinkProductIds.includes(item.product_id) ? `#`: itemURL(item)">
                         <img v-bind:src="sizeImage(item.image, '240x240')" v-bind:alt="'View ' + item.product_title" />
