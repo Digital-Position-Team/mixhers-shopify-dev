@@ -1179,9 +1179,11 @@ redo-shopify-toggle {
 h4.rebuy-cart__flyout-title {
     font-family: 'Buenos Aires';
     font-size: 18px;
+  font-weight: 500;
 }
 button#rebuy-close-btn  svg {
     position: absolute;
+      width: 26px;
 }
 .rebuy-cart__flyout {
     max-width: 450px;
