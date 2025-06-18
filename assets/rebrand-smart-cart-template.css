@@ -1183,8 +1183,13 @@ h4.rebuy-cart__flyout-title {
 button#rebuy-close-btn  svg {
     position: absolute;
 }
-
-
+.rebuy-cart__flyout {
+    max-width: 450px;
+    width: 100%;
+}
+.rebuy-cart__order-summary {
+    width: 100%;
+}
 
 @media screen and (max-width: 676px) {
   .rebuy-cart__order-summary {
