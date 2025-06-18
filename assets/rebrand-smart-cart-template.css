@@ -1374,6 +1374,13 @@ button.button-quantity svg {
    display: flex;
   flex-direction: column;
 }
+.list-item-cart{
+  font-weight: normal;
+  font-size: 11px;
+  color:#000;
+  line-height: 1.4;
+  list-style: disc;
+}
 @media (min-width: 768px) {
   .cart-quantity-wrapper {
     width: 70px;
