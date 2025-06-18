@@ -1202,6 +1202,15 @@ button#rebuy-close-btn  svg {
   padding:24px;
   width:100%;
 }
+.rebuy-cart--item{
+  display: flex;
+}
+.item-product-div {
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  justify-content: flex-start;
+}
 
 @media screen and (max-width: 676px) {
   .rebuy-cart__order-summary {
