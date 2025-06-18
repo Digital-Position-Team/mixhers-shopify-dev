@@ -314,20 +314,20 @@
                           </div>
                           <!-- Delivered [ ] -->
                           <div class="flex items-center">
-                            <span class="font-normal leading-[18px] text-gray text-[11px]"
+                            <span class="small-info-span"
                               v-if="item.product?.id !== 7661853769907 && item.product?.id !== 7661842464947"><span
-                                class="font-normal leading-[18px] text-gray text-[11px] ml-[3px]"
+                                class="small-info-span ml-[3px]"
                                 v-if="item.handle !== 'gift-card'">-
                               </span>Delivered
-                              <span class="font-normal leading-[18px] text-gray text-[11px]"
+                              <span class="small-info-span"
                                 v-if="item.product.subscription && item.selling_plan_allocation?.selling_plan?.name.slice(name.length - 1) === 's'"
                                 v-html="' ' + item.selling_plan_allocation.selling_plan.name.slice(9)">
                               </span>
                               <span
                                 v-if="item.product.subscription && item.selling_plan_allocation?.selling_plan?.name.slice(name.length - 1) === 'h'"
-                                class="font-normal leading-[18px] text-gray text-[11px]" v-html="' ' + 'Monthly'">
+                                class="small-info-span" v-html="' ' + 'Monthly'">
                               </span>
-                              <span class="font-normal leading-[18px] text-gray text-[11px]"
+                              <span class="small-info-span"
                                 v-if="!item.product.subscription && !item.selling_plan_allocation">Once</span>
                             </span>
                           </div>
@@ -485,9 +485,9 @@
                       <div class="`flex justify-between flex-col w-full text-serif`">
                         <div class="flex flex-col">
                           <span v-if="item.properties?._starterKitVariantId == starterKitOneId"
-                            class="font-normal leading-[18px] text-gray text-[11px]">Holds up to 3 subscriptions</span>
+                            class="small-info-span">Holds up to 3 subscriptions</span>
                           <span v-if="item.properties?._starterKitVariantId == starterKitTwoId"
-                            class="font-normal leading-[18px] text-gray text-[11px]">Holds up to 1 x 25.9 oz bag</span>
+                            class="small-info-span">Holds up to 1 x 25.9 oz bag</span>
                         </div>
                         <li v-if="item.properties?._starterKitVariantId == starterKitOneId"
                           class="font-normal leading-[18px] text-black text-[11px] list-disc">Frother and
