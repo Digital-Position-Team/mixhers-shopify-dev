@@ -1318,6 +1318,12 @@ button#rebuy-close-btn  svg {
 .quantity--span span{
   font-size:12px;
 }
+.quantity-label-row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:15px;
+}
 @media (min-width: 768px) {
   .cart-quantity-wrapper {
     width: 70px;
