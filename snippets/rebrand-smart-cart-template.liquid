@@ -276,14 +276,14 @@
                               v-bind:alt="'View ' + item.product_title"></a>
                           </div>
                           <!-- product price -->
-                          <div class="flex items-center">
-                            <div class="flex gap-1 text-right" v-if="itemHasDiscount(item)">
+                          <div class="flex-items-center">
+                            <div class="product-price-col" v-if="itemHasDiscount(item)">
                               <span class="rebuy-money compare-at text-[12px] leading-5 !text-gray"
                                 v-html="formatMoney(compareAtPrice(item))"></span>
                               <span class="text-sale text-[12px] leading-5"
                                 v-html="formatMoney(itemPrice(item))"></span>
                             </div>
-                            <div class="flex gap-1 text-right" v-if="!itemHasDiscount(item)">
+                            <div class="product-price-col" v-if="!itemHasDiscount(item)">
                               <span class="rebuy-money text-[12px] leading-5"
                                 v-html="formatMoney(itemPrice(item))"></span>
                             </div>
@@ -477,7 +477,7 @@
                         <div>
                           <span class="text-serif">Starter Kit</span>
                         </div>
-                        <div class="flex gap-1 text-right">
+                        <div class="product-price-col">
                           <span class="rebuy-money text-[12px] leading-5">FREE</span>
                         </div>
                       </div>
