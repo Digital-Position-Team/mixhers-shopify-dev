@@ -182,18 +182,362 @@
 
 {% raw %}
 <script id="rebuy-cart-template" type="text/template">
-  <div id="rebuy-cart" class="rebuy-cart" v-cloak
+ <style>
+  .cart-head-block{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-top:16px;
+    padding-bottom: 16px;
+  }
+  .rebuy-cart__flyout-header-content{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .rebuy-close-btn svg {
+    position: absolute;
+  }
+  .rebuy-close-btn svg:focus-visible {
+    box-shadow: 0 0 0 1px rgba(59, 130, 246, 1); 
+    outline-offset: 2px; 
+  }
+  .rebuy-cart__progress-step-wrapper{
+    padding-bottom:16px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .rebuy-cart__progress-bar-wrapper {
+    max-width: 83.3333%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 0;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+  }
+  .rebuy-cart__progress-bar-meter {
+    max-width: 83.3333%;
+    height: 12px;
+    border-radius: 50px;
+    background-color: transparent;
+    outline: 1px solid #000;
+    width: 100%;
+  }
+  .rebuy-cart__progress-bar-meter-fill {
+    background-color: #000;
+    height: 100%;
+    border-radius: 50px;
+  }
+  .rebuy-cart__flyout-body{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .flyout-item-container {
+  width: 100%;
+  padding: 24px;
+  border-bottom: 1px solid #000;
+  box-sizing: border-box;
+}
+
+.flyout-item-row {
+  display: flex;
+}
+
+.flyout-item-media img {
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+}
+
+.flyout-item-details {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 24px; /* replicate px-[24px] */
+}
+
+.flyout-item-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-family: serif;
+}
+
+.item-title a {
+  text-decoration: none;
+}
+
+.item-price {
+  display: flex;
+  align-items: center;
+}
+
+.price-with-discount .compare-at {
+  font-size: 12px;
+  line-height: 1.25;
+  color: gray;
+  text-decoration: line-through;
+  margin-right: 4px;
+}
+
+.sale-price {
+  font-size: 12px;
+  line-height: 1.25;
+  color: red; /* choose your color */
+}
+
+.regular-price .current-price {
+  font-size: 12px;
+  line-height: 1.25;
+  color: #000;
+}
+
+.item-subtitle {
+  font-size: 11px;
+  color: black;
+  margin-bottom: 1.1px;
+  display: block;
+}
+
+.item-quantity-frequency {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.item-size,
+.item-frequency {
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  color: gray;
+  line-height: 18px;
+}
+
+.item-size span:not(:last-child),
+.item-frequency span:not(:last-child) {
+  margin-right: 3px;
+}
+
+.item-flavors,
+.item-flavors-alt {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+  width: 100%;
+  padding: 0;
+}
+
+.flavor-pack-label {
+  font-size: 11px;
+}
+
+.flavor-line,
+.flavor-line-alt {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+}
+
+.flavor-bubble {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.flavor-info {
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.item-quantity-control {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.quantity-label {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: .1em;
+  margin-right: 8px;
+}
+
+.quantity-selector {
+  display: flex;
+  width: 80px;
+  padding: 4px 8px;
+  border: 1px solid #000;
+  border-radius: 9999px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.decrease-btn,
+.increase-btn {
+  width: 10px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.decrease-btn svg,
+.increase-btn svg {
+  display: block;
+}
+
+.increase-btn:disabled {
+  cursor: not-allowed;
+}
+
+.quantity-value {
+  width: 12px;
+  height: 12px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.subscribe-section {
+  margin-top: 15px;
+}
+
+.subscribe-btn {
+  height: 24px;
+  width: 100%;
+  max-width: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 64px;
+  background-color: #000;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+}
+.subscribe-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.starter-kit-container {
+  display: flex;
+  width: 100%;
+  padding-top: 24px;
+}
+
+.starter-kit-media img {
+  width: auto;
+  height: auto;
+  max-width: 100px; /* Adjust as needed */
+  object-fit: contain;
+}
+
+.starter-kit-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding-left: 16px;
+}
+
+.starter-kit-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-family: serif;
+}
+
+.starter-kit-title {
+  font-family: serif;
+  font-size: 14px;
+}
+
+.starter-kit-price {
+  display: flex;
+  gap: 4px;
+  text-align: right;
+}
+
+.starter-kit-money {
+  font-size: 12px;
+  line-height: 1.25rem;
+}
+
+.starter-kit-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  font-family: serif;
+  margin-top: 8px;
+}
+
+.starter-kit-notes {
+  display: flex;
+  flex-direction: column;
+}
+
+.starter-kit-note {
+  font-size: 11px;
+  line-height: 18px;
+  font-weight: 400;
+  color: gray;
+}
+
+.starter-kit-features {
+  padding-left: 16px;
+  list-style-type: disc;
+}
+
+.starter-kit-feature {
+  font-size: 11px;
+  line-height: 18px;
+  font-weight: 400;
+  color: black;
+}
+.cart-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.checkout-button {
+  background-color: pink;
+  border-radius: 64px;
+  background-clip: padding-box;
+  font-size: 18px;
+  line-height: 24px;
+  padding: 10px 46px;
+  margin-top: 24px;
+  border: 4px solid transparent;
+}
+
+</style>
+
+<div id="rebuy-cart" class="rebuy-cart" v-cloak
     v-bind:class="[visible ? 'is-visible' : '', 'currency-' + currency()]">
     <div class="rebuy-cart__flyout w-[450px]">
       <div class="rebuy-cart__order-summary w-full">
-        <div class="flex justify-between items-center w-full py-[16px]">
-          <div class="rebuy-cart__flyout-header-content flex w-full justify-between items-center">
+        <div class="cart-head-block">
+          <div class="rebuy-cart__flyout-header-content">
             <h4 class="rebuy-cart__flyout-title font-sans"
               v-html="settings.language.cart_title">
             </h4>
             <button id="rebuy-close-btn" class="rebuy-cart__flyout-close" type="button" aria-label="Close Smart Cart"
               v-on:click="hide()">
-              <svg class="absolute focus-visible:ring-1 focus-visible:ring-offset-2" width="100%" height="100%"
+              <svg class="" width="100%" height="100%"
                 viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M23.4377 6.56271L6.56274 23.4377" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"
                   stroke-linejoin="round" />
@@ -211,7 +555,7 @@
         <div v-if="progressBarEnabled()" class="rebuy-cart__progress-bar-container above">
           <div v-for="(bar, index) in settings.progress_bar.bars" :key="index">
             <div v-if="isValidBar(bar)">
-              <div class="rebuy-cart__progress-step-wrapper pb-[16px]" v-bind:class="['count-' + bar.tiers.length]">
+              <div class="rebuy-cart__progress-step-wrapper" v-bind:class="['count-' + bar.tiers.length]">
                 <div v-for="(tier, index) in bar.tiers" :key="index" class="rebuy-cart__progress-step"
                   v-bind:style="{ width: progressStepMaxWidth(bar) }"
                   v-bind:class="[progressTierReached(tier) ? 'complete' : '']">
@@ -221,10 +565,10 @@
               </div>
 
               <div
-                class="rebuy-cart__progress-bar-wrapper max-w-10/12 flex flex-col justify-center items-center py-[16px] border-b border-t border-black">
-                <div class="rebuy-cart__progress-bar-meter outline max-w-10/12 h-[12px] rounded-[50px] bg-transparent"
+                class="rebuy-cart__progress-bar-wrapper">
+                <div class="rebuy-cart__progress-bar-meter "
                   v-bind:class="[hasTierProgress() ? 'has-progress' : 'no-progress']">
-                  <div class="rebuy-cart__progress-bar-meter-fill align-middle"
+                  <div class="rebuy-cart__progress-bar-meter-fill "
                     v-bind:style="{ width: tiersPercentageComplete(bar) }">
                     <span class="sr-only">{{ tiersPercentageComplete(bar) }}</span>
                   </div>
@@ -236,7 +580,7 @@
             </div>
           </div>
         </div>
-        <div class="rebuy-cart__flyout-body px-0">
+        <div class="rebuy-cart__flyout-body">
           <div class="rebuy-cart__flyout-shipping-bar" v-if="freeShippingEnabled()"
             v-bind:class="[freeShippingHelperMessage() ? 'has-helper' : '', hasFreeShipping() ? 'has-free-shipping' : '']">
             <div class="rebuy-cart__flyout-shipping-bar-message body-7" v-if="!hasFreeShipping()"
@@ -257,9 +601,13 @@
           <div class="rebuy-cart__flyout-content" v-bind:class="[hasItems() ? 'has-items' : 'no-items']">
             <div class="rebuy-cart__flyout-items" v-if="hasItems()">
               <div v-for="(item, index) in items()" :key="index"
-                v-bind:class="['product-' + item.handle, itemProductTagsClasses(item), itemPropertyClasses(item), 'rebuy-cart__flyout-item']">
-                <div class="flex flex-col w-full py-[24px] border-b border-black px-[24px]"
-                  v-show="item.handle !== 'free-unlimited-return-for-1-00-via-re-do'">
+                   :class="[
+                     'product-' + item.handle,
+                     itemProductTagsClasses(item),
+                     itemPropertyClasses(item),
+                     'rebuy-cart__flyout-item'
+                   ]">
+                <div class="flyout-item-container" v-show="item.handle !== 'free-unlimited-return-for-1-00-via-re-do'">
                   <!-- item  -->
                   <div class="flex">
                     <div class="rebuy-cart__flyout-item-media">
@@ -465,41 +813,44 @@
                     </div>
                   </div>
                   <!-- starter kit  -->
-                  <div class="flex w-full pt-[24px]"
-                    v-if="item.product.subscription && item.properties?._starterKitVariantId">
-                    <div class="rebuy-cart__flyout-item-media">
+                  <div class="starter-kit-container" v-if="item.product.subscription && item.properties?._starterKitVariantId">
+                    <div class="starter-kit-media">
                       <img
-                        src="https://cdn.shopify.com/s/files/1/0557/9879/2371/files/MixhersBox-1.webp?v=1715698358" />
+                        src="https://cdn.shopify.com/s/files/1/0557/9879/2371/files/MixhersBox-1.webp?v=1715698358"
+                        alt="Starter Kit" />
                     </div>
-                    <div class="justify-center flex flex-col w-full">
-                      <!-- starter kit title and price -->
-                      <div :class="`flex justify-between w-full text-serif`">
+                    <div class="starter-kit-content">
+                      <!-- Title and Price -->
+                      <div class="starter-kit-header">
                         <div>
-                          <span class="text-serif">Starter Kit</span>
+                          <span class="starter-kit-title">Starter Kit</span>
                         </div>
-                        <div class="flex gap-1 text-right">
-                          <span class="rebuy-money text-[12px] leading-5">FREE</span>
+                        <div class="starter-kit-price">
+                          <span class="starter-kit-money">FREE</span>
                         </div>
                       </div>
-                      <!-- kit contents copy here -->
-                      <div class="`flex justify-between flex-col w-full text-serif`">
-                        <div class="flex flex-col">
+
+                      <!-- Description -->
+                      <div class="starter-kit-description">
+                        <div class="starter-kit-notes">
                           <span v-if="item.properties?._starterKitVariantId == starterKitOneId"
-                            class="font-normal leading-[18px] text-gray text-[11px]">Holds up to 3 subscriptions</span>
+                                class="starter-kit-note">Holds up to 3 subscriptions</span>
                           <span v-if="item.properties?._starterKitVariantId == starterKitTwoId"
-                            class="font-normal leading-[18px] text-gray text-[11px]">Holds up to 1 x 25.9 oz bag</span>
+                                class="starter-kit-note">Holds up to 1 x 25.9 oz bag</span>
                         </div>
-                        <li v-if="item.properties?._starterKitVariantId == starterKitOneId"
-                          class="font-normal leading-[18px] text-black text-[11px] list-disc">Frother and
-                          Display Box</li>
-                        <li v-if="item.properties?._starterKitVariantId == starterKitTwoId"
-                          class="font-normal leading-[18px] text-black text-[11px] list-disc">Frother</li>
+                        <ul class="starter-kit-features">
+                          <li v-if="item.properties?._starterKitVariantId == starterKitOneId"
+                              class="starter-kit-feature">Frother and Display Box</li>
+                          <li v-if="item.properties?._starterKitVariantId == starterKitTwoId"
+                              class="starter-kit-feature">Frother</li>
+                        </ul>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
             <div class="rebuy-cart__flyout-note" v-if="notesEnabled()">
               <label class="rebuy-cart__flyout-note-toggle">
                 <input class="rebuy-cart__flyout-note-toggle-input rebuy-checkbox" type="checkbox"
@@ -523,6 +874,8 @@
               </div>
             </div>
           </div>
+
+<!--  rebuy-cart__flyout-footer -->
           <div class="rebuy-cart__flyout-footer xxs:pb-[45px] sm:pb-[67px] border-b border-black">
             <div v-if="shouldShowDiscountInput && shouldShowDiscountInput()" class="rebuy-cart__flyout-discount">
               <div class="rebuy-cart__flyout-discount-left">
@@ -544,7 +897,7 @@
             </div>
             <div v-if="shouldShowDiscountSubtotal && shouldShowDiscountSubtotal()"
               class="rebuy-cart__flyout-discount-amount rebuy-cart__flyout-discount--amount">
-              <div class="rebuy-cart__flyout-discount-left">
+               <div class="rebuy-cart__flyout-discount-left">
                 <span class="rebuy-cart__flyout-label headers-9" v-html="discountLabel && discountLabel()"></span>
                 <div class="rebuy-cart__flyout-tag" v-on:click="removeDiscount()">
                   <span>
@@ -556,7 +909,7 @@
                   </span>
                   <span v-html="discount.inputValue" class="body-7 text-sale"></span>
                   <span class="rebuy-cart__flyout-tag-time body-7">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="9" height="10" viewBox="0 0 9 10" fill="none">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="9" height="10" viewBox="0 0 9 10" fill="none">
                       <path d="M1.5 2L4.5 5M7.5 8L4.5 5M4.5 5L7.5 2M4.5 5L1.5 8" stroke="#402650"
                         stroke-linecap="round" />
                     </svg>
@@ -572,41 +925,48 @@
             <div class="rebuy-cart__flyout-integration" v-if="settings.integrations && settings.integrations.enabled">
             </div>
             <div class="rebuy-cart__flyout-apps"></div>
-            <div class="rebuy-cart__flyout-subtotal text-black text-[16px] font-sans font-semibold">
+            <div class="rebuy-cart__flyout-subtotal">
               <div class="rebuy-cart__flyout-subtotal-label">
                 <span v-html="getSubtotalLabelAndItemCount()" class="headers-8"></span>
               </div>
               <div id="subtotal-el" class="rebuy-cart__flyout-subtotal-amount headers-8"></div>
             </div>
-            <div class="rebuy-cart__flyout-actions flex justify-center gap-[10px]">
+
+            <div class="rebuy-cart__flyout-actions cart-actions">
               <div v-if="settings.terms && settings.terms.enabled" class="rebuy-cart__flyout-terms">
                 <input class="rebuy-cart__flyout-terms-checkbox rebuy-checkbox" id="rebuy-terms-checkbox"
                   name="rebuy-terms-checkbox" type="checkbox" v-model="termsAccepted" v-on:click="updateTermsCheck()" />
                 <label class="rebuy-cart__flyout-terms-label" for="rebuy-terms-checkbox"
                   v-html="settings.terms.disclaimer"></label>
               </div>
-                <button v-if="hasCheckoutButton()"
-                  class="rebuy-button bg-pink rounded-[64px] bg-clip-padding text-[18px] leading-[24px] py-[10px] px-[46px] mt-[24px] border-[4px] border-transparent"
-                  type="button" v-on:click="handleCheckout()"
-                  v-bind:disabled="hasTermsEnabled() && !hasAcceptedTerms() || !hasItems()">
-                  <span v-html="checkoutLabel()" class="text-white"></span>
-                </button>
-                <div v-if="promo">
-                  <span v-if="promo?.first_text" v-html="promo.first_text"></span>
-                  <span v-if="promo?.pink_text" class="text-pink" v-html="promo.pink_text"></span>
-                  <span v-if="promo?.last_text" v-html="promo.last_text"></span>
-                </div>
+
+              <button v-if="hasCheckoutButton()" class="rebuy-button checkout-button"
+                type="button" v-on:click="handleCheckout()"
+                v-bind:disabled="hasTermsEnabled() && !hasAcceptedTerms() || !hasItems()">
+                <span v-html="checkoutLabel()" class="text-white"></span>
+              </button>
+
+              <div v-if="promo">
+                <span v-if="promo?.first_text" v-html="promo.first_text"></span>
+                <span v-if="promo?.pink_text" class="text-pink" v-html="promo.pink_text"></span>
+                <span v-if="promo?.last_text" v-html="promo.last_text"></span>
+              </div>
+
               <button v-if="hasViewCartButton()" class="rebuy-button block"
                 v-bind:class="{ 'outline': hasCheckoutButton() }" type="button" v-on:click="viewCart()">
                 <span v-html="viewCartLabel()"></span>
               </button>
+
               <button v-if="hasContinueShoppingButton()" class="rebuy-button block" type="button" v-on:click="hide()">
                 <span v-html="continueShoppingLabel()"></span>
               </button>
             </div>
+
             <div class="rebuy-cart__flyout-installments" v-if="installmentsEnabled()" v-html="installmentsMessage()">
             </div>
           </div>
+      <!-- rebuy-cart__flyout-footer -->
+
         </div>
         <div class="rebuy-cart__flavor-options-recommendation w-full">
           <div class="flavor-options-top">
