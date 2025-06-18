@@ -1272,6 +1272,12 @@ button#rebuy-close-btn  svg {
   border: 1px solid black;
   border-radius: 16px; 
 }
+.flavor-color-circle{
+  display: inline-block!important;
+  width:11px;
+  height: 11px;
+  border-radius: 100%;
+}
 @media (min-width: 768px) {
   .cart-quantity-wrapper {
     width: 70px;
