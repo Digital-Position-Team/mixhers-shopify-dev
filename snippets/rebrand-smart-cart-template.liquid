@@ -185,7 +185,7 @@
   <div id="rebuy-cart" class="rebuy-cart" v-cloak
     v-bind:class="[visible ? 'is-visible' : '', 'currency-' + currency()]">
     <div class="rebuy-cart__flyout ">
-      <div class="rebuy-cart__order-summary w-full">
+      <div class="rebuy-cart__order-summary width-100">
         <div class="rebuy-cart__order-summary-head">
           <div class="rebuy-cart__flyout-header-content ">
             <h4 class="rebuy-cart__flyout-title font-sans"
@@ -290,11 +290,11 @@
                           </div>
                         </div>
                         <!-- Rebrand subtitle -->
-                        <span class="small-text black w-full mb-[1.1px]"
+                        <span class="small-text black width-100 mb-[1.1px]"
                           v-if="item.properties?._side_cart_subtitle"
                           v-html="item.properties?._side_cart_subtitle"></span>
                         <!-- Content Quantity & Delivery Frequency Line (line 3) -->
-                        <div class="flex w-full items-center">
+                        <div class="flex width-100 items-center">
                           <div class="flex-items-center">
                             <!-- Bundle Stick Contents Quantity -->
                             <span class="small-info-span"
@@ -338,7 +338,7 @@
                           v-if="!item.product?.tags?.includes('has-no-flavor-variants') && (Array.isArray(item.properties._contentsData?.[0]?.color) || Array.isArray(item.properties._contentsData?.[0]?.flavor))">
                           <!-- VARIETY PACKS (2 or 3 flavors) -->
                           <!-- flavor if not all the color bubbles exist -->
-                          <div class="flex-items-center w-full"
+                          <div class="flex-items-center width-100"
                             v-if="item.properties._contentsData[0].flavor?.length !== item.properties._contentsData[0].color?.length">
                             <span class="small-text" v-html="item.product.selected_variant.option1"></span>
                           </div>
@@ -608,7 +608,7 @@
             </div>
           </div>
         </div>
-        <div class="rebuy-cart__flavor-options-recommendation w-full">
+        <div class="rebuy-cart__flavor-options-recommendation width-100">
           <div class="flavor-options-top">
             <h5 class="headers-7">Select a Flavor...</h5>
             <div class="close">
@@ -637,7 +637,7 @@
 
         </div>
       </div>
-      <div class="rebuy-cart__flyout-recommendations w-full" v-if="hasCrossSells()" style="display: none;">
+      <div class="rebuy-cart__flyout-recommendations width-100" v-if="hasCrossSells()" style="display: none;">
         <div v-for="(widget_id, index) in settings.cross_sells" :key="index" v-bind:data-rebuy-id="widget_id"></div>
       </div>
     </div>
