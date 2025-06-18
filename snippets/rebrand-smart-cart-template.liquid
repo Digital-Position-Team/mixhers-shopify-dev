@@ -338,7 +338,7 @@
                           v-if="!item.product?.tags?.includes('has-no-flavor-variants') && (Array.isArray(item.properties._contentsData?.[0]?.color) || Array.isArray(item.properties._contentsData?.[0]?.flavor))">
                           <!-- VARIETY PACKS (2 or 3 flavors) -->
                           <!-- flavor if not all the color bubbles exist -->
-                          <div class="flex items-center w-full"
+                          <div class="flex-items-center widh-100"
                             v-if="item.properties._contentsData[0].flavor?.length !== item.properties._contentsData[0].color?.length">
                             <span class="text-[11px]" v-html="item.product.selected_variant.option1"></span>
                           </div>
