@@ -343,12 +343,12 @@
                             <span class="text-[11px]" v-html="item.product.selected_variant.option1"></span>
                           </div>
                           <!-- flavor 1 - bubble, quantity, name -->
-                          <div class="flex gap-[5px] items-center w-full"
+                          <div class="flavor--item"
                             v-if="item.properties._contentsData[0].flavor?.length === item.properties._contentsData[0].color?.length">
                             <div class="min-w-[11px] h-[11px] rounded-full"
                               v-bind:style="{ 'background-color': item.properties._contentsData?.[0]?.color?.[0] }">
                             </div>
-                            <div class="flex gap-[5px] items-center w-full"
+                            <div class="flavor--item"
                               v-if="item.properties._contentsData[0].flavor?.length === item.properties._contentsData[0].color?.length">
                               <span class="text-[11px] whitespace-nowrap"
                                 v-html="item.properties._contentsData?.[0]?.quantity?.[0]"></span>
@@ -356,24 +356,24 @@
                             </div>
                           </div>
                           <!-- flavor 2, bubble, quantity, name -->
-                          <div class="flex gap-[5px] items-center w-full"
+                          <div class="flavor--item"
                             v-if="item.properties._contentsData[0].flavor?.length === item.properties._contentsData[0].color?.length">
                             <div class="min-w-[11px] h-[11px] rounded-full"
                               v-bind:style="{ 'background-color': item.properties._contentsData?.[0]?.color?.[1] }">
                             </div>
-                            <div class="flex gap-[5px] items-center w-full">
+                            <div class="flavor--item">
                               <span class="text-[11px] whitespace-nowrap"
                                 v-html="item.properties._contentsData?.[0]?.quantity?.[1]"></span>
                               <span class="text-[11px] whitespace-nowrap" v-html="item.properties._contentsData?.[0]?.flavor?.[1]"></span>
                             </div>
                           </div>
                           <!-- flavor 3, bubble, quantity, name -->
-                          <div class="flex gap-[5px] items-center w-full"
+                          <div class="flavor--item"
                             v-if="(item.properties._contentsData[0].flavor?.length === item.properties._contentsData[0].color?.length) && item.properties._contentsData?.[0]?.color?.[2]">
                             <div class="min-w-[11px] h-[11px] rounded-full"
                               v-bind:style="{ 'background-color': item.properties._contentsData?.[0]?.color?.[2] }">
                             </div>
-                            <div class="flex gap-[5px] items-center w-full">
+                            <div class="flavor--item">
                               <span class="text-[11px] whitespace-nowrap"
                                 v-html="item.properties._contentsData?.[0]?.quantity?.[2]"></span>
                               <span class="text-[11px] whitespace-nowrap" v-html="item.properties._contentsData?.[0]?.flavor?.[2]"></span>
