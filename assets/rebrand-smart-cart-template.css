@@ -1405,6 +1405,9 @@ button.button-quantity svg {
     padding: 4px 10px 3px 10px;
     line-height: 1.2;
 }
+.product-price-col span.text-sale {
+    font-size: 12px;
+}
 @media (min-width: 768px) {
   .cart-quantity-wrapper {
     width: 70px;
