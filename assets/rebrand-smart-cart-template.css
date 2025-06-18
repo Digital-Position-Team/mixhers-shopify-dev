@@ -1298,12 +1298,17 @@ button#rebuy-close-btn  svg {
     margin-top: 12px;
 }
 .rebuy-cart__flyout-item-quantity-wrapper.cart-quantity-wrapper button {
-    width: 10px;
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
     background: no-repeat;
     border: none;
-  cursor: pointer;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+button.button-quantity svg {
+    height: 9px;
 }
 .product-price-col span.rebuy-money.compare-at{
   color:gray;
@@ -1339,6 +1344,10 @@ button#rebuy-close-btn  svg {
   display: flex;
   justify-content: space-between;
   width:100%;
+}
+.product-price-col .text-sale {
+    font-size: 12px;
+    line-height: 1.5;
 }
 .d-flex{
   display: flex;
