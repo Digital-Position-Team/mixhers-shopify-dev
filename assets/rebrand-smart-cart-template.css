@@ -1214,7 +1214,22 @@ button#rebuy-close-btn  svg {
 .width-100{
   width:100%;
 }
+.product--price{
+  display: flex;
+  align-items: center;
+}
+.product-price-col{
+  display:flex;
+  gap:12px;
+  text-align: right;
+}
+.rebrand--subtitle{
+  font-size:11px;
+  color:#000;
+  width: 100%;
+  margin-bottom: 1.1px;
 
+}
 @media screen and (max-width: 676px) {
   .rebuy-cart__order-summary {
     overflow: scroll !important;
