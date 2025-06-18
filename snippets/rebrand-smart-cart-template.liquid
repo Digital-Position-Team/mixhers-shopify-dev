@@ -297,37 +297,37 @@
                         <div class="flex w-full items-center">
                           <div class="flex items-center">
                             <!-- Bundle Stick Contents Quantity -->
-                            <span class="font-normal leading-[18px] text-gray small-text"
+                            <span class="small-info-span"
                               v-if="item.properties?._bundle_contents_quantity && !item.product?.tags?.includes('has-no-flavor-variants')"
                               v-html="item.properties?._bundle_contents_quantity + ' Sticks'"></span>
                             <!-- Non-Bundle Contents Quantity -->
-                            <span class="font-normal leading-[18px] text-gray small-text"
+                            <span class="small-info-span"
                               v-if="item.variant_options[1] && item.product?.tags?.includes('quantity-in-scoops') && !item.properties?._bundle_contents_quantity && !item.product?.tags?.includes('has-no-flavor-variants')"
                               v-html="item.variant_options[1] + ' Scoops'"></span>
-                            <span class="font-normal leading-[18px] text-gray small-text"
+                            <span class="small-info-span"
                               v-if="item.variant_options[1] && !item.product?.tags?.includes('quantity-in-scoops') && !item.properties?._bundle_contents_quantity && !item.product?.tags?.includes('has-no-flavor-variants')"
                               v-html="item.variant_options[1] + ' Sticks'"></span>
                             <!-- Non-Bundle Non-Flavor product types size etc -->
-                            <span class="font-normal leading-[18px] text-gray small-text"
+                            <span class="small-info-span"
                               v-if="item.product?.tags?.includes('has-no-flavor-variants')"
                               v-html="item.product.selected_variant.option1"></span>
                           </div>
                           <!-- Delivered [ ] -->
                           <div class="flex items-center">
-                            <span class="font-normal leading-[18px] text-gray small-text"
+                            <span class="small-info-span"
                               v-if="item.product?.id !== 7661853769907 && item.product?.id !== 7661842464947"><span
-                                class="font-normal leading-[18px] text-gray small-text ml-[3px]"
+                                class="small-info-span ml-[3px]"
                                 v-if="item.handle !== 'gift-card'">-
                               </span>Delivered
-                              <span class="font-normal leading-[18px] text-gray small-text"
+                              <span class="small-info-span"
                                 v-if="item.product.subscription && item.selling_plan_allocation?.selling_plan?.name.slice(name.length - 1) === 's'"
                                 v-html="' ' + item.selling_plan_allocation.selling_plan.name.slice(9)">
                               </span>
                               <span
                                 v-if="item.product.subscription && item.selling_plan_allocation?.selling_plan?.name.slice(name.length - 1) === 'h'"
-                                class="font-normal leading-[18px] text-gray small-text" v-html="' ' + 'Monthly'">
+                                class="small-info-span" v-html="' ' + 'Monthly'">
                               </span>
-                              <span class="font-normal leading-[18px] text-gray small-text"
+                              <span class="small-info-span"
                                 v-if="!item.product.subscription && !item.selling_plan_allocation">Once</span>
                             </span>
                           </div>
@@ -485,9 +485,9 @@
                       <div class="`flex justify-between flex-col w-full text-serif`">
                         <div class="flex flex-col">
                           <span v-if="item.properties?._starterKitVariantId == starterKitOneId"
-                            class="font-normal leading-[18px] text-gray small-text">Holds up to 3 subscriptions</span>
+                            class="small-info-span">Holds up to 3 subscriptions</span>
                           <span v-if="item.properties?._starterKitVariantId == starterKitTwoId"
-                            class="font-normal leading-[18px] text-gray small-text">Holds up to 1 x 25.9 oz bag</span>
+                            class="small-info-span">Holds up to 1 x 25.9 oz bag</span>
                         </div>
                         <li v-if="item.properties?._starterKitVariantId == starterKitOneId"
                           class="font-normal leading-[18px] text-black small-text list-disc">Frother and
