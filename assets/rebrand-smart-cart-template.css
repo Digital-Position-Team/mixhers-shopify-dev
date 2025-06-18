@@ -1223,6 +1223,11 @@ button#rebuy-close-btn  svg {
   gap:12px;
   text-align: right;
 }
+.product-info--row{
+  display: flex;
+  width:100%;
+  justify-content: space-between;
+}
 .rebrand--subtitle{
   font-size:11px;
   color:#000;
