@@ -295,7 +295,7 @@
                           v-html="item.properties?._side_cart_subtitle"></span>
                         <!-- Content Quantity & Delivery Frequency Line (line 3) -->
                         <div class="flex w-full items-center">
-                          <div class="flex items-center">
+                          <div class="flex-items-center">
                             <!-- Bundle Stick Contents Quantity -->
                             <span class="small-info-span"
                               v-if="item.properties?._bundle_contents_quantity && !item.product?.tags?.includes('has-no-flavor-variants')"
@@ -313,7 +313,7 @@
                               v-html="item.product.selected_variant.option1"></span>
                           </div>
                           <!-- Delivered [ ] -->
-                          <div class="flex items-center">
+                          <div class="flex-items-center">
                             <span class="small-info-span"
                               v-if="item.product?.id !== 7661853769907 && item.product?.id !== 7661842464947"><span
                                 class="small-info-span ml-[3px]"
@@ -338,7 +338,7 @@
                           v-if="!item.product?.tags?.includes('has-no-flavor-variants') && (Array.isArray(item.properties._contentsData?.[0]?.color) || Array.isArray(item.properties._contentsData?.[0]?.flavor))">
                           <!-- VARIETY PACKS (2 or 3 flavors) -->
                           <!-- flavor if not all the color bubbles exist -->
-                          <div class="flex items-center w-full"
+                          <div class="flex-items-center w-full"
                             v-if="item.properties._contentsData[0].flavor?.length !== item.properties._contentsData[0].color?.length">
                             <span class="small-text" v-html="item.product.selected_variant.option1"></span>
                           </div>
