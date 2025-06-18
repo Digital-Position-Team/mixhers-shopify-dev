@@ -1263,6 +1263,20 @@ button#rebuy-close-btn  svg {
 .whitespace-nowrap{
   white-space: nowrap;
 }
+.cart-quantity-wrapper{
+  display: flex;
+  width: 80px;
+  padding: 4px 8px;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 16px; 
+}
+@media (min-width: 768px) {
+  .cart-quantity-wrapper {
+    width: 70px;
+  }
+}
 @media screen and (max-width: 676px) {
   .rebuy-cart__order-summary {
     overflow: scroll !important;
