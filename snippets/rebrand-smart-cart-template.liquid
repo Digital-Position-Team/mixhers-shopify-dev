@@ -384,22 +384,22 @@
                           v-show="!item.product?.tags?.includes('has-no-flavor-variants') && !Array.isArray(item.properties._contentsData?.[0]?.color) && !Array.isArray(item.properties._contentsData?.[0]?.flavor)">
                           <!-- OTHER -->
                           <!-- flavor 1 - bubble, quantity, name -->
-                          <div class="flex gap-[5px] items-center">
+                          <div class="flex-items-center gap-5">
                             <div class="flavor-color-circle"
                               v-bind:style="{ 'background-color': item.properties._contentsData?.[0]?.color }">
                             </div>
-                            <div class="flex gap-[5px] items-center">
+                            <div class="flex-items-center gap-5">
                               <span class="small-text whitespace-nowrap" v-if="item.properties._contentsData?.[0]?.quantity"
                                 v-html="item.properties._contentsData?.[0]?.quantity"></span>
                               <span class="small-text whitespace-nowrap" v-html="item.properties._contentsData?.[0]?.flavor"></span>
                             </div>
                           </div>
                           <!-- flavor 2, bubble, quantity, name -->
-                          <div class="flex gap-[5px] items-center" v-if="item.properties._contentsData?.[1]">
+                          <div class="flex-items-center gap-5" v-if="item.properties._contentsData?.[1]">
                             <div class="flavor-color-circle"
                               v-bind:style="{ 'background-color': item.properties._contentsData?.[1]?.color }">
                             </div>
-                            <div class="flex gap-[5px]">
+                            <div class="d-flex gap-5">
                               <span class="small-text whitespace-nowrap" v-html="item.properties._contentsData?.[1]?.quantity"></span>
                               <span class="small-text whitespace-nowrap" v-html="item.properties._contentsData?.[1]?.flavor"></span>
                             </div>

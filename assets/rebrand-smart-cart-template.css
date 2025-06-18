@@ -1340,6 +1340,9 @@ button#rebuy-close-btn  svg {
   justify-content: space-between;
   width:100%;
 }
+.d-flex{
+  display: flex;
+}
 @media (min-width: 768px) {
   .cart-quantity-wrapper {
     width: 70px;
