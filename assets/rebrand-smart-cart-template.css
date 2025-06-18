@@ -1165,6 +1165,26 @@ redo-shopify-toggle {
 } */
 
 
+/* new custom--------- */
+.rebuy-cart__flyout-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    position: relative;
+}
+.rebuy-cart__order-summary-head {
+    padding: 16px 15px;
+}
+h4.rebuy-cart__flyout-title {
+    font-family: 'Buenos Aires';
+    font-size: 18px;
+}
+button#rebuy-close-btn  svg {
+    position: absolute;
+}
+
+
 
 @media screen and (max-width: 676px) {
   .rebuy-cart__order-summary {
