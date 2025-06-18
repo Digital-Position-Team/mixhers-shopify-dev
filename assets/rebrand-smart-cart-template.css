@@ -1260,6 +1260,9 @@ button#rebuy-close-btn  svg {
 .small-text{
   font-size: 11px;
 }
+.whitespace-nowrap{
+  white-space: nowrap;
+}
 @media screen and (max-width: 676px) {
   .rebuy-cart__order-summary {
     overflow: scroll !important;
