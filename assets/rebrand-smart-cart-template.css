@@ -1313,6 +1313,20 @@ button#rebuy-close-btn  svg {
     border: none;
   cursor: pointer;
 }
+button.button-quantity svg {
+    height: 9px;
+}
+
+.rebuy-cart__flyout-footer {
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+.rebuy-cart__flyout-footer .headers-8 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
 .product-price-col span.rebuy-money.compare-at{
   color:gray;
 }
