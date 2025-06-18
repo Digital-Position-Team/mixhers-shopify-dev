@@ -3977,6 +3977,14 @@ body.page-store-locator div#stockist-widget {
 body.is-article * {
     font-family: 'Circular';
 }
+/* Footer */
+footer.footer * {
+    font-family: 'Buenos Aires';
+}
+.footer-block__details-content .list-menu__item--link {
+    font-weight: 300;
+}
+
 @media(max-width:1023px){
  .section-container{
     padding-left:32px;
