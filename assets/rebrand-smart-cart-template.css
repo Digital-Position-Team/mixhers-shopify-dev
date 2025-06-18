@@ -1244,6 +1244,12 @@ button#rebuy-close-btn  svg {
   width:100%;
   padding: 0px;
 }
+.flavor--deal{
+  display: flex;
+  gap:5px;
+  align-items: center;
+  width:100%;
+}
 @media screen and (max-width: 676px) {
   .rebuy-cart__order-summary {
     overflow: scroll !important;
