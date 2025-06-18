@@ -1282,6 +1282,9 @@ button#rebuy-close-btn  svg {
   .cart-quantity-wrapper {
     width: 70px;
   }
+  .flavor--variants{
+    flex-direction: row;
+  }
 }
 @media screen and (max-width: 676px) {
   .rebuy-cart__order-summary {
