@@ -1192,6 +1192,9 @@ button#rebuy-close-btn  svg {
 .rebuy-cart__order-summary {
     width: 100%;
 }
+.rebuy-cart__fixed-bottom-wrapper {
+    width: 100%;
+}
 
 @media screen and (max-width: 676px) {
   .rebuy-cart__order-summary {
