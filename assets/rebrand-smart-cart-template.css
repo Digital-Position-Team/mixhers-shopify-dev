@@ -1252,6 +1252,7 @@ button#rebuy-close-btn  svg {
   margin-top:8px;
   width:100%;
   padding: 0px;
+  flex-wrap: wrap;
 }
 .flavor--variants--2{
   display: flex;
