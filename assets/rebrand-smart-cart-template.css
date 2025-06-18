@@ -1303,6 +1303,7 @@ button#rebuy-close-btn  svg {
     margin: 0px;
     background: no-repeat;
     border: none;
+  cursor: pointer;
 }
 .product-price-col span.rebuy-money.compare-at{
   color:gray;
