@@ -1291,6 +1291,13 @@ button#rebuy-close-btn  svg {
     font-size: 12px;
     line-height: 1.5;
 }
+.rebuy-cart__flyout-item-quantity-weap {
+    display: flex
+;
+    align-items: center;
+    width: 100%;
+    margin-top: 12px;
+}
 .product-price-col span.rebuy-money.compare-at{
   color:gray;
 }
