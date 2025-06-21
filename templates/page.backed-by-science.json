@@ -11,6 +11,7 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
@@ -314,6 +315,6 @@
     "why_mixhers_section_rJyd6a",
     "faq_section_cAJwyH",
     "ugc_testimonials_MjBbiJ",
-    "text_and_image_section_WN9VJ6"  
+    "text_and_image_section_WN9VJ6"
   ]
 }
