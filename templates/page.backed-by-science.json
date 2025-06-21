@@ -141,17 +141,6 @@
     "ugc_testimonials_MjBbiJ": {
       "type": "ugc-testimonials",
       "blocks": {
-        "testimonial_dV3zRc": {
-          "type": "testimonial",
-          "settings": {
-            "customer_name": "Emily",
-            "customer_description": "An endometriosis comeback story",
-            "testimonial_quote": "\"I've had a lot of pain, bloating, definitely had acne. Mixhers has helped with all of that.\"",
-            "video_url": "",
-            "product_name": "Hertime PMS",
-            "product_url": "/products/hertime"
-          }
-        },
         "testimonial_kUECQp": {
           "type": "testimonial",
           "settings": {
@@ -284,7 +273,6 @@
         }
       },
       "block_order": [
-        "testimonial_dV3zRc",
         "testimonial_kUECQp",
         "testimonial_7EWMwj",
         "testimonial_X7NeF4",
