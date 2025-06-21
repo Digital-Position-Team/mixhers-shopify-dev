@@ -331,7 +331,7 @@
             "hover_bg_image": "shopify://shop_images/rebrand-homepage-hertime-hover_1.png",
             "product_title": "Hertime PMS",
             "product_description": "Hormone Support Supplement",
-            "product_url": "",
+            "product_url": "https://mixhers.com/products/hertime-pms",
             "button_text": ""
           }
         },
@@ -486,7 +486,7 @@
             "testimonial_quote": "\"I've had a lot of pain, bloating, definitely had acne. Mixhers has helped with all of that.\"",
             "video_url": "",
             "product_name": "Hertime PMS",
-            "product_url": ""
+            "product_url": "/products/hertime"
           }
         },
         "testimonial_kUECQp": {
@@ -496,7 +496,7 @@
             "customer_description": "An endometriosis comeback story",
             "testimonial_quote": "\"I've had a lot of pain, bloating, definitely had acne. Mixhers has helped with all of that.\"",
             "video_url": "https://cdn.shopify.com/videos/c/o/v/b86dd09b875a474685e1a7b6d5c36144.mp4",
-            "poster_image": "shopify://shop_images/rebrand_testimonial_main.png",
+            "poster_image": "shopify://shop_images/home-rebrand-testimonial-1.webp",
             "play_icon": "shopify://shop_images/rebrand_play_icon_306e44af-b1e5-44d2-ba10-baf35772af70.svg",
             "product_name": "Hertime PMS",
             "product_url": "/products/hertime"

@@ -15,6 +15,310 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "why_mixhers_section_rJyd6a": {
+      "type": "why-mixhers-section",
+      "blocks": {
+        "feature_ewecaH": {
+          "type": "feature",
+          "settings": {
+            "icon_svg": "<svg width=\"100%\" height=\"100%\" viewbox=\"0 0 67 67\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n    <path d=\"M33.5 66C51.4493 66 66 51.4493 66 33.5C66 15.5507 51.4493 1 33.5 1C15.5507 1 1 15.5507 1 33.5C1 51.4493 15.5507 66 33.5 66Z\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M33.4999 42.4468C38.437 42.4468 42.4393 38.4445 42.4393 33.5075C42.4393 28.5704 38.437 24.5681 33.4999 24.5681C28.5628 24.5681 24.5605 28.5704 24.5605 33.5075C24.5605 38.4445 28.5628 42.4468 33.4999 42.4468Z\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M33.5 21.5857V11.6274\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M33.5 55.3874V45.4292\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M25.0742 25.0737L18.0312 18.0308\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M48.9765 48.9765L41.9336 41.9336\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M21.5784 33.5073H11.6201\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M55.3801 33.5073H45.4219\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M25.0742 41.9336L18.0312 48.9765\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M48.9765 18.0308L41.9336 25.0737\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M28.9409 22.493L26.5908 16.811\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M40.4165 50.1962L38.0664 44.5217\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M22.485 28.9409L16.8105 26.5908\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M50.1966 40.4165L44.5146 38.0664\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M22.485 38.0664L16.8105 40.4165\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M50.1966 26.5908L44.5146 28.9409\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M28.9409 44.5217L26.5908 50.1962\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M40.4165 16.811L38.0664 22.493\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n</svg>",
+            "feature_title": "Hormone Friendly",
+            "feature_description": "Formulated with clinically studied ingredients to support optimal hormone function."
+          }
+        },
+        "feature_fTPGrr": {
+          "type": "feature",
+          "settings": {
+            "icon_svg": "<svg width=\"100%\" height=\"100%\" viewbox=\"0 0 66 65\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n    <path d=\"M32.7753 53.794C39.8809 53.794 47.0878 49.3974 47.0878 39.6218C47.0878 34.3789 43.5097 29.3727 40.0257 24.553C36.9257 20.2569 33.9705 16.1472 33.9705 12.4608C33.9705 11.8009 33.449 11.2773 32.7753 11.2773C32.1017 11.2773 31.5802 11.7937 31.5802 12.4608C31.5802 16.1472 28.625 20.2067 25.525 24.553C22.041 29.3727 18.4629 34.3789 18.4629 39.6218C18.4629 49.3974 25.6626 53.794 32.7753 53.794Z\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M32.7757 63.9999C50.3249 63.9999 64.5514 49.9129 64.5514 32.5356C64.5514 15.1583 50.3249 1.07129 32.7757 1.07129C15.2265 1.07129 1 15.1583 1 32.5356C1 49.9129 15.2265 63.9999 32.7757 63.9999Z\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M33.2608 48.3718C28.1109 48.3718 23.9316 44.2406 23.9316 39.134\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n</svg>",
+            "feature_title": "Highly Absorbable",
+            "feature_description": "Liquid delivery for accelerated nutrient uptake and maximum absorption."
+          }
+        },
+        "feature_HYz8nt": {
+          "type": "feature",
+          "settings": {
+            "icon_svg": "<svg width=\"100%\" height=\"100%\" viewbox=\"0 0 67 68\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n    <path d=\"M17 43.3883C17 29.1242 22.7608 23.8525 29.5545 22.3102C35.836 20.8898 46.014 18.5023 49.583 16.1845C49.8182 16.0364 50.0785 16.2716 49.9777 16.5418C48.928 19.5131 48.2058 22.6238 47.5088 25.6997C46.5095 30.1175 46.1064 34.3262 42.6045 38.0382C39.9089 40.8962 34.358 43.1356 30.5035 43.1095C29.0843 43.1008 27.6735 43.0049 26.271 42.9178C24.6839 42.8219 23.0967 42.7696 21.5096 42.8132C21.1149 42.8219 17 43.0223 17 43.3796V43.3883Z\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M17 51.4621V43.3828C17 39.8073 19.4199 36.9538 21.6796 34.487C24.1079 31.8312 27.1771 29.5707 30.5582 28.3846C34.3103 27.0696 38.4924 27.0954 42 25.2217\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n    <path d=\"M33.5 1.0001C15.5508 1.0001 1 15.6854 1 33.8006C1 51.9158 15.5507 66.6011 33.5 66.6011C51.4493 66.6011 66 51.9158 66 33.8006C66 15.6854 51.4493 1.00011 33.5 1.0001Z\" stroke=\"#FF59E4\" stroke-width=\"2\" stroke-miterlimit=\"10\"></path>\n</svg>",
+            "feature_title": "All Natural",
+            "feature_description": "Clean ingredients sourced from nature. Free from hormone-disrupting chemicals, additives, and fillers."
+          }
+        }
+      },
+      "block_order": [
+        "feature_ewecaH",
+        "feature_fTPGrr",
+        "feature_HYz8nt"
+      ],
+      "name": "Why Mixhers",
+      "settings": {
+        "video_placeholder": "shopify://shop_images/home-rebrand-mixhers-difference.webp",
+        "play_button_svg": "<svg width=\"100%\" height=\"100%\" viewbox=\"0 0 124 124\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M46.6719 91.6681V29.9741L90.4088 60.8211L46.6719 91.6681Z\" fill=\"white\"></path><path d=\"M121.406 61.75C121.406 94.5802 94.732 121.202 61.818 121.202C28.904 121.202 2.22964 94.5802 2.22964 61.75C2.22964 28.9198 28.904 2.298 61.818 2.298C94.732 2.298 121.406 28.9198 121.406 61.75Z\" stroke=\"white\" stroke-width=\"4.096\"></path></svg>",
+        "video": "shopify://files/videos/home_compressed.mp4",
+        "title": "Why Mixhers?"
+      }
+    },
+    "faq_section_cAJwyH": {
+      "type": "faq-section",
+      "blocks": {
+        "faq_item_W7MK8T": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is Hertime PMS right for me?",
+            "answer": "<p>Hertime PMS is best for women in their menstruating years seeking PMS-symptom relief and optimized hormone health. Hertime PMS soothes menstrual cramps, levels mood swings, eases bloating, supports normal cycles, and balances hormones naturally. </p><p>If you experience more extreme period symptoms, try Hertime PMS+, our extra strength formula for serious support. It combats intense cramping, heavy flow, irritability, bloating, and low energy in women with more pronounced hormone imbalances.</p>"
+          }
+        },
+        "faq_item_EnfnqT": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How soon can I expect to see results with Hertime PMS?",
+            "answer": "<p>Mixhers customers report optimal results after taking Hertime PMS daily for 3 cycles.</p><p>After 30 Days: Decrease in bloating, cramping, and PMS-related cravings.</p><p>After 60 Days: Continued decrease in bloating, cramping, and cravings. Improved mood, more regulated flow, and decreased fatigue.</p><p>After 90 Days: Decrease in fatigue, flow, cravings, bloating, cramping, and hormonal acne. Improved in mood, concentration, and physical performance.</p>"
+          }
+        },
+        "faq_item_iXNm4g": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How often should I use Hertime PMS?",
+            "answer": "<p>Hertime PMS should be taken daily at any time for best results. As with all supplements, your body will respond to Hertime PMS best when it has built up in your system over time.</p>"
+          }
+        },
+        "faq_item_Dnmdmi": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Why is Hertime PMS a powder instead of a tablet or gummy?",
+            "answer": "<p>Unlike tablets or gummies, our liquid delivery offers the advantage of rapid nutrient absorption. This is important because your body can’t use what it doesn’t absorb.</p>"
+          }
+        },
+        "faq_item_bYYiFN": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is Hertime PMS safe for teens and preteens to take?",
+            "answer": "<p>Yes, Hertime PMS is safe and meant for anyone in their menstruating years. We always recommend consulting with your doctor before starting any supplement.</p>"
+          }
+        },
+        "faq_item_i3nyRz": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is Hertime PMS safe to take while pregnant or breastfeeding?",
+            "answer": "<p>We do not recommend using Hertime PMS if you are pregnant or breastfeeding. We recommend Mixhers Prenatal+ for women before, during, and after pregnancy. </p>"
+          }
+        },
+        "faq_item_Vf3JT6": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How can I access my subscription?",
+            "answer": "<p>We make it easy to make changes to your subscription! You can log into your account through the <a href=\"https://mixhers.com/tools/recurring/get-subscription-access?\" target=\"_blank\">customer portal</a> and then selecting \"manage subscriptions\".</p>"
+          }
+        },
+        "faq_item_krAcQx": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you ship internationally?",
+            "answer": "<p>At this time, we only ship in the in the United States, excluding APO/FPO and U.S. territories. However you can still find your favorite Mixhers products on Amazon <a href=\"https://www.amazon.com/stores/page/872C6FF0-ED37-4FB0-A59A-ECE971D63AFB\">HERE.</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_W7MK8T",
+        "faq_item_EnfnqT",
+        "faq_item_iXNm4g",
+        "faq_item_Dnmdmi",
+        "faq_item_bYYiFN",
+        "faq_item_i3nyRz",
+        "faq_item_Vf3JT6",
+        "faq_item_krAcQx"
+      ],
+      "name": "FAQ Section",
+      "settings": {
+        "title": "FAQs",
+        "image": "shopify://shop_images/home-rebrand-mobile-top.webp",
+        "direction": "rtl",
+        "bg_color": "#ffffff",
+        "show_top_border": false,
+        "show_bottom_border": true,
+        "border_color": "#1a1a1a"
+      }
+    },
+    "ugc_testimonials_MjBbiJ": {
+      "type": "ugc-testimonials",
+      "blocks": {
+        "testimonial_dV3zRc": {
+          "type": "testimonial",
+          "settings": {
+            "customer_name": "Emily",
+            "customer_description": "An endometriosis comeback story",
+            "testimonial_quote": "\"I've had a lot of pain, bloating, definitely had acne. Mixhers has helped with all of that.\"",
+            "video_url": "",
+            "product_name": "Hertime PMS",
+            "product_url": "/products/hertime"
+          }
+        },
+        "testimonial_kUECQp": {
+          "type": "testimonial",
+          "settings": {
+            "customer_name": "Emily",
+            "customer_description": "An endometriosis comeback story",
+            "testimonial_quote": "\"I've had a lot of pain, bloating, definitely had acne. Mixhers has helped with all of that.\"",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/b86dd09b875a474685e1a7b6d5c36144.mp4",
+            "poster_image": "shopify://shop_images/home-rebrand-testimonial-1.webp",
+            "play_icon": "shopify://shop_images/rebrand_play_icon_306e44af-b1e5-44d2-ba10-baf35772af70.svg",
+            "product_name": "Hertime PMS",
+            "product_url": "/products/hertime"
+          }
+        },
+        "testimonial_7EWMwj": {
+          "type": "testimonial",
+          "settings": {
+            "customer_name": "Chelsea",
+            "customer_description": "Committing to your health",
+            "testimonial_quote": "\"It has helped curb my appetite, I have noticed that I'm satisfied more quickly.\"",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/52e6f21b1b214acb8426179934153ca6.mp4",
+            "poster_image": "shopify://shop_images/rebrand_testimonial_2.png",
+            "play_icon": "shopify://shop_images/rebrand_play_icon_306e44af-b1e5-44d2-ba10-baf35772af70.svg",
+            "product_name": "Metabolic Balance",
+            "product_url": "/products/metabolic"
+          }
+        },
+        "testimonial_X7NeF4": {
+          "type": "testimonial",
+          "settings": {
+            "customer_name": "Brittney",
+            "customer_description": "Showing up for yourself amid diet culture",
+            "testimonial_quote": "\"You can make yourself feel good without taking things away from your life. . .You can incorporate different things and make yourself feel deeply nourished. Hergreens makes me feel balanced.\"",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/4fcaf571565f4d53ada3dc9dbfc72553.mp4",
+            "poster_image": "shopify://shop_images/rebrand_testimonial_1.png",
+            "play_icon": "shopify://shop_images/rebrand_play_icon_306e44af-b1e5-44d2-ba10-baf35772af70.svg",
+            "product_name": "Greens",
+            "product_url": "/products/hergreens"
+          }
+        },
+        "testimonial_Em4epc": {
+          "type": "testimonial",
+          "settings": {
+            "customer_name": "Rebeca",
+            "customer_description": "Making period symptoms disappear",
+            "testimonial_quote": "\"After a month, I noticed a huge difference in my PMS. My zits were basically gone almost. I noticed my bloating was better. Cramps were almost non-existent.\"",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/0862767bbb7a48fdb51942d29a7adcee.mp4",
+            "poster_image": "shopify://shop_images/rebrand_testimonial_3.png",
+            "play_icon": "shopify://shop_images/rebrand_play_icon_306e44af-b1e5-44d2-ba10-baf35772af70.svg",
+            "product_name": "Hertime PMS",
+            "product_url": "/products/hertime"
+          }
+        },
+        "testimonial_JpqpGW": {
+          "type": "testimonial",
+          "settings": {
+            "customer_name": "Sariah",
+            "customer_description": "Taking back control with Hertime",
+            "testimonial_quote": "\"My period started about 2 days before our first game of the season. . . I had already been taking my Hertime and I was like, I don't even need to worry about this.\"",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/a1dda852aa354d7aa59d52f477ad9baf.mp4",
+            "poster_image": "shopify://shop_images/rebrand_testimonial_4.png",
+            "play_icon": "shopify://shop_images/rebrand_play_icon_306e44af-b1e5-44d2-ba10-baf35772af70.svg",
+            "product_name": "Hertime PMS",
+            "product_url": "/products/hertime"
+          }
+        },
+        "testimonial_VH3Wk4": {
+          "type": "testimonial",
+          "settings": {
+            "customer_name": "Emily",
+            "customer_description": "An endometriosis comeback story",
+            "testimonial_quote": "\"I've had a lot of pain, bloating, definitely had acne. Mixhers has helped with all of that.\"",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/b86dd09b875a474685e1a7b6d5c36144.mp4",
+            "poster_image": "shopify://shop_images/home-rebrand-testimonial-1.webp",
+            "play_icon": "shopify://shop_images/rebrand_play_icon_306e44af-b1e5-44d2-ba10-baf35772af70.svg",
+            "product_name": "Hertime PMS",
+            "product_url": "/products/hertime"
+          }
+        },
+        "testimonial_MxX3kd": {
+          "type": "testimonial",
+          "settings": {
+            "customer_name": "Chelsea",
+            "customer_description": "Committing to your health",
+            "testimonial_quote": "\"It has helped curb my appetite, I have noticed that I'm satisfied more quickly.\"",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/52e6f21b1b214acb8426179934153ca6.mp4",
+            "poster_image": "shopify://shop_images/rebrand_testimonial_2.png",
+            "play_icon": "shopify://shop_images/rebrand_play_icon_306e44af-b1e5-44d2-ba10-baf35772af70.svg",
+            "product_name": "Metabolic Balance",
+            "product_url": "/products/metabolic"
+          }
+        },
+        "testimonial_f8feya": {
+          "type": "testimonial",
+          "settings": {
+            "customer_name": "Brittney",
+            "customer_description": "Showing up for yourself amid diet culture",
+            "testimonial_quote": "\"You can make yourself feel good without taking things away from your life. . .You can incorporate different things and make yourself feel deeply nourished. Hergreens makes me feel balanced.\"",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/4fcaf571565f4d53ada3dc9dbfc72553.mp4",
+            "poster_image": "shopify://shop_images/rebrand_testimonial_1.png",
+            "play_icon": "shopify://shop_images/rebrand_play_icon_306e44af-b1e5-44d2-ba10-baf35772af70.svg",
+            "product_name": "Greens",
+            "product_url": "/products/hergreens"
+          }
+        },
+        "testimonial_3EqRVN": {
+          "type": "testimonial",
+          "settings": {
+            "customer_name": "Rebeca",
+            "customer_description": "Making period symptoms disappear",
+            "testimonial_quote": "\"After a month, I noticed a huge difference in my PMS. My zits were basically gone almost. I noticed my bloating was better. Cramps were almost non-existent.\"",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/0862767bbb7a48fdb51942d29a7adcee.mp4",
+            "poster_image": "shopify://shop_images/rebrand_testimonial_3.png",
+            "play_icon": "shopify://shop_images/rebrand_play_icon_306e44af-b1e5-44d2-ba10-baf35772af70.svg",
+            "product_name": "Hertime PMS",
+            "product_url": "/products/hertime"
+          }
+        },
+        "testimonial_fFpgY4": {
+          "type": "testimonial",
+          "settings": {
+            "customer_name": "Sariah",
+            "customer_description": "Taking back control with Hertime",
+            "testimonial_quote": "\"My period started about 2 days before our first game of the season. . . I had already been taking my Hertime and I was like, I don't even need to worry about this.\"",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/a1dda852aa354d7aa59d52f477ad9baf.mp4",
+            "poster_image": "shopify://shop_images/rebrand_testimonial_4.png",
+            "play_icon": "shopify://shop_images/rebrand_play_icon_306e44af-b1e5-44d2-ba10-baf35772af70.svg",
+            "product_name": "Hertime PMS",
+            "product_url": "/products/hertime"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_dV3zRc",
+        "testimonial_kUECQp",
+        "testimonial_7EWMwj",
+        "testimonial_X7NeF4",
+        "testimonial_Em4epc",
+        "testimonial_JpqpGW",
+        "testimonial_VH3Wk4",
+        "testimonial_MxX3kd",
+        "testimonial_f8feya",
+        "testimonial_3EqRVN",
+        "testimonial_fFpgY4"
+      ],
+      "name": "UGC Testimonials",
+      "settings": {
+        "heading": "Trusted by thousands of real women"
+      }
+    },
+    "text_and_image_section_WN9VJ6": {
+      "type": "text-and-image-section",
+      "name": "Text and Image",
+      "settings": {
+        "title": "Make it personal.",
+        "body": "<p>Get matched with an individualized product suite formulated just for you.</p>",
+        "text_alignment": "center",
+        "inline_image": "shopify://shop_images/home-rebrand-product-ribbon.webp",
+        "cta_text": "Take the quiz",
+        "cta_link": "https://mixhers.com/pages/quiz",
+        "image": "shopify://shop_images/rebrand-mocktail.gif",
+        "direction": "ltr",
+        "bg_color": "#f4f9fd",
+        "cta_type": "btn-black",
+        "show_top_border": false,
+        "show_bottom_border": false,
+        "border_color": "#1a1a1a"
+      }
     }
   },
   "order": [
