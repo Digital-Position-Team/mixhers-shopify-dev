@@ -25,7 +25,8 @@
         "image_position": "right",
         "heading": "What makes our formulas actually work?",
         "heading_color": "#ff59e4",
-        "content": "<p>MixHers is hormonal health and wellness made simple. Every scoop delivers over 50 vitamins, minerals, superfoods, adaptogens, and probiotics—formulated to support hormone health, gut balance, stress, metabolism, immunity, and more. No fillers. No additives. Just real ingredients selected to bring you wholeness.</p>"
+        "content": "<p>MixHers is hormonal health and wellness made simple. Every scoop delivers over 50 vitamins, minerals, superfoods, adaptogens, and probiotics—formulated to support hormone health, gut balance, stress, metabolism, immunity, and more. No fillers. No additives. Just real ingredients selected to bring you wholeness.</p>",
+        "border_bottom": true
       }
     },
     "features_with_icons_grkU36": {
@@ -60,6 +61,46 @@
       ],
       "name": "Features with icons",
       "settings": {}
+    },
+    "health_professionals_section_VqegED": {
+      "type": "health-professionals-section",
+      "blocks": {
+        "professional_nechzN": {
+          "type": "professional",
+          "settings": {
+            "image": "shopify://shop_images/d7e3acc4391e54154048938a8277672851f91452.jpg",
+            "name": "Name 1",
+            "bio": "Lorem ipsum dolor sit amet consectetur. Dignissim turpis ut volutpat ante eu."
+          }
+        },
+        "professional_VCtR3n": {
+          "type": "professional",
+          "settings": {
+            "image": "shopify://shop_images/67d3a8f8a8f273a922c1b7dd93d3703fc668cea6.jpg",
+            "name": "Name 1",
+            "bio": "Lorem ipsum dolor sit amet consectetur. Dignissim turpis ut volutpat ante eu."
+          }
+        },
+        "professional_WiLDHV": {
+          "type": "professional",
+          "settings": {
+            "name": "Name 1",
+            "bio": "Lorem ipsum dolor sit amet consectetur. Dignissim turpis ut volutpat ante eu."
+          }
+        }
+      },
+      "block_order": [
+        "professional_nechzN",
+        "professional_VCtR3n",
+        "professional_WiLDHV"
+      ],
+      "name": "Trusted by Professionals",
+      "settings": {
+        "heading": "MixHers is trusted by health professionals",
+        "description": "From OB/GYNs to nutritionists, experts recommend Mixhers for natural, effective hormone support.",
+        "button_link": "#",
+        "button_label": "Learn more"
+      }
     },
     "faq_section_KbeexA": {
       "type": "faq-section",
@@ -317,6 +358,7 @@
     "main",
     "image_fullheight_with_text_HxaDqC",
     "features_with_icons_grkU36",
+    "health_professionals_section_VqegED",
     "faq_section_KbeexA",
     "ugc_testimonials_wbwrdN",
     "text_and_image_section_t3dGyb"
