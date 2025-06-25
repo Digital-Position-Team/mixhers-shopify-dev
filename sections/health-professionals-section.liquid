@@ -90,12 +90,22 @@
 </div>
 <style>
 
-.health-professionals-block {
-    display: flex;
-    flex-wrap: wrap;
-}
 .prof-item {
-    width: 33.3%;
+  border-bottom: 1px solid #000;
+  border-top:1px solid #000;
+  border-right: 1px solid #000;
+  box-sizing: border-box;
+}
+.prof-item:nth-child(3n) {
+  border-right: none;
+}
+.health-professionals-block {
+  display: flex;
+  flex-wrap: wrap;
+}
+.health-professionals-block::after {
+  content: "";
+  flex: auto;
 }
 .prof-item img {
   width: 100%;
