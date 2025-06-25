@@ -11,6 +11,87 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "faq_section_chF3Jt": {
+      "type": "faq-section",
+      "blocks": {
+        "faq_item_6eT9hK": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is Hertime PMS right for me?",
+            "answer": "<p>Hertime PMS is best for women in their menstruating years seeking PMS-symptom relief and optimized hormone health. Hertime PMS soothes menstrual cramps, levels mood swings, eases bloating, supports normal cycles, and balances hormones naturally. </p><p>If you experience more extreme period symptoms, try Hertime PMS+, our extra strength formula for serious support. It combats intense cramping, heavy flow, irritability, bloating, and low energy in women with more pronounced hormone imbalances.</p>"
+          }
+        },
+        "faq_item_pP9hWA": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How soon can I expect to see results with Hertime PMS?",
+            "answer": "<p>Mixhers customers report optimal results after taking Hertime PMS daily for 3 cycles.</p><p>After 30 Days: Decrease in bloating, cramping, and PMS-related cravings.</p><p>After 60 Days: Continued decrease in bloating, cramping, and cravings. Improved mood, more regulated flow, and decreased fatigue.</p><p>After 90 Days: Decrease in fatigue, flow, cravings, bloating, cramping, and hormonal acne. Improved in mood, concentration, and physical performance.</p>"
+          }
+        },
+        "faq_item_BqXmQK": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How often should I use Hertime PMS?",
+            "answer": "<p>Hertime PMS should be taken daily at any time for best results. As with all supplements, your body will respond to Hertime PMS best when it has built up in your system over time.</p>"
+          }
+        },
+        "faq_item_jKGGgf": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Why is Hertime PMS a powder instead of a tablet or gummy?",
+            "answer": "<p>Unlike tablets or gummies, our liquid delivery offers the advantage of rapid nutrient absorption. This is important because your body can’t use what it doesn’t absorb.</p>"
+          }
+        },
+        "faq_item_mNb6bm": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is Hertime PMS safe for teens and preteens to take?",
+            "answer": "<p>Yes, Hertime PMS is safe and meant for anyone in their menstruating years. We always recommend consulting with your doctor before starting any supplement.</p>"
+          }
+        },
+        "faq_item_UGdB9W": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is Hertime PMS safe to take while pregnant or breastfeeding?",
+            "answer": "<p>We do not recommend using Hertime PMS if you are pregnant or breastfeeding. We recommend Mixhers Prenatal+ for women before, during, and after pregnancy. </p>"
+          }
+        },
+        "faq_item_Y8Jb73": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How can I access my subscription?",
+            "answer": "<p>We make it easy to make changes to your subscription! You can log into your account through the <a href=\"https://mixhers.com/tools/recurring/get-subscription-access?\" target=\"_blank\">customer portal</a> and then selecting \"manage subscriptions\".</p>"
+          }
+        },
+        "faq_item_3LGk4Y": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you ship internationally?",
+            "answer": "<p>At this time, we only ship in the in the United States, excluding APO/FPO and U.S. territories. However you can still find your favorite Mixhers products on Amazon <a href=\"https://www.amazon.com/stores/page/872C6FF0-ED37-4FB0-A59A-ECE971D63AFB\">HERE.</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_6eT9hK",
+        "faq_item_pP9hWA",
+        "faq_item_BqXmQK",
+        "faq_item_jKGGgf",
+        "faq_item_mNb6bm",
+        "faq_item_UGdB9W",
+        "faq_item_Y8Jb73",
+        "faq_item_3LGk4Y"
+      ],
+      "name": "FAQ Section",
+      "settings": {
+        "title": "FAQs",
+        "image": "shopify://shop_images/home-rebrand-mobile-top.webp",
+        "direction": "rtl",
+        "bg_color": "#ffffff",
+        "show_top_border": false,
+        "show_bottom_border": true,
+        "border_color": "#1a1a1a"
+      }
+    },
     "ugc_testimonials_gDnbNa": {
       "type": "ugc-testimonials",
       "blocks": {
@@ -159,7 +240,7 @@
       ],
       "name": "UGC Testimonials",
       "settings": {
-        "heading": "Results and women that speak for themselves."
+        "heading": "Trusted by thousands of real women."
       }
     },
     "text_and_image_section_Wtfwzf": {
@@ -179,87 +260,6 @@
         "show_top_border": false,
         "show_bottom_border": false,
         "border_color": "rgb(26 26 26 / 1)"
-      }
-    },
-    "faq_section_chF3Jt": {
-      "type": "faq-section",
-      "blocks": {
-        "faq_item_6eT9hK": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Is Hertime PMS right for me?",
-            "answer": "<p>Hertime PMS is best for women in their menstruating years seeking PMS-symptom relief and optimized hormone health. Hertime PMS soothes menstrual cramps, levels mood swings, eases bloating, supports normal cycles, and balances hormones naturally. </p><p>If you experience more extreme period symptoms, try Hertime PMS+, our extra strength formula for serious support. It combats intense cramping, heavy flow, irritability, bloating, and low energy in women with more pronounced hormone imbalances.</p>"
-          }
-        },
-        "faq_item_pP9hWA": {
-          "type": "faq_item",
-          "settings": {
-            "question": "How soon can I expect to see results with Hertime PMS?",
-            "answer": "<p>Mixhers customers report optimal results after taking Hertime PMS daily for 3 cycles.</p><p>After 30 Days: Decrease in bloating, cramping, and PMS-related cravings.</p><p>After 60 Days: Continued decrease in bloating, cramping, and cravings. Improved mood, more regulated flow, and decreased fatigue.</p><p>After 90 Days: Decrease in fatigue, flow, cravings, bloating, cramping, and hormonal acne. Improved in mood, concentration, and physical performance.</p>"
-          }
-        },
-        "faq_item_BqXmQK": {
-          "type": "faq_item",
-          "settings": {
-            "question": "How often should I use Hertime PMS?",
-            "answer": "<p>Hertime PMS should be taken daily at any time for best results. As with all supplements, your body will respond to Hertime PMS best when it has built up in your system over time.</p>"
-          }
-        },
-        "faq_item_jKGGgf": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Why is Hertime PMS a powder instead of a tablet or gummy?",
-            "answer": "<p>Unlike tablets or gummies, our liquid delivery offers the advantage of rapid nutrient absorption. This is important because your body can’t use what it doesn’t absorb.</p>"
-          }
-        },
-        "faq_item_mNb6bm": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Is Hertime PMS safe for teens and preteens to take?",
-            "answer": "<p>Yes, Hertime PMS is safe and meant for anyone in their menstruating years. We always recommend consulting with your doctor before starting any supplement.</p>"
-          }
-        },
-        "faq_item_UGdB9W": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Is Hertime PMS safe to take while pregnant or breastfeeding?",
-            "answer": "<p>We do not recommend using Hertime PMS if you are pregnant or breastfeeding. We recommend Mixhers Prenatal+ for women before, during, and after pregnancy. </p>"
-          }
-        },
-        "faq_item_Y8Jb73": {
-          "type": "faq_item",
-          "settings": {
-            "question": "How can I access my subscription?",
-            "answer": "<p>We make it easy to make changes to your subscription! You can log into your account through the <a href=\"https://mixhers.com/tools/recurring/get-subscription-access?\" target=\"_blank\">customer portal</a> and then selecting \"manage subscriptions\".</p>"
-          }
-        },
-        "faq_item_3LGk4Y": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Do you ship internationally?",
-            "answer": "<p>At this time, we only ship in the in the United States, excluding APO/FPO and U.S. territories. However you can still find your favorite Mixhers products on Amazon <a href=\"https://www.amazon.com/stores/page/872C6FF0-ED37-4FB0-A59A-ECE971D63AFB\">HERE.</a></p>"
-          }
-        }
-      },
-      "block_order": [
-        "faq_item_6eT9hK",
-        "faq_item_pP9hWA",
-        "faq_item_BqXmQK",
-        "faq_item_jKGGgf",
-        "faq_item_mNb6bm",
-        "faq_item_UGdB9W",
-        "faq_item_Y8Jb73",
-        "faq_item_3LGk4Y"
-      ],
-      "name": "FAQ Section",
-      "settings": {
-        "title": "FAQs",
-        "image": "shopify://shop_images/home-rebrand-mobile-top.webp",
-        "direction": "rtl",
-        "bg_color": "#ffffff",
-        "show_top_border": false,
-        "show_bottom_border": true,
-        "border_color": "#1a1a1a"
       }
     },
     "footer": {
