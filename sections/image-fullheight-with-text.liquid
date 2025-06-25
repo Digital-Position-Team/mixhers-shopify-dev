@@ -42,7 +42,7 @@
 
 <div class="image-with-content">
   <div class="page-width">
-    <div class="image-with-content-row">
+    <div class="image-with-content-row" style="flex-direction:">
     <div class="content-div">
       <div class="content-div-inner">
         <h3 class="">{{ section.settings.heading }}</h3>
@@ -57,3 +57,10 @@
   </div>
  </div>
 </div>
+
+<style>
+  .image-with-content-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+</style>
