@@ -28,6 +28,39 @@
         "content": "<p>MixHers is hormonal health and wellness made simple. Every scoop delivers over 50 vitamins, minerals, superfoods, adaptogens, and probiotics—formulated to support hormone health, gut balance, stress, metabolism, immunity, and more. No fillers. No additives. Just real ingredients selected to bring you wholeness.</p>"
       }
     },
+    "features_with_icons_grkU36": {
+      "type": "features-with-icons",
+      "blocks": {
+        "feature_bmEDn9": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Frame_31.png",
+            "text": "Third-party tested"
+          }
+        },
+        "feature_j3i7h4": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Frame_28.png",
+            "text": "Third-party tested"
+          }
+        },
+        "feature_VaeEAq": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Frame_29.png",
+            "text": "Third-party tested"
+          }
+        }
+      },
+      "block_order": [
+        "feature_bmEDn9",
+        "feature_j3i7h4",
+        "feature_VaeEAq"
+      ],
+      "name": "Features with icons",
+      "settings": {}
+    },
     "faq_section_KbeexA": {
       "type": "faq-section",
       "blocks": {
@@ -283,6 +316,7 @@
   "order": [
     "main",
     "image_fullheight_with_text_HxaDqC",
+    "features_with_icons_grkU36",
     "faq_section_KbeexA",
     "ugc_testimonials_wbwrdN",
     "text_and_image_section_t3dGyb"
