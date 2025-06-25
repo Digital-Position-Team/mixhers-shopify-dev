@@ -48,8 +48,8 @@
 
 <div class="image-with-content">
  
-    <div class="image-with-content-row" style="flex-direction:">
-    <div class="content-div">
+    <div class="image-with-content-row">
+    <div class="content-div content-{{ section.settings.image_position }}">
        <div class="page-width">
       <div class="content-div-inner">
         <h2 class="heading-text font-serif">{{ section.settings.heading }}</h2>
@@ -82,5 +82,8 @@
   }
   .image-div.image-left{
     order:1;
+  }
+  .content-div.content-left{
+    order:2;
   }
 </style>
