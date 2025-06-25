@@ -1,22 +1,50 @@
 {% schema %}
-  {
-    "name": "Features with icons",
-    "settings": [],
-    "presets": [{"name": "Features with icons"}]
-  }
+{
+  "name": "Features with icons",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Feature Icon"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Feature Text",
+          "default": "Third-party tested"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Features with icons",
+      "blocks": [
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        }
+      ]
+    }
+  ]
+}
 {% endschema %}
 
 <div class="features--row">
- <div class="feature-item">
-  <img src="" alt="" width="" height=""/>
-   <span>Third-party tested</span>
- </div>
- <div class="feature-item">
-  <img src="" alt="" width="" height=""/>
-   <span>Backed by clinical research</span>
- </div>
-   <div class="feature-item">
-  <img src="" alt="" width="" height=""/>
-   <span>Formulated in FDA-registered, GMP-certified facilities</span>
- </div>
+  {% for block in section.blocks %}
+    <div class="feature-item">
+      <img src="{{ block.settings.icon | image_url }}" alt="{{ block.settings.text }}" width="" height="" />
+      <span>{{ block.settings.text }}</span>
+    </div>
+  {% endfor %}
 </div>
