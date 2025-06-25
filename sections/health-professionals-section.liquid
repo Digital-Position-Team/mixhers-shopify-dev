@@ -1,40 +1,90 @@
 {% schema %}
-  {
-    "name": "Section name",
-    "tag":"section",
-    "settings": []
-  }
+{
+  "name": "Trusted by Professionals",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "MixHers is trusted by health professionals"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "From OB/GYNs to nutritionists, experts recommend Mixhers for natural, effective hormone support."
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Learn more"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "professional",
+      "name": "Professional",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Name 1"
+        },
+        {
+          "type": "textarea",
+          "id": "bio",
+          "label": "Description",
+          "default": "Lorem ipsum dolor sit amet consectetur. Dignissim turpis ut volutpat ante eu."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trusted by Professionals",
+      "blocks": [
+        { "type": "professional" },
+        { "type": "professional" },
+        { "type": "professional" }
+      ]
+    }
+  ]
+}
 {% endschema %}
 
-<div class="trusted-by-professionals=section">
+<div class="trusted-by-professionals-section">
   <div class="professionals-heading-block"> 
-     <h2 class="font-serif">MixHers is trusted by health professionals</h2>
-     <p>
-       From OB/GYNs to nutritionists, experts recommend Mixhers for natural, effective hormone support.
-     </p>
-    <a href="" class="btn btn-black">Learn more</a>
+    <h2 class="font-serif">{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.description }}</p>
+    {% if section.settings.button_link != blank %}
+      <a href="{{ section.settings.button_link }}" class="btn btn-black">
+        {{ section.settings.button_label }}
+      </a>
+    {% endif %}
   </div>
+
   <div class="health-professionals-block">
-    <div class="prof-item">
-      <img src="" width="" height="" alt=""/>
-      <div class="prof-item-info">
-         <h4>Name 1</h4>
-        <p>Lorem ipsum dolor sit amet consectetur. Dignissim turpis ut volutpat ante eu.</p>
+    {% for block in section.blocks %}
+      <div class="prof-item">
+        <img src="{{ block.settings.image | image_url }}" width="" height="" alt="{{ block.settings.name }}" />
+        <div class="prof-item-info">
+          <h4>{{ block.settings.name }}</h4>
+          <p>{{ block.settings.bio }}</p>
+        </div>
       </div>
-    </div>
-    <div class="prof-item">
-      <img src="" width="" height="" alt=""/>
-      <div class="prof-item-info">
-         <h4>Name 1</h4>
-        <p>Lorem ipsum dolor sit amet consectetur. Dignissim turpis ut volutpat ante eu.</p>
-      </div>
-    </div>
-    <div class="prof-item">
-      <img src="" width="" height="" alt=""/>
-      <div class="prof-item-info">
-         <h4>Name 1</h4>
-        <p>Lorem ipsum dolor sit amet consectetur. Dignissim turpis ut volutpat ante eu.</p>
-      </div>
-    </div>
+    {% endfor %}
   </div>
 </div>
