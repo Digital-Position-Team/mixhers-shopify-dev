@@ -48,3 +48,28 @@
     </div>
   {% endfor %}
 </div>
+
+<style>
+  .features--row {
+      max-width: 1400px;
+      display: flex;
+      width: 100%;
+      padding: 0px 30px;
+      gap: 20px;
+      justify-content: space-between;
+  }
+  .feature-item {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      align-items: center;
+      gap: 25px;
+  }
+  .feature-item img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+  }
+  .feature-item span {
+      font-size: 18px;
+  }
+</style>
