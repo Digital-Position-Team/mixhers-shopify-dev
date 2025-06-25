@@ -69,13 +69,15 @@
   <div class="ingredients-section-row">
     <div class="ingredients-info">
       <div class="info-top">
-        <h2 class="font-serif">{{ section.settings.heading }}</h2>
-        <p>{{ section.settings.subheading }}</p>
-        {% if section.settings.button_link != blank %}
-          <a href="{{ section.settings.button_link }}" class="btn btn-black">
-            {{ section.settings.button_label }}
-          </a>
-        {% endif %}
+        <div class="page-width">
+          <h2 class="font-serif">{{ section.settings.heading }}</h2>
+          <p>{{ section.settings.subheading }}</p>
+          {% if section.settings.button_link != blank %}
+            <a href="{{ section.settings.button_link }}" class="btn btn-black">
+              {{ section.settings.button_label }}
+            </a>
+          {% endif %}
+         </div>
       </div>
       {% if section.settings.bottom_image %}
         <div class="image-bottom">
