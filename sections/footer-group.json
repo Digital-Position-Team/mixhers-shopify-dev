@@ -11,6 +11,17 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "wholesale_hero_MABHJD": {
+      "type": "wholesale-hero",
+      "name": "Wholesale Hero",
+      "settings": {
+        "heading": "Wholesale Program",
+        "rich_text": "<p>Mixhers is on a mission to provide hormone-friendly, science-backed supplements to fuel female evolution through every stage of womanhood.</p><p>Our Wholesale Partners help us <em>drive our mission forward</em> by bringing Mixhers products to thousands of women across the country in their retail stores.</p>",
+        "button_text": "Apply Now",
+        "button_link": "",
+        "image": "shopify://shop_images/Frame_22.png"
+      }
+    },
     "faq_section_chF3Jt": {
       "type": "faq-section",
       "blocks": {
@@ -320,6 +331,7 @@
     }
   },
   "order": [
+    "wholesale_hero_MABHJD",
     "faq_section_chF3Jt",
     "ugc_testimonials_gDnbNa",
     "text_and_image_section_Wtfwzf",
