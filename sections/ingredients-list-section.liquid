@@ -113,6 +113,9 @@
 </div>
 
 <style>
+.info-top {
+    max-width: 600px;
+}
 .open-acc-item{
   display:flex;
   justify-content:space-between;
@@ -123,7 +126,7 @@
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
 }
-  .image-bottom {
+.image-bottom {
     min-height: 360px;
     position: relative;
 }
@@ -154,17 +157,14 @@
   padding: 15px 0;
   cursor: pointer;
 }
-
 .ingredient-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 .ingredient-description {
   margin-top: 10px;
 }
-
 .chevron {
   font-size: 18px;
   transition: transform 0.2s ease;
@@ -196,8 +196,6 @@ document.addEventListener('DOMContentLoaded', function () {
     toggleIcon.classList.toggle('open', !isCollapsed);
   });
 });
-
-
             
 document.addEventListener('DOMContentLoaded', function () {
   const items = document.querySelectorAll('[data-accordion]');
