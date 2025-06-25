@@ -87,7 +87,10 @@
     </div>
 
     <div class="ingredients-list">
-      <h3>Ingredients</h3>
+       <div class="open-acc-item">
+          <h3 class="font-serif">Ingredients</h3>
+          <!-- svg up down --> add please 
+        </div>
       <div class="ingredients-blocks">
         {% for block in section.blocks %}
           <div class="ingredient-item" data-accordion>
@@ -101,11 +104,17 @@
           </div>
         {% endfor %}
       </div>
+     
     </div>
   </div>
 </div>
 
 <style>
+.open-acc-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 .ingredients-list-section {
     background: #f9f9f9;
     border-top: 1px solid #000;
