@@ -47,7 +47,7 @@
           "type": "textarea",
           "id": "description",
           "label": "Ingredient Info",
-          "default": "Ashwagandha is an adaptogen that helps reduce stress and support hormone balance."
+          "default": "Ingredient Info"
         }
       ]
     }
@@ -69,7 +69,7 @@
   <div class="ingredients-section-row">
     <div class="ingredients-info">
       <div class="info-top">
-        <h2>{{ section.settings.heading }}</h2>
+        <h2 class="font-serif">{{ section.settings.heading }}</h2>
         <p>{{ section.settings.subheading }}</p>
         {% if section.settings.button_link != blank %}
           <a href="{{ section.settings.button_link }}" class="btn btn-black">
