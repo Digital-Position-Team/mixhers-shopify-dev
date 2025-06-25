@@ -84,6 +84,7 @@
         "professional_WiLDHV": {
           "type": "professional",
           "settings": {
+            "image": "shopify://shop_images/b95ed54f05b75888ea79a2b81515258eebd6d57c.jpg",
             "name": "Name 1",
             "bio": "Lorem ipsum dolor sit amet consectetur. Dignissim turpis ut volutpat ante eu."
           }
