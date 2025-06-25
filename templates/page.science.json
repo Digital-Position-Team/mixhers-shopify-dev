@@ -42,14 +42,14 @@
           "type": "feature",
           "settings": {
             "icon": "shopify://shop_images/Frame_28.png",
-            "text": "Third-party tested"
+            "text": "Backed by clinical research"
           }
         },
         "feature_VaeEAq": {
           "type": "feature",
           "settings": {
             "icon": "shopify://shop_images/Frame_29.png",
-            "text": "Third-party tested"
+            "text": "Formulated in FDA-registered, GMP-certified facilities"
           }
         }
       },
