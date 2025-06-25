@@ -1,6 +1,30 @@
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Image with text full",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Hero Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Hero Image (Mobile)"
+    },
+    {
+      "type": "text",
+      "id": "heading_desktop",
+      "label": "Heading Text (Desktop)",
+      "default": "Hormone-friendly · Highly absorbable · All Natural"
+    },
+     {
+      "type": "richtext",
+      "id": "heading_mobile",
+      "label": "Heading Text (Mobile)",
+      "default":"<p>Hormone-friendly <br>Highly absorbable  <br>All Natural</p>"
+    },
+  ],
+  "presets": [{"name": "Image with text full height"}]
+}
 {% endschema %}
