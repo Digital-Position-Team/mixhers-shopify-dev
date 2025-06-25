@@ -11,6 +11,25 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "text_and_image_section_Wtfwzf": {
+      "type": "text-and-image-section",
+      "name": "Text and Image",
+      "settings": {
+        "title": "Make it personal.",
+        "body": "<p>Get matched with an individualized product suite formulated just for you.</p>",
+        "text_alignment": "center",
+        "inline_image": "shopify://shop_images/home-rebrand-product-ribbon.webp",
+        "cta_text": "Take the quiz",
+        "cta_link": "shopify://pages/quiz",
+        "image": "shopify://shop_images/rebrand-mocktail.gif",
+        "direction": "ltr",
+        "bg_color": "#f4f9fd",
+        "cta_type": "btn-black",
+        "show_top_border": false,
+        "show_bottom_border": false,
+        "border_color": "rgb(26 26 26 / 1)"
+      }
+    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -69,6 +88,7 @@
     }
   },
   "order": [
+    "text_and_image_section_Wtfwzf",
     "footer"
   ]
 }
