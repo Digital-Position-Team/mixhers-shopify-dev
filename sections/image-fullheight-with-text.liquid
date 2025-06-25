@@ -27,13 +27,13 @@
       "type": "text",
       "id": "heading",
       "label": "Heading Text (Desktop)",
-      "default": "Hormone-friendly · Highly absorbable · All Natural"
+      "default": "What makes our formulas actually work?"
     },
      {
       "type": "richtext",
       "id": "content",
       "label": "Content",
-      "default":"<p>Hormone-friendly <br>Highly absorbable  <br>All Natural</p>"
+      "default":"<p>MixHers is hormonal health and wellness made simple.</p>"
     },
   ],
   "presets": [{"name": "Floating Image with text"}]
@@ -42,10 +42,18 @@
 
 <div class="image-with-content">
   <div class="page-width">
+    <div class="image-with-content-row">
     <div class="content-div">
+      <div class="content-div-inner">
+        <h3 class="">{{ section.settings.heading }}</h3>
+        <div class="">
+          {{ section.settings.content }}
+        </div>
+      </div>
     </div>
     <div class="image-div">
      <img src={{ section.settings.image | image_url: width:1000 }} alt="Image" width="" height=""/>
     </div>
   </div>
+ </div>
 </div>
