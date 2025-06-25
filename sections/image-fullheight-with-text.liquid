@@ -41,9 +41,10 @@
 {% endschema %}
 
 <div class="image-with-content">
-  <div class="page-width">
+ 
     <div class="image-with-content-row" style="flex-direction:">
     <div class="content-div">
+       <div class="page-width">
       <div class="content-div-inner">
         <h3 class="">{{ section.settings.heading }}</h3>
         <div class="">
@@ -51,10 +52,11 @@
         </div>
       </div>
     </div>
+      </div>
     <div class="image-div">
      <img src={{ section.settings.image | image_url: width:1000 }} alt="Image" width="" height=""/>
     </div>
-  </div>
+  
  </div>
 </div>
 
