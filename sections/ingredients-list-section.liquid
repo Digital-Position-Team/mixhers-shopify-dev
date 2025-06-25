@@ -87,10 +87,13 @@
     </div>
 
     <div class="ingredients-list">
-       <div class="open-acc-item">
-          <h3 class="font-serif">Ingredients</h3>
-          <!-- svg up down --> add please 
-        </div>
+       <div class="open-acc-item" id="ingredients-toggle">
+        <h3 class="font-serif">Ingredients</h3>
+        <svg class="toggle-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </div>
+
       <div class="ingredients-blocks">
         {% for block in section.blocks %}
           <div class="ingredient-item" data-accordion>
@@ -169,9 +172,33 @@
 .ingredient-item.open .chevron {
   transform: rotate(45deg);
 }
+.toggle-icon {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.toggle-icon.open {
+  transform: rotate(180deg);
+}
+.ingredients-blocks.collapsed {
+  display: none;
+}
+
 </style>
 
 <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const toggleHeader = document.getElementById('ingredients-toggle');
+  const ingredientsBlock = document.querySelector('.ingredients-blocks');
+  const toggleIcon = toggleHeader.querySelector('.toggle-icon');
+
+  toggleHeader.addEventListener('click', () => {
+    const isCollapsed = ingredientsBlock.classList.toggle('collapsed');
+    toggleIcon.classList.toggle('open', !isCollapsed);
+  });
+});
+
+
+            
 document.addEventListener('DOMContentLoaded', function () {
   const items = document.querySelectorAll('[data-accordion]');
 
