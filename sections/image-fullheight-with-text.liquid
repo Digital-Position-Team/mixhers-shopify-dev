@@ -52,14 +52,14 @@
     <div class="content-div">
        <div class="page-width">
       <div class="content-div-inner">
-        <h3 class="">{{ section.settings.heading }}</h3>
+        <h3 class="heading-text">{{ section.settings.heading }}</h3>
         <div class="">
           {{ section.settings.content }}
         </div>
       </div>
     </div>
       </div>
-    <div class="image-div">
+    <div class="image-div image-{{ section.settings.image_position }}">
      <img src={{ section.settings.image | image_url: width:1000 }} alt="Image" width="" height=""/>
     </div>
   
@@ -67,6 +67,9 @@
 </div>
 
 <style>
+  .image-with-content-row .heading-text {
+    color: {{ section.settings.heading_color }};
+  }
   .image-with-content-row{
     display:grid;
     grid-template-columns:1fr 1fr;
