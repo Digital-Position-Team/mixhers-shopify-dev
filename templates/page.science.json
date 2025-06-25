@@ -22,8 +22,9 @@
       "name": "Floating Image with text",
       "settings": {
         "image": "shopify://shop_images/Frame_22.png",
-        "image_position": "left",
+        "image_position": "right",
         "heading": "What makes our formulas actually work?",
+        "heading_color": "#ff59e4",
         "content": "<p>MixHers is hormonal health and wellness made simple. Every scoop delivers over 50 vitamins, minerals, superfoods, adaptogens, and probiotics—formulated to support hormone health, gut balance, stress, metabolism, immunity, and more. No fillers. No additives. Just real ingredients selected to bring you wholeness.</p>"
       }
     },
