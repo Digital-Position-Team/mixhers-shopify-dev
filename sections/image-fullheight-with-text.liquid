@@ -41,14 +41,19 @@
       "label": "Content",
       "default":"<p>MixHers is hormonal health and wellness made simple.</p>"
     },
+      {
+      "type": "checkbox",
+      "id": "border_bottom",
+      "label": "Show bottom border",
+      "default":true
+    },
   ],
   "presets": [{"name": "Floating Image with text"}]
 }
 {% endschema %}
 
-<div class="image-with-content">
- 
-    <div class="image-with-content-row">
+<div class="image-with-content {% if section.settings.border_bottom %} show-border-bottom{% endif %}">
+  <div class="image-with-content-row">
     <div class="content-div content-{{ section.settings.image_position }}">
        <div class="page-width">
       <div class="content-div-inner">
@@ -62,11 +67,13 @@
     <div class="image-div image-{{ section.settings.image_position }}">
      <img src={{ section.settings.image | image_url: width:1000 }} alt="Image" width="" height=""/>
     </div>
-  
  </div>
 </div>
 
 <style>
+  .image-with-content.show-border-bottom{
+    border-bottom:1px solid #000;
+  }
   .image-with-content-row .heading-text {
     color: {{ section.settings.heading_color }};
   }
