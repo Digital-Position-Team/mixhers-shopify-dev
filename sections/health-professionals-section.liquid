@@ -1,3 +1,85 @@
+<style>
+
+.prof-item {
+  width:33.33%;
+  border-bottom: 1px solid #000;
+  border-top:1px solid #000;
+  border-right: 1px solid #000;
+  box-sizing: border-box;
+}
+.prof-item:nth-child(3n) {
+  border-right: none;
+}
+.health-professionals-block {
+  display: flex;
+  flex-wrap: wrap;
+}
+.health-professionals-block::after {
+  content: "";
+  flex: auto;
+}
+  .prof-item-info h4 {
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+.prof-item img {
+  width: 100%;
+  display:block; 
+  height:320px;
+  object-fit:cover;
+  object-position:top;
+}
+.trusted-by-professionals-section {
+  background: #F4F9FD;
+  border-top:1px solid #000;
+}
+.professionals-heading-block {
+    padding: 45px 20px 35px;
+    text-align: center;
+}
+.professionals-heading-block h2 {
+    margin-top: 0px;
+    position: relative;
+    text-align: center;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+}
+.professionals-heading-block h2:after {
+    display: block;
+    content: '';
+    width: 64px;
+    height: 4px;
+    background: #000;
+    left: 0;
+    right: 0;
+    position: absolute;
+    bottom: 0;
+    margin: 0 auto;
+}
+.professionals-heading-block p {
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.prof-item-info {
+    padding: 40px 60px;
+    text-align: center;
+}
+.prof-item-info * {
+    margin-top: 0px;
+}
+@media screen (max-width:768px){
+  .professionals-heading-block p {
+    font-family: 'Faire Sprig';
+}
+  .professionals-heading-block .btn{
+            width: 50%;
+        max-width: 100%;
+        margin: 0px auto;
+        text-transform: capitalize;
+  }
+}
+</style>
 {% schema %}
 {
   "name": "Trusted by Professionals",
@@ -88,75 +170,4 @@
     {% endfor %}
   </div>
 </div>
-<style>
 
-.prof-item {
-  width:33.33%;
-  border-bottom: 1px solid #000;
-  border-top:1px solid #000;
-  border-right: 1px solid #000;
-  box-sizing: border-box;
-}
-.prof-item:nth-child(3n) {
-  border-right: none;
-}
-.health-professionals-block {
-  display: flex;
-  flex-wrap: wrap;
-}
-.health-professionals-block::after {
-  content: "";
-  flex: auto;
-}
-  .prof-item-info h4 {
-    font-size: 18px;
-    margin-bottom: 12px;
-}
-.prof-item img {
-  width: 100%;
-  display:block; 
-  height:320px;
-  object-fit:cover;
-  object-position:top;
-}
-.trusted-by-professionals-section {
-  background: #F4F9FD;
-  border-top:1px solid #000;
-}
-.professionals-heading-block {
-    padding: 45px 20px 35px;
-    text-align: center;
-}
-.professionals-heading-block h2 {
-    margin-top: 0px;
-    position: relative;
-    text-align: center;
-    margin-bottom: 24px;
-    padding-bottom: 24px;
-}
-.professionals-heading-block h2:after {
-    display: block;
-    content: '';
-    width: 64px;
-    height: 4px;
-    background: #000;
-    left: 0;
-    right: 0;
-    position: absolute;
-    bottom: 0;
-    margin: 0 auto;
-}
-.professionals-heading-block p {
-    max-width: 450px;
-    margin-left: auto;
-    margin-right: auto;
-}
-.prof-item-info {
-    padding: 40px 60px;
-    text-align: center;
-}
-.prof-item-info * {
-    margin-top: 0px;
-}
-
-</style>
