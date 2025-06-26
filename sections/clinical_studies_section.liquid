@@ -26,7 +26,6 @@
       "label": "Button Label",
       "default": "Shop MixHers Products"
     }
-    
   ],
   "blocks": [
     {
@@ -56,11 +55,11 @@
 }
 {% endschema %}
 
-<div class="clinical_sts-list-section">
-  <div class="clinical_sts-section-row">
-    <div class="clinical_study-info">
-      <div class="info-top">
-        <div class="page-width">
+<div class="clinical_sts-list-section_clinic">
+  <div class="clinical_sts-section-row_clinic">
+    <div class="clinical_study-info_clinic">
+      <div class="info-top_clinic">
+        <div class="page-width_clinic">
           <h1 class="font-serif">{{ section.settings.heading }}</h1>
           <p>{{ section.settings.subheading }}</p>
           {% if section.settings.button_link != blank %}
@@ -68,70 +67,68 @@
               {{ section.settings.button_label }}
             </a>
           {% endif %}
-         </div>
+        </div>
       </div>
       {% if section.settings.bottom_image %}
-        <div class="image-bottom">
+        <div class="image-bottom_clinic">
           <img src="{{ section.settings.bottom_image | image_url }}" alt="Ingredients Image" height="" width=""/>
         </div>
       {% endif %}
     </div>
 
-    <div class="clinical_studies-list">
-       <div class="open-acc-item" id="clinical_study-toggle">
+    <div class="clinical_studies-list_clinic">
+      <div class="open-acc-item_clinic" id="clinical_study-toggle_clinic">
         <h3 class="font-serif">Clinical Studies</h3>
-        <svg class="toggle-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="toggle-icon_clinic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="6 9 12 15 18 9" />
         </svg>
       </div>
 
-      <div class="clinical_study-blocks">
+      <div class="clinical_study-blocks_clinic">
         {% for block in section.blocks %}
-          <div class="clinical_st-item" data-accordion>
-            <div class="clinical_st-title" data-accordion-toggle>
+          <div class="clinical_st-item_clinic" data-accordion_clinic>
+            <div class="clinical_st-title_clinic" data-accordion-toggle_clinic>
               <strong>{{ block.settings.title }}</strong>
-              <span class="chevron">+</span>
+              <span class="chevron_clinic">+</span>
             </div>
-            <div class="clinical_st-description" style="display: none;">
+            <div class="clinical_st-description_clinic" style="display: none;">
               <p>{{ block.settings.description }}</p>
             </div>
           </div>
         {% endfor %}
-      </div>
-     
+      </div>     
     </div>
   </div>
 </div>
 
 <style>
-.info-top {
+.info-top_clinic {
   padding:80px 0px 60px 0px;
   max-width: 600px;
 }
-.image-bottom {
+.image-bottom_clinic {
     flex-grow: 1;
 }
-.info-top * {
+.info-top_clinic * {
   margin: 0px;
 }
-.info-top .page-width {
+.info-top_clinic .page-width_clinic {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 22px;
 }
-.open-acc-item{
+.open-acc-item_clinic {
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
-.clinical_sts-list-section {
+.clinical_sts-list-section_clinic {
     background: transparent;
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
 }
-
-.image-bottom img{
+.image-bottom_clinic img {
     width: 100%;
     object-fit: cover;
     position: absolute;
@@ -141,70 +138,70 @@
     bottom: 0;
     top: 0;
 }
-.clinical_studies-list {
+.clinical_studies-list_clinic {
     width: 50%;
     padding: 28px;
 }
-.clinical_sts-section-row {
+.clinical_sts-section-row_clinic {
   display: flex;
   flex-wrap: wrap;
 }
-.clinical_study-info {
+.clinical_study-info_clinic {
     width: 50%;
-      display: flex;
+    display: flex;
     flex-direction: column;
 }
-.clinical_st-item {
+.clinical_st-item_clinic {
   border-bottom: 1px solid #ccc;
   padding: 15px 0;
   cursor: pointer;
 }
-.clinical_st-title {
+.clinical_st-title_clinic {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.clinical_st-description {
+.clinical_st-description_clinic {
   margin-top: 10px;
 }
-.chevron {
+.chevron_clinic {
   font-size: 18px;
   transition: transform 0.2s ease;
 }
-.clinical_st-item.open .chevron {
+.clinical_st-item_clinic.open_clinic .chevron_clinic {
   transform: rotate(45deg);
 }
-.toggle-icon {
+.toggle-icon_clinic {
   transition: transform 0.3s ease;
   cursor: pointer;
 }
-.toggle-icon.open {
+.toggle-icon_clinic.open_clinic {
   transform: rotate(180deg);
 }
-.clinical_study-blocks.collapsed {
+.clinical_study-blocks_clinic.collapsed_clinic {
   display: none;
 }
 @media screen and (max-width: 768px) {
-  .clinical_sts-section-row .clinical_study-info {
+  .clinical_sts-section-row_clinic .clinical_study-info_clinic {
     width: 100%;
     border-right: unset;
     text-align: center;
-}
-  .clinical_sts-section-row {
+  }
+  .clinical_sts-section-row_clinic {
     flex-direction: column;
-}
-  .clinical_sts-section-row .clinical_studies-list{
+  }
+  .clinical_sts-section-row_clinic .clinical_studies-list_clinic {
     width: 100%;
-}
-  .info-top p{
+  }
+  .info-top_clinic p {
     text-align: center;
     width: 100%;
-}
-  .info-top .btn {
+  }
+  .info-top_clinic .btn {
     margin: 0px auto;
     width: 70%;
-}
-  .info-top h1.font-serif:before {
+  }
+  .info-top_clinic h1.font-serif:before {
     position: absolute;
     content: '';
     height: 4px;
@@ -212,46 +209,45 @@
     width: 25%;
     left: 37%;
     bottom: 10%;
-}
-
-.info-top h1.font-serif {
+  }
+  .info-top_clinic h1.font-serif {
     padding-bottom: 50px;
     position: relative;
-}
+  }
 }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  const toggleHeader = document.getElementById('clinical_study-toggle');
-  const clinical_stsBlock = document.querySelector('.clinical_study-blocks');
-  const toggleIcon = toggleHeader.querySelector('.toggle-icon');
+  const toggleHeader_clinic = document.getElementById('clinical_study-toggle_clinic');
+  const clinical_stsBlock_clinic = document.querySelector('.clinical_study-blocks_clinic');
+  const toggleIcon_clinic = toggleHeader_clinic.querySelector('.toggle-icon_clinic');
 
-  toggleHeader.addEventListener('click', () => {
-    const isCollapsed = clinical_stsBlock.classList.toggle('collapsed');
-    toggleIcon.classList.toggle('open', !isCollapsed);
+  toggleHeader_clinic.addEventListener('click', () => {
+    const isCollapsed_clinic = clinical_stsBlock_clinic.classList.toggle('collapsed_clinic');
+    toggleIcon_clinic.classList.toggle('open_clinic', !isCollapsed_clinic);
   });
 });
-            
+
 document.addEventListener('DOMContentLoaded', function () {
-  const items = document.querySelectorAll('[data-accordion]');
+  const items_clinic = document.querySelectorAll('[data-accordion_clinic]');
 
-  items.forEach(item => {
-    const toggle = item.querySelector('[data-accordion-toggle]');
-    const desc = item.querySelector('.clinical_st-description');
+  items_clinic.forEach(item_clinic => {
+    const toggle_clinic = item_clinic.querySelector('[data-accordion-toggle_clinic]');
+    const desc_clinic = item_clinic.querySelector('.clinical_st-description_clinic');
 
-    toggle.addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
-      items.forEach(i => {
-        i.classList.remove('open');
-        i.querySelector('.clinical_st-description').style.display = 'none';
-        i.querySelector('.chevron').textContent = '+';
+    toggle_clinic.addEventListener('click', () => {
+      const isOpen_clinic = item_clinic.classList.contains('open_clinic');
+      items_clinic.forEach(i_clinic => {
+        i_clinic.classList.remove('open_clinic');
+        i_clinic.querySelector('.clinical_st-description_clinic').style.display = 'none';
+        i_clinic.querySelector('.chevron_clinic').textContent = '+';
       });
 
-      if (!isOpen) {
-        item.classList.add('open');
-        desc.style.display = 'block';
-        item.querySelector('.chevron').textContent = '+';
+      if (!isOpen_clinic) {
+        item_clinic.classList.add('open_clinic');
+        desc_clinic.style.display = 'block';
+        item_clinic.querySelector('.chevron_clinic').textContent = '+';
       }
     });
   });
