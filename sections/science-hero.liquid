@@ -57,7 +57,7 @@
 }
 {% endschema %}
 
-<section class="hero-mixhers-section">
+<div class="hero-science-section">
   {% if section.settings.background_image %}
     <div class="hero-image-wrapper">
       <img src="{{ section.settings.background_image | image_url: width: 1500 }}" width="" height="" alt="Hero Background" class="hero-bg-img" loading="lazy" />
@@ -69,12 +69,12 @@
 
     <div class="hero-buttons">
       {% if section.settings.primary_button_link %}
-        <a href="{{ section.settings.primary_button_link }}" class="btn primary-btn">
+        <a href="{{ section.settings.primary_button_link }}" class="btn btn-pink">
           {{ section.settings.primary_button_label }}
         </a>
       {% endif %}
       {% if section.settings.secondary_button_link %}
-        <a href="{{ section.settings.secondary_button_link }}" class="btn secondary-btn">
+        <a href="{{ section.settings.secondary_button_link }}" class="btn btn-white">
           {{ section.settings.secondary_button_label }}
         </a>
       {% endif %}
@@ -85,4 +85,4 @@
       <p class="star-text">{{ section.settings.star_text }}</p>
     </div>
   </div>
-</section>
+</div>
