@@ -203,6 +203,72 @@
         "button_label": "Shop MixHers Products"
       }
     },
+    "why_mixhers_section_LbmiaW": {
+      "type": "why_mixhers_Section",
+      "blocks": {
+        "comparison_table_Gaap8Q": {
+          "type": "comparison-table",
+          "settings": {
+            "comparison_item": "Addresses root cause of PMS for long-term relief",
+            "mixher_ok": true,
+            "otc_ok": false,
+            "hormonal_ok": false
+          }
+        },
+        "comparison_table_phJ6bD": {
+          "type": "comparison-table",
+          "settings": {
+            "comparison_item": "Clinically studied chaste tree berry extract",
+            "mixher_ok": true,
+            "otc_ok": false,
+            "hormonal_ok": false
+          }
+        },
+        "comparison_table_CnGmdR": {
+          "type": "comparison-table",
+          "settings": {
+            "comparison_item": "Hormone friendly",
+            "mixher_ok": true,
+            "otc_ok": false,
+            "hormonal_ok": false
+          }
+        },
+        "comparison_table_QnwRkR": {
+          "type": "comparison-table",
+          "settings": {
+            "comparison_item": "Temporary relief from PMS symptoms",
+            "mixher_ok": false,
+            "otc_ok": true,
+            "hormonal_ok": false
+          }
+        },
+        "comparison_table_pXLfVP": {
+          "type": "comparison-table",
+          "settings": {
+            "comparison_item": "Increased risk of blood clots + stroke",
+            "mixher_ok": false,
+            "otc_ok": false,
+            "hormonal_ok": true
+          }
+        }
+      },
+      "block_order": [
+        "comparison_table_Gaap8Q",
+        "comparison_table_phJ6bD",
+        "comparison_table_CnGmdR",
+        "comparison_table_QnwRkR",
+        "comparison_table_pXLfVP"
+      ],
+      "name": "Comparison Why Mixhers",
+      "settings": {
+        "background-color": "#F4F9FD",
+        "head": "Why Mixhers?",
+        "sub_head": "We'll let you decide.",
+        "comparison_txt1": "Mixhers Hertime PMS",
+        "comparison_txt2": "OTC Pain Pills",
+        "comparison_txt3": "Hormonal Birth Control"
+      }
+    },
     "faq_section_KbeexA": {
       "type": "faq-section",
       "blocks": {
@@ -463,6 +529,7 @@
     "features_with_icons_grkU36",
     "ingredients_list_section_rceajQ",
     "clinical_studies_section_4rKqyY",
+    "why_mixhers_section_LbmiaW",
     "faq_section_KbeexA",
     "ugc_testimonials_wbwrdN",
     "text_and_image_section_t3dGyb"
