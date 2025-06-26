@@ -85,7 +85,7 @@
         </svg>
       </div>
 
-      <div class="ingredients-blocks">
+      <div class="clinical_study-blocks">
         {% for block in section.blocks %}
           <div class="ingredient-item" data-accordion>
             <div class="ingredient-title" data-accordion-toggle>
@@ -181,7 +181,7 @@
 .toggle-icon.open {
   transform: rotate(180deg);
 }
-.ingredients-blocks.collapsed {
+.clinical_study-blocks.collapsed {
   display: none;
 }
 @media screen and (max-width: 768px) {
@@ -224,7 +224,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   const toggleHeader = document.getElementById('clinical_study-toggle');
-  const ingredientsBlock = document.querySelector('.ingredients-blocks');
+  const ingredientsBlock = document.querySelector('.clinical_study-blocks');
   const toggleIcon = toggleHeader.querySelector('.toggle-icon');
 
   toggleHeader.addEventListener('click', () => {
