@@ -157,6 +157,16 @@
         "bottom_image": "shopify://shop_images/a89f1193667e5faef5f9abea4bc6e6f7fdc6d93b.jpg"
       }
     },
+    "clinical_studies_section_4rKqyY": {
+      "type": "clinical_studies_section",
+      "name": "Clinical Studies Section",
+      "settings": {
+        "heading": "MixHers is clinically studied",
+        "subheading": "Crafted for balance, rooted in research, trusted by women.",
+        "button_link": "",
+        "button_label": "Shop MixHers Products"
+      }
+    },
     "faq_section_KbeexA": {
       "type": "faq-section",
       "blocks": {
@@ -416,6 +426,7 @@
     "image_fullheight_with_text_HxaDqC",
     "features_with_icons_grkU36",
     "ingredients_list_section_rceajQ",
+    "clinical_studies_section_4rKqyY",
     "faq_section_KbeexA",
     "ugc_testimonials_wbwrdN",
     "text_and_image_section_t3dGyb"
