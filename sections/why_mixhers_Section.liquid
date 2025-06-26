@@ -59,6 +59,13 @@
     text-align: center;
     vertical-align: middle;
 }
+    .swiper-pagination-bullet {
+  background: #ccc;
+  opacity: 1;
+}
+.swiper-pagination-bullet-active {
+  background: #FF59E4; /* Or your theme color */
+}
   }
 </style>
 <!-- mobile -->
@@ -87,6 +94,7 @@
           <p>{{ section.settings.comparison_txt3 }}</p>
         </div>
       </div>
+      <div class="swiper-pagination"></div>
     </div>
 
     <!-- Comparison List -->
@@ -114,32 +122,59 @@
         </div>
       {% endfor %}
     </div>
+
+                
   </div>
 </div>
 
 <!-- Swiper + Active Logic Script -->
 <script>
+  // document.addEventListener("DOMContentLoaded", function () {
+  //   const swiper = new Swiper(".product-swiper", {
+  //     slidesPerView: 1,
+  //     spaceBetween: 20,
+  //     on: {
+  //       slideChange: function () {
+  //         const activeSlide = document.querySelector(".product-swiper .swiper-slide-active");
+  //         const activeId = activeSlide?.dataset.id;
+
+  //         document.querySelectorAll(".tick").forEach(el => {
+  //           el.style.display = el.dataset.id === activeId ? "block" : "none";
+  //         });
+  //       }
+  //     }
+  //   });
+
+  //   // Initial visibility on load
+  //   const initId = document.querySelector(".product-swiper .swiper-slide-active")?.dataset.id;
+  //   document.querySelectorAll(".tick").forEach(el => {
+  //     el.style.display = el.dataset.id === initId ? "block" : "none";
+  //   });
+  // });
   document.addEventListener("DOMContentLoaded", function () {
     const swiper = new Swiper(".product-swiper", {
       slidesPerView: 1,
       spaceBetween: 20,
+      loop: false,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
       on: {
+        init: function () {
+          updateTicks(this.slides[this.activeIndex].dataset.id);
+        },
         slideChange: function () {
-          const activeSlide = document.querySelector(".product-swiper .swiper-slide-active");
-          const activeId = activeSlide?.dataset.id;
-
-          document.querySelectorAll(".tick").forEach(el => {
-            el.style.display = el.dataset.id === activeId ? "block" : "none";
-          });
+          updateTicks(this.slides[this.activeIndex].dataset.id);
         }
       }
     });
 
-    // Initial visibility on load
-    const initId = document.querySelector(".product-swiper .swiper-slide-active")?.dataset.id;
-    document.querySelectorAll(".tick").forEach(el => {
-      el.style.display = el.dataset.id === initId ? "block" : "none";
-    });
+    function updateTicks(activeId) {
+      document.querySelectorAll(".tick").forEach(el => {
+        el.style.display = el.dataset.id === activeId ? "block" : "none";
+      });
+    }
   });
 </script>
 
