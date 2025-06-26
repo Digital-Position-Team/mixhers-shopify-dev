@@ -160,18 +160,17 @@
     "clinical_studies_section_4rKqyY": {
       "type": "clinical_studies_section",
       "blocks": {
-        "ingredient_XNmULK": {
-          "type": "ingredient",
+        "clinical_st_geTdij": {
+          "type": "clinical_st",
           "settings": {
-            "title": "Lorem Ipsum",
-            "description": "Lorem Ipsum\n“Dose-Dependent Efficacy of the Chaste Tree Berry Extract in Patients\nSuffering from Premenstrual Syndrome”\n\nRead Journal Article\nLorem Ipsum\n“Dose-Dependent Efficacy of the Chaste Tree Berry Extract in Patients\nSuffering from Premenstrual Syndrome”\n\nRead Journal Article\nLorem Ipsum\n“Dose-Dependent Efficacy of the Chaste Tree Berry Extract in Patients\nSuffering from Premenstrual Syndrome”\n\nRead Journal Article"
+            "title": "Ingredient Name",
+            "description": "Ingredient Info"
           }
         }
       },
       "block_order": [
-        "ingredient_XNmULK"
+        "clinical_st_geTdij"
       ],
-      "disabled": true,
       "name": "Clinical Studies Section",
       "settings": {
         "heading": "MixHers is clinically studied",
