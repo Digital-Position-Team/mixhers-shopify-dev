@@ -4,15 +4,15 @@
   
   <div class="product-comparison">
     <div class="product-column">
-      <img src="{{ 'mixhers-hertime.png' | asset_url }}" alt="Mixhers Hertime PMS">
+      <img src="{{ section.settings.comparison_img1 | img_url:'master' }}" alt="Mixhers Hertime PMS">
       <p>{{ section.settings.comparison_txt1 }}</p>
     </div>
     <div class="product-column">
-      <img src="{{ 'otc-pain-pills.png' | asset_url }}" alt="OTC Pain Pills">
+      <img src="{{ section.settings.comparison_img2 | img_url:'master' }}" alt="OTC Pain Pills">
       <p>{{ section.settings.comparison_txt2 }}</p>
     </div>
     <div class="product-column">
-      <img src="{{ 'hormonal-birth-control.png' | asset_url }}" alt="Hormonal Birth Control">
+      <img src="{{ section.settings.comparison_img3 | img_url:'master' }}" alt="Hormonal Birth Control">
       <p>{{ section.settings.comparison_txt3 }}</p>
     </div>
   </div>
