@@ -17,6 +17,20 @@
         "padding_bottom": 28
       }
     },
+    "science_hero_VfYiEd": {
+      "type": "science-hero",
+      "name": "Science Hero Banner",
+      "settings": {
+        "background_image": "shopify://shop_images/Mixhers-Marchshoot-atp-60_1.png",
+        "heading": "Backed by science. Trusted by women.",
+        "subheading": "Science-backed supplements you sip for balanced hormones and a better you.",
+        "primary_button_link": "",
+        "primary_button_label": "Read the studies",
+        "secondary_button_link": "",
+        "secondary_button_label": "Shop now",
+        "star_text": "Over 17,000 5-star reviews from real women"
+      }
+    },
     "health_professionals_section_VqegED": {
       "type": "health-professionals-section",
       "blocks": {
@@ -396,6 +410,7 @@
   },
   "order": [
     "main",
+    "science_hero_VfYiEd",
     "health_professionals_section_VqegED",
     "image_fullheight_with_text_HxaDqC",
     "features_with_icons_grkU36",
