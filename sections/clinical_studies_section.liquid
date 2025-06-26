@@ -1,6 +1,272 @@
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Ingredients List Section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "MixHers is clinically studied"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Crafted for balance, rooted in research, trusted by women."
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Shop MixHers Products"
+    },
+    {
+      "type": "image_picker",
+      "id": "bottom_image",
+      "label": "Bottom Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Ingredient Name",
+          "default": "Ingredient Name"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Ingredient Info",
+          "default": "Ingredient Info"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ingredients List Section",
+      "blocks": [
+        { "type": "ingredient" },
+        { "type": "ingredient" },
+        { "type": "ingredient" }
+      ]
+    }
+  ]
+}
 {% endschema %}
+
+<div class="ingredients-list-section">
+  <div class="ingredients-section-row">
+    <div class="ingredients-info">
+      <div class="info-top">
+        <div class="page-width">
+          <h1 class="font-serif">{{ section.settings.heading }}</h1>
+          <p>{{ section.settings.subheading }}</p>
+          {% if section.settings.button_link != blank %}
+            <a href="{{ section.settings.button_link }}" class="btn btn-black">
+              {{ section.settings.button_label }}
+            </a>
+          {% endif %}
+         </div>
+      </div>
+      {% if section.settings.bottom_image %}
+        <div class="image-bottom">
+          <img src="{{ section.settings.bottom_image | image_url }}" alt="Ingredients Image" height="" width=""/>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="clinical_studies-list">
+       <div class="open-acc-item" id="ingredients-toggle">
+        <h3 class="font-serif">Clinical Studies</h3>
+        <svg class="toggle-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </div>
+
+      <div class="ingredients-blocks">
+        {% for block in section.blocks %}
+          <div class="ingredient-item" data-accordion>
+            <div class="ingredient-title" data-accordion-toggle>
+              <strong>{{ block.settings.title }}</strong>
+              <span class="chevron">+</span>
+            </div>
+            <div class="ingredient-description" style="display: none;">
+              <p>{{ block.settings.description }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+<style>
+.info-top {
+  padding:80px 0px 60px 0px;
+  max-width: 600px;
+}
+.image-bottom {
+    flex-grow: 1;
+}
+.info-top * {
+  margin: 0px;
+}
+.info-top .page-width {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+}
+.open-acc-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.ingredients-list-section {
+    background: #F4F9FD;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+.image-bottom {
+    min-height: 360px;
+    position: relative;
+}
+.image-bottom img{
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+    bottom: 0;
+    top: 0;
+}
+.clinical_studies-list {
+    width: 50%;
+    padding: 28px;
+}
+.ingredients-section-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.ingredients-info {
+    width: 50%;
+    border-right: 1px solid #000;
+      display: flex;
+    flex-direction: column;
+}
+.ingredient-item {
+  border-bottom: 1px solid #ccc;
+  padding: 15px 0;
+  cursor: pointer;
+}
+.ingredient-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ingredient-description {
+  margin-top: 10px;
+}
+.chevron {
+  font-size: 18px;
+  transition: transform 0.2s ease;
+}
+.ingredient-item.open .chevron {
+  transform: rotate(45deg);
+}
+.toggle-icon {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.toggle-icon.open {
+  transform: rotate(180deg);
+}
+.ingredients-blocks.collapsed {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .ingredients-section-row .ingredients-info {
+    width: 100%;
+    border-right: unset;
+    text-align: center;
+}
+  .ingredients-section-row {
+    flex-direction: column;
+}
+  .ingredients-section-row .clinical_studies-list{
+    width: 100%;
+}
+  .info-top p{
+    text-align: center;
+    width: 100%;
+}
+  .info-top .btn {
+    margin: 0px auto;
+    width: 70%;
+}
+  .info-top h1.font-serif:before {
+    position: absolute;
+    content: '';
+    height: 4px;
+    background: #000;
+    width: 25%;
+    left: 37%;
+    bottom: 10%;
+}
+
+.info-top h1.font-serif {
+    padding-bottom: 50px;
+    position: relative;
+}
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const toggleHeader = document.getElementById('ingredients-toggle');
+  const ingredientsBlock = document.querySelector('.ingredients-blocks');
+  const toggleIcon = toggleHeader.querySelector('.toggle-icon');
+
+  toggleHeader.addEventListener('click', () => {
+    const isCollapsed = ingredientsBlock.classList.toggle('collapsed');
+    toggleIcon.classList.toggle('open', !isCollapsed);
+  });
+});
+            
+document.addEventListener('DOMContentLoaded', function () {
+  const items = document.querySelectorAll('[data-accordion]');
+
+  items.forEach(item => {
+    const toggle = item.querySelector('[data-accordion-toggle]');
+    const desc = item.querySelector('.ingredient-description');
+
+    toggle.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      items.forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.ingredient-description').style.display = 'none';
+        i.querySelector('.chevron').textContent = '+';
+      });
+
+      if (!isOpen) {
+        item.classList.add('open');
+        desc.style.display = 'block';
+        item.querySelector('.chevron').textContent = '+';
+      }
+    });
+  });
+});
+</script>
