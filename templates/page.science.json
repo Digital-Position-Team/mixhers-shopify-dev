@@ -22,6 +22,7 @@
       "name": "Science Hero Banner",
       "settings": {
         "background_image": "shopify://shop_images/Mixhers-Marchshoot-atp-60_1.png",
+        "background_image_mob": "shopify://shop_images/MIXHERS-ATP-316_2.png",
         "heading": "Backed by science. Trusted by women.",
         "subheading": "Science-backed supplements you sip for balanced hormones and a better you.",
         "primary_button_link": "#",
