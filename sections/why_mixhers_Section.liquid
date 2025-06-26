@@ -1,46 +1,31 @@
-{% assign comparison_why_mixher = true %}
-
 <div class="why-mixhers-container desktop-only">
-  <h2>Why Mixhers?</h2>
-  <p>We’ll let you decide.</p>
+  <h2>{{section.settings.head }}</h2>
+  <p>{{ section.settings.sub_head }}</p>
   
   <div class="product-comparison">
     <div class="product-column">
       <img src="{{ 'mixhers-hertime.png' | asset_url }}" alt="Mixhers Hertime PMS">
-      <p>Mixhers<br>Hertime PMS</p>
+      <p>{{ section.settings.comparison_txt1 }}</p>
     </div>
     <div class="product-column">
       <img src="{{ 'otc-pain-pills.png' | asset_url }}" alt="OTC Pain Pills">
-      <p>OTC<br>Pain Pills</p>
+      <p>{{ section.settings.comparison_txt2 }}</p>
     </div>
     <div class="product-column">
       <img src="{{ 'hormonal-birth-control.png' | asset_url }}" alt="Hormonal Birth Control">
-      <p>Hormonal<br>Birth Control</p>
+      <p>{{ section.settings.comparison_txt3 }}</p>
     </div>
   </div>
 
   <table class="comparison-table">
-    <tr>
-      
-      <td>Addresses root cause of PMS for long-term relief</td>
-      <td>✓</td><td></td><td></td>
-    </tr>
-    <tr>
-      <td>Clinically studied chaste tree berry extract</td>
-      <td>✓</td><td></td><td></td>
-    </tr>
-    <tr>
-      <td>Hormone friendly</td>
-      <td>✓</td><td></td><td></td>
-    </tr>
-    <tr>
-      <td>Temporary relief from PMS symptoms</td>
-      <td></td><td>✓</td><td></td>
-    </tr>
-    <tr>
-      <td>Increased risk of blood clots + stroke</td>
-      <td></td><td></td><td>✓</td>
-    </tr>
+    {% for block in section.blocks %}
+      <tr>
+        <td>{{ block.settings.comparison_item}}</td>
+        <td>{% if block.settings.mixher_ok %}✓{% endif %}</td>
+        <td>{% if block.settings.otc_ok %}✓{% endif %}</td>
+        <td>{% if block.settings.hormonal_ok %}✓{% endif %}</td>
+      </tr>
+    {% endfor %}
   </table>
 </div>
 
