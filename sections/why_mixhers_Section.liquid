@@ -1,23 +1,25 @@
 <div class="why-mixhers-container desktop-only">
-  <h2>{{section.settings.head }}</h2>
+  <table class="comparison-table">
+    <tr>
+      <td><div class="mixhers_product">
+        <h2>{{section.settings.head }}</h2>
   <p>{{ section.settings.sub_head }}</p>
-  
-  <div class="product-comparison">
-    <div class="product-column">
+      </div></td>
+      <td><div class="product-column1">
       <img src="{{ section.settings.comparison_img1 | img_url:'master' }}" alt="Mixhers Hertime PMS">
       <p>{{ section.settings.comparison_txt1 }}</p>
-    </div>
-    <div class="product-column">
+    </div></td>
+      <td><div class="product-column2">
       <img src="{{ section.settings.comparison_img2 | img_url:'master' }}" alt="OTC Pain Pills">
       <p>{{ section.settings.comparison_txt2 }}</p>
-    </div>
-    <div class="product-column">
+    </div></td>
+      <td>
+        <div class="product-column3">
       <img src="{{ section.settings.comparison_img3 | img_url:'master' }}" alt="Hormonal Birth Control">
       <p>{{ section.settings.comparison_txt3 }}</p>
     </div>
-  </div>
-
-  <table class="comparison-table">
+      </td>
+    </tr>
     {% for block in section.blocks %}
       <tr>
         <td>{{ block.settings.comparison_item}}</td>
