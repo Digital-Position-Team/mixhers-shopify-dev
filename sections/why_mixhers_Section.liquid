@@ -53,7 +53,7 @@
     </tr>
     {% for block in section.blocks %}
       <tr>
-        <td style="width:34%;">{{ block.settings.comparison_item}}</td>
+        <td style="width:34%;"><span class="head_compare">{{ block.settings.comparison_item}}</span></td>
         <td class="mixher" style="width:22%;">{% if block.settings.mixher_ok %}<svg xmlns="http://www.w3.org/2000/svg" width="19" height="16" viewBox="0 0 19 16" fill="none"><path d="M0.82373 8.51001L5.67667 14.51L17.5884 1.01001" stroke="#FF59E4" stroke-linecap="round"/></svg>{% endif %}</td>
         <td class="otc" style="width:22%;">{% if block.settings.otc_ok %}<svg xmlns="http://www.w3.org/2000/svg" width="19" height="16" viewBox="0 0 19 16" fill="none"><path d="M0.82373 8.51001L5.67667 14.51L17.5884 1.01001" stroke="#000" stroke-linecap="round"/></svg>{% endif %}</td>
         <td class="hormonal" style="width:22%;">{% if block.settings.hormonal_ok %}<svg xmlns="http://www.w3.org/2000/svg" width="19" height="16" viewBox="0 0 19 16" fill="none"><path d="M0.82373 8.51001L5.67667 14.51L17.5884 1.01001" stroke="#000" stroke-linecap="round"/></svg>{% endif %}</td>
