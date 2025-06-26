@@ -57,12 +57,9 @@
 }
 {% endschema %}
 
-<section class="hero-mixhers-section">
-  {% if section.settings.background_image %}
-    <div class="hero-image-wrapper">
-      <img src="{{ section.settings.background_image | image_url: width: 1500 }}" width="" height="" alt="Hero Background" class="hero-bg-img" loading="lazy" />
-    </div>
-  {% endif %}
+<section class="hero-mixhers-section" {% if section.settings.background_image %}
+    style="background-image: url('{{ section.settings.background_image | image_url: width: 1500 }}'); background-size: cover; background-position: center;"
+  {% endif %}>
   <div class="hero-content-wrapper">
     <h2 class="hero-heading font-serif">{{ section.settings.heading }}</h2>
     <p class="hero-subheading">{{ section.settings.subheading }}</p>
