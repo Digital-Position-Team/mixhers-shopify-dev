@@ -1,6 +1,88 @@
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Science Hero Banner",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Backed by science. Trusted by women."
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Science-backed supplements you sip for balanced hormones and a better you."
+    },
+    {
+      "type": "url",
+      "id": "primary_button_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "primary_button_label",
+      "label": "Primary Button Label",
+      "default": "Read the studies"
+    },
+    {
+      "type": "url",
+      "id": "secondary_button_link",
+      "label": "Secondary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_label",
+      "label": "Secondary Button Label",
+      "default": "Shop now"
+    },
+    {
+      "type": "text",
+      "id": "star_text",
+      "label": "Star Rating Text",
+      "default": "Over 17,000 5-star reviews from real women"
+    }
+  ],
+  "presets": [
+    {
+      "name":"Science Hero Banner"
+    }
+  ]
+}
 {% endschema %}
+
+<section class="hero-mixhers-section">
+  {% if section.settings.background_image %}
+    <div class="hero-image-wrapper">
+      <img src="{{ section.settings.background_image | image_url: width: 1500 }}" alt="Hero Background" class="hero-bg-img" loading="lazy" />
+    </div>
+  {% endif %}
+  <div class="hero-content-wrapper">
+    <h2 class="hero-heading">{{ section.settings.heading }}</h2>
+    <p class="hero-subheading">{{ section.settings.subheading }}</p>
+
+    <div class="hero-buttons">
+      {% if section.settings.primary_button_link %}
+        <a href="{{ section.settings.primary_button_link }}" class="btn primary-btn">
+          {{ section.settings.primary_button_label }}
+        </a>
+      {% endif %}
+      {% if section.settings.secondary_button_link %}
+        <a href="{{ section.settings.secondary_button_link }}" class="btn secondary-btn">
+          {{ section.settings.secondary_button_label }}
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="hero-rating">
+      <div class="stars">★★★★★</div>
+      <p class="star-text">{{ section.settings.star_text }}</p>
+    </div>
+  </div>
+</section>
