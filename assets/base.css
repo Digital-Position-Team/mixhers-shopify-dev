@@ -4047,8 +4047,7 @@ footer.footer * {
    p.base-text , .base-text p ,  .base-text li{font-size:14px;}
 
   /* footer css  */
-  .footer .footer__main-row {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr;
+  .footer .footer__main-row .footer-block--link_list {
+    width: 50%;
 }
 }
