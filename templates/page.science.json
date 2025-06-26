@@ -171,6 +171,7 @@
       "block_order": [
         "ingredient_XNmULK"
       ],
+      "disabled": true,
       "name": "Clinical Studies Section",
       "settings": {
         "heading": "MixHers is clinically studied",
