@@ -29,23 +29,63 @@
   ],
   "blocks": [
     {
-      "type": "clinical_st",
-      "name": "Ingredient",
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Ingredient Name",
-          "default": "Ingredient Name"
-        },
-        {
-          "type": "textarea",
-          "id": "description",
-          "label": "Ingredient Info",
-          "default": "Ingredient Info"
-        }
-      ]
+  "type": "clinical_st",
+  "name": "Clinical Study",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Clinical Study Name",
+      "default": "Clinical Study Name"
+    },
+    {
+      "type": "text",
+      "id": "entry_heading_1",
+      "label": "Entry Heading 1"
+    },
+    {
+      "type": "textarea",
+      "id": "entry_text_1",
+      "label": "Entry Text 1"
+    },
+    {
+      "type": "url",
+      "id": "entry_link_1",
+      "label": "Entry Link 1"
+    },
+    {
+      "type": "text",
+      "id": "entry_heading_2",
+      "label": "Entry Heading 2"
+    },
+    {
+      "type": "textarea",
+      "id": "entry_text_2",
+      "label": "Entry Text 2"
+    },
+    {
+      "type": "url",
+      "id": "entry_link_2",
+      "label": "Entry Link 2"
+    },
+    {
+      "type": "text",
+      "id": "entry_heading_3",
+      "label": "Entry Heading 3"
+    },
+    {
+      "type": "textarea",
+      "id": "entry_text_3",
+      "label": "Entry Text 3"
+    },
+    {
+      "type": "url",
+      "id": "entry_link_3",
+      "label": "Entry Link 3"
     }
+  ]
+}
+
   ],
   "presets": [
     {
@@ -92,7 +132,35 @@
               <span class="chevron_clinic">+</span>
             </div>
             <div class="clinical_st-description_clinic" style="display: none;">
-              <p>{{ block.settings.description }}</p>
+              {% for i in (1..3) %}
+                {% capture heading_key %}entry_heading_{{ i }}{% endcapture %}
+                {% capture text_key %}entry_text_{{ i }}{% endcapture %}
+                {% capture link_key %}entry_link_{{ i }}{% endcapture %}
+                
+                {% assign heading = block.settings[heading_key] %}
+                {% assign text = block.settings[text_key] %}
+                {% assign link = block.settings[link_key] %}
+                
+                {% if heading != blank or text != blank or link != blank %}
+                  <div class="journal-entry_clinic">
+                    {% if heading != blank %}
+                      <div class="entry-heading_clinic">
+                        <svg class="entry-icon_clinic" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                          <path d="M4 4h16v16H4z"/>
+                          <path d="M4 8h16M8 4v16" />
+                        </svg>
+                        <strong>{{ heading }}</strong>
+                      </div>
+                    {% endif %}
+                    {% if text != blank %}
+                      <p>{{ text }}</p>
+                    {% endif %}
+                    {% if link != blank %}
+                      <a class="read-article-btn_clinic" href="{{ link }}" target="_blank">Read Journal Article →</a>
+                    {% endif %}
+                  </div>
+                {% endif %}
+                {% endfor %}
             </div>
           </div>
         {% endfor %}
@@ -181,6 +249,29 @@
 .clinical_study-blocks_clinic.collapsed_clinic {
   display: none;
 }
+  .journal-entry_clinic {
+  margin-bottom: 20px;
+}
+.entry-heading_clinic {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+.entry-icon_clinic {
+  width: 16px;
+  height: 16px;
+  stroke: #000;
+}
+.read-article-btn_clinic {
+  color: #000;
+  text-decoration: underline;
+  font-weight: 500;
+  display: inline-block;
+  margin-top: 4px;
+}
+
 @media screen and (max-width: 768px) {
   .clinical_sts-section-row_clinic .clinical_study-info_clinic {
     width: 100%;
