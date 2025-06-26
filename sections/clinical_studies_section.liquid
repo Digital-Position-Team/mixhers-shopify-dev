@@ -145,19 +145,26 @@
                   <div class="journal-entry_clinic">
                     {% if heading != blank %}
                       <div class="entry-heading_clinic">
+                        
+                      <div class="icon_list">
                         <svg class="entry-icon_clinic" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                           <path d="M4 4h16v16H4z"/>
                           <path d="M4 8h16M8 4v16" />
                         </svg>
+                      </div>
+                      <div class="study_info">
                         <strong>{{ heading }}</strong>
+                        {% if text != blank %}
+                          <p>{{ text }}</p>
+                        {% endif %}
+                        {% if link != blank %}
+                          <a class="read-article-btn_clinic" href="{{ link }}" target="_blank">Read Journal Article →</a>
+                        {% endif %}
+                      </div>
+                        
                       </div>
                     {% endif %}
-                    {% if text != blank %}
-                      <p>{{ text }}</p>
-                    {% endif %}
-                    {% if link != blank %}
-                      <a class="read-article-btn_clinic" href="{{ link }}" target="_blank">Read Journal Article →</a>
-                    {% endif %}
+                    
                   </div>
                 {% endif %}
                 {% endfor %}
