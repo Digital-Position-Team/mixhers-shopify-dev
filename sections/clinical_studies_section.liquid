@@ -30,7 +30,7 @@
   ],
   "blocks": [
     {
-      "type": "clinical_",
+      "type": "clinical_st",
       "name": "Ingredient",
       "settings": [
         {
@@ -56,8 +56,8 @@
 }
 {% endschema %}
 
-<div class="clinical_s-list-section">
-  <div class="clinical_s-section-row">
+<div class="clinical_sts-list-section">
+  <div class="clinical_sts-section-row">
     <div class="clinical_study-info">
       <div class="info-top">
         <div class="page-width">
@@ -87,12 +87,12 @@
 
       <div class="clinical_study-blocks">
         {% for block in section.blocks %}
-          <div class="clinical_-item" data-accordion>
-            <div class="clinical_-title" data-accordion-toggle>
+          <div class="clinical_st-item" data-accordion>
+            <div class="clinical_st-title" data-accordion-toggle>
               <strong>{{ block.settings.title }}</strong>
               <span class="chevron">+</span>
             </div>
-            <div class="clinical_-description" style="display: none;">
+            <div class="clinical_st-description" style="display: none;">
               <p>{{ block.settings.description }}</p>
             </div>
           </div>
@@ -125,7 +125,7 @@
   justify-content:space-between;
   align-items:center;
 }
-.clinical_s-list-section {
+.clinical_sts-list-section {
     background: transparent;
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
@@ -145,7 +145,7 @@
     width: 50%;
     padding: 28px;
 }
-.clinical_s-section-row {
+.clinical_sts-section-row {
   display: flex;
   flex-wrap: wrap;
 }
@@ -154,24 +154,24 @@
       display: flex;
     flex-direction: column;
 }
-.clinical_-item {
+.clinical_st-item {
   border-bottom: 1px solid #ccc;
   padding: 15px 0;
   cursor: pointer;
 }
-.clinical_-title {
+.clinical_st-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.clinical_-description {
+.clinical_st-description {
   margin-top: 10px;
 }
 .chevron {
   font-size: 18px;
   transition: transform 0.2s ease;
 }
-.clinical_-item.open .chevron {
+.clinical_st-item.open .chevron {
   transform: rotate(45deg);
 }
 .toggle-icon {
@@ -185,15 +185,15 @@
   display: none;
 }
 @media screen and (max-width: 768px) {
-  .clinical_s-section-row .clinical_study-info {
+  .clinical_sts-section-row .clinical_study-info {
     width: 100%;
     border-right: unset;
     text-align: center;
 }
-  .clinical_s-section-row {
+  .clinical_sts-section-row {
     flex-direction: column;
 }
-  .clinical_s-section-row .clinical_studies-list{
+  .clinical_sts-section-row .clinical_studies-list{
     width: 100%;
 }
   .info-top p{
@@ -224,11 +224,11 @@
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   const toggleHeader = document.getElementById('clinical_study-toggle');
-  const clinical_sBlock = document.querySelector('.clinical_study-blocks');
+  const clinical_stsBlock = document.querySelector('.clinical_study-blocks');
   const toggleIcon = toggleHeader.querySelector('.toggle-icon');
 
   toggleHeader.addEventListener('click', () => {
-    const isCollapsed = clinical_sBlock.classList.toggle('collapsed');
+    const isCollapsed = clinical_stsBlock.classList.toggle('collapsed');
     toggleIcon.classList.toggle('open', !isCollapsed);
   });
 });
@@ -238,13 +238,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   items.forEach(item => {
     const toggle = item.querySelector('[data-accordion-toggle]');
-    const desc = item.querySelector('.clinical_-description');
+    const desc = item.querySelector('.clinical_st-description');
 
     toggle.addEventListener('click', () => {
       const isOpen = item.classList.contains('open');
       items.forEach(i => {
         i.classList.remove('open');
-        i.querySelector('.clinical_-description').style.display = 'none';
+        i.querySelector('.clinical_st-description').style.display = 'none';
         i.querySelector('.chevron').textContent = '+';
       });
 
