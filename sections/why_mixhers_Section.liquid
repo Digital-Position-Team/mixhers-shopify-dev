@@ -16,19 +16,19 @@
           <p>{{ section.settings.sub_head }}</p>
         </div>
       </td>
-      <td style="width:22%;" >
+      <td class="mixher" style="width:22%;" >
         <div class="product-column">
           <img src="{{ section.settings.comparison_img1 | img_url:'master' }}" alt="Mixhers Hertime PMS">
           <p>{{ section.settings.comparison_txt1 }}</p>
         </div>
       </td>
-      <td style="width:22%;">
+      <td class="otc" style="width:22%;">
         <div class="product-column">
           <img src="{{ section.settings.comparison_img2 | img_url:'master' }}" alt="OTC Pain Pills">
           <p>{{ section.settings.comparison_txt2 }}</p>
         </div>
       </td>
-      <td style="width:22%;">
+      <td class="hormonal" style="width:22%;">
         <div class="product-column">
           <img src="{{ section.settings.comparison_img3 | img_url:'master' }}" alt="Hormonal Birth Control">
           <p>{{ section.settings.comparison_txt3 }}</p>
@@ -38,9 +38,9 @@
     {% for block in section.blocks %}
       <tr>
         <td style="width:34%;">{{ block.settings.comparison_item}}</td>
-        <td style="width:22%;">{% if block.settings.mixher_ok %}<svg xmlns="http://www.w3.org/2000/svg" width="19" height="16" viewBox="0 0 19 16" fill="none"><path d="M0.82373 8.51001L5.67667 14.51L17.5884 1.01001" stroke="#FF59E4" stroke-linecap="round"/></svg>{% endif %}</td>
-        <td style="width:22%;">{% if block.settings.otc_ok %}<svg xmlns="http://www.w3.org/2000/svg" width="19" height="16" viewBox="0 0 19 16" fill="none"><path d="M0.82373 8.51001L5.67667 14.51L17.5884 1.01001" stroke="#000" stroke-linecap="round"/></svg>{% endif %}</td>
-        <td style="width:22%;">{% if block.settings.hormonal_ok %}<svg xmlns="http://www.w3.org/2000/svg" width="19" height="16" viewBox="0 0 19 16" fill="none"><path d="M0.82373 8.51001L5.67667 14.51L17.5884 1.01001" stroke="#000" stroke-linecap="round"/></svg>{% endif %}</td>
+        <td class="mixher" style="width:22%;">{% if block.settings.mixher_ok %}<svg xmlns="http://www.w3.org/2000/svg" width="19" height="16" viewBox="0 0 19 16" fill="none"><path d="M0.82373 8.51001L5.67667 14.51L17.5884 1.01001" stroke="#FF59E4" stroke-linecap="round"/></svg>{% endif %}</td>
+        <td class="otc" style="width:22%;">{% if block.settings.otc_ok %}<svg xmlns="http://www.w3.org/2000/svg" width="19" height="16" viewBox="0 0 19 16" fill="none"><path d="M0.82373 8.51001L5.67667 14.51L17.5884 1.01001" stroke="#000" stroke-linecap="round"/></svg>{% endif %}</td>
+        <td class="hormonal" style="width:22%;">{% if block.settings.hormonal_ok %}<svg xmlns="http://www.w3.org/2000/svg" width="19" height="16" viewBox="0 0 19 16" fill="none"><path d="M0.82373 8.51001L5.67667 14.51L17.5884 1.01001" stroke="#000" stroke-linecap="round"/></svg>{% endif %}</td>
       </tr>
     {% endfor %}
   </table>
