@@ -4048,21 +4048,19 @@ footer.footer * {
 
   /* footer css  */
   .footer .footer__main-row .footer-block--link_list {
-   order: 2;
-        width: 50%;
-        padding: 0px 1.5rem;
-}
-      .footer-block__newsletter-custom {
-      
-        text-align: center;
-    }
-  .footer__main-row {
-       
-        padding: 0px !important;
-    }
+    order: 2;
+    width: 50%;
+    padding: 0px 1.5rem;
+  }
+  .footer-block__newsletter-custom {
+    text-align: center;
+  }
+  .footer__main-row {     
+    padding: 0px !important;
+  }
   .footer-block--newsletter {
-        order: 1;
-        border-bottom: 1px solid #000;
-        margin-bottom: 1rem;
-    }
+    order: 1;
+    border-bottom: 1px solid #000;
+    margin-bottom: 1rem;
+  }
 }
