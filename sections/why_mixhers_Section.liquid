@@ -69,15 +69,15 @@
           <p>{{ section.settings.sub_head }}</p>
         </div>
   <div class="product-comparison">
-     <div id="mixer" class="product-column">
+     <div id="mixer" class="product-column" data-target="mixher">
           <img src="{{ section.settings.comparison_img1 | img_url:'master' }}" alt="Mixhers Hertime PMS">
           <p>{{ section.settings.comparison_txt1 }}</p>
         </div>
-    <div id="otc" class="product-column">
+    <div id="otc" class="product-column" data-target="otc">
           <img src="{{ section.settings.comparison_img2 | img_url:'master' }}" alt="OTC Pain Pills">
           <p>{{ section.settings.comparison_txt2 }}</p>
         </div>
-    <div id="hormonal" class="product-column">
+    <div id="hormonal" class="product-column" data-target="hormonal">
           <img src="{{ section.settings.comparison_img3 | img_url:'master' }}" alt="Hormonal Birth Control">
           <p>{{ section.settings.comparison_txt3 }}</p>
         </div>
