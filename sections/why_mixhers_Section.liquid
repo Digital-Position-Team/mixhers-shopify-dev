@@ -31,6 +31,11 @@
     width: 80%;
     margin: 0px;
 }
+  @media screen and (min-width:768px){
+    .mobile-only{
+      display:none;
+    }
+  }
   @media screen and (max-width:768px){
     .why-mixhers-container.desktop-only {
     display: none;
@@ -68,6 +73,9 @@
 }
 .swiper-pagination-bullet-active {
   background: #FF59E4; /* Or your theme color */
+}
+    .why-mixhers-container .swiper.product-swiper .swiper-pagination {
+    bottom: -2px;
 }
   }
 </style>
