@@ -4045,4 +4045,10 @@ footer.footer * {
     font-size: 36px;
   }
    p.base-text , .base-text p ,  .base-text li{font-size:14px;}
+
+  /* footer css  */
+  .footer .footer__main-row {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+}
 }
