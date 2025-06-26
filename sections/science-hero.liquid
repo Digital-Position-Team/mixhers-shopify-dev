@@ -65,7 +65,12 @@
 <div class="hero-science-section">
   {% if section.settings.background_image %}
     <div class="hero-image-wrapper">
-      <img src="{{ section.settings.background_image | image_url: width: 1500 }}" width="" height="" alt="Hero Background" class="hero-bg-img for-desktop" loading="lazy" />
+      <img src="{{ section.settings.background_image | image_url: width: 1500 }}" width="" height="" alt="Hero Background" class="hero-bg-img for-desktop" loading="lazy" />      
+    </div>
+  {% endif %}
+  {% if section.settings.background_image_mob %}
+    <div class="hero-image-wrapper">
+      <img src="{{ section.settings.background_image_mob | img_url:'master' }}" width="" height="" alt="Hero Background" class="hero-bg-img for-desktop" loading="lazy" />      
     </div>
   {% endif %}
   <div class="hero-content-wrapper">
