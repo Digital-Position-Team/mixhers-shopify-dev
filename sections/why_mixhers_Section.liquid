@@ -96,21 +96,27 @@
           <div style="width:80%;">
             <span class="head_compare">{{ block.settings.comparison_item }}</span>
           </div>
-          <div class="mixher tick" style="width:10%;" data-id="mixher">
-            {% if block.settings.mixher_ok %}
-              <svg xmlns="http://www.w3.org/2000/svg" width="19" height="16" viewBox="0 0 19 16" fill="none"><path d="M0.82373 8.51001L5.67667 14.51L17.5884 1.01001" stroke="#FF59E4" stroke-linecap="round"/></svg>
-            {% endif %}
-          </div>
-          <div class="otc tick" style="width:10%;" data-id="otc">
-            {% if block.settings.otc_ok %}
-              <svg xmlns="http://www.w3.org/2000/svg" width="19" height="16" viewBox="0 0 19 16" fill="none"><path d="M0.82373 8.51001L5.67667 14.51L17.5884 1.01001" stroke="#000" stroke-linecap="round"/></svg>
-            {% endif %}
-          </div>
-          <div class="hormonal tick" style="width:10%;" data-id="hormonal">
-            {% if block.settings.hormonal_ok %}
-              <svg xmlns="http://www.w3.org/2000/svg" width="19" height="16" viewBox="0 0 19 16" fill="none"><path d="M0.82373 8.51001L5.67667 14.51L17.5884 1.01001" stroke="#000" stroke-linecap="round"/></svg>
-            {% endif %}
-          </div>
+          {% if block.settings.mixher_ok %}
+      <div class="tick mixher" data-type="mixher" style="width:10%;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="16" viewBox="0 0 19 16" fill="none">
+          <path d="M0.82373 8.51001L5.67667 14.51L17.5884 1.01001" stroke="#FF59E4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      {% endif %}
+          {% if block.settings.otc_ok %}
+      <div class="tick otc" data-type="otc" style="width:10%;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="16" viewBox="0 0 19 16" fill="none">
+          <path d="M0.82373 8.51001L5.67667 14.51L17.5884 1.01001" stroke="#000" stroke-linecap="round"/>
+        </svg>
+      </div>
+      {% endif %}
+          {% if block.settings.hormonal_ok %}
+      <div class="tick hormonal" data-type="hormonal" style="width:10%;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="16" viewBox="0 0 19 16" fill="none">
+          <path d="M0.82373 8.51001L5.67667 14.51L17.5884 1.01001" stroke="#000" stroke-linecap="round"/>
+        </svg>
+      </div>
+      {% endif %}
         </div>
       {% endfor %}
     </div>
@@ -124,22 +130,27 @@
       slidesPerView: 1,
       spaceBetween: 20,
       on: {
-        slideChange: function () {
-          const activeSlide = document.querySelector(".product-swiper .swiper-slide-active");
-          const activeId = activeSlide?.dataset.id;
-
-          document.querySelectorAll(".tick").forEach(el => {
-            el.style.display = el.dataset.id === activeId ? "block" : "none";
-          });
-        }
+        slideChange: updateTicksVisibility
       }
     });
 
-    // Initial visibility on load
-    const initId = document.querySelector(".product-swiper .swiper-slide-active")?.dataset.id;
-    document.querySelectorAll(".tick").forEach(el => {
-      el.style.display = el.dataset.id === initId ? "block" : "none";
-    });
+    function updateTicksVisibility() {
+      const activeSlide = document.querySelector(".product-swiper .swiper-slide-active");
+      const activeId = activeSlide?.dataset.id;
+
+      // Hide all ticks
+      document.querySelectorAll(".tick").forEach(tick => {
+        tick.style.display = "none";
+      });
+
+      // Show only ticks matching active ID (mixher/otc/hormonal)
+      document.querySelectorAll(`.tick[data-type="${activeId}"]`).forEach(tick => {
+        tick.style.display = "block";
+      });
+    }
+
+    // Initial state
+    updateTicksVisibility();
   });
 </script>
 
