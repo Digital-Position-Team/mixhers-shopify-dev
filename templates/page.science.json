@@ -157,6 +157,44 @@
         "bottom_image": "shopify://shop_images/a89f1193667e5faef5f9abea4bc6e6f7fdc6d93b.jpg"
       }
     },
+    "ingredients_list_section_8kFwWH": {
+      "type": "ingredients-list-section",
+      "blocks": {
+        "ingredient_XR9phE": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Ingredient Name",
+            "description": "Ingredient Info"
+          }
+        },
+        "ingredient_jq8jx3": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Ingredient Name",
+            "description": "Ingredient Info"
+          }
+        },
+        "ingredient_cDGqq4": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Ingredient Name",
+            "description": "Ingredient Info"
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_XR9phE",
+        "ingredient_jq8jx3",
+        "ingredient_cDGqq4"
+      ],
+      "name": "Ingredients List Section",
+      "settings": {
+        "heading": "INGREDIENTS THAT WORK",
+        "subheading": "Thoughtfully dosed, naturally effective",
+        "button_link": "shopify://collections/all",
+        "button_label": "Shop MixHers Products"
+      }
+    },
     "faq_section_KbeexA": {
       "type": "faq-section",
       "blocks": {
@@ -416,6 +454,7 @@
     "image_fullheight_with_text_HxaDqC",
     "features_with_icons_grkU36",
     "ingredients_list_section_rceajQ",
+    "ingredients_list_section_8kFwWH",
     "faq_section_KbeexA",
     "ugc_testimonials_wbwrdN",
     "text_and_image_section_t3dGyb"
