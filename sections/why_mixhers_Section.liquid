@@ -19,9 +19,34 @@
   table.comparison-table tr td.mixher, table.comparison-table tr td.otc, table.comparison-table tr td.hormonal {
     text-align: center;
 }
+  .product-column p {
+    max-width: 100%;
+    width: 35%;
+    margin: 0px auto;
+    padding-bottom: 20px;
+}
 </style>
 
-<div class="why-mixhers-conatiner mobile-only"></div>
+<div class="why-mixhers-conatiner mobile-only">
+  <div class="mixhers_product">
+          <h1 class="font-serif">{{section.settings.head }}</h1>
+          <p>{{ section.settings.sub_head }}</p>
+        </div>
+  <div class="product-comparison">
+     <div id="mixer" class="product-column">
+          <img src="{{ section.settings.comparison_img1 | img_url:'master' }}" alt="Mixhers Hertime PMS">
+          <p>{{ section.settings.comparison_txt1 }}</p>
+        </div>
+    <div id="otc" class="product-column">
+          <img src="{{ section.settings.comparison_img2 | img_url:'master' }}" alt="OTC Pain Pills">
+          <p>{{ section.settings.comparison_txt2 }}</p>
+        </div>
+    <div id="hormonal" class="product-column">
+          <img src="{{ section.settings.comparison_img3 | img_url:'master' }}" alt="Hormonal Birth Control">
+          <p>{{ section.settings.comparison_txt3 }}</p>
+        </div>
+  </div>
+</div>
 <div class="why-mixhers-container desktop-only">
   <div class="page-width">
   <table class="comparison-table" style="width:100%;">
