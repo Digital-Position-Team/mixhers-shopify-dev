@@ -132,7 +132,7 @@
               <strong>{{ block.settings.title }}</strong>
               <span class="chevron_clinic">+</span>
             </div>
-            <div class="clinical_st-description_clinic" style="display: {% if is_first %}block{% else %}none{% endif %};">
+            <div class="clinical_st-description_clinic" style="display: block;">
               {% for i in (1..3) %}
                 {% capture heading_key %}entry_heading_{{ i }}{% endcapture %}
                 {% capture text_key %}entry_text_{{ i }}{% endcapture %}
