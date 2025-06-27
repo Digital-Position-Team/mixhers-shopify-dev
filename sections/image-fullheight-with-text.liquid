@@ -94,24 +94,24 @@
   .content-div.content-left{
     order:2;
   }
-  @media screen and (max-width: 767px) {
+@media screen and (max-width:991px) {
+  .image-div.image-right {
+      width: 100%;
+      height:100%;
+  }
+}
+@media screen and (max-width: 767px) {
     .image-with-content-row{
       display: flex;
     flex-direction: column-reverse;
     }
     .features--row {
-    max-width: 100%;
-    flex-direction: column;
-    padding: 40px 30px;
-}
+      max-width: 100%;
+      flex-direction: column;
+      padding: 40px 30px;
+    }
     .content-div.content-right.page-width{
       padding: 0 1.5rem;
     }
-  }
-
-@media screen and (max-width:991px) {
-  .image-div.image-right {
-    width: 100%;
-}
 }
 </style>
