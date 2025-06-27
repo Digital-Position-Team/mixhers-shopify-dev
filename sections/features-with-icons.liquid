@@ -50,45 +50,51 @@
 </div>
 
 <style>
-  .features--row {
-      max-width: 1400px;
-      display: flex;
-      width: 100%;
-      padding: 30px 30px;
-      gap: 20px;
-      justify-content: space-between;
-  }
+.features--row {
+    max-width: 1400px;
+    display: flex;
+    width: 100%;
+    padding: 30px 30px;
+    gap: 20px;
+    justify-content: space-between;
+}
+.feature-item {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    align-items: center;
+    gap: 25px;
+}
+.feature-item img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display:block;
+}
+.feature-item span {
+    font-size: 18px;
+}
+@media screen and (max-width:991px){
   .feature-item {
-      display: grid;
-      grid-template-columns: 60px 1fr;
-      align-items: center;
-      gap: 25px;
-  }
-  .feature-item img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      display:block;
+    grid-template-columns: 40px 1fr;
+     gap: 10px;
   }
   .feature-item span {
-      font-size: 18px;
+      font-size: 15px;
   }
-  @media screen and (max-width:991px){
-    .feature-item {
-      grid-template-columns: 40px 1fr;
-       gap: 10px;
-    }
-    .feature-item span {
-        font-size: 15px;
-    }
-
+}
+@media screen and (max-width:767px){
+  .feature-item {
+     grid-template-columns: 60px 1fr;
+     gap:15px;
   }
-  @media screen and (max-width:767px){
-    .feature-item {
-      grid-template-columns: 60px 1fr;
-    }
-    .features--row {
-      padding:30px 1.5rem;
-    }
+  .feature-item span {
+    font-size: 16px;
   }
+  .features--row {
+    padding:30px 1.5rem;
+  }
+  .feature-item span {
+    font-size: 16px;
+  }
+}
 </style>
