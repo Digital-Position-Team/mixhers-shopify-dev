@@ -373,11 +373,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     toggle_clinic.addEventListener('click', () => {
       const isOpen_clinic = item_clinic.classList.contains('open_clinic');
-      items_clinic.forEach(i_clinic => {
-        i_clinic.classList.remove('open_clinic');
-        i_clinic.querySelector('.clinical_st-description_clinic').style.display = 'none';
-        i_clinic.querySelector('.chevron_clinic').textContent = '+';
-      });
+      if (item_clinic.classList.contains('open_clinic')) {
+          item_clinic.classList.remove('open_clinic');
+          desc_clinic.style.display = 'none';
+          toggle_clinic.querySelector('.chevron_clinic').textContent = '+';
+        } else {
+          item_clinic.classList.add('open_clinic');
+          desc_clinic.style.display = 'block';
+          toggle_clinic.querySelector('.chevron_clinic').textContent = '+';
+        }
+
 
       if (!isOpen_clinic) {
         item_clinic.classList.add('open_clinic');
