@@ -374,14 +374,14 @@ document.addEventListener('DOMContentLoaded', function () {
     toggle_clinic.addEventListener('click', () => {
       const isOpen_clinic = item_clinic.classList.contains('open_clinic');
       if (item_clinic.classList.contains('open_clinic')) {
-          item_clinic.classList.remove('open_clinic');
-          desc_clinic.style.display = 'none';
-          toggle_clinic.querySelector('.chevron_clinic').textContent = '+';
-        } else {
-          item_clinic.classList.add('open_clinic');
-          desc_clinic.style.display = 'block';
-          toggle_clinic.querySelector('.chevron_clinic').textContent = '+';
-        }
+        item_clinic.classList.remove('open_clinic');
+        desc_clinic.style.display = 'none';
+        toggle_clinic.querySelector('.chevron_clinic').textContent = '+';
+      } else {
+        item_clinic.classList.add('open_clinic');
+        desc_clinic.style.display = 'block';
+        toggle_clinic.querySelector('.chevron_clinic').textContent = '+';
+      }
 
 
       if (!isOpen_clinic) {
