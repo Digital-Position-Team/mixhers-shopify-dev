@@ -176,28 +176,34 @@ img.hero-bg-img.for-mobile{
 @media screen and (max-width:767px){
   img.hero-bg-img.for-desktop {
     display: none;
-}
-  .hero-science-section .hero-content-wrapper h1.hero-heading.font-serif {
+  }
+  /* .hero-science-section .hero-content-wrapper h1.hero-heading.font-serif {
     max-width: 100%;
     width: 85%;
     margin: 0px auto;
-}
+} */
   img.hero-bg-img.for-mobile {
-    display: block;
-    height:100vh;
-}
+      display: block;
+      height:100vh;
+  }
   .hero-content-wrapper p.hero-subheading{
-    width: 90%;
-}
+      width: 100%;
+  }
   .hero-content-wrapper .hero-buttons {
-    flex-direction: column;
-}
+      flex-direction: column;
+  }
   .hero-content-wrapper .hero-buttons .btn {
-    width: 100%;
-}
+      width: 100%;
+  }
   .hero-science-section .hero-content-wrapper{
     padding-left:10px;
     padding-right:10px;
+    max-width:500px;
+  }
+}
+@media screen and (max-width:575px){
+  .hero-science-section .hero-content-wrapper{
+    max-width:390px;
   }
 }
 </style>
