@@ -37,60 +37,62 @@
     }
   }
   @media screen and (max-width:767px){
-    .why-mixhers-container.desktop-only {
-    display: none;
-}
-    .mixhers_product {
-    text-align: center;
-}
-.compare_list {
-    display: flex;
-    padding: 20px 0px;
-          gap: 20px;
-    border-bottom: 1px solid #E1E1E1;
-}
-    span.head_compare {
-    font-family: 'Faire Sprig';
-    font-weight: 400;
-    font-size: 15.88px;
-    line-height: 20px;
-    vertical-align: middle;
-}
-    .product-column p {
-    font-family: 'Faire Sprig';
-    font-weight: 400;
-    font-size: 19.27px;
-    line-height: 21.19px;
-    text-align: center;
-    vertical-align: middle;
-}
-    .swiper-pagination-bullet {
-  background: #ccc;
-  opacity: 1;
-}
-    .mobile-only .mixhers_product h1.font-serif {
-    width: 100%;
-}
-.swiper-pagination-bullet-active {
-  background: #4A4A4A; /* Or your theme color */
-}
-    .why-mixhers-container .swiper.product-swiper .swiper-pagination {
-    bottom: -2px;
-}
+  .why-mixhers-container.desktop-only {
+      display: none;
   }
-  @media screen and (max-width: 360px) {
+  .mixhers_product {
+    text-align: center;
+  }
+  .compare_list {
+      display: flex;
+      padding: 20px 0px;
+      gap: 20px;
+  }
+  .compare_list:not(:last-child){
+     border-bottom: 1px solid #E1E1E1;
+  }
+  span.head_compare {
+      font-family: 'Faire Sprig';
+      font-weight: 400;
+      font-size: 15.88px;
+      line-height: 20px;
+      vertical-align: middle;
+  }
     .product-column p {
+      font-family: 'Faire Sprig';
+      font-weight: 400;
+      font-size: 19.27px;
+      line-height: 21.19px;
+      text-align: center;
+      vertical-align: middle;
+  }
+  .swiper-pagination-bullet {
+    background: #ccc;
+    opacity: 1;
+  }
+  .mobile-only .mixhers_product h1.font-serif {
+      width: 100%;
+  }
+  .swiper-pagination-bullet-active {
+    background: #4A4A4A; /* Or your theme color */
+  }
+  .why-mixhers-container .swiper.product-swiper .swiper-pagination {
+   bottom: -2px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .product-column img {
+      height:180px;
+  }
+  .product-column p{
+    width:70%;
+  }
+}
+@media screen and (max-width: 360px) {
+  .product-column p {
         width: 40%;
-    }
   }
-  @media screen and (max-width: 991px) {
-    .product-column img {
-        height:180px;
-    }
-    .product-column p{
-      width:70%;
-    }
-  }
+}
 </style>
 <!-- mobile -->
 
