@@ -229,40 +229,19 @@
     "clinical_studies_section_4rKqyY": {
       "type": "clinical_studies_section",
       "blocks": {
-        "clinical_st_geTdij": {
-          "type": "clinical_st",
+        "clinical_study_Gz8gw3": {
+          "type": "clinical_study",
           "settings": {
-            "title": "Lorem Ipsum",
-            "entry_heading_1": "Lorem Ipsum",
-            "entry_text_1": "“Dose-Dependent Efficacy of the Chaste Tree Berry Extract in Patients\nSuffering from Premenstrual Syndrome”",
-            "entry_link_1": "shopify://pages/contact-us",
-            "entry_heading_2": "Lorem Ipsum",
-            "entry_text_2": "“Dose-Dependent Efficacy of the Chaste Tree Berry Extract in Patients\nSuffering from Premenstrual Syndrome”",
-            "entry_link_2": "shopify://pages/contact-us",
-            "entry_heading_3": "Lorem Ipsum",
-            "entry_text_3": "“Dose-Dependent Efficacy of the Chaste Tree Berry Extract in Patients\nSuffering from Premenstrual Syndrome”",
-            "entry_link_3": "shopify://pages/contact-us"
-          }
-        },
-        "clinical_st_Ax8dbw": {
-          "type": "clinical_st",
-          "settings": {
-            "title": "Recommended by doctors nationwide.",
-            "entry_heading_1": "Mixhers",
-            "entry_text_1": "“Recommended by doctors nationwide. 300 MD & OB/GYNs surveyed and\nanswered the question, “Would you recommend Hertime? Why or why not?””",
-            "entry_link_1": "shopify://pages/contact-us",
-            "entry_heading_2": "",
-            "entry_text_2": "",
-            "entry_link_2": "",
-            "entry_heading_3": "",
-            "entry_text_3": "",
-            "entry_link_3": ""
+            "title": "Chaste tree berry extract",
+            "source": "National Library of Medicine",
+            "description": "Dose-Dependent Efficacy of the Chaste Tree Berry Extract in Patients Suffering from Premenstrual Syndrome",
+            "link": "",
+            "link_text": "Read Journal Article"
           }
         }
       },
       "block_order": [
-        "clinical_st_geTdij",
-        "clinical_st_Ax8dbw"
+        "clinical_study_Gz8gw3"
       ],
       "name": "Clinical Studies Section",
       "settings": {
