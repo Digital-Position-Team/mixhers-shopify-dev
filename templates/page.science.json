@@ -232,23 +232,62 @@
         "clinical_study_Gz8gw3": {
           "type": "clinical_study",
           "settings": {
-            "title": "Chaste tree berry extract",
+            "title": "",
             "source": "National Library of Medicine",
             "description": "Dose-Dependent Efficacy of the Chaste Tree Berry Extract in Patients Suffering from Premenstrual Syndrome",
-            "link": "",
-            "link_text": "Read Journal Article"
+            "link": "https://pubmed.ncbi.nlm.nih.gov/23022391/",
+            "link_text": "Read Journal Article",
+            "show_border": true
+          }
+        },
+        "clinical_study_CYHFa8": {
+          "type": "clinical_study",
+          "settings": {
+            "title": "",
+            "source": "National Library of Medicine",
+            "description": "“He Z, Chen R, Zhou Y, et al. Treatment for Premenstrual Syndrome with Chaste Tree Berry Extract: Aprospective, Randomized, Multi-Center Placebo Controlled Study in China. Maturitas. 2009;63(1):99-103.”",
+            "link": "https://pubmed.ncbi.nlm.nih.gov/19269753/",
+            "link_text": "Read Journal Article",
+            "show_border": true
+          }
+        },
+        "clinical_study_VXfRVB": {
+          "type": "clinical_study",
+          "settings": {
+            "title": "",
+            "source": "National Library of Medicine",
+            "description": "“Treatment for the Premenstrual Syndrome with Agnus Castus Fruit Extract: Prospective, Randomised, Placebo Controlled Study”",
+            "link": "https://pubmed.ncbi.nlm.nih.gov/11159568/",
+            "link_text": "Read Journal Article",
+            "show_border": true
+          }
+        },
+        "clinical_study_jeqndy": {
+          "type": "clinical_study",
+          "settings": {
+            "title": "",
+            "source": "National Library of Medicine",
+            "description": "“Recommended by doctors nationwide. 300 MD & OB/GYNs surveyed and answered the question, “Would you recommend Hertime? Why or why not?””",
+            "link": "https://mixhers.com/products/hertime-pms",
+            "link_text": "Read Journal Article",
+            "show_border": true
           }
         }
       },
       "block_order": [
-        "clinical_study_Gz8gw3"
+        "clinical_study_Gz8gw3",
+        "clinical_study_CYHFa8",
+        "clinical_study_VXfRVB",
+        "clinical_study_jeqndy"
       ],
       "name": "Clinical Studies Section",
       "settings": {
         "heading": "Mixhers is clinically studied",
         "subheading": "Crafted for balance, rooted in research, trusted by women.",
         "button_link": "shopify://collections/all",
-        "button_label": "Buy Now"
+        "button_label": "Buy Now",
+        "show_bottom_border": true,
+        "border_color": "#000000"
       }
     },
     "competitor_table_RXt6Xi": {
