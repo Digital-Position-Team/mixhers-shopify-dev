@@ -28,6 +28,22 @@
     },
     {
       "type": "image_picker",
+      "id": "product_image",
+      "label": "Featured Product Image"
+    },
+    {
+      "type": "text",
+      "id": "product_title",
+      "label": "Featured Product Title",
+      "default": "Product Name"
+    },
+    {
+      "type": "url",
+      "id": "product_link",
+      "label": "Featured Product Link"
+    },
+    {
+      "type": "image_picker",
       "id": "bottom_image",
       "label": "Bottom Image"
     }
@@ -48,6 +64,11 @@
           "id": "description",
           "label": "Ingredient Info",
           "default": "Ingredient Info"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Ingredient Icon"
         }
       ]
     }
@@ -70,14 +91,33 @@
     <div class="ingredients-info">
       <div class="info-top">
         <div class="page-width">
-          <h1 class="font-serif">{{ section.settings.heading }}</h1>
-          <p>{{ section.settings.subheading }}</p>
-          {% if section.settings.button_link != blank %}
-            <a href="{{ section.settings.button_link }}" class="btn btn-black">
-              {{ section.settings.button_label }}
-            </a>
-          {% endif %}
-         </div>
+          <div class="info-content">
+            <div class="text-content">
+              <h1 class="font-serif">{{ section.settings.heading }}</h1>
+              <p>{{ section.settings.subheading }}</p>
+              {% if section.settings.button_link != blank %}
+                <a href="{{ section.settings.button_link }}" class="btn btn-black">
+                  {{ section.settings.button_label }}
+                </a>
+              {% endif %}
+            </div>
+            
+            {% if section.settings.product_image %}
+              <div class="product-feature">
+                {% if section.settings.product_link != blank %}
+                  <a href="{{ section.settings.product_link }}" class="product-link">
+                {% endif %}
+                  <img src="{{ section.settings.product_image | image_url }}" alt="{{ section.settings.product_title }}" class="product-image" />
+                  {% if section.settings.product_title != blank %}
+                    <div class="product-title">{{ section.settings.product_title }}</div>
+                  {% endif %}
+                {% if section.settings.product_link != blank %}
+                  </a>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
       </div>
       {% if section.settings.bottom_image %}
         <div class="image-bottom">
@@ -98,7 +138,16 @@
         {% for block in section.blocks %}
           <div class="ingredient-item" data-accordion>
             <div class="ingredient-title" data-accordion-toggle>
-              <strong>{{ block.settings.title }}</strong>
+              <div class="ingredient-header">
+                <div class="ingredient-icon">
+                  {% if block.settings.icon %}
+                    <img src="{{ block.settings.icon | image_url }}" alt="{{ block.settings.title }} icon" width="24" height="24">
+                  {% else %}
+                    <img src="{{ 'white-peony-root.png' | asset_url }}" alt="Default ingredient icon" width="24" height="24">
+                  {% endif %}
+                </div>
+                <strong>{{ block.settings.title }}</strong>
+              </div>
               <span class="chevron">+</span>
             </div>
             <div class="ingredient-description" style="display: none;">
@@ -132,7 +181,6 @@
 }
 .info-top {
   padding:80px 0px 65px 0px;
-  max-width: 600px;
   margin: 0 auto;
 }
 .image-bottom {
@@ -141,11 +189,31 @@
 .info-top * {
   margin: 0px;
 }
-.info-top .page-width {
+.info-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+.text-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 22px;
+}
+.product-feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.product-image {
+  max-width: 200px;
+  height: auto;
+}
+.product-title {
+  margin-top: 10px;
+  font-weight: 600;
+  text-align: center;
 }
 .open-acc-item{
   display:flex;
@@ -160,6 +228,7 @@
 .image-bottom {
     min-height: 360px;
     position: relative;
+    border-top: 1px solid #000;
 }
 .image-bottom img{
     width: 100%;
@@ -195,8 +264,26 @@
   justify-content: space-between;
   align-items: center;
 }
+.ingredient-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ingredient-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ingredient-icon img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
 .ingredient-description {
   margin-top: 10px;
+  padding-left: 34px;
 }
 .chevron {
   font-size: 18px;
@@ -238,6 +325,10 @@
   .ingredients-section-row .ingredients-list{
     width: 100%;
   }
+  .info-content {
+    flex-direction: column;
+    align-items: center;
+  }
   .info-top p{
     text-align: center;
     width: 100%;
@@ -248,6 +339,9 @@
   .info-top .btn {
     margin: 0px auto;
     width: auto;
+  }
+  .text-content {
+    align-items: center;
   }
   .info-top h1.font-serif:before {
     position: absolute;
