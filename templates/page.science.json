@@ -287,7 +287,11 @@
         "feature_8ALYQT",
         "feature_H3FMwT"
       ],
-      "custom_css": [],
+      "custom_css": [
+        ".competitor-table {background-color: #f4f9fd;}",
+        ".competitor-table__column {background-color: white;}",
+        ".competitor-table__column: nth-child(2) {background-color: #ff59e4; }"
+      ],
       "name": "Competitor Table",
       "settings": {
         "title": "Why Women Choose Mixhers",
