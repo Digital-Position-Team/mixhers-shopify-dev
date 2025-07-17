@@ -25,6 +25,18 @@
       "id": "button_label",
       "label": "Button Label",
       "default": "Shop MixHers Products"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottom_border",
+      "label": "Show Bottom Border",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#000000"
     }
   ],
   "blocks": [
@@ -111,7 +123,11 @@
 }
 {% endschema %}
 
-<div class="clinical_sts-list-section_clinic">
+{% assign show_bottom_border = section.settings.show_bottom_border %}
+{% assign border_color = section.settings.border_color | default: '#000000' %}
+
+<div class="clinical_sts-list-section_clinic {% if show_bottom_border %}with-bottom-border{% endif %}" 
+     {% if show_bottom_border %}style="border-bottom-color: {{ border_color }};"{% endif %}>
   <div class="clinical_sts-section-row_clinic">
     <div class="clinical_study-info_clinic">
       <div class="info-top_clinic">
@@ -201,7 +217,10 @@
 .clinical_sts-list-section_clinic {
     background: transparent;
     /* border-top: 1px solid #000; */
+}
+.clinical_sts-list-section_clinic.with-bottom-border {
     border-bottom: 1px solid #000;
+    padding-bottom: 40px;
 }
 .image-bottom_clinic img {
     width: 100%;
@@ -295,6 +314,9 @@
   }
   .clinical_sts-section-row_clinic .clinical_studies-list_clinic {
     width: 100%;
+  }
+  .clinical_sts-list-section_clinic.with-bottom-border {
+    padding-bottom: 20px;
   }
   .info-top_clinic p {
     text-align: center;
