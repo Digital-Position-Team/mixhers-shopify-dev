@@ -39,24 +39,24 @@
           "type": "professional",
           "settings": {
             "image": "shopify://shop_images/d7e3acc4391e54154048938a8277672851f91452.jpg",
-            "name": "Name 1",
-            "bio": "Lorem ipsum dolor sit amet consectetur. Dignissim turpis ut volutpat ante eu."
+            "name": "Dr. Olivia Bennett, OB/GYN",
+            "bio": "“Mixhers aligns with what I recommend in my practice - clean, natural ingredients that actually support women’s hormone health.”"
           }
         },
         "professional_VCtR3n": {
           "type": "professional",
           "settings": {
             "image": "shopify://shop_images/67d3a8f8a8f273a922c1b7dd93d3703fc668cea6.jpg",
-            "name": "Name 1",
-            "bio": "Lorem ipsum dolor sit amet consectetur. Dignissim turpis ut volutpat ante eu."
+            "name": "Lauren Jacobs, Wellness Coach",
+            "bio": "“I trust Mixhers for its science-backed formulas. It’s one of the few brands I confidently recommend to clients.”"
           }
         },
         "professional_WiLDHV": {
           "type": "professional",
           "settings": {
             "image": "shopify://shop_images/b95ed54f05b75888ea79a2b81515258eebd6d57c.jpg",
-            "name": "Name 1",
-            "bio": "Lorem ipsum dolor sit amet consectetur. Dignissim turpis ut volutpat ante eu."
+            "name": "Caroline Brooks, Nutritionist",
+            "bio": "“Mixhers is changing the conversation around hormone health. It’s empowering women with products that work.”"
           }
         }
       },
