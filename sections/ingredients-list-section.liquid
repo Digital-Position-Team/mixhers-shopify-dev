@@ -127,13 +127,7 @@
     </div>
 
     <div class="ingredients-list">
-       <div class="open-acc-item" id="ingredients-toggle">
-        <h3 class="font-serif">Ingredients</h3>
-        <svg class="toggle-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9" />
-        </svg>
-      </div>
-
+      <h3 class="font-serif">Ingredients</h3>
       <div class="ingredients-blocks">
         {% for block in section.blocks %}
           <div class="ingredient-item" data-accordion>
@@ -270,8 +264,8 @@
   gap: 10px;
 }
 .ingredient-icon {
-  width: 24px;
-  height: 24px;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -369,16 +363,7 @@
 </style>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  const toggleHeader = document.getElementById('ingredients-toggle');
-  const ingredientsBlock = document.querySelector('.ingredients-blocks');
-  const toggleIcon = toggleHeader.querySelector('.toggle-icon');
-
-  toggleHeader.addEventListener('click', () => {
-    const isCollapsed = ingredientsBlock.classList.toggle('collapsed');
-    toggleIcon.classList.toggle('open', !isCollapsed);
-  });
-});
+// Ingredients block is always visible - no toggle needed
             
 document.addEventListener('DOMContentLoaded', function () {
   const items = document.querySelectorAll('[data-accordion]');
