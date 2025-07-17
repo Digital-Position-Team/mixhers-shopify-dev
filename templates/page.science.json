@@ -124,29 +124,95 @@
         "ingredient_zegJxV": {
           "type": "ingredient",
           "settings": {
-            "title": "Ingredient Name",
-            "description": "Ingredient Info"
+            "title": "White Peony Root",
+            "description": "Calms the nervous system and enhances progesterone production. Offers relief from fluid retention and cramps. Helps level mood swings and alleviate menstrual cycle discomfort.",
+            "icon": "shopify://shop_images/white-peony-root_9ada0e9b-2ea5-4bb4-8f7c-af4566bc41c5.png"
           }
         },
         "ingredient_3AwTjL": {
           "type": "ingredient",
           "settings": {
-            "title": "Ingredient Name",
-            "description": "Ingredient Info"
+            "title": "Chinese Licorice (licorice root extract)",
+            "description": "Supports adrenal glands and hormone production. Curbs sugar cravings, reduces inflammation, and boosts energy. Works with white peony root to support healthy ovulation and ease menstrual cycle discomfort.",
+            "icon": "shopify://shop_images/chinese-licorice_c502b59f-7c51-4210-8d1c-368fb6236bab.png"
           }
         },
         "ingredient_mamNpW": {
           "type": "ingredient",
           "settings": {
-            "title": "Ingredient Name",
-            "description": "Ingredient Info"
+            "title": "Siberian ginseng",
+            "description": "Supports the stress system of the body, which can have an enormous impact on hormone balance.",
+            "icon": "shopify://shop_images/siberian-ginseng_b6e57cdc-be1c-42b9-a3f0-cc09ad40ced7.png"
+          }
+        },
+        "ingredient_b63BF3": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Dong quai",
+            "description": "Long-used herb in traditional Chinese medicine. Can be particularly impactful for relieving menstrual cramps and resolving gut problems associated with menstruation.",
+            "icon": "shopify://shop_images/dong-qai.png"
+          }
+        },
+        "ingredient_9XrCgJ": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Giant kelp leaf",
+            "description": "Provides iodine, a necessary trace mineral for good ovarian health. Helps maintain healthy follicular function, allowing optimal progesterone production. Supports optimal thyroid function and sustained energy.",
+            "icon": "shopify://shop_images/giant-kelp-leaf_0eb0b28d-a375-4397-a073-3e7fd43643ad.png"
+          }
+        },
+        "ingredient_xakVG6": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Chaste tree berry extract",
+            "description": "Clinically shown to support regular menstrual cycles, promote hormone balance, and relieve PMS symptoms like irritability, mood swings, headaches, bloating, fatigue, and breast tenderness.",
+            "icon": "shopify://shop_images/chaste-tree-berry_a2c30211-46a1-4d3a-8aa9-083cbbc6e021.png"
+          }
+        },
+        "ingredient_MK6zf4": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Magnesium",
+            "description": "Promotes bone strength, alleviates menstrual discomfort, promotes better sleep quality, and helps regulate hormones.",
+            "icon": "shopify://shop_images/magnesium.png"
+          }
+        },
+        "ingredient_mUYM9y": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Iron",
+            "description": "Supports normal energy levels.",
+            "icon": "shopify://shop_images/iron.png"
+          }
+        },
+        "ingredient_QNjhkD": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Milk thistle root",
+            "description": "Supports overall liver health and hormone regulation.",
+            "icon": "shopify://shop_images/milk-thistle-root.png"
+          }
+        },
+        "ingredient_bTfYNq": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Ginger root",
+            "description": "Alleviates menstrual discomfort, including nausea.",
+            "icon": "shopify://shop_images/ginger-root.png"
           }
         }
       },
       "block_order": [
         "ingredient_zegJxV",
         "ingredient_3AwTjL",
-        "ingredient_mamNpW"
+        "ingredient_mamNpW",
+        "ingredient_b63BF3",
+        "ingredient_9XrCgJ",
+        "ingredient_xakVG6",
+        "ingredient_MK6zf4",
+        "ingredient_mUYM9y",
+        "ingredient_QNjhkD",
+        "ingredient_bTfYNq"
       ],
       "name": "Ingredients List Section",
       "settings": {
@@ -154,6 +220,9 @@
         "subheading": "Thoughtfully dosed, naturally effective",
         "button_link": "shopify://collections/all",
         "button_label": "Shop Mixhers Products",
+        "product_image": "shopify://shop_images/Rectangle_5_274d2104-8085-4adc-9a8a-261a0a21db79.png",
+        "product_title": "",
+        "product_link": "shopify://products/hertime-pms-bundle",
         "bottom_image": "shopify://shop_images/a89f1193667e5faef5f9abea4bc6e6f7fdc6d93b.jpg"
       }
     },
