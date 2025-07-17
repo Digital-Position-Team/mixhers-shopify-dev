@@ -46,6 +46,8 @@
     margin-top: 2rem;
     padding: 40px 0;
     overflow: visible;
+    opacity: 0; /* Start hidden to avoid flash of incorrect positioning */
+    transition: opacity 0.3s ease;
   }
 
   #testimonials-carousel-{{ section_id }} .swiper-slide {
@@ -199,34 +201,59 @@
     }
     
     function initializeSwiper() {
-      const swiper = new Swiper(`#testimonials-carousel-${sectionId}`, {
-        spaceBetween: 30,
-        slidesPerView: 1.5,
-        centeredSlides: true,
-        loop: true,
-        grabCursor: true,
-        initialSlide: 0,
-        speed: 800,
-        on: {
-          init: function() {
-            updateTestimonialContent(currentIndex);
+      // Reset any inline transform that might be present
+      const swiperWrapper = document.querySelector(`#testimonials-carousel-${sectionId} .swiper-wrapper`);
+      if (swiperWrapper) {
+        swiperWrapper.style.transform = 'none';
+      }
+      
+      // Small delay to ensure DOM is fully ready before initialization
+      setTimeout(() => {
+        const swiper = new Swiper(`#testimonials-carousel-${sectionId}`, {
+          spaceBetween: 30,
+          slidesPerView: 1.5,
+          centeredSlides: true,
+          loop: true,
+          grabCursor: true,
+          initialSlide: 0,
+          speed: 800,
+          updateOnWindowResize: true, // Ensure it updates on resize
+          observer: true, // Watch for DOM changes
+          observeParents: true,
+          on: {
+            init: function() {
+              updateTestimonialContent(currentIndex);
+              // Force recalculation after initialization
+              setTimeout(() => {
+                this.update();
+                // Show carousel after it's properly positioned
+                document.querySelector(`#testimonials-carousel-${sectionId}`).style.opacity = '1';
+              }, 100);
+            },
+            slideChange: function() {
+              currentIndex = this.realIndex % testimonials.length;
+              updateTestimonialContent(currentIndex);
+            }
           },
-          slideChange: function() {
-            currentIndex = this.realIndex % testimonials.length;
-            updateTestimonialContent(currentIndex);
+          breakpoints: {
+            10: {
+              slidesPerView: 'auto',
+              spaceBetween: 20
+            },
+            768: {
+              slidesPerView: 'auto',
+              spaceBetween: 30
+            }
           }
-        },
-        breakpoints: {
-          10: {
-            slidesPerView: 'auto',
-            spaceBetween: 20
-          },
-          768: {
-            slidesPerView: 'auto',
-            spaceBetween: 30
+        });
+        
+        // Also update on any viewport size changes
+        window.addEventListener('resize', () => {
+          if (swiper && swiper.update) {
+            swiper.update();
           }
-        }
-      });
+        });
+      }, 50);
       
       const testimonialSlides = document.querySelectorAll(`#testimonials-carousel-${sectionId} .swiper-slide`);
       
