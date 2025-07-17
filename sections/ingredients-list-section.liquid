@@ -7,7 +7,7 @@
       "type": "text",
       "id": "heading",
       "label": "Main Heading",
-      "default": "INGREDIENTS THAT WORK"
+      "default": "Ingredients that work"
     },
     {
       "type": "text",
@@ -194,6 +194,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 22px;
+  max-width: 400px;
 }
 .product-feature {
   display: flex;
@@ -278,16 +279,18 @@
 .ingredient-description {
   margin-top: 0;
   padding-left: 34px;
-  max-height: 0;
+  height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: max-height 0.25s ease-out, opacity 0.25s ease-out, margin-top 0.25s ease-out;
+  transform: translateY(-10px);
+  transition: height 0.25s ease, opacity 0.2s ease, transform 0.2s ease, margin-top 0.2s ease;
+  will-change: height, opacity, transform, margin-top;
 }
 .ingredient-item.open .ingredient-description {
   margin-top: 10px;
-  max-height: 1000px;
+  height: auto; /* Will be set dynamically by JS */
   opacity: 1;
-  transition: max-height 0.35s ease-in, opacity 0.25s ease-in, margin-top 0.25s ease-in;
+  transform: translateY(0);
 }
 .chevron {
   font-size: 18px;
@@ -380,20 +383,64 @@ document.addEventListener('DOMContentLoaded', function () {
 
   items.forEach(item => {
     const toggle = item.querySelector('[data-accordion-toggle]');
+    const desc = item.querySelector('.ingredient-description');
     
     toggle.addEventListener('click', () => {
       const isOpen = item.classList.contains('open');
       
-      // Close all ingredients
+      // Close all ingredients first with proper animation
       items.forEach(i => {
-        i.classList.remove('open');
-        i.querySelector('.chevron').textContent = '+';
+        const itemDesc = i.querySelector('.ingredient-description');
+        
+        if (i.classList.contains('open')) {
+          // Set current height before closing animation
+          itemDesc.style.height = itemDesc.scrollHeight + 'px';
+          // Force reflow
+          void itemDesc.offsetWidth;
+          // Set to 0 to animate closing
+          itemDesc.style.height = '0px';
+          itemDesc.style.opacity = '0';
+          itemDesc.style.transform = 'translateY(-10px)';
+          
+          i.querySelector('.chevron').textContent = '+';
+          
+          // After animation completes, remove open class
+          setTimeout(() => {
+            i.classList.remove('open');
+            itemDesc.style.height = '';
+          }, 250);
+        } else {
+          // Just remove class for already closed items
+          i.classList.remove('open');
+          i.querySelector('.chevron').textContent = '+';
+        }
       });
 
       // If the clicked item wasn't open before, open it
       if (!isOpen) {
         item.classList.add('open');
         item.querySelector('.chevron').textContent = '+';
+        
+        // Calculate and set the final height before animation
+        const contentHeight = desc.scrollHeight;
+        
+        // Set initial state
+        desc.style.height = '0px';
+        desc.style.opacity = '0';
+        desc.style.transform = 'translateY(-10px)';
+        
+        // Force a reflow
+        void desc.offsetWidth;
+        
+        // Animate to final height
+        desc.style.height = contentHeight + 'px';
+        desc.style.opacity = '1';
+        desc.style.transform = 'translateY(0)';
+        
+        // Remove fixed height after animation completes
+        setTimeout(() => {
+          desc.style.height = '';
+        }, 250);
       }
     });
   });
