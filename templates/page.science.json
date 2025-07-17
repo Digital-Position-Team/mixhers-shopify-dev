@@ -25,9 +25,9 @@
         "background_image_mob": "shopify://shop_images/MIXHERS-ATP-316_2.png",
         "heading": "Backed by science. Trusted by women.",
         "subheading": "Science-backed supplements you sip for balanced hormones and a better you.",
-        "primary_button_link": "#",
+        "primary_button_link": "#clinical_study-toggle_clinic",
         "primary_button_label": "Read the studies",
-        "secondary_button_link": "#",
+        "secondary_button_link": "https://mixhers.com/collections/all",
         "secondary_button_label": "Shop now",
         "star_text": "Over 17,000 5-star reviews from real women"
       }
@@ -70,7 +70,7 @@
         "heading": "Mixhers is trusted by health professionals",
         "description": "From OB/GYNs to nutritionists, experts recommend Mixhers for natural, effective hormone support.",
         "button_link": "#",
-        "button_label": "Learn more"
+        "button_label": ""
       }
     },
     "image_fullheight_with_text_HxaDqC": {
@@ -200,7 +200,7 @@
         "heading": "Mixhers is clinically studied",
         "subheading": "Crafted for balance, rooted in research, trusted by women.",
         "button_link": "shopify://collections/all",
-        "button_label": "Shop Mixhers Products"
+        "button_label": "Buy Now"
       }
     },
     "competitor_table_RXt6Xi": {
