@@ -203,6 +203,100 @@
         "button_label": "Shop Mixhers Products"
       }
     },
+    "competitor_table_RXt6Xi": {
+      "type": "competitor-table",
+      "blocks": {
+        "feature_nemcMa": {
+          "type": "feature",
+          "settings": {
+            "feature_name": "Woman Owned",
+            "column2_value": "check",
+            "column2_custom_text": "",
+            "column3_value": "check",
+            "column3_custom_text": "",
+            "column4_value": "empty",
+            "column4_custom_text": ""
+          }
+        },
+        "feature_8tfxpd": {
+          "type": "feature",
+          "settings": {
+            "feature_name": "Hormone Friendly",
+            "column2_value": "check",
+            "column2_custom_text": "",
+            "column3_value": "check",
+            "column3_custom_text": "",
+            "column4_value": "empty",
+            "column4_custom_text": ""
+          }
+        },
+        "feature_FpMNAU": {
+          "type": "feature",
+          "settings": {
+            "feature_name": "Third-Party Tested",
+            "column2_value": "check",
+            "column2_custom_text": "",
+            "column3_value": "empty",
+            "column3_custom_text": "",
+            "column4_value": "empty",
+            "column4_custom_text": ""
+          }
+        },
+        "feature_9raeXH": {
+          "type": "feature",
+          "settings": {
+            "feature_name": "Highly Absorbable Powder",
+            "column2_value": "check",
+            "column2_custom_text": "",
+            "column3_value": "empty",
+            "column3_custom_text": "",
+            "column4_value": "empty",
+            "column4_custom_text": ""
+          }
+        },
+        "feature_8ALYQT": {
+          "type": "feature",
+          "settings": {
+            "feature_name": "All Natural",
+            "column2_value": "check",
+            "column2_custom_text": "",
+            "column3_value": "empty",
+            "column3_custom_text": "",
+            "column4_value": "check",
+            "column4_custom_text": ""
+          }
+        },
+        "feature_H3FMwT": {
+          "type": "feature",
+          "settings": {
+            "feature_name": "See Results after 30 Days",
+            "column2_value": "check",
+            "column2_custom_text": "",
+            "column3_value": "empty",
+            "column3_custom_text": "",
+            "column4_value": "check",
+            "column4_custom_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "feature_nemcMa",
+        "feature_8tfxpd",
+        "feature_FpMNAU",
+        "feature_9raeXH",
+        "feature_8ALYQT",
+        "feature_H3FMwT"
+      ],
+      "custom_css": [],
+      "name": "Competitor Table",
+      "settings": {
+        "title": "Why Women Choose Mixhers",
+        "column2_header": "Mixhers",
+        "mixhers_logo": "shopify://shop_images/mixhers-logo-white.svg",
+        "column3_header": "Competitor #1",
+        "column4_header": "Competitor #2"
+      }
+    },
     "why_mixhers_section_LbmiaW": {
       "type": "why_mixhers_Section",
       "blocks": {
@@ -259,6 +353,7 @@
         "comparison_table_QnwRkR",
         "comparison_table_pXLfVP"
       ],
+      "disabled": true,
       "name": "Comparison Why Mixhers",
       "settings": {
         "background-color": "#f4f9fd",
@@ -532,6 +627,7 @@
     "features_with_icons_grkU36",
     "ingredients_list_section_rceajQ",
     "clinical_studies_section_4rKqyY",
+    "competitor_table_RXt6Xi",
     "why_mixhers_section_LbmiaW",
     "faq_section_KbeexA",
     "ugc_testimonials_wbwrdN",
