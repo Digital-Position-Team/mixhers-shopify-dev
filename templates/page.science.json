@@ -25,9 +25,9 @@
         "background_image_mob": "shopify://shop_images/MIXHERS-ATP-316_2.png",
         "heading": "Backed by science. Trusted by women.",
         "subheading": "Science-backed supplements you sip for balanced hormones and a better you.",
-        "primary_button_link": "#",
+        "primary_button_link": "#clinical_study-toggle_clinic",
         "primary_button_label": "Read the studies",
-        "secondary_button_link": "#",
+        "secondary_button_link": "https://mixhers.com/collections/all",
         "secondary_button_label": "Shop now",
         "star_text": "Over 17,000 5-star reviews from real women"
       }
@@ -39,24 +39,24 @@
           "type": "professional",
           "settings": {
             "image": "shopify://shop_images/d7e3acc4391e54154048938a8277672851f91452.jpg",
-            "name": "Name 1",
-            "bio": "Lorem ipsum dolor sit amet consectetur. Dignissim turpis ut volutpat ante eu."
+            "name": "Dr. Olivia Bennett, OB/GYN",
+            "bio": "“Mixhers aligns with what I recommend in my practice - clean, natural ingredients that actually support women’s hormone health.”"
           }
         },
         "professional_VCtR3n": {
           "type": "professional",
           "settings": {
             "image": "shopify://shop_images/67d3a8f8a8f273a922c1b7dd93d3703fc668cea6.jpg",
-            "name": "Name 1",
-            "bio": "Lorem ipsum dolor sit amet consectetur. Dignissim turpis ut volutpat ante eu."
+            "name": "Lauren Jacobs, Wellness Coach",
+            "bio": "“I trust Mixhers for its science-backed formulas. It’s one of the few brands I confidently recommend to clients.”"
           }
         },
         "professional_WiLDHV": {
           "type": "professional",
           "settings": {
             "image": "shopify://shop_images/b95ed54f05b75888ea79a2b81515258eebd6d57c.jpg",
-            "name": "Name 1",
-            "bio": "Lorem ipsum dolor sit amet consectetur. Dignissim turpis ut volutpat ante eu."
+            "name": "Caroline Brooks, Nutritionist",
+            "bio": "“Mixhers is changing the conversation around hormone health. It’s empowering women with products that work.”"
           }
         }
       },
@@ -67,10 +67,10 @@
       ],
       "name": "Trusted by Professionals",
       "settings": {
-        "heading": "MixHers is trusted by health professionals",
+        "heading": "Mixhers is trusted by health professionals",
         "description": "From OB/GYNs to nutritionists, experts recommend Mixhers for natural, effective hormone support.",
-        "button_link": "#",
-        "button_label": "Learn more"
+        "button_link": "",
+        "button_label": ""
       }
     },
     "image_fullheight_with_text_HxaDqC": {
@@ -81,7 +81,7 @@
         "image_position": "right",
         "heading": "What makes our formulas actually work?",
         "heading_color": "#ff59e4",
-        "content": "<p>MixHers is hormonal health and wellness made simple. Every scoop delivers over 50 vitamins, minerals, superfoods, adaptogens, and probiotics—formulated to support hormone health, gut balance, stress, metabolism, immunity, and more. No fillers. No additives. Just real ingredients selected to bring you wholeness.</p>",
+        "content": "<p>Mixhers is hormonal health and wellness made simple. Every scoop delivers over 50 vitamins, minerals, superfoods, adaptogens, and probiotics—formulated to support hormone health, gut balance, stress, metabolism, immunity, and more. No fillers. No additives. Just real ingredients selected to bring you wholeness.</p>",
         "border_bottom": true
       }
     },
@@ -153,7 +153,7 @@
         "heading": "INGREDIENTS THAT WORK",
         "subheading": "Thoughtfully dosed, naturally effective",
         "button_link": "shopify://collections/all",
-        "button_label": "Shop MixHers Products",
+        "button_label": "Shop Mixhers Products",
         "bottom_image": "shopify://shop_images/a89f1193667e5faef5f9abea4bc6e6f7fdc6d93b.jpg"
       }
     },
@@ -197,10 +197,108 @@
       ],
       "name": "Clinical Studies Section",
       "settings": {
-        "heading": "MixHers is clinically studied",
+        "heading": "Mixhers is clinically studied",
         "subheading": "Crafted for balance, rooted in research, trusted by women.",
         "button_link": "shopify://collections/all",
-        "button_label": "Shop MixHers Products"
+        "button_label": "Buy Now"
+      }
+    },
+    "competitor_table_RXt6Xi": {
+      "type": "competitor-table",
+      "blocks": {
+        "feature_nemcMa": {
+          "type": "feature",
+          "settings": {
+            "feature_name": "Woman Owned",
+            "column2_value": "check",
+            "column2_custom_text": "",
+            "column3_value": "check",
+            "column3_custom_text": "",
+            "column4_value": "empty",
+            "column4_custom_text": ""
+          }
+        },
+        "feature_8tfxpd": {
+          "type": "feature",
+          "settings": {
+            "feature_name": "Hormone Friendly",
+            "column2_value": "check",
+            "column2_custom_text": "",
+            "column3_value": "check",
+            "column3_custom_text": "",
+            "column4_value": "empty",
+            "column4_custom_text": ""
+          }
+        },
+        "feature_FpMNAU": {
+          "type": "feature",
+          "settings": {
+            "feature_name": "Third-Party Tested",
+            "column2_value": "check",
+            "column2_custom_text": "",
+            "column3_value": "empty",
+            "column3_custom_text": "",
+            "column4_value": "empty",
+            "column4_custom_text": ""
+          }
+        },
+        "feature_9raeXH": {
+          "type": "feature",
+          "settings": {
+            "feature_name": "Highly Absorbable Powder",
+            "column2_value": "check",
+            "column2_custom_text": "",
+            "column3_value": "empty",
+            "column3_custom_text": "",
+            "column4_value": "empty",
+            "column4_custom_text": ""
+          }
+        },
+        "feature_8ALYQT": {
+          "type": "feature",
+          "settings": {
+            "feature_name": "All Natural",
+            "column2_value": "check",
+            "column2_custom_text": "",
+            "column3_value": "empty",
+            "column3_custom_text": "",
+            "column4_value": "check",
+            "column4_custom_text": ""
+          }
+        },
+        "feature_H3FMwT": {
+          "type": "feature",
+          "settings": {
+            "feature_name": "See Results after 30 Days",
+            "column2_value": "check",
+            "column2_custom_text": "",
+            "column3_value": "empty",
+            "column3_custom_text": "",
+            "column4_value": "check",
+            "column4_custom_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "feature_nemcMa",
+        "feature_8tfxpd",
+        "feature_FpMNAU",
+        "feature_9raeXH",
+        "feature_8ALYQT",
+        "feature_H3FMwT"
+      ],
+      "custom_css": [
+        ".competitor-table {background-color: #f4f9fd;}",
+        ".competitor-table__column {background-color: white;}",
+        ".competitor-table__column:nth-child(2) {background-color: #ff59e4;}"
+      ],
+      "name": "Competitor Table",
+      "settings": {
+        "title": "Why Women Choose Mixhers",
+        "column2_header": "Mixhers",
+        "mixhers_logo": "shopify://shop_images/mixhers-logo-white.svg",
+        "column3_header": "Competitor #1",
+        "column4_header": "Competitor #2"
       }
     },
     "why_mixhers_section_LbmiaW": {
@@ -259,6 +357,7 @@
         "comparison_table_QnwRkR",
         "comparison_table_pXLfVP"
       ],
+      "disabled": true,
       "name": "Comparison Why Mixhers",
       "settings": {
         "background-color": "#f4f9fd",
@@ -532,6 +631,7 @@
     "features_with_icons_grkU36",
     "ingredients_list_section_rceajQ",
     "clinical_studies_section_4rKqyY",
+    "competitor_table_RXt6Xi",
     "why_mixhers_section_LbmiaW",
     "faq_section_KbeexA",
     "ugc_testimonials_wbwrdN",
