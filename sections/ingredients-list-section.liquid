@@ -144,7 +144,7 @@
               </div>
               <span class="chevron">+</span>
             </div>
-            <div class="ingredient-description" style="display: none;">
+            <div class="ingredient-description">
               <p>{{ block.settings.description }}</p>
             </div>
           </div>
@@ -276,12 +276,22 @@
   object-fit: contain;
 }
 .ingredient-description {
-  margin-top: 10px;
+  margin-top: 0;
   padding-left: 34px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.25s ease-out, opacity 0.25s ease-out, margin-top 0.25s ease-out;
+}
+.ingredient-item.open .ingredient-description {
+  margin-top: 10px;
+  max-height: 1000px;
+  opacity: 1;
+  transition: max-height 0.35s ease-in, opacity 0.25s ease-in, margin-top 0.25s ease-in;
 }
 .chevron {
   font-size: 18px;
-  transition: transform 0.2s ease;
+  transition: transform 0.25s ease-out;
 }
 .ingredient-item.open .chevron {
   transform: rotate(45deg);
@@ -370,19 +380,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
   items.forEach(item => {
     const toggle = item.querySelector('[data-accordion-toggle]');
-    const desc = item.querySelector('.ingredient-description');
-
+    
     toggle.addEventListener('click', () => {
       const isOpen = item.classList.contains('open');
+      
+      // Close all ingredients
       items.forEach(i => {
         i.classList.remove('open');
-        i.querySelector('.ingredient-description').style.display = 'none';
         i.querySelector('.chevron').textContent = '+';
       });
 
+      // If the clicked item wasn't open before, open it
       if (!isOpen) {
         item.classList.add('open');
-        desc.style.display = 'block';
         item.querySelector('.chevron').textContent = '+';
       }
     });
