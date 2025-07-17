@@ -72,6 +72,12 @@
           "id": "link_text",
           "label": "Link Text",
           "default": "Read Journal Article"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_border",
+          "label": "Show Bottom Border",
+          "default": true
         }
       ]
     }
@@ -153,7 +159,7 @@
       
       <div class="clinical_study-blocks_clinic">
         {% for block in section.blocks %}
-          <div class="clinical_st-item_clinic">
+          <div class="clinical_st-item_clinic {% unless block.settings.show_border %}no-border{% endunless %}">
             <div class="clinical_st-title_clinic">
               <strong>{{ block.settings.title }}</strong>
             </div>
@@ -248,6 +254,9 @@
 .clinical_st-item_clinic {
   border-bottom: 0.95px solid #E1E1E1;
   padding: 15px 0;
+}
+.clinical_st-item_clinic.no-border {
+  border-bottom: none;
 }
 .clinical_st-title_clinic {
   display: flex;
