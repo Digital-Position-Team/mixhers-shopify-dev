@@ -89,6 +89,7 @@
     /* Add a ::before pseudo-element to the item itself instead of the image-wrapper */
     position: relative;
     z-index: 0;
+    padding-top: 24px;
   }
   
   .featured-products__item::before {
@@ -157,9 +158,9 @@
   }
   
   @media screen and (max-width: 767px) {
-    .featured-products__grid {
+    /* .featured-products__grid {
       grid-template-columns: 1fr;
-    }
+    } */
     .featured-products__view-all { display: block; position: relative; right: 0px; }
     
     .featured-products__header {

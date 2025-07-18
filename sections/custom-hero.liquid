@@ -3,7 +3,6 @@
     display: flex;
     align-items: center;
     font-family: 'Buenos Aires', sans-serif;
-    background-color: #ffaeff;
   }
   .hero__left, .hero__right {
     width: 50%;
@@ -35,6 +34,7 @@
     max-width: 624px;
     height: 100%;
     margin: 0 auto;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
   }
   .hero__title {
     font-family: 'Faire Sprig', serif;
@@ -90,7 +90,7 @@
     opacity: 1;
     z-index: 1;
   }
-  .hero__cta-container { display: flex; gap: 10px; }
+  .hero__cta-container { display: flex; gap: 10px; text-shadow: none; }
   
   @media screen and (max-width: 990px) {
     h1.hero__title {
