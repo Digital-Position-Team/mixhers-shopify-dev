@@ -41,6 +41,7 @@
       ],
       "name": "Custom Hero",
       "settings": {
+        "background_image": "shopify://shop_images/mixhers-hero-bg.jpg",
         "reviews_text": "★ ★ ★ ★ ★ Over 17,000 5-star reviews from real women",
         "reviews_size": 16,
         "title": "Her health starts with hormones.",
