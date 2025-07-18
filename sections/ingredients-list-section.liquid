@@ -321,16 +321,19 @@
   }
 }
 @media screen and (max-width: 767px) {
+  .ingredients-list-section {border-top: none;}
   .ingredients-section-row .ingredients-info {
       width: 100%;
       border-right: unset;
       text-align: center;
+      flex-direction: column-reverse;
   }
   .ingredients-section-row {
     flex-direction: column;
   }
   .ingredients-section-row .ingredients-list{
     width: 100%;
+    padding-top: 0px;
   }
   .info-content {
     flex-direction: column;
@@ -342,6 +345,7 @@
   }
   .info-top{
     margin:0px auto;
+    padding-bottom: 0px;
   }
   .info-top .btn {
     margin: 0px auto;

@@ -12,11 +12,20 @@
     padding: 60px;
     color: white;
     height: 650px;
-    background-image: url('{{ "hero-bg.svg" | file_url }}');
     background-position: 100% 100%;
     background-size: cover;
     background-repeat: no-repeat;
-    
+    position: relative;
+  }
+  
+  .hero__left-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
   }
   .hero__left-inner {
     display: flex;
@@ -121,6 +130,9 @@
 
 <div class="hero">
   <div class="hero__left">
+    {% if section.settings.background_image %}
+      <img src="{{ section.settings.background_image | image_url }}" alt="" class="hero__left-bg" loading="eager">
+    {% endif %}
     <div class="hero__left-inner">
       
       <p class="hero__reviews">{{ section.settings.reviews_text }}</p>
@@ -189,6 +201,12 @@
 {
   "name": "Custom Hero",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image",
+      "info": "Ideal dimensions are square (e.g. 1000px × 1000px)"
+    },
     {
       "type": "text",
       "id": "reviews_text",
