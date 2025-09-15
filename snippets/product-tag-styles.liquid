@@ -1,0 +1,48 @@
+
+{% comment %} PDP Tags {% endcomment %}
+{% if pageType == 'product' %}
+    {% for metaobject in product.metafields.custom.product_tags_to_show.value %}
+        {% if metaobject.show_tag_on_pdp == true %}
+            {% unless metaobject.outline_tag_pdp %}
+                <style>
+                    .product-template-container .product-tag[data-tag="{{ metaobject.tag_name }}"] {
+                        background-color: {{ metaobject.tag_color }};
+                    }   
+                </style>
+            {% else %}
+                <style>
+                    .product-template-container .product-tag[data-tag="{{ metaobject.tag_name }}"] {
+                        background-color: #fff;
+                        color: {{ metaobject.tag_color }};
+                        border: 1px solid {{ metaobject.tag_color }};
+                    }   
+                </style>
+            {% endunless %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% comment %} Product Card Tags {% endcomment %}
+{% if pageType == 'product-card' %}
+    {% for metaobject in product.metafields.custom.product_tags_to_show.value %}
+        {% if metaobject.show_on_product_cards == true %}
+            {% unless metaobject.outline_tag %}
+                <style>
+                    .product-collection-grid-item .product-tag[data-tag="{{ metaobject.tag_name }}"], 
+                    .tagged-product-container .product-tag[data-tag="{{ metaobject.tag_name }}"] {
+                      background-color: {{ metaobject.tag_color }};
+                    }   
+                </style>
+            {% else %}
+            <style>
+                .product-collection-grid-item .product-tag[data-tag="{{ metaobject.tag_name }}"], 
+                .tagged-product-container .product-tag[data-tag="{{ metaobject.tag_name }}"] {
+                    background-color: #fff;
+                    color: {{ metaobject.tag_color }};
+                    border: 1px solid {{ metaobject.tag_color }};
+                }   
+            </style>
+            {% endunless %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
