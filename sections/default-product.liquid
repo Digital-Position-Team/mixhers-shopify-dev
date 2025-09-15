@@ -1,5 +1,8 @@
 {%- comment -%} Default Product wrapper for OS2.0. Mirrors product.liquid on vintage theme. {%- endcomment -%}
 
+{% comment %}Import old-styles.css{% endcomment %}
+<link href="{{ 'old-styles.css' | asset_url }}" rel="stylesheet" type="text/css" media="all" />
+
 <style>
   .product-reviews .yotpo-main-widget { padding-top: 0; }
 </style>
