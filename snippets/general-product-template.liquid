@@ -1,0 +1,1615 @@
+{% assign percent_off_text = '% off' | default: null %}
+{% assign percent_off = promo_discount_percentage | times: 100 | round %}
+{% assign percent_off_text = percent_off | append: percent_off_text %}
+{% assign isCanada = false %}
+{% if request.path contains 'canada' %}
+    {% assign isCanada = true %}
+{% endif %}
+
+{% assign showSubFrequency = settings.show_sub_frequency %}
+
+{% assign hasHolidayFlavor = false %}
+{% assign variantsOnlyHave15Option = true %}
+
+{% for variant in product.variants %}
+    {% if variant.metafields.custom.holiday_flavor %}
+        {% assign hasHolidayFlavor = true %}
+        {% continue %}
+    {% endif %}
+    {% if variant.option2 == '30' %}
+        {% assign variantsOnlyHave15Option = false %}
+    {% endif %}
+{% endfor %}
+
+
+{% comment %}Check for Sitewide Sale {% endcomment %}
+{% assign sitewideSaleEnabled = settings.sitewide_sale_enabled %}
+{% assign productSale = section.settings.show_product_sale %}
+{% assign useCodeForFirstOrderDiscount = section.settings.show_use_code_for_first_order_discount %}
+{% assign saleTagAboveProductInfo = section.settings.show_sale_tag_above_product_info %}
+{% assign defaultFlavorBubble = settings.default_flavor_bubble %}
+{% assign hideVariantBubble = false %}
+{% assign showQuantityField = product.metafields.custom.show_quantity_field | default: false %}
+{% assign tieredDiscount = product.metafields.custom.tiered_discount_amount | default: false %}
+{% assign tieredDiscountAmount = product.metafields.custom.discount | default: false %}
+{% assign hsa_type = product.metafields.rebrand.hsa_type.value %}
+{% assign hsa_on =  product.metafields.rebrand.hsa_on.value | default: false %}
+{% assign hasSubOptions = true %}
+{% if product.metafields.custom.subscription_available == false %}
+    {% assign hasSubOptions = false %}
+{% endif %}
+{% assign sitewideSaleDiscount = 100 | minus: settings.sitewide_sale_discount_percent | times: 0.01 %}
+{% assign isHertime = false %}
+{% if product.id == 6713024184499 or product.id == 6791551615155 %}
+    {% assign isHertime = true %}
+{% endif %}
+{% assign isHergreens = false %}
+{%  if product.id == 6697029566643 %}
+    {%  assign isHergreens = true %}
+{%  endif %}
+{% assign isHerpleasure = false %}
+{%  if product.id == 6901708456115 %}
+    {%  assign isHerpleasure = true %}
+{%  endif %}
+{% assign isCollagen = false %}
+{% if product.id == 7661948338355 %}
+    {% assign isCollagen = true %}
+{% endif %}
+{% assign useNewPricing = false %}
+{% if isHertime %}
+    {% assign useNewPricing = true %}
+{% endif %}
+{% assign swapPurchaseOrder = false %}
+{% if isHertime or isHerpleasure or isHergreens or product.id == 7668475822259 %}
+    {% assign swapPurchaseOrder = true %}
+{% endif %}
+
+
+
+{% if product.options contains 'Size' and product.variants.size < 2 %}
+    {% assign hideVariantBubble = true %}
+{% endif %}
+
+
+{% liquid
+    assign altSubProducts = collections['alternative-subscription'].products
+    assign hasAltSubs = false
+
+    for altSubProduct in altSubProducts
+        if altSubProduct.id == product.id
+            assign hasAltSubs = true
+        endif
+    endfor
+%}
+
+{% liquid
+    assign subscriptionDiscount = 0
+
+    unless product.metafields.custom.subscription_available == false or product.tags contains 'Sale'
+        assign subscriptionDiscount = shop.metaobjects.subscription_discount.subscription-discount-pbz1icd0.decimal_discount
+    endunless
+
+    assign firstSelectedImage = ''
+
+    assign fdaDisclaimer = shop.metaobjects.disclaimer.fda.copy
+%}
+
+{% liquid
+    assign hasDonation = false
+    assign donationImage = ''
+    assign donationText = ''
+
+    for donation in shop.metaobjects.donation_info.values
+        unless hasDonation
+            if donation.show_on_pd_ps == true
+                assign hasDonation = true
+                assign donationImage = donation.image
+
+                for item in donation.description.value.children
+                    if item.type == 'paragraph'
+                        assign donationText = '<p>'
+
+                        for child in item.children
+                            case child.type
+                                when 'text'
+                                    assign  donationText = donationText | append: child.value
+                                when 'link'
+                                    assign donationText = donationText | append: '<a href="' | append: child.url | append: '">' | append: child.children[0].value | append: '</a>'
+                            endcase
+                        endfor
+                    endif
+
+                endfor
+            endif
+        endunless
+    endfor
+
+%}
+
+
+<script>
+    let subscriptionDiscount = {{ subscriptionDiscount }};
+</script>
+
+{% liquid
+    assign has_most_popular = false
+    assign has_15_option = false
+    assign has_url_variant = false
+    assign selected_variant_id = ''
+    assign selected_variant_qty = ''
+    assign selected_variant_name = ''
+    assign selected_variant_selling_plans = ''
+    assign selected_variant_out_of_stock = false
+    assign selected_variant_price = ''
+    assign selected_variant_compare_at_price = ''
+    assign selected_variant_most_popular = false
+    assign selected_variant_holiday_flavor = false
+
+    unless has_url_variant
+        if product.selected_variant
+            assign has_url_variant = true
+            assign selected_variant_id = product.selected_variant.id
+            assign selected_variant_name = product.selected_variant.option1
+            if productSale
+                assign selected_variant_compare_at_price = product.selected_variant.compare_at_price
+            else
+                assign selected_variant_compare_at_price = product.selected_variant.selling_plan_allocations[0].compare_at_price
+            endif
+            if hasAltSubs and product.selected_variant.metafields.pdp.subscription_alt_variant.value
+                assign selected_variant_selling_plans = product.selected_variant.metafields.pdp.subscription_alt_variant.value.selling_plan_allocations
+            else
+                assign selected_variant_selling_plans = product.selected_variant.selling_plan_allocations
+            endif
+            if product.selected_variant.option2
+                assign selected_variant_qty = product.selected_variant.option2
+            endif
+            if product.selected_variant.metafields.variant.outofstock == "true"
+                assign selected_variant_out_of_stock = true
+            elsif product.selected_variant.inventory_quantity < 1 and product.selected_variant.inventory_management == "shopify" and product.selected_variant.inventory_policy == "deny"
+                assign selected_variant_out_of_stock = true
+            endif
+            unless product.selected_variant.selling_plan_allocations.size == 0
+                assign selected_variant_price = product.selected_variant.selling_plan_allocations[0].price
+            else
+                assign selected_variant_price = product.selected_variant.price
+            endunless
+            if product.selected_variant.metafields.custom.most_popular == true
+                assign selected_variant_most_popular = true
+            endif
+            if product.selected_variant.metafields.custom.holiday_flavor == true
+                assign selected_variant_holiday_flavor = true
+            endif
+        endif
+    endunless
+
+
+    for variant in product.variants
+        if has_url_variant == false
+            unless has_most_popular
+                if variant.metafields.custom.most_popular == true
+                    assign has_most_popular = true
+                    assign selected_variant_id = variant.id
+                    assign selected_variant_name = variant.option1
+                    if productSale
+                        assign selected_variant_compare_at_price = variant.compare_at_price
+                    else
+                        assign selected_variant_compare_at_price = variant.selling_plan_allocations[0].compare_at_price
+                    endif
+                    if hasAltSubs and variant.metafields.pdp.subscription_alt_variant.value
+                        assign selected_variant_selling_plans = variant.metafields.pdp.subscription_alt_variant.value.selling_plan_allocations
+                    else
+                        assign selected_variant_selling_plans = variant.selling_plan_allocations
+                    endif
+                    if variant.option2
+                        assign selected_variant_qty = variant.option2
+                    endif
+                    if variant.metafields.variant.outofstock == "true"
+                        assign selected_variant_out_of_stock = true
+                    elsif variant.inventory_quantity < 1 and variant.inventory_management == "shopify" and variant.inventory_policy == "deny"
+                        assign selected_variant_out_of_stock = true
+                    endif
+                    unless variant.selling_plan_allocations.size == 0
+                        assign selected_variant_price = variant.selling_plan_allocations[0].price
+                    else
+                        assign selected_variant_price = variant.price
+                    endunless
+                    if variant.metafields.custom.most_popular == true
+                        assign selected_variant_most_popular = true
+                    endif
+                    if variant.metafields.custom.holiday_flavor == true
+                        assign selected_variant_holiday_flavor = true
+                    endif
+                endif
+            endunless
+        endif
+
+        unless has_15_option
+            if variant.option2 == '15' and variant.metafields.custom.hide_variant != true
+                assign has_15_option = true
+            endif
+        endunless
+
+    endfor
+
+    if has_most_popular == false and has_url_variant == false
+        assign selected_variant_id = product.first_available_variant.id
+        assign selected_variant_name = product.first_available_variant.option1
+        if productSale
+            assign selected_variant_compare_at_price = product.first_available_variant.compare_at_price
+        else
+            assign selected_variant_compare_at_price = product.first_available_variant.selling_plan_allocations[0].compare_at_price
+        endif
+        if hasAltSubs and product.first_available_variant.metafields.pdp.subscription_alt_variant.value
+            assign selected_variant_selling_plans = product.first_available_variant.metafields.pdp.subscription_alt_variant.value.selling_plan_allocations
+        else
+            assign selected_variant_selling_plans = product.first_available_variant.selling_plan_allocations
+        endif
+        if product.first_available_variant.option2
+            assign selected_variant_qty = product.first_available_variant.option2
+        endif
+        if product.first_available_variant.metafields.variant.outofstock == "true"
+            assign selected_variant_out_of_stock = true
+        elsif product.first_available_variant.inventory_quantity < 1 and product.first_available_variant.inventory_management == "shopify" and product.first_available_variant.inventory_policy == "deny"
+            assign selected_variant_out_of_stock = true
+        endif
+        unless product.first_available_variant.selling_plan_allocations.size == 0
+            assign selected_variant_price = product.first_available_variant.selling_plan_allocations[0].price
+        else
+            assign selected_variant_price = product.first_available_variant.price
+        endunless
+        if product.first_available_variant.metafields.custom.most_popular == true
+            assign selected_variant_most_popular = true
+        endif
+        if product.first_available_variant.metafields.custom.holiday_flavor == true
+            assign selected_variant_holiday_flavor = true
+        endif
+    endif
+%}
+
+{% assign finalSaleProduct = false %}
+
+{% comment %} Check for Product Tags to Show {% endcomment %}
+{% assign showTag = false %}
+{% if product.metafields.custom.product_tags_to_show %}
+    {% for metaobject in product.metafields.custom.product_tags_to_show.value %}
+        {% if metaobject.show_tag_on_pdp == true %}
+            {% if showTag %}
+                {% assign showTag = showTag | join: '::' | append: '::' | append: metaobject.tag_name.value | split: '::' %}
+            {% else %}
+                {% assign showTag = metaobject.tag_name.value %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+{% unless showTag == false %}
+    {% render 'product-tag-styles' with product: product, pageType: 'product' %}
+{% endunless %}
+
+<div class="product-template-container product-template-container-new" data-qty="{{ selected_variant_qty }}">
+    <div class="product-template-wrapper">
+        {% if showTag %}
+            <div class="pdp-product-tag-wrap">
+                {% for tag in showTag %}
+                    <span class="product-tag" data-tag="{{ tag }}">{{ tag }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <div class="product-info-column">
+            <div id="product-box-info" data-starter-kit-variant-id="{{ product.metafields.custom.experience_box.value.id }}"></div>
+            <div class="product-info-top-wrapper">
+                {% if saleTagAboveProductInfo %}
+                    <div class="headers-8 subheader-2 pdp-sale-tag">{{ section.settings.sale_tag_above_product_info_text }}</div>
+                {% endif %}
+                <div class="product-titles-wrapper">
+                    <div class="product-title-price-wrapper {% if sitewideSaleEnabled or productSale %}product-title-price-wrapper-compact{% endif %}">
+
+                        <div class="product-title-wrapper {% if sitewideSaleEnabled or productSale %}product-title-wrapper-compact{% endif %}">
+                            {%- liquid
+                                assign product_title = product.title
+                                assign product_title_main_html = ''
+                                assign title_small_text_list = ''
+                                assign title_small_text_html = ''
+
+                                # allow overwriting product title
+                                if product.metafields.pdp.title
+                                    assign product_title = product.metafields.pdp.title
+                                endif
+
+                                # downcase
+                                assign product_title = product_title | downcase
+
+                                # split out mini titles
+                                if product.title contains 'Extra Strength'
+                                    assign title_small_text_list = title_small_text_list | append: '::' | append: ' extra strength'
+                                    assign product_title = product_title | replace: 'extra strength', ''
+                                endif
+                                if product.title contains 'Final Sale'
+                                    assign title_small_text_list = title_small_text_list | append: '::' | append: ' final sale'
+                                    assign product_title = product_title | replace: '- final sale', ''
+                                endif
+                                if product.title contains 'Canada'
+                                    assign title_small_text_list = title_small_text_list | append: '::' | append: ' canada'
+                                    assign product_title = product_title | replace: '- canada', ''
+                                endif
+
+                                # generate html for mini titles and main title spaces so they can be customized easily with css on a per product basis
+                                assign title_small_text_list = title_small_text_list | split: '::'
+                                for small_text in title_small_text_list
+                                    if small_text == ''
+                                        continue
+                                    endif
+
+                                    assign title_small_text_html = title_small_text_html | append: '<span class="pdp-title-small-text">' | append: small_text | append: '</span>'
+                                endfor
+
+                                # replace spaces and (tm) mark with css stylable versions
+                                assign product_title_main_html = product_title | replace: ' ', '<span class="pdp-title-space"> </span>'
+                                assign product_title_main_html = product_title_main_html | replace: '™', '<span class="tm">™</span>'
+                            -%}
+                            <h1 class="headers-5">{{ product_title_main_html }}</h1><span class="headers-9">{{ title_small_text_html }}</span>
+
+                        </div>
+                    </div>
+
+                    {% if product.metafields.descriptors.subtitle %}
+                        <h2 class="italic-subheaders-5">{{ product.metafields.descriptors.subtitle | downcase }}</h2>
+                    {% endif %}
+                </div>
+                <div class="review-faq-wrapper">
+                    <div class="yotpo-bottom-line-wrapper">
+                        <div class="yotpo bottomLine"
+                            data-appkey="FtiJniRn4vnaRTuWZnuPLxFMEANRUEaOHFBCrW4p"
+                            data-domain="{{shop.permanent_domain | escape }}"
+                            data-product-id="{{ product.id }}"
+                            data-product-models="{{ product.id }}"
+                            data-name="{{ product.title | escape }}"
+                            data-url="{{ shop.url }}{{ product.url }}"
+                            data-image-url="{{ product.featured_image | image_url: 'large' | replace: '?', '%3F' | replace: '&', '%26' }}"
+                            data-description="{{ product.description | escape }}"
+                            data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
+                        </div>
+                    </div>
+                    <div class="faq-link--wrapper">
+                        <a href="#faq" class="faq-link" id="faq-count"></a>
+                    </div>
+                </div>
+                <div class="atf-description">
+                    {% if section.settings.atf_title and section.settings.atf_title != empty %}
+                    <h4 class="headers-7">{{ section.settings.atf_title }}</h4>
+                    {% endif %}
+                    <div class="body-6">
+                        {% if section.settings.atf_description and section.settings.atf_description != empty %}
+                            {{ section.settings.atf_description }}
+                        {% else %}
+                            {{ product.description }}
+                        {% endif %}
+                    </div>
+                </div>
+
+                {% if product.id == 6713024184499 or product.id == 7099874705587 %}
+                    <div class="hertime-es-cta mobile-only">
+                        <p>Experiencing extreme PMS symptoms?</p>
+                        <p>You may want to try
+                            <a href="{% if product.id == 6713024184499 %}/products/hertime-extrastrength{% elsif product.id == 7099874705587 %}/products/canada-hertime-complete-care{% endif %}">
+                                <span>Hertime Extra Strength</span>
+                                <img src="{{ 'Right-arrow-quiz.svg' | file_url }}" loading="lazy" height="auto" width="16" alt="right arrow">
+                            </a>
+                        </p>
+                    </div>
+                {% endif %}
+            </div>
+            {% unless product.tags contains "hidden" and product.id != 7600562962611 %}
+                <div class="variant-selections-wrapper">
+                    <div class="variant-choice-wrapper" data-qty="{{ selected_variant_qty }}">
+                        {% comment %} Quantity Toggle (Sticks) {% endcomment %}
+                        {% assign hasQuantity = true %}
+                        {% if product.options contains 'Quantity' %}
+                                <div class="quanity-container">
+                                    {% if product.tags contains "quantity-in-scoops" %}
+                                        <h5 class="headers-9">Quantity (Scoops)</h5>
+                                    {% else %}
+                                        <h5 class="headers-9">Quantity (Sticks)</h5>
+                                    {% endif %}
+                                    {% if has_15_option and variantsOnlyHave15Option == false %}
+                                        <div class="qty-select"
+                                            {% if selected_variant_qty == '15' %}
+                                                data-active-option-index="0"
+                                                data-active-option-val="500"
+                                            {% elsif selected_variant_qty == '30' %}
+                                                data-active-option-index="1"
+                                                data-active-option-val="30"
+                                            {% endif %}
+                                        >
+                                            <div class="qty-select--option" data-option-val="15" href="#">15</div>
+                                            <div class="qty-select--option" data-option-val="30" href="#">30</div>
+                                    {% else %}
+                                        {% if variantsOnlyHave15Option %}
+                                            <div class="qty-select only-qty-option" data-active-option-index="0" data-active-option-val="15">
+                                                <div class="qty-select--option" data-option-val="15" href="#">15</div>
+                                        {% else %}
+                                        <div class="qty-select only-qty-option" data-active-option-index="1" data-active-option-val="30">
+                                            <div class="qty-select--option" data-option-val="30" href="#">30</div>
+                                        {% endif %}
+                                    {% endif %}
+                                        <div class="qty-select--slider"></div>
+                                    </div>
+                                </div>
+                        {% else %}
+                            {% assign hasQuantity = false %}
+                        {% endif %}
+                        <div class="product--variant-select-container">
+                            <div class="product--variant-select-title {% if product.metafields.custom.hide_flavor_title %} hide{% endif %}">
+                                <h5 class="headers-8">
+                                    {% if product.options contains 'Flavor' %}
+                                        Flavor -
+                                    {% elsif product.options contains 'Size' %}
+                                        Size -
+                                    {% elsif product.options contains 'Price' %}
+                                        Price -
+                                    {% elsif product.options contains 'Product' %}
+                                        Product -
+                                    {% elsif product.options contains 'Bundle' %}
+                                        Bundle -
+                                    {% endif %}
+                                    <span class="selected-variant-name">{{ selected_variant_name }}</span>
+                                </h5>
+                                {% if hasHolidayFlavor %}
+                                    <div class="holiday-flavor-limited-edition-copy{% unless selected_variant_holiday_flavor %} hidden{% endunless %}">
+                                        <p class="body-7">{{ settings.holiday_limited_edition_copy }}</p>
+                                    </div>
+                                {% endif %}
+                                <div class="most-popular{% unless selected_variant_holiday_flavor %}{% if selected_variant_most_popular == false %} hidden{% endif %}{% endunless %}">
+                                    <p class="body-7">Most Popular</p>
+                                </div>
+                            </div>
+                            <div class="product--variant-select-wrapper{% if hideVariantBubble %} hide{% endif %}">
+                                {% assign first_available_found = false %}
+                                {% for variant in product.variants %}
+                                    {% if variant.metafields.custom.hide_variant == true %}
+                                        {% continue %}
+                                    {% endif %}
+                                    {% if product.options contains 'Flavor' %}
+                                        {%- liquid
+                                            unless variant.option2 == "15" or variant.option2 == "30"
+                                                continue
+                                            endunless
+                                            unless finalSaleProduct
+                                                unless variant.available
+                                                    continue
+                                                endunless
+                                            endunless
+                                            assign variant_out_of_stock = false
+                                            if variant.metafields.variant.outofstock == "true"
+                                                assign variant_out_of_stock = true
+                                            elsif variant.inventory_quantity < 1 and variant.inventory_management == "shopify" and variant.inventory_policy == "deny"
+                                                assign variant_out_of_stock = true
+                                            endif
+                                        -%}
+                                        {% comment %}
+                                        {% if selected_variant_id == variant.id and first_available_found == false %}
+                                            {% if variant.selling_plan_allocations[0].selling_plan.id and variant.metafields.pdp.subscription_alt_carousel_images %}
+                                                {% assign firstSelectedImage = variant.metafields.pdp.subscription_alt_carousel_images.value %}
+                                            {% else %}
+                                                {% assign firstSelectedImage = variant.metafields.custom.carousel_images.value %}
+                                            {% endif %}
+                                            {% assign first_available_found = true %}
+                                        {% endif %}
+                                    {% endcomment %}
+                                    {% elsif product.options contains 'Size' or product.options contains 'Price' or product.options contains 'Product' or product.options contains 'Bundle' %}
+                                        {%- liquid
+
+                                            unless variant.available
+                                                continue
+                                            endunless
+
+                                            assign variant_out_of_stock = false
+                                            if variant.metafields.variant.outofstock == "true"
+                                                assign variant_out_of_stock = true
+                                            elsif variant.inventory_quantity < 1 and variant.inventory_management == "shopify" and variant.inventory_policy == "deny"
+                                                assign variant_out_of_stock = true
+                                            endif
+                                        -%}
+                                        {% if selected_variant_id == variant.id and first_available_found == false %}
+                                            {% assign firstSelectedImage = variant.metafields.custom.carousel_images.value %}
+                                            {% assign first_available_found = true %}
+                                        {% endif %}
+                                    {% elsif product.has_only_default_variant == true or product.variants.size < 2%}
+                                        {% liquid
+
+                                            unless product.variants[0].available
+                                                continue
+                                            endunless
+
+                                            assign variant_out_of_stock = false
+                                            if product.variants[0].metafields.variant.outofstock == "true"
+                                                assign variant_out_of_stock = true
+                                            elsif product.variants[0].inventory_quantity < 1 and product.variants[0].inventory_management == "shopify" and product.variants[0].inventory_policy == "deny"
+                                                assign variant_out_of_stock = true
+                                            endif
+                                        %}
+
+                                    {% endif %}
+                                    <div
+                                        class="product--variant-select--item{% if selected_variant_id == variant.id %} selectedVariant{% endif %}{% unless hasQuantity %} always-show{% endunless %}"
+                                        data-variant-id="{{ variant.id }}"
+                                        {% if hasAltSubs and variant.metafields.pdp.subscription_alt_variant.value %}
+                                            data-subscription-alt-product-id="{{ variant.metafields.pdp.subscription_alt_variant.value.product.id }}"
+                                            data-subscription-alt-variant-id="{{ variant.metafields.pdp.subscription_alt_variant.value.id }}"
+                                        {% endif %}
+                                        data-qty="{{ variant.option2 }}"
+                                        data-flavor-quantity="{{ variant.option2 }}"
+                                        data-name="{{ variant.option1 }}"
+                                        data-color="{% if variant.metafields.rebrand.bubble.value %}{{variant.metafields.rebrand.bubble.value}}{% else %}{{ variant.metafields.custom.bubble.value | default: "transparent"}}{% endif %}"
+                                        data-price="{% if sitewideSaleEnabled %}{{ variant.price | times: sitewideSaleDiscount | money_without_trailing_zeros }}{% else %}{{ variant.price | money_without_trailing_zeros }}{% endif %}"
+                                        data-compare-at-price="{% if sitewideSaleEnabled %}{{ variant.price | money_without_trailing_zeros }}{% else %}{% if variant.compare_at_price != empty and variant.compare_at_price %}{{ variant.compare_at_price | money_without_trailing_zeros }}{% endif %}{% endif %}"
+                                        data-available="{{ variant.available }}"
+                                        data-out-of-stock-override="{{ variant.metafields.variant.outofstock }}"
+                                        data-inventory="{{ variant.inventory_quantity }}"
+                                        data-inventory-management="{{ variant.inventory_management }}"
+                                        data-out-of-stock="{{ variant_out_of_stock }}"
+                                        {% if variant.metafields.custom.most_popular %}data-most-popular{% endif %}
+                                        {% if hasHolidayFlavor %}data-holiday-flavor="{% if variant.metafields.custom.holiday_flavor %}true{% else %}false{% endif %}"{% endif %}
+                                    >
+                                        {% if hasAltSubs and variant.metafields.pdp.subscription_alt_variant.value %}
+                                            {% for selling_plan_allocation in variant.metafields.pdp.subscription_alt_variant.value.selling_plan_allocations %}
+                                                {% if showSubFrequency == false and forloop.first == false %}
+                                                    {% continue %}
+                                                {% endif %}
+                                                <input type="hidden" class="selling-plan-allocation"
+                                                    data-selling-plan-id="{{ selling_plan_allocation.selling_plan.id }}"
+                                                    data-selling-plan-name="{{ selling_plan_allocation.selling_plan.name }}"
+                                                    data-selling-plan-price="{% if sitewideSaleEnabled %}{{ selling_plan_allocation.price | times: sitewideSaleDiscount | money_without_trailing_zeros }}{% else %}{{ selling_plan_allocation.price | money_without_trailing_zeros }}{% endif %}"
+                                                    data-selling-plan-compare-at-price="
+                                                        {% if productSale %}
+                                                            {{ variant.compare_at_price | money_without_trailing_zeros }}
+                                                        {% elsif sitewideSaleEnabled %}
+                                                            {{ selling_plan_allocation.price | money_without_trailing_zeros }}
+                                                        {% else %}
+                                                            {{ selling_plan_allocation.compare_at_price | money_without_trailing_zeros }}
+                                                        {% endif %}
+                                                    "
+                                                >
+
+                                            {% endfor %}
+                                        {% else %}
+                                            {% for selling_plan_allocation in variant.selling_plan_allocations %}
+                                                <input type="hidden" class="selling-plan-allocation"
+                                                    data-selling-plan-id="{{ selling_plan_allocation.selling_plan.id }}"
+                                                    data-selling-plan-name="{{ selling_plan_allocation.selling_plan.name }}"
+                                                    data-selling-plan-price="{% if sitewideSaleEnabled %}{{ selling_plan_allocation.price | times: sitewideSaleDiscount | money_without_trailing_zeros }}{% else %}{{ selling_plan_allocation.price | money_without_trailing_zeros }}{% endif %}"
+                                                    data-selling-plan-compare-at-price="
+                                                        {% if productSale %}
+                                                            {{ variant.compare_at_price | money_without_trailing_zeros }}
+                                                        {% elsif sitewideSaleEnabled %}
+                                                            {{ selling_plan_allocation.price | money_without_trailing_zeros }}
+                                                        {% else %}
+                                                            {{ selling_plan_allocation.compare_at_price | money_without_trailing_zeros }}
+                                                        {% endif %}
+                                                    "
+                                                >
+                                            {% endfor %}
+                                        {% endif %}
+                                        {% unless variant.metafields.custom.hide_variant_bubble  %}
+                                            <div class="product--variant-bubble">
+                                                {% if hasHolidayFlavor and variant.metafields.custom.holiday_flavor %}
+                                                    <div class="holiday-flavor-star">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="23" viewBox="0 0 24 23" fill="none">
+                                                            <path d="M11.9998 0L15.9997 7.42843L23.9995 8.57126L18.2854 14.2854L19.4282 22.8567L11.9998 18.8568L4.57134 22.8567L5.71418 14.2854L0 8.57126L7.99985 7.42843L11.9998 0Z" fill="#F44C7F"/>
+                                                            <path d="M11.9998 11.9998L15.9997 7.42843L11.9998 0V11.9998ZM23.9995 8.57126L11.9998 11.9998L18.2854 14.2854L23.9995 8.57126ZM19.4282 22.8567L11.9998 11.9998V18.8568L19.4282 22.8567ZM5.71418 14.2854L4.57134 22.8567L11.9998 11.9998L5.71418 14.2854ZM0 8.57126L11.9998 11.9998L7.99985 7.42843L0 8.57126Z" fill="#F498AB"/>
+                                                        </svg>
+                                                    </div>
+                                                {% endif %}
+                                                {% assign numberOfFlavors = 0 %}
+                                                {% for item in variant.metafields.custom.image_bubble.value %}
+                                                    {% assign numberOfFlavors = numberOfFlavors | plus: 1 %}
+                                                {% endfor %}
+                                                {% unless numberOfFlavors == 0 %}
+                                                    {% for item in variant.metafields.custom.image_bubble.value %}
+                                                        {% if numberOfFlavors == 1 %}
+                                                            <img src="{{ item | image_url }}" loading="lazy" width="68" height="68" alt="{{ variant.option1 }}"  class="product--flavor-bubble-img-single">
+                                                        {% elsif numberOfFlavors == 2 %}
+                                                            <img src="{{ item | image_url }}" loading="lazy" width="38" height="38" alt="{{ variant.option1 }}" class="product--flavor-bubble-img-double">
+                                                        {% elsif numberOfFlavors >= 3 %}
+                                                            {% if forloop.index <= 3 %}
+                                                                <img src="{{ item | image_url }}" loading="lazy" width="38" height="38" alt="{{ variant.option1 }}" class="product--flavor-bubble-img-triple">
+                                                            {% endif %}
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% else %}
+                                                    <img src="{{ defaultFlavorBubble | image_url }}" loading="lazy" width="68" height="68" alt="{{ variant.option1 }}"  class="product--flavor-bubble-img-single">
+                                                {% endunless %}
+                                            </div>
+                                        {% endunless %}
+                                        <span class="product--variant-name button-6">{{ variant.option1 }}</span>
+                                    </div>
+                                    {% if selected_variant_id == variant.id and first_available_found == false %}
+                                        {% if variant.selling_plan_allocations[0].selling_plan.id and variant.metafields.pdp.subscription_alt_carousel_images %}
+                                            {% assign firstSelectedImage = variant.metafields.pdp.subscription_alt_carousel_images.value %}
+                                        {% else %}
+                                            {% assign firstSelectedImage = variant.metafields.custom.carousel_images.value %}
+                                        {% endif %}
+                                        {% assign first_available_found = true %}
+                                    {% endif %}
+                                {% endfor %}
+
+                            </div>
+                            {% if hasHolidayFlavor %}
+                                <div class="holiday-flavor-disclaimer">
+                                    <p class="italic-subheaders-6 sale-text">{{ settings.holiday_limited_edition_sub_disclaimer }}</p>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    {% if useCodeForFirstOrderDiscount %}
+                        <div class="code-for-first-order">
+                            <p class="italic-subheaders-6 sale-text">{{ section.settings.use_code_for_first_order_discount_text }}</p>
+                        </div>
+                    {% endif %}
+
+                    <div class="quantity-field-wrapper{% if showQuantityField != true %} hidden{% endif %}">
+                        <div class="quantity-title-wrapper">
+                            <h4 class="headers-8">Quantity</h4>
+                            {% if productSale and section.settings.tiered_discount_text != empty %}
+                                <p class="body-6 sale-text">{{ section.settings.tiered_discount_text }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="quantity-field" data-qty="1" data-qty-update="{% if showQuantityField == true %}true{% else %}false{% endif %}">
+                            <div class="quantity-field--minus button-4">-</div>
+                            <div class="quantity-field--number button-2">1</div>
+                            <div class="quantity-field--plus button-4">+</div>
+                        </div>
+                    </div>
+
+                    <div class="subscription-toggle-wrapper{% if product.metafields.custom.subscription_available == false %} hide-buy-now{% endif %}{% if swapPurchaseOrder %} hertime{% endif %}">
+                            <div class="buy-once-radio--wrapper sub-toggle-item">
+                                {% if sitewideSaleEnabled %}
+                                    <div class="sale-pdp-bubble sale-outline">
+                                        <p class="sale-text headers-10">
+                                            {{ settings.sitewide_sale_pdp_buy_bubble }}
+                                        </p>
+                                    </div>
+                                {% endif %}
+                                <div class="product-sub-radio-wrapper">
+                                    <div class="product-sub-radio{% if product.metafields.custom.subscription_available == false %} selected{% endif %}" data-sub="false"></div>
+                                    <p class="button-5">Buy Once</p>
+                                </div>
+                                <div class="product-price {% if sitewideSaleEnabled %}sitewide-sale-active{% endif %}">
+                                    <span class="pdp-product-price-numbers-wrap">
+                                        {% if sitewideSaleEnabled or productSale %}
+                                            <span class="crossout-price button-5 onetime-compare-at-price">
+                                                {% if productSale %}
+                                                    {{ selected_variant_compare_at_price | money_without_trailing_zeros }}
+                                                {% else %}
+                                                    {{ selected_variant_price | money_without_trailing_zeros }}
+                                                {% endif %}
+                                            </span>
+                                            <span class="price button-5 onetime-price{% if productSale %} sale-text{% endif %}">
+
+                                                {% if productSale %}
+                                                    {{ selected_variant_price | money_without_trailing_zeros }}
+                                                {% else %}
+                                                    {{ selected_variant_price | times: sitewideSaleDiscount | money_without_trailing_zeros }}
+                                                {% endif %}
+                                            </span>
+                                        {% else %}
+                                            <span class="price button-5 onetime-price">
+                                                {{ selected_variant_compare_at_price | money_without_trailing_zeros }}
+                                            </span>
+                                        {% endif %}
+                                    </span>
+                                </div>
+                            </div>
+                            {% unless product.metafields.custom.subscription_available == false %}
+                                <div class="subscription-radio--wrapper sub-toggle-item">
+                                    {% if sitewideSaleEnabled or productSale %}
+                                        <div class="sale-pdp-bubble sale-bg">
+                                            <p class="text-white headers-10">
+                                                {% if sitewideSaleEnabled %}
+                                                    {{ settings.sitewide_sale_pdp_sub_bubble }}
+                                                {% elsif productSale %}
+                                                    {{ section.settings.discount_sub_bubble }}
+                                                {% endif %}
+                                            </p>
+                                        </div>
+                                    {% endif %}
+                                    <div class="product-sub-radio-top">
+                                        <div class="product-sub-radio-wrapper">
+                                            <div class="product-sub-radio selected" data-sub="true"></div>
+                                            <div class="product-sub-label">
+                                                <p class="button-5">
+                                                    {% if useNewPricing %}
+                                                        Subscribe & Save
+                                                    {% elsif productSale %}
+                                                        {{ section.settings.discount_text }}
+                                                    {% elsif sitewideSaleEnabled and settings.sitewide_sale_pdp_sub_toggle != empty %}
+                                                        {{ settings.sitewide_sale_pdp_sub_toggle }}
+                                                    {% else %}
+                                                        Subscribe & Save 10%
+                                                    {% endif %}
+                                                </p>
+                                                {% if productSale or sitewideSaleEnabled %}
+                                                    <p class="italic-subheaders-6 sale-text">
+                                                        {% if productSale %}
+                                                            {{ section.settings.discount_sub_text }}
+                                                        {% else %}
+                                                            {{ settings.sitewide_sale_exclusive_offer }}
+                                                        {% endif %}
+                                                    </p>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="product-price {% if sitewideSaleEnabled %}sitewide-sale-active{% endif %}">
+                                            <span class="pdp-product-price-numbers-wrap">
+                                                <span class="crossout-price button-5 subscription-compare-at-price">
+                                                    {% if sitewideSaleEnabled %}
+                                                        {{ selected_variant_price | money_without_trailing_zeros }}
+                                                    {% else %}
+                                                        {{ selected_variant_compare_at_price | money_without_trailing_zeros }}
+                                                    {% endif %}
+                                                </span>
+                                                <span class="price headers-6 subscription sale-text subscription-price">
+                                                    {% if sitewideSaleEnabled %}
+                                                        {{ selected_variant_price | times: sitewideSaleDiscount | money_without_trailing_zeros }}
+                                                    {% else %}
+                                                        {{ selected_variant_price | money_without_trailing_zeros }}
+                                                    {% endif %}
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    {% assign numberOfPlans = selected_variant_selling_plans | size %}
+
+                                    <div class="product--sub-frequency-select-wrapper">
+                                        <div class="product--sub-frequency-select{% if showSubFrequency == false or numberOfPlans < 2 %} only-frequency{% endif %}">
+                                            {% for selling_plan_allocation in selected_variant_selling_plans %}
+                                                {% if showSubFrequency == false and forloop.first == false %}
+                                                    {% continue %}
+                                                {% endif %}
+                                                <div class="product--sub-frequency-select-item button-5{% if forloop.first %} selectedSellingPlan{% endif %}"
+                                                    data-selling-plan-id="{{ selling_plan_allocation.selling_plan.id }}"
+                                                    data-selling-plan-name="{{ selling_plan_allocation.selling_plan.name }}"
+                                                    data-selling-plan-price="{% if sitewideSaleEnabled %}{{ selling_plan_allocation.price | times: sitewideSaleDiscount | money_without_trailing_zeros }}{% else %}{{ selling_plan_allocation.price | money_without_trailing_zeros }}{% endif %}"
+                                                    data-selling-plan-compare-at-price="{% if sitewideSaleEnabled %}{{ selling_plan_allocation.price | money_without_trailing_zeros }}{% else %}{{ selling_plan_allocation.compare_at_price | money_without_trailing_zeros }}{% endif %}"
+                                                >
+                                                    {% if useNewPricing %}
+                                                        <div class="hertime-recurring-text">$48 RECURRING</div>
+                                                    {% else %}
+                                                        {{ selling_plan_allocation.selling_plan.name }}
+                                                    {% endif %}
+                                                </div>
+                                            {% endfor %}
+                                            <div class="product--sub-frequency-select-icon">
+                                                {% render 'icon' with 'down-arrow'%}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% render 'subscription-details-new' %}
+                                    {% if sitewideSaleEnabled or productSale %}
+                                        <div class="sale-pdp-info-wrap">
+                                            <p class="sale-text body-7">
+                                                {% if sitewideSaleEnabled %}
+                                                    {{ settings.sitewide_sale_pdp_info }}
+                                                {% elsif productSale %}
+                                                    {{ section.settings.discount_atc_text }}
+                                                {% endif %}
+                                            </p>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endunless %}
+                    </div>
+                    {% if product.id == 7668475822259 %}
+                        <span>Choose your flavors and Buy once or Subscribe on the next step!</span>
+                    {% endif %}
+                {% endunless %}
+            </div>
+            <div class="add-to-cart-wrapper">
+                {% if product.tags contains "hidden" %}
+                    <button class="btn add-to-cart-btn solid-button disabled button-5" disabled>Not for sale</button>
+                {% elsif product.tags contains "Amazon Only" %}
+                    <button class="btn add-to-cart-btn solid-button disabled button-5" disabled>Available on Amazon Only</button>
+                    <a class="pdp-canada-external-link" href="https://www.amazon.com/stores/page/A5EF67CF-5F30-476F-81F0-2CAF68025142">
+                        Shop Mixhers Canada on Amazon!
+                        <svg class="pdp-canada-external-link-icon" fill="#402650" width="24px" height="24px" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <g>
+                                <path d="m28.801 83.102h36c6.6016 0 12-5.3984 12-12v-22c0-1.1016-0.89844-2-2-2-1.1016 0-2 0.89844-2 2v22c0 4.3984-3.6016 8-8 8h-36c-4.3984 0-8-3.6016-8-8v-36c0-4.3984 3.6016-8 8-8h22c1.1016 0 2-0.89844 2-2 0-1.1016-0.89844-2-2-2h-22c-6.6016 0-12 5.3984-12 12v36c0 6.5977 5.3984 12 12 12z"/>
+                                <path d="m83.199 37.199v-18.301-0.39844-0.10156c0-0.10156 0-0.19922-0.10156-0.30078l-0.097656-0.097656c0-0.10156-0.10156-0.19922-0.10156-0.19922-0.10156-0.19922-0.30078-0.39844-0.60156-0.60156-0.10156-0.10156-0.19922-0.10156-0.30078-0.10156l0.003906 0.003906-0.30078-0.10156h-0.10156-0.39844-18.301c-1.1016 0-2 0.89844-2 2s0.89844 2 2 2h13.5l-29.297 29.102c-0.80078 0.80078-0.80078 2 0 2.8008 0.80078 0.80078 2 0.80078 2.8008 0l29.301-29.199v13.5c0 1.1016 0.89844 2 2 2 1.0977-0.003906 1.9961-0.90234 1.9961-2.0039z"/>
+                            </g>
+                        </svg>
+                    </a>
+                {% else %}
+                    <button class="btn add-to-cart-btn solid-button button-5 atc-button" id="AddToCart-Main" data-subscribe="{% unless product.metafields.custom.subscription_available == false %}true{% else %}false{% endunless %}" {% if selected_variant_out_of_stock or product.tags contains "Out of Stock" %}disabled{% endif %}>
+                        <span class="add-to-cart-label">
+                            <span class="add-to-cart-label-text">
+                                {% if selected_variant_out_of_stock %}
+                                    Out of Stock
+                                {% else %}
+                                    Add to Cart
+                                {% endif %}
+                            </span>
+
+                            <span class="atc-price-wrap{% if hasSubOptions or product.id == 7629766459571 %} hidden{% endif %}">
+                                <span class="atc-divider"> – </span>
+                                <span class="atc-compare-at-price current-selection-compare-at-price"></span>
+                                <span class="atc-total-price current-selection-price">
+                                    {% if sitewideSaleEnabled %}
+                                        {{ selected_variant_price | times: sitewideSaleDiscount | money_without_trailing_zeros }}
+                                    {% else %}
+                                        {{ selected_variant_price | money_without_trailing_zeros }}
+                                    {% endif %}
+                                </span>
+                            </span>
+                        </span>
+                        <span class="loading-indicator"></span>
+                    </button>
+                    {% if show_slashed_out_promo_pricing_on_pdps %}
+                        <div class="gap-1 flex-wrap text-center whitespace-nowrap justify-center">
+                            <span>Take an extra </span>
+                            <span class="text-pink">{{ percent_off_text }}</span>
+                            {% if promo_discount_code %}
+                                <span>with code </span>
+                                <span>{{ promo_discount_code }}</span>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endif %}
+
+                {% if section.settings.disclaimer_under_cta != empty %}
+                    <p class="disclaimer-under-cta">{{ section.settings.disclaimer_under_cta }}<p>
+                {% endif %}
+                {% if hasDonation %}
+                    <div class="product-sale-donation-wrapper body-7">
+                        <div class="product-sale-dontion-top-wrapper">
+                            {{ donationImage | image_url: width: 100 | image_tag }}
+                            {{ donationText }}
+                        </div>
+                    </div>
+                {% endif %}
+            {% comment %}
+            HSA Reimbursement Info
+            {% endcomment %}
+            {% if hsa_type and hsa_on %}
+                {% render 'tooltip-rebrand', type: hsa_type %}
+            {% endif %}
+                {% if section.settings.show_fda_disclaimer == true %}
+                    <div class="fda-disclaimer">
+                        <p>{{ fdaDisclaimer }}</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+
+        <div class="product-carousel-column">
+            {% if useNewPricing %}
+                <div class="product-carousel-tag">20% off subscription after 1st month</div>
+            {% endif %}
+            <div class="carousel-wrapper">
+                <div class="selected-variant-image">
+                    {% assign firstSelectedImageId = '' %}
+                    {% if firstSelectedImage %}
+                        {% assign hasFirstImage = false %}
+                        {% for image in firstSelectedImage %}
+                            {% unless hasFirstImage == true %}
+                                <img src="{{ image | image_url }}" loading="lazy" width="500" height="500">
+                                {% assign hasFirstImage = true %}
+                                {% assign firstSelectedImageId = image.id %}
+                            {% endunless %}
+                        {% endfor %}
+                    {% else %}
+                        <img src="//cdn.shopify.com/shopifycloud/shopify/assets/no-image-100-c91dd4bdb56513f2cbf4fc15436ca35e9d4ecd014546c8d421b1aece861dfecf_small.gif" width="500" height="500" alt="default-image" loading="lazy">
+                    {% endif %}
+
+                </div>
+                <div class="thumbnails-container">
+                    {% for variant in product.variants %}
+                        {% if variant.metafields.custom.hide_variant == true %}
+                            {% continue %}
+                        {% endif %}
+                        {% if variant.metafields.pdp.subscription_alt_carousel_images %}
+                            {% for image in variant.metafields.pdp.subscription_alt_carousel_images.value %}
+                                <img src="{{ image | image_url }}" width="80" height="80" loading="lazy" alt="{{ variant.title }}" data-variant-id="{{ variant.id }}" subscription-only="true" class="product-thumbnail{% if selected_variant_id == variant.id %} active{% endif %}{% if image.id == firstSelectedImageId %} first-thumbnail{% endif %}">
+                            {% endfor %}
+                        {% endif %}
+                        {% if variant.metafields.custom.carousel_images.value %}
+                            {% for image in variant.metafields.custom.carousel_images.value %}
+                                <img src="{{ image | image_url }}" width="80" height="80" loading="lazy" alt="{{ variant.title }}" data-variant-id="{{ variant.id }}" class="product-thumbnail{% if selected_variant_id == variant.id %} active{% endif %}{% if image.id == firstSelectedImageId %} first-thumbnail{% endif %}">
+                            {% endfor %}
+                        {% else %}
+                            <img src="//cdn.shopify.com/shopifycloud/shopify/assets/no-image-100-c91dd4bdb56513f2cbf4fc15436ca35e9d4ecd014546c8d421b1aece861dfecf_small.gif" width="64" height="64" alt="{{ variant.title }}" data-variant-id="{{ variant.id }}" loading="lazy" class="product-thumbnail">
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% if product.id == 6713024184499 or product.id == 7099874705587 %}
+                <div class="hertime-es-cta desktop-only">
+                    <p>Experiencing extreme PMS symptoms?</p>
+                    <p>You may want to try
+                        <a href="{% if product.id == 6713024184499 %}/products/hertime-extrastrength{% elsif product.id == 7099874705587 %}/products/canada-hertime-complete-care{% endif %}">
+                            <span>Hertime Extra Strength</span>
+                            <img src="{{ 'Right-arrow-quiz.svg' | file_url }}" loading="lazy" height="auto" width="16" alt="right arrow">
+                        </a>
+                    </p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+<div class="product-info-container">
+    {% if section.settings.how_it_works_heading %}
+        <div class="product-info--wrapper">
+            <div class="how-it-works-container">
+                <h2>{{ section.settings.how_it_works_heading }}</h2>
+                <h3 class="italic-subheading">{{ section.settings.how_it_works_subheading }}</h3>
+                <p>{{ section.settings.how_it_works_body }}</p>
+                {% if product.id == 7661948338355 %}
+                    <p style="margin-top: 17.5px; margin-bottom: 8px;">Mixhers Collagen is an easy addition to your wellness routine.</p>
+                    <ul>
+                        <li>Add to baked goods for a protein boost</li>
+                        <li>Combine with other Mixhers products to create custom mocktails</li>
+                        <li>Use as a natural substitute for creamer in coffee and tea</li>
+                        <li>Blend in your favorite smoothie</li>
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+        <hr class="product-info-divider"/>
+    {% endif %}
+    {% if section.settings.how_to_use_gif %}
+        <div class="product-info--wrapper">
+            <div class="product-info-row">
+                {% if section.settings.how_to_use_body or section.settings.how_to_use_gif %}
+                    <div class="how-to-use-container">
+                        {% if section.settings.how_to_use_gif %}
+                            <div class="gif-wrapper">
+                                <div
+                                    style="
+                                        background-image: url({{ section.settings.how_to_use_gif | image_url }});
+                                        background-size: {{ section.settings.how_to_use_gif_size }}%;
+                                        background-position: {{ section.settings.how_to_use_gif_horizontal }}% {{ section.settings.how_to_use_gif_vertical }}%;
+                                    "
+                                    class="how-to-use-gif">
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if section.settings.how_to_use_body %}
+                            <p>{{ section.settings.how_to_use_body }}</p>
+                        {% endif %}
+                    </div>
+                {% endif %}
+                <hr class="product-info-divider mobile-only"/>
+                {% if section.settings.whats_inside_heading %}
+                    <div class="whats-inside-container">
+                        <div class="whats-inside-wrapper">
+                            <h2>{{ section.settings.whats_inside_heading }}</h2>
+                            <h3 class="italic-subheading">{{ section.settings.whats_inside_subheading }}</h3>
+                            <div class="ingredient-container">
+                                {% for metaobject in product.metafields.custom.ingredients.value %}
+                                    {% if metaobject.system.type == "whats_inside_ingredient" %}
+                                        {% render 'product-ingredient' with metaobject as whats_inside_ingredient %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <p class="disclaimer">{{ section.settings.whats_inside_disclaimer }}</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% else %}
+        {% if section.settings.whats_inside_heading %}
+            <div class="product-info--wrapper">
+                <div class="whats-inside-container full-width">
+                    <div class="whats-inside-wrapper">
+                        <h2>{{ section.settings.whats_inside_heading }}</h2>
+                        <h3 class="italic-subheading">{{ section.settings.whats_inside_subheading }}</h3>
+                        <div class="ingredient-container">
+                            {% for metaobject in product.metafields.custom.ingredients.value %}
+                                {% if metaobject.system.type == "whats_inside_ingredient" %}
+                                    {% render 'product-ingredient' with metaobject as whats_inside_ingredient %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% if section.settings.whats_inside_ai_note %}
+                        <p class="note">{{ section.settings.whats_inside_ai_note }}</p>
+                    {% endif %}
+                    <p class="disclaimer">{{ section.settings.whats_inside_disclaimer }}</p>
+                </div>
+            </div>
+            <hr class="product-info-divider"/>
+        {% endif %}
+        {% if section.settings.how_to_use_body %}
+            <div class="product-info--wrapper">
+                <div class="how-to-use-container full-width">
+                    <h2>{{ section.settings.how_to_use_heading }}</h2>
+                    <p>{{ section.settings.how_to_use_body }}</p>
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+</div>
+
+
+<script>
+    const variantSelectOptions = document.querySelectorAll('.product--variant-select--item');
+    let variantQty = 1;
+    let price = document.querySelectorAll('.price, .atc-total-price');
+    let compareAtPrice = document.querySelectorAll('.crossout-price, .atc-compare-at-price');
+    let thumbnails = document.querySelectorAll('.product-thumbnail');
+    let addToCartWrapper = document.querySelector('.add-to-cart-wrapper');
+    let addToCartBtn = addToCartWrapper.querySelector('.btn');
+    let variantURL = window.location.href.includes('variant') ? true : false;
+    let subToggleItems = document.querySelectorAll('.sub-toggle-item');
+    let subFrequencySelect = document.querySelector('.product--sub-frequency-select');
+    let hasHolidayFlavor = '{{ hasHolidayFlavor }}' === 'true' ? true : false;
+    let quanityField = document.querySelector('.quantity-field');
+    let canUpdateQty = quanityField.getAttribute('data-qty-update') === 'true' ? true : false;
+    let hasSubOptions = '{{ hasSubOptions }}' === 'true' ? true : false;
+
+    let firstThumbnailImage = document.querySelector('.first-thumbnail');
+    firstThumbnailImage.addEventListener('load', function() {
+        this.classList.add('selected'); // this will add the class when the image is loaded
+      });
+
+    /* ANCHOR Quantity Field */
+    if (canUpdateQty) {
+        let currentQty = quanityField.getAttribute('data-qty');
+        let qtyNumber = quanityField.querySelector('.quantity-field--number');
+        let qtyMinus = quanityField.querySelector('.quantity-field--minus');
+        let qtyPlus = quanityField.querySelector('.quantity-field--plus');
+
+        qtyMinus.addEventListener('click', () => {
+            if (currentQty > 1) {
+                currentQty--;
+                qtyNumber.innerHTML = currentQty;
+                quanityField.setAttribute('data-qty', currentQty);
+                updatePrice();
+            }
+        });
+
+        qtyPlus.addEventListener('click', () => {
+            currentQty++;
+            qtyNumber.innerHTML = currentQty;
+            quanityField.setAttribute('data-qty', currentQty);
+            updatePrice();
+        });
+    }
+
+    /* ANCHOR Subscription Frequency Select */
+    if (subFrequencySelect) {
+        updateSubDropdown();
+        subFrequencySelect.addEventListener('click', () => {
+            if(subFrequencySelect.classList.contains('active')) {
+                subFrequencySelect.classList.remove('active');
+            } else {
+                subFrequencySelect.classList.add('active');
+                initSubFrequencySelect()
+            }
+        });
+    }
+
+    function initSubFrequencySelect() {
+        let subFrequencySelectItems = document.querySelectorAll('.product--sub-frequency-select-item');
+        subFrequencySelectItems.forEach(subFrequencySelectItem => {
+            subFrequencySelectItem.addEventListener('click', () => {
+                let variantSelectActive = document.querySelector('.product--variant-select--item.selectedVariant');
+                let variantId = variantSelectActive.getAttribute('data-variant-id');
+                let oldSelect = document.querySelector('.selectedSellingPlan');
+                oldSelect.classList.remove('selectedSellingPlan');
+                subFrequencySelectItem.classList.add('selectedSellingPlan');
+                updatePrice();
+                if(variantId)
+                    updateThumbnail(variantId);
+            });
+        });
+    }
+
+    function updateSubDropdown() {
+        let subFrequencySelectItems = document.querySelectorAll('.product--sub-frequency-select-item');
+        let showSubFrequency = '{{ showSubFrequency }}' === 'true' ? true : false;
+
+        if (!showSubFrequency || subFrequencySelectItems.length < 2) {
+            subFrequencySelect.classList.add('only-frequency');
+        } else {
+            subFrequencySelect.classList.remove('only-frequency');
+        }
+    }
+
+    /* ANCHOR Subscription Toggle */
+    if (subToggleItems) {
+        subToggleItems.forEach(subToggleItem => {
+            subToggleItem.addEventListener('click', function(e) {
+                let radioSelect = subToggleItem.querySelector('.product-sub-radio');
+                if(radioSelect.classList.contains('selected')) {
+                    return;
+                } else {
+                    let variantSelectActive = document.querySelector('.product--variant-select--item.selectedVariant');
+                    let variantId = variantSelectActive.getAttribute('data-variant-id');
+                    let oldSelect = document.querySelector('.product-sub-radio.selected');
+                    oldSelect.classList.remove('selected');
+                    radioSelect.classList.add('selected');
+                    let price = subToggleItem.querySelector('.price').innerText;
+                    if('{{ productSale }}' === 'true') {
+                        let bubbleText = document.querySelector('.sale-pdp-bubble p');
+                        let isSub = radioSelect.getAttribute('data-sub');
+
+                        if(isSub === 'true') {
+                            bubbleText.innerText = '{{ settings.sitewide_sale_pdp_sub_bubble }}';
+                        } else {
+                            bubbleText.innerText = '{{ settings.sitewide_sale_pdp_buy_bubble }}';
+                        }
+                    }
+                    updatePrice();
+                    if(variantId)
+                        updateThumbnail(variantId);
+                }
+            });
+        });
+    }
+
+    /* ANCHOR Thumbnails */
+    function updateThumbnail(variantId) {
+        let activeSubToggle = document.querySelector('.product-sub-radio.selected');
+        let isSubscription = activeSubToggle.getAttribute('data-sub') === 'true';
+
+        let activeThumbnail = document.querySelectorAll(`.product-thumbnail[data-variant-id="${variantId}"]${isSubscription ? '' : ':not([subscription-only="true"])'}`);
+
+        for ( let i = 0; i < thumbnails.length; i++ ) {
+            thumbnails[i].classList.remove('active');
+        }
+        for (let m = 0; m < activeThumbnail.length; m++) {
+            activeThumbnail[m].classList.add('active');
+            if ( m === 0 ) {
+                let activeSRC = activeThumbnail[m].getAttribute('src');
+                let activeAlt = activeThumbnail[m].getAttribute('alt');
+                document.querySelector('.selected-variant-image img').setAttribute('alt', activeAlt);
+                document.querySelector('.selected-variant-image img').setAttribute('src', activeSRC);
+                activeThumbnail[m].classList.add('selected');
+            } else {
+                activeThumbnail[m].classList.remove('selected');
+            }
+        }
+
+    }
+
+    for (let i = 0; i < thumbnails.length; i++) {
+        thumbnails[i].addEventListener('click', function() {
+            let activeSRC = thumbnails[i].getAttribute('src');
+            let activeAlt = thumbnails[i].getAttribute('alt');
+            document.querySelector('.selected-variant-image img').setAttribute('src', activeSRC);
+            document.querySelector('.selected-variant-image img').setAttribute('alt', activeAlt);
+
+            for ( let m = 0; m < thumbnails.length; m++ ) {
+                thumbnails[m].classList.remove('selected');
+            }
+            thumbnails[i].classList.add('selected');
+            thumbnails[i].parentNode.scrollTop = thumbnails[i].offsetTop;
+        })
+    }
+
+
+
+    // Utility Functions
+    function updateURLParameter(url, param, paramVal)
+    {
+        let theAnchor = null;
+        let newAdditionalURL = "";
+        let tempArray = url.split("?");
+        let baseURL = tempArray[0];
+        let additionalURL = tempArray[1];
+        let temp = "";
+
+        if (additionalURL)
+        {
+            let tmpAnchor = additionalURL.split("#");
+            let theParams = tmpAnchor[0];
+                theAnchor = tmpAnchor[1];
+            if(theAnchor)
+                additionalURL = theParams;
+
+            tempArray = additionalURL.split("&");
+
+            for (var i=0; i<tempArray.length; i++)
+            {
+                if(tempArray[i].split('=')[0] != param)
+                {
+                    newAdditionalURL += temp + tempArray[i];
+                    temp = "&";
+                }
+            }
+        }
+        else
+        {
+            let tmpAnchor = baseURL.split("#");
+            let theParams = tmpAnchor[0];
+                theAnchor  = tmpAnchor[1];
+
+            if(theParams)
+                baseURL = theParams;
+        }
+
+        if(theAnchor)
+            paramVal += "#" + theAnchor;
+
+        let rows_txt = temp + "" + param + "=" + paramVal;
+        return baseURL + "?" + newAdditionalURL + rows_txt;
+    }
+
+    function updateUrl(variantId) {
+        if(window.history && window.history.replaceState); else return;  // Only 97% supported, probs overkill but sure
+
+        let newUrl = updateURLParameter(window.location.href, 'variant', variantId);
+        window.history.replaceState({path:newUrl},'',newUrl);
+    }
+
+    /* ANCHOR Variant Select */
+    if (variantSelectOptions) {
+        let variantSelectActive = document.querySelector('.product--variant-select--item.selectedVariant');
+        let variantId = variantSelectActive.getAttribute('data-variant-id');
+
+        updateUrl(variantId);
+
+        variantSelectOptions.forEach(variantSelectOption => {
+            variantSelectOption.addEventListener('click', function(e) {
+                if(e.target.classList.contains('selectedVariant')) {
+                    return;
+                } else {
+                    document.querySelector('.selectedVariant').classList.remove('selectedVariant');
+                    e.target.classList.add('selectedVariant');
+                    updateVariant(e.target);
+                }
+
+            });
+        });
+    }
+
+    function updateVariant(selectedVariant) {
+        let variantName = selectedVariant.getAttribute('data-name');
+        let variantId = selectedVariant.getAttribute('data-variant-id');
+        let flavorName = document.querySelector('.selected-variant-name');
+        let addToCartLabel = addToCartBtn.querySelector('.add-to-cart-label-text');
+
+        if(selectedVariant.getAttribute('data-out-of-stock') == 'true') {
+            addToCartBtn.disabled = 'true';
+            addToCartLabel.innerText = 'Out of Stock';
+        } else {
+            addToCartBtn.removeAttribute("disabled");
+            addToCartLabel.innerText = 'Add to Cart';
+        }
+
+        flavorName.innerHTML = variantName;
+        updateSellingPlan();
+        updateThumbnail(variantId);
+        updateUrl(variantId);
+        updatePrice();
+
+        let mostPopularCopy = document.querySelector('.most-popular');
+        let isMostPopular = selectedVariant.hasAttribute('data-most-popular')  ? true : false;
+        if (isMostPopular) {
+            mostPopularCopy.classList.remove('hidden');
+        } else {
+            mostPopularCopy.classList.add('hidden');
+        }
+
+        if (hasHolidayFlavor) {
+            updateHoliday(selectedVariant);
+        }
+
+    }
+
+    function updateHoliday(selectedVariant) {
+        let holidayVariant = selectedVariant.getAttribute('data-holiday-flavor');
+        let holidayDisclaimer = document.querySelector('.holiday-flavor-disclaimer');
+        let limitedEditionCopy = document.querySelector('.holiday-flavor-limited-edition-copy');
+        let mostPopularCopy = document.querySelector('.most-popular');
+
+
+        if (holidayVariant == 'true') {
+            holidayDisclaimer.classList.remove('hidden');
+            limitedEditionCopy.classList.remove('hidden');
+            mostPopularCopy.classList.add('hidden');
+        } else {
+            holidayDisclaimer.classList.add('hidden');
+            limitedEditionCopy.classList.add('hidden');
+        }
+    }
+
+    // run after page is loaded
+    window.addEventListener('load', function() {
+        if (hasHolidayFlavor) {
+            let selectedVariant = document.querySelector('.selectedVariant');
+            updateHoliday(selectedVariant);
+        }
+    });
+
+    /* ANCHOR Qty Select */
+    let quantitySelect = document.querySelectorAll('.qty-select--option');
+    let selectedQuantity = document.querySelector('.qty-select');
+    let variantChoices = document.querySelector('.variant-choice-wrapper');
+
+    if ( quantitySelect ) {
+        for ( var i = 0; i < quantitySelect.length; i++ ) {
+            quantitySelect[i].addEventListener('click', function(e) {
+                let qty = e.target.getAttribute('data-option-val');
+                if(e.target.classList.contains('active')) {
+                    return;
+                }
+                quantitySelect.forEach(function(option) {
+                    option.classList.remove('active');
+                })
+                e.target.classList.add('active');
+                selectedQuantity.setAttribute('data-active-option-val', qty);
+                variantChoices.setAttribute('data-qty', qty);
+                document.querySelector('.product-template-container').setAttribute('data-qty', qty);
+                if (qty == 15) {
+                    selectedQuantity.setAttribute('data-active-option-index', 0);
+                } else if (qty == 30) {
+                    selectedQuantity.setAttribute('data-active-option-index', 1);
+                } else {
+                    selectedQuantity.setAttribute('data-active-option-index', 1);
+                }
+                variantQty = qty;
+                {% comment %} flavorSelectActive.classList.remove('active'); {% endcomment %}
+                {% comment %} let newActive = document.querySelectorAll('.product--flavor-select--item[data-qty="' + qty + '"]'); {% endcomment %}
+
+                autoselectVariant();
+                //updatePrice();
+
+                {% comment %} newActive[0].classList.add('active'); {% endcomment %}
+                e.stopPropagation();
+            });
+        };
+    }
+
+    /* ANCHOR Price formatting helper. Use the second value if you are formatting "Compare at values" and want to make sure it's never outputting anything for */
+    function formatPriceOrBlank(priceFloat, outputBlankIfNotMoreThanThisFloatValue) {
+        if(typeof outputBlankIfNotMoreThanThisFloatValue !== 'undefined' && priceFloat <= outputBlankIfNotMoreThanThisFloatValue) {
+            return '';
+        } else {
+            return '$' + (priceFloat.toFixed(2).includes('.00') ? priceFloat.toFixed(0) : priceFloat.toFixed(2));
+        }
+    }
+
+    /* ANCHOR Change Price */
+    function updatePrice() {
+        let selectedVariant = document.querySelector('.selectedVariant');
+        let selectedSellingPlan = document.querySelector('.selectedSellingPlan');
+        let qty = parseFloat(document.querySelector('.quantity-field').dataset.qty) || 1;
+        let newSubPrice = qty * parseFloat((selectedSellingPlan ? selectedSellingPlan.dataset.sellingPlanPrice : '0').replaceAll('$', ''));
+        let newSubCompareAtPrice = qty * parseFloat((selectedSellingPlan ? (selectedSellingPlan.dataset.sellingPlanCompareAtPrice || selectedSellingPlan.dataset.sellingPlanPrice) : '0').replaceAll('$', ''));
+        let newOnetimePrice = qty * parseFloat((selectedVariant.dataset.price || '0').replaceAll('$', ''));
+        let newOnetimeCompareAtPrice = qty * parseFloat((selectedVariant.dataset.compareAtPrice || selectedVariant.dataset.price || '0').replaceAll('$', ''));
+        let totalTieredDiscount = 0;
+
+        if('{{ tieredDiscount }}' != 'false') {
+            try {
+                totalTieredDiscount = Math.floor(qty / parseFloat('{{ tieredDiscount }}')) * parseFloat('{{ tieredDiscountAmount }}');
+            } catch (e) {
+                console.warn('Tiered discount is enabled but no discount amount was provided');
+            }
+            newSubPrice -= totalTieredDiscount;
+            newOnetimePrice -= totalTieredDiscount;
+        }
+
+
+        window.compareAtPrice = newOnetimeCompareAtPrice;
+
+
+        document.querySelectorAll('.onetime-price').forEach((priceEl) =>        priceEl.innerHTML = formatPriceOrBlank(newOnetimePrice));
+        document.querySelectorAll('.subscription-price').forEach((priceEl) =>   priceEl.innerHTML = formatPriceOrBlank(newSubPrice));
+
+        document.querySelectorAll('.onetime-compare-at-price').forEach((priceEl) =>         priceEl.innerHTML = formatPriceOrBlank(newOnetimeCompareAtPrice, newOnetimePrice));
+        document.querySelectorAll('.subscription-compare-at-price').forEach((priceEl) =>    priceEl.innerHTML = formatPriceOrBlank(newSubCompareAtPrice, newSubPrice));
+
+        if (!hasSubOptions) {
+            document.querySelectorAll('.current-selection-price').forEach((priceEl) =>              priceEl.innerHTML = formatPriceOrBlank(selectedSellingPlan ? newSubPrice : newOnetimePrice));
+            document.querySelectorAll('.current-selection-compare-at-price').forEach((priceEl) =>   priceEl.innerHTML = formatPriceOrBlank(selectedSellingPlan ? newSubCompareAtPrice : newOnetimeCompareAtPrice, selectedSellingPlan ? newSubPrice : newOnetimePrice));
+        }
+        addToCartBtn.dataset.subscribe = selectedSellingPlan ? 'true' : 'false';
+    }
+
+    /* ANCHOR Auto select Variant */
+    function autoselectVariant() {
+        var allFlavorSelectOptions = Array.from(document.querySelectorAll('.product--variant-select--item'));
+        var prevFlavorName = document.querySelector('.selectedVariant').dataset.name;
+        var curQty = document.querySelector('.qty-select').dataset.activeOptionVal;
+
+        for(var flavorOption of allFlavorSelectOptions) {
+            flavorOption.classList.remove('selectedVariant');
+        }
+
+        if(variantURL && document.querySelector(`.product--variant-select--item[data-name="${prevFlavorName}"][data-qty="${curQty}"]`)) {
+            let newSelected = document.querySelector(`.product--variant-select--item[data-name="${prevFlavorName}"][data-qty="${curQty}"]`);
+            newSelected.classList.add('selectedVariant');
+            updateVariant(newSelected)
+        } else if(!variantURL && document.querySelector(`.product--variant-select--item[data-out-of-stock="false"][data-qty="${curQty}"]`)) {
+            let newSelected = document.querySelector(`.product--variant-select--item[data-out-of-stock="false"][data-qty="${curQty}"]`);
+            newSelected.classList.add('selectedVariant');
+            variantURL = true;
+            updateVariant(newSelected)
+        } else {
+            let newSelected = document.querySelector(`.product--variant-select--item[data-qty="${curQty}"]`);
+            newSelected.classList.add('selectedVariant');
+            updateVariant(newSelected)
+        }
+    }
+
+    /* ANCHOR Selling Plan */
+    function updateSellingPlan() {
+        let selectedVariant = document.querySelector('.selectedVariant');
+        let hasSellingPlan = selectedVariant.hasAttribute('data-has-selling-plan');
+
+        console.log('updateSellingPlan() called');
+
+        if ( Array.from(selectedVariant.querySelectorAll('.selling-plan-allocation')).length == 0 ) {
+            console.log('No selling plans, update unnecessary');
+            return;
+        }
+
+        console.log('Selling plan exists, need to update')
+
+        let variantSellingPlans = selectedVariant.querySelectorAll('.selling-plan-allocation');
+        let sellingPlanSelect = document.querySelector('.product--sub-frequency-select');
+        let sellingPlanSelectOptions = sellingPlanSelect.querySelectorAll('.product--sub-frequency-select-item');
+        let selectedSellingPlanName = sellingPlanSelect.querySelector('.product--sub-frequency-select-item.selectedSellingPlan').getAttribute('data-selling-plan-name');
+        let newSelectedFound = false;
+
+        sellingPlanSelectOptions.forEach(function(option) {
+            option.remove()
+            console.log('Removed old option: ', option.innerHTML);
+        })
+
+        variantSellingPlans.forEach(function(plan) {
+            console.log('Adding new selling plan, ', plan);
+            let sellingPlanName = plan.getAttribute('data-selling-plan-name');
+            let sellingPlanPrice = plan.getAttribute('data-selling-plan-price');
+            let sellingPlanCompareAtPrice = plan.getAttribute('data-selling-plan-compare-at-price');
+            let sellingPlanId = plan.getAttribute('data-selling-plan-id');
+            let sellingPlanOption = document.createElement('div');
+            let useNewPricing = {{ useNewPricing | json }};
+
+            sellingPlanOption.classList.add('product--sub-frequency-select-item');
+            sellingPlanOption.classList.add('button-5');
+            sellingPlanOption.setAttribute('data-selling-plan-name', useNewPricing ? "$48 RECURRING" : sellingPlanName);
+            sellingPlanOption.setAttribute('data-selling-plan-price', sellingPlanPrice);
+            sellingPlanOption.setAttribute('data-selling-plan-compare-at-price', sellingPlanCompareAtPrice);
+            sellingPlanOption.setAttribute('data-selling-plan-id', sellingPlanId);
+
+            if ( sellingPlanName == selectedSellingPlanName ) {
+                sellingPlanOption.classList.add('selectedSellingPlan');
+                newSelectedFound = true;
+            }
+
+            sellingPlanOption.innerHTML = useNewPricing ? '<div class="hertime-recurring-text">$48 RECURRING</div>' : sellingPlanName;
+            sellingPlanSelect.appendChild(sellingPlanOption);
+        })
+
+        if ( !newSelectedFound ) {
+            sellingPlanSelect.querySelector('.product--sub-frequency-select-item').classList.add('selectedSellingPlan');
+        }
+
+        updateSubDropdown();
+        updatePrice();
+    }
+
+    if ( addToCartBtn ) {
+        addToCartBtn.addEventListener('click', function(e) {
+            addToCartBtn.classList.add('selected');
+            e.preventDefault();
+            let selectedVariant = document.querySelector('.selectedVariant');
+            let selectedSellingPlan = document.querySelector('.selectedSellingPlan');
+            let variantId = selectedVariant.getAttribute('data-variant-id');
+            let subscriptionAltVariantId = selectedVariant.getAttribute('data-subscription-alt-variant-id');
+            let sticks = selectedVariant.getAttribute('data-qty');
+            let sellingPlanId = selectedSellingPlan ? selectedSellingPlan.getAttribute('data-selling-plan-id') : false;
+            let subscription = document.querySelector('.product-sub-radio.selected').dataset.sub;
+            let qty = document.querySelector('.quantity-field').getAttribute('data-qty');
+            let addToCartLabel = addToCartBtn.querySelector('.add-to-cart-label');
+            let addToCartLoader = addToCartBtn.querySelector('.loading-indicator');
+            let flavorName = selectedVariant.getAttribute('data-name');
+            if (flavorName.includes(',')){
+                flavorName = flavorName.split(',');
+            } else if (flavorName.includes('&')){
+                flavorName = flavorName.split(' & ');
+            }
+            {% comment %} let flavorQuantity = selectedVariant.getAttribute('data-flavor-quantity'); {% endcomment %}
+            let bubbleColor = selectedVariant.getAttribute('data-color');
+            if (bubbleColor.length > 7 && bubbleColor !== 'transparent'){
+                let colorsWithSeparators = '';
+                for (let i = 0; i < bubbleColor.length; i += 7) {
+                  colorsWithSeparators += bubbleColor.slice(i, i + 7) + ',';
+                }
+                // Split the string into an array
+                bubbleColor = colorsWithSeparators.slice(0, -1).split(',');
+            }
+            let starterKitVariantId = document.querySelector('#product-box-info').getAttribute('data-starter-kit-variant-id');
+            addToCartLabel.style.display = 'none';
+            addToCartLoader.style.display = 'block';
+            let url = '/cart/add.js';
+            let data = subscription === 'true' ? {
+                id: subscriptionAltVariantId || variantId,
+                quantity: qty,
+                selling_plan: sellingPlanId,
+                properties: {
+                    _Sticks: sticks,
+                    _contentsData: [{flavor: flavorName, color: bubbleColor}],
+                    hiddenProps: {
+                        starterKitVariantId: starterKitVariantId ? starterKitVariantId : null
+                    }
+                }
+            } : {
+                id: variantId,
+                quantity: qty,
+                properties: {
+                    _Sticks: sticks,
+                    _contentsData: [{flavor: flavorName, color: bubbleColor}],
+                }
+            };
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .then(function() {
+                addToCartLabel.style.display = 'block';
+                addToCartLoader.style.display = 'none';
+                addToCartBtn.classList.remove('selected');
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        });
+    }
+
+    updatePrice();
+</script>
+
+
+<script>
+    let toggleIngredientIcon = document.querySelectorAll('.ingredient-list--item.can-toggle .toggle-open');
+    let toggleIngredientTitle = document.querySelectorAll('.ingredient-list--item.can-toggle .ingredient-list--item-title');
+    let toggleIngredientItem = document.querySelectorAll('.ingredient-list--item.can-toggle');
+
+    if (toggleIngredientIcon) {
+        for ( let i = 0; i < toggleIngredientIcon.length; i++ ) {
+            toggleIngredientIcon[i].addEventListener('click', function() {
+
+                if (toggleIngredientItem[i].classList.contains('active')) {
+                    toggleIngredientItem[i].classList.remove('active');
+                } else {
+                    toggleIngredientItem.forEach(function(item) {
+                        item.classList.remove('active');
+                    })
+                    toggleIngredientItem[i].classList.add('active');
+                }
+
+            })
+        }
+    }
+
+    if (toggleIngredientTitle) {
+        for ( let i = 0; i < toggleIngredientTitle.length; i++ ) {
+            toggleIngredientTitle[i].addEventListener('click', function() {
+
+                if (toggleIngredientItem[i].classList.contains('active')) {
+                    toggleIngredientItem[i].classList.remove('active');
+                } else {
+                    toggleIngredientItem.forEach(function(item) {
+                        item.classList.remove('active');
+                    })
+                    toggleIngredientItem[i].classList.add('active');
+                }
+
+            })
+        }
+    }
+
+
+</script>
