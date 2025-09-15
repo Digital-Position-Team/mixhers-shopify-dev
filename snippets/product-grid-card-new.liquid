@@ -1,0 +1,327 @@
+{% assign selling_plan = nil %}
+
+{% comment %}Check for Sitewide Sale {% endcomment %}
+{% assign sitewideSaleEnabled = settings.sitewide_sale_enabled %}
+{% assign sitewideDiscount = settings.sitewide_sale_discount_percent | divided_by: 100.00 %}
+{% assign show_pricing_crossout = sitewideSaleEnabled %}
+{% assign isCanada = false %}
+{% if request.path contains 'canada' %}
+    {% assign isCanada = true %}
+{% endif %}
+
+{% comment %} Check for Product Tags to Show {% endcomment %}
+{% assign showTag = false %}
+{% if product.metafields.custom.product_tags_to_show %}
+    {% for metaobject in product.metafields.custom.product_tags_to_show.value %}
+        {% if metaobject.show_on_product_cards == true %}
+            {% if showTag %}
+                {% assign showTag = showTag | join: '::' | append: '::' | append: metaobject.tag_name.value | split: '::' %}
+            {% else %}
+                {% assign showTag = metaobject.tag_name.value %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+{% unless showTag == false %}
+    {% render 'product-tag-styles' with product: product, pageType: 'product-card' %}
+{% endunless %}
+
+{% for selling_plan_group in product.selling_plan_groups %}
+    {% assign selling_plan = selling_plan_group %}
+{% endfor %}
+{% assign has_collection_image = false %}
+{% assign has_collection_image_set = false %}
+{% if product.metafields.custom.collection_image_set %}
+    {% assign has_collection_image_set = true %}
+{% else %}
+        {% assign has_collection_image = true %}
+        {% assign collection_image = product.metafields.custom.new_collection_image %}
+{% endif %}
+
+{% assign isHertime = false %}
+{% if product.id == 6713024184499 or product.id == 6791551615155 %}
+    {% assign isHertime = true %}
+{% endif %}
+
+
+{% assign sexualWellnessOrder = 0 %}
+{% if product.metafields.custom.sexual_wellness_order %}
+    {% assign sexualWellnessOrder = product.metafields.custom.sexual_wellness_order %}
+{% endif %}
+
+{% assign healthOrder = 0 %}
+{% if product.metafields.custom.health_order %}
+    {% assign healthOrder = product.metafields.custom.health_order %}
+{% endif %}
+
+{% assign menopauseOrder = 0 %}
+{% if product.metafields.custom.menopause_order %}
+    {% assign menopauseOrder = product.metafields.custom.menopause_order %}
+{% endif %}
+
+{% assign motherhoodOrder = 0 %}
+{% if product.metafields.custom.motherhood_order %}
+    {% assign motherhoodOrder = product.metafields.custom.motherhood_order %}
+{% endif %}
+
+{% assign pmsOrder = 0 %}
+{% if product.metafields.custom.pms_order %}
+    {% assign pmsOrder = product.metafields.custom.pms_order %}
+{% endif %}
+
+{% assign samplerOrder = 0 %}
+{% if product.metafields.custom.sampler_order %}
+    {% assign samplerOrder = product.metafields.custom.sampler_order %}
+{% endif %}
+
+<div class="product-collection-grid-item show {% if product.tags contains "soldout" %}soldout{% endif %} {% if has_collection_image %}has-collection-image{% endif %}" data-product-handle="{{product.handle}}" data-product-type="{{product.type}}" {% if product.tags contains "bundle" %}data-bundle{% endif %} {% for tag in product.tags %}data-{{ tag | handleize }}  {% endfor %} style="order: {{ product_card_index }};"
+    {% unless sexualWellnessOrder == 0 %} sexual-wellness-order="{{ sexualWellnessOrder }}" {% endunless %}
+    {% unless healthOrder == 0 %} health-order="{{ healthOrder }}" {% endunless %}
+    {% unless menopauseOrder == 0 %} menopause-order="{{ menopauseOrder }}" {% endunless %}
+    {% unless motherhoodOrder == 0 %} motherhood-order="{{ motherhoodOrder }}" {% endunless %}
+    {% unless pmsOrder == 0 %} pms-order="{{ pmsOrder }}" {% endunless %}
+    {% unless samplerOrder == 0 %} sampler-order="{{ samplerOrder }}" {% endunless %}
+    data-order = "{{ product_card_index }}"
+>
+    {% unless product_card_index == 6 %}
+        {% assign product_card_index = product_card_index | plus: 1 %}
+    {% else %}
+        {% assign product_card_index = 8 %}
+    {% endunless %}
+
+    <a href="{{ product.url }}" class="product-card-url">
+        {% if has_collection_image_set %}
+                {% assign foundFirstImage = false %}
+                <div class="image-wrapper">
+                    {% if showTag %}
+                        <div class="product-tag-wrap">
+                            {% for tag in showTag %}
+                                <span class="product-tag" data-tag="{{ tag }}">{{ tag }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {% for image in product.metafields.custom.collection_image_set.value %}
+                        {% unless foundFirstImage %}
+                            <img class="product-image collection-image main-image" src="{{ image | image_url }}" date-src="{{ image | image_url }}" loading="lazy" height="500" width="auto" alt="{{ product.title }} image 1">
+                            {% assign foundFirstImage = true %}
+                        {% else %}
+                            <img class="product-image collection-image hover-image" src="{{ image | image_url }}" loading="lazy" height="500" width="auto" alt="{{ product.title }} image 2">
+                        {% endunless %}
+                    {% endfor %}
+                </div>
+        {% else %}
+            <div class="image-wrapper">
+            {% if showTag %}
+                <div class="product-tag-wrap">
+                    <span class="product-tag" data-tag="{{ showTag }}">{{ showTag }}</span>
+                </div>
+            {% endif %}
+                <img class="product-image collection-image" src="{{ collection_image | image_url }}" loading="lazy" height="500" width="auto" alt="{{ product.title }}">
+            </div>
+        {% endif %}
+
+        <div class="product-information">
+            <div class="product-details-wrapper">
+                {% if product.metafields.product_grid_card.title or product.metafields.product_grid_card.subtitle %}
+                    <h2>{{ product.metafields.product_grid_card.title }} <span class="hertimeES">{{ product.metafields.product_grid_card.subtitle }}</span></h2>
+                {% elsif product.title != "blank" %}
+                    {% if product.title contains '™' %}
+                        {% unless product.title contains 'Extra' %}
+                            <h2>{{ product.title | downcase | remove_last: '™' }}<span class="product-title-tm">™</span></h2>
+                        {% else %}
+                            <h2>hertime <span class="hertimeES">extra strength <span class="product-title-tm">™</span></span></h2>
+                        {% endunless %}
+                    {% else %}
+                        {% if product.title contains 'Canada' %}
+                            {% unless product.title contains 'Extra' %}
+                                <h2>{{ product.title | downcase | remove_last: '- canada' }}<span class="hertimeES">- canada</span></h2>
+                            {% else %}
+                                <h2>hertime <span class="hertimeES">extra strength - canada</span></h2>
+                            {% endunless %}
+                        {% elsif product.title contains 'Flavor Sampler' %}
+                            <h2>{{ product.title | downcase | remove_last: 'flavor sampler' }} <span class="hertimeES">flavor sampler</span></h2>
+                        {% elsif product.title contains ' - Final Sale' %}
+                            <h2>{{ product.title | downcase | remove_last: '- final sale' }} <span class="hertimeES">final sale</span></h2>
+                        {% else %}
+                            <h2>{{ product.title | downcase }}</h2>
+                        {% endif %}
+                    {% endif %}
+                {% else %}
+                <h2>{{ product.metafields.custom.product_title }}</h2>
+                {% endif %}
+                <p class="subscription-price">
+                    {% assign sitewideProductDiscount = product.price | times: sitewideDiscount %}
+                    {% assign sitewideSalePrice = product.price | minus: sitewideProductDiscount %}
+
+                    {% unless product.url contains '/gift-card' %}
+                    <span class="price-wrapper{% if product.tags contains "soldout" %} soldout{% endif %}">
+                        {% comment %} Hertime PMS {% endcomment %}
+                        {% if product.id == 6713024184499 %}
+                            <span class="igPrice">$51</span>
+                        {% comment %} Hertime PMS+ {% endcomment %}
+                        {% elsif product.id == 6791551615155 %}
+                            <span class="igPrice">$56.10</span>
+                        {% comment %} Metabolic Balance, Collagen and Libido {% endcomment %}
+                        {% elsif product.id == 7857541742771 or product.id == 7661948338355 or product.id == 6901708456115 %}
+                            <span class="igPrice">$55.25</span>
+                        {% comment %} Energy {% endcomment %}
+                        {% elsif  product.id == 7372256149683 %}
+                            <span class="igPrice">$42.50</span>
+                        {% comment %} Sleep and Focus {% endcomment %}
+                        {% elsif product.id == 6697000829107 or product.id == 6697006792883 %}
+                            <span class="igPrice">$51</span>
+                        {% comment %} MixKids {% endcomment %}
+                        {% elsif product.id == 7348540342451 %}
+                            <span class="igPrice">$33.15</span>
+                        {% comment %} Greens or Menopause {% endcomment %}
+                        {% elsif product.id == 6697029566643 or product.id == 7325073113267 %}
+                            <span class="igPrice">$46.75</span>
+                        {% comment %} Prenatal {% endcomment %}
+                        {% elsif product.id == 7262330912947 %}
+                            <span class="igPrice">$40.80</span>
+                        {% comment %} Digestion {% endcomment %}
+                        {% elsif product.id == 6793783017651 %}
+                            <span class="igPrice">$42.50</span>
+                        {% comment %} Multi {% endcomment %}
+                        {% elsif product.id == 6696999813299 %}
+                            <span class="igPrice">$40.32</span>
+                        {% comment %} Hydration {% endcomment %}
+                        {% elsif product.id == 6817054589107 %}
+                            <span class="igPrice">$39.10</span>
+                        {% comment %} sold out {% endcomment %}
+                        {% elsif product.tags contains "soldout" %}
+                            sold out
+                        {% elsif selling_plan %}
+                            {% if theme.settings.collections_hide_from_text == false %}<span class="from"> from </span>{% endif %}
+
+                            {% if product.compare_at_price_min and product.compare_at_price_min != 0 and show_pricing_crossout %}
+                                {% comment %}
+                                    NOTE: This compare at pricing DOES NOT multiply by .9 for the 10% off most subscriptions have.
+                                    This is because Black Friday Week 2022 the discounted price does not allow for a cheaper rate for subscriptions.
+                                {% endcomment %}
+                                <span class="crossout crossout-blackfriday">
+                                    {% if sitewideSaleEnabled %}
+                                        {{ product.price | money_without_trailing_zeros }}
+                                    {% else %}
+                                        {{ product.compare_at_price_min | money_without_trailing_zeros }}
+                                    {% endif %}
+                                </span>
+                                <span class="new-price subscription {% if sitewideSaleEnabled or product.tags contains 'Sale' %}sale-text{% endif %}">
+                                    {% if sitewideSaleEnabled %}
+                                        {{ sitewideSalePrice | money_without_trailing_zeros }}
+                                    {% else %}
+                                        {{ product.price | money_without_trailing_zeros }}
+                                    {% endif %}
+                                </span>
+                            {% elsif sitewideSaleEnabled or product.tags contains 'Sale' %}
+                                <span class="crossout crossout-blackfriday">
+                                    {% if sitewideSaleEnabled %}
+                                        {{ product.price | money_without_trailing_zeros }}
+                                    {% else %}
+                                        {{ product.compare_at_price_min | money_without_trailing_zeros }}
+                                    {% endif %}
+                                </span>
+                                <span class="igPrice {% if sitewideSaleEnabled or product.tags contains 'Sale' %}sale-text{% endif %}">
+                                    {% if sitewideSaleEnabled %}
+                                        {{ sitewideSalePrice | money_without_trailing_zeros }}
+                                    {% else %}
+                                        {{ product.price | money_without_trailing_zeros }}
+                                    {% endif %}
+                                </span>
+                            {% else %}
+                                <span data-price-multiplier=".90" class="igPrice {% if sitewideSaleEnabled or product.tags contains 'Sale' %}sale-text{% endif %}">{{ product.price_max | times: 0.9 | money_without_trailing_zeros }}</span>
+                            {% endif %}
+                        {% else %}
+                            {% if product.compare_at_price_min and product.compare_at_price_min != 0 %}
+                                {% if show_pricing_crossout %}
+                                    <span class="crossout crossout-blackfriday">
+                                        {% if sitewideSaleEnabled %}
+                                            {{ product.price | money_without_trailing_zeros }}
+                                        {% else %}
+                                            {{ product.compare_at_price_min | money_without_trailing_zeros }}
+                                        {% endif %}
+                                    </span>
+                                    <span class="new-price subscription {% if sitewideSaleEnabled or product.tags contains 'Sale' %}sale-text{% endif %}">
+                                        {% if sitewideSaleEnabled %}
+                                            {{ sitewideSalePrice | money_without_trailing_zeros }}
+                                        {% else %}
+                                            {{ product.price | money_without_trailing_zeros }}
+                                        {% endif %}
+                                    </span>
+                                {% else %}
+                                    {% if theme.settings.collections_hide_from_text == false %}<span class="from"> from </span>{% endif %}
+                                    <span class="new-price subscription {% if sitewideSaleEnabled or product.tags contains 'Sale' %}sale-text{% endif %}">
+                                        {% if sitewideSaleEnabled %}
+                                            {{ sitewideSalePrice | money_without_trailing_zeros }}
+                                        {% else %}
+                                            {{ product.price | money_without_trailing_zeros }}
+                                        {% endif %}
+                                    </span>
+                                {% endif %}
+                            {% else %}
+                                {% if sitewideSaleEnabled %}
+                                    <span class="crossout crossout-blackfriday">
+                                        {{ product.price | money_without_trailing_zeros }}
+                                    </span>
+                                    <span class="new-price subscription sale-text">
+                                        {{ sitewideSalePrice | money_without_trailing_zeros }}
+                                    </span>
+                                {% else %}
+                                    {{ product.price | money_without_trailing_zeros }}
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+                    </span>
+                    {% else %}
+                        <span data-price-multiplier=".90" class="igPrice">$-$$$</span>
+                    {% endunless %}
+                    {% if isCanada %}
+                        <span class="usd">USD</span>
+                    {% endif %}
+                </p>
+            </div>
+
+
+            <div class="hide-on-hover">
+                <p class="product-small-desc">{{ product.metafields.descriptors.subtitle }}</p>
+
+                <div class="yotpo bottomLine" style="pointer-events: none;" data-product-id="{{ product.id }}" data-url="{{ product.url }}"></div>
+            </div>
+        </div>
+    </a>
+        {% unless product.metafields.custom.show_add_to_cart == true %}
+            <a href="{{ product.url }}" class="product-btn outline-button" >
+                {{ product.metafields.custom.plp_card_cta }}
+            </a>
+        {% else %}
+            <button class="product-btn collection-add-cart-btn atc-button outline-button" data-id="{{ product.variants[0].id }}">
+                <span class="add-to-cart-label">Add to Cart</span>
+                <span class="loading-indicator"></span>
+            </button>
+        {% endunless %}
+
+</div>
+
+{% if has_collection_image_set %}
+    <style>
+        .product-collection-grid-item .image-wrapper {
+            position: relative;
+        }
+
+        .product-collection-grid-item .image-wrapper img.collection-image.hover-image {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            object-fit: contain;
+            opacity: 0;
+            box-shadow: none;
+            transition: opacity .3s ease-in-out;
+          }
+          .product-collection-grid-item:hover img.collection-image.hover-image {
+            opacity: 1;
+          }
+
+    </style>
+{% endif %}

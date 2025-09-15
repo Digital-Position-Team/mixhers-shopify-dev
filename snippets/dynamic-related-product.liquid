@@ -1,0 +1,66 @@
+<section class="product-related">
+    <h2 class="product-related--heading">Mixes well with...</h2>
+    <div class="product-related-grid">
+        {% liquid 
+            assign acceptableIndexes = ''
+            assign productIndex = '' 
+            assign handleArr = '' 
+            assign selectedColl = '' 
+            if product.tags contains 'Region: Canada' 
+                assign selectedColl = collections['mixes-well-with-canada-1'] 
+            else 
+                assign selectedColl = collections['mixes-well-with'] 
+            endif 
+
+            for item in selectedColl.products 
+                if item.id != product.id
+                    assign acceptableIndexes = acceptableIndexes | append: ',' | append: forloop.index 
+                    assign handleArr = handleArr | append: ',' | append: item.handle 
+                else 
+                    assign productIndex = productIndex | append: forloop.index | minus: 1 
+                endif 
+            endfor 
+        
+            assign indexArr = acceptableIndexes | split: ',' 
+
+            assign loops = indexArr.size | times: 10 
+        %}
+
+        {% capture indexes %}
+            {% for i in (1..loops) %} {{ "now" | date: "%N" | modulo: indexArr.size }}, {% endfor %} 
+        {% endcapture %}
+
+        {% liquid
+            assign indexes = indexes | remove: productIndex 
+            assign indexesFormat = indexes | remove: ' ,'  
+            assign indexesSplit = indexesFormat | split: ' ' 
+            assign indexesUnique = indexesSplit | uniq | join: ' ' 
+            
+            assign finalIndex = indexesUnique | split: ',' 
+        %}
+
+        {% for num in finalIndex limit: 4 %}
+            
+            {% assign parsedIndex = num | round %}     
+            
+            {% comment %}
+            
+                TODO: for some reason, not all of the checks above are sufficient. Ex: Hertime sometimes suggests Hertime.
+                <div style="display: none;" id="test">{{parsedIndex}} ("{{num}}"): {{ selectedColl.products[parsedIndex].id }} != {{ product.id }}</div>   
+
+            <script>
+                Shopify.collection.products["{{ product.handle }}"] = {{ product | json }};
+            </script>
+            {% endcomment %}
+    
+            {% if selectedColl.products[parsedIndex] %}
+                {% render 'product-grid-card-new', product: selectedColl.products[parsedIndex], productGridItem: selectedColl.products[parsedIndex].handle %}
+            {% endif %}
+           
+        {% endfor %}
+    </div>
+
+    <div class="collection-btn">
+        <a href="/collections/all">View All Products</a>
+    </div>
+</section>
