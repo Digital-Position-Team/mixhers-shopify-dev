@@ -1,0 +1,147 @@
+{%- comment -%}
+  Static version of the Vintage "credibility-scroll" section.
+  No schema, no settings — all copy and items are hardcoded to the
+  original defaults, and duplicated for seamless scrolling.
+{%- endcomment -%}
+
+<div class="credibility-content-container" style="display: none;">
+  <h4>This is old wisdom.</h4>
+  <p>
+    Herbal medicine is as ancient as women themselves. In cultures around the
+    world, the two seem to go hand-in-hand. Mixhers has tapped into this sage
+    wisdom of Chinese medicine and made holistic herbal supplements accessible,
+    convenient, and delicious!
+  </p>
+</div>
+
+<div class="credibility-scroll-container">
+  <div class="credibility-scroll-wrapper">
+    <!-- Group 1 -->
+    <div class="credibility-scroll-group">
+      {% comment %} Each item uses a lightweight inline SVG so no theme assets are required. {% endcomment %}
+      <div class="credibility-scroll-item">
+        <!-- leaf -->
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.93 3.37c-5.85-.56-9.9 1.2-12.6 3.9-3.2 3.2-4.14 7.83-2.52 11.35l.14.31.31.14c3.52 1.62 8.15.68 11.35-2.52 2.7-2.7 4.46-6.75 3.9-12.6a.75.75 0 0 0-.58-.58ZM7.67 18.38c-.97-2.76-.34-5.7 1.8-7.84 2.14-2.14 5.08-2.77 7.84-1.8-1 2.76-2.83 4.94-4.46 6.57-1.63 1.63-3.81 3.45-6.18 3.07Z"/></svg>
+        <p>Herbal approach</p>
+      </div>
+
+      <div class="credibility-scroll-item">
+        <!-- shield -->
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 4 5v6c0 5 3.4 9.74 8 11 4.6-1.26 8-6 8-11V5l-8-3Zm6 9c0 4.02-2.66 7.87-6 9-3.34-1.13-6-4.98-6-9V6.3L12 4.1l6 2.2V11Z"/></svg>
+        <p>Trusted quality</p>
+      </div>
+
+      <div class="credibility-scroll-item">
+        <!-- star -->
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 9.19 8.26 2.5 9.27l4.9 4.78L6.82 21 12 17.77 17.18 21l-1.58-6.95 4.9-4.78-6.69-1.01L12 2z"/></svg>
+        <p>Customer loved</p>
+      </div>
+
+      <div class="credibility-scroll-item">
+        <!-- heart -->
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.1 21.35 10 19.45C5.4 15.36 2 12.28 2 8.5A4.5 4.5 0 0 1 6.5 4C8.24 4 9.91 4.81 11 6.08 12.09 4.81 13.76 4 15.5 4A4.5 4.5 0 0 1 20 8.5c0 3.78-3.4 6.86-8 10.95l-1.9 1.9Z"/></svg>
+        <p>Women-centered</p>
+      </div>
+
+      <div class="credibility-scroll-item">
+        <!-- droplet -->
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2s6 6.14 6 10a6 6 0 1 1-12 0c0-3.86 6-10 6-10Zm0 16a4 4 0 0 0 4-4c0-1.79-1.58-4.34-4-7.17-2.42 2.83-4 5.38-4 7.17a4 4 0 0 0 4 4Z"/></svg>
+        <p>Pure ingredients</p>
+      </div>
+
+      <div class="credibility-scroll-item">
+        <!-- lab flask -->
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 2h6v2h-1v5.59l4.7 7.76A2 2 0 0 1 16.98 20H7.02a2 2 0 0 1-1.72-3.05L10 9.59V4H9V2Zm1.83 9L7.7 16h8.6l-3.13-5H10.83Z"/></svg>
+        <p>Thoughtfully formulated</p>
+      </div>
+
+      <div class="credibility-scroll-item">
+        <!-- check -->
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+        <p>Clinically informed</p>
+      </div>
+
+      <div class="credibility-scroll-item">
+        <!-- recycle/loop -->
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 2v2h8a4 4 0 1 1-2.83 6.83l-1.41 1.41A6 6 0 1 0 14 2H6Zm12 18v-2h-8a4 4 0 1 1 2.83-6.83l1.41-1.41A6 6 0 1 0 10 22h8Z"/></svg>
+        <p>Sustainable mindset</p>
+      </div>
+    </div>
+
+    <!-- Duplicate group for continuous loop on desktop -->
+    <div class="credibility-scroll-group desktop-only">
+      <div class="credibility-scroll-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.93 3.37c-5.85-.56-9.9 1.2-12.6 3.9-3.2 3.2-4.14 7.83-2.52 11.35l.14.31.31.14c3.52 1.62 8.15.68 11.35-2.52 2.7-2.7 4.46-6.75 3.9-12.6a.75.75 0 0 0-.58-.58ZM7.67 18.38c-.97-2.76-.34-5.7 1.8-7.84 2.14-2.14 5.08-2.77 7.84-1.8-1 2.76-2.83 4.94-4.46 6.57-1.63 1.63-3.81 3.45-6.18 3.07Z"/></svg>
+        <p>Herbal approach</p>
+      </div>
+      <div class="credibility-scroll-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 4 5v6c0 5 3.4 9.74 8 11 4.6-1.26 8-6 8-11V5l-8-3Zm6 9c0 4.02-2.66 7.87-6 9-3.34-1.13-6-4.98-6-9V6.3L12 4.1l6 2.2V11Z"/></svg>
+        <p>Trusted quality</p>
+      </div>
+      <div class="credibility-scroll-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 9.19 8.26 2.5 9.27l4.9 4.78L6.82 21 12 17.77 17.18 21l-1.58-6.95 4.9-4.78-6.69-1.01L12 2z"/></svg>
+        <p>Customer loved</p>
+      </div>
+      <div class="credibility-scroll-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.1 21.35 10 19.45C5.4 15.36 2 12.28 2 8.5A4.5 4.5 0 0 1 6.5 4C8.24 4 9.91 4.81 11 6.08 12.09 4.81 13.76 4 15.5 4A4.5 4.5 0 0 1 20 8.5c0 3.78-3.4 6.86-8 10.95l-1.9 1.9Z"/></svg>
+        <p>Women-centered</p>
+      </div>
+      <div class="credibility-scroll-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2s6 6.14 6 10a6 6 0 1 1-12 0c0-3.86 6-10 6-10Zm0 16a4 4 0 0 0 4-4c0-1.79-1.58-4.34-4-7.17-2.42 2.83-4 5.38-4 7.17a4 4 0 0 0 4 4Z"/></svg>
+        <p>Pure ingredients</p>
+      </div>
+      <div class="credibility-scroll-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 2h6v2h-1v5.59l4.7 7.76A2 2 0 0 1 16.98 20H7.02a2 2 0 0 1-1.72-3.05L10 9.59V4H9V2Zm1.83 9L7.7 16h8.6l-3.13-5H10.83Z"/></svg>
+        <p>Thoughtfully formulated</p>
+      </div>
+      <div class="credibility-scroll-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+        <p>Clinically informed</p>
+      </div>
+      <div class="credibility-scroll-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 2v2h8a4 4 0 1 1-2.83 6.83l-1.41 1.41A6 6 0 1 0 14 2H6Zm12 18v-2h-8a4 4 0 1 1 2.83-6.83l1.41-1.41A6 6 0 1 0 10 22h8Z"/></svg>
+        <p>Sustainable mindset</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Animation timing matches the old default (90s) */
+  .credibility-scroll-group {
+    display: inline-flex;
+    gap: 28px;
+    animation: credibilityScroll 90s linear infinite backwards;
+  }
+  .credibility-scroll-container { overflow: hidden; }
+  .credibility-scroll-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    white-space: nowrap;
+  }
+  .credibility-scroll-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 18px;
+  }
+  .credibility-scroll-item svg {
+    width: 28px;
+    height: 28px;
+    color: currentColor;
+  }
+  .desktop-only { display: none; }
+
+  @keyframes credibilityScroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+
+  @media screen and (min-width: 601px) {
+    .desktop-only { display: inline-flex; }
+  }
+  @media screen and (max-width: 600px) {
+    .credibility-scroll-group { animation: none; }
+  }
+</style>
