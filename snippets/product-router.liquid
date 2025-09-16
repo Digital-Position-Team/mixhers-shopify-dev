@@ -250,5 +250,6 @@
     {% section 'advent-calendar-product-template' %} {% endcomment %}
   {%- else -%}
     {% comment %} This one {% endcomment %}
-    {% render 'mixhers-product-card' %}
+    {% comment %} {% render 'mixhers-product-card' %} {% endcomment %}
+     {% render 'general-product-template' %}
 {%- endcase -%}
