@@ -1,0 +1,85 @@
+{% comment %}
+    ********************
+    Rebrand Tooltip Snippet
+    ********************
+
+    Usage:
+        {% render 'tooltip-rebrand' %}
+{% endcomment %}
+
+<style>
+    a:active {
+     color: #ff59e4;
+    }
+    /* Tooltip container */
+    .tooltip {
+        position: relative;
+        display: flex;
+        align-items: start;
+        margin-top: 7px;
+    }
+    /* Tooltip text */
+    .tooltiptext {
+        visibility: hidden;
+        background-color: black;
+        color: #fff;
+
+        /* Position the tooltip text */
+        position: absolute;
+        z-index: 1;
+        left: 23px;
+        top: -6px;
+
+        /* Fade in tooltip */
+        opacity: 1;
+        transition: opacity 0.3s;
+    }
+
+    .extra-mobile-hsa-link {
+        pointer-events: none;
+        text-decoration: none;
+    }
+
+    /* Show the tooltip text when you mouse over the tooltip container */
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+        .tooltip {
+            margin-left: 20px;
+        }
+        .tooltip {
+            margin-top: 0;
+        }
+        .tooltiptext {
+            left: unset;
+            top: 33px;
+            right: -124px;
+        }
+        .tooltip:active .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        .tooltip svg {
+            width: 24px;
+        }
+        .extra-mobile-hsa-link {
+            pointer-events: auto;
+        }
+    }
+</style>
+
+<div class="mx-1 mt-4 w-full prose text-[14px] md:text-[16px] no-underline">
+    <div class="flex gap-1 w-full">
+        <span class="text-black">HSA Reimbursement Eligible</span>
+        <span class="tooltip">
+            {% render 'icon-rebrand-info' %}
+            <div class="tooltiptext rounded-xl w-max flex flex-col justify-start px-4 py-2">
+                <span class="text-white extra-mobile-hsa-link ml-[10px]">HSA/FSA eligible at checkout.</span>
+                <span class="text-gray"><span class="text-pink">* </span>For <span class="text-pink">subscriptions</span>, reach out to help@mixhers.com</span>
+            </div>
+        </span>
+    </div>
+</div>

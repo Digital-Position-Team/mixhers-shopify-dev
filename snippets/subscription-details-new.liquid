@@ -1,0 +1,83 @@
+{% liquid
+    assign subDetailsObject = shop.metaobjects.subscription_details.subscription-details-new-aug-2023
+    assign subDetailsList = subDetailsObject.list
+
+    comment
+        Used for toggling the subscription details on the custom bundle page for mobile
+    endcomment
+    assign onCustomBundle = false
+    if request.path contains 'custom-bundle'
+        assign onCustomBundle = true
+    endif
+
+    assign sitewideSaleEnabled = settings.sitewide_sale_enabled
+    assign isHertime = false
+    assign isQuiz = false
+
+    if request.path contains 'quiz'
+        assign isQuiz = true
+    endif
+
+    if product.id == 6713024184499 or product.id == 6791551615155
+        assign isHertime = true
+    endif
+%}
+
+{% assign productHasFlavor = false %}
+{% if product.options contains 'Flavor' or product.options contains 'flavor' %}
+    {% assign productHasFlavor = true %}
+{% endif %}
+
+<div class="subscription-details-wrapper subscription-details-wrapper--new{% if onCustomBundle %} only-on-active{% endif %}">
+    {% if subDetailsObject.ship_schedule %}
+        <p class="ship-schedule italic-subheaders-6">{{ subDetailsObject.ship_schedule }}</p>
+    {% endif %}
+    {% if subDetailsObject.subscription_info %}
+        <p class="subscription-info body-5">{{ subDetailsObject.subscription_info }}</p>
+    {% endif %}
+    <div class="subscription-icon-wrapper">
+        {% if isHertime or product.id == 7668475822259 %}
+            <div class="subscription-icon-item">
+                <div class="subscription-icon-alt">
+                    {% render 'icon' with 'checkmark-thin' %}
+                </div>
+                <p class="body-7">FREE EXPERIENCE BOX ($24 added value)</p>
+            </div>
+            <div class="subscription-icon-item">
+                <div class="subscription-icon-alt">
+                    {% render 'icon' with 'checkmark-thin' %}
+                </div>
+                <p class="body-7">20% off monthly subscription after 1st month</p>
+            </div>
+            {% comment %} <div class="subscription-icon-item">
+                <div class="subscription-icon-alt">
+                    {% render 'icon' with 'checkmark-thin' %}
+                </div>
+                <p class="body-7">Free shipping (always!)</p>
+            </div> {% endcomment %}
+            <div class="subscription-icon-item">
+                <div class="subscription-icon-alt">
+                    {% render 'icon' with 'checkmark-thin' %}
+                </div>
+                <p class="body-7">2x rewards points</p>
+            </div>
+            <div class="subscription-icon-item">
+                <div class="subscription-icon-alt">
+                    {% render 'icon' with 'checkmark-thin' %}
+                </div>
+                <p class="body-7">Change flavors or cancel anytime</p>
+            </div>
+        {% else %}
+            {% for metaobject in subDetailsList.value %}
+                {% unless productHasFlavor == false and metaobject.only_show_if_flavor == true %}
+                    <div class="subscription-icon-item">
+                        <div class="subscription-icon-alt">
+                            {% render 'icon' with 'checkmark-thin' %}
+                        </div>
+                        <p class="body-7">{{ metaobject.title }}</p>
+                    </div>
+                {% endunless %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
