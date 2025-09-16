@@ -7,14 +7,21 @@
   {% else %}
     <h4 class="headers-9">Featured Product</h4>
   {% endif %}
-  <a href="{{ featured_product.url }}" class="featured-product">
-    {{ featured_product_img | image_url: width: 80 | image_tag }}
-    
-    <div class="featured-product-title-wrapper">
-      <h3 class="headers-6">{{ featured_product.title }}</h3>
-      <p class="italic-subheaders-6">{{ featured_product.metafields.descriptors.subtitle }}</p>
-    </div>
-  </a>
+
+  {% if featured_product %}
+    <a href="{{ featured_product.url }}" class="featured-product">
+      {% if featured_product.featured_image %}
+        {{ featured_product.featured_image | image_url: width: 80 | image_tag }}
+      {% endif %}
+
+      <div class="featured-product-title-wrapper">
+        <h3 class="headers-6">{{ featured_product.title }}</h3>
+        {% if featured_product.metafields.descriptors.subtitle %}
+          <p class="italic-subheaders-6">{{ featured_product.metafields.descriptors.subtitle }}</p>
+        {% endif %}
+      </div>
+    </a>
+  {% endif %}
 </div>
 
 {% if mobile %}
