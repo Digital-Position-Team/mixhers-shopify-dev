@@ -195,6 +195,9 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
 .dawn-hidden {
   display: none !important;
 }
+.hidden {
+  display: none;
+}
 
 .visually-hidden {
   position: absolute !important;
