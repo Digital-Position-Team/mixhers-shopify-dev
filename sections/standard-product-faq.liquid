@@ -29,7 +29,7 @@
   {% endif %}
 {% endfor %}
 
-{% if has_bottom_faqs and faq_image %}
+{% if has_bottom_faqs %}
   <style>
     .standard-product-faq {
       max-width: 1400px;
@@ -105,9 +105,11 @@
   </style>
 
   <div class="standard-product-faq" aria-label="Frequently Asked Questions">
-    <div class="faq-image-container">
-      <img src="{{ faq_image | image_url }}" alt="FAQ image" width="500" height="500" class="faq-image">
-    </div>
+    {% if  faq_image %}
+      <div class="faq-image-container">
+        <img src="{{ faq_image | image_url }}" alt="FAQ image" width="500" height="500" class="faq-image">
+      </div>
+    {% endif %}
     <div class="faq-content">
       <h2 class="faq-heading title-heading-2 margin-t0 font-serif">{{ section.settings.title }}</h2>
 
