@@ -9,6 +9,10 @@
  */
 {
   "sections": {
+    "tailwind_styles": {
+      "type": "optimized-product-styles",
+      "settings": {}
+    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -286,6 +290,7 @@
     }
   },
   "order": [
+    "tailwind_styles",
     "main",
     "offer_product_main_info_HPArUx",
     "scrolling_text_center_icon_kc3kh9",
