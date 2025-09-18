@@ -90,7 +90,11 @@
     }
     @media (min-width: 768px) {
       .standard-product-faq {
+        {% if faq_image %}
         grid-template-columns: 1fr 1fr;
+        {% else %}
+        grid-template-columns: 1fr;
+        {% endif %}
         gap: 48px;
       }
       .faq-heading {
