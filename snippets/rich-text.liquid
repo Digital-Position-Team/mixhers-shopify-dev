@@ -1,0 +1,12 @@
+{% assign content = content | default: '' %}
+{% assign size = size | default: 'md' %}
+
+{% if size == 'md' %}
+    <div class="prose text-black prose-sm md:prose-lg prose-neutral max-w-none prose-li:list-['+'] prose-li:marker:text-pink prose-li:marker:text-[24px] prose-p:mb-2 prose-ul:mt-2 prose-li:m-0 prose-p:leading-normal prose-li:leading-normal">
+        {{ content }}
+    </div>
+{% elsif size == 'sm' %}
+    <div class="prose text-black prose-sm md:prose-sm prose-neutral max-w-none prose-li:list-['+'] prose-li:marker:text-pink prose-li:marker:text-[24px] prose-p:mb-2 prose-ul:mt-2 prose-li:m-0 prose-p:leading-normal prose-li:leading-normal">
+        {{ content }}
+    </div>
+{% endif %}
