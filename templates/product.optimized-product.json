@@ -190,7 +190,7 @@
         "text_color": "#ff59e4",
         "icon_color": "#ff59e4",
         "icon_size": 20,
-        "scroll_duration": 20,
+        "scroll_duration": 60,
         "custom_icon": "·",
         "show_top_border": true,
         "show_bottom_border": true
@@ -215,6 +215,7 @@
     },
     "standard_product_comparison_hKQpnG": {
       "type": "standard-product-comparison",
+      "disabled": true,
       "name": "Standard Product Comparison",
       "settings": {}
     },
@@ -232,6 +233,7 @@
     },
     "standard_product_mix_quiz_BkjTqR": {
       "type": "standard-product-mix-quiz",
+      "disabled": true,
       "name": "Standard Product Made to Mix Quiz Quote",
       "settings": {
         "heading_text": "Made to mix.",
@@ -262,6 +264,7 @@
     },
     "standard_recommended_products_MVLQVw": {
       "type": "standard-recommended-products",
+      "disabled": true,
       "name": "Standard Recommended Products",
       "settings": {
         "heading": "Mixes well with",
