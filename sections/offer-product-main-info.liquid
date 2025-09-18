@@ -100,7 +100,7 @@
             <div>
             {% if top_faqs %}
                 {% for top_faq in top_faqs %}
-                    <details class="border-y border-gray-medium p-4 f-18">
+                    <details class="border-y border-gray-medium p-4 f-14">
                         <summary class="list-none cursor-pointer summary-none">
                             <div class="flex justify-between items-center gap-4">
                                 {% render 'text', type: 'body-md', content: top_faq.title %}
@@ -181,6 +181,7 @@
   .purchase-option__guarantee { display: flex; align-items: center; justify-content: center; gap: 4px; }
   h3 { font-family: "Buenos Aires", sans-serif; }
   .f-18, .f-18 p, .f-18 li { font-size: 18px; font-family: "Buenos Aires", sans-serif; }
+  .f-14, .f-14 p, .f-14 li { font-size: 14px; font-family: "Buenos Aires", sans-serif; }
 
   @media (max-width: 1024px) and (min-width: 768px) {
     .optimized-pdp-product-image { max-height: 390px; }
