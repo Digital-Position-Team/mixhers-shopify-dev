@@ -1,0 +1,328 @@
+{% if product.handle contains "hertime-pms-offer" %}
+  {% assign three_bag_sub_price = "$139.86" %}
+  {% assign three_bag_comp_price = "$222.90" %}
+  {% assign three_bag_save_price = "$81" %}
+  {% assign three_bag_variant_id = 44571915550899 %}
+  {% assign three_bag_selling_plan = 4324163763 %}
+  {% assign three_bag_flavor_name = "(Raspberry Lemonade, Coconut Lime, Peach Pineapple)" %}
+  {% assign one_bag_sub_price = "$51.00" %}
+  {% assign one_bag_comp_price = "$92.00" %}
+  {% assign one_bag_save_price = "$41" %}
+  {% assign one_bag_variant_id = 44571914600627 %}
+  {% assign one_bag_selling_plan = 4324130995 %}
+  {% assign one_bag_flavor_name = "(Raspberry Lemonade and Coconut Lime)" %}
+  {% assign single_price = "$60.00" %}
+  {% assign single_variant_id = 44572441247923 %}
+  {% assign single_flavor_name = "(Raspberry Lemonade and Coconut Lime)" %}
+{% elsif product.handle contains "menopause-offer" %}
+  {% assign three_bag_sub_price = "$118.55" %}
+  {% assign three_bag_comp_price = "$205.90" %}
+  {% assign three_bag_save_price = "$87" %}
+  {% assign three_bag_variant_id = 44571915124915 %}
+  {% assign three_bag_selling_plan = 4324196531 %}
+  {% assign three_bag_flavor_name = "Watermelon Lime" %}
+  {% assign one_bag_sub_price = "$46.75" %}
+  {% assign one_bag_comp_price = "$87.00" %}
+  {% assign one_bag_save_price = "$40" %}
+  {% assign one_bag_variant_id = 44571914174643 %}
+  {% assign one_bag_selling_plan = 4324229299 %}
+  {% assign one_bag_flavor_name = "Watermelon Lime" %}
+  {% assign single_price = "$55.00" %}
+  {% assign single_variant_id = 44572444983475 %}
+  {% assign single_flavor_name = "Watermelon Lime" %}
+{% elsif product.handle contains "metabolic-balance-offer" %}
+  {% assign three_bag_sub_price = "$152.06" %}
+  {% assign three_bag_comp_price = "$235.90" %}
+  {% assign three_bag_save_price = "$83" %}
+  {% assign three_bag_variant_id = 44572367519923 %}
+  {% assign three_bag_selling_plan = 4324393139 %}
+  {% assign three_bag_flavor_name = "(Brazilian Limeade and Orange Cream)" %}
+  {% assign one_bag_sub_price = "$55.25" %}
+  {% assign one_bag_comp_price = "$97.00" %}
+  {% assign one_bag_save_price = "$41" %}
+  {% assign one_bag_variant_id = 44572368175283 %}
+  {% assign one_bag_selling_plan = 4324327603 %}
+  {% assign one_bag_flavor_name = "(Brazilian Limeade and Orange Cream)" %}
+  {% assign single_price = "$65.00" %}
+  {% assign single_variant_id = 44572447113395 %}
+  {% assign single_flavor_name = "(Brazilian Limeade and Orange Cream)" %}
+{% endif %}
+
+
+<div class="optimized-pdp-purchase-options">
+  <!-- OPTION 1 -->
+  <div class="purchase-option">
+    <div class="purchase-option__header">
+      <h4 class="purchase-option__pretitle">BEST SELLER & BEST VALUE</h4>
+    </div>
+
+    <div class="purchase-option__details">
+      <div class="purchase-option__subheader">
+        <h3 class="purchase-option__title">90-Day Subscription Bundle</h3>
+        <div class="purchase-option__price" style="position: relative">
+          <div class="font-sans font-normal leading-[16px] md:leading-[20px] text-[14px] md:text-[16px] text-pink" id="subscription-price">
+            {{ three_bag_sub_price }}
+          </div>
+
+          <div class="flex flex-col">
+            <div class="font-sans font-normal leading-[16px] md:leading-[20px] text-[14px] md:text-[16px] line-through" id="subscribe-and-save-compare-price" role="img">
+              {{ three_bag_comp_price }}
+            </div>
+
+            <div
+              style="background-color: #ff59e4; padding: 2px 4px; height: min-content; line-height: 12px; text-align: center; position: absolute; top: 20px; right: 0px;">
+              <span style="color: white; font-weight: bold; font-size: 10px; white-space: nowrap">Save {{ three_bag_save_price }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="purchase-option__features">
+        <div class="flex gap-2 items-center">
+          {% render 'icon-rebrand-check' %}
+          <div>90 Servings of {{ three_bag_flavor_name }}, Ships Monthly, Cancel Anytime</div>
+        </div>
+        <div class="flex gap-2 items-center">
+          {% render 'icon-rebrand-check' %}
+          <div>Free Frother - $20 Value</div>
+        </div>
+        <div class="flex gap-2 items-center">
+          {% render 'icon-rebrand-check' %}
+          <div>Free Display Box - $12 Value</div>
+        </div>
+        <div class="flex gap-2 items-center">
+          {% render 'icon-rebrand-check' %}
+          <div>Free Shipping - $8.90 value</div>
+        </div>
+      </div>
+
+      <div class="purchase-option__buttons">
+        <button class="buy-now font-sans rounded-[64px] bg-pink text-white hover:border-pink-light font-semibold text-[18px] leading-[24px] py-[10px] px-[46px] border-[4px] border-transparent cursor-pointer w-full" onclick="">BUY NOW</button>
+      </div>
+    </div>
+
+    <div class="purchase-option__footer">
+      <h4 class="purchase-option__guarantee">
+        {% render 'icon-rebrand-check' %}30-Day Money Back Guarantee
+      </h4>
+    </div>
+  </div>
+
+  <!-- OPTION 2 -->
+  <div class="purchase-option">
+    <div class="purchase-option__details">
+      <div class="purchase-option__subheader">
+        <h3 class="purchase-option__title">30-Day Subscription Bundle</h3>
+        <div class="purchase-option__price" style="position: relative">
+          <div class="font-sans font-normal leading-[16px] md:leading-[20px] text-[14px] md:text-[16px] text-pink" id="subscription-price">
+            {{ one_bag_sub_price }}
+          </div>
+
+          <div class="flex flex-col">
+            <div class="font-sans font-normal leading-[16px] md:leading-[20px] text-[14px] md:text-[16px] line-through" id="subscribe-and-save-compare-price" role="img">
+              {{ one_bag_comp_price }}
+            </div>
+
+            <div
+              style="background-color: #ff59e4; padding: 2px 4px; height: min-content; line-height: 12px; text-align: center; position: absolute; top: 20px; right: 0px;">
+              <span style="color: white; font-weight: bold; font-size: 10px; white-space: nowrap">Save {{ one_bag_save_price }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="purchase-option__features">
+        <div class="flex gap-2 items-center">
+          {% render 'icon-rebrand-check' %}
+          <div>30 Servings of {{ one_bag_flavor_name }}, Ships Monthly, Cancel Anytime</div>
+        </div>
+        <div class="flex gap-2 items-center">
+          {% render 'icon-rebrand-check' %}
+          <div>Free Frother - $20 Value</div>
+        </div>
+        <div class="flex gap-2 items-center">
+          {% render 'icon-rebrand-check' %}
+          <div>Free Display Box - $12 Value</div>
+        </div>
+        <div class="flex gap-2 items-center">
+          {% render 'icon-rebrand-check' %}
+          <div style="margin-left: 8px;">*Paid Shipping</div>
+        </div>
+      </div>
+
+      <div class="purchase-option__buttons">
+        <button class="buy-now font-sans rounded-[64px] bg-pink text-white hover:border-pink-light font-semibold text-[18px] leading-[24px] py-[10px] px-[46px] border-[4px] border-transparent cursor-pointer w-full" onclick="">BUY NOW</button>
+      </div>
+    </div>
+
+    <div class="purchase-option__footer">
+      <h4 class="purchase-option__guarantee">
+        {% render 'icon-rebrand-check' %}30-Day Money Back Guarantee
+      </h4>
+    </div>
+  </div>
+
+  <!-- OPTION 3 -->
+  <div class="purchase-option">
+    <div class="purchase-option__details">
+      <div class="purchase-option__subheader">
+        <h3 class="purchase-option__title">One-time Purchase</h3>
+        <div class="purchase-option__price" style="position: relative">
+          <div class="flex flex-col">
+            <div class="font-sans font-normal leading-[16px] md:leading-[20px] text-[14px] md:text-[16px]" id="subscribe-and-save-compare-price" role="img">
+              {{ single_price }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="purchase-option__features">
+        <div class="flex gap-2 items-center">
+          {% render 'icon-rebrand-check' %}
+          <div>30 Servings of {{ single_flavor_name }}, Ships Once</div>
+        </div>
+        <div class="flex gap-2 items-center">
+          <div style="margin-left: 8px;">*Paid Shipping</div>
+        </div>
+      </div>
+
+      <div class="purchase-option__buttons">
+        <button class="buy-now font-sans rounded-[64px] font-semibold text-[18px] leading-[24px] py-[10px] px-[46px] border-[2px] cursor-pointer w-full" onclick="">BUY NOW</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cart-loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 1);
+    z-index: -99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .cart-loading-overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+    display: flex;
+    z-index: 99999999999999;
+  }
+
+  .cart-spinner {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #ff59e4;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
+
+<div class="cart-loading-overlay" id="cart-loading-overlay">
+  <div class="cart-spinner"></div>
+</div>
+
+<script>
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const overlay = document.getElementById("cart-loading-overlay");
+
+    const productOptions = {
+      "90-Day Subscription Bundle": {
+        variantId: {{ three_bag_variant_id }},
+        isSubscription: true,
+        sellingPlan: {{ three_bag_selling_plan }}
+      },
+      "30-Day Subscription Bundle": {
+        variantId: {{ one_bag_variant_id }},
+        isSubscription: true,
+        sellingPlan: {{ one_bag_selling_plan }}
+      },
+      "One-time Purchase": {
+        variantId: {{ single_variant_id }},
+        isSubscription: false
+      }
+    };
+
+    function showOverlay() {
+      overlay?.classList.add("visible");
+    }
+
+    function hideOverlay() {
+      overlay?.classList.remove("visible");
+    }
+
+    document.querySelectorAll(".purchase-option").forEach(option => {
+      const title = option.querySelector(".purchase-option__title")?.innerText?.trim();
+      const button = option.querySelector("button");
+
+      if (title && button && productOptions[title]) {
+        button.addEventListener("click", function (e) {
+          e.preventDefault();
+          const optionData = productOptions[title];
+          showOverlay();
+
+          fetch('/cart/clear.js', { method: 'POST' })
+            .then(() => {
+              const body = {
+                id: optionData.variantId,
+                quantity: 1
+              };
+
+              if (optionData.isSubscription && optionData.sellingPlan) {
+                body.selling_plan = optionData.sellingPlan;
+              }
+
+              console.log(body);
+
+              return fetch('/cart/add.js', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(body)
+              });
+            })
+            .then(response => {
+              if (!response.ok) throw new Error('Failed to add to cart');
+              window.location.href = '/checkout';
+            })
+            .catch(async error => {
+              try {
+                const responseBody = await error.response?.json();
+                console.error("Cart add failed:", responseBody);
+              } catch (err) {
+                console.error("Cart add failed, raw error:", error);
+              }
+              hideOverlay();
+            })
+        });
+      }
+    });
+  });
+
+  // Clear the loading spinner if returning from bfcache
+  window.addEventListener('pageshow', function (event) {
+    const overlay = document.getElementById("cart-loading-overlay");
+  
+    // If coming from bfcache or reload, ensure spinner is reset
+    if (overlay && overlay.classList.contains("visible")) {
+      overlay.classList.remove("visible");
+    }
+  });
+
+</script>

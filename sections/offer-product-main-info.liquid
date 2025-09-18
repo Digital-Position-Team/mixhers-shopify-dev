@@ -1,0 +1,216 @@
+{% assign subscribe_save_text = product.metafields.rebrand.subscribe_save_text.value | default: 'subscribe_save_text' %}
+{% assign small_text_for_subscribe_label = product.metafields.rebrand.small_text_for_subscribe_label | default: null %}
+{% assign show_with_code_text_next_to_slash_out_price_on_pdps = promo_content.show_with_code_text_next_to_slash_out_price_on_pdps | default: false %}
+{% assign top_faqs = product.metafields.rebrand.top_faqs.value %}
+{% assign supplement_facts_title = product.metafields.rebrand.supplement_facts_title.value | default: null %}
+{% assign supplement_facts_image = product.metafields.rebrand.supplement_facts_image.value | default: null %}
+
+{% assign product_title = product.metafields.rebrand.product_title.value | default: product.title %}
+{% assign product_subtitle = product.metafields.rebrand.product_subtitle.value | default: '' %}
+{% assign product_caption = product.metafields.rebrand.product_caption.value | default: '' %}
+{% assign promo_content = product.metafields.rebrand.promo_content.value %}
+{% assign promo_badge = promo_content.promo_badge | default: '' %}
+{% assign show_promo_badge_above_title = promo_content.show_promo_badge | default: false %}
+
+{% assign default_variant = product.metafields.rebrand.default_variant.value %}
+{% assign hsa_on = product.metafields.rebrand.hsa_on.value | default: false %}
+{% assign show_extra_subscribe_box_text = promo_content.show_extra_subscribe_box_text | default: false %}
+{% assign extra_subscribe_box_text = promo_content.extra_subscribe_box_text %}
+
+{% if product.tags contains "only_allow_one_in_cart" %}
+    {% assign only_allow_one_in_cart = true %}
+{% else %}
+    {% assign only_allow_one_in_cart = false %}
+{% endif %}
+
+{% if product.handle contains "hertime-pms-offer" %}
+  {% assign reviews_product_id = "6713024184499" %}
+{% elsif product.handle contains "menopause-offer" %}
+  {% assign reviews_product_id = "7325073113267" %}
+{% elsif product.handle contains "metabolic-balance-offer" %}
+  {% assign reviews_product_id = "7857541742771" %}
+{% else %}
+  {% assign reviews_product_id = product.id %}
+{% endif %}
+
+<style>
+    @media (min-width: 1024px){
+        #supplementFacts {
+            max-height: calc(100vh - 210px);
+            max-width: calc(100vw - 210px);
+            overflow: auto;
+        }
+    }
+</style>
+
+<form id="pdp-form">
+    <div class="flex flex-col lg:flex-row-reverse lg:items-start lg:relative">
+        <div class="flex w-full lg:w-7/12 lg:max-h-[800px] lg:sticky lg:top-[142px] lg:pb-[70px] lg:left-0">
+            {% comment %} render image carousel and featured product image {% endcomment %}
+            {% render 'rebrand-product-template-product-images', optimized_pdp: true %}
+        </div>
+        <div class="p-4 w-full lg:w-5/12 lg:p-8 lg:pr-12">
+            <div class="optimized-pdp-product-title">  
+              {% if show_promo_badge_above_title %}
+                  {% render 'text', tag: 'span' type: 'body-md', content: promo_badge, class: 'flex items-center bg-pink text-white py-[6px] px-[12px] max-w-fit mb-6' %}
+              {% endif %}
+              {% render 'text', tag: 'h1', type: 'heading-2', content: product_title, class: 'mr-2' %}
+              {% render 'text', tag: 'h2', type: 'body-lg', content: product_subtitle %}
+              {% render 'text', type: 'body-lg', content: product_caption, class: 'text-gray mb-2' %}
+              <div
+                class="yotpo-widget-instance pink-stars mb-6 mt-3"
+                data-yotpo-instance-id="585542"
+                data-yotpo-product-id="{{ reviews_product_id }}"
+                data-yotpo-cart-product-id="{{item.product.id}}"
+                data-yotpo-section-id="{{template.name}}"
+              ></div>
+            </div>
+
+            {% comment %}
+                PURCHASE OPTIONS for Starter Kit Eligible Products
+            {% endcomment %}
+            {% render 'optimized-pdp-purchase-options' %}
+
+            {% if supplement_facts_title %}
+                <button
+                    type="button"
+                    class="uppercase text-pink border-b-2 mt-4 border-pink"
+                    onclick="openSupplementFactsModal()"
+                    {% unless supplement_facts_image %}
+                        disabled
+                    {% endunless %}
+                >
+                    {% render 'text', type: 'body-md', content: supplement_facts_title %}
+                </button>
+            {% endif %}
+            <div class="mt-2 mb-8">
+                {% render 'rich-text', content: product.description %}
+            </div>
+
+            {% comment %}
+                HSA Reimbursement Info
+            {% endcomment %}
+            {% if hsa_on %}
+                {% render 'tooltip-rebrand' %}
+            {% endif %}
+
+            {% comment %}
+                Top FAQs
+            {% endcomment %}
+            <div>
+            {% if top_faqs %}
+                {% for top_faq in top_faqs %}
+                    <details class="border-y border-gray-medium p-4">
+                        <summary class="list-none cursor-pointer summary-none">
+                            <div class="flex justify-between items-center gap-4">
+                                {% render 'text', type: 'body-md', content: top_faq.title %}
+                                {% render 'text', type: 'body-md', content: '+' %}
+                            </div>
+                        </summary>
+                        {% assign content = top_faq.contents | metafield_tag %}
+                        {% render 'rich-text', content: content, size: 'sm' %}
+                    </details>
+                {% endfor %}
+            {% endif %}
+            </div>
+            {% comment %} Disclaimer {% endcomment %}
+            <div class="text-gray my-8">
+                {% render 'text',
+                    type: 'body-sm',
+                    content: '* These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.'
+                %}
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Supplement Facts Modal -->
+<div
+    id="supplementFactsModal"
+    class="hidden fixed inset-0 z-50 items-center justify-center bg-[#000000AA] p-7"
+    onclick="closeSupplementFactsModal()"
+>
+    <div id=supplementFacts class="bg-white rounded-lg shadow-xl relative inline-block">
+        <img
+            src="{{ supplement_facts_image | image_url }}"
+            alt="{{ supplement_facts_title }}"
+            class="object-contain"
+            width=auto
+            height=auto
+        >
+        <button class="text-white absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 w-8 h-8" onclick="closeSupplementFactsModal()">
+            <svg
+                aria-hidden="true"
+                focusable="false"
+                role="presentation"
+                class="icon icon-close"
+                viewBox="0 0 40 40"
+                fill="currentColor"
+                width="18"
+                height="18"
+            >
+                <path d="M23.868 20.015L39.117 4.78c1.11-1.108 1.11-2.77 0-3.877-1.109-1.108-2.773-1.108-3.882 0L19.986 16.137 4.737.904C3.628-.204 1.965-.204.856.904c-1.11 1.108-1.11 2.77 0 3.877l15.249 15.234L.855 35.248c-1.108 1.108-1.108 2.77 0 3.877.555.554 1.248.831 1.942.831s1.386-.277 1.94-.83l15.25-15.234 15.248 15.233c.555.554 1.248.831 1.941.831s1.387-.277 1.941-.83c1.11-1.109 1.11-2.77 0-3.878L23.868 20.015z" class="layer"/>
+            </svg>
+        </button>
+    </div>
+</div>
+
+<style>
+  html { overflow: auto !important; position: relative !important; inset: auto !important; }
+  body { overflow: auto !important; position: relative !important; inset: auto !important; height: auto !important; }
+  #shopify-section-rebrand-header nav { min-height: 56px; }
+  #hamburger-btn { display: none; }
+  #attentive_overlay { display: none; }
+  .optimized-pdp-product-image { width: 100%; max-height: 280px; overflow: hidden; background-color: #f5f6ff; }
+  .optimized-pdp-product-image img { object-fit: contain;  width: 100%; height: 100%; max-height: 100%; display: block; object-position: 50% 28%; }
+  .optimized-pdp-product-title { text-align: left; }
+  #purchase-options { margin-bottom: 18px;}
+  #shopify-section-rebrand-header #account-icon, #shopify-section-rebrand-header #cart-icon { display: none; }
+  #rebuy-cart .rebuy-cart__flyout-items a { pointer-events: none; }
+  .optimized-pdp-purchase-options { display: flex; flex-direction: column; gap: 12px; }
+  .purchase-option { display: flex; flex-direction: column; border: 1px solid black; border-radius: 8px; }
+  .purchase-option__header { padding: 10px 15px; border-radius: 8px 8px 0 0; background-color: black; color: white; }
+  .purchase-option__subheader { display: flex; justify-content: space-between; gap: 8px; }
+  .purchase-option__features { font-size: 12px; }
+  .purchase-option__features svg { min-width: 16px; }
+  .purchase-option__details { padding: 10px 20px; display: flex; flex-direction: column; gap: 18px; }
+  .purchase-option__price { display: flex; gap: 8px; }
+  .purchase-option__footer { padding: 10px 15px; border-radius: 0 0 8px 8px; background-color: black; color: white; }
+  .purchase-option__guarantee { display: flex; align-items: center; justify-content: center; gap: 4px; }
+
+  @media (max-width: 1024px) and (min-width: 768px) {
+    .optimized-pdp-product-image { max-height: 390px; }
+  }
+  
+  @media (max-width: 1024px) {
+    .optimized-pdp-product-title { text-align: center; }
+    .yotpo-widget-instance .yotpo-star-ratings-widget-override-css { justify-content: center !important; }
+    .yotpo-widget-instance .yotpo-star-ratings-widget-override-css .yotpo-sr-bottom-line-summary { flex-direction: column !important; }
+    .yotpo-widget-instance .yotpo-star-ratings-widget-override-css .yotpo-sr-bottom-line-text { position: relative; left: -4px; top: -8px; }
+    .yotpo-widget-instance { margin-bottom: 10px !important; }
+    #product-image-carousel .swiper-pagination { justify-content: center; }
+  }
+</style>
+
+<script>
+  function openSupplementFactsModal() {
+    document.getElementById('supplementFactsModal').style.display = 'flex';
+  }
+
+  function closeSupplementFactsModal() {
+    document.getElementById('supplementFactsModal').style.display = 'none';
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Offer Product Main Info",
+  "settings": [],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Offer Product Main Info"
+    }
+  ]
+}
+{% endschema %}
