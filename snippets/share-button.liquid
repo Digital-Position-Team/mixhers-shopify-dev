@@ -13,7 +13,7 @@
 <script src="{{ 'share.js' | asset_url }}" defer="defer"></script>
 
 <share-button id="Share-{{ section.id }}" class="share-button quick-add-hidden" {{ block.shopify_attributes }}>
-  <button class="share-button__button hidden">
+  <button class="share-button__button dawn-hidden">
     <span class="svg-wrapper">{{ 'icon-share.svg' | inline_asset_content }}</span>
     {{ block.settings.share_label | escape }}
   </button>
@@ -24,7 +24,7 @@
     </summary>
     <div class="share-button__fallback motion-reduce">
       <div class="field">
-        <span id="ShareMessage-{{ section.id }}" class="share-button__message hidden" role="status"> </span>
+        <span id="ShareMessage-{{ section.id }}" class="share-button__message dawn-hidden" role="status"> </span>
         <input
           type="text"
           class="field__input"
@@ -36,10 +36,8 @@
         >
         <label class="field__label" for="ShareUrl-{{ section.id }}">{{ 'general.share.share_url' | t }}</label>
       </div>
-      <button class="share-button__close hidden">
-        <span class="svg-wrapper">
-          {{- 'icon-close.svg' | inline_asset_content -}}
-        </span>
+            <button class="share-button__close dawn-hidden">
+        {% render 'icon-close' %}
         <span class="visually-hidden">{{ 'general.share.close' | t }}</span>
       </button>
       <button class="share-button__copy">

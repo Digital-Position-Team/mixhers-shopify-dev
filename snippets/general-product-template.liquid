@@ -454,11 +454,11 @@
                                     <span class="selected-variant-name">{{ selected_variant_name }}</span>
                                 </h5>
                                 {% if hasHolidayFlavor %}
-                                    <div class="holiday-flavor-limited-edition-copy{% unless selected_variant_holiday_flavor %} hidden{% endunless %}">
+                                    <div class="holiday-flavor-limited-edition-copy{% unless selected_variant_holiday_flavor %} dawn-hidden{% endunless %}">
                                         <p class="body-7">{{ settings.holiday_limited_edition_copy }}</p>
                                     </div>
                                 {% endif %}
-                                <div class="most-popular{% unless selected_variant_holiday_flavor %}{% if selected_variant_most_popular == false %} hidden{% endif %}{% endunless %}">
+                                <div class="most-popular{% unless selected_variant_holiday_flavor %}{% if selected_variant_most_popular == false %} dawn-hidden{% endif %}{% endunless %}">
                                     <p class="body-7">Most Popular</p>
                                 </div>
                             </div>
@@ -647,7 +647,7 @@
                         </div>
                     {% endif %}
 
-                    <div class="quantity-field-wrapper{% if showQuantityField != true %} hidden{% endif %}">
+                    <div class="quantity-field-wrapper{% if showQuantityField != true %} dawn-hidden{% endif %}">
                         <div class="quantity-title-wrapper">
                             <h4 class="headers-8">Quantity</h4>
                             {% if productSale and section.settings.tiered_discount_text != empty %}
@@ -829,7 +829,7 @@
                                 {% endif %}
                             </span>
 
-                            <span class="atc-price-wrap{% if hasSubOptions or product.id == 7629766459571 %} hidden{% endif %}">
+                            <span class="atc-price-wrap{% if hasSubOptions or product.id == 7629766459571 %} dawn-hidden{% endif %}">
                                 <span class="atc-divider"> – </span>
                                 <span class="atc-compare-at-price current-selection-compare-at-price"></span>
                                 <span class="atc-total-price current-selection-price">
@@ -1296,9 +1296,9 @@
         let mostPopularCopy = document.querySelector('.most-popular');
         let isMostPopular = selectedVariant.hasAttribute('data-most-popular')  ? true : false;
         if (isMostPopular) {
-            mostPopularCopy.classList.remove('hidden');
+            mostPopularCopy.classList.remove('dawn-hidden');
         } else {
-            mostPopularCopy.classList.add('hidden');
+            mostPopularCopy.classList.add('dawn-hidden');
         }
 
         if (hasHolidayFlavor) {
@@ -1315,12 +1315,12 @@
 
 
         if (holidayVariant == 'true') {
-            holidayDisclaimer.classList.remove('hidden');
-            limitedEditionCopy.classList.remove('hidden');
-            mostPopularCopy.classList.add('hidden');
+            holidayDisclaimer.classList.remove('dawn-hidden');
+            limitedEditionCopy.classList.remove('dawn-hidden');
+            mostPopularCopy.classList.add('dawn-hidden');
         } else {
-            holidayDisclaimer.classList.add('hidden');
-            limitedEditionCopy.classList.add('hidden');
+            holidayDisclaimer.classList.add('dawn-hidden');
+            limitedEditionCopy.classList.add('dawn-hidden');
         }
     }
 
