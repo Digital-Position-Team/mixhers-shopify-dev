@@ -191,7 +191,6 @@
     if (typeof Swiper !== 'undefined') {
       initializeSwiper();
     } else {
-      // If Swiper isn't loaded yet, check for it periodically
       const swiperCheck = setInterval(function() {
         if (typeof Swiper !== 'undefined') {
           clearInterval(swiperCheck);
@@ -201,13 +200,11 @@
     }
     
     function initializeSwiper() {
-      // Reset any inline transform that might be present
       const swiperWrapper = document.querySelector(`#testimonials-carousel-${sectionId} .swiper-wrapper`);
       if (swiperWrapper) {
         swiperWrapper.style.transform = 'none';
       }
       
-      // Small delay to ensure DOM is fully ready before initialization
       setTimeout(() => {
         const swiper = new Swiper(`#testimonials-carousel-${sectionId}`, {
           spaceBetween: 30,
@@ -217,102 +214,88 @@
           grabCursor: true,
           initialSlide: 0,
           speed: 800,
-          updateOnWindowResize: true, // Ensure it updates on resize
-          observer: true, // Watch for DOM changes
+          updateOnWindowResize: true,
+          observer: true,
           observeParents: true,
           on: {
             init: function() {
               updateTestimonialContent(currentIndex);
-              // Force recalculation after initialization
               setTimeout(() => {
                 this.update();
-                // Show carousel after it's properly positioned
                 document.querySelector(`#testimonials-carousel-${sectionId}`).style.opacity = '1';
               }, 100);
             },
             slideChange: function() {
               currentIndex = this.realIndex % testimonials.length;
               updateTestimonialContent(currentIndex);
+            },
+            // 👇 Tap handler so cloned slides also work
+            tap: function(swiper, event) {
+              const slide = swiper.slides[swiper.clickedIndex];
+              if (!slide) return;
+
+              const video = slide.querySelector('video');
+              const footer = slide.querySelector('.ugc-footer');
+              const spinner = slide.querySelector('.spinner');
+
+              if (video) {
+                if (video.paused) {
+                  footer.style.opacity = '0';
+                  spinner.style.display = 'block';
+                  
+                  pauseAllVideosExcept(video);
+
+                  video.play()
+                    .then(() => {
+                      spinner.style.display = 'none';
+                    })
+                    .catch(err => {
+                      console.error("Video failed to play:", err);
+                      spinner.style.display = 'none';
+                    });
+                } else {
+                  footer.style.opacity = '1';
+                  video.pause();
+                }
+              }
             }
           },
           breakpoints: {
-            10: {
-              slidesPerView: 'auto',
-              spaceBetween: 20
-            },
-            768: {
-              slidesPerView: 'auto',
-              spaceBetween: 30
-            }
+            10: { slidesPerView: 'auto', spaceBetween: 20 },
+            768: { slidesPerView: 'auto', spaceBetween: 30 }
           }
         });
         
-        // Also update on any viewport size changes
         window.addEventListener('resize', () => {
           if (swiper && swiper.update) {
             swiper.update();
           }
         });
-      }, 50);
-      
-      const testimonialSlides = document.querySelectorAll(`#testimonials-carousel-${sectionId} .swiper-slide`);
-      
-      testimonialSlides.forEach((slide, index) => {
-        const video = slide.querySelector('video');
-        const footer = slide.querySelector('.ugc-footer');
-        const spinner = slide.querySelector('.spinner');
-        
-        slide.addEventListener('click', async function() {
-          const clickedIndex = parseInt(slide.getAttribute('data-swiper-slide-index'), 10);
-          
-          // Update the currentIndex and slide to the selected slide if it isn't already active
-          if (swiper.realIndex !== clickedIndex) {
-            swiper.slideToLoop(clickedIndex); // Loop-safe slide navigation
-            currentIndex = clickedIndex % testimonials.length;
-            updateTestimonialContent(currentIndex);
-          }
-          
-          if (video.paused) {
-            footer.style.opacity = '0';
-            spinner.style.display = 'block'; // Show spinner on initial click
-            
-            try {
-              pauseAllVideosExcept(video);
-              await video.play();
-              spinner.style.display = 'none';
-            } catch (error) {
-              console.error("Video failed to play:", error);
-              spinner.style.display = 'none';
+
+        function pauseAllVideosExcept(currentVideo) {
+          swiper.slides.forEach((slide) => {
+            const video = slide.querySelector('video');
+            if (video && video !== currentVideo && !video.paused) {
+              video.pause();
             }
-          } else {
-            footer.style.opacity = '1';
-            video.pause(); // Pause if it's already playing
-          }
-        });
-      });
-      
-      function pauseAllVideosExcept(currentVideo) {
-        testimonialSlides.forEach((slide) => {
-          const video = slide.querySelector('video');
-          if (video && video !== currentVideo && !video.paused) {
-            video.pause();
-          }
-        });
-      }
-      
-      function updateTestimonialContent(index) {
-        const testimonial = testimonials[index];
-        if (testimonial) {
-          document.getElementById(`testimonial-name-${sectionId}`).textContent = testimonial.name;
-          document.getElementById(`testimonial-message-${sectionId}`).textContent = testimonial.message;
-          const button = document.getElementById(`testimonial-button-${sectionId}`);
-          button.textContent = testimonial.buttonText;
-          button.href = testimonial.buttonLink;
+          });
         }
-      }
+
+        function updateTestimonialContent(index) {
+          const testimonial = testimonials[index];
+          if (testimonial) {
+            document.getElementById(`testimonial-name-${sectionId}`).textContent = testimonial.name;
+            document.getElementById(`testimonial-message-${sectionId}`).textContent = testimonial.message;
+            const button = document.getElementById(`testimonial-button-${sectionId}`);
+            button.textContent = testimonial.buttonText;
+            button.href = testimonial.buttonLink;
+          }
+        }
+      }, 50);
     }
   });
 </script>
+
 
 {% schema %}
 {
