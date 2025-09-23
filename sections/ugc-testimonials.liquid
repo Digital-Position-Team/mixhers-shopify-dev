@@ -145,7 +145,7 @@
           {% if block.type == 'testimonial' %}
             <div class="swiper-slide" {{ block.shopify_attributes }}>
               <div class="spinner"></div>
-              <video class="testimonial-video" playsinline preload="none" loading="lazy"
+              <video class="testimonial-video" playsinline preload="none" 
                      poster="{{ block.settings.poster_image | image_url: width: 300 }}">
                 <source src="{{ block.settings.video_url }}" type="video/mp4">
                 Your browser does not support the video tag.
