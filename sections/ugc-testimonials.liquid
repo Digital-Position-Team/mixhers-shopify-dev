@@ -235,6 +235,36 @@
               updateTestimonialContent(currentIndex);
             }
           },
+          tap: function(swiper, event) {
+        const slide = swiper.slides[swiper.clickedIndex];
+        if (!slide) return;
+
+        const video = slide.querySelector('video');
+        const footer = slide.querySelector('.ugc-footer');
+        const spinner = slide.querySelector('.spinner');
+
+        if (video) {
+          if (video.paused) {
+            footer.style.opacity = '0';
+            spinner.style.display = 'block';
+
+            pauseAllVideosExcept(video);
+
+            video.play()
+              .then(() => {
+                spinner.style.display = 'none';
+              })
+              .catch(err => {
+                console.error("Video failed to play:", err);
+                spinner.style.display = 'none';
+              });
+          } else {
+            footer.style.opacity = '1';
+            video.pause();
+          }
+        }
+      }
+    },
           breakpoints: {
             10: {
               slidesPerView: 'auto',
