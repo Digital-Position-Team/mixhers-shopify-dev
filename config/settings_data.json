@@ -42,7 +42,7 @@
     "card_style": "standard",
     "card_image_padding": 0,
     "card_text_alignment": "left",
-    "card_color_scheme": "scheme-2",
+    "card_color_scheme": "scheme-1",
     "card_border_thickness": 0,
     "card_border_opacity": 10,
     "card_corner_radius": 0,
@@ -527,7 +527,7 @@
   },
   "platform_customizations": {
     "custom_css": [
-      ".main-page-title.page-title:nth-child(1){display: none !important;}"
+      ".main-page-title.page-title:nth-child(1) {display: none !important;}"
     ]
   }
 }
