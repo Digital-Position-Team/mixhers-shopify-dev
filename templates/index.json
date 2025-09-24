@@ -785,6 +785,9 @@
     },
     "text_and_image_section_WN9VJ6": {
       "type": "text-and-image-section",
+      "custom_css": [
+        "@media screen and (max-width: 767px) {.text-and-image-container {flex-direction: column !important;}}"
+      ],
       "name": "Text and Image",
       "settings": {
         "title": "Make it personal.",
