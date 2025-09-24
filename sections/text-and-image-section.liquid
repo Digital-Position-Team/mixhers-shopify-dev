@@ -18,6 +18,35 @@
     {% endif %}
   }
 
+  .text-and-image-container ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .text-and-image-container ul li {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    display: block; 
+    text-align: left;
+  }
+
+  .text-and-image-container ul li::before {
+    content: '\2022';
+    position: absolute;
+    left: 0;
+    color: pink;
+    font-size: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
   .text-and-image-section-{{ section_id }} .text-and-image-container {
     display: flex;
     flex-direction: {% if direction == 'rtl' %}row-reverse{% else %}row{% endif %};
