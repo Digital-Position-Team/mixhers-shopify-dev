@@ -169,12 +169,12 @@
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const swiper = new Swiper('#product-categories-carousel', {
-      spaceBetween: 10,
-      slidesPerView: 1,
+      spaceBetween: 20,
+      slidesPerView: 2,
       centeredSlides: true,
       loop: true,
       grabCursor: true,
-      // loopAdditionalSlides: 1,
+      loopAdditionalSlides: 2,
       // loopPreventsSliding: false,
       // speed: 300,
       breakpoints: {
@@ -187,7 +187,7 @@
           spaceBetween: 20,
         },
         1024: {
-          slidesPerView: 7,
+          slidesPerView: 5,
           spaceBetween: 30,
         },
       },
