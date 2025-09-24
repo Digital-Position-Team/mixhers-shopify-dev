@@ -300,7 +300,7 @@
           "settings": {
             "testimonial_title": "Thumbs up!",
             "testimonial_text": "I'm really optimistic about this product. It's been a couple of weeks and I think my hot flashes are coming less often and when they do they are less intense. It's easy to mix up and I like the taste. Will definitely be continuing with this product!!",
-            "author_name": "Jessica T."
+            "author_name": "Kim G."
           }
         }
       },
@@ -316,7 +316,7 @@
         "primary_button_text": "Find The Right Product For You",
         "primary_button_url": "https://mixhers.com/pages/quiz",
         "secondary_button_text": "Read All Reviews",
-        "secondary_button_url": "https://mixhers.com/collections/all"
+        "secondary_button_url": "shopify://pages/reviews"
       }
     },
     "featured_products_dzNnMj": {
