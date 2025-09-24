@@ -164,6 +164,56 @@
             "cta_text": "Shop Now",
             "cta_link": "https://mixhers.com/collections/all?collection=sexual-wellness"
           }
+        },
+        "card_QeMPHa": {
+          "type": "card",
+          "settings": {
+            "title": "PMS",
+            "bg_image": "shopify://shop_images/pms.png",
+            "description": "Discover Mixhers' natural supplements designed to soothe PMS symptoms and support balanced cycles.",
+            "cta_text": "Shop Now",
+            "cta_link": "https://mixhers.com/collections/all?collection=pms"
+          }
+        },
+        "card_LTQGwb": {
+          "type": "card",
+          "settings": {
+            "title": "Motherhood",
+            "bg_image": "shopify://shop_images/motherhood.png",
+            "description": "Explore Mixhers' nourishing supplements formulated specifically to empower moms through every stage of motherhood.",
+            "cta_text": "Shop Now",
+            "cta_link": "https://mixhers.com/collections/all?collection=motherhood"
+          }
+        },
+        "card_ynaCwc": {
+          "type": "card",
+          "settings": {
+            "title": "Menopause",
+            "bg_image": "shopify://shop_images/menopause_6c5b8913-ac50-4d69-9650-0e7fb4f785db.png",
+            "description": "Find relief with Mixhers' carefully crafted supplements that ease menopause symptoms and help women thrive through this transition.",
+            "cta_text": "Shop Now",
+            "cta_link": "https://mixhers.com/collections/all?collection=menopause"
+          }
+        },
+        "card_PF3M3d": {
+          "type": "card",
+          "settings": {
+            "title": "Health + Nutrition",
+            "bg_image": "shopify://shop_images/health.png",
+            "description": "Optimize your well-being with Mixhers' targeted nutritional supplements created to support overall women’s health.",
+            "cta_text": "Shop Now",
+            "cta_link": "https://mixhers.com/collections/all?collection=health"
+          }
+        },
+        "card_99G7Fe": {
+          "type": "card",
+          "settings": {
+            "title": "Sexual Wellness",
+            "bg_image": "shopify://shop_images/sexual_wellness.png",
+            "description": "Enhance intimacy naturally with Mixhers' thoughtfully-formulated supplements that support women’s sexual wellness and vitality.",
+            "cta_text": "Shop Now",
+            "cta_link": "https://mixhers.com/collections/all?collection=sexual-wellness"
+          }
         }
       },
       "block_order": [
@@ -171,7 +221,12 @@
         "card_LTQGwt",
         "card_ynaCwi",
         "card_PF3M3B",
-        "card_99G7FF"
+        "card_99G7FF",
+        "card_QeMPHa",
+        "card_LTQGwb",
+        "card_ynaCwc",
+        "card_PF3M3d",
+        "card_99G7Fe"
       ],
       "name": "Draggable Cards",
       "settings": {
