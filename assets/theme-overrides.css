@@ -245,17 +245,14 @@ h3 {
 .supplements-inner-body {
   background: #fff;
   max-width: 1200px;
-  margin: 5px;
+  margin: 16px;
   max-height: calc(100vh - 10px);
-  overflow: auto;
+  overflow: visible;
 }
 #supplementFactsModal img {
   max-width: 100%;
   width: 100%;
   height: auto;
-}
-#supplementFactsModal button {
-  display: none;
 }
 .standard-product-info .promo_badge {
   background: #ff59e4;
