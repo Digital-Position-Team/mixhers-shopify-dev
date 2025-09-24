@@ -2746,6 +2746,7 @@ details[open] > .header__icon--menu .icon-hamburger {
   opacity: 1;
   transform: scale(1.07);
 }
+.icon-hamburger, .icon-close { top: 22px; }
 
 .js details > .header__submenu {
   opacity: 0;

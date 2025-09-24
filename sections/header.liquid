@@ -291,10 +291,10 @@
       </div>
 
       {%- liquid
-          if section.settings.menu != blank
-            render 'header-drawer'
-          endif
-        -%}
+        if section.settings.menu != blank
+          render 'header-drawer'
+        endif
+      -%}
     </div>
   </header>
 </{{ header_tag }}>
