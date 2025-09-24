@@ -47,7 +47,7 @@
 }
 .rebuy-cart__progress-bar-wrapper{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
 }
 /* .rebuy-cart__flyout-header, */
