@@ -30,8 +30,8 @@
 
   .text-and-image-container ul li {
     position: relative;
-    padding-left: 35px;
-    margin-bottom: 10px;
+    padding-left: 18px;
+    margin-bottom: 0px;
     font-size: 16px;
     display: block; 
     text-align: left;
@@ -41,7 +41,7 @@
     content: '\2022';
     position: absolute;
     left: 0;
-    color: pink;
+    color: #ff59e4;
     font-size: 24px;
     top: 50%;
     transform: translateY(-50%);
@@ -110,6 +110,8 @@
   }
 
   @media screen and (max-width: 767px) {
+    .text-and-image-section-{{ section_id }} ul { align-items: center; }
+    .text-and-image-section-{{ section_id }} .text-column-inner { text-align: center; }
     .text-and-image-section-{{ section_id }} .text-and-image-container {
       flex-direction: column-reverse;
     }
