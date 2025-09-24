@@ -282,35 +282,32 @@
         "testimonial_BMiN4Q": {
           "type": "testimonial",
           "settings": {
-            "testimonial_title": "Life-Changing for My Hormones!",
-            "testimonial_text": "I've struggled with hormonal imbalance and painful periods for years, and nothing seemed to help—until I found Hertime from Mixhers! After just a month, my cramps were less intense, my mood swings improved, and I felt more energized. Plus, it tastes amazing! I'm hooked for life.",
-            "author_image": "shopify://shop_images/sarah.png",
-            "author_name": "Sarah M."
-          }
-        },
-        "testimonial_tPpP7H": {
-          "type": "testimonial",
-          "settings": {
-            "testimonial_title": "Delicious & So Easy to Use!",
-            "testimonial_text": "I love how convenient and tasty Mixhers products are! No more swallowing huge pills or dealing with weird aftertastes. I mix Hyrdation and Hernightly every day, and I’ve noticed a huge difference in my energy, hydration, and sleep quality. It’s like my body is finally getting what it needs! Highly recommend.",
-            "author_image": "shopify://shop_images/jessica.png",
-            "author_name": "Jessica T."
+            "testimonial_title": "Delicious and works fast!",
+            "testimonial_text": "I don't usually have bad cramps but they were awful this month so I tried Hertime PMS. I can't believe how actually delicious it was, not like so many others that taste artificial and gross. And within 10 minutes my cramps were gone! Totally lived up to the promise. Highly recommend.",
+            "author_name": "April"
           }
         },
         "testimonial_rVJgwN": {
           "type": "testimonial",
           "settings": {
-            "testimonial_title": "The Best Investment in My Health!",
-            "testimonial_text": "Mixhers is a game-changer! I started with Hergreens and was amazed at how much better I felt—less bloating, better digestion, and more energy. Now, I’m subscribed to multiple products because I can’t live without them. Plus, the ingredients are all-natural, which gives me peace of mind. Worth every penny!",
-            "author_image": "shopify://shop_images/amanda.png",
-            "author_name": "Amanda R."
+            "testimonial_title": "Actually Works!",
+            "testimonial_text": "I was very skeptical at first, but after trying these for 30 days, I'm hooked! I've tried a few different flavors and they are honestly all yummy! I've noticed a significant improvement in period cramps and I give credit to these for helping my period stay regular after getting off birth control. I would definitely recommend these to anyone!",
+            "author_name": "Kaitlyn P."
+          }
+        },
+        "testimonial_tPpP7H": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_title": "Thumbs up!",
+            "testimonial_text": "I'm really optimistic about this product. It's been a couple of weeks and I think my hot flashes are coming less often and when they do they are less intense. It's easy to mix up and I like the taste. Will definitely be continuing with this product!!",
+            "author_name": "Jessica T."
           }
         }
       },
       "block_order": [
         "testimonial_BMiN4Q",
-        "testimonial_tPpP7H",
-        "testimonial_rVJgwN"
+        "testimonial_rVJgwN",
+        "testimonial_tPpP7H"
       ],
       "name": "Testimonials",
       "settings": {
