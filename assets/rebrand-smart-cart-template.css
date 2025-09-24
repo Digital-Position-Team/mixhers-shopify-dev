@@ -1157,7 +1157,7 @@ input#rebuy-discount-input {
   padding-bottom: 50px;
 }
 redo-shopify-toggle {
-  order: -1;
+  order: 1;
   margin-bottom: auto;
 }
 .rebuy-cart__flyout-subtotal {
