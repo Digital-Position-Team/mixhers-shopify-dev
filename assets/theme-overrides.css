@@ -199,6 +199,17 @@ h3 {
   color: #888;
   font-size: 1rem;
 }
+.yotpo-bottom-line .yotpo-bottom-line-right-panel {
+  flex-wrap: wrap !important;
+}
+.yotpo-container {
+  box-sizing: border-box !important;
+}
+.yotpo-review-customer-questions-container {
+  margin-left: 0px !important;
+  padding: 0px 15px !important;
+}
+
 @media (max-width: 600px) {
   .footer-block {
     width: 100%;
@@ -221,6 +232,9 @@ h3 {
   }
   .footer-newsletter-input {
     width: 10%;
+  }
+  .mix-button {
+    min-width: auto;
   }
 }
 
