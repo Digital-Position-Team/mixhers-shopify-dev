@@ -12,32 +12,16 @@
     "custom_hero_GiCc3A": {
       "type": "custom-hero",
       "blocks": {
-        "image_GHEkqK": {
+        "image_ACdr3q": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/rewards_image.png",
+            "image": "shopify://shop_images/home-rebrand-mobile-top.webp",
             "image_link": "https://mixhers.com/collections/all"
-          }
-        },
-        "image_aEdRFT": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/MIXHERS-ATP-289_1_1.png",
-            "image_link": ""
-          }
-        },
-        "image_Djgd3h": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/MULTI_Sharing_Image_Desktop_731133b4-45a6-428a-b77d-6cc0921360ac.webp",
-            "image_link": ""
           }
         }
       },
       "block_order": [
-        "image_GHEkqK",
-        "image_aEdRFT",
-        "image_Djgd3h"
+        "image_ACdr3q"
       ],
       "name": "Custom Hero",
       "settings": {
@@ -786,7 +770,7 @@
     "text_and_image_section_WN9VJ6": {
       "type": "text-and-image-section",
       "custom_css": [
-        "@media screen and (max-width: 767px) {.text-and-image-container {flex-direction: column !important;}}"
+        "@media screen and (max-width: 767px) {.text-and-image-container {flex-direction: column !important; }}"
       ],
       "name": "Text and Image",
       "settings": {
