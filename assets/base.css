@@ -2245,7 +2245,7 @@ input[type='checkbox'] {
 }
 
 .announcement-bar__link .icon-arrow {
-  display: inline-block;
+  display: none;
   pointer-events: none;
   margin-left: 0.8rem;
   vertical-align: middle;
