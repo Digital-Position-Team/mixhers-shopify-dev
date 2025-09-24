@@ -212,10 +212,10 @@
           centeredSlides: true,
           loop: true,
           grabCursor: true,
-          initialSlide: 0,
-          speed: 400,
-          loopAdditionalSlides: 3,
-          loopPreventsSliding: false,
+          // initialSlide: 0,
+          // speed: 400,
+          loopAdditionalSlides: 2,
+          // loopPreventsSliding: false,
           updateOnWindowResize: true,
           observer: true,
           observeParents: true,
@@ -263,9 +263,19 @@
             }
           },
           breakpoints: {
-            10: { slidesPerView: 'auto', spaceBetween: 20 },
-            768: { slidesPerView: 'auto', spaceBetween: 30 }
-          }
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 4,
+              spaceBetween: 20,
+            },
+            1024: {
+              slidesPerView: 5,
+              spaceBetween: 30,
+            },
+          },
         });
         
         window.addEventListener('resize', () => {
