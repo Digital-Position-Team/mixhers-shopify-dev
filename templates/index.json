@@ -716,6 +716,7 @@
         "faq_item_Vf3JT6",
         "faq_item_krAcQx"
       ],
+      "disabled": true,
       "name": "FAQ Section",
       "settings": {
         "title": "FAQs",
