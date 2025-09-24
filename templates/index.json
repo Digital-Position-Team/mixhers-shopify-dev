@@ -164,56 +164,6 @@
             "cta_text": "Shop Now",
             "cta_link": "https://mixhers.com/collections/all?collection=sexual-wellness"
           }
-        },
-        "card_gjg4qV": {
-          "type": "card",
-          "settings": {
-            "title": "PMS",
-            "bg_image": "shopify://shop_images/pms.png",
-            "description": "",
-            "cta_text": "Shop Now",
-            "cta_link": "https://mixhers.com/collections/all?collection=pms"
-          }
-        },
-        "card_cVQXRc": {
-          "type": "card",
-          "settings": {
-            "title": "Motherhood",
-            "bg_image": "shopify://shop_images/motherhood.png",
-            "description": "Short description about this specific card and its benefits.",
-            "cta_text": "Shop Now",
-            "cta_link": "https://mixhers.com/collections/all?collection=motherhood"
-          }
-        },
-        "card_XacJ3U": {
-          "type": "card",
-          "settings": {
-            "title": "Menopause",
-            "bg_image": "shopify://shop_images/menopause_6c5b8913-ac50-4d69-9650-0e7fb4f785db.png",
-            "description": "Short description about this specific card and its benefits.",
-            "cta_text": "Shop Now",
-            "cta_link": ""
-          }
-        },
-        "card_etGi6Q": {
-          "type": "card",
-          "settings": {
-            "title": "Health + Nutrition",
-            "bg_image": "shopify://shop_images/health.png",
-            "description": "Short description about this specific card and its benefits.",
-            "cta_text": "Shop Now",
-            "cta_link": "https://mixhers.com/collections/all?collection=health"
-          }
-        },
-        "card_YkGg4J": {
-          "type": "card",
-          "settings": {
-            "title": "Sexual Wellness",
-            "bg_image": "shopify://shop_images/sexual_wellness.png",
-            "description": "",
-            "cta_text": "Shop Now",
-            "cta_link": "https://mixhers.com/collections/all?collection=sexual-wellness"
-          }
         }
       },
       "block_order": [
@@ -221,12 +171,7 @@
         "card_LTQGwt",
         "card_ynaCwi",
         "card_PF3M3B",
-        "card_99G7FF",
-        "card_gjg4qV",
-        "card_cVQXRc",
-        "card_XacJ3U",
-        "card_etGi6Q",
-        "card_YkGg4J"
+        "card_99G7FF"
       ],
       "name": "Draggable Cards",
       "settings": {
