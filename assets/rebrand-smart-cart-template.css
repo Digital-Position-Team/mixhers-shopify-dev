@@ -45,7 +45,11 @@
   height: max-content;
   width: 400px;
 }
-
+.rebuy-cart__progress-bar-wrapper{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 /* .rebuy-cart__flyout-header, */
 .rebuy-cart__progress-bar-container,
 .rebuy-cart__flyout-recommended-wrapper,
