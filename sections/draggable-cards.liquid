@@ -80,7 +80,7 @@
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
     transform: translateY(12px);
   }
-  .draggable-cards .shop-now .btn { line-height: 20px; }
+  .draggable-cards .shop-now .btn { line-height: 20px; white-space: nowrap; }
 
   /* Mobile styles */
   @media (max-width: 990px) {
@@ -98,7 +98,7 @@
   }
   @media (max-width: 768px) {
     #product-categories-carousel .swiper-slide-active .shop-now {
-      opacity: 1;
+      opacity: 1 !important;
       transform: translateY(0);
     }
     
