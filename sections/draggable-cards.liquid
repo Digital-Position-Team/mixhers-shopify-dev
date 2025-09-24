@@ -169,22 +169,28 @@
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const swiper = new Swiper('#product-categories-carousel', {
-      spaceBetween: 30,
-      slidesPerView: 7,
+      spaceBetween: 10,
+      slidesPerView: 1,
       centeredSlides: true,
       loop: true,
       grabCursor: true,
       // loopAdditionalSlides: 1,
       // loopPreventsSliding: false,
       // speed: 300,
-      // breakpoints: {
-      //   1000: {
-      //     slidesPerView: 4,
-      //   },
-      //   600: {
-      //     slidesPerView: 2,
-      //   },
-      // },
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 4,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 7,
+          spaceBetween: 30,
+        },
+      },
     });
     
     // Add event listeners for hover and touch events
