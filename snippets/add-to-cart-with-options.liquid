@@ -550,20 +550,28 @@ console.log(isBundleProduct,"isBundleProduct---");
             const subscriptionSalePriceEl = purchaseOptionsEl.find('#subscription-sale-price');
             const subscriptionPriceEl = purchaseOptionsEl.find('#subscription-price');
             const flavorSelectEl = multipleVariantPricingEl.find('select');
-            const price = flavorSelectEl.find(':selected').data('price');
-            const salePrice = getSalePrice(price);
-            const subscriptionPrice = flavorSelectEl.find(':selected').data('subscription-price');
-            const subscriptionSalePrice = getSalePrice(subscriptionPrice);
-            const subscribeAndSaveComparePriceEl = purchaseOptionsEl.find('#subscribe-and-save-compare-price');
-            const subscribeAndSaveComparePrice = flavorSelectEl.find(':selected').data('subscribe-and-save-compare-price');
-
+            
             function updatePrices() {
-                oneTimeSalePriceEl.text(formatPrice(salePrice));
-                oneTimePriceEl.text(formatPrice(price));
-                subscriptionSalePriceEl.text(formatPrice(subscriptionSalePrice));
-                subscriptionPriceEl.text(formatPrice(subscriptionPrice));
-                subscribeAndSaveComparePriceEl.text(formatPrice(subscribeAndSaveComparePrice));
-                if (!sellingPlanId) multipleVariantPricingEl.find('button').text(`Add to cart - ${formatPrice(price)}`);
+                const selectedOption = flavorSelectEl.find(':selected');
+                const price = selectedOption.data('price');
+                const subscriptionPrice = selectedOption.data('subscription-price');
+                const subscribeAndSaveComparePrice = selectedOption.data('subscribe-and-save-compare-price');
+                
+                // Only update if we have a valid price (option is selected)
+                if (price !== undefined) {
+                    const salePrice = getSalePrice(price);
+                    const subscriptionSalePrice = getSalePrice(subscriptionPrice);
+                    
+                    oneTimeSalePriceEl.text(formatPrice(salePrice));
+                    oneTimePriceEl.text(formatPrice(price));
+                    subscriptionSalePriceEl.text(formatPrice(subscriptionSalePrice));
+                    subscriptionPriceEl.text(formatPrice(subscriptionPrice));
+                    subscribeAndSaveComparePriceEl.text(formatPrice(subscribeAndSaveComparePrice));
+                    if (!sellingPlanId) multipleVariantPricingEl.find('button').text(`Add to cart - ${formatPrice(price)}`);
+                } else {
+                    // No option selected yet, show just "Add to cart"
+                    if (!sellingPlanId) multipleVariantPricingEl.find('button').text('Add to cart');
+                }
             }
 
             // Set variant prices on select change
