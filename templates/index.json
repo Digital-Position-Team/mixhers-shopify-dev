@@ -311,7 +311,7 @@
       ],
       "name": "Testimonials",
       "settings": {
-        "title": "Hear what Real Women think about Mixhers",
+        "title": "Hear what real women think about Mixhers",
         "subtitle": "Over 17,000 5 star reviews",
         "primary_button_text": "Find The Right Product For You",
         "primary_button_url": "https://mixhers.com/pages/quiz",
@@ -633,7 +633,7 @@
       "name": "Text and Image",
       "settings": {
         "title": "You're set up for success",
-        "body": "<p>Most new product subscriptions come with a FREE Starter Kit.</p><ul><li>Exclusive Mixhers Shaker </li><li>VIP Member Perks Guide</li><li>Bonus Wellness Samples</li><li>A Special Welcome Gift</li></ul>",
+        "body": "<p>Most new product subscriptions come with a FREE Starter Kit.</p><ul><li>Exclusive refillable display box</li><li>30-day product supply</li><li>Rechargeable frother</li></ul>",
         "text_alignment": "left",
         "cta_text": "Get Started",
         "cta_link": "https://mixhers.com/collections/all",
