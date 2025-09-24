@@ -472,6 +472,12 @@ console.log(isBundleProduct,"isBundleProduct---");
 
             form.on('submit', async function (e) {
                 e.preventDefault();
+                
+                // Validate that both flavors are selected
+                if (!firstFlavorSelectEl.val() || !secondFlavorSelectEl.val()) {
+                    return; // Don't proceed if selections are missing
+                }
+                
                 const submitButton = bundlePricingEl.find('button');
                 const submitButtonText = submitButton.text();
                 submitButton.prop('disabled', true).text('Loading...').css('opacity', 0.5);
@@ -482,7 +488,7 @@ console.log(isBundleProduct,"isBundleProduct---");
             firstFlavorSelectEl.prop("required", true);
             secondFlavorSelectEl.prop("required", true);
             if (sellingPlanId) purchaseOptionsEl.removeClass('hidden');
-            else bundlePricingEl.find('button').text(`Add to cart - ${bundle_price}`)
+            else bundlePricingEl.find('button').text(`Add to cart - {{ one_time_price }}`)
 
             bundlePricingEl.removeClass('hidden');
         }
@@ -568,6 +574,12 @@ console.log(isBundleProduct,"isBundleProduct---");
 
             form.on('submit', async function (e) {
                 e.preventDefault();
+                
+                // Validate that an option is selected
+                if (!flavorSelectEl.val()) {
+                    return; // Don't proceed if no selection
+                }
+                
                 const submitButton = multipleVariantPricingEl.find('button');
                 const submitButtonText = submitButton.text();
                 submitButton.prop('disabled', true).text('Loading...').css('opacity', 0.5);
