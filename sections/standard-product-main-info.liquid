@@ -92,6 +92,12 @@
 <!-- Supplement Facts Modal -->
 <div id="supplementFactsModal" class="" onclick="closeSupplementFactsModal()">
   <div id="supplementFacts" class="supplements-inner-body">
+    <button class="modal-close-x" onclick="closeSupplementFactsModal()" type="button">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
     <img src="{{ product.metafields.rebrand.supplement_facts_image.value | image_url }}" alt="Supplement Facts" class="object-contain" width="auto" height="auto" />
     <button class="" onclick="closeSupplementFactsModal()">Close</button>
   </div>
@@ -211,6 +217,37 @@
 ]
 }
 {% endschema %}
+
+<style>
+  .modal-close-x {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .modal-close-x:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .modal-close-x svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  #supplementFacts {
+    position: relative;
+  }
+</style>
 
 <script>
       function openSupplementFactsModal() {
