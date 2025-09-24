@@ -175,11 +175,6 @@ details[open].menu-opening > .menu-drawer__submenu {
 .header--has-social .menu-drawer__utility-links {
   padding: 2rem 3rem;
 }
-.main-menu-right {
-  display: flex;
-  gap: 18px;
-  align-items: center;
-}
 
 @media screen and (max-width: 749px) {
   .header--has-account:where(:not(.header--has-social):not(.header--has-localizations)) .menu-drawer__utility-links {
