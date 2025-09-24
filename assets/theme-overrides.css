@@ -209,6 +209,9 @@ h3 {
   margin-left: 0px !important;
   padding: 0px 15px !important;
 }
+.yotpo-review-center-panel {
+  padding: 0px 15px !important;
+}
 
 @media (max-width: 600px) {
   .footer-block {
