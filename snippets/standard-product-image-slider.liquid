@@ -164,11 +164,15 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+       // Check if it's desktop (1024px and above) to set initial slide
+       const isDesktop = window.innerWidth >= 1024;
+       const initialSlideIndex = isDesktop ? 1 : 0;
+       
        const swiper = new Swiper('#product-image-carousels', {
           loop: false,
           spaceBetween: 0, 
           slidesPerView: 1,
-          initialSlide: 1,
+          initialSlide: initialSlideIndex,
          breakpoints: {
            1024: {
             slidesPerView: 1.1
