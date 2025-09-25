@@ -1382,10 +1382,7 @@ button.button-quantity svg {
 .rebuy-cart__flyout-items .ml-\[3px\] {
   margin-left: 3px;
 }
-[data-target='non-coverage-button'] {
-  font-family: 'Buenos Aires';
-}
-[data-target='headline-text-container'] {
+redo-shopify-toggle {
   font-family: 'Buenos Aires';
 }
 @media (min-width: 768px) {
