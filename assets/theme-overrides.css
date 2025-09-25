@@ -221,6 +221,18 @@ h3 {
 .yotpo-widget-campaign-widget .yotpo-description-text {
   font-size: 18px !important;
 }
+.yotpo-avatar-initials-text {
+  fill: white !important;
+}
+.yotpo-initials-background {
+  fill: #ff59e4 !important;
+}
+.yotpo-reviews-seo-list .yotpo-review {
+  gap: 12px !important;
+}
+.loading__spinner.hidden {
+  display: none !important;
+}
 
 @media (max-width: 600px) {
   .footer-block {

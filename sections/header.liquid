@@ -288,6 +288,25 @@
             </div>
           {%- endif -%}
         </a>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            const cartIcon = document.getElementById('cart-icon-bubble');
+            if (cartIcon) {
+              cartIcon.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent default navigation to cart page
+                
+                // Check if Rebuy SmartCart is available and open it
+                if (typeof Rebuy !== 'undefined' && Rebuy.SmartCart && Rebuy.SmartCart.show) {
+                  Rebuy.SmartCart.show();
+                } else {
+                  // Fallback to cart page if Rebuy is not available
+                  window.location.href = '{{ routes.cart_url }}';
+                }
+              });
+            }
+          });
+        </script>
       </div>
 
       {%- liquid
