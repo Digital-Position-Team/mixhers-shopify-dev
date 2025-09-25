@@ -1,0 +1,5 @@
+{% assign redirectProduct = product.metafields.custom.product_redirect.value.url %}
+
+<script>
+    window.location.href = "{{ redirectProduct }}";
+</script>
