@@ -213,13 +213,13 @@ h3 {
   padding: 0px 15px !important;
 }
 .yotpo-new-review-btn-wrapper {
-  margin-bottom: 20px;
+  margin-bottom: 20px !important;
 }
 .yotpo-widget-campaign-widget .yotpo-title-text {
-  font-size: 25px;
+  font-size: 25px !important;
 }
 .yotpo-widget-campaign-widget .yotpo-description-text {
-  font-size: 18px;
+  font-size: 18px !important;
 }
 
 @media (max-width: 600px) {
