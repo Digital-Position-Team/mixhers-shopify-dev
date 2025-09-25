@@ -35,7 +35,7 @@
 
   .account-card {
     background: white;
-    border-radius: 8px;
+    border-radius: 20px;
     padding: 2rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     margin-bottom: 1rem;
@@ -107,6 +107,12 @@
   @media screen and (max-width: 989px) {
     .AccountOrderHistory-desktopCell {
       display: none;
+    }
+    .AccountOrderHistory-table thead {
+      display: none !important;
+    }
+    .AccountOrderHistory-table-row td {
+      border: none;
     }
     
     .AccountOrderHistory-mobile {
@@ -214,6 +220,7 @@
 
   .account-side-menu--text {
     font-weight: 600;
+    font-size: 20px;
   }
 
   .account-side-menu--icon {
@@ -307,8 +314,8 @@
                 <div class="AccountOrderHistory-pagination">
                   {% if paginate.previous.is_link %}
                     <a class="AccountOrderHistory-pagination-link button-5" href="{{ paginate.previous.url }}">
-                      <svg class="AccountOrderHistory-pagination-link-icon">
-                        <use xlink:href="#svg-arrow-horizontal"></use>
+                      <svg class="AccountOrderHistory-pagination-link-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg>
                     </a>
                   {% endif %}
@@ -318,8 +325,8 @@
                   {{ paginate.pages }}
                   {% if paginate.next.is_link %}
                     <a class="AccountOrderHistory-pagination-link button-5" href="{{ paginate.next.url }}">
-                      <svg class="AccountOrderHistory-pagination-link-icon" style="transform:rotate(180deg)">
-                        <use xlink:href="#svg-arrow-horizontal"></use>
+                      <svg class="AccountOrderHistory-pagination-link-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg>
                     </a>
                   {% endif %}
