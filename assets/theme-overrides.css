@@ -233,6 +233,9 @@ h3 {
 .loading__spinner.hidden {
   display: none !important;
 }
+.cart__dynamic-checkout-buttons {
+  margin-top: 4rem !important;
+}
 
 @media (max-width: 600px) {
   .footer-block {
