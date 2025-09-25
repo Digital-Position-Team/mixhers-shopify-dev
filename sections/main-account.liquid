@@ -53,6 +53,7 @@
     color: #333;
     font-family: 'Buenos Aires', sans-serif;
     font-size: 32px;
+    margin-top: 0px;
   }
 
   .AccountOrderHistory-table {
@@ -95,6 +96,12 @@
 
   .AccountOrderHistory-mobile {
     display: none;
+  }
+  .account-side-menu--item-current.account-card {
+    border-color: #8c7d96;
+  }
+  .account-side-menu--item-current.account-card .account-side-menu--text {
+    color: #8c7d96;
   }
 
   @media screen and (max-width: 989px) {
@@ -203,12 +210,6 @@
     transition: all 0.2s ease;
     font-family: 'Buenos Aires', sans-serif;
     font-size: 16px;
-  }
-
-  .account-side-menu--item:hover,
-  .account-side-menu--item-current {
-    background: #ff59e4;
-    color: white;
   }
 
   .account-side-menu--text {
