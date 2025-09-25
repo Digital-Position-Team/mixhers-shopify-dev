@@ -671,7 +671,7 @@
                                     </div>
                                 {% endif %}
                                 <div class="product-sub-radio-wrapper">
-                                    <div class="product-sub-radio{% if product.metafields.custom.subscription_available == false %} selected{% endif %}" data-sub="false"></div>
+                                    <div class="product-sub-radio{% if product.metafields.custom.subscription_available == false %} selected{% endif %}" data-sub="false"><span></span></div>
                                     <p class="button-5">Buy Once</p>
                                 </div>
                                 <div class="product-price {% if sitewideSaleEnabled %}sitewide-sale-active{% endif %}">
@@ -715,7 +715,7 @@
                                     {% endif %}
                                     <div class="product-sub-radio-top">
                                         <div class="product-sub-radio-wrapper">
-                                            <div class="product-sub-radio selected" data-sub="true"></div>
+                                            <div class="product-sub-radio selected" data-sub="true"><span></span></div>
                                             <div class="product-sub-label">
                                                 <p class="button-5">
                                                     {% if useNewPricing %}

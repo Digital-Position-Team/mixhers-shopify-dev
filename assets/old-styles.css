@@ -21537,7 +21537,7 @@ div:has(.g-recaptcha-bubble-arrow) {
 .product-template-container .yotpo .yotpo-bottomline .yotpo-icon-half-star,
 .product-template-container .yotpo .yotpo-bottomline .yotpo-icon-empty-star {
   color: #F44C7F;
-  font-size: 13px;
+  /* font-size: 13px; */
 }
 
 .product-template-container .yotpo .standalone-bottomline.star-clickable,
@@ -21723,7 +21723,7 @@ div:has(.g-recaptcha-bubble-arrow) {
   display: flex;
   flex-flow: row nowrap;
   gap: 8px;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
 }
 
