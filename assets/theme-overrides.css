@@ -264,6 +264,21 @@ h3 {
 .product-template-container .button-5 {
   font-size: 16px !important;
 }
+.product-template-container .headers-6 {
+  font-size: 24px !important;
+}
+.product-template-container .product-sub-radio-top {
+  align-items: center;
+}
+.product-template-container .product--sub-frequency-select-item {
+  margin-top: 4px;
+}
+.subscription-details-wrapper.subscription-details-wrapper--new .subscription-icon-item {
+  gap: 8px !important;
+}
+.subscription-details-wrapper--new .subscription-icon-item p.body-7 {
+  margin: 2px 0px !important;
+}
 
 @media (max-width: 600px) {
   .footer-block {
