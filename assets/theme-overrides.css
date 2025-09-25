@@ -258,6 +258,9 @@ h3 {
 .product-template-container .qty-select--option {
   font-size: 16px !important;
 }
+.product-template-container .qty-select--slider {
+  border-radius: 50% !important;
+}
 .product-template-container .button-5 {
   font-size: 16px !important;
 }
