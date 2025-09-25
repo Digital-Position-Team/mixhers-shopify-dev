@@ -1,0 +1,29 @@
+<div class="account-side-menu--wrapper">
+    {% comment %}hide the account menu to prevent customers from updating their address here{% endcomment %}
+    {% comment %} <a href="{{ routes.account_addresses_url }}" class="account-side-menu--item account-card {% if request.path == routes.account_addresses_url %}account-side-menu--item-current{% endif %}">
+        <span class="account-side-menu--text headers-7">My Account</span>
+    </a> {% endcomment %}
+    <a href="{{ routes.account_url }}" class="account-side-menu--item account-side-menu--item-with-icon account-card {% if request.path == routes.account_url or request.path contains '/account/orders/' %}account-side-menu--item-current{% endif %}">
+        <span class="account-side-menu--text headers-7">Order History</span>
+    </a>
+    <a href="/pages/rewards" class="account-side-menu--item account-side-menu--item-with-icon account-card">
+        <span class="account-side-menu--text headers-7">Rewards</span>
+        <span class="account-side-menu--icon">
+            {% render 'icon' with 'right-arrow' %}
+        </span>
+    </a>
+    {% if customer.tags contains 'Inactive Subscriber' or customer.tags contains 'Active Subscriber' %}
+        <a href="https://admin.rechargeapps.com/portal/1a89ed1638f7ac74781e4292e8d9a3/subscriptions?token=2cb508d83f7b4b61a97917da910555c4" class="account-side-menu--item account-side-menu--item-with-icon account-card">
+            <span class="account-side-menu--text headers-7">Manage Subscription</span>
+            <span class="account-side-menu--icon">
+                {% render 'icon' with 'right-arrow' %}
+            </span>
+        </a>
+    {% endif %}
+    <a href="{{ routes.account_logout_url }}" class="account-side-menu--item account-side-menu--item-with-icon account-card">
+        <span class="account-side-menu--text headers-7">Log Out</span>
+        <span class="account-side-menu--icon">
+            {% render 'icon' with 'logout' %}
+        </span>
+    </a>
+</div>

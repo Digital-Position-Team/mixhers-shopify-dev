@@ -1,9 +1,3 @@
-<!-- Recharge takeover code -->
-{% if section.settings.enable_recharge_takeover %}
-<form id='login_with_shopify_customer_id' action='/tools/recurring/get-subscription-access'></form>
-<script>document.querySelector('#login_with_shopify_customer_id').submit()</script>
-{% endif %}
-
 {{ 'customer.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
@@ -19,391 +13,299 @@
     }
   }
 
-  .login-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    max-width: 1200px;
+  .customer.login {
+    max-width: 500px;
     margin: 0 auto;
-  }
-
-  @media screen and (min-width: 990px) {
-    .login-container {
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-    }
-  }
-
-  .login-left {
     text-align: center;
   }
 
-  .login-right {
-    text-align: center;
+  .customer h1 {
+    margin-bottom: 2rem;
   }
 
-  .divider {
-    margin: 2rem 0;
-    position: relative;
+  .field {
+    margin-bottom: 1.5rem;
+    text-align: left;
   }
 
-  .divider p {
-    background: white;
-    padding: 0 1rem;
-    margin: 0;
-    color: #666;
-    display: inline-block;
-  }
-
-  .divider::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: #ddd;
-  }
-
-  .btn.solid-button {
-    display: inline-block;
-    background: #ff59e4;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 50px;
-    text-decoration: none;
-    cursor: pointer;
-    font-weight: 600;
-    margin-bottom: 1rem;
-  }
-  .btn.solid-button::before, .btn.solid-button::after { 
-    display: none;
-  }
-
-  .btn.solid-button:hover {
-    background: #e54dd1;
-  }
-
-  .email-link {
-    color: #ff59e4;
-    text-decoration: none;
-  }
-
-  .email-link:hover {
-    text-decoration: underline;
-  }
-
-  .login-help {
-    margin-top: 3rem;
-    text-align: center;
-    padding: 2rem;
-    background: #f9f9f9;
-    border-radius: 8px;
-  }
-
-  .hide {
-    display: none;
-  }
-
-  #RecoverPasswordForm {
-    display: none;
-  }
-
-  .form-vertical {
-    max-width: 400px;
-    margin: 0 auto;
-  }
-
-  .form-vertical label {
+  .field label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 600;
   }
 
-  .form-vertical input {
+  .field input {
     width: 100%;
     padding: 12px;
     border: 1px solid #ddd;
     border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .field input:focus {
+    outline: none;
+    border-color: #ff59e4;
+    box-shadow: 0 0 0 2px rgba(255, 89, 228, 0.2);
+  }
+
+  .customer button {
+    background: #ff59e4;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    margin: 1rem 0;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .customer button:hover {
+    background: #e54dd1;
+  }
+
+  .customer a {
+    color: #ff59e4;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0.5rem 0;
+  }
+
+  .customer a:hover {
+    text-decoration: underline;
+  }
+
+  #recover {
+    display: none;
+  }
+
+  .form__message {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    padding: 1rem;
+    border-radius: 4px;
     margin-bottom: 1rem;
   }
 
-  .input--error {
-    border-color: #ff0000;
+  .form__message.form-message--error {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
   }
 
-  .input-error-message {
-    color: #ff0000;
-    font-size: 0.875rem;
-    margin-top: -0.5rem;
-    margin-bottom: 1rem;
+  small.form__message {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
     display: block;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
   }
 {%- endstyle -%}
 
-{%- if section.settings.enable_shop_login_button == false -%}
-  {%- assign hide_shop_login_button = true -%}
-{%- endif -%}
-
-<div class="page-width section-{{ section.id }}-padding">
+<div class="customer login section-{{ section.id }}-padding">
+  <h1>Login</h1>
   
-  <div class="form-message form-message--success hide" id="ResetSuccess" tabindex="-1">
-    We've sent you an email with a link to update your password.
-  </div>
-
-  <div class="customer" id="CustomerLoginForm">
-    <div class="login-container">
-      
-      <!-- Left Column: Login Form -->
-      <div class="login-left">
-        <h1 class="text-center" id="LoginHeading">{{ section.settings.login_heading | default: 'My Account' }}</h1>
-
-        {% if section.settings.show_passwordless_login %}
-        <a href="/tools/recurring/get-subscription-access">
-          <button class="btn solid-button" type="button">{{ section.settings.passwordless_button_text | default: 'Passwordless Login' }}</button>
-        </a>
-
-        <div class="divider"><p>OR</p></div>
-        {% endif %}
-        
-        <p>{{ section.settings.login_subtext | default: 'To log in to your account please enter your credentials below' }}</p>
-        
-        {%- form 'customer_login', novalidate: 'novalidate' -%}
-          <input type="hidden" name="checkout_url" value="{{ routes.account_addresses_url }}">
-
-          {%- if form.errors -%}
-            <div class="form-message form-message--error">
-              <h2 class="h3 form-message__title" data-form-status tabindex="-1">There was a problem with your submission</h2>
-              {{ form.errors | default_errors }}
-            </div>
-          {%- endif -%}
-
-          {%- if shop.features.login_with_shop_classic_customer_accounts? -%}
-            <section name="sign-in-with-shop-provider">
-              {{ shop | login_button: hide_button: hide_shop_login_button }}
-
-              {%- unless hide_shop_login_button -%}
-                <p>
-                  or
-                </p>
-              {%- endunless -%}
-            </section>
-          {%- endif -%}
-
-          <div class="form-vertical">
-            <label for="CustomerEmail">Email</label>
-            <input type="email" name="customer[email]" id="CustomerEmail" autocomplete="email" autocorrect="off" autocapitalize="off" {%- if form.errors contains 'form' -%} class="input--error" aria-invalid="true" {%- endif -%}>
-
-            {% if form.password_needed %}
-              <label for="CustomerPassword">Password</label>
-              <input type="password" value="" name="customer[password]" id="CustomerPassword" {%- if form.errors contains 'form' -%} class="input--error" aria-invalid="true" {%- endif -%}>
-            {% endif %}
-
-            <div class="text-center">
-              <input type="submit" class="btn solid-button" value="Sign in" />
-            </div>
-          </div>
-
-        {%- endform -%}
+  {%- form 'customer_login', novalidate: 'novalidate' -%}
+    {%- if form.errors -%}
+      <div class="form__message form-message--error">
+        <h2 class="form-message__title h3" tabindex="-1" autofocus>
+          {{ 'templates.contact.form.error_heading' | t }}
+        </h2>
+        {{ form.errors | default_errors }}
       </div>
+    {%- endif -%}
 
-      <!-- Right Column: Password Recovery -->
-      <div class="login-right">
-        <div id="RecoverPasswordForm">
-          <div class="text-center">
-            <h2 id="RecoverHeading">Recover your password</h2>
-            <p>{{ section.settings.recovery_subtext | default: 'Please enter your email and we will send you an email to reset your password.' }}</p>
-          </div>
+    <div class="field">
+      <input
+        type="email"
+        name="customer[email]"
+        id="CustomerEmail"
+        autocomplete="email"
+        autocorrect="off"
+        autocapitalize="off"
+        placeholder="{{ 'customer.login.email' | t }}"
+        {%- if form.errors contains 'form' -%}
+          aria-invalid="true"
+          aria-describedby="CustomerEmail-error"
+        {%- endif -%}
+      >
+      <label for="CustomerEmail">
+        {{ 'customer.login.email' | t }}
+      </label>
+      {%- if form.errors contains 'form' -%}
+        <small id="CustomerEmail-error" class="form__message">
+          <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+          {{ 'templates.contact.form.error_heading' | t }}
+        </small>
+      {%- endif -%}
+    </div>
 
-          <div class="form-vertical">
-            {%- form 'recover_customer_password' -%}
-              {% assign recover_success = form.posted_successfully? %}
-              
-              {% if form.posted_successfully? %}
-                <span class="hide reset-password-success"></span>
-              {% endif %}
-
-              <label for="RecoverEmail">Email</label>
-              <input type="email" value="" name="email" id="RecoverEmail"
-                class="input-full{% if form.errors %} input--error{% endif %}" autocorrect="off" autocapitalize="off"
-                {% if form.errors %} aria-invalid="true" aria-describedby="RecoverEmail-email-error" {%- endif -%}
-              >
-              {%- if form.errors -%}
-                <span class="input-error-message" id="RecoverEmail-email-error">
-                  <span class="visually-hidden">Error</span>
-                  <span>{{ form.errors.messages['form'] }}</span>
-                </span>
-              {%- endif -%}
-
-              <div class="text-center">
-                <p>
-                  <input type="submit" class="btn solid-button" value="Submit">
-                </p>
-              </div>
-            {%- endform -%}
-          </div>
-        </div>
-        
-        {%- if recover_success == true -%}
-          <h3 class="form__message" tabindex="-1" autofocus>
-            We've sent you an email with a link to update your password.
-          </h3>
+    {%- if form.password_needed -%}
+      <div class="field">
+        <input
+          type="password"
+          value=""
+          name="customer[password]"
+          id="CustomerPassword"
+          autocomplete="current-password"
+          placeholder="{{ 'customer.login.password' | t }}"
+          {%- if form.errors contains 'form' -%}
+            aria-invalid="true"
+            aria-describedby="CustomerPassword-error"
+          {%- endif -%}
+        >
+        <label for="CustomerPassword">
+          {{ 'customer.login.password' | t }}
+        </label>
+        {%- if form.errors contains 'form' -%}
+          <small id="CustomerPassword-error" class="form__message">
+            <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+            {{ 'templates.contact.form.error_heading' | t }}
+          </small>
         {%- endif -%}
       </div>
-      
+    {%- endif -%}
+
+    <button type="submit">
+      {{ 'customer.login.sign_in' | t }}
+    </button>
+
+    <a href="#recover">{{ 'customer.login.forgot_password' | t }}</a>
+    <a href="{{ routes.account_register_url }}">{{ 'customer.login.create_account' | t }}</a>
+  {%- endform -%}
+</div>
+
+<div class="customer recover section-{{ section.id }}-padding" id="recover">
+  <h1>{{ 'customer.recover_password.title' | t }}</h1>
+  <p>{{ 'customer.recover_password.subtext' | t }}</p>
+  
+  {%- form 'recover_customer_password' -%}
+    {% assign recover_success = form.posted_successfully? %}
+    {%- if form.errors -%}
+      <div class="form__message form-message--error">
+        <h2 class="form-message__title h3" tabindex="-1" autofocus>
+          {{ 'templates.contact.form.error_heading' | t }}
+        </h2>
+        {{ form.errors | default_errors }}
+      </div>
+    {%- endif -%}
+
+    {%- if recover_success -%}
+      <div class="form__message">
+        <h3 class="form-message__title h3" tabindex="-1" autofocus>
+          {{ 'customer.recover_password.success' | t }}
+        </h3>
+      </div>
+    {%- endif -%}
+
+    <div class="field">
+      <input
+        type="email"
+        value=""
+        name="email"
+        id="RecoverEmail"
+        autocomplete="email"
+        autocorrect="off"
+        autocapitalize="off"
+        placeholder="{{ 'customer.login.email' | t }}"
+        {%- if form.errors -%}
+          aria-invalid="true"
+          aria-describedby="RecoverEmail-error"
+        {%- endif -%}
+      >
+      <label for="RecoverEmail">
+        {{ 'customer.login.email' | t }}
+      </label>
+      {%- if form.errors -%}
+        <small id="RecoverEmail-error" class="form__message">
+          <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+          {{ form.errors.messages['form'] }}
+        </small>
+      {%- endif -%}
     </div>
-  </div>
 
-  <!-- Help Section -->
-  {% if section.settings.show_help_section %}
-  <div class="login-help">
-    <h3 class="headers-8">{{ section.settings.help_heading | default: 'Having issues logging in?' }}</h3>
-    <p class="button-6">{{ section.settings.help_text | default: 'Email or chat with our support team for a secure login link in order to manage your subscription.' }}
-      <br>
-      Our email is <a class="email-link" href="mailto:{{ section.settings.support_email | default: 'help@mixhers.com' }}">{{ section.settings.support_email | default: 'help@mixhers.com' }}</a>
-    </p>
-  </div>
-  {% endif %}
+    <button type="submit">
+      {{ 'customer.recover_password.submit' | t }}
+    </button>
 
-  {%- if shop.checkout.guest_login -%}
-    <div style="margin-top: 2rem; text-align: center;">
-      <hr>
-      <h2>Continue as a guest</h2>
+    <a href="#login">{{ 'customer.recover_password.cancel' | t }}</a>
+  {%- endform -%}
+</div>
 
-      {%- form 'guest_login' -%}
-        <button class="btn solid-button">
-          Continue
-        </button>
-      {%- endform -%}
-    </div>
-  {%- endif -%}
 </div>
 
 <script>
-  // Toggle between login and password recovery forms
-  document.addEventListener('DOMContentLoaded', function() {
-    const recoverLinks = document.querySelectorAll('a[href="#recover"]');
-    const loginLinks = document.querySelectorAll('a[href="#login"]');
-    const recoverForm = document.getElementById('RecoverPasswordForm');
-    const loginForm = document.getElementById('CustomerLoginForm');
-    
-    // Show recovery form when "Forgot password" is clicked
-    recoverLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        if (recoverForm) {
-          recoverForm.style.display = 'block';
-        }
+  class LoginForm extends HTMLElement {
+    constructor() {
+      super();
+
+      const recoverPasswordLink = this.querySelector('#RecoverPassword');
+      const hideRecoverPasswordLink = this.querySelector('#HideRecoverPasswordLink');
+      const recoverPasswordForm = this.querySelector('#RecoverForm');
+      const customerLoginForm = this.querySelector('#CustomerLoginForm');
+
+      recoverPasswordLink.addEventListener('click', (event) => {
+        event.preventDefault();
+        this.toggleRecoverPasswordForm();
       });
-    });
-    
-    // Hide recovery form when "Cancel" is clicked
-    loginLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        if (recoverForm) {
-          recoverForm.style.display = 'none';
-        }
-      });
-    });
-    
-    // Handle successful password reset
-    const resetSuccess = document.querySelector('.reset-password-success');
-    if (resetSuccess) {
-      document.getElementById('ResetSuccess').style.display = 'block';
-      document.getElementById('ResetSuccess').focus();
+
+      if (hideRecoverPasswordLink) {
+        hideRecoverPasswordLink.addEventListener('click', (event) => {
+          event.preventDefault();
+          this.hideRecoverPasswordForm();
+        });
+      }
+
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.has('form_type') && urlParams.get('form_type') === 'recover_customer_password') {
+        this.toggleRecoverPasswordForm();
+      }
     }
-  });
+
+    toggleRecoverPasswordForm() {
+      this.querySelector('#RecoverForm').style.display = 'block';
+      this.querySelector('#CustomerLoginForm').style.display = 'none';
+    }
+
+    hideRecoverPasswordForm() {
+      this.querySelector('#RecoverForm').style.display = 'none';
+      this.querySelector('#CustomerLoginForm').style.display = 'block';
+    }
+  }
+
+  const loginForm = document.querySelector('.customer.login');
+  if (loginForm) {
+    // Simple toggle functionality
+    const recoverLinks = loginForm.querySelectorAll('a[href="#recover"]');
+    const loginLinks = document.querySelectorAll('a[href="#login"]');
+    const recoverForm = document.querySelector('#recover');
+    const loginFormEl = document.querySelector('.customer.login');
+
+    recoverLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        loginFormEl.style.display = 'none';
+        recoverForm.style.display = 'block';
+      });
+    });
+
+    loginLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        recoverForm.style.display = 'none';
+        loginFormEl.style.display = 'block';
+      });
+    });
+  }
 </script>
 
 {% schema %}
 {
   "name": "t:sections.main-login.name",
   "settings": [
-    {
-      "type": "header",
-      "content": "Recharge Integration"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_recharge_takeover",
-      "label": "Enable Recharge Auto-Login Takeover",
-      "info": "Automatically redirects to Recharge subscription access",
-      "default": false
-    },
-    {
-      "type": "header",
-      "content": "Login Form Settings"
-    },
-    {
-      "type": "text",
-      "id": "login_heading",
-      "label": "Login Page Heading",
-      "default": "My Account"
-    },
-    {
-      "type": "textarea",
-      "id": "login_subtext",
-      "label": "Login Form Description",
-      "default": "To log in to your account please enter your credentials below"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_passwordless_login",
-      "label": "Show Passwordless Login Button",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "passwordless_button_text",
-      "label": "Passwordless Login Button Text",
-      "default": "Passwordless Login"
-    },
-    {
-      "type": "textarea",
-      "id": "recovery_subtext",
-      "label": "Password Recovery Description",
-      "default": "Please enter your email and we will send you an email to reset your password."
-    },
-    {
-      "type": "header",
-      "content": "Help Section"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_help_section",
-      "label": "Show Help Section",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "help_heading",
-      "label": "Help Section Heading",
-      "default": "Having issues logging in?"
-    },
-    {
-      "type": "textarea",
-      "id": "help_text",
-      "label": "Help Section Text",
-      "default": "Email or chat with our support team for a secure login link in order to manage your subscription."
-    },
-    {
-      "type": "text",
-      "id": "support_email",
-      "label": "Support Email Address",
-      "default": "help@mixhers.com"
-    },
-    {
-      "type": "header",
-      "content": "Shop Login Button"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_shop_login_button",
-      "label": "t:sections.main-login.shop_login_button.enable",
-      "default": true
-    },
     {
       "type": "header",
       "content": "t:sections.all.padding.section_padding_heading"

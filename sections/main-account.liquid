@@ -12,140 +12,316 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  .main-content-wrapper--account-portal {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .account-container-with-side-menu {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  @media screen and (min-width: 990px) {
+    .account-container-with-side-menu {
+      grid-template-columns: 1fr 300px;
+      gap: 3rem;
+    }
+  }
+
+  .account-card {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+  }
+
+  .AccountOrderHistory-title {
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+
+  .AccountOrderHistory-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .AccountOrderHistory-table-header {
+    text-align: left;
+    padding: 1rem 0.5rem;
+    border-bottom: 2px solid #eee;
+    font-weight: 600;
+    color: #666;
+  }
+
+  .AccountOrderHistory-table-row td {
+    padding: 1rem 0.5rem;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+  }
+
+  .AccountOrderHistory-table-spacer {
+    height: 0.5rem;
+  }
+
+  .AccountOrderHistory-table-cell-button {
+    background: transparent;
+    border: 2px solid #ff59e4;
+    color: #ff59e4;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .AccountOrderHistory-table-cell-button:hover {
+    background: #ff59e4;
+    color: white;
+  }
+
+  .AccountOrderHistory-mobile {
+    display: none;
+  }
+
+  @media screen and (max-width: 989px) {
+    .AccountOrderHistory-desktopCell {
+      display: none;
+    }
+    
+    .AccountOrderHistory-mobile {
+      display: block;
+    }
+    
+    .AccountOrderHistory-table-cell {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .AccountOrderHistory-table-cell-header {
+      font-weight: 600;
+      color: #666;
+    }
+  }
+
+  .AccountOrderHistory-empty {
+    text-align: center;
+    padding: 3rem 0;
+    color: #666;
+  }
+
+  .AccountOrderHistory-empty-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .AccountOrderHistory-btn-account {
+    margin-top: 2rem;
+  }
+
+  .solid-button {
+    background: #ff59e4;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .solid-button:hover {
+    background: #e54dd1;
+  }
+
+  .solid-button a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .AccountOrderHistory-pagination {
+    margin-top: 2rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .AccountOrderHistory-pagination-link {
+    color: #ff59e4;
+    text-decoration: none;
+    padding: 0.5rem;
+  }
+
+  .AccountOrderHistory-pagination-link:hover {
+    background: #f0f0f0;
+    border-radius: 4px;
+  }
+
+  .account-side-menu--wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .account-side-menu--item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    color: #333;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+  }
+
+  .account-side-menu--item:hover,
+  .account-side-menu--item-current {
+    background: #ff59e4;
+    color: white;
+  }
+
+  .account-side-menu--text {
+    font-weight: 600;
+  }
+
+  .account-side-menu--icon {
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+  }
+
+  @media screen (max-width: 989px) {
+    .account-side-menu-col {
+      order: -1;
+    }
+    
+    .account-side-menu--wrapper {
+      flex-direction: row;
+      overflow-x: auto;
+      gap: 1rem;
+      padding-bottom: 1rem;
+    }
+    
+    .account-side-menu--item {
+      white-space: nowrap;
+      min-width: fit-content;
+    }
+  }
 {%- endstyle -%}
 
-<div class="customer account section-{{ section.id }}-padding">
-  <div>
-    <h1 class="customer__title">{{ 'customer.account.title' | t }}</h1>
-    <a href="{{ routes.account_logout_url }}">
-      <span class="svg-wrapper">
-        {{- 'icon-account.svg' | inline_asset_content -}}
-      </span>
-      {{ 'customer.log_out' | t }}
-    </a>
-  </div>
+<div class="section-{{ section.id }}-padding">
+  <div class="main-content-wrapper--account-portal">
+    <div class="account-container-with-side-menu">
+      <div class="account-main-content">
+        <div class="account-card order-history-card">
+          <h2 class="AccountOrderHistory-title headers-5">Order History</h2>
+          {%- if customer.orders_count > 0 -%}
+            {% paginate customer.orders by 7 %}
+              <table class="AccountOrderHistory-table">
+                <thead>
+                  <tr>
+                    <th class="AccountOrderHistory-table-header headers-7">Order Number</th>
+                    <th class="AccountOrderHistory-table-header headers-7">Payment Status</th>
+                    <th class="AccountOrderHistory-table-header headers-7">Fulfillment Status</th>
+                    <th class="AccountOrderHistory-table-header headers-7">Date</th>
+                    <th class="AccountOrderHistory-table-header headers-7">Total</th>
+                  </tr>
+                </thead>
 
-  <div>
-    <div>
-      <h2>{{ 'customer.orders.title' | t }}</h2>
+                <tbody>
+                  {% for order in customer.orders %}
+                    <tr class="AccountOrderHistory-table-row">
+                      <td class="AccountOrderHistory-desktopCell body-6">{{ order.order_number }}</td>
+                      <td class="AccountOrderHistory-desktopCell body-6">{{ order.financial_status_label }}</td>
+                      <td class="AccountOrderHistory-desktopCell body-6">{{ order.fulfillment_status_label }}</td>
+                      <td class="AccountOrderHistory-desktopCell body-6">{{ order.created_at | date: "%m/%d/%y" }}</td>
+                      <td class="AccountOrderHistory-desktopCell body-6">{{ order.total_price | money_without_trailing_zeros }}</td>
+                      <td class="AccountOrderHistory-table-row-div AccountOrderHistory-mobile">
+                        <div class="AccountOrderHistory-table-cell">
+                          <p class="AccountOrderHistory-table-cell-header headers-7">Order Number</p>
+                          <p class="body-6">{{ order.order_number }}</p>
+                        </div>
+                        <div class="AccountOrderHistory-table-cell">
+                          <p class="AccountOrderHistory-table-cell-header headers-7">Payment Status</p>
+                          <p class="body-6">{{ order.financial_status_label }}</p>
+                        </div>
+                        <div class="AccountOrderHistory-table-cell">
+                          <p class="AccountOrderHistory-table-cell-header headers-7">Fulfillment Status</p>
+                          <p class="body-6">{{ order.fulfillment_status_label }}</p>
+                        </div>
+                        <div class="AccountOrderHistory-table-cell">
+                          <p class="AccountOrderHistory-table-cell-header headers-7">Date</p>
+                          <p class="body-6">{{ order.created_at | date: "%m/%d/%y" }}</p>
+                        </div>
+                        <div class="AccountOrderHistory-table-cell">
+                          <p class="AccountOrderHistory-table-cell-header headers-7">Total</p>
+                          <p class="body-6">{{ order.total_price | money_without_trailing_zeros }}</p>
+                        </div>
+                      </td>
+                      <td class="AccountOrderHistory-table-cell">
+                        <a href="{{ order.customer_url }}" class="AccountOrderHistory-table-cell-button">
+                          <span class="button-2">View order</span>
+                        </a>
+                      </td>
+                    </tr>
+                    {%- unless forloop.last -%}
+                      <tr class="AccountOrderHistory-table-spacer"></tr>
+                    {%- endunless -%}
+                  {% endfor %}
+                </tbody>
+              </table>
 
-      {% paginate customer.orders by 20 %}
-        {%- if customer.orders.size > 0 -%}
-          <table role="table" class="order-history">
-            <caption class="visually-hidden">
-              {{ 'customer.orders.title' | t }}
-            </caption>
-            <thead role="rowgroup">
-              <tr role="row">
-                <th id="ColumnOrder" scope="col" role="columnheader">{{ 'customer.orders.order_number' | t }}</th>
-                <th id="ColumnDate" scope="col" role="columnheader">{{ 'customer.orders.date' | t }}</th>
-                <th id="ColumnPayment" scope="col" role="columnheader">{{ 'customer.orders.payment_status' | t }}</th>
-                <th id="ColumnFulfillment" scope="col" role="columnheader">
-                  {{ 'customer.orders.fulfillment_status' | t }}
-                </th>
-                <th id="ColumnTotal" scope="col" role="columnheader">{{ 'customer.orders.total' | t }}</th>
-              </tr>
-            </thead>
-            <tbody role="rowgroup">
-              {%- for order in customer.orders -%}
-                <tr role="row">
-                  <td
-                    id="RowOrder"
-                    role="cell"
-                    headers="ColumnOrder"
-                    data-label="{{ 'customer.orders.order_number' | t }}"
-                  >
-                    <a
-                      href="{{ order.customer_url }}"
-                      aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}"
-                    >
-                      {{ order.name }}
+              {%- if paginate.pages > 1 -%}
+                <div class="AccountOrderHistory-pagination">
+                  {% if paginate.previous.is_link %}
+                    <a class="AccountOrderHistory-pagination-link button-5" href="{{ paginate.previous.url }}">
+                      <svg class="AccountOrderHistory-pagination-link-icon">
+                        <use xlink:href="#svg-arrow-horizontal"></use>
+                      </svg>
                     </a>
-                  </td>
-                  <td headers="RowOrder ColumnDate" role="cell" data-label="{{ 'customer.orders.date' | t }}">
-                    {{ order.created_at | time_tag: format: 'date' }}
-                  </td>
-                  <td
-                    headers="RowOrder ColumnPayment"
-                    role="cell"
-                    data-label="{{ 'customer.orders.payment_status' | t }}"
-                  >
-                    {{ order.financial_status_label }}
-                  </td>
-                  <td
-                    headers="RowOrder ColumnFulfillment"
-                    role="cell"
-                    data-label="{{ 'customer.orders.fulfillment_status' | t }}"
-                  >
-                    {{ order.fulfillment_status_label }}
-                  </td>
-                  <td headers="RowOrder ColumnTotal" role="cell" data-label="{{ 'customer.orders.total' | t }}">
-                    {{ order.total_net_amount | money_with_currency }}
-                  </td>
-                </tr>
-              {%- endfor -%}
-            </tbody>
-          </table>
-        {%- else -%}
-          <p>{{ 'customer.orders.none' | t }}</p>
-        {%- endif -%}
-
-        {%- if paginate.pages > 1 -%}
-          {%- if paginate.parts.size > 0 -%}
-            <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
-              <ul role="list">
-                {%- if paginate.previous -%}
-                  <li>
-                    <a href="{{ paginate.previous.url }}" aria-label="{{ 'general.pagination.previous' | t }}">
-                      <span class="svg-wrapper">
-                        {{- 'icon-caret.svg' | inline_asset_content -}}
-                      </span>
+                  {% endif %}
+                  Page
+                  {{ paginate.current_page }}
+                  of
+                  {{ paginate.pages }}
+                  {% if paginate.next.is_link %}
+                    <a class="AccountOrderHistory-pagination-link button-5" href="{{ paginate.next.url }}">
+                      <svg class="AccountOrderHistory-pagination-link-icon" style="transform:rotate(180deg)">
+                        <use xlink:href="#svg-arrow-horizontal"></use>
+                      </svg>
                     </a>
-                  </li>
-                {%- endif -%}
+                  {% endif %}
+                </div>
+              {%- endif -%}
 
-                {%- for part in paginate.parts -%}
-                  <li>
-                    {%- if part.is_link -%}
-                      <a href="{{ part.url }}" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">
-                        {{- part.title -}}
-                      </a>
-                    {%- else -%}
-                      {%- if part.title == paginate.current_page -%}
-                        <span aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">
-                          {{- part.title -}}
-                        </span>
-                      {%- else -%}
-                        <span>{{ part.title }}</span>
-                      {%- endif -%}
-                    {%- endif -%}
-                  </li>
-                {%- endfor -%}
+            {% endpaginate %}
 
-                {%- if paginate.next -%}
-                  <li>
-                    <a href="{{ paginate.next.url }}" aria-label="{{ 'general.pagination.next' | t }}">
-                      <span class="svg-wrapper">
-                        {{- 'icon-caret.svg' | inline_asset_content -}}
-                      </span>
-                    </a>
-                  </li>
-                {%- endif -%}
-              </ul>
-            </nav>
+          {%- else -%}
+            <p class="AccountOrderHistory-empty">
+              <span class="AccountOrderHistory-empty-title body-2">You haven't ordered yet!</span>
+              <br>Explore our products and complete your order.</p>
+            <div class="AccountOrderHistory-btn-account">
+                <button class="o-button o-button-cta solid-button"><a href="https://mixhers.com/collections/all" class="button-2">Continue Shopping</a></button>
+            </div>
           {%- endif -%}
-        {%- endif -%}
-      {% endpaginate %}
-    </div>
-
-    <div>
-      <h2>{{ 'customer.account.details' | t }}</h2>
-
-      {{ customer.default_address | format_address }}
-
-      <a href="{{ routes.account_addresses_url }}">
-        {{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})
-      </a>
+        </div>
+      </div>
+      <div class="account-side-menu-col">
+          {% render 'account-side-menu' %}
+      </div>
     </div>
   </div>
 </div>
