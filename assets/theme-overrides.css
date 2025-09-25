@@ -244,19 +244,22 @@ h3 {
   margin-top: 0px;
 }
 .product-template-container .body-6 {
-  font-size: 16px;
+  font-size: 16px !important;
 }
 .product-template-container .headers-8 {
-  font-size: 16px;
+  font-size: 16px !important;
 }
 .product-template-container .headers-9 {
-  font-size: 16px;
+  font-size: 16px !important;
 }
 .product-template-container .qty-select {
-  border-radius: 50%;
+  border-radius: 50% !important;
 }
 .product-template-container .qty-select--option {
-  font-size: 16px;
+  font-size: 16px !important;
+}
+.product-template-container .button-5 {
+  font-size: 16px !important;
 }
 
 @media (max-width: 600px) {
