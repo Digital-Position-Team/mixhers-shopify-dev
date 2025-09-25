@@ -8589,9 +8589,9 @@ textarea {
   @media only screen and (min-width: 750px) {
     .main-content {
       padding-top: 55px; } } */
-.section-header {
+/* .section-header {
   margin-bottom: 35px;
-}
+} */
 
 /*================ Typography ================*/
 blockquote {
@@ -17075,9 +17075,9 @@ screen and (min-width: 1400px) {
     left: 91.66667%;
   }
 
-  .section-header {
+  /* .section-header {
     margin-bottom: 55px;
-  }
+  } */
 
   .mega-title,
   .mega-subtitle {
