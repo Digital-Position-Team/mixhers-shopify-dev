@@ -1376,6 +1376,18 @@ button.button-quantity svg {
 .product-price-col span.text-sale {
   font-size: 12px;
 }
+.rebuy-cart__flyout-items .flex {
+  display: flex;
+}
+.rebuy-cart__flyout-items .ml-\[3px\] {
+  margin-left: 3px;
+}
+[data-target='non-coverage-button'] {
+  font-family: 'Buenos Aires';
+}
+[data-target='headline-text-container'] {
+  font-family: 'Buenos Aires';
+}
 @media (min-width: 768px) {
   .cart-quantity-wrapper {
     width: 70px;
