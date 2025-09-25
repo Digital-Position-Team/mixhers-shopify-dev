@@ -5,7 +5,11 @@
 ._2-o {
   background-color: #1a1a1a !important;
 } */
-.rebuy-cart__flyout-shipping-bar-meter-fill, .rebuy-cart__progress-bar-meter-fill, .complete .rebuy-cart__progress-step-icon, [data-rebuy-component="progress-bar"] .rebuy-cart__progress-bar-meter-fill, [data-rebuy-component="progress-bar"] .rebuy-cart__progress-step.complete .rebuy-cart__progress-step-icon {
+.rebuy-cart__flyout-shipping-bar-meter-fill,
+.rebuy-cart__progress-bar-meter-fill,
+.complete .rebuy-cart__progress-step-icon,
+[data-rebuy-component='progress-bar'] .rebuy-cart__progress-bar-meter-fill,
+[data-rebuy-component='progress-bar'] .rebuy-cart__progress-step.complete .rebuy-cart__progress-step-icon {
   background: #ff59e4;
   position: relative;
   top: 1px;
@@ -15,8 +19,12 @@
   outline-color: #ff59e4;
   outline-offset: 1.5px;
   width: 83%;
+  background-color: transparent;
+  outline-style: solid;
+  height: 12px;
 }
-.rebuy-cart__progress-bar-prompt, .rebuy-cart__progress-bar-prompt b {
+.rebuy-cart__progress-bar-prompt,
+.rebuy-cart__progress-bar-prompt b {
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -45,10 +53,13 @@
   height: max-content;
   width: 400px;
 }
-.rebuy-cart__progress-bar-wrapper{
+.rebuy-cart__progress-bar-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 16px 0px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
 /* .rebuy-cart__flyout-header, */
 .rebuy-cart__progress-bar-container,
@@ -148,7 +159,8 @@
   line-height: 18px;
   color: #1f9c69;
 }
-.rebuy-cart__flyout-subtotal + .rebuy-cart__flyout-subtotal, .rebuy-cart__flyout-subtotal + .rebuy-cart__flyout-actions {
+.rebuy-cart__flyout-subtotal + .rebuy-cart__flyout-subtotal,
+.rebuy-cart__flyout-subtotal + .rebuy-cart__flyout-actions {
   margin: 0 !important;
 }
 
@@ -221,11 +233,7 @@
   top: 1px;
 } */
 .rebuy-widget .rebuy-checkbox-label .checkbox-label {
-  font-family:
-    Circular,
-    Arial,
-    Lucida Grande,
-    sans-serif;
+  font-family: Circular, Arial, Lucida Grande, sans-serif;
   font-weight: 450;
   font-size: 12px;
   line-height: 15px;
@@ -348,11 +356,7 @@
   color: #40264f;
 }
 .rebuy-cart__flyout-item-quantity {
-  font-family:
-    Circular,
-    Arial,
-    Lucida Grande,
-    sans-serif;
+  font-family: Circular, Arial, Lucida Grande, sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
@@ -390,7 +394,6 @@
   color: #40264f;
 } */
 
-
 .subscription-checkbox {
   display: none !important;
 }
@@ -427,7 +430,7 @@ select.rebuy-select.muted {
   border: none;
 }
 .rebuy-cart__flyout-empty-cart h4 {
-  font-family: "FAIRE Sprig";
+  font-family: 'FAIRE Sprig';
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
@@ -435,7 +438,7 @@ select.rebuy-select.muted {
 }
 
 .rebuy-cart__flyout-empty-cart p {
-  font-family: "Buenos Aires";
+  font-family: 'Buenos Aires';
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -452,7 +455,7 @@ select.rebuy-select.muted {
   color: #fff;
   border: none;
   text-align: center;
-  font-family: "Buenos Aires";
+  font-family: 'Buenos Aires';
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
@@ -461,10 +464,7 @@ select.rebuy-select.muted {
 }
 
 /****    RECOMMENDATIONS    ****/
-.rebuy-cart__flyout-recommendations
-  .rebuy-widget
-  .rebuy-product-grid.small-style-line
-  .rebuy-product-block {
+.rebuy-cart__flyout-recommendations .rebuy-widget .rebuy-product-grid.small-style-line .rebuy-product-block {
   padding: 13px;
 }
 .rebuy-product-block {
@@ -481,10 +481,7 @@ select.rebuy-select.muted {
 .rebuy-widget .rebuy-product-block .rebuy-product-media img {
   margin-bottom: 13px !important;
 }
-.rebuy-cart__flyout-recommendations
-  .rebuy-widget
-  .rebuy-product-block
-  .rebuy-product-actions {
+.rebuy-cart__flyout-recommendations .rebuy-widget .rebuy-product-block .rebuy-product-actions {
   margin-top: 8px !important;
 }
 .rebuy-product-price {
@@ -594,11 +591,7 @@ select.rebuy-select.muted {
   font-size: 12px;
   line-height: 15px;
   text-align: center;
-  font-family:
-    Circular,
-    Arial,
-    Lucida Grande,
-    sans-serif;
+  font-family: Circular, Arial, Lucida Grande, sans-serif;
   color: #ffffff;
 }
 
@@ -611,11 +604,7 @@ select.rebuy-select.muted {
   box-shadow: -4px 4px 0px #dcd6df;
 }
 
-.rebuy-widget
-  .rebuy-product-grid.large-style-line
-  .rebuy-product-block
-  .rebuy-product-media
-  img {
+.rebuy-widget .rebuy-product-grid.large-style-line .rebuy-product-block .rebuy-product-media img {
   max-width: 70px;
   margin: 0 auto;
 }
@@ -624,11 +613,12 @@ select.rebuy-select.muted {
   color: #ee3124;
 }
 .text-sale {
-  color:#ff59e4 !important;
+  color: #ff59e4 !important;
   opacity: 1;
 }
 
-.rebuy-money.compare-at, .rebuy-widget .rebuy-money.compare-at {
+.rebuy-money.compare-at,
+.rebuy-widget .rebuy-money.compare-at {
   color: #7c8993;
 }
 /* width */
@@ -655,7 +645,7 @@ select.rebuy-select.muted {
 }
 
 .rebuy-cart__flyout-recommendations-mb .primary-title:after {
-  content: url("https://cdn.shopify.com/s/files/1/0557/9879/2371/files/dropdown-arrow.svg?v=1697805897");
+  content: url('https://cdn.shopify.com/s/files/1/0557/9879/2371/files/dropdown-arrow.svg?v=1697805897');
   position: absolute;
   right: 0;
 }
@@ -669,11 +659,7 @@ select.rebuy-select.muted {
   justify-content: space-between;
   flex-wrap: nowrap;
   width: 100%;
-  font-family:
-    Circular,
-    Arial,
-    Lucida Grande,
-    sans-serif;
+  font-family: Circular, Arial, Lucida Grande, sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
@@ -690,15 +676,13 @@ select.rebuy-select.muted {
   transition: all 0.3s ease;
 }
 
-.rebuy-cart__flyout-recommendations-mb.open
-  .rebuy-widget__upsells-scroll-container {
+.rebuy-cart__flyout-recommendations-mb.open .rebuy-widget__upsells-scroll-container {
   height: max-content;
   overflow: scroll;
   -ms-overflow-style: none;
 }
 
-.rebuy-cart__flyout-recommendations-mb.open
-  .rebuy-widget__upsells-scroll-container::-webkit-scrollbar {
+.rebuy-cart__flyout-recommendations-mb.open .rebuy-widget__upsells-scroll-container::-webkit-scrollbar {
   display: none;
 }
 
@@ -738,10 +722,7 @@ select.rebuy-select.muted {
   img {
   max-width: 100%;
 }
-.rebuy-cart__flyout-recommendations-mb
-  .rebuy-widget
-  .rebuy-product-grid.medium-style-line
-  .rebuy-product-block {
+.rebuy-cart__flyout-recommendations-mb .rebuy-widget .rebuy-product-grid.medium-style-line .rebuy-product-block {
   width: 119px;
   padding: 0px;
   display: flex;
@@ -758,11 +739,7 @@ select.rebuy-select.muted {
 .rebuy-cart__flyout-recommendations-mb .rebuy-widget .rebuy-variant-title {
   text-align: left;
 }
-.rebuy-cart__flyout-recommendations-mb
-  .rebuy-widget
-  .rebuy-product-block
-  .rebuy-product-info
-  .rebuy-product-title {
+.rebuy-cart__flyout-recommendations-mb .rebuy-widget .rebuy-product-block .rebuy-product-info .rebuy-product-title {
   margin: 0;
   text-align: left;
   font-weight: 700;
@@ -818,11 +795,7 @@ select.rebuy-select.muted {
   padding: 0;
 }
 .rebuy-cart__flyout-recommendations-mb .rebuy-button span {
-  font-family:
-    Circular,
-    Arial,
-    Lucida Grande,
-    sans-serif;
+  font-family: Circular, Arial, Lucida Grande, sans-serif;
   color: #402650;
   font-size: 12px;
   font-style: normal;
@@ -833,11 +806,7 @@ select.rebuy-select.muted {
 .rebuy-cart__flyout-recommendations-mb .rebuy-product-block {
   margin-bottom: 10px;
 }
-.rebuy-cart__flyout-recommendations-mb
-  .rebuy-widget
-  .rebuy-product-block
-  .rebuy-product-media
-  img {
+.rebuy-cart__flyout-recommendations-mb .rebuy-widget .rebuy-product-block .rebuy-product-media img {
   margin-bottom: 0px !important;
 }
 
@@ -856,11 +825,7 @@ select.rebuy-select.muted {
   margin-top: 12px;
 }
 .rebuy-cart__flyout .rebuy-button + .rebuy-button span {
-  font-family:
-    Circular,
-    Arial,
-    Lucida Grande,
-    sans-serif;
+  font-family: Circular, Arial, Lucida Grande, sans-serif;
   font-weight: 450;
   font-size: 18px;
   line-height: 24px;
@@ -876,16 +841,15 @@ select.rebuy-select.muted {
   display: none !important
 } */
 .rebuy-cart__progress-step-wrapper {
-	padding-bottom: 16px;
+  padding-bottom: 16px;
 }
 
-
 .rebuy-cart__progress-step-wrapper {
-	padding-bottom: 16px;
+  padding-bottom: 16px;
 }
 
 .rebuy-cart__flyout {
-	border-radius: 0;
+  border-radius: 0;
   margin: 0;
 }
 /* .rebuy-cart__flyout-item {
@@ -1130,7 +1094,7 @@ input#rebuy-discount-input {
   padding: 0;
 }
 
-.variant-info-container{
+.variant-info-container {
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -1168,255 +1132,255 @@ redo-shopify-toggle {
   outline: none;
 } */
 
-
 /* new custom--------- */
 .rebuy-cart__flyout-header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    width: 100%;
-    position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  position: relative;
 }
 .rebuy-cart__order-summary-head {
-    padding: 16px 15px;
+  padding: 16px 15px;
 }
 h4.rebuy-cart__flyout-title {
-    font-family: 'Buenos Aires';
-    font-size: 18px;
+  font-family: 'Buenos Aires';
+  font-size: 18px;
   font-weight: 500;
 }
-button#rebuy-close-btn  svg {
-    position: absolute;
-      width: 26px;
+button#rebuy-close-btn svg {
+  position: absolute;
+  width: 26px;
 }
 .rebuy-cart__flyout {
-    max-width: 450px;
-    width: 100%;
+  max-width: 450px;
+  width: 100%;
 }
 .rebuy-cart__order-summary {
-    width: 100%;
+  width: 100%;
 }
 .rebuy-cart__fixed-bottom-wrapper {
-    width: 100%;
+  width: 100%;
 }
-.rebuy-cart-item--row{
-  border-bottom:1px solid #000;
+.rebuy-cart-item--row {
+  border-bottom: 1px solid #000;
   display: flex;
   flex-direction: column;
-  padding:24px;
-  width:100%;
+  padding: 24px;
+  width: 100%;
 }
-.rebuy-cart--item{
+.rebuy-cart--item {
   display: flex;
 }
 .item-product-div {
   display: flex;
   flex-direction: column;
-  width:100%;
+  width: 100%;
   justify-content: flex-start;
 }
-.width-100{
-  width:100%;
+.width-100 {
+  width: 100%;
 }
-.product--price{
+.product--price {
   display: flex;
   align-items: center;
 }
-.product-price-col{
-  display:flex;
-  gap:12px;
+.product-price-col {
+  display: flex;
+  gap: 12px;
   text-align: right;
 }
-.product-info--row{
+.product-info--row {
   display: flex;
-  width:100%;
+  width: 100%;
   justify-content: space-between;
 }
-.product--title, .product--title a{
-    text-decoration: none;
-    font-size: 16px;
-    color: inherit;
+.product--title,
+.product--title a {
+  text-decoration: none;
+  font-size: 16px;
+  color: inherit;
 }
-.rebrand--subtitle{
-  font-size:11px;
-  color:#000;
+.rebrand--subtitle {
+  font-size: 11px;
+  color: #000;
   width: 100%;
   margin-bottom: 1.1px;
 }
-.small-info-span{
+.small-info-span {
   font-weight: normal;
-  color:gray;
-  font-size:11px;
+  color: gray;
+  font-size: 11px;
   line-height: 18px;
 }
-.flavor--variants{
+.flavor--variants {
   display: flex;
   flex-direction: row;
-  gap:6px;
-  margin-top:8px;
-  width:100%;
+  gap: 6px;
+  margin-top: 8px;
+  width: 100%;
   padding: 0px;
   flex-wrap: wrap;
 }
-.flavor--variants--2{
+.flavor--variants--2 {
   display: flex;
   flex-direction: column;
-  gap:6px;
-  margin-top:8px;
-  width:100%;
+  gap: 6px;
+  margin-top: 8px;
+  width: 100%;
   padding: 0px;
 }
-.flavor--deal{
+.flavor--deal {
   display: flex;
-  gap:5px;
+  gap: 5px;
   align-items: center;
-  width:100%;
+  width: 100%;
 }
-.flex-items-center{
+.flex-items-center {
   display: flex;
   align-items: center;
 }
-.gap-5{
-  gap:5px;
+.gap-5 {
+  gap: 5px;
 }
-.small-text{
+.small-text {
   font-size: 11px;
 }
-.whitespace-nowrap{
+.whitespace-nowrap {
   white-space: nowrap;
 }
-.cart-quantity-wrapper{
-    display: flex;
-    width: 80px;
-    padding: 3px 8px;
-    justify-content: space-around;
-    align-items: center;
-    border: 1px solid black;
-    border-radius: 16px;
+.cart-quantity-wrapper {
+  display: flex;
+  width: 80px;
+  padding: 3px 8px;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 16px;
 }
-.flavor-color-circle{
-  display: inline-block!important;
-  width:11px;
+.flavor-color-circle {
+  display: inline-block !important;
+  width: 11px;
   height: 11px;
   border-radius: 100%;
 }
 .product-price-col span.rebuy-money {
-    font-size: 12px;
-    line-height: 1.5;
+  font-size: 12px;
+  line-height: 1.5;
 }
 .rebuy-cart__flyout-item-quantity-weap {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    margin-top: 12px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 12px;
 }
 .rebuy-cart__flyout-item-quantity-wrapper.cart-quantity-wrapper button {
   width: 10px;
-    padding: 0;
-    height: 14px;
-    margin: 0;
-    background: no-repeat;
-    border: none;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  padding: 0;
+  height: 14px;
+  margin: 0;
+  background: no-repeat;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 button.button-quantity svg {
-    height: 9px;
+  height: 9px;
 }
-.info-starter-pack{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    width: 100%;
+.info-starter-pack {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
 }
 .rebuy-cart__flyout-footer {
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
 }
 
 .rebuy-cart__flyout-footer .headers-8 {
-    font-size: 16px;
-    font-weight: 600;
+  font-size: 16px;
+  font-weight: 600;
 }
 
-.product-price-col span.rebuy-money.compare-at{
-  color:gray;
+.product-price-col span.rebuy-money.compare-at {
+  color: gray;
 }
-.quantity--span{
+.quantity--span {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 12px;
   height: 12px;
 }
-.quantity--span span{
+.quantity--span span {
   font-size: 12px;
   line-height: 0.5;
 }
-.quantity-label-row{
+.quantity-label-row {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap:15px;
+  gap: 15px;
 }
-.starter--kit-block{
+.starter--kit-block {
   display: flex;
   width: 100%;
   padding-top: 24px;
 }
-.starter-kit-item{
-      display: flex;
-    flex-direction: column;
-    width: 100%;
-    justify-content: center
+.starter-kit-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
 }
-.starter-key-title{
+.starter-key-title {
   display: flex;
   justify-content: space-between;
-  width:100%;
+  width: 100%;
 }
-.d-flex{
+.d-flex {
   display: flex;
 }
-.d-flex-col{
-   display: flex;
+.d-flex-col {
+  display: flex;
   flex-direction: column;
 }
-.list-item-cart{
-    font-weight: normal;
-    font-size: 11px;
-    color: #000;
-    font-family: 'Buenos Aires';
-    line-height: 1.4;
-    list-style: disc;
-    margin-top: 3px;
+.list-item-cart {
+  font-weight: normal;
+  font-size: 11px;
+  color: #000;
+  font-family: 'Buenos Aires';
+  line-height: 1.4;
+  list-style: disc;
+  margin-top: 3px;
 }
-.subscription-button-block{
-  margin-top:14px;
+.subscription-button-block {
+  margin-top: 14px;
   display: flex;
   justify-content: flex-start;
 }
-.save--btn{
-    font-size: 12px;
-    cursor: pointer;
-    max-width: 180px;
-    width:100%;
-    text-transform: uppercase;
-    font-weight: 600;
-    border-radius: 50px;
-    padding: 4px 10px 3px 10px;
-    line-height: 1.2;
+.save--btn {
+  font-size: 12px;
+  cursor: pointer;
+  max-width: 180px;
+  width: 100%;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 50px;
+  padding: 4px 10px 3px 10px;
+  line-height: 1.2;
 }
 .product-price-col span.text-sale {
-    font-size: 12px;
+  font-size: 12px;
 }
 @media (min-width: 768px) {
   .cart-quantity-wrapper {
     width: 70px;
   }
-  .flavor--variants--2{
+  .flavor--variants--2 {
     flex-direction: row;
   }
 }
@@ -1432,5 +1396,5 @@ button.button-quantity svg {
   }
   .rebuy-cart-item--row {
     padding: 24px 15px;
-}
+  }
 }
