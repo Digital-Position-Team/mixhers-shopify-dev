@@ -296,6 +296,10 @@ h3 {
 .customer button[type='submit'] {
   font-size: 16px;
 }
+.customer.recover a {
+  color: black;
+  font-family: 'Buenos Aires', sans-serif;
+}
 
 @media (max-width: 600px) {
   .footer-block {
