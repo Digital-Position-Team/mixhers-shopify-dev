@@ -279,6 +279,9 @@ h3 {
 .subscription-details-wrapper--new .subscription-icon-item p.body-7 {
   margin: 2px 0px !important;
 }
+.rebuy-cart__flyout-actions button[disabled] {
+  display: none !important;
+}
 
 @media (max-width: 600px) {
   .footer-block {
