@@ -64,20 +64,6 @@
     },
     "1758773036056b420e": {
       "type": "apps",
-      "blocks": {
-        "rebuy_personalization_engine_rebuy_widget_xtNQCX": {
-          "type": "shopify://apps/rebuy-personalization-engine/blocks/rebuy-widget/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
-          "settings": {
-            "enabled": true,
-            "id": "",
-            "product_id_enabled": true,
-            "collection_id_enabled": false
-          }
-        }
-      },
-      "block_order": [
-        "rebuy_personalization_engine_rebuy_widget_xtNQCX"
-      ],
       "settings": {
         "include_margins": true
       }
