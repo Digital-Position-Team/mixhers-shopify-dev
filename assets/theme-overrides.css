@@ -287,6 +287,9 @@ h3 {
   border-radius: 50px;
   border-width: 0px;
 }
+#LoginHeading {
+  font-family: 'Buenos Aires', sans-serif;
+}
 
 @media (max-width: 600px) {
   .footer-block {
