@@ -282,6 +282,11 @@ h3 {
 .rebuy-cart__flyout-actions button[disabled] {
   display: none !important;
 }
+.rebuy-button.bg-pink {
+  background-color: #ff59e4;
+  border-radius: 50px;
+  border-width: 0px;
+}
 
 @media (max-width: 600px) {
   .footer-block {
