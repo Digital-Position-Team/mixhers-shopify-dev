@@ -236,6 +236,28 @@ h3 {
 .cart__dynamic-checkout-buttons {
   margin-top: 4rem !important;
 }
+.product-template-container .headers-5 {
+  font-size: 32px;
+}
+.product-template-container .italic-subheaders-5 {
+  font-size: 16px;
+  margin-top: 0px;
+}
+.product-template-container .body-6 {
+  font-size: 16px;
+}
+.product-template-container .headers-8 {
+  font-size: 16px;
+}
+.product-template-container .headers-9 {
+  font-size: 16px;
+}
+.product-template-container .qty-select {
+  border-radius: 50%;
+}
+.product-template-container .qty-select--option {
+  font-size: 16px;
+}
 
 @media (max-width: 600px) {
   .footer-block {
