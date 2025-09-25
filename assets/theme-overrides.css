@@ -212,6 +212,9 @@ h3 {
 .yotpo-review-center-panel {
   padding: 0px 15px !important;
 }
+.yotpo-new-review-btn-wrapper {
+  margin-bottom: 20px;
+}
 
 @media (max-width: 600px) {
   .footer-block {
@@ -238,6 +241,12 @@ h3 {
   }
   .mix-button {
     min-width: auto;
+  }
+  .yotpo-main-widget-tabs {
+    justify-content: center !important;
+  }
+  .yotpo-new-review-btn-wrapper {
+    justify-content: center !important;
   }
 }
 
