@@ -38,6 +38,8 @@
 
   .customer h1 {
     margin-bottom: 2rem;
+    margin-top: 28px;
+    font-family: 'Buenos Aires', sans-serif;
   }
 
   .field {
@@ -120,6 +122,14 @@
     margin-top: -1rem;
     margin-bottom: 1rem;
   }
+  .account-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  .account-actions a {
+    color: black;
+    font-family: 'Buenos Aires', sans-serif;
+  }
 {%- endstyle -%}
 
 <div class="customer login section-{{ section.id }}-padding">
@@ -190,8 +200,10 @@
       Sign in
     </button>
 
-    <a href="#recover">Forgot your password?</a>
-    <a href="{{ routes.account_register_url }}">Create account</a>
+    <div class="account-actions">
+      <a href="#recover">Forgot your password?</a>
+      <a href="{{ routes.account_register_url }}">Create account</a>
+    </div>
   {%- endform -%}
 </div>
 

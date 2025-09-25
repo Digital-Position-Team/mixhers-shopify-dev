@@ -290,6 +290,12 @@ h3 {
 #LoginHeading {
   font-family: 'Buenos Aires', sans-serif;
 }
+.customer.login button[type='submit']::after {
+  display: none;
+}
+.customer.login button[type='submit'] {
+  font-size: 16px;
+}
 
 @media (max-width: 600px) {
   .footer-block {
