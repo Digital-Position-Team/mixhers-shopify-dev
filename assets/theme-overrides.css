@@ -300,6 +300,43 @@ h3 {
   color: black;
   font-family: 'Buenos Aires', sans-serif;
 }
+.rc-login--header {
+  display: none !important;
+}
+.rc-login .rc-login--body {
+  border: 1px solid #402650 !important;
+  border-radius: 4px !important;
+  box-shadow: none;
+}
+.rc-login .rc-login--header-title {
+  text-align: center !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  margin: 0 0 16px !important;
+  font-family: 'Buenos Aires', sans-serif !important;
+}
+.rc-login-form-label {
+  font-family: 'Buenos Aires', sans-serif !important;
+}
+.rc-login-form-email {
+  font-family: 'Assistant', sans-serif !important;
+}
+.rc-login-form .rc-login-form-button {
+  border: 2px solid #402650 !important;
+  background-color: #402650 !important;
+  font-weight: 700;
+  padding: 16px 32px !important;
+  border-radius: 50px;
+  height: 50px !important;
+  font-family: 'Buenos Aires', sans-serif !important;
+  font-size: 14px !important;
+}
+.rc-login-form .rc-login-form-button:hover {
+  background-color: #fff !important;
+}
+.rc-login-form .rc-login-form-button:hover span {
+  color: #402650 !important;
+}
 
 @media (max-width: 600px) {
   .footer-block {
