@@ -144,22 +144,6 @@
     },
     "content_for_index": [],
     "blocks": {
-      "17151115064775110295": {
-        "type": "shopify://apps/recharge-subscriptions/blocks/recharge-theme/371eed76-0b44-4869-9813-730372ea378e",
-        "disabled": false,
-        "settings": {
-          "color_brand": "#467C99",
-          "contrast_color": "#FFFFFF",
-          "color_brand_secondary": "#467C99",
-          "corners": "8px",
-          "app_background": "#f9f8f4",
-          "app_container": 1200,
-          "app_vertical_padding": 32,
-          "images_aspect_ratio": "1",
-          "cards_background": "#FFFFFF",
-          "cards_border_color": "rgba(0,0,0,0)"
-        }
-      },
       "7570552984445421165": {
         "type": "shopify://apps/yotpo-product-reviews/blocks/settings/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
         "disabled": false,
@@ -209,51 +193,8 @@
         "disabled": false,
         "settings": {}
       },
-      "7586417359830130585": {
-        "type": "shopify://apps/govalo/blocks/app-embed/0261c814-5eb7-41a0-a529-3dcb870c5415",
-        "disabled": false,
-        "settings": {}
-      },
-      "10654302039939271664": {
-        "type": "shopify://apps/gift-card-pro/blocks/gift-card-pro/3b1306ce-7e99-4a1c-aa30-e9f030a737ef",
-        "disabled": false,
-        "settings": {}
-      },
-      "1232542678405107163": {
-        "type": "shopify://apps/instafeed/blocks/head-block/c447db20-095d-4a10-9725-b5977662c9d5",
-        "disabled": false,
-        "settings": {}
-      },
       "10261849759452303822": {
         "type": "shopify://apps/shoppinggives/blocks/app-embed-block/7b6c2cd4-8962-4dc6-975b-870e1f567789",
-        "disabled": false,
-        "settings": {}
-      },
-      "5918445685253060206": {
-        "type": "shopify://apps/bundler/blocks/bundler-script-append/7a6ae1b8-3b16-449b-8429-8bb89a62c664",
-        "disabled": false,
-        "settings": {}
-      },
-      "7527060306931716863": {
-        "type": "shopify://apps/aftership-returns/blocks/app-embed/5662b508-7909-4cab-9bd2-9fd183f178fe",
-        "disabled": false,
-        "settings": {}
-      },
-      "7594718713064568544": {
-        "type": "shopify://apps/octane-ai-advanced-quiz-maker/blocks/octaneai_fullscreen/db2513a5-c9b0-40fd-9058-42c28e6e6502",
-        "disabled": false,
-        "settings": {
-          "octane_id": "",
-          "textarea_input": ""
-        }
-      },
-      "6279071938380501511": {
-        "type": "shopify://apps/powerful-form-builder/blocks/app-embed/e4bcb1eb-35b2-42e6-bc37-bfe0e1542c9d",
-        "disabled": false,
-        "settings": {}
-      },
-      "319724205969189013": {
-        "type": "shopify://apps/hulk-form-builder/blocks/app-embed/b6b8dd14-356b-4725-a4ed-77232212b3c3",
         "disabled": false,
         "settings": {}
       },
@@ -262,9 +203,67 @@
         "disabled": false,
         "settings": {}
       },
+      "10641372206048101839": {
+        "type": "shopify://apps/rebuy-personalization-engine/blocks/rebuy-global-embed/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
+        "disabled": false,
+        "settings": {}
+      },
+      "2567389343055140935": {
+        "type": "shopify://apps/microsoft-clarity/blocks/clarity_js/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
+        "disabled": false,
+        "settings": {}
+      },
+      "12509190167029697241": {
+        "type": "shopify://apps/blotout-edgetag/blocks/app-embed/ae22d985-ba57-41f5-94c5-18d3dd98ea3c",
+        "disabled": false,
+        "settings": {}
+      },
+      "7586417359830130585": {
+        "type": "shopify://apps/govalo/blocks/app-embed/0261c814-5eb7-41a0-a529-3dcb870c5415",
+        "disabled": true,
+        "settings": {}
+      },
+      "10654302039939271664": {
+        "type": "shopify://apps/gift-card-pro/blocks/gift-card-pro/3b1306ce-7e99-4a1c-aa30-e9f030a737ef",
+        "disabled": true,
+        "settings": {}
+      },
+      "1232542678405107163": {
+        "type": "shopify://apps/instafeed/blocks/head-block/c447db20-095d-4a10-9725-b5977662c9d5",
+        "disabled": true,
+        "settings": {}
+      },
+      "5918445685253060206": {
+        "type": "shopify://apps/bundler/blocks/bundler-script-append/7a6ae1b8-3b16-449b-8429-8bb89a62c664",
+        "disabled": true,
+        "settings": {}
+      },
+      "7527060306931716863": {
+        "type": "shopify://apps/aftership-returns/blocks/app-embed/5662b508-7909-4cab-9bd2-9fd183f178fe",
+        "disabled": true,
+        "settings": {}
+      },
+      "7594718713064568544": {
+        "type": "shopify://apps/octane-ai-advanced-quiz-maker/blocks/octaneai_fullscreen/db2513a5-c9b0-40fd-9058-42c28e6e6502",
+        "disabled": true,
+        "settings": {
+          "octane_id": "",
+          "textarea_input": ""
+        }
+      },
+      "319724205969189013": {
+        "type": "shopify://apps/hulk-form-builder/blocks/app-embed/b6b8dd14-356b-4725-a4ed-77232212b3c3",
+        "disabled": true,
+        "settings": {}
+      },
+      "6279071938380501511": {
+        "type": "shopify://apps/powerful-form-builder/blocks/app-embed/e4bcb1eb-35b2-42e6-bc37-bfe0e1542c9d",
+        "disabled": true,
+        "settings": {}
+      },
       "8962992520437913685": {
         "type": "shopify://apps/yotpo-loyalty-rewards/blocks/loader-app-embed-block/2f9660df-5018-4e02-9868-ee1fb88d6ccd",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "inject_modules_loader": true,
           "inject_sdk_loader": false
@@ -272,13 +271,24 @@
       },
       "10864971697205422121": {
         "type": "shopify://apps/gorgias-live-chat-helpdesk/blocks/gorgias/a66db725-7b96-4e3f-916e-6c8e6f87aaaa",
-        "disabled": false,
+        "disabled": true,
         "settings": {}
       },
-      "10641372206048101839": {
-        "type": "shopify://apps/rebuy-personalization-engine/blocks/rebuy-global-embed/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
+      "17151115064775110295": {
+        "type": "shopify://apps/recharge-subscriptions/blocks/recharge-theme/371eed76-0b44-4869-9813-730372ea378e",
         "disabled": false,
-        "settings": {}
+        "settings": {
+          "color_brand": "#1a1a1a",
+          "contrast_color": "#ffffff",
+          "color_brand_secondary": "#ff59e4",
+          "corners": "0px",
+          "app_background": "#ffffff",
+          "app_container": 1350,
+          "app_vertical_padding": 24,
+          "images_aspect_ratio": "1",
+          "cards_background": "#ffffff",
+          "cards_border_color": "#1a1a1a"
+        }
       }
     },
     "color_schemes": {
