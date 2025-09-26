@@ -343,6 +343,13 @@ h3 {
 .recharge-container {
   font-family: 'Buenos Aires', sans-serif !important;
 }
+.recharge-container .recharge-card {
+  border-radius: 0px !important;
+}
+.recharge-heading-h2 {
+  font-size: 20px !important;
+  color: black !important;
+}
 
 @media (max-width: 600px) {
   .footer-block {
