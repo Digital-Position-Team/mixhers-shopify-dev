@@ -340,6 +340,9 @@ h3 {
 .rc-login {
   max-width: 600px !important;
 }
+.recharge-container {
+  font-family: 'Buenos Aires', sans-serif !important;
+}
 
 @media (max-width: 600px) {
   .footer-block {
