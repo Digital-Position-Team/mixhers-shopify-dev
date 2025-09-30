@@ -2,11 +2,17 @@
 .standard-page-sub-footer {
   width: 100%;
   min-height: 200px;
-  padding: 40px 25px;
+  padding: 25px 15px;
   display: flex;
   flex-direction: column;
   background-color: #f4f5fd;
   border-top: 1px solid #000;
+}
+
+@media (min-width: 768px) {
+  .standard-page-sub-footer {
+    padding: 40px 25px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -29,7 +35,13 @@
   gap: 0;
   width: 100%;
   height: 100%;
-  padding-bottom: 36px;
+  padding-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+  .standard-page-sub-footer__heading {
+    padding-bottom: 36px;
+  }
 }
 
 .standard-page-sub-footer__heading .standard-page-sub-footer__heading-text {
@@ -50,8 +62,8 @@
 
 .standard-page-sub-footer__heading-text {
   width: 100%;
-  font-size: 28px;
-  line-height: 32px;
+  font-size: 22px;
+  line-height: 26px;
   font-family: 'Faire Sprig', serif;
   font-weight: normal;
 }
@@ -99,8 +111,10 @@
 .standard-page-sub-footer__link:hover {
   text-decoration: underline;
 }
-.standard-page-sub-footer__heading-text {
-  white-space: nowrap;
+@media (min-width: 768px) {
+  .standard-page-sub-footer__heading-text {
+    white-space: nowrap;
+  }
 }
 </style>
 

@@ -2,8 +2,14 @@
 .return-policy-body {
   display: flex;
   flex-direction: column;
-  padding: 25px;
+  padding: 15px;
   font-weight: 300;
+}
+
+@media (min-width: 768px) {
+  .return-policy-body {
+    padding: 25px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -13,7 +19,13 @@
 }
 
 .return-policy-body__section {
-  padding: 40px 0;
+  padding: 25px 0;
+}
+
+@media (min-width: 768px) {
+  .return-policy-body__section {
+    padding: 40px 0;
+  }
 }
 
 .return-policy-body__section:last-child {
@@ -21,10 +33,17 @@
 }
 
 .return-policy-body__heading {
-  padding-bottom: 24px;
+  padding-bottom: 16px;
   font-family: 'Faire Sprig', serif;
   font-weight: normal;
-  font-size: 28px;
+  font-size: 22px;
+}
+
+@media (min-width: 768px) {
+  .return-policy-body__heading {
+    padding-bottom: 24px;
+    font-size: 28px;
+  }
 }
 
 .return-policy-body__content {
