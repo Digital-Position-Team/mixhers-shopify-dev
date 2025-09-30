@@ -20,30 +20,40 @@
 }
 
 @media (min-width: 768px) {
-  .return-policy-hero__content {
+  .standard-page-hero__content {
     width: 40%;
   }
 }
 
 @media (min-width: 1536px) {
-  .return-policy-hero__content {
+  .standard-page-hero__content {
     justify-content: center;
   }
 }
 
-.return-policy-hero__breadcrumb {
+.standard-page-hero__breadcrumb {
   margin-bottom: 8px;
 }
 
-.return-policy-hero__breadcrumb a {
+.standard-page-hero__breadcrumb a {
   color: #666;
 }
 
-.return-policy-hero__heading {
+.standard-page-hero__heading {
   margin-bottom: 40px;
+  font-family: 'Buenos Aires', sans-serif;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 1.2;
 }
 
-.return-policy-hero__description {
+@media (min-width: 768px) {
+  .standard-page-hero__heading {
+    font-size: 64px;
+  }
+}
+
+.standard-page-hero__description {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -52,40 +62,40 @@
   padding: 0 10px;
 }
 
-.return-policy-hero__description-desktop {
+.standard-page-hero__description-desktop {
   display: none;
 }
 
 @media (min-width: 1280px) {
-  .return-policy-hero__description-desktop {
+  .standard-page-hero__description-desktop {
     display: flex;
     flex-direction: column;
   }
 }
 
-.return-policy-hero__description-mobile {
+.standard-page-hero__description-mobile {
   display: block;
 }
 
 @media (min-width: 1280px) {
-  .return-policy-hero__description-mobile {
+  .standard-page-hero__description-mobile {
     display: none;
   }
 }
 
-.return-policy-hero__image-wrapper {
+.standard-page-hero__image-wrapper {
   display: flex;
   width: 100%;
   height: auto;
 }
 
 @media (min-width: 768px) {
-  .return-policy-hero__image-wrapper {
+  .standard-page-hero__image-wrapper {
     width: 60%;
   }
 }
 
-.return-policy-hero__image {
+.standard-page-hero__image {
   display: flex;
   width: 100%;
   object-fit: cover;
@@ -123,7 +133,7 @@
 
 {% schema %}
 {
-  "name": "Return Policy Hero",
+  "name": "Standard Page Hero",
   "settings": [
     {
       "type": "text",

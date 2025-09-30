@@ -41,6 +41,8 @@
   width: 100%;
   font-size: 36px;
   line-height: 36px;
+  font-family: 'Buenos Aires', sans-serif;
+  font-weight: bold;
 }
 
 @media (min-width: 768px) {
@@ -116,8 +118,8 @@
 }
 </style>
 
-<div class="page-width">
-  <div class="standard-page-sub-footer">
+<div class="standard-page-sub-footer">
+  <div class="page-width" style="width: 100%; max-width: none;">
     <div class="standard-page-sub-footer__heading">
       {% render 'text', type: 'heading-3', content: section.settings.cta_heading_line_1, class: 'standard-page-sub-footer__heading-text' %}
       {% render 'text', type: 'heading-3', content: section.settings.cta_heading_line_2, class: 'standard-page-sub-footer__heading-text' %}
