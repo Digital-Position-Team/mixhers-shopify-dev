@@ -95,6 +95,11 @@
       font-size: 12px;
       line-height: 20px;
     }
+    
+    /* Make cards clickable on mobile */
+    #product-categories-carousel .swiper-slide {
+      cursor: pointer;
+    }
   }
   @media (max-width: 768px) {
     .draggable-cards .title-text {
@@ -141,7 +146,7 @@
     <div class="swiper" id="product-categories-carousel">
       <div class="swiper-wrapper">
         {% for block in section.blocks %}
-          <div class="swiper-slide" {{ block.shopify_attributes }}>
+          <div class="swiper-slide" {{ block.shopify_attributes }} data-card-link="{{ block.settings.cta_link }}">
             {% if block.settings.bg_image != blank %}
               <img 
                 src="{{ block.settings.bg_image | image_url: width: 600 }}" 
@@ -215,6 +220,24 @@
       // Handle touch for mobile
       slide.addEventListener('touchstart', () => {
         showHoverEffect(slide);
+      });
+      
+      // Make cards clickable on mobile
+      slide.addEventListener('click', (e) => {
+        // Only handle click on mobile (below 768px)
+        if (window.innerWidth <= 768) {
+          // Don't prevent default if clicking on the actual button
+          const clickedElement = e.target;
+          const isButton = clickedElement.closest('.btn');
+          
+          if (!isButton) {
+            e.preventDefault();
+            const cardLink = slide.getAttribute('data-card-link');
+            if (cardLink && cardLink !== '') {
+              window.location.href = cardLink;
+            }
+          }
+        }
       });
     });
     

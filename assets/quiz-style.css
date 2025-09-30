@@ -414,9 +414,8 @@ div#shopify-section-quiz-results {
   align-items: flex-start;
 }
 .quiz-product-card-info .italic-subheaders-5 {
-  font-family: Suisse Works;
-  font-style: italic;
-  font-weight: 450;
+  font-family: 'Buenos Aires', sans-serif;
+  font-weight: bold;
   font-size: 16px;
   margin: 0px;
   line-height: 1.25;
@@ -456,6 +455,7 @@ div#shopify-section-quiz-results {
   display: inline-block;
   padding: 0px;
   text-decoration: underline;
+  display: none;
 }
 .quiz-product-card-info.bottom button {
   margin-top: 8px;
