@@ -127,16 +127,14 @@
     </div>
     <div class="standard-page-sub-footer__links">
       {% if section.settings.cta_contact_url != blank %}
-        {% render 'text',
-          type: 'body-lg',
-          content: '<a href="' | append: section.settings.cta_contact_url | append: '" class="standard-page-sub-footer__link">' | append: section.settings.cta_contact_link_text | append: '</a>'
-        %}
+        <div class="font-sans font-normal leading-[20px] md:leading-[24px] text-[16px] md:text-[20px]">
+          <a href="{{ section.settings.cta_contact_url }}" class="standard-page-sub-footer__link">{{ section.settings.cta_contact_link_text }}</a>
+        </div>
       {% endif %}
       {% if section.settings.cta_faq_url != blank %}
-        {% render 'text',
-          type: 'body-lg',
-          content: '<a href="' | append: section.settings.cta_faq_url | append: '" class="standard-page-sub-footer__link">' | append: section.settings.cta_faq_link_text | append: '</a>'
-        %}
+        <div class="font-sans font-normal leading-[20px] md:leading-[24px] text-[16px] md:text-[20px]">
+          <a href="{{ section.settings.cta_faq_url }}" class="standard-page-sub-footer__link">{{ section.settings.cta_faq_link_text }}</a>
+        </div>
       {% endif %}
     </div>
   </div>
