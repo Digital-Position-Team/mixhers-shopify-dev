@@ -13,8 +13,9 @@
   .standard-page-sub-footer {
     padding: 40px 60px;
     align-items: center;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
   }
 }
 
@@ -31,7 +32,7 @@
 
 @media (min-width: 768px) {
   .standard-page-sub-footer__heading {
-    grid-column: span 3;
+    flex: 0 0 25%;
     gap: 0;
     padding-bottom: 0;
   }
@@ -41,7 +42,7 @@
   width: 100%;
   font-size: 36px;
   line-height: 36px;
-  font-family: 'Buenos Aires', sans-serif;
+  font-family: 'Faire Sprig', serif;
   font-weight: bold;
 }
 
@@ -61,23 +62,8 @@
 
 @media (min-width: 768px) {
   .standard-page-sub-footer__description {
-    grid-column: span 6;
-    padding: 0;
-  }
-}
-
-@media (min-width: 1024px) {
-  .standard-page-sub-footer__description {
-    grid-column: span 5;
-    padding-left: 26px;
-    padding-right: 43px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .standard-page-sub-footer__description {
-    padding-right: 16px;
-    padding-left: 0;
+    flex: 1;
+    padding: 0 20px;
   }
 }
 
@@ -90,21 +76,8 @@
 
 @media (min-width: 768px) {
   .standard-page-sub-footer__links {
-    grid-column: span 3;
-    padding-left: 8px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .standard-page-sub-footer__links {
-    grid-column: span 4;
-    padding-left: 115px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .standard-page-sub-footer__links {
-    padding-left: 180px;
+    flex: 0 0 25%;
+    padding-left: 0;
   }
 }
 

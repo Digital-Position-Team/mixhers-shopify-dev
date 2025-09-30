@@ -22,7 +22,7 @@
 
 .return-policy-body__heading {
   padding-bottom: 24px;
-  font-family: 'Buenos Aires', sans-serif;
+  font-family: 'Faire Sprig', serif;
   font-weight: bold;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .return-policy-body__content p {
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 }
 
 .return-policy-body__content p:last-child {
@@ -55,26 +55,7 @@
   padding: 0;
 }
 
-.return-policy-body__button {
-  background-color: #000;
-  border: 2px solid #000;
-  border-radius: 50px;
-  color: white;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 12px 32px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  width: max-content;
-}
-
-.return-policy-body__button:hover {
-  background-color: #ff59e4;
-  border-color: #ff59e4;
-  color: white;
-}
+/* Use global button classes from theme-overrides.css */
 </style>
 
 <div class="page-width">
@@ -89,7 +70,7 @@
               {% if block.settings.cta_text != blank %}
                 <span class="return-policy-body__cta-text">{{ block.settings.cta_text }}</span>
               {% endif %}
-              <a href="{{ block.settings.button_url }}" class="return-policy-body__button">
+              <a href="{{ block.settings.button_url }}" class="btn btn-black">
                 {{ block.settings.button_text }}
               </a>
             </div>
