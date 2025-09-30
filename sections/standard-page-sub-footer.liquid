@@ -126,14 +126,18 @@
       <span>{{ section.settings.cta_description }}</span>
     </div>
     <div class="standard-page-sub-footer__links">
-      {% render 'text',
-        type: 'body-lg',
-        content: '<a href="' | append: section.settings.cta_contact_url | append: '" class="standard-page-sub-footer__link">' | append: section.settings.cta_contact_link_text | append: '</a>'
-      %}
-      {% render 'text',
-        type: 'body-lg',
-        content: '<a href="' | append: section.settings.cta_faq_url | append: '" class="standard-page-sub-footer__link">' | append: section.settings.cta_faq_link_text | append: '</a>'
-      %}
+      {% if section.settings.cta_contact_url != blank %}
+        {% render 'text',
+          type: 'body-lg',
+          content: '<a href="' | append: section.settings.cta_contact_url | append: '" class="standard-page-sub-footer__link">' | append: section.settings.cta_contact_link_text | append: '</a>'
+        %}
+      {% endif %}
+      {% if section.settings.cta_faq_url != blank %}
+        {% render 'text',
+          type: 'body-lg',
+          content: '<a href="' | append: section.settings.cta_faq_url | append: '" class="standard-page-sub-footer__link">' | append: section.settings.cta_faq_link_text | append: '</a>'
+        %}
+      {% endif %}
     </div>
   </div>
 </div>
