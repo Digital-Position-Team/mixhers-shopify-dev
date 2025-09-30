@@ -1,0 +1,189 @@
+<style>
+.standard-page-hero {
+  display: flex;
+  flex-direction: column-reverse;
+  border-bottom: 1px solid #e5e5e5;
+  min-height: 361px;
+}
+
+@media (min-width: 768px) {
+  .standard-page-hero {
+    flex-direction: row;
+  }
+}
+
+.standard-page-hero__content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 40px 30px 65px;
+}
+
+@media (min-width: 768px) {
+  .return-policy-hero__content {
+    width: 40%;
+  }
+}
+
+@media (min-width: 1536px) {
+  .return-policy-hero__content {
+    justify-content: center;
+  }
+}
+
+.return-policy-hero__breadcrumb {
+  margin-bottom: 8px;
+}
+
+.return-policy-hero__breadcrumb a {
+  color: #666;
+}
+
+.return-policy-hero__heading {
+  margin-bottom: 40px;
+}
+
+.return-policy-hero__description {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  font-size: 20px;
+  line-height: 1.4;
+  padding: 0 10px;
+}
+
+.return-policy-hero__description-desktop {
+  display: none;
+}
+
+@media (min-width: 1280px) {
+  .return-policy-hero__description-desktop {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.return-policy-hero__description-mobile {
+  display: block;
+}
+
+@media (min-width: 1280px) {
+  .return-policy-hero__description-mobile {
+    display: none;
+  }
+}
+
+.return-policy-hero__image-wrapper {
+  display: flex;
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .return-policy-hero__image-wrapper {
+    width: 60%;
+  }
+}
+
+.return-policy-hero__image {
+  display: flex;
+  width: 100%;
+  object-fit: cover;
+}
+</style>
+
+<div class="page-width">
+  <div class="standard-page-hero">
+    <div class="standard-page-hero__content">
+      <span class="standard-page-hero__breadcrumb">
+        <a href="https://mixhers.com">{{ section.settings.breadcrumb_home_text }}</a>・{{ section.settings.breadcrumb_current_text }}
+      </span>
+      {% render 'text', type: 'heading-1', content: section.settings.hero_heading, class: 'standard-page-hero__heading' %}
+      <div class="standard-page-hero__description">
+        <span>{{ section.settings.hero_description_line_1 }}</span>
+        <div class="standard-page-hero__description-desktop">
+          <span>{{ section.settings.hero_description_line_2 }}</span>
+          <span>{{ section.settings.hero_description_line_3 }}</span>
+          <span>{{ section.settings.hero_description_line_4 }}</span>
+        </div>
+        <p class="standard-page-hero__description-mobile">{{ section.settings.hero_description_mobile }}</p>
+      </div>
+    </div>
+    <div class="standard-page-hero__image-wrapper">
+      <img
+        src="{{ section.settings.hero_image | image_url }}"
+        alt="{{ section.settings.hero_image_alt }}"
+        class="standard-page-hero__image"
+        width="860"
+        height="360"
+      >
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Return Policy Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "breadcrumb_home_text",
+      "label": "Breadcrumb Home Text",
+      "default": "Home"
+    },
+    {
+      "type": "text",
+      "id": "breadcrumb_current_text", 
+      "label": "Breadcrumb Current Page Text",
+      "default": "Current Page"
+    },
+    {
+      "type": "text",
+      "id": "hero_heading",
+      "label": "Hero Heading",
+      "default": "Page Title"
+    },
+    {
+      "type": "text",
+      "id": "hero_description_line_1",
+      "label": "Description Line 1",
+      "default": "Welcome to our page."
+    },
+    {
+      "type": "text",
+      "id": "hero_description_line_2",
+      "label": "Description Line 2 (Desktop)",
+      "default": "This is additional information"
+    },
+    {
+      "type": "text",
+      "id": "hero_description_line_3",
+      "label": "Description Line 3 (Desktop)",
+      "default": "that appears on desktop"
+    },
+    {
+      "type": "text",
+      "id": "hero_description_line_4",
+      "label": "Description Line 4 (Desktop)",
+      "default": "in separate lines."
+    },
+    {
+      "type": "textarea",
+      "id": "hero_description_mobile",
+      "label": "Description (Mobile)",
+      "default": "This is additional information that appears on mobile in a single paragraph."
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "text",
+      "id": "hero_image_alt",
+      "label": "Hero Image Alt Text",
+      "default": "Hero Image"
+    }
+  ]
+}
+{% endschema %}

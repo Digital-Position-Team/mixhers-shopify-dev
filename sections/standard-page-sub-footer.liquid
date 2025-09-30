@@ -1,0 +1,189 @@
+<style>
+.standard-page-sub-footer {
+  width: 100%;
+  min-height: 200px;
+  padding: 40px 25px;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f9fa;
+  border-top: 1px solid #e5e5e5;
+}
+
+@media (min-width: 768px) {
+  .standard-page-sub-footer {
+    padding: 40px 60px;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+.standard-page-sub-footer__heading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 36px;
+}
+
+@media (min-width: 768px) {
+  .standard-page-sub-footer__heading {
+    grid-column: span 3;
+    gap: 0;
+    padding-bottom: 0;
+  }
+}
+
+.standard-page-sub-footer__heading-text {
+  width: 100%;
+  font-size: 36px;
+  line-height: 36px;
+}
+
+@media (min-width: 768px) {
+  .standard-page-sub-footer__heading-text {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+}
+
+.standard-page-sub-footer__description {
+  padding-bottom: 24px;
+  display: flex;
+  align-items: center;
+  font-weight: 300;
+}
+
+@media (min-width: 768px) {
+  .standard-page-sub-footer__description {
+    grid-column: span 6;
+    padding: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .standard-page-sub-footer__description {
+    grid-column: span 5;
+    padding-left: 26px;
+    padding-right: 43px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .standard-page-sub-footer__description {
+    padding-right: 16px;
+    padding-left: 0;
+  }
+}
+
+.standard-page-sub-footer__links {
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (min-width: 768px) {
+  .standard-page-sub-footer__links {
+    grid-column: span 3;
+    padding-left: 8px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .standard-page-sub-footer__links {
+    grid-column: span 4;
+    padding-left: 115px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .standard-page-sub-footer__links {
+    padding-left: 180px;
+  }
+}
+
+.standard-page-sub-footer__link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.standard-page-sub-footer__link:hover {
+  text-decoration: underline;
+}
+</style>
+
+<div class="page-width">
+  <div class="standard-page-sub-footer">
+    <div class="standard-page-sub-footer__heading">
+      {% render 'text', type: 'heading-3', content: section.settings.cta_heading_line_1, class: 'standard-page-sub-footer__heading-text' %}
+      {% render 'text', type: 'heading-3', content: section.settings.cta_heading_line_2, class: 'standard-page-sub-footer__heading-text' %}
+    </div>
+    <div class="standard-page-sub-footer__description">
+      <span>{{ section.settings.cta_description }}</span>
+    </div>
+    <div class="standard-page-sub-footer__links">
+      {% render 'text',
+        type: 'body-lg',
+        content: '<a href="' | append: section.settings.cta_contact_url | append: '" class="standard-page-sub-footer__link">' | append: section.settings.cta_contact_link_text | append: '</a>'
+      %}
+      {% render 'text',
+        type: 'body-lg',
+        content: '<a href="' | append: section.settings.cta_faq_url | append: '" class="standard-page-sub-footer__link">' | append: section.settings.cta_faq_link_text | append: '</a>'
+      %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Standard Page Sub Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "cta_heading_line_1",
+      "label": "Heading Line 1",
+      "default": "Have more questions?"
+    },
+    {
+      "type": "text",
+      "id": "cta_heading_line_2",
+      "label": "Heading Line 2",
+      "default": "We have answers."
+    },
+    {
+      "type": "textarea",
+      "id": "cta_description",
+      "label": "Description",
+      "default": "Contact us for more information about our products and services."
+    },
+    {
+      "type": "text",
+      "id": "cta_contact_link_text",
+      "label": "Contact Link Text",
+      "default": "Contact Us"
+    },
+    {
+      "type": "url",
+      "id": "cta_contact_url",
+      "label": "Contact URL",
+      "default": "/pages/contact"
+    },
+    {
+      "type": "text",
+      "id": "cta_faq_link_text",
+      "label": "FAQ Link Text",
+      "default": "Visit our FAQ page"
+    },
+    {
+      "type": "url",
+      "id": "cta_faq_url",
+      "label": "FAQ URL",
+      "default": "/pages/faq"
+    }
+  ]
+}
+{% endschema %}
