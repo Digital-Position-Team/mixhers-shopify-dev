@@ -1,91 +1,23 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "standard_page_hero": {
-      "type": "standard-page-hero",
+    "main": {
+      "type": "main-page",
       "settings": {
-        "breadcrumb_home_text": "Home",
-        "breadcrumb_current_text": "Return Policy",
-        "hero_heading": "Return Policy",
-        "hero_description_line_1": "We hope you love your Mixhers products.",
-        "hero_description_line_2": "But if you'd like to return or exchange",
-        "hero_description_line_3": "products, we make it easy and seamless.",
-        "hero_description_line_4": "Customer Support is here to assist you.",
-        "hero_description_mobile": "But if you'd like to return or exchange products, we make it easy and seamless. Customer Support is here to assist you.",
-        "hero_image": "shopify://files/return-policy-rebrand-hero.webp",
-        "hero_image_alt": "Return Policy Hero"
-      }
-    },
-    "return_policy_body": {
-      "type": "return-policy-body",
-      "blocks": {
-        "return_policy": {
-          "type": "content_section",
-          "settings": {
-            "heading": "RETURN POLICY",
-            "content": "<p>Any unopened and undamaged items are eligible for return for <strong>30 days from your order date.</strong></p><p>Gift cards, sample packs, final sale items and opened bulk powder are not eligible for return or refund.</p><p>Once we receive your return, the team will inspect the item and issue you a refund.</p><p>If our inspections find that the returned item has been used or damaged, and is therefore not suitable for resale, we will not issue a refund or store credit.</p>",
-            "cta_text": "Visit our return portal to start your return or exchange.",
-            "button_text": "Get Started",
-            "button_url": "https://mixhers.com/apps/redo/returns-portal/login",
-            "show_button": true
-          }
-        },
-        "exchange_policy": {
-          "type": "content_section",
-          "settings": {
-            "heading": "EXCHANGE POLICY",
-            "content": "<p>If you are unhappy with your flavor and have 80% of the sticks unopened, we would be happy to do a flavor exchange for you.</p><p>If your package is opened and has 80% or less of the sticks, your order is not eligible for an exchange.</p><p><strong>Sample packs, final sale items and opened bulk powder are not eligible for an exchange.</strong></p><p>Once we receive your return, our team will inspect the item and process the exchange.</p>",
-            "cta_text": "Visit our return portal to start your return or exchange.",
-            "button_text": "Get Started",
-            "button_url": "https://mixhers.com/apps/redo/returns-portal/login",
-            "show_button": true
-          }
-        },
-        "redo_coverage": {
-          "type": "content_section",
-          "settings": {
-            "heading": "REDO RETURN COVERAGE",
-            "content": "<p>Customers who opted for Redo Return coverage are eligible for a free return label.</p><p>If Redo was not selected on the order, customers are responsible for covering the return shipping cost.</p>",
-            "cta_text": "",
-            "button_text": "",
-            "button_url": "",
-            "show_button": false
-          }
-        },
-        "subscription_terms": {
-          "type": "content_section",
-          "settings": {
-            "heading": "AUTOMATIC RENEWAL TERMS FOR SUBSCRIPTIONS",
-            "content": "<p>Mixhers offers products that can be purchased through a subscription, which will automatically renew unless cancelled.</p><p>By subscribing, the payment method of your choice will be charged the subscription amount and will renew every month, or the delivery cadence (\"Billing Period\").</p><p>Subscriptions can be cancelled at any time through your customer portal, or by contacting customer support at <a href=\"https://mixhers.com/pages/contact-us\">help@mixhers.com</a>.</p><p>You are obligated to provide current, complete, and accurate information for your billing account. You are responsible for promptly updating all information to keep your billing account current and accurate. (e.g. Billing address, credit card number, credit card number expiration date, etc.).</p><p>You must promptly notify us if your credit card is no longer valid. Changes to such information can be made in your customer portal or by e-mailing Mixhers customer support at <a href=\"https://mixhers.com/pages/contact-us\">help@mixhers.com</a>.</p>",
-            "cta_text": "",
-            "button_text": "",
-            "button_url": "",
-            "show_button": false
-          }
-        }
-      },
-      "block_order": [
-        "return_policy",
-        "exchange_policy", 
-        "redo_coverage",
-        "subscription_terms"
-      ]
-    },
-    "standard_page_sub_footer": {
-      "type": "standard-page-sub-footer",
-      "settings": {
-        "cta_heading_line_1": "Have more questions?",
-        "cta_heading_line_2": "We have answers.",
-        "cta_description": "E-mail us at help@mixhers.com and we will respond as soon as possible. You can also send us a message using our contact form, or visit our FAQs page.",
-        "cta_contact_link_text": "Contact Us",
-        "cta_contact_url": "https://mixhers.com/pages/contact-us",
-        "cta_faq_link_text": "Visit our FAQ page",
-        "cta_faq_url": "https://mixhers2-fqn23lmzlju.gorgias.help/en-US"
+        "padding_top": 28,
+        "padding_bottom": 28
       }
     }
   },
   "order": [
-    "standard_page_hero",
-    "return_policy_body",
-    "standard_page_sub_footer"
+    "main"
   ]
 }
