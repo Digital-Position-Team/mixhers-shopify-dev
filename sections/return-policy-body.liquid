@@ -38,7 +38,7 @@
 }
 
 .return-policy-body__content p {
-  margin-bottom: 12px;
+  margin-bottom: 6px;
 }
 
 .return-policy-body__content p:last-child {
@@ -64,8 +64,7 @@
 }
 </style>
 
-<div class="page-width">
-  <div class="return-policy-body">
+<div class="return-policy-body">
     {% for block in section.blocks %}
       <section class="return-policy-body__section" {{ block.shopify_attributes }}>
         {% render 'text', type: 'heading-3', content: block.settings.heading, class: 'return-policy-body__heading' %}
@@ -84,7 +83,6 @@
         </div>
       </section>
     {% endfor %}
-  </div>
 </div>
 
 {% schema %}

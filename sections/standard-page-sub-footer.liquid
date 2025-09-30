@@ -26,10 +26,18 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 9px;
+  gap: 0;
   width: 100%;
   height: 100%;
   padding-bottom: 36px;
+}
+
+.standard-page-sub-footer__heading .standard-page-sub-footer__heading-text {
+  display: inline;
+}
+
+.standard-page-sub-footer__heading .standard-page-sub-footer__heading-text:first-child::after {
+  content: ' ';
 }
 
 @media (min-width: 768px) {
@@ -96,8 +104,12 @@
 <div class="standard-page-sub-footer">
   <div class="page-width" style="width: 100%; max-width: none;">
     <div class="standard-page-sub-footer__heading">
-      {% render 'text', type: 'heading-3', content: section.settings.cta_heading_line_1, class: 'standard-page-sub-footer__heading-text' %}
-      {% render 'text', type: 'heading-3', content: section.settings.cta_heading_line_2, class: 'standard-page-sub-footer__heading-text' %}
+      <div class="standard-page-sub-footer__heading-text" style="font-family: 'Faire Sprig', serif; font-weight: normal; font-size: 36px; line-height: 36px;">
+        {{ section.settings.cta_heading_line_1 }} {{ section.settings.cta_heading_line_2 }}
+      </div>
+      <div class="standard-page-sub-footer__heading-text" style="font-family: 'Faire Sprig', serif; font-weight: normal; font-size: 28px; line-height: 1.2;">
+        We have answers.
+      </div>
     </div>
     <div class="standard-page-sub-footer__description">
       <span>{{ section.settings.cta_description }}</span>
