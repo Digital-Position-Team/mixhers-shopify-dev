@@ -50,8 +50,8 @@
 
 .standard-page-sub-footer__heading-text {
   width: 100%;
-  font-size: 36px;
-  line-height: 36px;
+  font-size: 28px;
+  line-height: 32px;
   font-family: 'Faire Sprig', serif;
   font-weight: normal;
 }
@@ -78,10 +78,10 @@
 }
 
 .standard-page-sub-footer__links {
-  font-weight: bold;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  font-size: 20px;
 }
 
 @media (min-width: 768px) {
@@ -99,13 +99,19 @@
 .standard-page-sub-footer__link:hover {
   text-decoration: underline;
 }
+.standard-page-sub-footer__heading-text {
+  white-space: nowrap;
+}
 </style>
 
 <div class="standard-page-sub-footer">
   <div class="page-width" style="width: 100%; max-width: none;">
     <div class="standard-page-sub-footer__heading">
-      <div class="standard-page-sub-footer__heading-text" style="font-family: 'Faire Sprig', serif; font-weight: normal; font-size: 36px; line-height: 36px;">
-        {{ section.settings.cta_heading_line_1 }} {{ section.settings.cta_heading_line_2 }}
+      <div class="standard-page-sub-footer__heading-text" style="font-family: 'Faire Sprig', serif; font-weight: normal; font-size: 28px; line-height: 32px;">
+        {{ section.settings.cta_heading_line_1 }}
+      </div>
+      <div class="standard-page-sub-footer__heading-text" style="font-family: 'Faire Sprig', serif; font-weight: normal; font-size: 28px; line-height: 32px;">
+        {{ section.settings.cta_heading_line_2 }}
       </div>
     </div>
     <div class="standard-page-sub-footer__description">
