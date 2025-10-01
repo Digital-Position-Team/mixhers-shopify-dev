@@ -74,12 +74,14 @@
   .thumbnail-nav {
     position: absolute;
     bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 0;
+    width: 50%;
     display: flex;
-    gap: 8px;
+    gap: 6px;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    padding: 0 10px;
   }
   .carousel-thumbnail {
     background: none;
@@ -91,12 +93,31 @@
     display: inline-block;
   }
   .carousel-thumbnail img {
-    width: 64px;
-    height: 64px;
+    width: clamp(40px, 8vw, 64px);
+    height: clamp(40px, 8vw, 64px);
     border-radius: 100%;
     border: 2px solid #fff;
     cursor: pointer;
     transition: border 0.3s ease;
+  }
+  
+  /* Responsive thumbnail sizing for different counts */
+  @media (min-width: 1024px) {
+    .thumbnail-nav {
+      gap: clamp(4px, 1vw, 8px);
+    }
+    
+    /* Smaller thumbnails when more than 4 images */
+    .thumbnail-nav:has(.carousel-thumbnail:nth-child(5)) .carousel-thumbnail img {
+      width: clamp(36px, 6vw, 52px);
+      height: clamp(36px, 6vw, 52px);
+    }
+    
+    /* Even smaller when 6 images */
+    .thumbnail-nav:has(.carousel-thumbnail:nth-child(6)) .carousel-thumbnail img {
+      width: clamp(32px, 5vw, 48px);
+      height: clamp(32px, 5vw, 48px);
+    }
   }
   .carousel-thumbnail img:hover {
     border-color: #ccc;
