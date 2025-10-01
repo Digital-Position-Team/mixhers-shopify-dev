@@ -53,25 +53,21 @@
     gap: 0px;
     aspect-ratio: 1 / 1.25;
   }
-  .desktop-carousel-main {
-    flex: 1;
-    position: relative;
-    aspect-ratio: 1 / 1.25;
-    overflow: hidden;
-  }
-  
+  .desktop-carousel-main,
   .desktop-carousel-thumbnail {
     flex: 1;
     position: relative;
-    aspect-ratio: 1 / 1.25;
-    padding-bottom: 50px; /* Space for thumbnail nav */
   }
   
-  .desktop-carousel-thumbnail img {
-    width: 100%;
-    height: calc(100% - 50px);
-    object-fit: cover;
+  .desktop-carousel-main {
+    aspect-ratio: 1 / 1.25;
     overflow: hidden;
+  }
+  
+  .desktop-carousel-thumbnail-image {
+    aspect-ratio: 1 / 1.25;
+    overflow: hidden;
+    position: relative;
   }
   .desktop-carousel-main img,
   .desktop-carousel-thumbnail img,
@@ -83,10 +79,8 @@
   }
 
   .thumbnail-nav {
-    position: absolute;
-    bottom: -35px;
-    right: 0px;
-    left:0px;
+    position: relative;
+    margin-top: 15px;
     display: flex;
     gap: 8px;
     justify-content: center;
@@ -163,7 +157,9 @@
       <img src="{{ featured_image | image_url }}" alt="{{ product.title }}" width="472" height="592">
     </div>
     <div class="desktop-carousel-thumbnail">
-      <img src="{{ product_images | first | image_url }}" alt="{{ product.title }}" class="carousel-image-active" width="472" height="592">
+      <div class="desktop-carousel-thumbnail-image">
+        <img src="{{ product_images | first | image_url }}" alt="{{ product.title }}" class="carousel-image-active" width="472" height="592">
+      </div>
       <div class="thumbnail-nav">
         {% for product_image in product_images %}
           <button class="carousel-thumbnail" type="button">
