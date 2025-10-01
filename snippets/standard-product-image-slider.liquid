@@ -53,11 +53,24 @@
     gap: 0px;
     aspect-ratio: 1 / 1.25;
   }
-  .desktop-carousel-main,
+  .desktop-carousel-main {
+    flex: 1;
+    position: relative;
+    aspect-ratio: 1 / 1.25;
+    overflow: hidden;
+  }
+  
   .desktop-carousel-thumbnail {
     flex: 1;
     position: relative;
     aspect-ratio: 1 / 1.25;
+    padding-bottom: 50px; /* Space for thumbnail nav */
+  }
+  
+  .desktop-carousel-thumbnail img {
+    width: 100%;
+    height: calc(100% - 50px);
+    object-fit: cover;
     overflow: hidden;
   }
   .desktop-carousel-main img,
