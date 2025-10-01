@@ -30,6 +30,32 @@
         height: 100%;
         object-fit: cover;
     }
+
+    /* Desktop carousel aspect ratio consistency */
+    @media (min-width: 1024px) {
+        .desktop-carousel-container {
+            aspect-ratio: 1 / 1.25; /* 4:5 aspect ratio for consistent proportions */
+        }
+        
+        .desktop-carousel-container > div {
+            aspect-ratio: 1 / 1.25;
+            overflow: hidden;
+        }
+        
+        .desktop-carousel-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        .desktop-carousel-container .carousel-image-active {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
 </style>
 
 {% assign product_images = product.metafields.rebrand.carousel_images.value %}
@@ -74,23 +100,23 @@
     
 </div>
 
-<div class="hidden lg:flex">
-    <div class="w-full h-full">
+<div class="hidden lg:flex desktop-carousel-container">
+    <div class="w-full">
         <img
             src="{{ featured_image | image_url }}"
             alt="{{ product.title }}"
-            class="block w-full h-full object-cover"
+            class="block w-full object-cover"
             width="472"
-            height="592"
+            height="590"
         >
     </div>
     <div class="w-full relative flex-grow-0">
         <img
             src="{{ product_images | first | image_url }}"
             alt="{{ product.title }}"
-            class="carousel-image-active block w-full h-full object-cover"
+            class="carousel-image-active block w-full object-cover"
             width="472"
-            height="592"
+            height="590"
         >
         <div class="absolute inset-0 flex gap-2 justify-center items-end -bottom-8">
             {% for product_image in product_images %}
