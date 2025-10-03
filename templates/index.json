@@ -19,8 +19,16 @@
             "image_link": "shopify://products/energy"
           }
         },
+        "image_afea7b": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/collagen_gwp_hero_1.png",
+            "image_link": "shopify://collections/all"
+          }
+        },
         "image_ACdr3q": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/home-rebrand-mobile-top.webp",
             "image_link": "https://mixhers.com/collections/all"
@@ -29,6 +37,7 @@
       },
       "block_order": [
         "image_rMegEc",
+        "image_afea7b",
         "image_ACdr3q"
       ],
       "name": "Custom Hero",
