@@ -21,6 +21,13 @@
             "link": "https://mixhers.com/collections/all?collection=all-products"
           }
         },
+        "announcement_Ye8hTV": {
+          "type": "announcement",
+          "settings": {
+            "text": "Energy 50% OFF - Applied at Checkout",
+            "link": "shopify://products/energy"
+          }
+        },
         "announcement_tzAbFb": {
           "type": "announcement",
           "settings": {
@@ -30,6 +37,7 @@
         },
         "announcement-bar-0": {
           "type": "announcement",
+          "disabled": true,
           "settings": {
             "text": "15% OFF subscriptions with no code needed",
             "link": "https://mixhers.com/collections/all?collection=all-products"
@@ -38,6 +46,7 @@
       },
       "block_order": [
         "announcement_eaiYYp",
+        "announcement_Ye8hTV",
         "announcement_tzAbFb",
         "announcement-bar-0"
       ],
