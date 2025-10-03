@@ -12,6 +12,13 @@
     "custom_hero_GiCc3A": {
       "type": "custom-hero",
       "blocks": {
+        "image_rMegEc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/energy_doorbuster_hero.png",
+            "image_link": "shopify://products/energy"
+          }
+        },
         "image_ACdr3q": {
           "type": "image",
           "settings": {
@@ -21,6 +28,7 @@
         }
       },
       "block_order": [
+        "image_rMegEc",
         "image_ACdr3q"
       ],
       "name": "Custom Hero",
