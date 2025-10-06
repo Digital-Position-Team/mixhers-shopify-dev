@@ -1,20 +1,21 @@
-{% for product in collections.all.products %}
-  {% if product.id == product_id %}
-  {% assign product = product %}
+{% for prod in collections.all.products %}
+  {% if prod.id == product_id %}
+    {% assign card_product = prod %}
+    {% break %}
   {% endif %}
 {% endfor %}
 
 
 <div class="custom-product-card">
-  <a href="{{ product.url }}" class="product-link">
+  <a href="{{ card_product.url }}" class="product-link">
     <img
-      src="{{ product.featured_image | image_url: width: 500, height: 500 }}"
-      alt="{{ product.title }}"
+      src="{{ card_product.featured_image | image_url: width: 500, height: 500 }}"
+      alt="{{ card_product.title }}"
       class="product-image"
       loading="lazy" width="" height=""
     />
     <div class="product--info">
-        <div class="product-title font-sans">{{ product.title }}</div>
+        <div class="product-title font-sans">{{ card_product.title }}</div>
         <p class="product-subtitle margin-0">{{ product_subtitle }}</p>
         <div>
           <button class="btn btn-black hover-pink">Shop Now</button>
@@ -23,9 +24,9 @@
     </div>
   </a>
 
-  {% if show_tags and product.metafields.custom.product_tags_to_show %}
+  {% if show_tags and card_product.metafields.custom.product_tags_to_show %}
     <div style="position: absolute; top: 0; left: 0; display: flex;">
-      {% for metaobject in product.metafields.custom.product_tags_to_show.value %}
+      {% for metaobject in card_product.metafields.custom.product_tags_to_show.value %}
         {% if metaobject.show_on_product_cards == true %}
           <div class="tag-badge font-sans" style="color: {{ metaobject.tag_color }}; border-color: {{ metaobject.tag_color }};">
             {{ metaobject.tag_name }}
