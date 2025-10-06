@@ -1,8 +1,11 @@
-{% for product in collections.all.products %}
-  {% if product.id == product_id %}
-  {% assign product = product %}
+{% assign found_product = null %}
+{% for prod in collections.all.products %}
+  {% if prod.id == product_id %}
+    {% assign found_product = prod %}
+    {% break %}
   {% endif %}
 {% endfor %}
+{% assign product = found_product %}
 
 
 <div class="custom-product-card">
