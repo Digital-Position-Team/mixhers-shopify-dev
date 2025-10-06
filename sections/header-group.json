@@ -14,24 +14,41 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "announcement-bar-0": {
-          "type": "announcement",
-          "settings": {
-            "text": "15% OFF subscriptions with no code needed",
-            "link": "https://mixhers.com/collections/all?collection=all-products"
-          }
-        },
         "announcement_eaiYYp": {
           "type": "announcement",
           "settings": {
-            "text": "Free mystery gift when you spend $50",
+            "text": "FREE gift when you spend $50",
+            "link": "https://mixhers.com/collections/all?collection=all-products"
+          }
+        },
+        "announcement_Ye8hTV": {
+          "type": "announcement",
+          "settings": {
+            "text": "Hydration 50% OFF - Applied at Checkout",
+            "link": "shopify://products/hydration"
+          }
+        },
+        "announcement_tzAbFb": {
+          "type": "announcement",
+          "settings": {
+            "text": "Refer a Friend! Give $20, Get $20",
+            "link": "https://mixhers.com/pages/refer"
+          }
+        },
+        "announcement-bar-0": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "15% OFF subscriptions with no code needed",
             "link": "https://mixhers.com/collections/all?collection=all-products"
           }
         }
       },
       "block_order": [
-        "announcement-bar-0",
-        "announcement_eaiYYp"
+        "announcement_eaiYYp",
+        "announcement_Ye8hTV",
+        "announcement_tzAbFb",
+        "announcement-bar-0"
       ],
       "settings": {
         "auto_rotate": true,

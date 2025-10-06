@@ -25,6 +25,10 @@
   
     <div class="standard-recommended-grid">
       {% for recommended_product in recommended_products %}
+        <div style="display: none">
+        {{  recommended_product.title }}
+        {{ recommended_product.id }}
+        </div>
         {% render 'shared-product-details',
           then_render: 'mixhers-product-card',
           product_id: recommended_product.id,
