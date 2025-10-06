@@ -1,11 +1,4 @@
-{% assign found_product = null %}
-{% for prod in collections.all.products %}
-  {% if prod.id == product_id %}
-    {% assign found_product = prod %}
-    {% break %}
-  {% endif %}
-{% endfor %}
-{% assign product = found_product %}
+{% comment %} Product lookup is handled in shared-product-details.liquid {% endcomment %}
 
 
 <div class="custom-product-card">

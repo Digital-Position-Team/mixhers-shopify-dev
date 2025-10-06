@@ -1,12 +1,14 @@
 
-{% unless product %}
-  {% for prod in collections.all.products %}
-    {% if prod.id == product_id %}
-      {% assign product = prod %}
-      {% break %}
-    {% endif %}
-  {% endfor %}
-{% endunless %}
+{% assign target_product = null %}
+{% for prod in collections.all.products %}
+  {% if prod.id == product_id %}
+    {% assign target_product = prod %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+{% if target_product %}
+  {% assign product = target_product %}
+{% endif %}
 
 {% assign product_title = product.metafields.rebrand.product_title.value | default: product.title %}
 {% assign product_subtitle = product.metafields.rebrand.product_subtitle.value | default: '' %}
