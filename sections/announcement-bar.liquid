@@ -8,6 +8,84 @@
     line-height: 21px;
     font-family: "Buenos Aires", sans-serif;
   }
+  
+  .countdown-clock--wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-left: 16px;
+  }
+  
+  .countdown-clock--item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 24px;
+  }
+  
+  .countdown-clock--item--number {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+    margin: 0;
+    color: inherit;
+  }
+  
+  .countdown-clock--item--label {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 1;
+    margin: 2px 0 0 0;
+    color: inherit;
+    text-transform: uppercase;
+  }
+  
+  .countdown-clock--spacer {
+    align-self: flex-start;
+    margin-top: 2px;
+  }
+  
+  .countdown-clock--spacer p {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+    color: inherit;
+  }
+  
+  .announcement-bar__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .countdown-clock--wrapper {
+      margin-left: 0;
+      margin-top: 8px;
+      gap: 6px;
+    }
+    
+    .countdown-clock--item--number {
+      font-size: 14px;
+    }
+    
+    .countdown-clock--item--label {
+      font-size: 9px;
+    }
+    
+    .countdown-clock--spacer p {
+      font-size: 14px;
+    }
+    
+    .announcement-bar__content {
+      flex-direction: column;
+      gap: 4px;
+    }
+  }
 </style>
 
 {%- liquid
@@ -48,12 +126,93 @@
               class="announcement-bar__link link link--text focus-inset animate-arrow"
             >
           {%- endif -%}
-          <p class="announcement-bar__message h5">
-            <span>{{ section.blocks.first.settings.text | escape }}</span>
-            {%- if section.blocks.first.settings.link != blank -%}
-              {{- 'icon-arrow.svg' | inline_asset_content -}}
+          <div class="announcement-bar__content">
+            <p class="announcement-bar__message h5">
+              <span>{{ section.blocks.first.settings.text | escape }}</span>
+              {%- if section.blocks.first.settings.link != blank -%}
+                {{- 'icon-arrow.svg' | inline_asset_content -}}
+              {%- endif -%}
+            </p>
+            {%- if section.blocks.first.settings.show_countdown_clock and section.blocks.first.settings.countdown_clock_end_time != blank -%}
+              {% assign countdown_end = section.blocks.first.settings.countdown_clock_end_time | date: '%d/%m/%Y %H:%M:%S' %}
+              <div class="countdown-clock--wrapper">
+                <div class="countdown-clock--item countdown-clock--days">
+                  <p class="countdown-clock--item--number" id="countdown-clock--days-{{ section.id }}">00</p>
+                  <p class="countdown-clock--item--label">days</p>
+                </div>
+                <div class="countdown-clock--spacer">
+                  <p>:</p>
+                </div>
+                <div class="countdown-clock--item countdown-clock--hours">
+                  <p class="countdown-clock--item--number" id="countdown-clock--hours-{{ section.id }}">00</p>
+                  <p class="countdown-clock--item--label">hrs</p>
+                </div>
+                <div class="countdown-clock--spacer">
+                  <p>:</p>
+                </div>
+                <div class="countdown-clock--item countdown-clock--minutes">
+                  <p class="countdown-clock--item--number" id="countdown-clock--minutes-{{ section.id }}">00</p>
+                  <p class="countdown-clock--item--label">mins</p>
+                </div>
+                <div class="countdown-clock--spacer">
+                  <p>:</p>
+                </div>
+                <div class="countdown-clock--item countdown-clock--seconds">
+                  <p class="countdown-clock--item--number" id="countdown-clock--seconds-{{ section.id }}">00</p>
+                  <p class="countdown-clock--item--label">secs</p>
+                </div>
+              </div>
+              <script>
+                (function() {
+                  // Parse date from dd/mm/yyyy hh:mm:ss format
+                  var dateStr = '{{ section.blocks.first.settings.countdown_clock_end_time }}';
+                  var parts = dateStr.split(' ');
+                  var dateParts = parts[0].split('/');
+                  var timeParts = parts[1] ? parts[1].split(':') : ['23', '59', '59'];
+                  
+                  // Create date object (month is 0-indexed in JS)
+                  var countdownEndTime = new Date(
+                    parseInt(dateParts[2]), // year
+                    parseInt(dateParts[1]) - 1, // month (0-indexed)
+                    parseInt(dateParts[0]), // day
+                    parseInt(timeParts[0]), // hour
+                    parseInt(timeParts[1]), // minute
+                    parseInt(timeParts[2]) // second
+                  ).getTime();
+
+                  var countdownInterval = setInterval(function () {
+                    var now = new Date().getTime();
+                    var distance = countdownEndTime - now;
+
+                    var days = distance < 0 ? 0 : Math.floor(distance / (1000 * 60 * 60 * 24));
+                    var hours = distance < 0 ? 0 : Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = distance < 0 ? 0 : Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = distance < 0 ? 0 : Math.floor((distance % (1000 * 60)) / 1000);
+
+                    // Format with leading zeros
+                    days = days.toString().padStart(2, '0');
+                    hours = hours.toString().padStart(2, '0');
+                    minutes = minutes.toString().padStart(2, '0');
+                    seconds = seconds.toString().padStart(2, '0');
+
+                    var daysEl = document.getElementById('countdown-clock--days-{{ section.id }}');
+                    var hoursEl = document.getElementById('countdown-clock--hours-{{ section.id }}');
+                    var minutesEl = document.getElementById('countdown-clock--minutes-{{ section.id }}');
+                    var secondsEl = document.getElementById('countdown-clock--seconds-{{ section.id }}');
+
+                    if (daysEl) daysEl.innerText = days;
+                    if (hoursEl) hoursEl.innerText = hours;
+                    if (minutesEl) minutesEl.innerText = minutes;
+                    if (secondsEl) secondsEl.innerText = seconds;
+
+                    if (distance < 0) {
+                      clearInterval(countdownInterval);
+                    }
+                  }, 1000);
+                })();
+              </script>
             {%- endif -%}
-          </p>
+          </div>
           {%- if section.blocks.first.settings.link != blank -%}
             </a>
           {%- endif -%}
@@ -108,12 +267,92 @@
                         class="announcement-bar__link link link--text focus-inset animate-arrow"
                       >
                     {%- endif -%}
-                    <p class="announcement-bar__message h5">
-                      <span>{{ block.settings.text | escape }}</span>
-                      {%- if block.settings.link != blank -%}
-                        {{- 'icon-arrow.svg' | inline_asset_content -}}
+                    <div class="announcement-bar__content">
+                      <p class="announcement-bar__message h5">
+                        <span>{{ block.settings.text | escape }}</span>
+                        {%- if block.settings.link != blank -%}
+                          {{- 'icon-arrow.svg' | inline_asset_content -}}
+                        {%- endif -%}
+                      </p>
+                      {%- if block.settings.show_countdown_clock and block.settings.countdown_clock_end_time != blank -%}
+                        <div class="countdown-clock--wrapper">
+                          <div class="countdown-clock--item countdown-clock--days">
+                            <p class="countdown-clock--item--number" id="countdown-clock--days-{{ section.id }}-{{ forloop.index }}">00</p>
+                            <p class="countdown-clock--item--label">days</p>
+                          </div>
+                          <div class="countdown-clock--spacer">
+                            <p>:</p>
+                          </div>
+                          <div class="countdown-clock--item countdown-clock--hours">
+                            <p class="countdown-clock--item--number" id="countdown-clock--hours-{{ section.id }}-{{ forloop.index }}">00</p>
+                            <p class="countdown-clock--item--label">hrs</p>
+                          </div>
+                          <div class="countdown-clock--spacer">
+                            <p>:</p>
+                          </div>
+                          <div class="countdown-clock--item countdown-clock--minutes">
+                            <p class="countdown-clock--item--number" id="countdown-clock--minutes-{{ section.id }}-{{ forloop.index }}">00</p>
+                            <p class="countdown-clock--item--label">mins</p>
+                          </div>
+                          <div class="countdown-clock--spacer">
+                            <p>:</p>
+                          </div>
+                          <div class="countdown-clock--item countdown-clock--seconds">
+                            <p class="countdown-clock--item--number" id="countdown-clock--seconds-{{ section.id }}-{{ forloop.index }}">00</p>
+                            <p class="countdown-clock--item--label">secs</p>
+                          </div>
+                        </div>
+                        <script>
+                          (function() {
+                            // Parse date from dd/mm/yyyy hh:mm:ss format
+                            var dateStr = '{{ block.settings.countdown_clock_end_time }}';
+                            var parts = dateStr.split(' ');
+                            var dateParts = parts[0].split('/');
+                            var timeParts = parts[1] ? parts[1].split(':') : ['23', '59', '59'];
+                            
+                            // Create date object (month is 0-indexed in JS)
+                            var countdownEndTime = new Date(
+                              parseInt(dateParts[2]), // year
+                              parseInt(dateParts[1]) - 1, // month (0-indexed)
+                              parseInt(dateParts[0]), // day
+                              parseInt(timeParts[0]), // hour
+                              parseInt(timeParts[1]), // minute
+                              parseInt(timeParts[2]) // second
+                            ).getTime();
+
+                            var countdownInterval = setInterval(function () {
+                              var now = new Date().getTime();
+                              var distance = countdownEndTime - now;
+
+                              var days = distance < 0 ? 0 : Math.floor(distance / (1000 * 60 * 60 * 24));
+                              var hours = distance < 0 ? 0 : Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                              var minutes = distance < 0 ? 0 : Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                              var seconds = distance < 0 ? 0 : Math.floor((distance % (1000 * 60)) / 1000);
+
+                              // Format with leading zeros
+                              days = days.toString().padStart(2, '0');
+                              hours = hours.toString().padStart(2, '0');
+                              minutes = minutes.toString().padStart(2, '0');
+                              seconds = seconds.toString().padStart(2, '0');
+
+                              var daysEl = document.getElementById('countdown-clock--days-{{ section.id }}-{{ forloop.index }}');
+                              var hoursEl = document.getElementById('countdown-clock--hours-{{ section.id }}-{{ forloop.index }}');
+                              var minutesEl = document.getElementById('countdown-clock--minutes-{{ section.id }}-{{ forloop.index }}');
+                              var secondsEl = document.getElementById('countdown-clock--seconds-{{ section.id }}-{{ forloop.index }}');
+
+                              if (daysEl) daysEl.innerText = days;
+                              if (hoursEl) hoursEl.innerText = hours;
+                              if (minutesEl) minutesEl.innerText = minutes;
+                              if (secondsEl) secondsEl.innerText = seconds;
+
+                              if (distance < 0) {
+                                clearInterval(countdownInterval);
+                              }
+                            }, 1000);
+                          })();
+                        </script>
                       {%- endif -%}
-                    </p>
+                    </div>
                     {%- if block.settings.link != blank -%}
                       </a>
                     {%- endif -%}
@@ -253,6 +492,19 @@
           "type": "url",
           "id": "link",
           "label": "t:sections.announcement-bar.blocks.announcement.settings.link.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_countdown_clock",
+          "label": "Show Countdown Clock",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "countdown_clock_end_time",
+          "label": "Countdown Clock end date and time",
+          "default": "31/12/2024 23:59:59",
+          "info": "Format: dd/mm/yyyy hh:mm:ss"
         }
       ]
     }
