@@ -7,6 +7,20 @@
   {% endif %}
 {% endfor %}
 
+{% comment %} DEBUG: Log what we found {% endcomment %}
+<div style="display: none;">
+DEBUG SHARED-PRODUCT-DETAILS: 
+Product ID: {{ product_id }}
+Target Product Found: {{ target_product.title | default: 'NULL' }}
+Target Product ID: {{ target_product.id | default: 'NULL' }}
+Collections.all.products count: {{ collections.all.products.size }}
+</div>
+
+{% comment %} Fallback: if not found, use the global product as backup to prevent blank cards {% endcomment %}
+{% unless target_product %}
+  {% assign target_product = product %}
+{% endunless %}
+
 {% assign product_title = target_product.metafields.rebrand.product_title.value | default: target_product.title %}
 {% assign product_subtitle = target_product.metafields.rebrand.product_subtitle.value | default: '' %}
 {% assign product_caption = target_product.metafields.rebrand.product_caption.value | default: '' %}

@@ -1,17 +1,35 @@
 {% comment %} Product lookup is handled in shared-product-details.liquid {% endcomment %}
 
+{% comment %} DEBUG INFO {% endcomment %}
+<div style="display: none;">
+MIXHERS-PRODUCT-CARD DEBUG:
+Target Product: {{ target_product.title | default: 'NULL' }}
+Target Product ID: {{ target_product.id | default: 'NULL' }}
+Product ID Param: {{ product_id }}
+Product Subtitle: {{ product_subtitle }}
+</div>
 
+{% unless target_product.id %}
+<div class="custom-product-card" style="border: 2px solid red; background: #ffe6e6;">
+  <div style="padding: 20px; text-align: center;">
+    <h3 style="color: red; margin: 10px 0;">⚠️ PRODUCT NOT FOUND</h3>
+    <p><strong>Requested ID:</strong> {{ product_id }}</p>
+    <p><strong>Available Products:</strong> {{ collections.all.products.size }}</p>
+    <p style="font-size: 12px; color: #666;">Product ID {{ product_id }} not found in collections.all.products</p>
+  </div>
+</div>
+{% else %}
 <div class="custom-product-card">
-  <a href="{{ target_product.url }}" class="product-link">
+  <a href="{{ target_product.url | default: '#' }}" class="product-link">
     <img
-      src="{{ target_product.featured_image | image_url: width: 500, height: 500 }}"
-      alt="{{ target_product.title }}"
+      src="{{ target_product.featured_image | image_url: width: 500, height: 500 | default: '' }}"
+      alt="{{ target_product.title | default: 'Product' }}"
       class="product-image"
       loading="lazy" width="" height=""
     />
     <div class="product--info">
-        <div class="product-title font-sans">{{ target_product.title }}</div>
-        <p class="product-subtitle margin-0">{{ product_subtitle }}</p>
+        <div class="product-title font-sans">{{ target_product.title | default: 'Loading...' }}</div>
+        <p class="product-subtitle margin-0">{{ product_subtitle | default: '' }}</p>
         <div>
           <button class="btn btn-black hover-pink">Shop Now</button>
           <p class="btn-link-mobile">Shop Now</p>
@@ -131,3 +149,4 @@
     }
   </style>
 </div>
+{% endif %}
