@@ -6,19 +6,16 @@
     {% break %}
   {% endif %}
 {% endfor %}
-{% if target_product %}
-  {% assign product = target_product %}
-{% endif %}
 
-{% assign product_title = product.metafields.rebrand.product_title.value | default: product.title %}
-{% assign product_subtitle = product.metafields.rebrand.product_subtitle.value | default: '' %}
-{% assign product_caption = product.metafields.rebrand.product_caption.value | default: '' %}
-{% assign product_description = product.metafields.rebrand.product_description | metafield_tag | default: product.description %}
+{% assign product_title = target_product.metafields.rebrand.product_title.value | default: target_product.title %}
+{% assign product_subtitle = target_product.metafields.rebrand.product_subtitle.value | default: '' %}
+{% assign product_caption = target_product.metafields.rebrand.product_caption.value | default: '' %}
+{% assign product_description = target_product.metafields.rebrand.product_description | metafield_tag | default: target_product.description %}
 
-{% assign bundle_product = product.metafields.rebrand.bundle_product.value %}
-{% assign bundle_collection = product.metafields.rebrand.bundle_collection.value %}
+{% assign bundle_product = target_product.metafields.rebrand.bundle_product.value %}
+{% assign bundle_collection = target_product.metafields.rebrand.bundle_collection.value %}
 
-{% assign promo_content = product.metafields.rebrand.promo_content.value %}
+{% assign promo_content = target_product.metafields.rebrand.promo_content.value %}
 {% assign promo_discount_percentage = promo_content.discount_percentage | default: 0 %}
 {% assign promo_discount_code = promo_content.discount_code | default: '' %}
 {% assign promo_first_text = promo_content.first_text | default: '' %}
@@ -30,7 +27,7 @@
 {% if show_tags == nil %}
   {% assign show_tags = true %}
 {% endif %}
-{% if product.variants.size == 1 %}
+{% if target_product.variants.size == 1 %}
   {% assign is_single_variant_product = true %}
 {% else %}
   {% assign is_single_variant_product = false %}
@@ -46,8 +43,8 @@
   {% assign variant = bundle_product.variants.first %}
   {% assign selling_plan_id = bundle_product.selling_plan_groups.first.selling_plans.first.id %}
 {% else %}
-  {% assign variant = product.selected_variant | default: product.variants.first %}
-  {% assign selling_plan_id = product.selling_plan_groups.first.selling_plans.first.id %}
+  {% assign variant = target_product.selected_variant | default: target_product.variants.first %}
+  {% assign selling_plan_id = target_product.selling_plan_groups.first.selling_plans.first.id %}
 {% endif %}
 
 {% assign one_time_raw_price = variant.price %}
@@ -69,6 +66,7 @@
 
 {% if then_render == 'mixhers-product-card' %}
 {%- render 'mixhers-product-card',
+    target_product: target_product,
     product_id: product_id,
     show_tags: show_tags,
     product_title: product_title,
@@ -103,7 +101,7 @@
 
 {% elsif then_render == 'add-to-cart-with-options' %}
 {%- render 'add-to-cart-with-options',
-     product: product,
+     product: target_product,
     product_title: product_title,
     product_subtitle: product_subtitle,
     product_caption: product_caption,
