@@ -19,14 +19,18 @@
           "disabled": true,
           "settings": {
             "text": "FREE gift when you spend $50",
-            "link": "https://mixhers.com/collections/all?collection=all-products"
+            "link": "https://mixhers.com/collections/all?collection=all-products",
+            "show_countdown_clock": false,
+            "countdown_clock_end_time": "31/12/2024 23:59:59"
           }
         },
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
             "text": "Lock-in 25% Off Sitewide - Applied at Checkout",
-            "link": "https://mixhers.com/collections/all?collection=all-products"
+            "link": "https://mixhers.com/collections/all?collection=all-products",
+            "show_countdown_clock": true,
+            "countdown_clock_end_time": "08/10/2025 23:59:59"
           }
         },
         "announcement_Ye8hTV": {
@@ -34,14 +38,18 @@
           "disabled": true,
           "settings": {
             "text": "Hydration 50% OFF - Applied at Checkout",
-            "link": "shopify://products/hydration"
+            "link": "shopify://products/hydration",
+            "show_countdown_clock": false,
+            "countdown_clock_end_time": "31/12/2024 23:59:59"
           }
         },
         "announcement_tzAbFb": {
           "type": "announcement",
           "settings": {
             "text": "Refer a Friend! Give $20, Get $20",
-            "link": "https://mixhers.com/pages/refer"
+            "link": "https://mixhers.com/pages/refer",
+            "show_countdown_clock": false,
+            "countdown_clock_end_time": "31/12/2024 23:59:59"
           }
         }
       },
