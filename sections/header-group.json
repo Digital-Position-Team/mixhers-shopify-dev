@@ -26,6 +26,7 @@
         },
         "announcement-bar-0": {
           "type": "announcement",
+          "disabled": true,
           "settings": {
             "text": "Lock-in 25% Off Sitewide - Applied at Checkout",
             "link": "https://mixhers.com/collections/all?collection=all-products",
@@ -35,7 +36,6 @@
         },
         "announcement_Ye8hTV": {
           "type": "announcement",
-          "disabled": true,
           "settings": {
             "text": "Hydration 50% OFF - Applied at Checkout",
             "link": "shopify://products/hydration",
