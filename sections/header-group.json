@@ -26,7 +26,7 @@
         "announcement_Ye8hTV": {
           "type": "announcement",
           "settings": {
-            "text": "Prenatal+ 50% OFF - Applied at Checkout",
+            "text": "Prenatal+ 50% OFF",
             "link": "shopify://products/prenatal",
             "show_countdown_clock": false,
             "countdown_clock_end_time": "31/12/2024 23:59:59"
