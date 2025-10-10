@@ -22,7 +22,7 @@
         "image_rMegEc": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/prenatal_doorbuster_hero.png",
+            "image": "shopify://shop_images/PRENATAL_hero_doorbuster.png",
             "image_link": "shopify://products/hydration"
           }
         },
