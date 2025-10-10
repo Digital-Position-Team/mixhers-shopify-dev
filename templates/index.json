@@ -21,6 +21,7 @@
         },
         "image_afea7b": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/2c4f7c0c-1f79-471d-be23-eac1532681bc.png",
             "image_link": "shopify://collections/all"
