@@ -19,26 +19,25 @@
             "image_link": "https://mixhers.com/collections/all"
           }
         },
+        "image_afea7b": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/2c4f7c0c-1f79-471d-be23-eac1532681bc.png",
+            "image_link": "shopify://collections/all"
+          }
+        },
         "image_rMegEc": {
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/PRENATAL_hero_doorbuster.png",
             "image_link": "shopify://products/prenatal"
           }
-        },
-        "image_afea7b": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/collagen_gwp_hero_1.png",
-            "image_link": "shopify://collections/all"
-          }
         }
       },
       "block_order": [
         "image_ACdr3q",
-        "image_rMegEc",
-        "image_afea7b"
+        "image_afea7b",
+        "image_rMegEc"
       ],
       "name": "Custom Hero",
       "settings": {
