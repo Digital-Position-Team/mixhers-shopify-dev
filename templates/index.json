@@ -15,7 +15,7 @@
         "image_ACdr3q": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/sunset_products_hero.png",
+            "image": "shopify://shop_images/sunset_hero.png",
             "image_link": "https://mixhers.com/collections/all"
           }
         },
