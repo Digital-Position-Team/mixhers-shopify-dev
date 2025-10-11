@@ -9,7 +9,7 @@
       }
     },
     "product-grid": {
-      "type": "custom-grid",
+      "type": "collection-with-custom-cards",
       "settings": {
         "products_per_page": 16,
         "color_scheme": "scheme-1",
