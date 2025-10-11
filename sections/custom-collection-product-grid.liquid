@@ -33,40 +33,41 @@
     
     {%- if section.settings.enable_sorting -%}
       <div class="facets-container page-width">
-        <div class="facet-filters sorting caption">
-          <div class="facet-filters__field">
-            <h2 class="facet-filters__label caption-large text-body">
-              <label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
-            </h2>
-            <div class="select">
-              {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
-              <select
-                name="sort_by"
-                class="facet-filters__sort select__select caption-large"
-                id="SortBy"
-                aria-describedby="a11y-refresh-page-message"
-                onchange="window.location.href = this.value"
-              >
-                {%- for option in collection.sort_options -%}
-                  <option
-                    value="{{ request.path }}?sort_by={{ option.value | escape }}"
-                    {% if option.value == sort_by %}
-                      selected="selected"
-                    {% endif %}
-                  >
-                    {{ option.name | escape }}
-                  </option>
-                {%- endfor -%}
-              </select>
-              <span class="svg-wrapper">
-                {{- 'icon-caret.svg' | inline_asset_content -}}
-              </span>
+        <div class="facets__wrapper">
+          <div class="facet-filters sorting caption">
+            <div class="facet-filters__field">
+              <h2 class="facet-filters__label caption-large text-body">
+                <label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
+              </h2>
+              <div class="select">
+                {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+                <select
+                  name="sort_by"
+                  class="facet-filters__sort select__select caption-large"
+                  id="SortBy"
+                  aria-describedby="a11y-refresh-page-message"
+                  onchange="window.location.href = this.value"
+                >
+                  {%- for option in collection.sort_options -%}
+                    <option
+                      value="{{ request.path }}?sort_by={{ option.value | escape }}"
+                      {% if option.value == sort_by %}
+                        selected="selected"
+                      {% endif %}
+                    >
+                      {{ option.name | escape }}
+                    </option>
+                  {%- endfor -%}
+                  </select>
+                <span class="svg-wrapper">
+                  {{- 'icon-caret.svg' | inline_asset_content -}}
+                </span>
+              </div>
             </div>
           </div>
-          
           <div class="product-count light" role="status">
             <h2 class="product-count__text text-body">
-              <span id="ProductCount">
+              <span id="ProductCountDesktop">
                 {%- if collection.results_count -%}
                   {{
                     'templates.search.results_with_count'
@@ -82,13 +83,14 @@
                 {%- endif -%}
               </span>
             </h2>
+            {%- render 'loading-spinner' -%}
           </div>
         </div>
       </div>
     {%- endif -%}
 
     <div
-      class="product-grid-container page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+      class="product-grid-container{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
       id="ProductGridContainer"
       {% if settings.animations_reveal_on_scroll %}
         data-cascade
