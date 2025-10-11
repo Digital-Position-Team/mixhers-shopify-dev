@@ -32,10 +32,10 @@
 
 <div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
   {%- paginate collection.products by section.settings.products_per_page -%}
-    
-    {%- if section.settings.enable_sorting -%}
-      <div class="facets-container page-width">
-        <div class="facets__wrapper">
+    {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
+    {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' -%}
+      <facet-filters-form class="facets facets-vertical-sort page-width small-hide">
+        <form class="facets-vertical-form" id="FacetSortForm">
           <div class="facet-filters sorting caption">
             <div class="facet-filters__field">
               <h2 class="facet-filters__label caption-large text-body">
@@ -48,11 +48,10 @@
                   class="facet-filters__sort select__select caption-large"
                   id="SortBy"
                   aria-describedby="a11y-refresh-page-message"
-                  onchange="window.location.href = this.value"
                 >
                   {%- for option in collection.sort_options -%}
                     <option
-                      value="{{ request.path }}?sort_by={{ option.value | escape }}"
+                      value="{{ option.value | escape }}"
                       {% if option.value == sort_by %}
                         selected="selected"
                       {% endif %}
@@ -60,14 +59,15 @@
                       {{ option.name | escape }}
                     </option>
                   {%- endfor -%}
-                  </select>
+                </select>
                 <span class="svg-wrapper">
                   {{- 'icon-caret.svg' | inline_asset_content -}}
                 </span>
               </div>
             </div>
           </div>
-          <div class="product-count light" role="status">
+
+          <div class="product-count-vertical light" role="status">
             <h2 class="product-count__text text-body">
               <span id="ProductCountDesktop">
                 {%- if collection.results_count -%}
@@ -87,9 +87,28 @@
             </h2>
             {%- render 'loading-spinner' -%}
           </div>
-        </div>
-      </div>
+        </form>
+      </facet-filters-form>
     {%- endif -%}
+
+    <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical page-width{% endif %}">
+      {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
+        <aside
+          aria-labelledby="verticalTitle"
+          class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
+          id="main-collection-filters"
+          data-id="{{ section.id }}"
+          style="justify-content: flex-end;"
+        >
+          {% render 'facets',
+            results: collection,
+            enable_filtering: section.settings.enable_filtering,
+            enable_sorting: section.settings.enable_sorting,
+            filter_type: section.settings.filter_type,
+            paginate: paginate
+          %}
+        </aside>
+      {%- endif -%}
 
     <div
       class="product-grid-container{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -149,6 +168,32 @@
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_filtering",
+      "default": true,
+      "label": "Enable filtering"
+    },
+    {
+      "type": "select",
+      "id": "filter_type",
+      "options": [
+        {
+          "value": "horizontal",
+          "label": "Horizontal"
+        },
+        {
+          "value": "vertical",
+          "label": "Vertical"
+        },
+        {
+          "value": "drawer",
+          "label": "Drawer"
+        }
+      ],
+      "default": "horizontal",
+      "label": "Filter type"
     },
     {
       "type": "checkbox",
