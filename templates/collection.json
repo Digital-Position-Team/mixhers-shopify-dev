@@ -42,15 +42,6 @@
     "collection_tabs_filter_AJNLP9": {
       "type": "collection-tabs-filter",
       "blocks": {
-        "custom_tab_thDCiK": {
-          "type": "custom_tab",
-          "settings": {
-            "label": "40% off",
-            "link": "https://mixhers.com/collections/40-off",
-            "use_pink_style": false,
-            "custom_class": ""
-          }
-        },
         "custom_tab_QNDRyk": {
           "type": "custom_tab",
           "settings": {
@@ -62,7 +53,6 @@
         }
       },
       "block_order": [
-        "custom_tab_thDCiK",
         "custom_tab_QNDRyk"
       ],
       "name": "Custom Collection Grid",
