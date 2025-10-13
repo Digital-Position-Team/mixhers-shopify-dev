@@ -21,6 +21,7 @@
         },
         "image_afea7b": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/mystery_gwp_hero.png",
             "image_link": "shopify://collections/all"
