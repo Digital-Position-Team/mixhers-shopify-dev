@@ -30,8 +30,8 @@
         "image_rMegEc": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/PRENATAL_hero_doorbuster.png",
-            "image_link": "shopify://products/prenatal"
+            "image": "shopify://shop_images/digestion_doorbuster_hero.png",
+            "image_link": "shopify://products/digestion"
           }
         }
       },
