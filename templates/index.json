@@ -22,14 +22,14 @@
         "image_afea7b": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/mystery_gift_hero.png",
+            "image": "shopify://shop_images/mystery_gwp_hero.png",
             "image_link": "shopify://collections/all"
           }
         },
         "image_rMegEc": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/digestion_doorbuster_hero.png",
+            "image": "shopify://shop_images/digestion_doorbuster_hero_1.png",
             "image_link": "shopify://products/digestion"
           }
         }
