@@ -23,22 +23,22 @@
             "countdown_clock_end_time": "31/12/2024 23:59:59"
           }
         },
-        "announcement_Ye8hTV": {
-          "type": "announcement",
-          "settings": {
-            "text": "Prenatal+ 50% OFF",
-            "link": "shopify://products/prenatal",
-            "show_countdown_clock": false,
-            "countdown_clock_end_time": "31/12/2024 23:59:59"
-          }
-        },
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
             "text": "MIX. MATCH. SAVE. 40% OFF select mixhers favorites",
-            "link": "https://mixhers.com/collections/all?collection=all-products",
+            "link": "https://mixhers.com/collections/40-off",
             "show_countdown_clock": false,
             "countdown_clock_end_time": "08/10/2025 23:59:59"
+          }
+        },
+        "announcement_Ye8hTV": {
+          "type": "announcement",
+          "settings": {
+            "text": "Digestion 50% OFF",
+            "link": "shopify://products/digestion",
+            "show_countdown_clock": false,
+            "countdown_clock_end_time": "31/12/2024 23:59:59"
           }
         },
         "announcement_tzAbFb": {
@@ -53,8 +53,8 @@
       },
       "block_order": [
         "announcement_eaiYYp",
-        "announcement_Ye8hTV",
         "announcement-bar-0",
+        "announcement_Ye8hTV",
         "announcement_tzAbFb"
       ],
       "settings": {
