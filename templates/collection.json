@@ -45,8 +45,8 @@
         "custom_tab_QNDRyk": {
           "type": "custom_tab",
           "settings": {
-            "label": "Sale",
-            "link": "/collections/final-sale",
+            "label": "40% Off",
+            "link": "shopify://collections/40-off",
             "use_pink_style": true,
             "custom_class": ""
           }
