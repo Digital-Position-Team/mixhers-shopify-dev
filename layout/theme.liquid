@@ -321,6 +321,18 @@
   </head>
 
   <body class=" page-{{ page.handle }} gradient{% if request.page_type == 'article' %} is-article{% endif %} {% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
+    <!-- Tracead.com pixel - Tag for Product and Content Matches -->
+    <script type="text/javascript">
+      /* TraceAd SiteTag (https://tracead.com) */
+      (function() {
+        var tracead = document.createElement('script');
+        tracead.src = 'https://tracead.com/sToV' + (typeof jQuery==='undefined'?'':'?ljq=1');
+        tracead.setAttribute('async', 'true');
+        var p = document.getElementsByTagName('script')[0];
+        p.parentNode.insertBefore(tracead, p);
+      })();
+    </script>
+
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>
