@@ -93,18 +93,16 @@
       <div class="collection-hero__image-container media gradient">
         <img
           srcset="
-            {%- if collection.image.width >= 375 -%}{{ collection.image | image_url: width: 375 }} 375w,{%- endif -%}
-            {%- if collection.image.width >= 550 -%}{{ collection.image | image_url: width: 550 }} 550w,{%- endif -%}
-            {%- if collection.image.width >= 750 -%}{{ collection.image | image_url: width: 750 }} 750w,{%- endif -%}
-            {%- if collection.image.width >= 1100 -%}{{ collection.image | image_url: width: 1100 }} 1100w,{%- endif -%}
-            {%- if collection.image.width >= 1500 -%}{{ collection.image | image_url: width: 1500 }} 1500w,{%- endif -%}
-            {%- if collection.image.width >= 2000 -%}{{ collection.image | image_url: width: 2000 }} 2000w,{%- endif -%}
-            {%- if collection.image.width >= 3000 -%}{{ collection.image | image_url: width: 3000 }} 3000w,{%- endif -%}
-            {%- if collection.image.width >= 4000 -%}{{ collection.image | image_url: width: 4000 }} 4000w,{%- endif -%}
+            {%- if collection.image.width >= 400 -%}{{ collection.image | image_url: width: 400 }} 400w,{%- endif -%}
+            {%- if collection.image.width >= 600 -%}{{ collection.image | image_url: width: 600 }} 600w,{%- endif -%}
+            {%- if collection.image.width >= 800 -%}{{ collection.image | image_url: width: 800 }} 800w,{%- endif -%}
+            {%- if collection.image.width >= 1200 -%}{{ collection.image | image_url: width: 1200 }} 1200w,{%- endif -%}
+            {%- if collection.image.width >= 1600 -%}{{ collection.image | image_url: width: 1600 }} 1600w,{%- endif -%}
+            {%- if collection.image.width >= 2400 -%}{{ collection.image | image_url: width: 2400 }} 2400w,{%- endif -%}
             {{ collection.image | image_url }} {{ collection.image.width }}w
           "
-          src="{{ collection.image | image_url: width: {% if collection.metafields.custom.full_width_image %}2000{% else %}1100{% endif %} }}"
-          sizes="{% if collection.metafields.custom.full_width_image %}(min-width: 750px) 2000px, 100vw{% else %}(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc(50vw - 130px), calc(50vw - 55px){% endif %}"
+          src="{% if collection.metafields.custom.full_width_image %}{{ collection.image | image_url: width: 1600 }}{% else %}{{ collection.image | image_url: width: 800 }}{% endif %}"
+          sizes="{% if collection.metafields.custom.full_width_image %}(min-width: 1200px) 1600px, 100vw{% else %}(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc(50vw - 130px), calc(50vw - 55px){% endif %}"
           alt="{{ collection.image.alt | escape }}"
           width="{{ collection.image.width }}"
           height="{{ collection.image.height }}"
