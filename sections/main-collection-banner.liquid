@@ -58,7 +58,7 @@
   }
 {%- endstyle -%}
 
-<div class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %}{% if section.settings.full_width_image %} collection-hero--full-width{% endif %} color-{{ section.settings.color_scheme }} gradient">
+<div class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %}{% if collection.metafields.custom.full_width_image %} collection-hero--full-width{% endif %} color-{{ section.settings.color_scheme }} gradient">
   <div class="collection-hero__inner page-width {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
     <div class="collection--title">
       <h1 class="font-serif margin-0">
@@ -115,12 +115,7 @@
       "default": false,
       "label": "t:sections.main-collection-banner.settings.show_collection_image.label"
     },
-    {
-      "type": "checkbox",
-      "id": "full_width_image",
-      "default": false,
-      "label": "Full width image layout"
-    },
+
     {
       "type": "color_scheme",
       "id": "color_scheme",
