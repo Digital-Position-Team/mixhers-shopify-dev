@@ -2,26 +2,23 @@
 {% comment %} Look up the target product by ID {% endcomment %}
 {% assign target_product = null %}
 
-{% comment %} Debug: Check if product_id is being passed {% endcomment %}
-{% unless product_id %}
-  {% comment %} If no product_id passed, use the current product from the loop {% endcomment %}
-  {% assign target_product = product %}
-{% else %}
+{% comment %} If product_id is passed, try to find the product {% endcomment %}
+{% if product_id %}
   {% comment %} Search in all_products first - most reliable method {% endcomment %}
   {% assign target_product = all_products[product_id] %}
-{% endunless %}
+  
+  {% comment %} If not found, search by ID in collections.all.products as fallback {% endcomment %}
+  {% unless target_product %}
+    {% for prod in collections.all.products %}
+      {% if prod.id == product_id %}
+        {% assign target_product = prod %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endunless %}
+{% endif %}
 
-{% comment %} If not found, search by ID in collections.all.products as fallback {% endcomment %}
-{% unless target_product %}
-  {% for prod in collections.all.products %}
-    {% if prod.id == product_id %}
-      {% assign target_product = prod %}
-      {% break %}
-    {% endif %}
-  {% endfor %}
-{% endunless %}
-
-{% comment %} If still not found, use current page product as final fallback {% endcomment %}
+{% comment %} If still no target_product found, use the current product from the loop {% endcomment %}
 {% unless target_product %}
   {% assign target_product = product %}
 {% endunless %}
