@@ -31,7 +31,7 @@
           "type": "image",
           "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/digestion_doorbuster_hero_1.png",
+            "image": "shopify://shop_images/multi_doorbuster_hero.png",
             "image_link": "shopify://products/digestion"
           }
         }
