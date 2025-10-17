@@ -504,20 +504,38 @@ console.log(isBundleProduct,"isBundleProduct---");
 
             function updateBundlePricing() {
                 // For bundle products, we can check if there's a compare-at price on the bundle product
-                const bundleVariant = {{ bundle_product.variants[0] | json }};
+                const bundleVariant = {{ bundle_product.variants[0] | json }} || null;
                 const compareAtPrice = bundleVariant?.compare_at_price;
                 const currentPrice = bundleVariant?.price;
+                
+                // Also check the one_time_price variables
+                const oneTimePrice = {{ one_time_raw_price | json }};
+                const oneTimeCompareAtPrice = {{ target_product.variants.first.compare_at_price | json }};
                 
                 const atcCompareAtPriceEl = bundleButton.find('.atc-compare-at-price');
                 const atcTotalPriceEl = bundleButton.find('.atc-total-price');
                 
-                if (compareAtPrice && compareAtPrice > currentPrice) {
-                    atcCompareAtPriceEl.text(formatPrice(compareAtPrice)).show();
-                    atcTotalPriceEl.text(formatPrice(currentPrice));
+                // Use bundle variant price if available, otherwise use one time price
+                const finalPrice = currentPrice || oneTimePrice;
+                const finalCompareAtPrice = compareAtPrice || oneTimeCompareAtPrice;
+                
+                console.log('Bundle pricing debug:', {
+                    bundleVariant,
+                    compareAtPrice,
+                    currentPrice,
+                    oneTimePrice,
+                    oneTimeCompareAtPrice,
+                    finalPrice,
+                    finalCompareAtPrice
+                });
+                
+                if (finalCompareAtPrice && finalCompareAtPrice > finalPrice) {
+                    atcCompareAtPriceEl.text(formatPrice(finalCompareAtPrice)).show();
+                    atcTotalPriceEl.text(formatPrice(finalPrice));
                     bundleButton.find('.atc-price-wrap').show();
-                } else if (currentPrice) {
+                } else if (finalPrice) {
                     atcCompareAtPriceEl.hide();
-                    atcTotalPriceEl.text(formatPrice(currentPrice));
+                    atcTotalPriceEl.text(formatPrice(finalPrice));
                     bundleButton.find('.atc-price-wrap').show();
                 } else {
                     bundleButton.find('.atc-price-wrap').hide();
@@ -552,7 +570,10 @@ console.log(isBundleProduct,"isBundleProduct---");
             firstFlavorSelectEl.prop("required", true);
             secondFlavorSelectEl.prop("required", true);
             if (sellingPlanId) purchaseOptionsEl.removeClass('hidden');
-            else bundlePricingEl.find('button').text(`Add to cart - {{ one_time_price }}`)
+            else {
+                // Don't override the button text here, let updateBundlePricing handle it
+                bundleButton.find('.add-to-cart-label-text').text('Add to cart');
+            }
 
             bundlePricingEl.removeClass('hidden');
         }
