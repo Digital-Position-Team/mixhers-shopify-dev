@@ -448,7 +448,7 @@
                         </div>
                       </div>
                       <!-- Subscription and Save Button -->
-                      <div v-if="hasSwitchToSubscription(item) && item.final_price === item.price && !item.product?.tags?.includes('disable-subscribe-in-smart-cart')">
+                      <div v-if="hasSwitchToSubscription(item) && item.final_price === item.price && !item.product?.tags?.includes('disable-subscribe-in-smart-cart') && item.product?.metafields?.custom?.subscription_available !== false">
                         <div v-if="!item.selling_plan_allocation?.selling_plan" class="subscription-button-block">
                           <button @click="handleSubscribeAndSave({ itemFromBtn: item })"
                             class="btn-black save--btn"

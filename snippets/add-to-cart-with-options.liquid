@@ -6,6 +6,12 @@
 {% assign show_extra_subscribe_box_text = promo_content.show_extra_subscribe_box_text | default: false %}
 {% assign extra_subscribe_box_text = promo_content.extra_subscribe_box_text %}
 
+{%- comment -%} Check if subscription should be available - consistent with general template {%- endcomment -%}
+{% assign subscription_available = true %}
+{% if product.metafields.custom.subscription_available == false or product.tags contains 'disable-subscribe-in-smart-cart' %}
+  {% assign subscription_available = false %}
+{% endif %}
+
 {% if product.tags contains "only_allow_one_in_cart" %}
     {% assign only_allow_one_in_cart = true %}
 {% else %}
@@ -30,6 +36,7 @@
 
 <form id="pdp-form">
     <div class="add-to-cart-options">
+      {% if subscription_available %}
       <div id="purchase-options" class="hidden">
         <div class="purchase-option-box">
           <label>
@@ -119,6 +126,7 @@
             <span>{{ promo_last_text }}</span>
           </span>
         </div>
+      {% endif %}
       {% endif %}
 
       <div id="bundle-pricing" class="hidden">

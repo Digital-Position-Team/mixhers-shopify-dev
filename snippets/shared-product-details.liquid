@@ -57,15 +57,26 @@
 {% assign selling_plan_id = null %}
 {% if is_bundle_product %}
   {% assign variant = bundle_product.variants.first %}
-  {% assign selling_plan_id = bundle_product.selling_plan_groups.first.selling_plans.first.id %}
 {% else %}
   {% assign variant = target_product.selected_variant | default: target_product.variants.first %}
-  {% assign selling_plan_id = target_product.selling_plan_groups.first.selling_plans.first.id %}
 {% endif %}
 
+{% unless target_product.metafields.custom.subscription_available == false or target_product.tags contains 'disable-subscribe-in-smart-cart' %}
+  {% if is_bundle_product %}
+    {% assign selling_plan_id = bundle_product.selling_plan_groups.first.selling_plans.first.id %}
+  {% else %}
+    {% assign selling_plan_id = target_product.selling_plan_groups.first.selling_plans.first.id %}
+  {% endif %}
+{% endunless %}
+
 {% assign one_time_raw_price = variant.price %}
-{% assign subscription_raw_price = variant.selling_plan_allocations[0].price %}
-{% assign subscription_raw_compare_at_price = variant.selling_plan_allocations[0].compare_at_price %}
+{% if selling_plan_id and variant.selling_plan_allocations.size > 0 %}
+  {% assign subscription_raw_price = variant.selling_plan_allocations[0].price %}
+  {% assign subscription_raw_compare_at_price = variant.selling_plan_allocations[0].compare_at_price %}
+{% else %}
+  {% assign subscription_raw_price = 0 %}
+  {% assign subscription_raw_compare_at_price = 0 %}
+{% endif %}
 
 {% assign one_time_price = one_time_raw_price | money %}
 {% assign subscription_price = subscription_raw_price | money %}
