@@ -166,7 +166,16 @@
             </select>
           </div>
 
-          <button type="submit" class="btn btn-pink shadow add-to-cart-btn">Add to cart</button>
+          <button type="submit" class="btn btn-pink shadow add-to-cart-btn">
+            <span class="add-to-cart-label">
+              <span class="add-to-cart-label-text">Add to cart</span>
+              <span class="atc-price-wrap">
+                <span class="atc-divider"> – </span>
+                <span class="atc-compare-at-price"></span>
+                <span class="atc-total-price"></span>
+              </span>
+            </span>
+          </button>
         </div>
       </div>
 
@@ -486,10 +495,33 @@ console.log(isBundleProduct,"isBundleProduct---");
         function initBundleProduct() {
             const firstFlavorSelectEl = bundlePricingEl.find('select').eq(0);
             const secondFlavorSelectEl = bundlePricingEl.find('select').eq(1);
+            const bundleButton = bundlePricingEl.find('button');
 
             function updateFlavorColors() {
                 firstFlavorSelectEl.siblings('.flavor-color').css('background-color', firstFlavorSelectEl.find(':selected').data('color'));
                 secondFlavorSelectEl.siblings('.flavor-color').css('background-color', secondFlavorSelectEl.find(':selected').data('color'));
+            }
+
+            function updateBundlePricing() {
+                // For bundle products, we can check if there's a compare-at price on the bundle product
+                const bundleVariant = {{ bundle_product.variants[0] | json }};
+                const compareAtPrice = bundleVariant?.compare_at_price;
+                const currentPrice = bundleVariant?.price;
+                
+                const atcCompareAtPriceEl = bundleButton.find('.atc-compare-at-price');
+                const atcTotalPriceEl = bundleButton.find('.atc-total-price');
+                
+                if (compareAtPrice && compareAtPrice > currentPrice) {
+                    atcCompareAtPriceEl.text(formatPrice(compareAtPrice)).show();
+                    atcTotalPriceEl.text(formatPrice(currentPrice));
+                    bundleButton.find('.atc-price-wrap').show();
+                } else if (currentPrice) {
+                    atcCompareAtPriceEl.hide();
+                    atcTotalPriceEl.text(formatPrice(currentPrice));
+                    bundleButton.find('.atc-price-wrap').show();
+                } else {
+                    bundleButton.find('.atc-price-wrap').hide();
+                }
             }
 
             // Set flavor colors on select change
@@ -500,6 +532,7 @@ console.log(isBundleProduct,"isBundleProduct---");
                 updateFlavorColors();
             });
             updateFlavorColors();
+            updateBundlePricing();
 
             form.on('submit', async function (e) {
                 e.preventDefault();
