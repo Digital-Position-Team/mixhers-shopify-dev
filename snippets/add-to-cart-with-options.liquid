@@ -503,6 +503,9 @@ console.log(isBundleProduct,"isBundleProduct---");
             }
 
             function updateBundlePricing() {
+                // Check if subscription is selected
+                const isSubscription = sellingPlanId && purchaseOptionsEl.find('input[name="purchaseType"]:checked').val() === 'subscription';
+                
                 // For bundle products, we can check if there's a compare-at price on the bundle product
                 const bundleVariant = {{ bundle_product.variants[0] | json }} || null;
                 const compareAtPrice = bundleVariant?.compare_at_price;
@@ -510,24 +513,22 @@ console.log(isBundleProduct,"isBundleProduct---");
                 
                 // Also check the one_time_price variables
                 const oneTimePrice = {{ one_time_raw_price | json }};
+                const subscriptionPrice = {{ subscription_raw_price | json }};
                 const oneTimeCompareAtPrice = {{ target_product.variants.first.compare_at_price | json }};
+                const subscriptionCompareAtPrice = {{ target_product.variants.first.selling_plan_allocations.first.compare_at_price | json }};
                 
                 const atcCompareAtPriceEl = bundleButton.find('.atc-compare-at-price');
                 const atcTotalPriceEl = bundleButton.find('.atc-total-price');
                 
-                // Use bundle variant price if available, otherwise use one time price
-                const finalPrice = currentPrice || oneTimePrice;
-                const finalCompareAtPrice = compareAtPrice || oneTimeCompareAtPrice;
-                
-                console.log('Bundle pricing debug:', {
-                    bundleVariant,
-                    compareAtPrice,
-                    currentPrice,
-                    oneTimePrice,
-                    oneTimeCompareAtPrice,
-                    finalPrice,
-                    finalCompareAtPrice
-                });
+                // Use appropriate price based on subscription selection
+                let finalPrice, finalCompareAtPrice;
+                if (isSubscription) {
+                    finalPrice = subscriptionPrice || currentPrice;
+                    finalCompareAtPrice = subscriptionCompareAtPrice || compareAtPrice;
+                } else {
+                    finalPrice = oneTimePrice || currentPrice;
+                    finalCompareAtPrice = oneTimeCompareAtPrice || compareAtPrice;
+                }
                 
                 if (finalCompareAtPrice && finalCompareAtPrice > finalPrice) {
                     atcCompareAtPriceEl.text(formatPrice(finalCompareAtPrice)).show();
@@ -545,10 +546,18 @@ console.log(isBundleProduct,"isBundleProduct---");
             // Set flavor colors on select change
             firstFlavorSelectEl.on('change', function () {
                 updateFlavorColors();
+                updateBundlePricing();
             });
             secondFlavorSelectEl.on('change', function () {
                 updateFlavorColors();
+                updateBundlePricing();
             });
+            
+            // Update pricing when purchase type changes
+            purchaseOptionsEl.find('input[name="purchaseType"]').on('change', function() {
+                updateBundlePricing();
+            });
+            
             updateFlavorColors();
             updateBundlePricing();
 
@@ -603,21 +612,36 @@ console.log(isBundleProduct,"isBundleProduct---");
                 subscriptionPriceEl.text(formattedSubscriptionPrice);
                 subscribeAndSaveComparePriceEl.text(formatPrice(subscriptionCompareAtPrice));
                 
-                // Update button text with compare-at price if it exists
+                // Update button text with compare-at price based on selected purchase type
+                const isSubscription = sellingPlanId && purchaseOptionsEl.find('input[name="purchaseType"]:checked').val() === 'subscription';
                 const atcCompareAtPriceEl = singleVariantButton.find('.atc-compare-at-price');
                 const atcTotalPriceEl = singleVariantButton.find('.atc-total-price');
                 
-                if (formattedCompareAtPrice && compareAtPrice > price) {
-                    atcCompareAtPriceEl.text(formattedCompareAtPrice).show();
-                    atcTotalPriceEl.text(formattedPrice);
+                let displayPrice, displayCompareAtPrice;
+                if (isSubscription) {
+                    displayPrice = formattedSubscriptionPrice;
+                    displayCompareAtPrice = subscriptionCompareAtPrice ? formatPrice(subscriptionCompareAtPrice) : null;
+                } else {
+                    displayPrice = formattedPrice;
+                    displayCompareAtPrice = formattedCompareAtPrice;
+                }
+                
+                if (displayCompareAtPrice && (isSubscription ? subscriptionCompareAtPrice > subscriptionPrice : compareAtPrice > price)) {
+                    atcCompareAtPriceEl.text(displayCompareAtPrice).show();
+                    atcTotalPriceEl.text(displayPrice);
                     singleVariantButton.find('.atc-price-wrap').show();
                 } else {
                     atcCompareAtPriceEl.hide();
-                    atcTotalPriceEl.text(formattedPrice);
+                    atcTotalPriceEl.text(displayPrice);
                     singleVariantButton.find('.atc-price-wrap').show();
                 }
             }
             updatePrices();
+            
+            // Update pricing when purchase type changes
+            purchaseOptionsEl.find('input[name="purchaseType"]').on('change', function() {
+                updatePrices();
+            });
 
             form.on('submit', async function (e) {
                 e.preventDefault();
@@ -674,26 +698,33 @@ console.log(isBundleProduct,"isBundleProduct---");
                     subscriptionPriceEl.text(formatPrice(subscriptionPrice));
                     subscribeAndSaveComparePriceEl.text(formatPrice(subscribeAndSaveComparePrice));
                     
-                    // Update button text with compare-at price if it exists
+                    // Update button text with compare-at price based on selected purchase type
+                    const isSubscription = sellingPlanId && purchaseOptionsEl.find('input[name="purchaseType"]:checked').val() === 'subscription';
                     const atcCompareAtPriceEl = multipleVariantButton.find('.atc-compare-at-price');
                     const atcTotalPriceEl = multipleVariantButton.find('.atc-total-price');
                     
-                    if (compareAtPrice && compareAtPrice > price) {
-                        atcCompareAtPriceEl.text(formatPrice(compareAtPrice)).show();
-                        atcTotalPriceEl.text(formatPrice(price));
+                    let displayPrice, displayCompareAtPrice;
+                    if (isSubscription) {
+                        displayPrice = formatPrice(subscriptionPrice);
+                        displayCompareAtPrice = subscribeAndSaveComparePrice ? formatPrice(subscribeAndSaveComparePrice) : null;
+                    } else {
+                        displayPrice = formatPrice(price);
+                        displayCompareAtPrice = compareAtPrice ? formatPrice(compareAtPrice) : null;
+                    }
+                    
+                    if (displayCompareAtPrice && (isSubscription ? subscribeAndSaveComparePrice > subscriptionPrice : compareAtPrice > price)) {
+                        atcCompareAtPriceEl.text(displayCompareAtPrice).show();
+                        atcTotalPriceEl.text(displayPrice);
                         multipleVariantButton.find('.atc-price-wrap').show();
                     } else {
                         atcCompareAtPriceEl.hide();
-                        atcTotalPriceEl.text(formatPrice(price));
+                        atcTotalPriceEl.text(displayPrice);
                         multipleVariantButton.find('.atc-price-wrap').show();
                     }
                     
                     if (!sellingPlanId) {
-                        if (compareAtPrice && compareAtPrice > price) {
-                            // Don't set button text here since we're using the structured price display
-                        } else {
-                            multipleVariantButton.find('.add-to-cart-label-text').text('Add to cart');
-                        }
+                        // For products without subscription, just show the price normally
+                        multipleVariantButton.find('.add-to-cart-label-text').text('Add to cart');
                     }
                 } else {
                     // No option selected yet
@@ -706,6 +737,12 @@ console.log(isBundleProduct,"isBundleProduct---");
             flavorSelectEl.on('change', function () {
                 updatePrices();
             });
+            
+            // Update pricing when purchase type changes
+            purchaseOptionsEl.find('input[name="purchaseType"]').on('change', function() {
+                updatePrices();
+            });
+            
             updatePrices();
 
             form.on('submit', async function (e) {
