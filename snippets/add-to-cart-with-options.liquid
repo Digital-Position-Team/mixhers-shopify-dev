@@ -171,7 +171,16 @@
       </div>
 
       <div id="single-variant-pricing" class="hidden">
-        <button type="submit" class="btn btn-pink shadow add-to-cart-btn">Add to cart</button>
+        <button type="submit" class="btn btn-pink shadow add-to-cart-btn">
+          <span class="add-to-cart-label">
+            <span class="add-to-cart-label-text">Add to cart</span>
+            <span class="atc-price-wrap">
+              <span class="atc-divider"> – </span>
+              <span class="atc-compare-at-price"></span>
+              <span class="atc-total-price"></span>
+            </span>
+          </span>
+        </button>
         {% if show_slashed_out_promo_pricing_on_pdps %}
           <div id="one-time-purchase-only-promo-text-single-variant" class="hidden">
             <span id="sale-price-single-variant"></span>
@@ -208,7 +217,16 @@
           </select>
         </div>
         <div>
-          <button type="submit" class="btn btn-pink shadow add-to-cart-btn">Add to cart</button>
+          <button type="submit" class="btn btn-pink shadow add-to-cart-btn">
+            <span class="add-to-cart-label">
+              <span class="add-to-cart-label-text">Add to cart</span>
+              <span class="atc-price-wrap">
+                <span class="atc-divider"> – </span>
+                <span class="atc-compare-at-price"></span>
+                <span class="atc-total-price"></span>
+              </span>
+            </span>
+          </button>
           {% if show_slashed_out_promo_pricing_on_pdps %}
             <div id="one-time-purchase-only-promo-text" class="hidden">
               {% if promo_discount_percentage %}
@@ -226,9 +244,22 @@
     </div>
 </form>
 <style>
+  .atc-compare-at-price {
+    text-decoration: line-through;
+    font-weight: normal;
+    opacity: 0.7;
+  }
   
-
+  .atc-price-wrap {
+    display: none;
+  }
   
+  .add-to-cart-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
 </style>
 <script src="https://static.rechargecdn.com/assets/storefront/recharge-client-1.17.3.min.js"></script>
 
@@ -498,8 +529,11 @@ console.log(isBundleProduct,"isBundleProduct---");
             const oneTimePriceEl = purchaseOptionsEl.find('#one-time-price');
             const subscriptionSalePriceEl = purchaseOptionsEl.find('#subscription-sale-price');
             const subscriptionPriceEl = purchaseOptionsEl.find('#subscription-price');
+            const singleVariantButton = singleVariantPricingEl.find('button');
             const price = filteredVariants[0].price;
             const formattedPrice = formatPrice(price);
+            const compareAtPrice = filteredVariants[0].compare_at_price;
+            const formattedCompareAtPrice = compareAtPrice ? formatPrice(compareAtPrice) : null;
             const subscriptionPrice = filteredVariants[0]?.selling_plan_allocations?.[0]?.price;
             const formattedSubscriptionPrice = formatPrice(subscriptionPrice);
             const salePrice = formatPrice(getSalePrice(price));
@@ -514,6 +548,20 @@ console.log(isBundleProduct,"isBundleProduct---");
                 subscriptionSalePriceEl.text(subscriptionSalePrice);
                 subscriptionPriceEl.text(formattedSubscriptionPrice);
                 subscribeAndSaveComparePriceEl.text(formatPrice(subscriptionCompareAtPrice));
+                
+                // Update button text with compare-at price if it exists
+                const atcCompareAtPriceEl = singleVariantButton.find('.atc-compare-at-price');
+                const atcTotalPriceEl = singleVariantButton.find('.atc-total-price');
+                
+                if (formattedCompareAtPrice && compareAtPrice > price) {
+                    atcCompareAtPriceEl.text(formattedCompareAtPrice).show();
+                    atcTotalPriceEl.text(formattedPrice);
+                    singleVariantButton.find('.atc-price-wrap').show();
+                } else {
+                    atcCompareAtPriceEl.hide();
+                    atcTotalPriceEl.text(formattedPrice);
+                    singleVariantButton.find('.atc-price-wrap').show();
+                }
             }
             updatePrices();
 
@@ -551,12 +599,15 @@ console.log(isBundleProduct,"isBundleProduct---");
             const subscriptionPriceEl = purchaseOptionsEl.find('#subscription-price');
             const subscribeAndSaveComparePriceEl = purchaseOptionsEl.find('#subscribe-and-save-compare-price');
             const flavorSelectEl = multipleVariantPricingEl.find('select');
+            const multipleVariantButton = multipleVariantPricingEl.find('button');
             
             function updatePrices() {
                 const selectedOption = flavorSelectEl.find(':selected');
                 const price = selectedOption.data('price');
                 const subscriptionPrice = selectedOption.data('subscription-price');
                 const subscribeAndSaveComparePrice = selectedOption.data('subscribe-and-save-compare-price');
+                const selectedVariant = filteredVariants.find(variant => variant.id === parseInt(flavorSelectEl.val()));
+                const compareAtPrice = selectedVariant?.compare_at_price;
                 
                 // Only update if we have a valid price (option is selected)
                 if (price !== undefined) {
@@ -568,10 +619,32 @@ console.log(isBundleProduct,"isBundleProduct---");
                     subscriptionSalePriceEl.text(formatPrice(subscriptionSalePrice));
                     subscriptionPriceEl.text(formatPrice(subscriptionPrice));
                     subscribeAndSaveComparePriceEl.text(formatPrice(subscribeAndSaveComparePrice));
-                    if (!sellingPlanId) multipleVariantPricingEl.find('button').text(`Add to cart - ${formatPrice(price)}`);
+                    
+                    // Update button text with compare-at price if it exists
+                    const atcCompareAtPriceEl = multipleVariantButton.find('.atc-compare-at-price');
+                    const atcTotalPriceEl = multipleVariantButton.find('.atc-total-price');
+                    
+                    if (compareAtPrice && compareAtPrice > price) {
+                        atcCompareAtPriceEl.text(formatPrice(compareAtPrice)).show();
+                        atcTotalPriceEl.text(formatPrice(price));
+                        multipleVariantButton.find('.atc-price-wrap').show();
+                    } else {
+                        atcCompareAtPriceEl.hide();
+                        atcTotalPriceEl.text(formatPrice(price));
+                        multipleVariantButton.find('.atc-price-wrap').show();
+                    }
+                    
+                    if (!sellingPlanId) {
+                        if (compareAtPrice && compareAtPrice > price) {
+                            // Don't set button text here since we're using the structured price display
+                        } else {
+                            multipleVariantButton.find('.add-to-cart-label-text').text('Add to cart');
+                        }
+                    }
                 } else {
-                    // No option selected yet, show just "Add to cart"
-                    if (!sellingPlanId) multipleVariantPricingEl.find('button').text('Add to cart');
+                    // No option selected yet
+                    multipleVariantButton.find('.atc-price-wrap').hide();
+                    if (!sellingPlanId) multipleVariantButton.find('.add-to-cart-label-text').text('Add to cart');
                 }
             }
 
