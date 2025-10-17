@@ -6,7 +6,7 @@
 {% assign show_extra_subscribe_box_text = promo_content.show_extra_subscribe_box_text | default: false %}
 {% assign extra_subscribe_box_text = promo_content.extra_subscribe_box_text %}
 
-{%- comment -%} Check if subscription should be available - consistent with general template {%- endcomment -%}
+{%- comment -%} Check  if subscription should be available - consistent with general template {%- endcomment -%}
 {% assign subscription_available = true %}
 {% if product.metafields.custom.subscription_available == false or product.tags contains 'disable-subscribe-in-smart-cart' %}
   {% assign subscription_available = false %}
