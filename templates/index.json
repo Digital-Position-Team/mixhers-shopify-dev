@@ -29,6 +29,7 @@
         },
         "image_rMegEc": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/multi_doorbuster_hero.png",
             "image_link": "shopify://products/multi"
