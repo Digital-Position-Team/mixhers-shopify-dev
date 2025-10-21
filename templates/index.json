@@ -29,9 +29,8 @@
         },
         "image_rMegEc": {
           "type": "image",
-          "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/multi_doorbuster_hero.png",
+            "image": "shopify://shop_images/mixkids_sunset_hero_1.png",
             "image_link": "shopify://products/multi"
           }
         }
