@@ -35,8 +35,8 @@
         "announcement_Ye8hTV": {
           "type": "announcement",
           "settings": {
-            "text": "Mixhers Sleep 50% Off",
-            "link": "shopify://products/sleep",
+            "text": "Mixhers Calm 50% Off",
+            "link": "shopify://products/calm",
             "show_countdown_clock": false,
             "countdown_clock_end_time": "31/12/2024 23:59:59"
           }
