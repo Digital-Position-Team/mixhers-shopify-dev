@@ -34,6 +34,7 @@
         },
         "announcement_Ye8hTV": {
           "type": "announcement",
+          "disabled": true,
           "settings": {
             "text": "Mixhers Calm 50% Off",
             "link": "shopify://products/calm",
