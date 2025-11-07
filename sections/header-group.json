@@ -16,6 +16,7 @@
       "blocks": {
         "announcement_eaiYYp": {
           "type": "announcement",
+          "disabled": true,
           "settings": {
             "text": "FREE gift when you spend $60",
             "link": "https://mixhers.com/collections/all?collection=all-products",
