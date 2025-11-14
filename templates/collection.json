@@ -50,10 +50,20 @@
             "use_pink_style": true,
             "custom_class": ""
           }
+        },
+        "custom_tab_6rxgUr": {
+          "type": "custom_tab",
+          "settings": {
+            "label": "15 Packs",
+            "link": "shopify://collections/15-packs",
+            "use_pink_style": false,
+            "custom_class": ""
+          }
         }
       },
       "block_order": [
-        "custom_tab_QNDRyk"
+        "custom_tab_QNDRyk",
+        "custom_tab_6rxgUr"
       ],
       "name": "Custom Collection Grid",
       "settings": {
