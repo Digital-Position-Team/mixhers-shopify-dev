@@ -18,7 +18,7 @@
           "type": "announcement",
           "disabled": true,
           "settings": {
-            "text": "FREE gift when you spend $60",
+            "text": "First 100 orders over $100 entered to win raffle for [product]",
             "link": "https://mixhers.com/collections/all?collection=all-products",
             "show_countdown_clock": false,
             "countdown_clock_end_time": "31/12/2024 23:59:59"
