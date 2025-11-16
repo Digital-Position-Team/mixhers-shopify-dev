@@ -42,15 +42,6 @@
     "collection_tabs_filter_AJNLP9": {
       "type": "collection-tabs-filter",
       "blocks": {
-        "custom_tab_QNDRyk": {
-          "type": "custom_tab",
-          "settings": {
-            "label": "65% OFF",
-            "link": "shopify://collections/sale",
-            "use_pink_style": true,
-            "custom_class": ""
-          }
-        },
         "custom_tab_6rxgUr": {
           "type": "custom_tab",
           "settings": {
@@ -59,11 +50,20 @@
             "use_pink_style": false,
             "custom_class": ""
           }
+        },
+        "custom_tab_QNDRyk": {
+          "type": "custom_tab",
+          "settings": {
+            "label": "SALE",
+            "link": "shopify://collections/sale",
+            "use_pink_style": true,
+            "custom_class": ""
+          }
         }
       },
       "block_order": [
-        "custom_tab_QNDRyk",
-        "custom_tab_6rxgUr"
+        "custom_tab_6rxgUr",
+        "custom_tab_QNDRyk"
       ],
       "name": "Custom Collection Grid",
       "settings": {
