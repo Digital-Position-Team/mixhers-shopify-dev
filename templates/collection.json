@@ -46,7 +46,7 @@
           "type": "custom_tab",
           "settings": {
             "label": "40% Off",
-            "link": "shopify://collections/40-off",
+            "link": "shopify://collections/sale",
             "use_pink_style": true,
             "custom_class": ""
           }

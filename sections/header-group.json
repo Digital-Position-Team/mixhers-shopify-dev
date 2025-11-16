@@ -46,7 +46,7 @@
           "type": "announcement",
           "settings": {
             "text": "Up to 65% off Mixhers favorites",
-            "link": "shopify://collections/40-off",
+            "link": "shopify://collections/sale",
             "show_countdown_clock": false,
             "countdown_clock_end_time": "31/12/2024 23:59:59"
           }
