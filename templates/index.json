@@ -12,19 +12,19 @@
     "custom_hero_GiCc3A": {
       "type": "custom-hero",
       "blocks": {
-        "image_ACdr3q": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/sunset_hero.png",
-            "image_link": "https://mixhers.com/collections/all"
-          }
-        },
         "image_afea7b": {
           "type": "image",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/black_friday_hero.png",
             "image_link": "shopify://collections/all"
+          }
+        },
+        "image_ACdr3q": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/sunset_hero.png",
+            "image_link": "https://mixhers.com/collections/all"
           }
         },
         "image_rMegEc": {
@@ -37,8 +37,8 @@
         }
       },
       "block_order": [
-        "image_ACdr3q",
         "image_afea7b",
+        "image_ACdr3q",
         "image_rMegEc"
       ],
       "name": "Custom Hero",
@@ -50,7 +50,7 @@
         "title_size": 54,
         "subtitle": "Science-backed supplements you sip for balanced hormones and a better you.",
         "subtitle_size": 20,
-        "primary_cta_text": "Shop Now",
+        "primary_cta_text": "Shop Black Friday Sale",
         "primary_cta_link": "https://mixhers.com/collections/all",
         "secondary_cta_text": "Take the Quiz",
         "secondary_cta_link": "https://mixhers.com/pages/quiz",

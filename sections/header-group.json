@@ -24,10 +24,19 @@
             "countdown_clock_end_time": "31/12/2024 23:59:59"
           }
         },
+        "announcement_tzAbFb": {
+          "type": "announcement",
+          "settings": {
+            "text": "25% off sitewide - Applied at checkout",
+            "link": "shopify://collections/all",
+            "show_countdown_clock": false,
+            "countdown_clock_end_time": "31/12/2024 23:59:59"
+          }
+        },
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "MIX. MATCH. SAVE. 40% OFF select mixhers favorites",
+            "text": "Lock-in 25% off all subscriptions",
             "link": "https://mixhers.com/collections/40-off",
             "show_countdown_clock": false,
             "countdown_clock_end_time": "08/10/2025 23:59:59"
@@ -35,19 +44,9 @@
         },
         "announcement_Ye8hTV": {
           "type": "announcement",
-          "disabled": true,
           "settings": {
-            "text": "Mixhers Calm 50% Off",
-            "link": "shopify://products/calm",
-            "show_countdown_clock": false,
-            "countdown_clock_end_time": "31/12/2024 23:59:59"
-          }
-        },
-        "announcement_tzAbFb": {
-          "type": "announcement",
-          "settings": {
-            "text": "Refer a Friend! Give $20, Get $20",
-            "link": "https://mixhers.com/pages/refer",
+            "text": "Up to 65% off Mixhers favorites",
+            "link": "shopify://collections/40-off",
             "show_countdown_clock": false,
             "countdown_clock_end_time": "31/12/2024 23:59:59"
           }
@@ -55,9 +54,9 @@
       },
       "block_order": [
         "announcement_eaiYYp",
+        "announcement_tzAbFb",
         "announcement-bar-0",
-        "announcement_Ye8hTV",
-        "announcement_tzAbFb"
+        "announcement_Ye8hTV"
       ],
       "settings": {
         "auto_rotate": true,
