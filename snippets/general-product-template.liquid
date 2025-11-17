@@ -718,7 +718,9 @@
                                             <div class="product-sub-radio selected" data-sub="true"><span></span></div>
                                             <div class="product-sub-label">
                                                 <p class="button-5">
-                                                    {% if useNewPricing %}
+                                                    {% if product.metafields.custom.subscribe_save_text %}
+                                                        {{ product.metafields.custom.subscribe_save_text }}
+                                                    {% elsif useNewPricing %}
                                                         Subscribe & Save
                                                     {% elsif productSale %}
                                                         {{ section.settings.discount_text }}
