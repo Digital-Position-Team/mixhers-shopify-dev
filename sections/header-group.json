@@ -43,6 +43,7 @@
         },
         "announcement_eaiYYp": {
           "type": "announcement",
+          "disabled": true,
           "settings": {
             "text": "FREE Crae Hand Towel with $60+ Purchase",
             "link": "https://mixhers.com/collections/all?collection=all-products",
