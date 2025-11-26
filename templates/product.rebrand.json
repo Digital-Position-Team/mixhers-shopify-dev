@@ -94,7 +94,6 @@
         },
         "rebuy_personalization_engine_rebuy_widget_FHTVGM": {
           "type": "shopify://apps/rebuy-personalization-engine/blocks/rebuy-widget/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
-          "disabled": true,
           "settings": {
             "enabled": true,
             "id": "",
@@ -203,6 +202,52 @@
       "name": "Product Info Default",
       "settings": {}
     },
+    "scrolling_text_center_icon_kc3kh9": {
+      "type": "scrolling-text-center-icon",
+      "blocks": {
+        "text_item_id4nG3": {
+          "type": "text_item",
+          "settings": {
+            "text": "Zero calories"
+          }
+        },
+        "text_item_GCA8X4": {
+          "type": "text_item",
+          "settings": {
+            "text": "Highly Absorbable"
+          }
+        },
+        "text_item_it4Nca": {
+          "type": "text_item",
+          "settings": {
+            "text": "All natural"
+          }
+        },
+        "text_item_9yideh": {
+          "type": "text_item",
+          "settings": {
+            "text": "Hormone friendly"
+          }
+        }
+      },
+      "block_order": [
+        "text_item_id4nG3",
+        "text_item_GCA8X4",
+        "text_item_it4Nca",
+        "text_item_9yideh"
+      ],
+      "name": "Scrolling Center Text Section ",
+      "settings": {
+        "text_size": 20,
+        "text_color": "#ff59e4",
+        "icon_color": "#ff59e4",
+        "icon_size": 20,
+        "scroll_duration": 20,
+        "custom_icon": "·",
+        "show_top_border": true,
+        "show_bottom_border": true
+      }
+    },
     "standard_product_overview_RQbBgt": {
       "type": "standard-product-overview",
       "name": "Product Overview",
@@ -267,6 +312,15 @@
         "include_margins": true
       }
     },
+    "standard_recommended_products_MVLQVw": {
+      "type": "standard-recommended-products",
+      "name": "Standard Recommended Products",
+      "settings": {
+        "heading": "Mixes well with",
+        "link_text": "View All →",
+        "link_url": "shopify://collections/all"
+      }
+    },
     "related-products": {
       "type": "related-products",
       "disabled": true,
@@ -290,6 +344,7 @@
   "order": [
     "main",
     "standard_product_main_info_HPArUx",
+    "scrolling_text_center_icon_kc3kh9",
     "standard_product_overview_RQbBgt",
     "standard_product_formulation_4M3MT3",
     "standard_product_comparison_hKQpnG",
@@ -298,6 +353,7 @@
     "standard_product_mix_quiz_BkjTqR",
     "standard_product_review_qGdJaa",
     "17492107941714b699",
+    "standard_recommended_products_MVLQVw",
     "related-products"
   ]
 }
