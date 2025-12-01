@@ -28,8 +28,8 @@
           "settings": {
             "text": "25% off sitewide - Applied at checkout",
             "link": "shopify://collections/all",
-            "show_countdown_clock": false,
-            "countdown_clock_end_time": "31/12/2024 23:59:59"
+            "show_countdown_clock": true,
+            "countdown_clock_end_time": "3/12/2024 23:59:59"
           }
         },
         "announcement-bar-0": {
