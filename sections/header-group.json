@@ -14,15 +14,6 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "announcement_eaiYYp": {
-          "type": "announcement",
-          "settings": {
-            "text": "FREE Mixhers Calm Capsules with every order!",
-            "link": "https://mixhers.com/collections/all?collection=all-products",
-            "show_countdown_clock": false,
-            "countdown_clock_end_time": "31/12/2024 23:59:59"
-          }
-        },
         "announcement_tzAbFb": {
           "type": "announcement",
           "settings": {
@@ -30,6 +21,15 @@
             "link": "shopify://collections/all",
             "show_countdown_clock": true,
             "countdown_clock_end_time": "3/12/2024 23:59:59"
+          }
+        },
+        "announcement_eaiYYp": {
+          "type": "announcement",
+          "settings": {
+            "text": "FREE Mixhers Calm Capsules with every order!",
+            "link": "https://mixhers.com/collections/all?collection=all-products",
+            "show_countdown_clock": false,
+            "countdown_clock_end_time": "31/12/2024 23:59:59"
           }
         },
         "announcement-bar-0": {
@@ -52,8 +52,8 @@
         }
       },
       "block_order": [
-        "announcement_eaiYYp",
         "announcement_tzAbFb",
+        "announcement_eaiYYp",
         "announcement-bar-0",
         "announcement_Ye8hTV"
       ],
