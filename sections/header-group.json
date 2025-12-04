@@ -16,6 +16,7 @@
       "blocks": {
         "announcement_tzAbFb": {
           "type": "announcement",
+          "disabled": true,
           "settings": {
             "text": "25% off sitewide - Applied at checkout",
             "link": "shopify://collections/all",
@@ -25,6 +26,7 @@
         },
         "announcement_eaiYYp": {
           "type": "announcement",
+          "disabled": true,
           "settings": {
             "text": "FREE Mixhers Calm Capsules with every order!",
             "link": "https://mixhers.com/collections/all?collection=all-products",
@@ -34,6 +36,7 @@
         },
         "announcement-bar-0": {
           "type": "announcement",
+          "disabled": true,
           "settings": {
             "text": "Lock-in 25% off all subscriptions",
             "link": "https://mixhers.com/collections/40-off",
@@ -44,7 +47,7 @@
         "announcement_Ye8hTV": {
           "type": "announcement",
           "settings": {
-            "text": "Up to 65% off Mixhers favorites",
+            "text": "40% off Mixhers favorites",
             "link": "shopify://collections/sale",
             "show_countdown_clock": false,
             "countdown_clock_end_time": "31/12/2024 23:59:59"
