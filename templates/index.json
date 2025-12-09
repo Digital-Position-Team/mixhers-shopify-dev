@@ -12,11 +12,10 @@
     "custom_hero_GiCc3A": {
       "type": "custom-hero",
       "blocks": {
-        "image_afea7b": {
+        "image_rMegEc": {
           "type": "image",
-          "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/black_friday_hero.png",
+            "image": "shopify://shop_images/Holiday_Sale_Hero.png",
             "image_link": "shopify://collections/all"
           }
         },
@@ -27,19 +26,19 @@
             "image_link": "https://mixhers.com/collections/all"
           }
         },
-        "image_rMegEc": {
+        "image_afea7b": {
           "type": "image",
           "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/sleep_doorbuster_hero.png",
-            "image_link": "shopify://products/mixkids"
+            "image": "shopify://shop_images/black_friday_hero.png",
+            "image_link": "shopify://collections/all"
           }
         }
       },
       "block_order": [
-        "image_afea7b",
+        "image_rMegEc",
         "image_ACdr3q",
-        "image_rMegEc"
+        "image_afea7b"
       ],
       "name": "Custom Hero",
       "settings": {
