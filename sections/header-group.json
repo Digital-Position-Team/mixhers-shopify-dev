@@ -27,10 +27,10 @@
           "type": "announcement",
           "disabled": true,
           "settings": {
-            "text": "FREE Mixhers Calm Capsules with every order!",
+            "text": "Get your Mixhers before Christmas!",
             "link": "https://mixhers.com/collections/all?collection=all-products",
-            "show_countdown_clock": false,
-            "countdown_clock_end_time": "31/12/2024 23:59:59"
+            "show_countdown_clock": true,
+            "countdown_clock_end_time": "15/12/2024 23:59:59"
           }
         },
         "announcement-bar-0": {
