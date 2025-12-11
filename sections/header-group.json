@@ -16,6 +16,7 @@
       "blocks": {
         "announcement_eaiYYp": {
           "type": "announcement",
+          "disabled": true,
           "settings": {
             "text": "FREE SHIPPING + Get Your Order Before Christmas!",
             "link": "https://mixhers.com/collections/all?collection=all-products",
