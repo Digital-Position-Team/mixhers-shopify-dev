@@ -17,10 +17,10 @@
         "announcement_eaiYYp": {
           "type": "announcement",
           "settings": {
-            "text": "FREE SHIPPING + Get Your Order Before Christmas!",
+            "text": "FREE shipping on ALL orders",
             "link": "https://mixhers.com/collections/all?collection=all-products",
             "show_countdown_clock": true,
-            "countdown_clock_end_time": "15/12/2025 23:59:59"
+            "countdown_clock_end_time": "16/12/2025 12:59:59"
           }
         },
         "announcement_tzAbFb": {
