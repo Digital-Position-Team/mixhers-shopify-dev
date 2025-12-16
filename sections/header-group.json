@@ -16,6 +16,7 @@
       "blocks": {
         "announcement_eaiYYp": {
           "type": "announcement",
+          "disabled": true,
           "settings": {
             "text": "FREE shipping on ALL orders",
             "link": "https://mixhers.com/collections/all?collection=all-products",
