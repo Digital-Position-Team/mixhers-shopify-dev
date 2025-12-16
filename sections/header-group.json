@@ -16,11 +16,10 @@
       "blocks": {
         "announcement_eaiYYp": {
           "type": "announcement",
-          "disabled": true,
           "settings": {
-            "text": "FREE shipping on ALL orders",
+            "text": "FREE lip butter with Hertime PMS and Libido purchases! TODAY ONLY",
             "link": "https://mixhers.com/collections/all?collection=all-products",
-            "show_countdown_clock": true,
+            "show_countdown_clock": false,
             "countdown_clock_end_time": "16/12/2025 12:59:59"
           }
         },
