@@ -16,6 +16,7 @@
       "blocks": {
         "announcement_eaiYYp": {
           "type": "announcement",
+          "disabled": true,
           "settings": {
             "text": "FREE lip butter with Hertime PMS and Libido purchases!",
             "link": "https://mixhers.com/collections/all?collection=all-products",
