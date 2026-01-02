@@ -14,13 +14,13 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "announcement_eaiYYp": {
+        "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "Use your HSA/FSA funds to purchase Mixhers!",
-            "link": "https://mixhers.com/collections/all?collection=all-products",
+            "text": "FREE 30-day supply of Creatine with $100+ purchase!",
+            "link": "shopify://collections/all",
             "show_countdown_clock": false,
-            "countdown_clock_end_time": "16/12/2025 12:59:59"
+            "countdown_clock_end_time": "08/10/2025 23:59:59"
           }
         },
         "announcement_tzAbFb": {
@@ -32,15 +32,6 @@
             "countdown_clock_end_time": "3/12/2025 23:59:59"
           }
         },
-        "announcement-bar-0": {
-          "type": "announcement",
-          "settings": {
-            "text": "FREE 15 Pack of Mixhers Greens with purchase of $60+",
-            "link": "https://mixhers.com/collections/40-off",
-            "show_countdown_clock": false,
-            "countdown_clock_end_time": "08/10/2025 23:59:59"
-          }
-        },
         "announcement_Ye8hTV": {
           "type": "announcement",
           "settings": {
@@ -49,13 +40,22 @@
             "show_countdown_clock": false,
             "countdown_clock_end_time": "31/12/2024 23:59:59"
           }
+        },
+        "announcement_eaiYYp": {
+          "type": "announcement",
+          "settings": {
+            "text": "Use your HSA/FSA funds to purchase Mixhers!",
+            "link": "https://mixhers.com/collections/all?collection=all-products",
+            "show_countdown_clock": false,
+            "countdown_clock_end_time": "16/12/2025 12:59:59"
+          }
         }
       },
       "block_order": [
-        "announcement_eaiYYp",
-        "announcement_tzAbFb",
         "announcement-bar-0",
-        "announcement_Ye8hTV"
+        "announcement_tzAbFb",
+        "announcement_Ye8hTV",
+        "announcement_eaiYYp"
       ],
       "settings": {
         "auto_rotate": true,
