@@ -33,21 +33,26 @@
     if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
       assign has_social_icons = false
     endif
+
     if settings.brand_image == blank and settings.brand_headline == blank and settings.brand_description == blank
       assign brand_empty = true
     endif
+
     if section.blocks.size == 1 and section.blocks[0].type == 'brand_information' and brand_empty and has_social_icons == false and section.settings.newsletter_enable == false and section.settings.enable_follow_on_shop == false
       assign only_empty_brand = true
     endif
   -%}
+
   {%- if section.blocks.size > 0 or section.settings.newsletter_enable or section.settings.show_social and has_social_icons == true or section.settings.enable_follow_on_shop -%}
     {%- unless only_empty_brand -%}
       <div class="footer__main-row page-width" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 32px; padding: 0px 1rem;">
+
         {%- for block in section.blocks -%}
           <div class="footer-block footer-block--{{ block.type }}">
             {%- if block.settings.heading != blank -%}
               <h2 class="footer-block__heading inline-richtext">{{- block.settings.heading -}}</h2>
             {%- endif -%}
+
             {%- case block.type -%}
               {%- when 'link_list' -%}
                 {%- if block.settings.menu != blank -%}
@@ -61,34 +66,55 @@
                     {%- endfor -%}
                   </ul>
                 {%- endif -%}
+
               {%- when 'brand_information' -%}
                 <div class="footer-block__brand-info">
                   {%- if settings.brand_image != blank -%}
                     {%- assign brand_image_height = settings.brand_image_width | divided_by: settings.brand_image.aspect_ratio -%}
                     <div class="footer-block__image-wrapper" style="max-width: min(100%, {{ settings.brand_image_width }}px);">
-                      {{ settings.brand_image | image_url: width: 1100 | image_tag: loading: 'lazy', widths: '50, 100, 150, 200, 300, 400, 550, 800, 1100', height: brand_image_height, width: settings.brand_image_width }}
+                      {{
+                        settings.brand_image
+                        | image_url: width: 1100
+                        | image_tag:
+                          loading: 'lazy',
+                          widths: '50, 100, 150, 200, 300, 400, 550, 800, 1100',
+                          height: brand_image_height,
+                          width: settings.brand_image_width
+                      }}
                     </div>
                   {%- endif -%}
+
                   {%- if settings.brand_headline != blank -%}
                     <h2 class="footer-block__heading rte">{{ settings.brand_headline }}</h2>
                   {%- endif -%}
+
                   {%- if settings.brand_description != blank -%}
                     <div class="rte">{{ settings.brand_description }}</div>
                   {%- endif -%}
+
                   {%- if block.settings.show_social and has_social_icons -%}
                     {%- render 'social-icons', class: 'footer__list-social' -%}
                   {%- endif -%}
                 </div>
+
               {%- when 'text' -%}
                 <div class="footer-block__details-content rte">
                   {{ block.settings.subtext }}
                 </div>
+
               {%- when 'image' -%}
                 <div class="footer-block__details-content footer-block-image {{ block.settings.alignment }}">
                   {%- if block.settings.image != blank -%}
                     {%- assign image_size_2x = block.settings.image_width | times: 2 | at_most: 5760 -%}
                     <div class="footer-block__image-wrapper" style="max-width: min(100%, {{ block.settings.image_width }}px);">
-                      <img srcset="{{ block.settings.image | image_url: width: block.settings.image_width }}, {{ block.settings.image | image_url: width: image_size_2x }} 2x" src="{{ block.settings.image | image_url: width: 760 }}" alt="{{ block.settings.image.alt | escape }}" loading="lazy" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}">
+                      <img
+                        srcset="{{ block.settings.image | image_url: width: block.settings.image_width }}, {{ block.settings.image | image_url: width: image_size_2x }} 2x"
+                        src="{{ block.settings.image | image_url: width: 760 }}"
+                        alt="{{ block.settings.image.alt | escape }}"
+                        loading="lazy"
+                        width="{{ block.settings.image.width }}"
+                        height="{{ block.settings.image.height }}"
+                      >
                     </div>
                   {%- else -%}
                     {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
@@ -97,79 +123,108 @@
             {%- endcase -%}
           </div>
         {%- endfor -%}
+
         {%- if section.settings.newsletter_enable -%}
           <div class="footer-block--newsletter">
             <div class="footer-block__newsletter-custom">
+
               {%- if section.settings.newsletter_heading != blank -%}
                 <h2 class="footer-block__heading inline-richtext">{{ section.settings.newsletter_heading }}</h2>
               {%- endif -%}
+
               {%- if section.settings.newsletter_subheading != blank -%}
                 <div class="footer-block__subheading">{{ section.settings.newsletter_subheading }}</div>
               {%- endif -%}
-              <form id="newsletter-form" class="footer-newsletter-form">
+
+              {%- form 'customer', id: 'ContactFooter', class: 'footer-newsletter-form' -%}
+                <input type="hidden" name="contact[tags]" value="newsletter">
+
                 <div class="footer-newsletter-input-row">
                   <input
                     class="footer-newsletter-input"
                     type="email"
-                    name="email"
+                    name="contact[email]"
                     placeholder="Enter Email"
+                    value="{{ form.email }}"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    autocomplete="email"
+                    aria-required="true"
                     required
+                    {% if form.errors %}
+                      aria-invalid="true"
+                      aria-describedby="ContactFooter-error"
+                    {% elsif form.posted_successfully? %}
+                      aria-describedby="ContactFooter-success"
+                    {% endif %}
                   >
-                  <button type="submit" class="footer-newsletter-submit">Subscribe</button>
+                  <button type="submit" class="footer-newsletter-submit" name="commit">Subscribe</button>
                 </div>
-                <div id="success-message" class="footer-newsletter-success-message" style="display: none;">
-                  {{ section.settings.newsletter_success_message }}
-                </div>
-                <div id="error-message" class="footer-newsletter-error-message" style="display: none;">
-                  {{ section.settings.newsletter_error_message }}
-                </div>
-              </form>
+
+                {%- if form.errors -%}
+                  <div id="ContactFooter-error" class="footer-newsletter-error-message">
+                    {{ section.settings.newsletter_error_message }}
+                  </div>
+                {%- endif -%}
+
+                {%- if form.posted_successfully? -%}
+                  <div id="ContactFooter-success" class="footer-newsletter-success-message">
+                    {{ section.settings.newsletter_success_message }}
+                  </div>
+                {%- endif -%}
+              {%- endform -%}
+
               {%- if section.settings.show_social -%}
-              <div class="footer-newsletter-social-row">
-                <a href="https://www.instagram.com/mixhers/?hl=en" target="_blank" aria-label="Go to Mixhers Instagram page">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <g clip-path="url(#clip0_296_650)">
-                      <path d="M12.188 2.98378C15.2023 2.98378 15.5603 2.9932 16.7566 3.04972C19.818 3.19101 21.2498 4.64166 21.3911 7.68427C21.4477 8.88058 21.4571 9.23853 21.4571 12.2529C21.4571 15.2672 21.4477 15.6252 21.3911 16.8215C21.2498 19.8641 19.8275 21.3147 16.7566 21.456C15.5603 21.5126 15.2117 21.522 12.188 21.522C9.16423 21.522 8.8157 21.5126 7.61938 21.456C4.54852 21.3147 3.12613 19.8547 2.98483 16.8215C2.92832 15.6252 2.9189 15.2766 2.9189 12.2529C2.9189 9.22912 2.92832 8.88058 2.98483 7.68427C3.12613 4.64166 4.54852 3.19101 7.61938 3.04972C8.8157 2.9932 9.16423 2.98378 12.188 2.98378ZM12.188 0.949097C9.11713 0.949097 8.73092 0.958516 7.52518 1.01504C3.42757 1.20343 1.13855 3.48303 0.950155 7.59007C0.893636 8.7958 0.884216 9.18202 0.884216 12.2529C0.884216 15.3237 0.893636 15.7099 0.950155 16.9157C1.13855 21.0227 3.41815 23.3023 7.52518 23.4907C8.73092 23.5472 9.11713 23.5567 12.188 23.5567C15.2588 23.5567 15.6451 23.5472 16.8508 23.4907C20.9484 23.3023 23.2374 21.0227 23.4258 16.9157C23.4823 15.7099 23.4918 15.3237 23.4918 12.2529C23.4918 9.18202 23.4823 8.7958 23.4258 7.59007C23.2374 3.49245 20.9578 1.20343 16.8508 1.01504C15.6451 0.958516 15.2588 0.949097 12.188 0.949097ZM12.188 6.45027C8.98525 6.45027 6.38539 9.05014 6.38539 12.2529C6.38539 15.4556 8.98525 18.0555 12.188 18.0555C15.3907 18.0555 17.9906 15.4556 17.9906 12.2529C17.9906 9.05014 15.3907 6.45027 12.188 6.45027ZM12.188 16.0208C10.1062 16.0208 8.42006 14.3347 8.42006 12.2529C8.42006 10.1711 10.1062 8.48495 12.188 8.48495C14.2698 8.48495 15.9559 10.1711 15.9559 12.2529C15.9559 14.3347 14.2698 16.0208 12.188 16.0208ZM18.2261 4.85832C17.4725 4.85832 16.8696 5.46119 16.8696 6.21477C16.8696 6.96836 17.4819 7.57123 18.2261 7.57123C18.9703 7.57123 19.5825 6.96836 19.5825 6.21477C19.5825 5.46119 18.9797 4.85832 18.2261 4.85832Z" fill="black"></path>
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_296_650">
-                        <rect width="22.6075" height="22.6076" fill="white" transform="translate(0.884216 0.949097)"></rect>
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </a>
-                <a href="https://www.facebook.com/mixherssupplements/" target="_blank" aria-label="Go to Mixhers Facebook page">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="11" height="24" viewBox="0 0 11 24" fill="none">
-                    <g clip-path="url(#clip0_296_652)">
-                      <path d="M10.5191 8.26812H6.98828V5.9236C6.98828 5.04382 7.56522 4.83791 7.97138 4.83791H10.4637V0.963136L7.03444 0.949097C3.22665 0.949097 2.35894 3.83646 2.35894 5.68962V8.2728H0.157349V12.2646H2.35894V23.5613H6.98828V12.2646H10.113L10.5191 8.2728V8.26812Z" fill="black"></path>
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_296_652">
-                        <rect width="10.3618" height="22.6076" fill="white" transform="translate(0.157349 0.949097)"></rect>
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </a>
-                <a href="https://in.pinterest.com/mixhers/_created/" target="_blank" aria-label="Go to Mixhers Pinterest page">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" viewBox="0 0 20 25" fill="none">
-                    <g clip-path="url(#clip0_296_654)">
-                      <path d="M10.8863 0.00708008C4.2431 0.00708008 0.894592 4.79911 0.894592 8.79411C0.894592 11.2147 1.80382 13.3647 3.75427 14.1667C4.0769 14.2995 4.36042 14.1667 4.4533 13.8125C4.51685 13.5665 4.66838 12.9416 4.73682 12.6809C4.8297 12.3266 4.79548 12.2036 4.5364 11.8986C3.97424 11.2295 3.6125 10.3685 3.6125 9.1385C3.6125 5.58138 6.25709 2.40309 10.4953 2.40309C14.2495 2.40309 16.3124 4.71055 16.3124 7.79536C16.3124 11.8543 14.5281 15.2786 11.8836 15.2786C10.422 15.2786 9.32696 14.0634 9.67892 12.5677C10.0993 10.7867 10.9108 8.86299 10.9108 7.57396C10.9108 6.42269 10.2949 5.4633 9.02389 5.4633C7.52806 5.4633 6.33042 7.01801 6.33042 9.10406C6.33042 10.4324 6.77526 11.3279 6.77526 11.3279C6.77526 11.3279 5.24521 17.8517 4.97635 18.9932C4.44352 21.2662 4.89814 24.0558 4.93724 24.3411C4.96168 24.5084 5.17188 24.5478 5.26965 24.4248C5.40652 24.2427 7.18587 22.0337 7.79203 19.8197C7.96312 19.1949 8.77458 15.9526 8.77458 15.9526C9.25853 16.8874 10.681 17.7041 12.1915 17.7041C16.6839 17.7041 19.7342 13.5812 19.7342 8.06595C19.7342 3.89384 16.2244 0.00708008 10.8863 0.00708008Z" fill="black"></path>
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_296_654">
-                        <rect width="18.8396" height="24.4915" fill="white" transform="translate(0.894592 0.00708008)"></rect>
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </a>
-              </div>
+                <div class="footer-newsletter-social-row">
+                  <a href="https://www.instagram.com/mixhers/?hl=en" target="_blank" aria-label="Go to Mixhers Instagram page">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <g clip-path="url(#clip0_296_650)">
+                        <path d="M12.188 2.98378C15.2023 2.98378 15.5603 2.9932 16.7566 3.04972C19.818 3.19101 21.2498 4.64166 21.3911 7.68427C21.4477 8.88058 21.4571 9.23853 21.4571 12.2529C21.4571 15.2672 21.4477 15.6252 21.3911 16.8215C21.2498 19.8641 19.8275 21.3147 16.7566 21.456C15.5603 21.5126 15.2117 21.522 12.188 21.522C9.16423 21.522 8.8157 21.5126 7.61938 21.456C4.54852 21.3147 3.12613 19.8547 2.98483 16.8215C2.92832 15.6252 2.9189 15.2766 2.9189 12.2529C2.9189 9.22912 2.92832 8.88058 2.98483 7.68427C3.12613 4.64166 4.54852 3.19101 7.61938 3.04972C8.8157 2.9932 9.16423 2.98378 12.188 2.98378ZM12.188 0.949097C9.11713 0.949097 8.73092 0.958516 7.52518 1.01504C3.42757 1.20343 1.13855 3.48303 0.950155 7.59007C0.893636 8.7958 0.884216 9.18202 0.884216 12.2529C0.884216 15.3237 0.893636 15.7099 0.950155 16.9157C1.13855 21.0227 3.41815 23.3023 7.52518 23.4907C8.73092 23.5472 9.11713 23.5567 12.188 23.5567C15.2588 23.5567 15.6451 23.5472 16.8508 23.4907C20.9484 23.3023 23.2374 21.0227 23.4258 16.9157C23.4823 15.7099 23.4918 15.3237 23.4918 12.2529C23.4918 9.18202 23.4823 8.7958 23.4258 7.59007C23.2374 3.49245 20.9578 1.20343 16.8508 1.01504C15.6451 0.958516 15.2588 0.949097 12.188 0.949097ZM12.188 6.45027C8.98525 6.45027 6.38539 9.05014 6.38539 12.2529C6.38539 15.4556 8.98525 18.0555 12.188 18.0555C15.3907 18.0555 17.9906 15.4556 17.9906 12.2529C17.9906 9.05014 15.3907 6.45027 12.188 6.45027ZM12.188 16.0208C10.1062 16.0208 8.42006 14.3347 8.42006 12.2529C8.42006 10.1711 10.1062 8.48495 12.188 8.48495C14.2698 8.48495 15.9559 10.1711 15.9559 12.2529C15.9559 14.3347 14.2698 16.0208 12.188 16.0208ZM18.2261 4.85832C17.4725 4.85832 16.8696 5.46119 16.8696 6.21477C16.8696 6.96836 17.4819 7.57123 18.2261 7.57123C18.9703 7.57123 19.5825 6.96836 19.5825 6.21477C19.5825 5.46119 18.9797 4.85832 18.2261 4.85832Z" fill="black"></path>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_296_650">
+                          <rect width="22.6075" height="22.6076" fill="white" transform="translate(0.884216 0.949097)"></rect>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </a>
+
+                  <a href="https://www.facebook.com/mixherssupplements/" target="_blank" aria-label="Go to Mixhers Facebook page">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="24" viewBox="0 0 11 24" fill="none">
+                      <g clip-path="url(#clip0_296_652)">
+                        <path d="M10.5191 8.26812H6.98828V5.9236C6.98828 5.04382 7.56522 4.83791 7.97138 4.83791H10.4637V0.963136L7.03444 0.949097C3.22665 0.949097 2.35894 3.83646 2.35894 5.68962V8.2728H0.157349V12.2646H2.35894V23.5613H6.98828V12.2646H10.113L10.5191 8.2728V8.26812Z" fill="black"></path>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_296_652">
+                          <rect width="10.3618" height="22.6076" fill="white" transform="translate(0.157349 0.949097)"></rect>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </a>
+
+                  <a href="https://in.pinterest.com/mixhers/_created/" target="_blank" aria-label="Go to Mixhers Pinterest page">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" viewBox="0 0 20 25" fill="none">
+                      <g clip-path="url(#clip0_296_654)">
+                        <path d="M10.8863 0.00708008C4.2431 0.00708008 0.894592 4.79911 0.894592 8.79411C0.894592 11.2147 1.80382 13.3647 3.75427 14.1667C4.0769 14.2995 4.36042 14.1667 4.4533 13.8125C4.51685 13.5665 4.66838 12.9416 4.73682 12.6809C4.8297 12.3266 4.79548 12.2036 4.5364 11.8986C3.97424 11.2295 3.6125 10.3685 3.6125 9.1385C3.6125 5.58138 6.25709 2.40309 10.4953 2.40309C14.2495 2.40309 16.3124 4.71055 16.3124 7.79536C16.3124 11.8543 14.5281 15.2786 11.8836 15.2786C10.422 15.2786 9.32696 14.0634 9.67892 12.5677C10.0993 10.7867 10.9108 8.86299 10.9108 7.57396C10.9108 6.42269 10.2949 5.4633 9.02389 5.4633C7.52806 5.4633 6.33042 7.01801 6.33042 9.10406C6.33042 10.4324 6.77526 11.3279 6.77526 11.3279C6.77526 11.3279 5.24521 17.8517 4.97635 18.9932C4.44352 21.2662 4.89814 24.0558 4.93724 24.3411C4.96168 24.5084 5.17188 24.5478 5.26965 24.4248C5.40652 24.2427 7.18587 22.0337 7.79203 19.8197C7.96312 19.1949 8.77458 15.9526 8.77458 15.9526C9.25853 16.8874 10.681 17.7041 12.1915 17.7041C16.6839 17.7041 19.7342 13.5812 19.7342 8.06595C19.7342 3.89384 16.2244 0.00708008 10.8863 0.00708008Z" fill="black"></path>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_296_654">
+                          <rect width="18.8396" height="24.4915" fill="white" transform="translate(0.894592 0.00708008)"></rect>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </a>
+                </div>
               {%- endif -%}
+
             </div>
           </div>
         {%- endif -%}
+
       </div>
     {%- endunless -%}
   {%- endif -%}
+
   <div class="footer__logo-bar page-width" style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 32px 1rem 0 1rem;">
     <div style="width: 100%; margin: 0 auto;">
       <img src="{{ 'mixhers-logo.svg' | asset_url }}" width="100%" height="auto">
@@ -177,131 +232,49 @@
   </div>
 </footer>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var form = document.getElementById('newsletter-form');
-    if (form) {
-      form.onsubmit = function (event) {
-        event.preventDefault();
-        var formData = new FormData(this);
-        fetch('https://hooks.zapier.com/hooks/catch/12580679/3nq3i1s', {
-          method: 'POST',
-          body: formData,
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            document.getElementById('success-message').style.display = 'block';
-            document.getElementById('error-message').style.display = 'none';
-            form.reset();
-            setTimeout(function () {
-              document.getElementById('success-message').style.display = 'none';
-            }, 6000);
-          })
-          .catch((error) => {
-            document.getElementById('error-message').style.display = 'block';
-            document.getElementById('success-message').style.display = 'none';
-          });
-      };
-    }
-  });
-</script>
-
 {% schema %}
 {
   "name": "t:sections.footer.name",
   "blocks": [
-    {
-      "type": "@app"
-    },
+    { "type": "@app" },
     {
       "type": "link_list",
       "name": "t:sections.footer.blocks.link_list.name",
       "settings": [
-        {
-          "type": "inline_richtext",
-          "id": "heading",
-          "default": "t:sections.footer.blocks.link_list.settings.heading.default",
-          "label": "t:sections.footer.blocks.link_list.settings.heading.label"
-        },
-        {
-          "type": "link_list",
-          "id": "menu",
-          "default": "footer",
-          "label": "t:sections.footer.blocks.link_list.settings.menu.label"
-        }
+        { "type": "inline_richtext", "id": "heading", "default": "t:sections.footer.blocks.link_list.settings.heading.default", "label": "t:sections.footer.blocks.link_list.settings.heading.label" },
+        { "type": "link_list", "id": "menu", "default": "footer", "label": "t:sections.footer.blocks.link_list.settings.menu.label" }
       ]
     },
     {
       "type": "brand_information",
       "name": "t:sections.footer.blocks.brand_information.name",
       "settings": [
-        {
-          "type": "paragraph",
-          "content": "t:sections.footer.blocks.brand_information.settings.paragraph.content"
-        },
-        {
-          "type": "checkbox",
-          "id": "show_social",
-          "default": true,
-          "label": "t:sections.footer.blocks.brand_information.settings.show_social.label",
-          "info": "t:sections.footer.blocks.brand_information.settings.show_social.info"
-        }
+        { "type": "paragraph", "content": "t:sections.footer.blocks.brand_information.settings.paragraph.content" },
+        { "type": "checkbox", "id": "show_social", "default": true, "label": "t:sections.footer.blocks.brand_information.settings.show_social.label", "info": "t:sections.footer.blocks.brand_information.settings.show_social.info" }
       ]
     },
     {
       "type": "text",
       "name": "t:sections.footer.blocks.text.name",
       "settings": [
-        {
-          "type": "inline_richtext",
-          "id": "heading",
-          "default": "t:sections.footer.blocks.text.settings.heading.default",
-          "label": "t:sections.footer.blocks.text.settings.heading.label"
-        },
-        {
-          "type": "richtext",
-          "id": "subtext",
-          "default": "t:sections.footer.blocks.text.settings.subtext.default",
-          "label": "t:sections.footer.blocks.text.settings.subtext.label"
-        }
+        { "type": "inline_richtext", "id": "heading", "default": "t:sections.footer.blocks.text.settings.heading.default", "label": "t:sections.footer.blocks.text.settings.heading.label" },
+        { "type": "richtext", "id": "subtext", "default": "t:sections.footer.blocks.text.settings.subtext.default", "label": "t:sections.footer.blocks.text.settings.subtext.label" }
       ]
     },
     {
       "type": "image",
       "name": "Image",
       "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        },
-        {
-          "type": "range",
-          "id": "image_width",
-          "min": 50,
-          "max": 550,
-          "step": 5,
-          "unit": "px",
-          "label": "Width",
-          "default": 100
-        },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "range", "id": "image_width", "min": 50, "max": 550, "step": 5, "unit": "px", "label": "Width", "default": 100 },
         {
           "type": "select",
           "id": "alignment",
           "label": "Alignment",
           "options": [
-            {
-              "value": "",
-              "label": "Left"
-            },
-            {
-              "value": "center",
-              "label": "Center"
-            },
-            {
-              "value": "right",
-              "label": "Right"
-            }
+            { "value": "", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
           ],
           "default": "center"
         }
@@ -309,141 +282,36 @@
     }
   ],
   "settings": [
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "t:sections.all.colors.label",
-      "default": "scheme-1"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.footer.settings.header__1.content",
-      "info": "t:sections.footer.settings.header__1.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "newsletter_enable",
-      "default": true,
-      "label": "t:sections.footer.settings.newsletter_enable.label"
-    },
-    {
-      "type": "inline_richtext",
-      "id": "newsletter_heading",
-      "default": "t:sections.footer.settings.newsletter_heading.default",
-      "label": "t:sections.footer.settings.newsletter_heading.label"
-    },
-    {
-      "type": "inline_richtext",
-      "id": "newsletter_subheading",
-      "default": "Be the first to know about new products and flavors by signing up.",
-      "label": "Newsletter Subheading"
-    },
-    {
-      "type": "text",
-      "id": "newsletter_success_message",
-      "default": "Thanks for subscribing!",
-      "label": "Newsletter Success Message"
-    },
-    {
-      "type": "text",
-      "id": "newsletter_error_message",
-      "default": "There was an error. Please try again.",
-      "label": "Newsletter Error Message"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.footer.settings.header__9.content"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_follow_on_shop",
-      "default": true,
-      "label": "t:sections.footer.settings.enable_follow_on_shop.label",
-      "info": "t:sections.footer.settings.enable_follow_on_shop.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_social",
-      "default": true,
-      "label": "t:sections.footer.settings.show_social.label",
-      "info": "t:sections.footer.settings.show_social.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_country_selector",
-      "default": true,
-      "label": "t:sections.footer.settings.enable_country_selector.label",
-      "info": "t:sections.footer.settings.enable_country_selector.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_language_selector",
-      "default": true,
-      "label": "t:sections.footer.settings.enable_language_selector.label",
-      "info": "t:sections.footer.settings.enable_language_selector.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "payment_enable",
-      "default": true,
-      "label": "t:sections.footer.settings.payment_enable.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_policy",
-      "default": true,
-      "label": "t:sections.footer.settings.show_policy.label",
-      "info": "t:sections.footer.settings.show_policy.info"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.spacing"
-    },
-    {
-      "type": "range",
-      "id": "margin_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.footer.settings.margin_top.label",
-      "default": 0
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
-    }
+    { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-1" },
+
+    { "type": "header", "content": "t:sections.footer.settings.header__1.content", "info": "t:sections.footer.settings.header__1.info" },
+    { "type": "checkbox", "id": "newsletter_enable", "default": true, "label": "t:sections.footer.settings.newsletter_enable.label" },
+    { "type": "inline_richtext", "id": "newsletter_heading", "default": "t:sections.footer.settings.newsletter_heading.default", "label": "t:sections.footer.settings.newsletter_heading.label" },
+
+    { "type": "inline_richtext", "id": "newsletter_subheading", "default": "Be the first to know about new products and flavors by signing up.", "label": "Newsletter Subheading" },
+    { "type": "text", "id": "newsletter_success_message", "default": "Thanks for subscribing!", "label": "Newsletter Success Message" },
+    { "type": "text", "id": "newsletter_error_message", "default": "There was an error. Please try again.", "label": "Newsletter Error Message" },
+
+    { "type": "header", "content": "t:sections.footer.settings.header__9.content" },
+    { "type": "checkbox", "id": "enable_follow_on_shop", "default": true, "label": "t:sections.footer.settings.enable_follow_on_shop.label", "info": "t:sections.footer.settings.enable_follow_on_shop.info" },
+    { "type": "checkbox", "id": "show_social", "default": true, "label": "t:sections.footer.settings.show_social.label", "info": "t:sections.footer.settings.show_social.info" },
+    { "type": "checkbox", "id": "enable_country_selector", "default": true, "label": "t:sections.footer.settings.enable_country_selector.label", "info": "t:sections.footer.settings.enable_country_selector.info" },
+    { "type": "checkbox", "id": "enable_language_selector", "default": true, "label": "t:sections.footer.settings.enable_language_selector.label", "info": "t:sections.footer.settings.enable_language_selector.info" },
+    { "type": "checkbox", "id": "payment_enable", "default": true, "label": "t:sections.footer.settings.payment_enable.label" },
+    { "type": "checkbox", "id": "show_policy", "default": true, "label": "t:sections.footer.settings.show_policy.label", "info": "t:sections.footer.settings.show_policy.info" },
+
+    { "type": "header", "content": "t:sections.all.spacing" },
+    { "type": "range", "id": "margin_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.footer.settings.margin_top.label", "default": 0 },
+    { "type": "header", "content": "t:sections.all.padding.section_padding_heading" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_top", "default": 36 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_bottom", "default": 36 }
   ],
   "presets": [
     {
       "name": "Footer",
       "blocks": [
-        {
-          "type": "link_list"
-        },
-        {
-          "type": "text"
-        }
+        { "type": "link_list" },
+        { "type": "text" }
       ]
     }
   ]
