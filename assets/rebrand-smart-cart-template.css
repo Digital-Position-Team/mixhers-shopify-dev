@@ -1083,7 +1083,7 @@ input#rebuy-discount-input {
   margin-bottom: 0;
 }
 
-.rebuy-cart__flyout-item.hide-subscribe-and-save .rebuy-cart__flyout-item-subscription {
+.rebuy-cart__flyout-item.hide- .rebuy-cart__flyout-item-subscription {
   display: none;
 }
 .rebuy-cart__flyout-item.hide-subscribe-and-save .rebuy-cart__flyout-item-quantity .show-remove-btn {
