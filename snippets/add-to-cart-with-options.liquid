@@ -227,8 +227,7 @@
   {% endif %}
 {% endif %}
 
-              <option>
-  value="{{ variant.id }}"
+              <option value="{{ variant.id }}"
   data-flavor="{{ variant.options[0] }}"
   data-quantity="{{ variant.options[1] }}"
   data-color="{{ variant.metafields.rebrand.bubble.value | default: "transparent" }}"
