@@ -26,6 +26,7 @@
         },
         "announcement_tzAbFb": {
           "type": "announcement",
+          "disabled": true,
           "settings": {
             "text": "HOLIDAY SALE: Lock-in 20% Off Subscriptions",
             "link": "shopify://collections/all",
@@ -36,7 +37,7 @@
         "announcement_Ye8hTV": {
           "type": "announcement",
           "settings": {
-            "text": "40% off Mixhers favorites",
+            "text": "15% off Mixhers favorites",
             "link": "shopify://collections/sale",
             "show_countdown_clock": false,
             "countdown_clock_end_time": "31/12/2024 23:59:59"
@@ -44,6 +45,7 @@
         },
         "announcement_eaiYYp": {
           "type": "announcement",
+          "disabled": true,
           "settings": {
             "text": "Use your HSA/FSA funds to purchase Mixhers!",
             "link": "https://mixhers.com/collections/all?collection=all-products",
