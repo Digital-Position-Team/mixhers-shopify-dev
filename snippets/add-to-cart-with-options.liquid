@@ -227,21 +227,7 @@
   {% endif %}
 {% endif %}
 
-              <option value="{{ variant.id }}"
-  data-flavor="{{ variant.options[0] }}"
-  data-quantity="{{ variant.options[1] }}"
-  data-color="{{ variant.metafields.rebrand.bubble.value | default: "transparent" }}"
-  data-out-of-stock="{{ variant_out_of_stock }}"
-  data-price="{{ variant.price }}"
-  {% if variant.selling_plan_allocations != blank and variant.selling_plan_allocations.first != blank %}
-    data-subscription-price="{{ variant.selling_plan_allocations.first.price }}"
-    data-subscribe-and-save-compare-price="{{ variant.selling_plan_allocations.first.compare_at_price }}"
-  {% endif %}
-  {% if variant_out_of_stock %}disabled{% endif %}
-  {% if default_variant.id == variant.id and variant_out_of_stock == false %}selected{% endif %}
->
-  {{ variant.options[0] }}{% if variant_out_of_stock %} (Out of Stock){% endif %}
-</option>
+              <option value="{{ variant.id }}" data-flavor="{{ variant.options[0] }}" data-quantity="{{ variant.options[1] }}" data-color="{{ variant.metafields.rebrand.bubble.value | default: "transparent" }}" data-out-of-stock="{{ variant_out_of_stock }}" data-price="{{ variant.price }}" data-subscription-price="{{ variant.selling_plan_allocations.first.price }}" data-subscribe-and-save-compare-price="{{ variant.selling_plan_allocations.first.compare_at_price }}" {% if variant_out_of_stock %}disabled{% endif %} {% if default_variant.id == variant.id and variant_out_of_stock == false %}selected{% endif %}> {{ variant.options[0] }}{% if variant_out_of_stock %} (Out of Stock){% endif %} </option>
             {% endfor %}
           </select>
         </div>
