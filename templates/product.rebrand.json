@@ -250,7 +250,6 @@
     },
     "standard_product_overview_RQbBgt": {
       "type": "standard-product-overview",
-      "disabled": true,
       "name": "Product Overview",
       "settings": {
         "overview_title": "Product Overview",
