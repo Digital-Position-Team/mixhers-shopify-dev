@@ -14,7 +14,7 @@
         <p class="product-subtitle margin-0">{{ product_subtitle | default: '' }}</p>
         <div>
           {% if enable_price %}
-          <div class="axl" style="display: none;font-size: 18px;font-weight: bold;">{{enable_price | json}}{{ target_product.variants.first.price | money }}</div>
+            <div class="axl" style="display: none;font-size: 18px;font-weight: bold;">{{enable_price | json}}{{ target_product.variants.first.price | money }}</div>
           {% endif %}
           <button class="btn btn-black hover-pink">Shop Now</button>
           <p class="btn-link-mobile">Shop Now</p>
