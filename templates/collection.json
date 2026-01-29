@@ -53,6 +53,7 @@
         },
         "custom_tab_QNDRyk": {
           "type": "custom_tab",
+          "disabled": true,
           "settings": {
             "label": "SALE",
             "link": "shopify://collections/sale",
