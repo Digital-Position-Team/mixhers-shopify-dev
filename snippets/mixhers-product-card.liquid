@@ -13,7 +13,7 @@
         <div class="product-title font-sans">{{ target_product.title | default: 'Loading...' }}</div>
         <p class="product-subtitle margin-0">{{ product_subtitle | default: '' }}</p>
         <div>
-          <p class="axl" style="display: none;">{{ target_product.variants.first.price }}</p>
+          <p class="axl" style="display: none;">{{ target_product.variants.first.price | money }}</p>
           <button class="btn btn-black hover-pink">Shop Now</button>
           <p class="btn-link-mobile">Shop Now</p>
         </div>
