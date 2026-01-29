@@ -136,7 +136,7 @@
           <div class="loading-overlay gradient"></div>
           <div class="custom-collection-grid" id="product-grid" data-id="{{ section.id }}">
             {%- for product in collection.products -%}
-              {% render 'shared-product-details', then_render: 'mixhers-product-card', product: product, product_id: product.id %}
+              {% render 'shared-product-details', then_render: 'mixhers-product-card', product: product, product_id: product.id, enable_price: section.settings.enable_price %}
             {%- endfor -%}
           </div>
 
