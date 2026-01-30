@@ -42,13 +42,21 @@
             "image": "shopify://shop_images/Drinks_Banner-1400.png",
             "image_link": "https://mixhers.com/collections/all"
           }
+        },
+        "image_7geARb": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Drinks_Banner-2000.jpg",
+            "image_link": "https://mixhers.com/collections/all"
+          }
         }
       },
       "block_order": [
         "image_afea7b",
         "image_rMegEc",
         "image_ACdr3q",
-        "image_brkkVP"
+        "image_brkkVP",
+        "image_7geARb"
       ],
       "name": "Custom Hero",
       "settings": {
