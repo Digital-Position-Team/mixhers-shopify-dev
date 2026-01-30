@@ -690,7 +690,9 @@ div#purchase-options {
 } 
 
 /* PERMANENT */
-
+#HeaderMenu-final-sale {
+  color: red;
+}
 /* END PERMANENT */
 
 /*Add to cart with options end----*/
