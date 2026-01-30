@@ -692,6 +692,7 @@ div#purchase-options {
 /* PERMANENT */
 #HeaderMenu-final-sale {
   color: red;
+  text-decoration: underline;
 }
 /* END PERMANENT */
 
