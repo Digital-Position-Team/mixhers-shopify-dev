@@ -30,8 +30,16 @@
         },
         "image_ACdr3q": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/sunset_hero.png",
+            "image_link": "https://mixhers.com/collections/all"
+          }
+        },
+        "image_brkkVP": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Drinks_Banner-1400.png",
             "image_link": "https://mixhers.com/collections/all"
           }
         }
@@ -39,7 +47,8 @@
       "block_order": [
         "image_afea7b",
         "image_rMegEc",
-        "image_ACdr3q"
+        "image_ACdr3q",
+        "image_brkkVP"
       ],
       "name": "Custom Hero",
       "settings": {
