@@ -647,6 +647,7 @@
     },
     "text_and_image_section_gphUVg": {
       "type": "text-and-image-section",
+      "disabled": true,
       "custom_css": [
         "@media (max-width: 767px) {.text-column h2 {margin-top: -80px; } .image-column {margin-top: -60px; }}"
       ],
