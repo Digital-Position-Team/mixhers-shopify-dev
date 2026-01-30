@@ -687,7 +687,11 @@ div#purchase-options {
 }
 #purchase-options label:has(input[type='radio']:checked) {
   background: #f4f9fd;
-}
+} 
+
+/* PERMANENT */
+
+/* END PERMANENT */
 
 /*Add to cart with options end----*/
 @media (min-width: 768px) {
