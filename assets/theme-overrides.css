@@ -693,7 +693,13 @@ div#purchase-options {
 #HeaderMenu-final-sale {
   color: red;
   text-decoration: underline;
+} 
+
+/* pop-up that appears for US visitors - some app with developer service that reffering to 'creatives-dynamic multiPage' */
+#attentive_overlay { 
+  display: none !important; 
 }
+
 /* END PERMANENT */
 
 /*Add to cart with options end----*/
