@@ -38,6 +38,7 @@
         },
         "image_brkkVP": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Drinks_Banner-1400.png",
             "image_link": "https://mixhers.com/collections/all"
