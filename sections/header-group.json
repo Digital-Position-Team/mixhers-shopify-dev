@@ -38,7 +38,7 @@
           "type": "announcement",
           "settings": {
             "text": "Buy 2 Collagen, Get 1 Free",
-            "link": "shopify://products/collagen-finalsale",
+            "link": "https://mixhers.com/products/collagen-finalsale",
             "show_countdown_clock": false,
             "countdown_clock_end_time": "31/12/2024 23:59:59"
           }
