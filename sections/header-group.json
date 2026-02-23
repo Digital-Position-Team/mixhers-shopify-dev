@@ -37,8 +37,8 @@
         "announcement_Ye8hTV": {
           "type": "announcement",
           "settings": {
-            "text": "15% off Mixhers favorites",
-            "link": "shopify://collections/all",
+            "text": "Buy 2 Collagen, Get 1 Free",
+            "link": "shopify://products/collagen",
             "show_countdown_clock": false,
             "countdown_clock_end_time": "31/12/2024 23:59:59"
           }
