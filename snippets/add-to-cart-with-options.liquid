@@ -9,10 +9,14 @@
 {% assign extra_subscribe_box_text = promo_content.extra_subscribe_box_text %}
 
 {%- comment -%} Check  if subscription should be available - consistent with general template {%- endcomment -%}
+
 {% assign subscription_available = true %}
-{% if product.metafields.custom.subscription_available == false
-  or product.tags contains 'disable-subscribe-in-smart-cart'
-%}
+
+{% if product.metafields.custom.subscription_available != true %}
+  {% assign subscription_available = false %}
+{% endif %}
+
+{% if product.tags contains 'disable-subscribe-in-smart-cart' %}
   {% assign subscription_available = false %}
 {% endif %}
 
