@@ -40,7 +40,7 @@
 
 <form id="pdp-form">
   <div class="add-to-cart-options">
-    {% if subscription_available %}
+    {% comment %} {% if subscription_available %} {% endcomment %}
       <div id="purchase-options" class="hidden">
         <div class="purchase-option-box">
           <label>
@@ -140,7 +140,7 @@
           </span>
         </div>
       {% endif %}
-    {% endif %}
+    {% comment %} {% endif %} {% endcomment %}
 
     <div id="bundle-pricing" class="hidden">
       <p class="select-option-title">Pick your flavors</p>
