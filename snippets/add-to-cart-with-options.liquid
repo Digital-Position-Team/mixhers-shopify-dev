@@ -358,8 +358,8 @@
     (function () {
         // DATA
         const isBundleProduct = {{ is_bundle_product }};
-        //const sellingPlanId = {{ selling_plan_id | json }};
-        const sellingPlanId = 5307891891 ;
+        const sellingPlanId = {{ selling_plan_id | json }};
+      
         const allVariants = {{ product.variants | json }};
         const filteredVariantsArray = {{ filtered_variants_array | json }}.split(',');
         const filteredVariants = allVariants.filter(function(variant) {
