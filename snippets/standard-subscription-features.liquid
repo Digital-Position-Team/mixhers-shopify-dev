@@ -72,7 +72,7 @@
 
     <div class="extra-list-item">
         {% if gets_starter_kit_one or gets_starter_kit_two %}
-            <span class="icon-checkmark"></span>
+            {% comment %} <span class="icon-checkmark"></span> {% endcomment %}
             {% comment %} <div>Free Frother - $20 value</div> {% endcomment %}
         {% elsif is_bundle_product and gets_starter_kit_one == false %}
            {% comment %} <span class="icon-checkmark"></span>{% endcomment %}
@@ -82,11 +82,11 @@
 
     <div class="extra-list-item">
         {% if is_bundle_product and gets_starter_kit_one %}
-            <span class="icon-checkmark"></span>
-            <div>Free Display Box - $12 value</div>
+            {% comment %} <span class="icon-checkmark"></span>
+            <div>Free Display Box - $12 value</div> {% endcomment %}
         {% else %}
-            <span class="icon-checkmark"></span>
-            <div>Double loyalty points</div>
+            {% comment %} <span class="icon-checkmark"></span>
+            <div>Double loyalty points</div> {% endcomment %}
         {% endif %}
     </div>
 
