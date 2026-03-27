@@ -536,7 +536,7 @@ console.log(isBundleProduct,"isBundleProduct---");
                     id: selectedVariant.id,
                     quantity: 1,
                     properties: {
-                        "Free Starter Kit": starterKitMessageTwo,
+                        {% comment %} "Free Starter Kit": starterKitMessageTwo, {% endcomment %}
                         _contentsData: [{flavor: flavorName, color: flavorColor}],
                         _starterKitVariantId: starterKitVariantId
                     },
