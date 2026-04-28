@@ -14,6 +14,15 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
+        "announcement_z7Dy9m": {
+          "type": "announcement",
+          "settings": {
+            "text": "Mother's Day Sale is live! Use Code MOM2026 for 15% off sitewide",
+            "link": "",
+            "show_countdown_clock": false,
+            "countdown_clock_end_time": "31/12/2024 23:59:59"
+          }
+        },
         "announcement-bar-0": {
           "type": "announcement",
           "disabled": true,
@@ -55,6 +64,7 @@
         }
       },
       "block_order": [
+        "announcement_z7Dy9m",
         "announcement-bar-0",
         "announcement_tzAbFb",
         "announcement_Ye8hTV",
