@@ -23,7 +23,7 @@
     {% endfor %}
 {% endif %}
 {% unless showTag == false %}
-    {% render 'product-tag-styles' with product: product, pageType: 'product-card' %}
+    {% render 'product-tag-styles' with product, product: product, pageType: 'product-card' %}
 {% endunless %}
 
 {% for selling_plan_group in product.selling_plan_groups %}
@@ -325,3 +325,15 @@
 
     </style>
 {% endif %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'product-tag-styles' with product: product, pageType: 'product-card'
+    %}"
+  to: "{% render 'product-tag-styles' with product, product: product, pageType: 'product-card'
+    %}"
+  position: 1054..1144
+{% endcomment %}

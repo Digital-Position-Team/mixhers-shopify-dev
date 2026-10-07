@@ -50,7 +50,7 @@
             assign pagnationIndex = 1
             assign articlesOnPage = 1
             for article in blog.articles
-                render 'standard-article-card' with article: article, featuredCard: false, pagnationIndex: pagnationIndex
+                render 'standard-article-card' with article, article: article, featuredCard: false, pagnationIndex: pagnationIndex
                 
                 if articlesOnPage < articlesPerPage 
                     assign articlesOnPage = articlesOnPage | plus: 1
@@ -469,4 +469,15 @@
   }
   
 }
-</style>
+</style>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "                render 'standard-article-card' with article: article, featuredCard:
+    false, pagnationIndex: pagnationIndex"
+  to: "                render 'standard-article-card' with article, article: article,
+    featuredCard: false, pagnationIndex: pagnationIndex"
+  position: 1913..2043
+{%- endcomment -%}

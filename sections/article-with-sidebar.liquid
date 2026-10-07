@@ -66,7 +66,7 @@
                 {% comment %} {% endcomment %}
               <div class="article-sidebar-sticky-wrapper ">
                 {% if section.settings.show_feature_product %}
-                  {% render 'article-featured-product' with featured_product: featured_product, featured_product_img: featured_product_img, mobile: false %}
+                  {% render 'article-featured-product' with featured_product, featured_product: featured_product, featured_product_img: featured_product_img, mobile: false %}
                 {% endif %}
                  {% render 'podcast-player-block', block: block %}
               </div>
@@ -89,7 +89,7 @@
           {% endif %}
         </div>
          {% if section.settings.show_feature_product %}
-            {% render 'article-featured-product' with featured_product: featured_product, featured_product_img: featured_product_img, mobile: true %}
+            {% render 'article-featured-product' with featured_product, featured_product: featured_product, featured_product_img: featured_product_img, mobile: true %}
           {% endif %}
      </div>
     </div>
@@ -303,4 +303,20 @@
     }
   }
 
-</style>
+</style>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'article-featured-product' with featured_product: featured_product,
+    featured_product_img: featured_product_img, mobile: false %}"
+  to: "{% render 'article-featured-product' with featured_product, featured_product:
+    featured_product, featured_product_img: featured_product_img, mobile: false %}"
+  position: 3268..3424
+- from: "{% render 'article-featured-product' with featured_product: featured_product,
+    featured_product_img: featured_product_img, mobile: true %}"
+  to: "{% render 'article-featured-product' with featured_product, featured_product:
+    featured_product, featured_product_img: featured_product_img, mobile: true %}"
+  position: 4302..4457
+{%- endcomment -%}

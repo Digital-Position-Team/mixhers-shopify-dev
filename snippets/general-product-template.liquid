@@ -282,7 +282,7 @@
     {% endfor %}
 {% endif %}
 {% unless showTag == false %}
-    {% render 'product-tag-styles' with product: product, pageType: 'product' %}
+    {% render 'product-tag-styles' with product, product: product, pageType: 'product' %}
 {% endunless %}
 
 <div class="product-template-container product-template-container-new" data-qty="{{ selected_variant_qty }}">
@@ -1623,4 +1623,15 @@
     }
 
 
-</script>
+</script>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'product-tag-styles' with product: product, pageType: 'product'
+    %}"
+  to: "{% render 'product-tag-styles' with product, product: product, pageType: 'product'
+    %}"
+  position: 12523..12608
+{%- endcomment -%}

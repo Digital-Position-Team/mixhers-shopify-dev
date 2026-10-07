@@ -1,9 +1,22 @@
 <style id=flavor-bubbles>
     {% if product %}
-        {% render 'flavor-bubble-single' with product: product %}
+        {% render 'flavor-bubble-single' with product, product: product %}
     {% else %}
         {% for product in shop.metaobjects.product_list.all-products.products.value %}
-            {% render 'flavor-bubble-single' with product: product %}
+            {% render 'flavor-bubble-single' with product, product: product %}
         {% endfor %}
     {% endif %}
 </style>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'flavor-bubble-single' with product: product %}"
+  to: "{% render 'flavor-bubble-single' with product, product: product %}"
+  position: 55..121
+- from: "{% render 'flavor-bubble-single' with product: product %}"
+  to: "{% render 'flavor-bubble-single' with product, product: product %}"
+  position: 236..302
+{% endcomment %}
